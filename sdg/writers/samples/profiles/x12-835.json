@@ -1,0 +1,30 @@
+{
+  "about": "835 remittance modeled on a sample: one claim payment (CLP) per claim written, each holding its service lines (SVC), taken in turn from the sample's claims and lines. The header (BPR, TRN, payer N1*PR, payee N1*PE) is written once. Amounts follow the lines generated: a line's paid amount keeps the sample's share of its charge, a claim's charge and payment are its lines' added up, and BPR02 (the payment) is every claim's payment added up.",
+  "extends": "x12",
+  "kind": "835",
+  "subject": "claims",
+
+  "counts": {"claims": "CLP", "lines": "SVC"},
+  "summary": "{claims} claims · {lines} service lines",
+
+  "units": [
+    {"name": "claim", "starts": "CLP", "group": "CLAIM_ID", "row": "count", "requires": "line",
+     "missing": "The 835 sample has no claim payment (CLP) with a service line (SVC) in it.",
+     "units": [
+       {"name": "line", "starts": "SVC", "row": "count"}
+     ]}
+  ],
+
+  "derive": [
+    {"about": "SVC03, the line's payment, keeps the sample's share of SVC02, the line's charge.",
+     "op": "scale", "at": "SVC SVC03", "by": "SVC SVC02", "decimals": 2},
+    {"about": "CLP03, the claim's charge, is its lines' charges added up.",
+     "op": "sum", "at": "CLP CLP03", "of": ["SVC SVC02"], "decimals": 2},
+    {"about": "CLP04, the claim's payment, is its lines' payments added up.",
+     "op": "sum", "at": "CLP CLP04", "of": ["SVC SVC03"], "decimals": 2},
+    {"about": "CLP05, the patient's share, keeps the sample's share of the claim's charge.",
+     "op": "scale", "at": "CLP CLP05", "by": "CLP CLP03", "decimals": 2},
+    {"about": "BPR02, the payment the remittance makes, is every claim's payment added up.",
+     "op": "total", "at": "BPR BPR02", "of": ["CLP CLP04"], "decimals": 2}
+  ]
+}

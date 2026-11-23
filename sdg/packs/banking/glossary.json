@@ -1,0 +1,87 @@
+{
+ "_about": "Every word the screens use for a bank's records. Each form is stated outright.",
+ "customers": {
+  "one": "customer",
+  "many": "customers",
+  "One": "Customer",
+  "Many": "Customers",
+  "counts": [
+   [
+    "n_customers",
+    null
+   ],
+   [
+    "n_branches",
+    "Branches"
+   ],
+   [
+    "n_products",
+    "Products"
+   ]
+  ],
+  "depths": [
+   "Branches"
+  ]
+ },
+ "accounts": {
+  "one": "account",
+  "many": "accounts",
+  "One": "Account",
+  "Many": "Accounts",
+  "line": "transaction",
+  "lines": "transactions",
+  "Line": "Transaction",
+  "Lines": "Transactions",
+  "counts": [
+   [
+    "n_accounts",
+    null
+   ],
+   [
+    "n_transactions",
+    "Transactions"
+   ]
+  ],
+  "types": {
+   "CHECKING": "Checking",
+   "SAVINGS": "Savings",
+   "CARD": "Card",
+   "LOAN": "Loan"
+  },
+  "depths": [
+   "Branches",
+   "Branches and products"
+  ]
+ },
+ "charts": {
+  "_about": "The features the pattern charts draw.",
+  "ranges": {
+   "_age": {
+    "label": "Age",
+    "unit": "years"
+   },
+   "_tenure": {
+    "label": "Tenure",
+    "unit": "months"
+   },
+   "amount": {
+    "label": "Amount",
+    "unit": "",
+    "money": true
+   }
+  },
+  "mixes": {
+   "SEGMENT": "Segment",
+   "TXN_TYPE": "Transaction type",
+   "CHANNEL": "Channel"
+  }
+ },
+ "phrases": {
+  "_about": "Whole phrases where composing words reads badly.",
+  "field_examples": "a branch, product, segment or age range",
+  "outside_range_risk": "the pattern's products and transactions may not suit them.",
+  "scope_heading": "Branch and product",
+  "joined_heading": "Linked records",
+  "joined_words": ""
+ }
+}

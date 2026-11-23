@@ -1,0 +1,132 @@
+/* Defining a pattern by its rules. */
+.define {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.define__head h2 {
+  margin-bottom: var(--space-2);
+}
+.define__rules {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--paper-sunk);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+}
+.define__name input {
+  min-width: 32ch;
+}
+.define__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.define__rule {
+  padding: var(--space-3);
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+}
+.define__rule-head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+.define__rule-head .linked {
+  margin-left: auto;
+}
+.define__find {
+  width: 100%;
+  max-width: 40ch;
+  margin-bottom: var(--space-2);
+  font-size: var(--t-small);
+  padding: 3px 6px;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--paper);
+  color: var(--ink);
+}
+.define__options {
+  display: flex;
+  flex-direction: column;
+  max-height: 14rem;
+  overflow-y: auto;
+  gap: 2px;
+}
+.define__option {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  font-size: var(--t-small);
+  cursor: pointer;
+}
+.define__option-label {
+  color: var(--ink-soft);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.define__count {
+  margin-left: auto;
+  color: var(--ink-faint);
+  padding-right: var(--space-2);
+}
+.define__range {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+.define__range input {
+  width: 10ch;
+}
+.define__run {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+.define__rules .named {
+  align-self: flex-start;
+}
+.define__rules .named select {
+  min-width: 28ch;
+}
+.define__range .named input {
+  width: 12ch;
+}
+
+/* One scenario, many. */
+.define__variants {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+}
+.define__variants h3 {
+  font-size: var(--t-small);
+  font-weight: 600;
+}
+.define__vary {
+  display: flex;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+}
+.define__vary > div {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 28ch;
+}
+.define__options--short {
+  max-height: 10rem;
+}

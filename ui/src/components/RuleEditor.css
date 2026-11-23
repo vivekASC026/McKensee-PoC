@@ -1,0 +1,101 @@
+.editor {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+}
+
+.editor__field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.editor__label {
+  font-size: var(--t-small);
+  font-weight: 600;
+}
+.editor__label--inline {
+  display: block;
+}
+.editor__required {
+  color: var(--caution);
+  font-weight: 500;
+  font-size: var(--t-micro);
+}
+.editor__count {
+  color: var(--ink-faint);
+  font-weight: 400;
+  font-size: var(--t-micro);
+}
+.editor__help {
+  font-size: var(--t-micro);
+  color: var(--ink-faint);
+  line-height: 1.45;
+}
+
+.editor input[type="text"],
+.editor input[type="number"],
+.editor select,
+.editor textarea {
+  width: 100%;
+  padding: 5px 8px;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  background: var(--paper);
+  font-size: var(--t-small);
+  font-family: inherit;
+}
+.editor input.mono,
+.editor textarea {
+  font-family: var(--mono);
+  font-size: var(--t-micro);
+}
+.editor textarea {
+  resize: vertical;
+  line-height: 1.6;
+}
+.editor input:focus,
+.editor select:focus,
+.editor textarea:focus {
+  outline: none;
+  border-color: var(--structural);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--structural) 14%, transparent);
+}
+
+.editor__check {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  font-size: var(--t-small);
+}
+.editor__check input {
+  margin-top: 3px;
+}
+
+.editor__records {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  align-items: flex-start;
+}
+
+.editor__was {
+  font-size: var(--t-micro);
+  color: var(--ink-faint);
+}
+
+.editor__actions {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--rule);
+}
+
+/* The ratio editor sits inside a cascade edge rather than a side panel, so it
+   is the same form at a smaller measure. */
+.editor--compact {
+  max-width: 21rem;
+  gap: var(--space-3);
+}
+.editor--compact input { max-width: 9rem; }

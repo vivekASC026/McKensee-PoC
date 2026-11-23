@@ -1,0 +1,384 @@
+.cascade {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  max-width: 1100px;
+}
+
+.cascade__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-6);
+}
+.cascade__title {
+  font-size: var(--t-large);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+.cascade__lede {
+  margin-top: var(--space-2);
+  color: var(--ink-soft);
+  max-width: 56ch;
+  line-height: 1.55;
+}
+.cascade__total {
+  text-align: right;
+  flex: none;
+}
+.cascade__total-value {
+  font-family: var(--display);
+  font-size: var(--t-display);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+.cascade__total-label {
+  font-size: var(--t-small);
+  color: var(--ink-faint);
+  margin-top: 3px;
+}
+
+/*
+  The plotting ground. A measurement grid belongs behind data that has been
+  measured, and nowhere else in the interface, which is what keeps it from
+  becoming wallpaper.
+*/
+.cascade__canvas {
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  background-color: var(--paper-raised);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 22px 22px;
+  background-position: -1px -1px;
+  padding: var(--space-6) var(--space-6) var(--space-5);
+}
+
+.cascade__node + .cascade__node {
+  margin-top: 0;
+}
+
+.cascade__table {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-5);
+  background: var(--paper-raised);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  padding: 11px var(--space-4);
+}
+.cascade__table--root {
+  border-color: var(--ink);
+  border-width: 1.5px;
+}
+.cascade__table-name {
+  font-size: var(--t-base);
+  font-weight: 600;
+}
+.cascade__table-count {
+  font-size: var(--t-mid);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.cascade__root-input {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+.cascade__root-input input {
+  width: 118px;
+  text-align: right;
+  font-size: var(--t-large);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  padding: 2px 8px;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+.cascade__root-input input:focus {
+  border-color: var(--structural);
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--structural) 16%, transparent);
+}
+.cascade__root-hint {
+  font-size: var(--t-micro);
+  color: var(--ink-faint);
+  width: 66px;
+}
+
+/* The edge between two tables carries the measurement that connects them. */
+.cascade__edge {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: var(--space-4);
+  padding: var(--space-3) 0;
+}
+.cascade__edge-line {
+  justify-self: center;
+  width: 2px;
+  border-radius: 1px;
+  background: linear-gradient(
+    to bottom,
+    var(--rule-strong) 0%,
+    color-mix(in srgb, var(--learned) 55%, var(--rule-strong)) 55%,
+    var(--learned) 100%
+  );
+  position: relative;
+}
+.cascade__edge-line::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 7px solid var(--learned);
+}
+.cascade__edge-body {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding-bottom: var(--space-2);
+}
+/* The shape and the sentence that describes it, side by side: the drawing is
+   the evidence and the words are the reading of it. */
+.cascade__edge-measure {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: var(--space-4);
+  align-items: center;
+}
+.cascade__edge-measure .histogram {
+  width: 240px;
+  gap: 2px;
+  border-bottom: 1px solid var(--rule-strong);
+  padding-bottom: 1px;
+}
+.cascade__edge-ratio {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  font-size: var(--t-mid);
+  font-weight: 700;
+  color: var(--learned);
+  letter-spacing: -0.01em;
+}
+.cascade__edge-per {
+  font-size: var(--t-small);
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+.cascade__edge-evidence {
+  font-size: var(--t-small);
+  color: var(--ink-faint);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.cascade__actions {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.cascade__aside {
+  border-top: 1px solid var(--rule);
+  padding-top: var(--space-4);
+}
+.cascade__aside-title {
+  font-size: var(--t-base);
+  font-weight: 600;
+}
+.cascade__aside-lede {
+  font-size: var(--t-small);
+  color: var(--ink-faint);
+  margin-top: 3px;
+  max-width: 62ch;
+}
+.cascade__aside-list {
+  list-style: none;
+  margin: var(--space-3) 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.cascade__aside-list li {
+  display: flex;
+  flex-wrap: wrap; /* on a narrow screen the choice drops below, not off the edge */
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+  font-size: var(--t-small);
+}
+.cascade__aside-list li > .mono {
+  min-width: 190px;
+  font-weight: 600;
+}
+.cascade__aside-list select {
+  padding: 3px 6px;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+  font-size: var(--t-small);
+}
+.cascade__aside-detail {
+  color: var(--ink-faint);
+  font-size: var(--t-micro);
+}
+
+.cascade__refs {
+  list-style: none;
+  margin: var(--space-3) 0 0;
+  padding: 0;
+  display: grid;
+  gap: 5px;
+}
+.cascade__refs li {
+  display: grid;
+  grid-template-columns: minmax(0, 220px) 72px minmax(0, 1fr);
+  gap: var(--space-3);
+  align-items: baseline;
+  font-size: var(--t-small);
+}
+.cascade__refs li > .num {
+  text-align: right;
+  font-weight: 600;
+}
+.cascade__refs-filter {
+  color: var(--ink-faint);
+  font-size: var(--t-micro);
+}
+
+.cascade__footnote {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: var(--t-small);
+  color: var(--ink-soft);
+  max-width: 76ch;
+  line-height: 1.6;
+  border-top: 1px solid var(--rule);
+  padding-top: var(--space-4);
+}
+.cascade__footnote-mark {
+  width: 3px;
+  align-self: stretch;
+  background: var(--user);
+  border-radius: 2px;
+  flex: none;
+  margin-top: 2px;
+}
+
+@media (max-width: 860px) {
+  .cascade__edge-measure {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .cascade__edge-measure .histogram {
+    width: 100%;
+  }
+}
+
+@media (max-width: 720px) {
+  .cascade__head {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+  .cascade__total {
+    text-align: left;
+  }
+  .cascade__refs li {
+    grid-template-columns: 1fr auto;
+  }
+}
+
+/* Editing the edge. The control stays quiet until the row is hovered or it is
+   focused, because the number is what people come here to read. */
+.cascade__edge-change {
+  margin-left: auto;
+  border: 0;
+  background: none;
+  padding: 0;
+  font: inherit;
+  font-size: var(--t-small);
+  font-weight: 500;
+  color: var(--ink-faint);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 120ms ease, color 120ms ease;
+}
+.cascade__edge:hover .cascade__edge-change,
+.cascade__edge-change:focus-visible {
+  opacity: 1;
+}
+.cascade__edge-change:hover {
+  color: var(--user);
+}
+@media (hover: none) {
+  .cascade__edge-change { opacity: 1; }
+}
+
+/* Choosing what a table is counted against. It sits inside the "per X" phrase
+   rather than beside it, because the parent is what that phrase names. */
+.cascade__edge-parent {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+}
+.cascade__edge-parent select {
+  font-family: var(--mono);
+  font-size: var(--t-micro);
+  padding: 1px 4px;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--paper);
+  color: inherit;
+}
+.cascade__edge-parent select:hover:not(:disabled) {
+  border-color: var(--rule-strong);
+}
+.cascade__edge-parent select:disabled {
+  opacity: 0.5;
+}
+
+/* What the load does to each kind of table: generate, keep, leave alone. */
+.cascade__kinds {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+  margin: 0 0 var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--paper-raised);
+}
+.cascade__kinds dt {
+  font-size: var(--t-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+}
+.cascade__kinds dd {
+  margin: 2px 0 0;
+  font-size: var(--t-small);
+  color: var(--ink-soft);
+}
+.cascade__kind {
+  font-size: var(--t-micro);
+  color: var(--ink-faint);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 1px 8px;
+  white-space: nowrap;
+}
+.cascade__kind--kept {
+  color: var(--affirm);
+  border-color: color-mix(in srgb, var(--affirm) 40%, transparent);
+}

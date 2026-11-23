@@ -1,0 +1,58 @@
+{
+ "defaults": [
+  {
+   "format": "fhir",
+   "id": "fhir-members",
+   "name": "FHIR R4 members (Patient, Coverage)",
+   "sampleName": "fhir-members-bundle.json"
+  },
+  {
+   "format": "fhir",
+   "id": "fhir-claims",
+   "name": "FHIR R4 claims (Claim, Encounter)",
+   "sampleName": "fhir-claims-bundle.json"
+  },
+  {
+   "format": "hl7v2",
+   "id": "hl7-adt",
+   "name": "HL7 v2.5.1 ADT^A01 (admission)",
+   "sampleName": "hl7-adt-a01.hl7"
+  },
+  {
+   "format": "hl7v2",
+   "id": "hl7-dft",
+   "name": "HL7 v2.5.1 DFT^P03 (charges)",
+   "sampleName": "hl7-dft-p03.hl7"
+  },
+  {
+   "format": "hl7v2",
+   "id": "hl7-oru",
+   "name": "HL7 v2.5.1 ORU^R01 (lab results)",
+   "sampleName": "hl7-oru-r01.hl7"
+  },
+  {
+   "format": "cda",
+   "id": "cda-ccd",
+   "name": "C-CDA R2.1 CCD (continuity of care)",
+   "sampleName": "cda-ccd.xml"
+  },
+  {
+   "format": "cda",
+   "id": "hl7v3-prpa-add",
+   "name": "HL7 v3 message: patient registry add (PRPA_IN201301UV02)",
+   "sampleName": "hl7v3-prpa-in201301.xml"
+  },
+  {
+   "format": "x12",
+   "id": "x12-834",
+   "name": "X12 834 (enrollment)",
+   "sampleName": "x12-834.txt"
+  },
+  {
+   "format": "x12",
+   "id": "x12-837",
+   "name": "X12 837 (claims)",
+   "sampleName": "x12-837.txt"
+  }
+ ]
+}

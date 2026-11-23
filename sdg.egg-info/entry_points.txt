@@ -1,0 +1,2 @@
+[console_scripts]
+sdg = sdg.cli.main:app

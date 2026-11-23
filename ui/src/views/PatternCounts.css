@@ -1,0 +1,80 @@
+/* A pattern's counts and shares, field by field, and its scenarios. */
+.counts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--paper-sunk);
+}
+.counts h4 {
+  font-size: var(--t-small);
+  font-weight: 600;
+}
+.counts h5 {
+  font-size: var(--t-small);
+  font-weight: 600;
+}
+.counts__note,
+.counts__wait,
+.counts__generation,
+.counts__basis,
+.counts__label {
+  font-size: var(--t-small);
+  color: var(--ink-soft);
+}
+.counts__basis,
+.counts__label {
+  font-weight: 400;
+}
+.counts__fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: var(--space-3) var(--space-4);
+}
+.counts__field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+.counts__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--t-small);
+}
+.counts__table td,
+.counts__table th {
+  padding: 2px 6px 2px 0;
+  border-bottom: 1px solid var(--rule);
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+.counts__table .num {
+  text-align: right;
+  white-space: nowrap;
+}
+.counts__scenarios {
+  max-height: 24rem;
+  overflow-y: auto;
+}
+.counts__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.counts__export {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.counts__download {
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+}

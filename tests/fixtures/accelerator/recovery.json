@@ -1,0 +1,26 @@
+{
+ "bank": {
+  "child": {
+   "child_top3": 1,
+   "found_top6": 3,
+   "in_order": 2
+  },
+  "primary": {
+   "found_top6": 1,
+   "in_order": 1,
+   "primary_top3": 1
+  }
+ },
+ "facets_qa": {
+  "child": {
+   "child_top3": 1,
+   "found_top6": 4,
+   "in_order": 3
+  },
+  "primary": {
+   "found_top6": 4,
+   "in_order": 4,
+   "primary_top3": 1
+  }
+ }
+}

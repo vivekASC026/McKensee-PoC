@@ -1,0 +1,1701 @@
+{
+ "_about": "What patterns are found on, counted and reported by, for this business.",
+ "analyzer": {
+  "continuous_features": [
+   "_age",
+   "_tenure"
+  ],
+  "categorical_features": [
+   "MEME_SEX",
+   "MEME_MARITAL_STATUS"
+  ],
+  "geography_columns": {
+   "MEME_ZIP": "ADDRESS_ZIP",
+   "MEME_CITY": "ADDRESS_CITY",
+   "MEME_STATE": "ADDRESS_STATE"
+  },
+  "description_columns": [
+   "GRGR_NAME",
+   "CSPD_CAT_DESC",
+   "PLDS_DESC",
+   "PDDS_DESC"
+  ],
+  "filter_columns": {
+   "grgr_ck": "GRGR_CK",
+   "cspd_cat": "CSPD_CAT",
+   "cspi_id": "CSPI_ID",
+   "pdpd_id": "PDPD_ID"
+  },
+  "label_cluster_columns": {
+   "group": "group_cluster_idx",
+   "plan_category": "plan_category_cluster_idx",
+   "plan": "plan_cluster_idx",
+   "product": "product_cluster_idx"
+  },
+  "numeric_columns": [
+   "CLCL_ME_AGE",
+   "MEME_SFX"
+  ],
+  "key_suffixes": [
+   "_CK"
+  ],
+  "enrollment_columns": {
+   "GRGR_CK": "GROUP_KEY",
+   "CSPI_ID": "COVERAGE_PLAN_ID",
+   "PDPD_ID": "PRODUCT_CODE"
+  },
+  "feature_labels": {
+   "_age": [
+    "Age",
+    "years"
+   ],
+   "_tenure": [
+    "Tenure",
+    "months"
+   ],
+   "MEME_SEX": [
+    "Sex",
+    null
+   ],
+   "MEME_MARITAL_STATUS": [
+    "Marital Status",
+    null
+   ],
+   "MEME_REL": [
+    "Relationship Code",
+    null
+   ],
+   "CLCL_CUR_STS": [
+    "Claim Status",
+    null
+   ],
+   "CLCL_CL_TYPE": [
+    "Claim Type",
+    null
+   ],
+   "CLCL_NTWK_IND": [
+    "Network Indicator",
+    null
+   ],
+   "IDCD_ID_PRIMARY": [
+    "Diagnosis Code",
+    null
+   ],
+   "IPCD_ID": [
+    "Procedure Code",
+    null
+   ],
+   "CLCL_ME_AGE": [
+    "Age",
+    "years"
+   ],
+   "member_age": [
+    "Age",
+    "years"
+   ],
+   "charge_amount": [
+    "Charge Amount",
+    null
+   ],
+   "gender": [
+    "Sex",
+    null
+   ],
+   "claim_status": [
+    "Claim Status",
+    null
+   ],
+   "claim_type": [
+    "Claim Type",
+    null
+   ],
+   "network": [
+    "Network Indicator",
+    null
+   ],
+   "service_units": [
+    "Service Units",
+    null
+   ]
+  },
+  "seed_element_labels": {
+   "SBSB_CK": "Subscriber Key",
+   "GRGR_CK": "Group Key",
+   "MEME_REL": "Relationship to Subscriber",
+   "MEME_MID_INIT": "Middle Initial",
+   "MEME_SEX": "Gender",
+   "MEME_BIRTH_DT": "Date of Birth",
+   "MEME_SSN": "SSN",
+   "MEME_MCTR_STS": "Member Status",
+   "MEME_ORIG_EFF_DT": "Member Effective Date",
+   "MEME_MARITAL_STATUS": "Marital Status",
+   "MEME_MEDCD_NO": "Medicaid Number",
+   "MEME_HICN": "Medicare Claim Number",
+   "MEME_MCTR_RACE_NVL": "Race",
+   "MEME_MCTR_ETHN_NVL": "Ethnicity",
+   "SBSB_ID": "Subscriber ID",
+   "SBSB_ORIG_EFF_DT": "Subscriber Effective Date",
+   "SBSB_MCTR_STS": "Subscriber Status",
+   "SBSB_EMPLOY_ID": "Employee ID",
+   "SGSG_CK": "Section Key",
+   "SGSG_ID": "Section ID",
+   "SGSG_NAME": "Section Name",
+   "SGSG_STATE": "Section State",
+   "SGSG_STS": "Section Status",
+   "SBSG_EFF_DT": "Enrollment Effective Date",
+   "SBSG_TERM_DT": "Enrollment Term Date",
+   "CSCS_ID": "Class ID",
+   "GRGR_ID": "Group ID",
+   "GRGR_NAME": "Group Name",
+   "GRGR_STATE": "Group State",
+   "GRGR_COUNTY": "Group County",
+   "GRGR_STS": "Group Status",
+   "CSPI_ID": "Plan ID",
+   "CSPD_CAT": "Plan Category",
+   "CSPD_CAT_DESC": "Plan Category Description",
+   "CSPI_EFF_DT": "Plan Effective Date",
+   "CSPI_TERM_DT": "Plan Term Date",
+   "PDPD_ID": "Product ID",
+   "PLDS_DESC": "Plan Description",
+   "PDDS_DESC": "Product Description",
+   "EMAIL": "Email Address",
+   "PAGR_CK": "Paying Group Key",
+   "LOBD_ID": "Line of Business"
+  }
+ },
+ "store": {
+  "member_columns": [
+   "MEME_CK",
+   "SBSB_CK",
+   "SBSB_ID",
+   "MEME_SFX",
+   "MEME_FIRST_NAME",
+   "MEME_LAST_NAME",
+   "MEME_MID_INIT",
+   "MEME_SEX",
+   "MEME_BIRTH_DT",
+   "MEME_SSN",
+   "MEME_REL",
+   "MEME_MARITAL_STATUS",
+   "MEME_MCTR_STS",
+   "MEME_ORIG_EFF_DT",
+   "GRGR_CK",
+   "GRGR_ID",
+   "GRGR_NAME",
+   "SGSG_CK",
+   "SGSG_ID",
+   "CSPD_CAT",
+   "CSPD_CAT_DESC",
+   "CSPI_ID",
+   "PLDS_DESC",
+   "PDPD_ID",
+   "PDDS_DESC",
+   "LOBD_ID"
+  ],
+  "claim_columns": [
+   "CLCL_ID",
+   "CDML_SEQ_NO",
+   "MEME_CK",
+   "SBSB_CK",
+   "GRGR_CK",
+   "GRGR_NAME",
+   "SGSG_CK",
+   "CSPD_CAT",
+   "CSPI_ID",
+   "PLDS_DESC",
+   "PDPD_ID",
+   "PDDS_PROD_TYPE",
+   "LOBD_ID",
+   "MEME_SEX",
+   "MEME_REL",
+   "CLCL_ME_AGE",
+   "CLCL_CL_TYPE",
+   "CLCL_CUR_STS",
+   "CLCL_NTWK_IND",
+   "CLCL_LOW_SVC_DT",
+   "CLCL_RECD_DT",
+   "CLCL_PAID_DT",
+   "CLCL_TOT_CHG",
+   "IDCD_ID_PRIMARY",
+   "IDCD_DESC_PRIMARY",
+   "IPCD_ID",
+   "IPCD_DESC",
+   "CDML_UNITS",
+   "PSCD_ID",
+   "PRPR_ID",
+   "PRPR_NPI",
+   "PRPR_MCTR_SPEC",
+   "NWNW_ID",
+   "CDML_CHG_AMT",
+   "CDML_ALLOW",
+   "CDML_PAID_AMT",
+   "CDML_DED_AMT",
+   "CDML_COPAY_AMT",
+   "CDML_COINS_AMT"
+  ],
+  "member_key": "MEME_CK",
+  "report_keys": {
+   "members": [
+    "MEME_CK"
+   ],
+   "claims": [
+    "CLCL_ID",
+    "CDML_SEQ_NO"
+   ]
+  },
+  "personal_columns": [
+   "CDML_SEQ_NO",
+   "CLCL_EXT_AUTH_NO",
+   "CLCL_ID",
+   "EMAIL",
+   "MEME_BIRTH_DT",
+   "MEME_CK",
+   "MEME_FIRST_NAME",
+   "MEME_HICN",
+   "MEME_LAST_NAME",
+   "MEME_MEDCD_NO",
+   "MEME_MID_INIT",
+   "MEME_SSN",
+   "PRPR_NAME",
+   "SBSB_CK",
+   "SBSB_EMPLOY_ID",
+   "SBSB_FIRST_NAME",
+   "SBSB_ID",
+   "SBSB_LAST_NAME"
+  ],
+  "personal_columns_rows": [
+   "CLCL_ME_AGE",
+   "EMAIL",
+   "IDCD_DESC_PRIMARY",
+   "IDCD_ID_PRIMARY",
+   "IPCD_DESC",
+   "IPCD_ID",
+   "MEME_BIRTH_DT",
+   "MEME_BIRTH_DTTM",
+   "MEME_FIRST_NAME",
+   "MEME_HICN",
+   "MEME_LAST_NAME",
+   "MEME_MARITAL_STATUS",
+   "MEME_MCTR_ETHN_NVL",
+   "MEME_MCTR_RACE_NVL",
+   "MEME_MEDCD_NO",
+   "MEME_MID_INIT",
+   "MEME_SEX",
+   "MEME_SSN",
+   "SBSB_EMPLOY_ID",
+   "SBSB_FIRST_NAME",
+   "SBSB_ID",
+   "SBSB_LAST_NAME"
+  ],
+  "personal_suffixes_rows": [
+   "_SSN",
+   "_DOB",
+   "STREET_1",
+   "STREET_2",
+   "ZIP_CODE",
+   "_PHONE"
+  ],
+  "claims_filters": [
+   "grgr_ck",
+   "cspi_id",
+   "pdpd_id",
+   "claim_type",
+   "gender",
+   "age_min",
+   "age_max",
+   "diagnosis",
+   "procedure",
+   "conditions"
+  ],
+  "clinical_columns": {
+   "IDCD_ID_PRIMARY": "DIAGNOSIS_CODE",
+   "IPCD_ID": "PROCEDURE_CODE"
+  },
+  "claim_type_names": {
+   "P": "Professional",
+   "I": "Institutional",
+   "D": "Dental",
+   "M": "Medical",
+   "H": "Hospital"
+  },
+  "combo_key": [
+   "grgr_ck",
+   "cspd_cat",
+   "cspi_id",
+   "pdpd_id"
+  ],
+  "scope_columns": {
+   "grgr_ck": "grgr_ck",
+   "cspd_cat": "cspd_cat",
+   "cspi_id": "cspi_id",
+   "pdpd_id": "pdpd_id"
+  },
+  "scope_label_columns": {
+   "grgr_ck": "grgr_name",
+   "cspd_cat": "cspd_cat_desc",
+   "cspi_id": "plds_desc",
+   "pdpd_id": "pdds_desc"
+  },
+  "entity_tag": {
+   "column": "cspd_cat",
+   "tags": {
+    "members": "__MEMBERS__",
+    "claims": "__CLAIMS__"
+   }
+  },
+  "legacy_entity_markers": [
+   {
+    "column": "cspd_cat",
+    "contains": "__CLAIMS__",
+    "entity": "claims"
+   },
+   {
+    "column": "contextual_name",
+    "contains": "[Claims]",
+    "entity": "claims"
+   },
+   {
+    "column": "cspd_cat_desc",
+    "equals": "claims",
+    "entity": "claims"
+   },
+   {
+    "column": "profile_json",
+    "contains": "\"claims_pattern\": true",
+    "entity": "claims"
+   }
+  ],
+  "_about_scope": "How a pattern's scope is kept in sdm.patterns: scope_json for every pack; scope_columns and scope_label_columns are this pack's own columns there, written as well and read for rows from before scope_json; entity_tag keeps one record's keys apart from another's in combo_key; legacy_entity_markers tell an old row's record kind. scope_label_names: what the screens have called each level's name in a pattern (group, plan...); a pack without them uses the level's key.",
+  "scope_label_names": {
+   "grgr_ck": "group",
+   "cspd_cat": "plan_category",
+   "cspi_id": "plan",
+   "pdpd_id": "product"
+  },
+  "type_filter": "claim_type",
+  "baseline_scope": {
+   "prefix": "GRGR",
+   "label": "group"
+  }
+ },
+ "patterns": {
+  "defined": {
+   "members": [
+    {
+     "key": "grgr_ck",
+     "label": "Group",
+     "kind": "in",
+     "scope": true,
+     "column": "GRGR_CK",
+     "describe": "GRGR_NAME"
+    },
+    {
+     "key": "cspd_cat",
+     "label": "Product category",
+     "kind": "in",
+     "scope": true,
+     "column": "CSPD_CAT",
+     "describe": "CSPD_CAT_DESC"
+    },
+    {
+     "key": "cspi_id",
+     "label": "Plan",
+     "kind": "in",
+     "scope": true,
+     "column": "CSPI_ID",
+     "describe": "PLDS_DESC"
+    },
+    {
+     "key": "pdpd_id",
+     "label": "Product",
+     "kind": "in",
+     "scope": true,
+     "column": "PDPD_ID",
+     "describe": "PDDS_DESC"
+    },
+    {
+     "key": "age",
+     "label": "Age",
+     "kind": "range",
+     "column": "_age",
+     "unit": "years"
+    },
+    {
+     "key": "tenure",
+     "label": "Tenure",
+     "kind": "range",
+     "column": "_tenure",
+     "unit": "months"
+    },
+    {
+     "key": "gender",
+     "label": "Gender",
+     "kind": "in",
+     "column": "MEME_SEX"
+    },
+    {
+     "key": "marital_status",
+     "label": "Marital status",
+     "kind": "in",
+     "column": "MEME_MARITAL_STATUS"
+    },
+    {
+     "key": "relationship",
+     "label": "Relationship",
+     "kind": "in",
+     "column": "MEME_REL"
+    },
+    {
+     "key": "has_pcp",
+     "label": "Has a PCP",
+     "kind": "in",
+     "column": "_has_pcp",
+     "source": "pcp"
+    },
+    {
+     "key": "pcp_specialty",
+     "label": "PCP specialty",
+     "kind": "in",
+     "column": "_pcp_specialty",
+     "source": "pcp"
+    },
+    {
+     "key": "pcp_entity",
+     "label": "PCP type",
+     "kind": "in",
+     "column": "_pcp_entity",
+     "source": "pcp"
+    }
+   ],
+   "claims": [
+    {
+     "key": "grgr_ck",
+     "label": "Group",
+     "kind": "in",
+     "scope": true,
+     "column": "GRGR_CK",
+     "describe": "GRGR_NAME"
+    },
+    {
+     "key": "cspi_id",
+     "label": "Plan",
+     "kind": "in",
+     "scope": true,
+     "column": "CSPI_ID",
+     "describe": "PLDS_DESC"
+    },
+    {
+     "key": "pdpd_id",
+     "label": "Product",
+     "kind": "in",
+     "scope": true,
+     "column": "PDPD_ID"
+    },
+    {
+     "key": "claim_type",
+     "label": "Claim type",
+     "kind": "in",
+     "column": "CLCL_CL_TYPE"
+    },
+    {
+     "key": "claim_status",
+     "label": "Claim status",
+     "kind": "in",
+     "column": "CLCL_CUR_STS"
+    },
+    {
+     "key": "diagnosis",
+     "label": "Diagnosis",
+     "kind": "in",
+     "column": "IDCD_ID_PRIMARY",
+     "describe": "IDCD_DESC_PRIMARY"
+    },
+    {
+     "key": "procedure",
+     "label": "Procedure",
+     "kind": "in",
+     "column": "IPCD_ID",
+     "describe": "IPCD_DESC"
+    },
+    {
+     "key": "network",
+     "label": "In or out of network",
+     "kind": "in",
+     "column": "CLCL_NTWK_IND"
+    },
+    {
+     "key": "network_id",
+     "label": "Network",
+     "kind": "in",
+     "column": "_network_name",
+     "source": "network"
+    },
+    {
+     "key": "network_type",
+     "label": "Network type",
+     "kind": "in",
+     "column": "_network_type",
+     "source": "network"
+    },
+    {
+     "key": "provider",
+     "label": "Provider",
+     "kind": "in",
+     "column": "PRPR_ID"
+    },
+    {
+     "key": "provider_specialty",
+     "label": "Provider specialty",
+     "kind": "in",
+     "column": "PRPR_MCTR_SPEC"
+    },
+    {
+     "key": "provider_entity",
+     "label": "Provider type",
+     "kind": "in",
+     "column": "_provider_entity",
+     "source": "provider"
+    },
+    {
+     "key": "charge",
+     "label": "Charge amount",
+     "kind": "range",
+     "column": "CDML_CHG_AMT",
+     "unit": "dollars"
+    },
+    {
+     "key": "member_age",
+     "label": "Member age",
+     "kind": "range",
+     "column": "CLCL_ME_AGE",
+     "unit": "years"
+    },
+    {
+     "key": "gender",
+     "label": "Gender",
+     "kind": "in",
+     "column": "MEME_SEX"
+    }
+   ]
+  },
+  "discovery_defaults": {
+   "members": [
+    "age",
+    "tenure",
+    "gender",
+    "marital_status"
+   ],
+   "claims": [
+    "member_age",
+    "charge",
+    "gender",
+    "claim_type"
+   ]
+  },
+  "scope_levels": [
+   "grgr_ck",
+   "cspd_cat",
+   "cspi_id",
+   "pdpd_id"
+  ],
+  "scenario_dimensions": {
+   "members": [
+    {
+     "key": "gender",
+     "label": "Gender",
+     "column": "MEME_SEX"
+    },
+    {
+     "key": "marital_status",
+     "label": "Marital status",
+     "column": "MEME_MARITAL_STATUS"
+    },
+    {
+     "key": "relationship",
+     "label": "Relationship",
+     "column": "MEME_REL"
+    },
+    {
+     "key": "plan",
+     "label": "Plan",
+     "column": "CSPI_ID",
+     "describe": "PLDS_DESC"
+    },
+    {
+     "key": "product",
+     "label": "Product",
+     "column": "PDPD_ID",
+     "describe": "PDDS_DESC"
+    },
+    {
+     "key": "age_band",
+     "label": "Age band",
+     "column": "_age",
+     "bands": true
+    }
+   ],
+   "claims": [
+    {
+     "key": "claim_type",
+     "label": "Claim type",
+     "column": "CLCL_CL_TYPE"
+    },
+    {
+     "key": "diagnosis",
+     "label": "Diagnosis",
+     "column": "IDCD_ID_PRIMARY",
+     "describe": "IDCD_DESC_PRIMARY"
+    },
+    {
+     "key": "procedure",
+     "label": "Procedure",
+     "column": "IPCD_ID",
+     "describe": "IPCD_DESC"
+    },
+    {
+     "key": "network",
+     "label": "Network",
+     "column": "CLCL_NTWK_IND"
+    },
+    {
+     "key": "claim_status",
+     "label": "Claim status",
+     "column": "CLCL_CUR_STS"
+    },
+    {
+     "key": "gender",
+     "label": "Gender",
+     "column": "MEME_SEX"
+    },
+    {
+     "key": "specialty",
+     "label": "Provider specialty",
+     "column": "PRPR_MCTR_SPEC"
+    },
+    {
+     "key": "plan",
+     "label": "Plan",
+     "column": "CSPI_ID",
+     "describe": "PLDS_DESC"
+    },
+    {
+     "key": "age_band",
+     "label": "Member age band",
+     "column": "CLCL_ME_AGE",
+     "bands": true
+    }
+   ]
+  },
+  "scenario_split": {
+   "members": [
+    "gender",
+    "age_band"
+   ],
+   "claims": [
+    "diagnosis",
+    "age_band"
+   ]
+  },
+  "amount_bands": [
+   [
+    0,
+    100,
+    "$0-99"
+   ],
+   [
+    100,
+    500,
+    "$100-499"
+   ],
+   [
+    500,
+    1000,
+    "$500-999"
+   ],
+   [
+    1000,
+    5000,
+    "$1,000-4,999"
+   ],
+   [
+    5000,
+    10000,
+    "$5,000-9,999"
+   ],
+   [
+    10000,
+    Infinity,
+    "$10,000+"
+   ]
+  ],
+  "report_fields": {
+   "members": [
+    {
+     "key": "age_band",
+     "label": "Age band",
+     "column": "_age",
+     "bands": "age"
+    },
+    {
+     "key": "gender",
+     "label": "Sex",
+     "column": "MEME_SEX"
+    },
+    {
+     "key": "marital_status",
+     "label": "Marital status",
+     "column": "MEME_MARITAL_STATUS"
+    },
+    {
+     "key": "relationship",
+     "label": "Relationship",
+     "column": "MEME_REL"
+    },
+    {
+     "key": "state",
+     "label": "State",
+     "column": "MEME_STATE"
+    },
+    {
+     "key": "zip",
+     "label": "ZIP",
+     "column": "MEME_ZIP",
+     "describe": "MEME_CITY"
+    },
+    {
+     "key": "group",
+     "label": "Group",
+     "column": "GRGR_ID",
+     "describe": "GRGR_NAME"
+    },
+    {
+     "key": "plan_category",
+     "label": "Product category",
+     "column": "CSPD_CAT",
+     "describe": "CSPD_CAT_DESC"
+    },
+    {
+     "key": "plan",
+     "label": "Plan",
+     "column": "CSPI_ID",
+     "describe": "PLDS_DESC"
+    },
+    {
+     "key": "product",
+     "label": "Product",
+     "column": "PDPD_ID",
+     "describe": "PDDS_DESC"
+    }
+   ],
+   "member_claims": [
+    {
+     "key": "has_claims",
+     "label": "Members with claims",
+     "basis": "members"
+    },
+    {
+     "key": "claim_amount",
+     "label": "Claim amount",
+     "column": "CLCL_TOT_CHG",
+     "bands": "amount",
+     "basis": "claims"
+    },
+    {
+     "key": "claim_type",
+     "label": "Claim type",
+     "column": "CLCL_CL_TYPE",
+     "basis": "claims"
+    },
+    {
+     "key": "diagnosis",
+     "label": "Diagnosis",
+     "column": "IDCD_ID_PRIMARY",
+     "describe": "IDCD_DESC_PRIMARY",
+     "basis": "claims"
+    },
+    {
+     "key": "procedure",
+     "label": "Procedure",
+     "column": "IPCD_ID",
+     "describe": "IPCD_DESC",
+     "basis": "lines"
+    }
+   ],
+   "claims": [
+    {
+     "key": "claim_type",
+     "label": "Claim type",
+     "column": "CLCL_CL_TYPE",
+     "basis": "claims"
+    },
+    {
+     "key": "claim_status",
+     "label": "Claim status",
+     "column": "CLCL_CUR_STS",
+     "basis": "claims"
+    },
+    {
+     "key": "network",
+     "label": "Network (in / out)",
+     "column": "CLCL_NTWK_IND",
+     "basis": "claims"
+    },
+    {
+     "key": "claim_amount",
+     "label": "Claim amount",
+     "column": "CLCL_TOT_CHG",
+     "bands": "amount",
+     "basis": "claims"
+    },
+    {
+     "key": "diagnosis",
+     "label": "Diagnosis",
+     "column": "IDCD_ID_PRIMARY",
+     "describe": "IDCD_DESC_PRIMARY",
+     "basis": "claims"
+    },
+    {
+     "key": "procedure",
+     "label": "Procedure",
+     "column": "IPCD_ID",
+     "describe": "IPCD_DESC",
+     "basis": "lines"
+    },
+    {
+     "key": "place_of_service",
+     "label": "Place of service",
+     "column": "PSCD_ID",
+     "basis": "lines"
+    },
+    {
+     "key": "specialty",
+     "label": "Provider specialty",
+     "column": "PRPR_MCTR_SPEC",
+     "basis": "claims"
+    },
+    {
+     "key": "age_band",
+     "label": "Member age band",
+     "column": "CLCL_ME_AGE",
+     "bands": "age",
+     "basis": "claims"
+    },
+    {
+     "key": "gender",
+     "label": "Sex",
+     "column": "MEME_SEX",
+     "basis": "claims"
+    },
+    {
+     "key": "group",
+     "label": "Group",
+     "column": "GRGR_CK",
+     "describe": "GRGR_NAME",
+     "basis": "claims"
+    },
+    {
+     "key": "plan_category",
+     "label": "Product category",
+     "column": "CSPD_CAT",
+     "basis": "claims"
+    },
+    {
+     "key": "plan",
+     "label": "Plan",
+     "column": "CSPI_ID",
+     "describe": "PLDS_DESC",
+     "basis": "claims"
+    },
+    {
+     "key": "product",
+     "label": "Product",
+     "column": "PDPD_ID",
+     "basis": "claims"
+    }
+   ]
+  },
+  "report_generation": {
+   "members": {
+    "age_band": "Yes, referred into data generation",
+    "gender": "Yes, referred into data generation",
+    "marital_status": "Yes, referred into data generation",
+    "relationship": "Yes, referred into data generation",
+    "state": "Yes, referred into data generation",
+    "zip": "Yes, referred into data generation",
+    "group": "Yes, referred into data generation",
+    "plan_category": "Yes, referred into data generation",
+    "plan": "Yes, referred into data generation",
+    "product": "Yes, referred into data generation",
+    "has_claims": "No, not referred into and not generated",
+    "claim_amount": "No, not referred into and not generated",
+    "claim_type": "No, not referred into and not generated",
+    "diagnosis": "No, not referred into and not generated",
+    "procedure": "No, not referred into and not generated"
+   },
+   "claims": {
+    "claim_type": "Yes, referred into data generation",
+    "claim_status": "Yes, referred into data generation",
+    "network": "Yes, referred into data generation",
+    "claim_amount": "Yes, referred into data generation",
+    "diagnosis": "Yes, referred into data generation",
+    "procedure": "Yes, referred into data generation",
+    "group": "Yes, referred into data generation",
+    "plan_category": "Yes, referred into data generation",
+    "plan": "Yes, referred into data generation",
+    "product": "Yes, referred into data generation",
+    "place_of_service": "No, not referred into and not generated",
+    "specialty": "No, not referred into and not generated",
+    "age_band": "No, not referred into and not generated",
+    "gender": "No, not referred into and not generated"
+   }
+  },
+  "code_names": {
+   "gender": {
+    "F": "Female",
+    "M": "Male",
+    "U": "Unknown"
+   },
+   "marital_status": {
+    "S": "Single",
+    "M": "Married",
+    "D": "Divorced",
+    "W": "Widowed",
+    "U": "Unknown"
+   },
+   "relationship": {
+    "M": "Subscriber",
+    "S": "Spouse",
+    "D": "Dependent",
+    "O": "Other"
+   },
+   "claim_type": {
+    "P": "Professional",
+    "I": "Institutional",
+    "D": "Dental",
+    "M": "Medical",
+    "H": "Hospital"
+   },
+   "network": {
+    "I": "In network",
+    "O": "Out of network"
+   }
+  }
+ },
+ "joined": {
+  "provider_member_columns": [
+   "_pcp_id",
+   "_pcp_specialty",
+   "_pcp_entity",
+   "_has_pcp"
+  ],
+  "provider_claim_columns": [
+   "_provider_entity",
+   "_network_name",
+   "_network_type"
+  ],
+  "provider_entity_words": {
+   "P": "Practitioner",
+   "F": "Facility",
+   "G": "Group",
+   "I": "IPA"
+  }
+ },
+ "loaders": {
+  "_about": "Where each entity's rows are read from in the pattern store, and how (sdg/analyzer/entity_loader.py).",
+  "members": {
+   "table": "member_denorm",
+   "columns": "store.member_columns",
+   "order": [
+    "MEME_CK"
+   ],
+   "latest": {
+    "key": "MEME_CK",
+    "by": "MEME_ORIG_EFF_DT",
+    "then": [
+     "GRGR_CK",
+     "CSPD_CAT",
+     "CSPI_ID",
+     "PDPD_ID"
+    ]
+   },
+   "filters": [
+    {
+     "key": "grgr_ck",
+     "column": "GRGR_CK",
+     "kind": "ids"
+    },
+    {
+     "key": "cspd_cat",
+     "column": "CSPD_CAT",
+     "kind": "values"
+    },
+    {
+     "key": "cspi_id",
+     "column": "CSPI_ID",
+     "kind": "values"
+    },
+    {
+     "key": "pdpd_id",
+     "column": "PDPD_ID",
+     "kind": "values"
+    }
+   ],
+   "family": [
+    "SBSB_CK",
+    "MEME_CK",
+    "MEME_REL"
+   ],
+   "addresses": {
+    "table": "member_address",
+    "key": "MEME_CK",
+    "role": [
+     "ADDR_ROLE",
+     "HOME"
+    ],
+    "columns": {
+     "SBAD_ZIP": "MEME_ZIP",
+     "SBAD_CITY": "MEME_CITY",
+     "SBAD_STATE": "MEME_STATE"
+    },
+    "zip": "MEME_ZIP"
+   },
+   "derive": [
+    {
+     "column": "_age",
+     "op": "elapsed",
+     "from": "MEME_BIRTH_DT",
+     "unit": "years"
+    },
+    {
+     "column": "_tenure",
+     "op": "elapsed",
+     "from": "MEME_ORIG_EFF_DT",
+     "unit": "months"
+    }
+   ],
+   "joined": "members",
+   "labels": [
+    "MEME_CK",
+    "GRGR_CK",
+    "CSPD_CAT",
+    "CSPI_ID",
+    "PDPD_ID"
+   ],
+   "strip": [],
+   "empty": "No members match the applied filters: {filters}",
+   "overview": [
+    [
+     "n_members",
+     "MEME_CK"
+    ],
+    [
+     "n_groups",
+     "GRGR_CK"
+    ],
+    [
+     "n_plan_categories",
+     "CSPD_CAT"
+    ],
+    [
+     "n_plans",
+     "CSPI_ID"
+    ],
+    [
+     "n_products",
+     "PDPD_ID"
+    ]
+   ],
+   "sizes": {
+    "levels": [
+     [
+      "GRGR_CK",
+      "GRGR_NAME"
+     ],
+     [
+      "GRGR_CK",
+      "GRGR_NAME",
+      "CSPD_CAT",
+      "CSPD_CAT_DESC"
+     ],
+     [
+      "GRGR_CK",
+      "GRGR_NAME",
+      "CSPD_CAT",
+      "CSPD_CAT_DESC",
+      "CSPI_ID"
+     ]
+    ],
+    "count": "n_members",
+    "trim": false
+   },
+   "scope": [
+    {
+     "level": "groups",
+     "key": "GRGR_CK",
+     "label": "GRGR_NAME",
+     "trim": [],
+     "takes": [],
+     "order": "GRGR_NAME"
+    },
+    {
+     "level": "plan-categories",
+     "key": "CSPD_CAT",
+     "label": "CSPD_CAT_DESC",
+     "trim": [
+      "CSPD_CAT",
+      "CSPD_CAT_DESC"
+     ],
+     "takes": [
+      "grgr_ck"
+     ],
+     "order": "CSPD_CAT_DESC"
+    },
+    {
+     "level": "plans",
+     "key": "CSPI_ID",
+     "label": "PLDS_DESC",
+     "trim": [
+      "CSPI_ID",
+      "PLDS_DESC"
+     ],
+     "takes": [
+      "grgr_ck",
+      "cspd_cat"
+     ],
+     "order": "PLDS_DESC"
+    },
+    {
+     "level": "products",
+     "key": "PDPD_ID",
+     "label": "PDDS_DESC",
+     "trim": [
+      "PDPD_ID",
+      "PDDS_DESC"
+     ],
+     "takes": [
+      "grgr_ck",
+      "cspd_cat",
+      "cspi_id"
+     ],
+     "order": "PDDS_DESC"
+    }
+   ],
+   "counts": {
+    "records": "n_members"
+   },
+   "funnel": [
+    "group",
+    "cat",
+    "plan",
+    "product"
+   ]
+  },
+  "claims": {
+   "table": "claims_denorm",
+   "columns": "store.claim_columns",
+   "order": [
+    "CLCL_ID",
+    "CDML_SEQ_NO"
+   ],
+   "filters": [
+    {
+     "key": "grgr_ck",
+     "column": "GRGR_CK",
+     "kind": "ids"
+    },
+    {
+     "key": "cspi_id",
+     "column": "CSPI_ID",
+     "kind": "values",
+     "skip_blank": true
+    },
+    {
+     "key": "pdpd_id",
+     "column": "PDPD_ID",
+     "kind": "values",
+     "skip_blank": true
+    },
+    {
+     "key": "claim_type",
+     "column": "CLCL_CL_TYPE",
+     "kind": "values",
+     "skip_blank": true
+    },
+    {
+     "key": "gender",
+     "column": "MEME_SEX",
+     "kind": "values",
+     "skip_blank": true
+    },
+    {
+     "key": "age_min",
+     "column": "CLCL_ME_AGE",
+     "kind": "at_least"
+    },
+    {
+     "key": "age_max",
+     "column": "CLCL_ME_AGE",
+     "kind": "at_most"
+    },
+    {
+     "key": "diagnosis",
+     "column": "IDCD_ID_PRIMARY",
+     "kind": "values"
+    },
+    {
+     "key": "procedure",
+     "column": "IPCD_ID",
+     "kind": "values"
+    }
+   ],
+   "joined": "claims",
+   "strip": [
+    "CSPI_ID",
+    "PDPD_ID",
+    "CLCL_CL_TYPE",
+    "CLCL_NTWK_IND",
+    "CLCL_CUR_STS",
+    "GRGR_NAME",
+    "PLDS_DESC",
+    "IDCD_ID_PRIMARY",
+    "IPCD_ID",
+    "PRPR_MCTR_SPEC",
+    "MEME_SEX",
+    "PSCD_ID"
+   ],
+   "empty": "No claims match filters: {filters}",
+   "overview": [
+    [
+     "n_claim_lines",
+     "*"
+    ],
+    [
+     "n_claims",
+     "CLCL_ID"
+    ],
+    [
+     "n_members",
+     "MEME_CK"
+    ],
+    [
+     "n_groups",
+     "GRGR_CK"
+    ],
+    [
+     "n_plans",
+     "CSPI_ID"
+    ],
+    [
+     "n_products",
+     "PDPD_ID"
+    ],
+    [
+     "n_diagnoses",
+     "IDCD_ID_PRIMARY"
+    ],
+    [
+     "n_procedures",
+     "IPCD_ID"
+    ]
+   ],
+   "highlights": [
+    {
+     "key": "diagnoses",
+     "label": "Most common diagnoses",
+     "code": "IDCD_ID_PRIMARY",
+     "description": "IDCD_DESC_PRIMARY"
+    },
+    {
+     "key": "procedures",
+     "label": "Most common procedures",
+     "code": "IPCD_ID",
+     "description": "IPCD_DESC"
+    }
+   ],
+   "sizes": {
+    "levels": [
+     [
+      "GRGR_CK",
+      "GRGR_NAME"
+     ],
+     [
+      "GRGR_CK",
+      "GRGR_NAME",
+      "CSPI_ID",
+      "PLDS_DESC"
+     ],
+     [
+      "GRGR_CK",
+      "GRGR_NAME",
+      "CSPI_ID",
+      "PLDS_DESC",
+      "PDPD_ID"
+     ]
+    ],
+    "count": "n_claims",
+    "trim": true
+   },
+   "scope": [
+    {
+     "level": "groups",
+     "key": "GRGR_CK",
+     "label": "GRGR_NAME",
+     "trim": [
+      "GRGR_NAME"
+     ],
+     "takes": [],
+     "order": "GRGR_NAME"
+    },
+    {
+     "level": "plans",
+     "key": "CSPI_ID",
+     "label": "PLDS_DESC",
+     "trim": [
+      "CSPI_ID",
+      "PLDS_DESC"
+     ],
+     "takes": [
+      "grgr_ck"
+     ],
+     "order": "PLDS_DESC"
+    },
+    {
+     "level": "products",
+     "key": "PDPD_ID",
+     "trim": [
+      "PDPD_ID"
+     ],
+     "takes": [
+      "grgr_ck",
+      "cspi_id"
+     ],
+     "order": "PDPD_ID"
+    },
+    {
+     "level": "types",
+     "key": "CLCL_CL_TYPE",
+     "trim": [
+      "CLCL_CL_TYPE"
+     ],
+     "takes": [
+      "grgr_ck",
+      "cspi_id",
+      "pdpd_id"
+     ],
+     "order": "CLCL_CL_TYPE",
+     "named": {
+      "as": "Claim_Type",
+      "_about": "The 837 transaction types a claim carries, then the lines of business some sources label instead.",
+      "names": {
+       "P": "Professional",
+       "I": "Institutional",
+       "D": "Dental",
+       "M": "Medical",
+       "H": "Hospital"
+      }
+     }
+    }
+   ],
+   "counts": {
+    "records": "n_claims",
+    "lines": "n_claim_lines"
+   },
+   "answers": [
+    "n_claim_lines",
+    "n_claims",
+    "n_members",
+    "n_diagnoses",
+    "n_procedures"
+   ]
+  }
+ },
+ "child_analysis": {
+  "_about": "How the child records' analysis reads its rows (claims_service, claims_data_loader): the record and primary keys, the type each pattern is split by, the histograms drawn, and the profile kept of each pattern, label by label, in the order shown.",
+  "record_key": "CLCL_ID",
+  "primary_key": "MEME_CK",
+  "type_column": "CLCL_CL_TYPE",
+  "histograms": {
+   "member_age": "CLCL_ME_AGE",
+   "charge_amount": "CDML_CHG_AMT"
+  },
+  "continuous": [
+   [
+    "CDML_CHG_AMT",
+    "charge_amount"
+   ],
+   [
+    "CDML_ALLOW",
+    "allowed_amount"
+   ],
+   [
+    "CDML_PAID_AMT",
+    "paid_amount"
+   ],
+   [
+    "CDML_DED_AMT",
+    "deductible"
+   ],
+   [
+    "CDML_COPAY_AMT",
+    "copay"
+   ],
+   [
+    "CDML_COINS_AMT",
+    "coinsurance"
+   ],
+   [
+    "CLCL_ME_AGE",
+    "member_age"
+   ]
+  ],
+  "categorical": [
+   [
+    "CLCL_CUR_STS",
+    "claim_status"
+   ],
+   [
+    "CLCL_CL_TYPE",
+    "claim_type"
+   ],
+   [
+    "CLCL_NTWK_IND",
+    "network"
+   ],
+   [
+    "MEME_SEX",
+    "gender"
+   ],
+   [
+    "PSCD_ID",
+    "place_of_service"
+   ],
+   [
+    "PRPR_MCTR_SPEC",
+    "provider_specialty"
+   ],
+   [
+    "_network_name",
+    "network_name"
+   ],
+   [
+    "_network_type",
+    "network_type"
+   ],
+   [
+    "_provider_entity",
+    "provider_type"
+   ]
+  ],
+  "top": [
+   {
+    "code": "IPCD_ID",
+    "as": "top_procedures",
+    "description": "IPCD_DESC",
+    "descriptions": "procedure_descriptions"
+   },
+   {
+    "code": "IDCD_ID_PRIMARY",
+    "as": "top_diagnoses",
+    "description": "IDCD_DESC_PRIMARY",
+    "descriptions": "diagnosis_descriptions"
+   }
+  ],
+  "rates": [
+   {
+    "column": "CLCL_CUR_STS",
+    "in": [
+     "01",
+     "AP"
+    ],
+    "as": "approval_rate"
+   },
+   {
+    "column": "CLCL_NTWK_IND",
+    "in": [
+     "I"
+    ],
+    "as": "in_network_rate"
+   }
+  ],
+  "shown_continuous": [
+   "member_age",
+   "charge_amount",
+   "allowed_amount",
+   "paid_amount",
+   "deductible",
+   "copay",
+   "coinsurance"
+  ],
+  "shown_categorical": [
+   "gender",
+   "claim_status",
+   "claim_type",
+   "network",
+   "network_name",
+   "network_type",
+   "place_of_service",
+   "provider_specialty",
+   "provider_type"
+  ],
+  "name": {
+   "type": "claim_type",
+   "age": "member_age",
+   "sex": "gender",
+   "top": "top_diagnoses",
+   "top_descriptions": "diagnosis_descriptions",
+   "top_prefix": "dx",
+   "ages": [
+    [
+     18,
+     "Pediatric"
+    ],
+    [
+     30,
+     "Young adult"
+    ],
+    [
+     50,
+     "Adult"
+    ],
+    [
+     65,
+     "Middle-aged"
+    ],
+    [
+     null,
+     "Senior"
+    ]
+   ],
+   "amount": "charge_amount",
+   "amount_words": "avg charge",
+   "fallback": "Claim pattern"
+  },
+  "marks": {
+   "name_prefix": "[Claims] ",
+   "labels": {
+    "cspd_cat": "Claims"
+   }
+  },
+  "line_column_prefixes": [
+   "CDML_"
+  ],
+  "shown_top": [
+   "top_diagnoses",
+   "top_procedures",
+   "diagnosis_descriptions",
+   "procedure_descriptions"
+  ]
+ },
+ "primary_analysis": {
+  "_about": "How the primary records' profiler reads its rows (service.py, profiler.py, naming.py): the histograms drawn, the household its family statistics count by, and how a pattern is named -- each scope level's name shortened by its words (the first one found in it, in order), and the age band of its records.",
+  "histograms": {
+   "_age": "_age",
+   "_tenure": "_tenure"
+  },
+  "family": {
+   "household": "SBSB_CK",
+   "member": "MEME_CK",
+   "relation": "MEME_REL",
+   "dependent": "D",
+   "spouse": "S"
+  },
+  "naming": {
+   "levels": {
+    "grgr_ck": {
+     "words_from": "story:naming_states",
+     "drop": [],
+     "fallback": "first_word",
+     "length": 10,
+     "empty_length": 8
+    },
+    "cspd_cat": {
+     "words": {
+      "dental": "Dental",
+      "medical": "Medical",
+      "vision": "Vision",
+      "behavioral": "BH",
+      "pharmacy": "Rx"
+     },
+     "fallback": "prefix",
+     "length": 10
+    },
+    "cspi_id": {
+     "words": {
+      "medicare advantage": "MA",
+      "medicare": "Medicare",
+      "medicaid": "Medicaid",
+      "exchange": "Exchange",
+      "marketplace": "Exchange",
+      "tricare": "Tricare"
+     },
+     "fallback": "prefix",
+     "length": 12
+    },
+    "pdpd_id": {
+     "fallback": "stripped",
+     "length": 12,
+     "unique": true
+    }
+   },
+   "age_feature": "_age",
+   "ages": [
+    [
+     18,
+     "Pediatric"
+    ],
+    [
+     30,
+     "YoungAdult"
+    ],
+    [
+     50,
+     "Adult"
+    ],
+    [
+     65,
+     "MidLife"
+    ],
+    [
+     null,
+     "Senior"
+    ]
+   ]
+  }
+ },
+ "screen_facts": {
+  "_about": "Which of a pattern's measures its card states: an age (the first found), a tenure in months, an amount with its label; the child records' type, and their most frequent codes [counts, descriptions, caption].",
+  "age": [
+   "_age",
+   "member_age"
+  ],
+  "tenure": "_tenure",
+  "amount": [
+   "charge_amount",
+   "Charge"
+  ],
+  "type": "claim_type",
+  "top": [
+   "top_diagnoses",
+   "diagnosis_descriptions",
+   "Top diagnoses"
+  ]
+ },
+ "bridge": {
+  "_about": "The element each of a pattern's features is about (so a combination already drawing it is not drawn twice), and its ranked code lists with the label the resolver matches them by.",
+  "feature_elements": {
+   "top_diagnoses": "DIAGNOSIS_CODE",
+   "top_procedures": "PROCEDURE_CODE",
+   "gender": "SEX",
+   "MEME_SEX": "SEX",
+   "claim_type": "CLAIM_TYPE",
+   "claim_status": "CLAIM_STATUS",
+   "network": "NETWORK_INDICATOR",
+   "MEME_MARITAL_STATUS": "MARITAL_STATUS",
+   "MEME_REL": "RELATIONSHIP_CODE"
+  },
+  "ranked": {
+   "top_diagnoses": "Diagnosis Code",
+   "top_procedures": "Procedure Code"
+  }
+ }
+}

@@ -1,0 +1,1584 @@
+{
+  "created": "2026-11-05T03:37:13+00:00",
+  "catalog_version": "0.1.0",
+  "mappings": [
+    {
+      "table": "dbo.CMC_CSPD_CAT_DESC",
+      "column": "CSPD_CAT",
+      "bucket": "business_key",
+      "element": null,
+      "confidence": null,
+      "accepted": false,
+      "reason": "no element matched",
+      "evidence": [],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_CSPD_CAT_DESC",
+      "column": "CSPD_CAT_DESC",
+      "bucket": "free",
+      "element": "PLAN_CATEGORY_DESC",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias CSPD_CAT_DESC, exactly",
+          "score": 1.0
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_GRGR_GROUP",
+      "column": "GRGR_CK",
+      "bucket": "business_key",
+      "element": "GROUP_KEY",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias GRGR_CK, exactly",
+          "score": 1.0
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_GRGR_GROUP",
+      "column": "GRGR_ID",
+      "bucket": "business_key",
+      "element": "GROUP_ID",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias GRGR_ID, exactly",
+          "score": 1.0
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_GRGR_GROUP",
+      "column": "GRGR_NAME",
+      "bucket": "free",
+      "element": "GROUP_NAME",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias GRGR_NAME, exactly",
+          "score": 1.0
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_GRGR_GROUP",
+      "column": "GRGR_STATE",
+      "bucket": "free",
+      "element": "ADDRESS_STATE",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias STATE",
+          "score": 0.88
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares STATE with ADDRESS_STATE",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_GRGR_GROUP",
+      "column": "GRGR_MCTR_TYPE",
+      "bucket": "free",
+      "element": "GROUP_TYPE",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias GRGR_MCTR_TYPE, exactly",
+          "score": 1.0
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares MCTR with GROUP_TYPE",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_GRGR_GROUP",
+      "column": "GRGR_STS",
+      "bucket": "free",
+      "element": null,
+      "confidence": null,
+      "accepted": false,
+      "reason": "no element matched",
+      "evidence": [],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_GRGR_GROUP",
+      "column": "GRGR_ORIG_EFF_DT",
+      "bucket": "free",
+      "element": "ORIGINAL_EFFECTIVE_DATE",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias ORIG_EFF_DT",
+          "score": 0.91
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares EFF, ORIG with ORIGINAL_EFFECTIVE_DATE",
+          "score": 0.4
+        }
+      ],
+      "alternatives": [
+        {
+          "element": "EFFECTIVE_DATE",
+          "score": 1.08,
+          "evidence": [
+            {
+              "kind": "alias",
+              "detail": "column name contains the alias EFF_DT",
+              "score": 0.88
+            },
+            {
+              "kind": "name_token",
+              "detail": "name shares EFF with EFFECTIVE_DATE",
+              "score": 0.2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "table": "dbo.CMC_GRGR_GROUP",
+      "column": "GRGR_TERM_DT",
+      "bucket": "free",
+      "element": "TERMINATION_DATE",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias TERM_DT",
+          "score": 0.88
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares TERM with TERMINATION_DATE",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_LOBD_LINE_BUS",
+      "column": "LOBD_ID",
+      "bucket": "business_key",
+      "element": null,
+      "confidence": null,
+      "accepted": false,
+      "reason": "no element matched",
+      "evidence": [],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_LOBD_LINE_BUS",
+      "column": "LOBD_DESC",
+      "bucket": "free",
+      "element": null,
+      "confidence": null,
+      "accepted": false,
+      "reason": "no element matched",
+      "evidence": [],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_PDDS_PROD_DESC",
+      "column": "PDPD_ID",
+      "bucket": "business_key",
+      "element": "PRODUCT_CODE",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias PDPD_ID, exactly",
+          "score": 1.0
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares PDPD with PRODUCT_CODE",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_PDDS_PROD_DESC",
+      "column": "PDDS_DESC",
+      "bucket": "free",
+      "element": "PRODUCT_DESCRIPTION",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias PDDS_DESC, exactly",
+          "score": 1.0
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_PRPR_PROV",
+      "column": "PRPR_ID",
+      "bucket": "business_key",
+      "element": "PROVIDER_ID",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias PRPR_ID, exactly",
+          "score": 1.0
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_PRPR_PROV",
+      "column": "PRPR_NPI",
+      "bucket": "free",
+      "element": "NPI",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias NPI",
+          "score": 0.88
+        },
+        {
+          "kind": "format",
+          "detail": "fitted format \\d{10} equals the element's",
+          "score": 0.6
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares NPI with NPI",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_PRPR_PROV",
+      "column": "PRPR_ENTITY",
+      "bucket": "free",
+      "element": null,
+      "confidence": null,
+      "accepted": false,
+      "reason": "no element matched",
+      "evidence": [],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_PRPR_PROV",
+      "column": "PRPR_STATE",
+      "bucket": "free",
+      "element": "ADDRESS_STATE",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias STATE",
+          "score": 0.88
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares STATE with ADDRESS_STATE",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_PRPR_PROV",
+      "column": "PRPR_MCTR_SPEC",
+      "bucket": "free",
+      "element": "PROVIDER_SPECIALTY",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias MCTR_SPEC",
+          "score": 0.91
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares MCTR, SPEC with PROVIDER_SPECIALTY",
+          "score": 0.4
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_PDPD_PRODUCT",
+      "column": "PDPD_ID",
+      "bucket": "code",
+      "element": "PRODUCT_CODE",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias, fk_propagation evidence",
+      "evidence": [
+        {
+          "kind": "fk_propagation",
+          "detail": "inferred foreign key to dbo.CMC_PDDS_PROD_DESC.PDPD_ID, which maps to PRODUCT_CODE",
+          "score": 0.95
+        },
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias PDPD_ID, exactly",
+          "score": 1.0
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_PDPD_PRODUCT",
+      "column": "LOBD_ID",
+      "bucket": "code",
+      "element": null,
+      "confidence": null,
+      "accepted": false,
+      "reason": "no element matched",
+      "evidence": [],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_PDPD_PRODUCT",
+      "column": "CSPD_CAT",
+      "bucket": "code",
+      "element": null,
+      "confidence": null,
+      "accepted": false,
+      "reason": "no element matched",
+      "evidence": [],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_PDPD_PRODUCT",
+      "column": "PDPD_EFF_DT",
+      "bucket": "free",
+      "element": "EFFECTIVE_DATE",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias EFF_DT",
+          "score": 0.88
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares EFF with EFFECTIVE_DATE",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_PDPD_PRODUCT",
+      "column": "PDPD_TERM_DT",
+      "bucket": "free",
+      "element": "TERMINATION_DATE",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias TERM_DT",
+          "score": 0.88
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares TERM with TERMINATION_DATE",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_SBSB_SUBSC",
+      "column": "SBSB_CK",
+      "bucket": "business_key",
+      "element": "SUBSCRIBER_KEY",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias SBSB_CK, exactly",
+          "score": 1.0
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_SBSB_SUBSC",
+      "column": "GRGR_CK",
+      "bucket": "code",
+      "element": "GROUP_KEY",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias, fk_propagation evidence",
+      "evidence": [
+        {
+          "kind": "fk_propagation",
+          "detail": "inferred foreign key to dbo.CMC_GRGR_GROUP.GRGR_CK, which maps to GROUP_KEY",
+          "score": 0.95
+        },
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias GRGR_CK, exactly",
+          "score": 1.0
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares GRGR with GROUP_KEY",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_SBSB_SUBSC",
+      "column": "SBSB_ID",
+      "bucket": "business_key",
+      "element": "SUBSCRIBER_ID",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias SBSB_ID, exactly",
+          "score": 1.0
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_SBSB_SUBSC",
+      "column": "SBSB_LAST_NAME",
+      "bucket": "free",
+      "element": "LAST_NAME",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias LAST_NAME",
+          "score": 0.88
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares LAST with LAST_NAME",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_SBSB_SUBSC",
+      "column": "SBSB_FIRST_NAME",
+      "bucket": "free",
+      "element": "FIRST_NAME",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias FIRST_NAME",
+          "score": 0.88
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares FIRST with FIRST_NAME",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_SBSB_SUBSC",
+      "column": "SBSB_EFF_DT",
+      "bucket": "free",
+      "element": "EFFECTIVE_DATE",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias EFF_DT",
+          "score": 0.88
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares EFF with EFFECTIVE_DATE",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_SBSB_SUBSC",
+      "column": "SBSB_MCTR_STS",
+      "bucket": "free",
+      "element": "MEMBER_STATUS",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias SBSB_MCTR_STS, exactly",
+          "score": 1.0
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares MCTR, STS with MEMBER_STATUS",
+          "score": 0.4
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_SGSG_SUBGROUP",
+      "column": "SGSG_CK",
+      "bucket": "business_key",
+      "element": "SUBGROUP_KEY",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias SGSG_CK, exactly",
+          "score": 1.0
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_SGSG_SUBGROUP",
+      "column": "GRGR_CK",
+      "bucket": "code",
+      "element": "GROUP_KEY",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias, fk_propagation evidence",
+      "evidence": [
+        {
+          "kind": "fk_propagation",
+          "detail": "inferred foreign key to dbo.CMC_GRGR_GROUP.GRGR_CK, which maps to GROUP_KEY",
+          "score": 0.95
+        },
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias GRGR_CK, exactly",
+          "score": 1.0
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares GRGR with GROUP_KEY",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_SGSG_SUBGROUP",
+      "column": "SGSG_ID",
+      "bucket": "business_key",
+      "element": null,
+      "confidence": null,
+      "accepted": false,
+      "reason": "no element matched",
+      "evidence": [],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_SGSG_SUBGROUP",
+      "column": "SGSG_NAME",
+      "bucket": "free",
+      "element": "SUBGROUP_NAME",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias SGSG_NAME, exactly",
+          "score": 1.0
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_SGSG_SUBGROUP",
+      "column": "SGSG_STATE",
+      "bucket": "free",
+      "element": "ADDRESS_STATE",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias STATE",
+          "score": 0.88
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares STATE with ADDRESS_STATE",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_SGSG_SUBGROUP",
+      "column": "SGSG_STS",
+      "bucket": "free",
+      "element": null,
+      "confidence": null,
+      "accepted": false,
+      "reason": "no element matched",
+      "evidence": [],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_SGSG_SUBGROUP",
+      "column": "SGSG_ORIG_EFF_DT",
+      "bucket": "free",
+      "element": "ORIGINAL_EFFECTIVE_DATE",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias ORIG_EFF_DT",
+          "score": 0.91
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares EFF, ORIG with ORIGINAL_EFFECTIVE_DATE",
+          "score": 0.4
+        }
+      ],
+      "alternatives": [
+        {
+          "element": "EFFECTIVE_DATE",
+          "score": 1.08,
+          "evidence": [
+            {
+              "kind": "alias",
+              "detail": "column name contains the alias EFF_DT",
+              "score": 0.88
+            },
+            {
+              "kind": "name_token",
+              "detail": "name shares EFF with EFFECTIVE_DATE",
+              "score": 0.2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "table": "dbo.CMC_CSPI_CS_PLAN",
+      "column": "CSPI_ID",
+      "bucket": "business_key",
+      "element": "COVERAGE_PLAN_ID",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias CSPI_ID, exactly",
+          "score": 1.0
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_CSPI_CS_PLAN",
+      "column": "GRGR_CK",
+      "bucket": "code",
+      "element": "GROUP_KEY",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias, fk_propagation evidence",
+      "evidence": [
+        {
+          "kind": "fk_propagation",
+          "detail": "inferred foreign key to dbo.CMC_GRGR_GROUP.GRGR_CK, which maps to GROUP_KEY",
+          "score": 0.95
+        },
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias GRGR_CK, exactly",
+          "score": 1.0
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares GRGR with GROUP_KEY",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_CSPI_CS_PLAN",
+      "column": "CSPD_CAT",
+      "bucket": "code",
+      "element": null,
+      "confidence": null,
+      "accepted": false,
+      "reason": "no element matched",
+      "evidence": [],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_CSPI_CS_PLAN",
+      "column": "PDPD_ID",
+      "bucket": "code",
+      "element": "PRODUCT_CODE",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias, fk_propagation evidence",
+      "evidence": [
+        {
+          "kind": "fk_propagation",
+          "detail": "inferred foreign key to dbo.CMC_PDDS_PROD_DESC.PDPD_ID, which maps to PRODUCT_CODE",
+          "score": 0.95
+        },
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias PDPD_ID, exactly",
+          "score": 1.0
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares PDPD with PRODUCT_CODE",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_CSPI_CS_PLAN",
+      "column": "CSPI_EFF_DT",
+      "bucket": "free",
+      "element": "EFFECTIVE_DATE",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias EFF_DT",
+          "score": 0.88
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares EFF with EFFECTIVE_DATE",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_CSPI_CS_PLAN",
+      "column": "CSPI_TERM_DT",
+      "bucket": "free",
+      "element": "TERMINATION_DATE",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias TERM_DT",
+          "score": 0.88
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares TERM with TERMINATION_DATE",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_CK",
+      "bucket": "business_key",
+      "element": "MEMBER_KEY",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias MEME_CK, exactly",
+          "score": 1.0
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "SBSB_CK",
+      "bucket": "reference",
+      "element": "SUBSCRIBER_KEY",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias, fk_propagation evidence",
+      "evidence": [
+        {
+          "kind": "fk_propagation",
+          "detail": "inferred foreign key to dbo.CMC_SBSB_SUBSC.SBSB_CK, which maps to SUBSCRIBER_KEY",
+          "score": 0.95
+        },
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias SBSB_CK, exactly",
+          "score": 1.0
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares SBSB with SUBSCRIBER_KEY",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "GRGR_CK",
+      "bucket": "code",
+      "element": "GROUP_KEY",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias, fk_propagation evidence",
+      "evidence": [
+        {
+          "kind": "fk_propagation",
+          "detail": "inferred foreign key to dbo.CMC_GRGR_GROUP.GRGR_CK, which maps to GROUP_KEY",
+          "score": 0.95
+        },
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias GRGR_CK, exactly",
+          "score": 1.0
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares GRGR with GROUP_KEY",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_SFX",
+      "bucket": "free",
+      "element": null,
+      "confidence": null,
+      "accepted": false,
+      "reason": "no element matched",
+      "evidence": [],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_FIRST_NAME",
+      "bucket": "free",
+      "element": "FIRST_NAME",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias FIRST_NAME",
+          "score": 0.88
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares FIRST with FIRST_NAME",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_LAST_NAME",
+      "bucket": "free",
+      "element": "LAST_NAME",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias LAST_NAME",
+          "score": 0.88
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares LAST with LAST_NAME",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_BIRTH_DT",
+      "bucket": "free",
+      "element": "DOB",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias BIRTH_DT",
+          "score": 0.88
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares BIRTH with DOB",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_SEX",
+      "bucket": "free",
+      "element": "SEX",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias MEME_SEX, exactly",
+          "score": 1.0
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares SEX with SEX",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_REL",
+      "bucket": "free",
+      "element": "RELATIONSHIP_CODE",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias REL",
+          "score": 0.88
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares REL with RELATIONSHIP_CODE",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_SSN",
+      "bucket": "free",
+      "element": "SSN",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias SSN",
+          "score": 0.88
+        },
+        {
+          "kind": "format",
+          "detail": "fitted format \\d{9} equals the element's",
+          "score": 0.6
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares SSN with SSN",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_MEDCD_NO",
+      "bucket": "free",
+      "element": null,
+      "confidence": null,
+      "accepted": false,
+      "reason": "no element matched",
+      "evidence": [],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_HICN_MBI",
+      "bucket": "free",
+      "element": "MEDICARE_ID",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias MEME_HICN",
+          "score": 0.91
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares HICN with MEDICARE_ID",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_STATE",
+      "bucket": "free",
+      "element": "ADDRESS_STATE",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias STATE",
+          "score": 0.88
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares STATE with ADDRESS_STATE",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_COUNTY",
+      "bucket": "free",
+      "element": "ADDRESS_COUNTY",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias COUNTY",
+          "score": 0.88
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares COUNTY with ADDRESS_COUNTY",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_ZIP",
+      "bucket": "free",
+      "element": "ADDRESS_ZIP",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias ZIP",
+          "score": 0.88
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares ZIP with ADDRESS_ZIP",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_EFF_DT",
+      "bucket": "free",
+      "element": "EFFECTIVE_DATE",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias EFF_DT",
+          "score": 0.88
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares EFF with EFFECTIVE_DATE",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_TERM_DT",
+      "bucket": "free",
+      "element": "TERMINATION_DATE",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias TERM_DT",
+          "score": 0.88
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares TERM with TERMINATION_DATE",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEPR_PRIM_PROV",
+      "column": "MEME_CK",
+      "bucket": "reference",
+      "element": "MEMBER_KEY",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias, fk_propagation evidence",
+      "evidence": [
+        {
+          "kind": "fk_propagation",
+          "detail": "inferred foreign key to dbo.CMC_MEME_MEMBER.MEME_CK, which maps to MEMBER_KEY",
+          "score": 0.95
+        },
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias MEME_CK, exactly",
+          "score": 1.0
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares MEME with MEMBER_KEY",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEPR_PRIM_PROV",
+      "column": "MEPR_PCP_TYPE",
+      "bucket": "business_key",
+      "element": null,
+      "confidence": null,
+      "accepted": false,
+      "reason": "no element matched",
+      "evidence": [],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEPR_PRIM_PROV",
+      "column": "MEPR_EFF_DT",
+      "bucket": "business_key",
+      "element": "EFFECTIVE_DATE",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias EFF_DT",
+          "score": 0.88
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares EFF with EFFECTIVE_DATE",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEPR_PRIM_PROV",
+      "column": "MEPR_TERM_DT",
+      "bucket": "free",
+      "element": "TERMINATION_DATE",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias TERM_DT",
+          "score": 0.88
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares TERM with TERMINATION_DATE",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEPR_PRIM_PROV",
+      "column": "PRPR_ID",
+      "bucket": "reference",
+      "element": "PROVIDER_ID",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias, fk_propagation evidence",
+      "evidence": [
+        {
+          "kind": "fk_propagation",
+          "detail": "inferred foreign key to dbo.CMC_PRPR_PROV.PRPR_ID, which maps to PROVIDER_ID",
+          "score": 0.95
+        },
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias PRPR_ID, exactly",
+          "score": 1.0
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares PRPR with PROVIDER_ID",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_PLDS_PLAN_DESC",
+      "column": "CSPI_ID",
+      "bucket": "code",
+      "element": "COVERAGE_PLAN_ID",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias, fk_propagation evidence",
+      "evidence": [
+        {
+          "kind": "fk_propagation",
+          "detail": "inferred foreign key to dbo.CMC_CSPI_CS_PLAN.CSPI_ID, which maps to COVERAGE_PLAN_ID",
+          "score": 0.95
+        },
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias CSPI_ID, exactly",
+          "score": 1.0
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares CSPI with COVERAGE_PLAN_ID",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_PLDS_PLAN_DESC",
+      "column": "PLDS_DESC",
+      "bucket": "free",
+      "element": "PLAN_DESCRIPTION",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias PLDS_DESC, exactly",
+          "score": 1.0
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEPE_PRCS_ELIG",
+      "column": "MEME_CK",
+      "bucket": "reference",
+      "element": "MEMBER_KEY",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias, fk_propagation evidence",
+      "evidence": [
+        {
+          "kind": "fk_propagation",
+          "detail": "inferred foreign key to dbo.CMC_MEME_MEMBER.MEME_CK, which maps to MEMBER_KEY",
+          "score": 0.95
+        },
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias MEME_CK, exactly",
+          "score": 1.0
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares MEME with MEMBER_KEY",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEPE_PRCS_ELIG",
+      "column": "CSPD_CAT",
+      "bucket": "code",
+      "element": null,
+      "confidence": null,
+      "accepted": false,
+      "reason": "no element matched",
+      "evidence": [],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEPE_PRCS_ELIG",
+      "column": "MEPE_EFF_DT",
+      "bucket": "business_key",
+      "element": "EFFECTIVE_DATE",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias EFF_DT",
+          "score": 0.88
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares EFF with EFFECTIVE_DATE",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEPE_PRCS_ELIG",
+      "column": "MEPE_TERM_DT",
+      "bucket": "free",
+      "element": "TERMINATION_DATE",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias evidence",
+      "evidence": [
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias TERM_DT",
+          "score": 0.88
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares TERM with TERMINATION_DATE",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEPE_PRCS_ELIG",
+      "column": "GRGR_CK",
+      "bucket": "code",
+      "element": "GROUP_KEY",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias, fk_propagation evidence",
+      "evidence": [
+        {
+          "kind": "fk_propagation",
+          "detail": "inferred foreign key to dbo.CMC_GRGR_GROUP.GRGR_CK, which maps to GROUP_KEY",
+          "score": 0.95
+        },
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias GRGR_CK, exactly",
+          "score": 1.0
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares GRGR with GROUP_KEY",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEPE_PRCS_ELIG",
+      "column": "SGSG_CK",
+      "bucket": "code",
+      "element": "SUBGROUP_KEY",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias, fk_propagation evidence",
+      "evidence": [
+        {
+          "kind": "fk_propagation",
+          "detail": "inferred foreign key to dbo.CMC_SGSG_SUBGROUP.SGSG_CK, which maps to SUBGROUP_KEY",
+          "score": 0.95
+        },
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias SGSG_CK, exactly",
+          "score": 1.0
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares SGSG with SUBGROUP_KEY",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEPE_PRCS_ELIG",
+      "column": "CSPI_ID",
+      "bucket": "code",
+      "element": "COVERAGE_PLAN_ID",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias, fk_propagation evidence",
+      "evidence": [
+        {
+          "kind": "fk_propagation",
+          "detail": "inferred foreign key to dbo.CMC_CSPI_CS_PLAN.CSPI_ID, which maps to COVERAGE_PLAN_ID",
+          "score": 0.95
+        },
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias CSPI_ID, exactly",
+          "score": 1.0
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares CSPI with COVERAGE_PLAN_ID",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEPE_PRCS_ELIG",
+      "column": "PDPD_ID",
+      "bucket": "code",
+      "element": "PRODUCT_CODE",
+      "confidence": "high",
+      "accepted": true,
+      "reason": "alias, fk_propagation evidence",
+      "evidence": [
+        {
+          "kind": "fk_propagation",
+          "detail": "inferred foreign key to dbo.CMC_PDDS_PROD_DESC.PDPD_ID, which maps to PRODUCT_CODE",
+          "score": 0.95
+        },
+        {
+          "kind": "alias",
+          "detail": "column name contains the alias PDPD_ID, exactly",
+          "score": 1.0
+        },
+        {
+          "kind": "name_token",
+          "detail": "name shares PDPD with PRODUCT_CODE",
+          "score": 0.2
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEPE_PRCS_ELIG",
+      "column": "MEPE_ELIG_IND",
+      "bucket": "free",
+      "element": null,
+      "confidence": null,
+      "accepted": false,
+      "reason": "no element matched",
+      "evidence": [],
+      "alternatives": []
+    }
+  ]
+}

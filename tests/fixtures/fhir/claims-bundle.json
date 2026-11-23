@@ -1,0 +1,537 @@
+{
+  "resourceType": "Bundle",
+  "id": "claims-sample",
+  "type": "collection",
+  "timestamp": "2026-10-14T09:00:00Z",
+  "entry": [
+    {
+      "fullUrl": "http://example.org/fhir/Organization/hl7",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "hl7",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      Health Level Seven International\n      <br/>\n\t\t\t\t3300 Washtenaw Avenue, Suite 227\n      <br/>\n\t\t\t\tAnn Arbor, MI 48104\n      <br/>\n\t\t\t\tUSA\n      <br/>\n\t\t\t\t(+1) 734-677-7777 (phone)\n      <br/>\n\t\t\t\t(+1) 734-677-6622 (fax)\n      <br/>\n\t\t\t\tE-mail:  \n      <a href=\"mailto:hq@HL7.org\">hq@HL7.org</a>\n    \n    </div>"
+        },
+        "name": "Health Level Seven International",
+        "alias": [
+          "HL7 International"
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "(+1) 734-677-7777"
+          },
+          {
+            "system": "fax",
+            "value": "(+1) 734-677-6622"
+          },
+          {
+            "system": "email",
+            "value": "hq@HL7.org"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "3300 Washtenaw Avenue, Suite 227"
+            ],
+            "city": "Ann Arbor",
+            "state": "MI",
+            "postalCode": "48104",
+            "country": "USA"
+          }
+        ],
+        "endpoint": [
+          {
+            "reference": "Endpoint/example"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://example.org/fhir/Patient/example",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "example",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n\t\t\t<table>\n\t\t\t\t<tbody>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<td>Name</td>\n\t\t\t\t\t\t<td>Peter James \n              <b>Chalmers</b> (&quot;Jim&quot;)\n            </td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<td>Address</td>\n\t\t\t\t\t\t<td>534 Erewhon, Pleasantville, Vic, 3999</td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<td>Contacts</td>\n\t\t\t\t\t\t<td>Home: unknown. Work: (03) 5555 6473</td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<td>Id</td>\n\t\t\t\t\t\t<td>MRN: 12345 (Acme Healthcare)</td>\n\t\t\t\t\t</tr>\n\t\t\t\t</tbody>\n\t\t\t</table>\n\t\t</div>"
+        },
+        "identifier": [
+          {
+            "use": "usual",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "MR"
+                }
+              ]
+            },
+            "system": "urn:oid:1.2.36.146.595.217.0.1",
+            "value": "12345",
+            "period": {
+              "start": "2001-05-06"
+            },
+            "assigner": {
+              "display": "Acme Healthcare"
+            }
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Chalmers",
+            "given": [
+              "Peter",
+              "James"
+            ]
+          },
+          {
+            "use": "usual",
+            "given": [
+              "Jim"
+            ]
+          },
+          {
+            "use": "maiden",
+            "family": "Windsor",
+            "given": [
+              "Peter",
+              "James"
+            ],
+            "period": {
+              "end": "2002"
+            }
+          }
+        ],
+        "telecom": [
+          {
+            "use": "home"
+          },
+          {
+            "system": "phone",
+            "value": "(03) 5555 6473",
+            "use": "work",
+            "rank": 1
+          },
+          {
+            "system": "phone",
+            "value": "(03) 3410 5613",
+            "use": "mobile",
+            "rank": 2
+          },
+          {
+            "system": "phone",
+            "value": "(03) 5555 8834",
+            "use": "old",
+            "period": {
+              "end": "2014"
+            }
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1974-12-25",
+        "_birthDate": {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/patient-birthTime",
+              "valueDateTime": "1974-12-25T14:35:45-05:00"
+            }
+          ]
+        },
+        "deceasedBoolean": false,
+        "address": [
+          {
+            "use": "home",
+            "type": "both",
+            "text": "534 Erewhon St PeasantVille, Rainbow, Vic  3999",
+            "line": [
+              "534 Erewhon St"
+            ],
+            "city": "PleasantVille",
+            "district": "Rainbow",
+            "state": "Vic",
+            "postalCode": "3999",
+            "period": {
+              "start": "1974-12-25"
+            }
+          }
+        ],
+        "contact": [
+          {
+            "relationship": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v2-0131",
+                    "code": "N"
+                  }
+                ]
+              }
+            ],
+            "name": {
+              "family": "du March\u00e9",
+              "_family": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/humanname-own-prefix",
+                    "valueString": "VV"
+                  }
+                ]
+              },
+              "given": [
+                "B\u00e9n\u00e9dicte"
+              ]
+            },
+            "telecom": [
+              {
+                "system": "phone",
+                "value": "+33 (237) 998327"
+              }
+            ],
+            "address": {
+              "use": "home",
+              "type": "both",
+              "line": [
+                "534 Erewhon St"
+              ],
+              "city": "PleasantVille",
+              "district": "Rainbow",
+              "state": "Vic",
+              "postalCode": "3999",
+              "period": {
+                "start": "1974-12-25"
+              }
+            },
+            "gender": "female",
+            "period": {
+              "start": "2012"
+            }
+          }
+        ],
+        "managingOrganization": {
+          "reference": "Organization/1"
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.org/fhir/Coverage/9876B1",
+      "resource": {
+        "resourceType": "Coverage",
+        "id": "9876B1",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the coverage</div>"
+        },
+        "identifier": [
+          {
+            "system": "http://benefitsinc.com/certificate",
+            "value": "12345"
+          }
+        ],
+        "status": "active",
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "EHCPOL",
+              "display": "extended healthcare"
+            }
+          ]
+        },
+        "policyHolder": {
+          "reference": "http://benefitsinc.com/FHIR/Organization/CBI35"
+        },
+        "subscriber": {
+          "reference": "Patient/example"
+        },
+        "beneficiary": {
+          "reference": "Patient/example"
+        },
+        "dependent": "0",
+        "relationship": {
+          "coding": [
+            {
+              "code": "self"
+            }
+          ]
+        },
+        "period": {
+          "start": "2011-05-23",
+          "end": "2012-05-23"
+        },
+        "payor": [
+          {
+            "reference": "Organization/hl7"
+          }
+        ],
+        "class": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "group"
+                }
+              ]
+            },
+            "value": "CB135",
+            "name": "Corporate Baker's Inc. Local #35"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "subgroup"
+                }
+              ]
+            },
+            "value": "123",
+            "name": "Trainee Part-time Benefits"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "plan"
+                }
+              ]
+            },
+            "value": "B37FC",
+            "name": "Full Coverage: Medical, Dental, Pharmacy, Vision, EHC"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "subplan"
+                }
+              ]
+            },
+            "value": "P7",
+            "name": "Includes afterlife benefits"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "class"
+                }
+              ]
+            },
+            "value": "SILVER",
+            "name": "Silver: Family Plan spouse only"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "subclass"
+                }
+              ]
+            },
+            "value": "Tier2",
+            "name": "Low deductable, max $20 copay"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "sequence"
+                }
+              ]
+            },
+            "value": "9"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxid"
+                }
+              ]
+            },
+            "value": "MDF12345"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxbin"
+                }
+              ]
+            },
+            "value": "987654"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxgroup"
+                }
+              ]
+            },
+            "value": "M35PT"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxpcn"
+                }
+              ]
+            },
+            "value": "234516"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "sequence"
+                }
+              ]
+            },
+            "value": "9"
+          }
+        ],
+        "subscriberId": "AB9876"
+      }
+    },
+    {
+      "fullUrl": "http://example.org/fhir/Claim/100150",
+      "resource": {
+        "resourceType": "Claim",
+        "id": "100150",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the Oral Health Claim</div>"
+        },
+        "identifier": [
+          {
+            "system": "http://happyvalley.com/claim",
+            "value": "12345"
+          }
+        ],
+        "status": "active",
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+              "code": "oral"
+            }
+          ]
+        },
+        "use": "claim",
+        "patient": {
+          "reference": "Patient/example"
+        },
+        "created": "2014-08-16",
+        "insurer": {
+          "reference": "Organization/hl7"
+        },
+        "provider": {
+          "reference": "Organization/hl7"
+        },
+        "priority": {
+          "coding": [
+            {
+              "code": "normal"
+            }
+          ]
+        },
+        "payee": {
+          "type": {
+            "coding": [
+              {
+                "code": "provider"
+              }
+            ]
+          }
+        },
+        "diagnosis": [
+          {
+            "sequence": 1,
+            "diagnosisCodeableConcept": {
+              "coding": [
+                {
+                  "code": "123456"
+                }
+              ]
+            }
+          }
+        ],
+        "insurance": [
+          {
+            "sequence": 1,
+            "focal": true,
+            "identifier": {
+              "system": "http://happyvalley.com/claim",
+              "value": "12345"
+            },
+            "coverage": {
+              "reference": "Coverage/9876B1"
+            }
+          }
+        ],
+        "item": [
+          {
+            "sequence": 1,
+            "productOrService": {
+              "coding": [
+                {
+                  "code": "1200"
+                }
+              ]
+            },
+            "servicedDate": "2014-08-16",
+            "unitPrice": {
+              "value": 135.57,
+              "currency": "USD"
+            },
+            "net": {
+              "value": 135.57,
+              "currency": "USD"
+            }
+          },
+          {
+            "sequence": 2,
+            "productOrService": {
+              "coding": [
+                {
+                  "code": "1205"
+                }
+              ]
+            },
+            "servicedDate": "2014-08-16",
+            "unitPrice": {
+              "value": 105.0,
+              "currency": "USD"
+            },
+            "net": {
+              "value": 105.0,
+              "currency": "USD"
+            }
+          }
+        ],
+        "total": {
+          "value": 240.57,
+          "currency": "USD"
+        }
+      }
+    }
+  ]
+}

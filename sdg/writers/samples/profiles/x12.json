@@ -1,0 +1,90 @@
+{
+  "about": "What every X12 transaction modeled on a sample shares. A transaction's own profile (x12-834.json, x12-835.json, x12-837.json) extends this one and says what repeats and what follows from what. The X12 syntax itself -- ISA/GS/ST and SE/GE/IEA, delimiters, SE01 counting the transaction -- is the reader's, not a profile's. Places are written the way the screen labels them: 'NM1*IL NM103' is NM103 of an NM1 whose NM101 is IL; 'HI HI01-2' is the second component of HI01.",
+  "syntax": "x12",
+
+  "loops": {
+    "about": "A segment in 'scoped' belongs to the last 'by' segment before it (whose address, whose birth date). Any segment in 'ends' closes the open loop segments; 'anchors' are the segments a config entry can scope by (loop_segment_id).",
+    "ends": ["HL", "CLM", "LX", "INS", "ST", "SE", "NM1", "SBR", "N1"],
+    "anchors": ["NM1", "N1", "SBR"],
+    "scoped": ["N2", "N3", "N4", "DMG", "PER"],
+    "by": "NM1"
+  },
+
+  "qualified": {
+    "about": "How many leading elements say what a segment is. DTP carries two: the date's meaning and its format.",
+    "NM1": 1, "REF": 1, "DTP": 2, "PER": 1, "NTE": 1, "AMT": 1, "DTM": 1,
+    "QTY": 1, "N1": 1, "PRV": 1, "PWK": 1, "CAS": 1, "SBR": 1
+  },
+
+  "structural": {
+    "about": "Segments whose values the structure carries: never proposed, never filled. Positions a 'derive' rule sets are left out of proposals as well.",
+    "segments": ["HL", "LX"]
+  },
+
+  "member": {
+    "about": "Whose name, address and birth date a place's suggestion is for: loops with these NM101 qualifiers (74: an 835's corrected patient name). A place in any other loop (a provider, a payer) is suggested nothing.",
+    "loops": ["IL", "QC", "74"]
+  },
+
+  "places": {
+    "about": "What a place holds, when a config's algorithm name does not say. 'is': null marks a place that holds nothing SDM makes a rule for (a provider's tax ID is not a member's SSN, whatever a masking algorithm's name says). An entry with 'if' wins over the others when the segment's first occurrence in the sample has those values.",
+    "list": [
+      {"at": "NM1*IL NM103", "is": "LAST_NAME"},
+      {"at": "NM1*IL NM104", "is": "FIRST_NAME"},
+      {"at": "NM1*IL NM105", "is": "MIDDLE_INITIAL"},
+      {"at": "NM1*IL NM109", "is": "MEMBER_ID"},
+      {"at": "NM1*QC NM103", "is": "LAST_NAME"},
+      {"at": "NM1*QC NM104", "is": "FIRST_NAME"},
+      {"at": "NM1*QC NM105", "is": "MIDDLE_INITIAL"},
+      {"at": "NM1*QC NM109", "is": "MEMBER_ID"},
+      {"at": "NM1*74 NM103", "is": "LAST_NAME"},
+      {"at": "NM1*74 NM104", "is": "FIRST_NAME"},
+      {"at": "NM1*74 NM105", "is": "MIDDLE_INITIAL"},
+      {"at": "NM1*74 NM109", "is": "MEMBER_ID"},
+      {"at": "NM1 NM109", "if": {"NM108": "34"}, "is": "SSN"},
+      {"at": "DMG DMG02", "is": "DOB"},
+      {"at": "DMG DMG03", "is": "SEX"},
+      {"at": "DMG DMG04", "is": "MARITAL_STATUS"},
+      {"at": "N3 N301", "is": "STREET_1"},
+      {"at": "N4 N401", "is": "ADDRESS_CITY"},
+      {"at": "N4 N402", "is": "ADDRESS_STATE"},
+      {"at": "N4 N403", "is": "ADDRESS_ZIP"},
+      {"at": "DTP*472*D8 DTP03", "is": "SERVICE_DATE"},
+      {"at": "DTP*472*RD8 DTP03", "is": "SERVICE_DATE"},
+      {"at": "DTP*348*D8 DTP03", "is": "EFFECTIVE_DATE"},
+      {"at": "DTP*349*D8 DTP03", "is": "TERMINATION_DATE"},
+      {"at": "DTP*356*D8 DTP03", "is": "EFFECTIVE_DATE"},
+      {"at": "DTP*357*D8 DTP03", "is": "TERMINATION_DATE"},
+      {"at": "REF*0F REF02", "is": "SUBSCRIBER_ID"},
+      {"at": "REF*SY REF02", "is": "SSN"},
+      {"at": "REF*1L REF02", "is": "GROUP_KEY"},
+      {"at": "INS INS02", "is": "RELATIONSHIP_CODE"},
+      {"at": "CLM CLM01", "is": "CLAIM_ID"},
+      {"at": "HI HI01-2", "is": "DIAGNOSIS_CODE"},
+      {"at": "SV1 SV101-2", "is": "PROCEDURE_CODE"},
+      {"at": "SV1 SV102", "is": "CHARGE_AMOUNT"},
+      {"at": "SV1 SV104", "is": "SERVICE_UNITS"},
+      {"at": "SV2 SV202-2", "is": "PROCEDURE_CODE"},
+      {"at": "SV2 SV203", "is": "CHARGE_AMOUNT"},
+      {"at": "SV2 SV205", "is": "SERVICE_UNITS"},
+      {"at": "PER PER04", "if": {"PER03": "TE"}, "is": "PHONE"},
+      {"at": "PER PER06", "if": {"PER05": "TE"}, "is": "PHONE"},
+      {"at": "PER PER08", "if": {"PER07": "TE"}, "is": "PHONE"},
+      {"at": "CLP CLP01", "is": "CLAIM_ID"},
+      {"at": "CLP CLP07", "is": "CLAIM_ID"},
+      {"at": "DTM*232 DTM02", "is": "SERVICE_DATE"},
+      {"at": "DTM*233 DTM02", "is": "SERVICE_DATE"},
+      {"at": "DTM*472 DTM02", "is": "SERVICE_DATE"},
+      {"at": "SVC SVC01-2", "is": "PROCEDURE_CODE"},
+      {"at": "SVC SVC02", "is": "CHARGE_AMOUNT"},
+      {"at": "SVC SVC05", "is": "SERVICE_UNITS"},
+      {"at": "REF*EI REF02", "is": null},
+      {"at": "REF*TJ REF02", "is": null}
+    ]
+  },
+
+  "codes": {
+    "about": "Where a position's values have X12 codes (relationship M, D, S written 18, 19, 01; INS01 following from it): the shipped transaction descriptions in sdg/writers/edi_formats, read position by position.",
+    "from": "edi_formats"
+  }
+}

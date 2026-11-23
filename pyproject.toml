@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sdg"
+version = "0.1.0"
+description = "Synthetic Data Generation Tool - proof of concept"
+requires-python = ">=3.12"
+dependencies = [
+    "pydantic>=2.7",
+    "jsonschema>=4.22",
+    "pyodbc>=5.1",
+    "PyYAML>=6.0",
+    "pandas>=2.2",
+    "numpy>=1.26",
+    "typer>=0.12",
+    "rich>=13.7",
+    "python-dotenv>=1.0",
+    "Jinja2>=3.1",
+    "fastapi>=0.110",
+    "uvicorn[standard]>=0.29",
+    # The pattern analyzer: clustering, file uploads, and the spreadsheet and
+    # document formats user stories arrive in.
+    "scikit-learn>=1.3",
+    "python-multipart>=0.0.9",
+    "openpyxl>=3.1",
+    "python-docx>=1.1",
+    # FHIR files from a sample: written files checked against the FHIR models.
+    "fhir.resources>=8.3",
+    # CDA files from a sample: XML read and written with its namespaces, prefixes and
+    # comments as the sample has them (python-docx brings it already).
+    "lxml>=5",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.2", "hypothesis>=6.100", "httpx>=0.27", "playwright>=1.50"]
+
+[project.scripts]
+sdg = "sdg.cli.main:app"
+
+[tool.setuptools.packages.find]
+include = ["sdg*"]
+
+[tool.setuptools.package-data]
+"sdg.plan" = ["*.json"]
+"sdg.analyzer" = ["*.json"]
+"sdg.writers.samples" = ["profiles/*.json", "defaults/*"]
+"sdg.review" = ["*.html.j2"]
+"sdg.writers.edi_formats" = ["*.json"]
+"sdg.writers.snip" = ["rules/*.json", "codesets/*.txt"]
+"sdg.accelerator" = ["*.yaml"]
+"sdg.packs" = ["schema.json", "*/*.json", "*/*.yaml", "*/sql/*.sql", "*/extract/*.sql"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "db: test requires a live SQL Server with the seeded databases",
+    "slow: long-running test",
+    "browser: drives the screens in an installed Edge or Chrome (Playwright)",
+]

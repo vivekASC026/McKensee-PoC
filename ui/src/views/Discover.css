@@ -1,0 +1,197 @@
+/*
+  Discover.
+
+  A ranked table, because the question is comparative: which cohorts are the
+  big ones. The share bar does the comparing, so the eye can skip the numbers.
+*/
+
+.discover {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  max-width: 1040px;
+}
+
+.discover__head h2 {
+  font-size: var(--t-large);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+.discover__lede {
+  margin-top: var(--space-2);
+  color: var(--ink-soft);
+  font-size: var(--t-small);
+  max-width: 64ch;
+  line-height: 1.55;
+}
+
+.discover__controls {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  background: var(--paper-sunk);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  flex-wrap: wrap;
+}
+.discover__controls label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+.discover__controls label span {
+  font-size: var(--t-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+}
+.discover__controls select {
+  font-family: var(--sans);
+  font-size: var(--t-small);
+  color: var(--ink);
+  background: var(--paper-raised);
+  border: 1px solid var(--rule-strong);
+  border-radius: 4px;
+  padding: 6px 8px;
+  min-width: 190px;
+}
+.discover__warning {
+  font-size: var(--t-micro);
+  color: var(--ink-faint);
+  max-width: 40ch;
+  line-height: 1.5;
+}
+
+
+.discover__summary {
+  font-size: var(--t-small);
+  color: var(--ink-soft);
+}
+
+.discover__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--t-small);
+}
+.discover__table th {
+  text-align: left;
+  font-size: var(--t-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+  font-weight: 500;
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--rule-strong);
+}
+.discover__table td {
+  padding: var(--space-2) var(--space-3) var(--space-2) 0;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: middle;
+}
+.discover__table .right {
+  text-align: right;
+}
+.discover__name {
+  font-weight: 500;
+}
+.discover__where {
+  color: var(--ink-faint);
+  font-size: var(--t-micro);
+}
+
+.discover__kept {
+  border-top: 1px solid var(--rule-strong);
+  padding-top: var(--space-4);
+}
+.discover__kept h3 {
+  font-size: var(--t-mid);
+  font-weight: 600;
+  margin-bottom: var(--space-3);
+}
+.discover__none {
+  font-size: var(--t-small);
+  color: var(--ink-soft);
+  max-width: 62ch;
+  line-height: 1.55;
+}
+
+.kept {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  /* Rows line up with the heading above them, not a list indent. */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.kept__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--paper-raised);
+  font-size: var(--t-small);
+}
+.kept__name {
+  font-weight: 500;
+  flex: 1 1 12rem;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.kept__where {
+  color: var(--ink-faint);
+  font-size: var(--t-micro);
+}
+.kept__size {
+  color: var(--ink-soft);
+}
+
+/* Kept patterns, exported on one sheet. */
+.kept__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.kept__export {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.discover__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+  align-items: center;
+}
+/* The scan's table scrolls sideways on a narrow screen, so its actions stay
+   reachable rather than cut off. */
+.discover__scroll {
+  overflow-x: auto;
+  max-width: 100%;
+}
+.discover__scenarios {
+  margin-top: 24px;
+}
+/* Opened under the pattern's own row: the panel the button belongs to. */
+.kept__scenarios {
+  list-style: none;
+  margin-left: var(--space-3);
+}
+.kept__scenarios,
+.discover__scenariorow td {
+  padding: var(--space-2) var(--space-3) var(--space-3);
+  border-left: 2px solid var(--rule);
+}
+.kept__scenarios .discover__scenarios,
+.discover__scenariorow .discover__scenarios {
+  margin-top: 0;
+}

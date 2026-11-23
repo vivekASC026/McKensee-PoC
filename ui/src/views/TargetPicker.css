@@ -1,0 +1,114 @@
+/* Where generated rows go. Sits under the connection facts on Connect, because
+   it is the same question — which database — asked about the other direction. */
+
+.target {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  margin-top: var(--space-5);
+  background: var(--paper-sunk);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+}
+.target__head h3 {
+  font-size: var(--t-small);
+  font-weight: 600;
+}
+.target__lede {
+  font-size: var(--t-small);
+  color: var(--ink-soft);
+  max-width: 66ch;
+  margin-top: var(--space-1);
+}
+.target__row {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+.target__row select {
+  min-width: 28ch;
+}
+.target__hint {
+  font-size: var(--t-micro);
+  color: var(--ink-faint);
+  max-width: 72ch;
+}
+
+/* On this server, or somewhere else. Two routes to the same answer. */
+.target__modes {
+  display: flex;
+  border: 1px solid var(--rule-strong);
+  border-radius: 4px;
+  overflow: hidden;
+  align-self: flex-start;
+}
+.target__mode {
+  font-family: var(--sans);
+  font-size: var(--t-small);
+  padding: 5px var(--space-4);
+  background: var(--paper-raised);
+  border: 0;
+  cursor: pointer;
+  color: var(--ink-soft);
+}
+.target__mode + .target__mode {
+  border-left: 1px solid var(--rule-strong);
+}
+.target__mode--on {
+  background: var(--ink);
+  color: var(--paper);
+}
+.target__form {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+.target__form input {
+  min-width: 24ch;
+}
+.target__auth {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.target__check {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--t-small);
+  color: var(--ink-soft);
+}
+
+/* Databases onboarded here, and offboarding them. */
+.target__onboarded {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--rule);
+}
+.target__onboarded h4 {
+  font-size: var(--t-small);
+  font-weight: 600;
+}
+.target__onboarded ul {
+  list-style: none;
+  margin: 0;
+  padding: 0; /* rows under the heading, not indented */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.target__onboarded-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+.target__onboarded-meta {
+  flex: 1;
+  font-size: var(--t-small);
+  color: var(--ink-soft);
+}

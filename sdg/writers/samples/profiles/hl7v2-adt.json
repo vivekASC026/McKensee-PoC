@@ -1,0 +1,24 @@
+{
+  "about": "ADT messages modeled on a sample: one message (MSH to the next MSH) per member written, taken in turn from the sample's messages.",
+  "extends": "hl7v2",
+  "kind": "ADT",
+  "subject": "members",
+
+  "counts": {"messages": "MSH", "patients": "PID"},
+  "summary": "{messages} messages · {patients} patients",
+
+  "message": {"about": "The segments every ADT message has (HL7 2.5.1 ADT^A01).",
+              "required": ["MSH", "EVN", "PID", "PV1"]},
+
+  "units": [
+    {"name": "member", "starts": "MSH", "row": "count",
+     "missing": "The sample has no MSH: no message to model members on."}
+  ],
+
+  "derive": [
+    {"about": "MSH-10, the message control id, is each message's own.",
+     "op": "rename", "at": "MSH MSH10", "to": "{id}-{n}"},
+    {"about": "DG1-3.2 is the text of the sample's diagnosis code; a generated code is written without it.",
+     "op": "drop", "at": "DG1 DG103-2"}
+  ]
+}

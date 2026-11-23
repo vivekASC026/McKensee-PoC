@@ -1,0 +1,1 @@
+{"stored": 1795414714.4925268, "first_stored": 1795414714.4925268, "ttl": 11455, "base_ttl": 3600, "cost_seconds": 11.456, "hits": 0, "key": "members.cluster({}, None, '2026-01-01')", "ns": "members.cluster", "mac": "d0db35558c6d90656b5923597d96e5aff708aa9e051fdef33933f651e999eb7f"}

@@ -1,0 +1,41 @@
+{
+  "about": "Related persons modeled on a sample of a RelatedPerson on its own: one per member written (someone in the member's household: the member's last name, address and phone), taken in turn from the sample's related persons. Their own first name is the sample's unless a config names it.",
+  "extends": "fhir",
+  "kind": "relatedperson",
+  "subject": "members",
+  "match": [
+    "RelatedPerson"
+  ],
+  "fallback": true,
+  "member": {
+    "about": "Whose values a place's suggestion is for: the resource this file repeats.",
+    "types": [
+      "RelatedPerson"
+    ]
+  },
+  "counts": {
+    "related": "RelatedPerson"
+  },
+  "summary": "{related} related persons",
+  "units": [
+    {
+      "name": "member",
+      "starts": "RelatedPerson",
+      "row": "count",
+      "missing": "The sample has no RelatedPerson to model on."
+    }
+  ],
+  "derive": [
+    {
+      "about": "Every resource written is a new one: a new id, and every reference to it follows.",
+      "op": "rename",
+      "at": "* id",
+      "to": "{id}-{n}"
+    },
+    {
+      "about": "The narrative describes the sample's resource, not the one written.",
+      "op": "drop",
+      "at": "* text"
+    }
+  ]
+}

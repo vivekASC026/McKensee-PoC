@@ -1,0 +1,16 @@
+{
+ "_about": "Every word the screens use for the records, from the person's names.",
+ "charts": {
+  "_about": "The features the pattern charts draw.",
+  "ranges": {},
+  "mixes": {}
+ },
+ "phrases": {
+  "_about": "Whole phrases where composing words reads badly.",
+  "field_examples": "",
+  "outside_range_risk": "",
+  "scope_heading": "",
+  "joined_heading": "",
+  "joined_words": ""
+ }
+}

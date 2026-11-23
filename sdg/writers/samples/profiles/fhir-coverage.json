@@ -1,0 +1,41 @@
+{
+  "about": "Coverages modeled on a sample of a Coverage on its own: one per member written, taken in turn from the sample's coverages. A Bundle with a Patient is fhir-members.json.",
+  "extends": "fhir",
+  "kind": "coverage",
+  "subject": "members",
+  "match": [
+    "Coverage"
+  ],
+  "fallback": true,
+  "member": {
+    "about": "Whose values a place's suggestion is for: the resource this file repeats.",
+    "types": [
+      "Coverage"
+    ]
+  },
+  "counts": {
+    "coverages": "Coverage"
+  },
+  "summary": "{coverages} coverages",
+  "units": [
+    {
+      "name": "member",
+      "starts": "Coverage",
+      "row": "count",
+      "missing": "The sample has no Coverage to model members on."
+    }
+  ],
+  "derive": [
+    {
+      "about": "Every resource written is a new one: a new id, and every reference to it follows.",
+      "op": "rename",
+      "at": "* id",
+      "to": "{id}-{n}"
+    },
+    {
+      "about": "The narrative describes the sample's resource, not the one written.",
+      "op": "drop",
+      "at": "* text"
+    }
+  ]
+}

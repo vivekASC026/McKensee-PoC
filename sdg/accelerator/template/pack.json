@@ -1,0 +1,50 @@
+{
+ "id": "",
+ "name": "",
+ "version": 1,
+ "_about": "Written by the source accelerator from an approved source plan.",
+ "plan_name": "",
+ "entities": {},
+ "tables": {
+  "never_generated": [],
+  "modes": {}
+ },
+ "plan": {
+  "root_counts": {},
+  "store_elements": {},
+  "always_together": {},
+  "kind_anchors": {},
+  "sex_fields": [],
+  "empty_is_a_value": [],
+  "record_tables": {},
+  "joins": {}
+ },
+ "files": {
+  "default_elements": {},
+  "scope_elements": {},
+  "record_keys": [],
+  "subscriber_codes": [],
+  "household": {
+   "family": [],
+   "partner_codes": [],
+   "child_years": 15
+  },
+  "scope_narrows": [],
+  "composed_id": null,
+  "latest_columns": []
+ },
+ "formats": {},
+ "modules": [
+  "pattern_analysis"
+ ],
+ "sql": {
+  "_about": "The tables pattern analysis reads, in the SDM platform database.",
+  "store_tables": [
+   "sql/store_tables.sql"
+  ],
+  "store_indexes": [
+   "sql/store_indexes.sql"
+  ]
+ },
+ "extract": {}
+}

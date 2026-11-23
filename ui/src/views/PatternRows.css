@@ -1,0 +1,108 @@
+/* The rows under a pattern. Dense on purpose: this is a look at the data, not
+   a report about it, so the table is allowed to be wide and scroll. */
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-top: var(--space-3);
+}
+.rows__loading {
+  padding: var(--space-4);
+  font-size: var(--t-small);
+  color: var(--ink-faint);
+}
+
+.rows__head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  font-size: var(--t-small);
+}
+.rows__count {
+  color: var(--ink-soft);
+}
+.rows__phi-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--ink-soft);
+}
+.rows__timing {
+  margin-left: auto;
+  font-size: var(--t-micro);
+  color: var(--ink-faint);
+}
+.rows__phi-note {
+  font-size: var(--t-micro);
+  color: var(--ink-faint);
+  max-width: 70ch;
+}
+
+/* Wide content scrolls inside its own box rather than stretching the page. */
+.rows__scroll {
+  overflow-x: auto;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+}
+.rows__table {
+  border-collapse: collapse;
+  font-size: var(--t-micro);
+  font-family: var(--mono);
+  white-space: nowrap;
+}
+.rows__table th,
+.rows__table td {
+  padding: 4px 10px;
+  border-bottom: 1px solid var(--rule);
+  text-align: left;
+}
+.rows__table th {
+  position: sticky;
+  top: 0;
+  background: var(--paper-sunk);
+  font-weight: 600;
+  text-transform: none;
+}
+.rows__th--phi {
+  color: var(--ink-soft);
+}
+.rows__cell--hidden {
+  color: var(--ink-faint);
+  letter-spacing: 2px;
+}
+
+.rows__pager {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.rows__truncated {
+  font-size: var(--t-micro);
+  color: var(--ink-faint);
+}
+
+/* Choosing records to generate from. */
+.rows__choose {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+}
+.rows__chosen {
+  font-size: var(--t-small);
+  font-weight: 600;
+}
+.rows__choose-note {
+  font-size: var(--t-small);
+  color: var(--ink-soft);
+}
+.rows__pick {
+  width: 32px;
+  text-align: center;
+}
+.rows__tr--chosen td {
+  background: var(--structural-wash);
+}

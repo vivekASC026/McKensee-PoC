@@ -1,0 +1,6 @@
+{
+  "about": "A Continuity of Care Document (C-CDA CCD, LOINC 34133-9) modeled on a sample: written as any CDA document is.",
+  "extends": "cda-document",
+  "kind": "CCD",
+  "match": [{"at": "code/@code", "in": ["34133-9"]}]
+}

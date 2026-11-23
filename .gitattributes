@@ -1,0 +1,9 @@
+# Batch files need CRLF: cmd misreads labels and jumps in LF files, and a
+# clone or GitHub download on another machine would otherwise get LF.
+*.cmd text eol=crlf
+
+# HL7 v2 separates segments with a bare CR: never normalized.
+*.hl7 -text
+# Baselines are compared byte for byte: never convert their line endings.
+tests/fixtures/pack-baselines/** -text
+tests/fixtures/lookup_before_speedup.py -text

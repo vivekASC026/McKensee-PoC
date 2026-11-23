@@ -1,0 +1,10414 @@
+{
+ "CMC_AGAG_AGREEMENT": [
+  {
+   "column": "AGAG_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": true
+  },
+  {
+   "column": "AGAG_EFF_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "AGAG_TERM_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_CAT",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_MCTR_TYPE",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_RWH_PCT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_RWH_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_CL_ACPT_MNTHS",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_IP_PRICE_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_OP_PRICE_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_OP_MULT_PCT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_OL_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_OL_DISC_PCT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_OL_LMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_OL_EXCD_ID",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_MIN_DISC_PCT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_MAX_DISC_PCT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_MXD_EXCD_ID",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_ST_DISC_PCT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_ST_DISC_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_ST_DISC_PRC",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_STD_EXCD_ID",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_SUP_DISC_PCT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_SUP_DISC_EXCD",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_DRAG_FROM_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_DRAG_PER_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_DRAG_PERIOD",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_DRAG_PERIOD2",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_DRAG_PERIOD3",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_DRAG_EOB_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGSE_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGDP_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGCB_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGCG_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGHI_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGIP_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGSL_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGPP_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGPD_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGRG_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGRT_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGIL_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGDS_PFX_UM",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGDS_PFX_CLCL",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGMD_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PFPF_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_PF_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_TSFR_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_MULT_RTYP_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_OPTS",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_ID_XLOW",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_DELG_CLAIMS",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_DELG_UM",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_DELG_CASE",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_NWX_PROF_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_DESC",
+   "type": "varchar",
+   "attributes": 70.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCRE_ID",
+   "type": "char",
+   "attributes": 9.0,
+   "primary_key": false
+  },
+  {
+   "column": "EXCD_ID",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGEA_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGDE_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGDA_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGUT_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "DOFR_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAA_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_DELG_CRED_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_DELG_QM_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_ACPLUS_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_INP_DOFR_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_SURCH_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_VIS_TYPE",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAF_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGSV_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGLP_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGWF_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "ITAG_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_CDCB_LI_COB": [
+  {
+   "column": "CLCL_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": true
+  },
+  {
+   "column": "CDML_SEQ_NO",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "MEME_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDCB_COB_TYPE",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDCB_PRO_RATE_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDCB_COB_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDCB_COB_DISALLOW",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDCB_COB_ALLOW",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDCB_ADJ_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDCB_SUBTRACT_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDCB_COB_SAV",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDCB_COB_APP",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDCB_COB_OOP",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDCB_COB_SANCTION",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDCB_COB_DED_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDCB_COB_COPAY_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDCB_COB_COINS_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDCB_COB_REAS_CD",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDCB_ALLOW_PRI",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDCB_DED_AMT_PRI",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDCB_COINS_AMT_PRI",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDCB_COPAY_AMT_PRI",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDCB_PAID_AMT_PRI",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDCB_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  }
+ ],
+ "CMC_CDML_CL_LINE": [
+  {
+   "column": "CLCL_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": true
+  },
+  {
+   "column": "CDML_SEQ_NO",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "MEME_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "PRPR_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "LOBD_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDVC_LOBD_PTR",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CRPL_POOL_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "CRFD_FUND_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_CUR_STS",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "SEPY_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "LTLT_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "DEDE_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "SEPC_PRICE_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "RCRC_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "SESE_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "SESE_RULE",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "PSCD_ID",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "IPCD_ID",
+   "type": "char",
+   "attributes": 7.0,
+   "primary_key": false
+  },
+  {
+   "column": "IDCD_ID",
+   "type": "varchar",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "IDCD_ID_REL",
+   "type": "varchar",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_FROM_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_TO_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_ROOM_TYPE",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_CHG_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_ANES_PHY_STAT",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_HCPCS_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_CONSIDER_CHG",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_ALLOW",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_UNITS",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_UNITS_ALLOW",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_DED_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_DED_ACC_NO",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_COPAY_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_COINS_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_RISK_WH_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_PAID_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_DISALL_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_DISALL_EXCD",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_AG_PRICE",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_PF_PRICE",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_IP_PRICE",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_SE_PRICE",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_DISC_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_SUP_DISC_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_ITS_DISC_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_PRICE_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_CL_NTWK_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_REF_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_PC_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_CAP_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_SB_PYMT_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_PR_PYMT_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_PRE_PAID_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "RPTC_RPT_CAT",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_SEPY_EXP_CAT",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_SEPY_ACCT_CAT",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_UMREF_ID",
+   "type": "char",
+   "attributes": 9.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_REFSV_SEQ_NO",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_UMAUTH_ID",
+   "type": "char",
+   "attributes": 9.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_AUTHSV_SEQ_NO",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_PRE_AUTH_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_POS_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_EOB_EXCD",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_OOP_CALC_BASE",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_IPCD_MOD2",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_IPCD_MOD3",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_IPCD_MOD4",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_CLMD_TYPE2",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_CLMD_TYPE3",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_CLMD_TYPE4",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_CLMD_TYPE5",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_CLMD_TYPE6",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_CLMD_TYPE7",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_CLMD_TYPE8",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "APCD_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "APSI_STS_IND",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_EXT_LINE_NO",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_MU_EDIT_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_GWID",
+   "type": "varchar",
+   "attributes": 32.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_TOT_PA_LIAB",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_DIS_PA_LIAB",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "IDCD_ID_SUB",
+   "type": "varchar",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "IDCD_ID_SUB_REL",
+   "type": "varchar",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "IDCD_ID_TRANS",
+   "type": "varchar",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "IDCD_ID_TRANS_REL",
+   "type": "varchar",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRCF_MCTR_SPEC",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDML_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "EHBD_ID_NVL",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_CDSD_SUPP_DATA": [
+  {
+   "column": "CLCL_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": true
+  },
+  {
+   "column": "CDML_SEQ_NO",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "MEME_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDSD_PRPR_ID_REND",
+   "type": "varchar",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDSD_PRPR_RE_NPI",
+   "type": "varchar",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDSD_PRPR_RE_TAX",
+   "type": "varchar",
+   "attributes": 9.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDSD_SVC_AREA_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDSD_MED_AMB_ZIP",
+   "type": "varchar",
+   "attributes": 11.0,
+   "primary_key": false
+  },
+  {
+   "column": "DFSC_ID",
+   "type": "varchar",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDSD_DOFR_RISK_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDSD_DOFR_RISK_ID",
+   "type": "varchar",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDSD_DOFR_DELG_CL",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDSD_DOFR_CL_ID",
+   "type": "varchar",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDSD_DOFR_DELG_UM",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDSD_DOFR_UM_ID",
+   "type": "varchar",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDSD_LINE_GRP_PTR",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDSD_HIER_VALUE",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDSD_VALUE_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDSD_STOPLOSS_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDSD_NET_VALUE_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDSD_SERV_LOC_ZIP",
+   "type": "varchar",
+   "attributes": 11.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDSD_IN_LOC_ZIP",
+   "type": "varchar",
+   "attributes": 11.0,
+   "primary_key": false
+  },
+  {
+   "column": "EAPG_ID",
+   "type": "char",
+   "attributes": 5.0,
+   "primary_key": false
+  },
+  {
+   "column": "EAPM_PAY_METH_IND",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDSD_SURCH_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SCPA_SURCH_PCT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDSD_MCTR_REAS",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "VBBD_RULE",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDSD_VBB_EXCD_ID",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "SCPA_EXCD_ID",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDSD_FAM_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDSD_PRPG_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDSD_NDC_CODE",
+   "type": "varchar",
+   "attributes": 11.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDSD_NDC_UNITS",
+   "type": "varchar",
+   "attributes": 15.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDSD_NDC_MCTR_TYPE",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDSD_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "CDSD_PBA_BUND_IND_NVL",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CDSD_PBA_BUND_TYPE_NVL",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_CLCB_CL_COB": [
+  {
+   "column": "CLCL_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": true
+  },
+  {
+   "column": "MEME_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLCB_COB_TYPE",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCB_COB_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLCB_COB_DISALLOW",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLCB_COB_ALLOW",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLCB_COB_SANCTION",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLCB_COB_DED_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLCB_COB_COPAY_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLCB_COB_COINS_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLCB_COB_REAS_CD",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCB_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  }
+ ],
+ "CMC_CLCL_CLAIM": [
+  {
+   "column": "CLCL_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": true
+  },
+  {
+   "column": "MEME_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SBSB_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_CL_TYPE",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_CL_SUB_TYPE",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_PRE_PRICE_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_CUR_STS",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLST_MCTR_REAS",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLST_SEQ_NO",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_SITE",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_LAST_ACT_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_INPUT_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_RECD_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_ACPT_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_PAID_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_NEXT_REV_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_LOW_SVC_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_HIGH_SVC_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_ID_ADJ_TO",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_ID_ADJ_FROM",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_ID_CRTE_FROM",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "CSPD_CAT",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PZAP_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "CSCS_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "CSPI_ID",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDPD_ID",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEPE_FI",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEPE_PLAN_ENTRY_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_COBRA_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_ME_AGE",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_REL",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_SEX",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_RECORD_NO",
+   "type": "char",
+   "attributes": 11.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_HICN",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWPE_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWPR_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWCR_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDBC_PFX_NPPR",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDBC_PFX_SEDF",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRAC_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PCAG_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "MDPC_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWNW_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_MED_ASSGN_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_PAY_PR_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_PAYEE_PR_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_REL_INFO_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_OTHER_BN_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_ACD_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_ACD_STATE",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_ACD_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_ACD_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_CURR_ILL_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_SIMI_ILL_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "PRPR_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_PR_SS_EIN_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_NTWK_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_PCP_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_PRPR_ID_PCP",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_PRPR_ID_REF",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_PA_ACCT_NO",
+   "type": "varchar",
+   "attributes": 35.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_EXT_AUTH_NO",
+   "type": "char",
+   "attributes": 18.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_PA_PAID_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_TOT_CHG",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_TOT_PAYABLE",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_DRAG_OR_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_DRAG_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_INPUT_METH",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_AIAI_EOB_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_EOB_EXCD_ID",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_BATCH_ID",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_BATCH_ACTION",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_CE_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_CAP_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_AG_SOURCE",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDDS_PROD_TYPE",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDDS_MCTR_BCAT",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_MICRO_ID",
+   "type": "char",
+   "attributes": 18.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_UNABL_FROM_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_UNABL_TO_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_RELHP_FROM_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_RELHP_TO_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_OUT_LAB_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_MECD_RESUB_NO",
+   "type": "char",
+   "attributes": 15.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRAD_TYPE",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_PCA_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_OOA_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_EXT_REF_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_RAD_ENC_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_REC_ENC_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_COB_EOB_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_PAP_EOB_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_HSA_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_REL_CLCL_ID",
+   "type": "varchar",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "USUS_ID",
+   "type": "char",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLCL_SEC_ADJUD_NVL",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_CLED_EDI_DATA": [
+  {
+   "column": "CLCL_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": true
+  },
+  {
+   "column": "MEME_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLED_HIPAA_VERSION",
+   "type": "varchar",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLED_PAYER_CLM_NUM",
+   "type": "varchar",
+   "attributes": 50.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLED_EXT_REF",
+   "type": "varchar",
+   "attributes": 50.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLED_TRAD_PARTNER",
+   "type": "char",
+   "attributes": 15.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLED_USER_DATA1",
+   "type": "varchar",
+   "attributes": 255.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLED_USER_DATA2",
+   "type": "varchar",
+   "attributes": 255.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLED_USER_DATA3",
+   "type": "varchar",
+   "attributes": 255.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLED_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  }
+ ],
+ "CMC_CLHC_COND_CODE": [
+  {
+   "column": "CLCL_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": true
+  },
+  {
+   "column": "CLHC_SEQ_NO",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "MEME_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLHC_COND_CD",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLHC_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  }
+ ],
+ "CMC_CLHI_PROC": [
+  {
+   "column": "CLCL_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": true
+  },
+  {
+   "column": "CLHI_TYPE",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": true
+  },
+  {
+   "column": "MEME_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "IPCD_ID",
+   "type": "char",
+   "attributes": 7.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLHI_IP_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "IPCD_ID_SUB",
+   "type": "varchar",
+   "attributes": 7.0,
+   "primary_key": false
+  },
+  {
+   "column": "IPCD_ID_TRANS",
+   "type": "varchar",
+   "attributes": 7.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLHI_IPCD_MAN_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLHI_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  }
+ ],
+ "CMC_CLHO_OCC_CODE": [
+  {
+   "column": "CLCL_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": true
+  },
+  {
+   "column": "CLHO_SEQ_NO",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "MEME_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLHO_OCC_CODE",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLHO_OCC_FROM_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLHO_OCC_TO_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLHO_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  }
+ ],
+ "CMC_CLHP_HOSP": [
+  {
+   "column": "CLCL_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": true
+  },
+  {
+   "column": "MEME_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLHP_FAC_TYPE",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLHP_BILL_CLASS",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLHP_FREQUENCY",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLHP_PRPR_ID_ADM",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLHP_PRPR_ID_OTH1",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLHP_PRPR_ID_OTH2",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLHP_PRPR_ID_OPER",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLHP_ADM_TYP",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLHP_ADM_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLHP_DC_STAT",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLHP_DC_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLHP_STAMENT_FR_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLHP_STAMENT_TO_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLHP_MED_REC_NO",
+   "type": "char",
+   "attributes": 17.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLHP_IPCD_METH",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGRG_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLHP_INPUT_AGRG_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLHP_ADM_HOUR_CD",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLHP_ADM_SOURCE",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLHP_DC_HOUR_CD",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLHP_BIRTH_WGT",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLHP_COVD_DAYS",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLHP_ICD_QUAL_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLHP_PRPR_AD_NPI",
+   "type": "varchar",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLHP_PRPR_AD_TAX",
+   "type": "varchar",
+   "attributes": 9.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLHP_PRPR_OP_NPI",
+   "type": "varchar",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLHP_PRPR_OP_TAX",
+   "type": "varchar",
+   "attributes": 9.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLHP_PRPR_O1_NPI",
+   "type": "varchar",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLHP_PRPR_O1_TAX",
+   "type": "varchar",
+   "attributes": 9.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLHP_PRPR_O2_NPI",
+   "type": "varchar",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLHP_PRPR_O2_TAX",
+   "type": "varchar",
+   "attributes": 9.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLHP_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_CLMD_DIAG": [
+  {
+   "column": "CLCL_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": true
+  },
+  {
+   "column": "CLMD_TYPE",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": true
+  },
+  {
+   "column": "MEME_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "IDCD_ID",
+   "type": "varchar",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLMD_POA_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "IDCD_ID_SUB",
+   "type": "varchar",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "IDCD_ID_TRANS",
+   "type": "varchar",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLMD_IDCD_MAN_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLMD_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  }
+ ],
+ "CMC_CLMF_MULT_FUNC": [
+  {
+   "column": "CLCL_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": true
+  },
+  {
+   "column": "MEME_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLMF_PRPR_ID_FAC",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLMF_INPUT_TXNM_CD",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLMF_INPUT_SBSB_ID",
+   "type": "varchar",
+   "attributes": 9.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLMF_PRPR_FA_NPI",
+   "type": "varchar",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLMF_PRPR_FA_TAX",
+   "type": "varchar",
+   "attributes": 9.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLMF_PRPR_RF_NPI",
+   "type": "varchar",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLMF_PRPR_RF_TAX",
+   "type": "varchar",
+   "attributes": 9.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLMF_PRPR_SE_NPI",
+   "type": "varchar",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLMF_PRPR_SE_TAX",
+   "type": "varchar",
+   "attributes": 9.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLMF_INPUT_HLTH_ID",
+   "type": "varchar",
+   "attributes": 80.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLMF_ICD_IND_PROC",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLMF_ICD_QUAL_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "TEIN_ID",
+   "type": "varchar",
+   "attributes": 36.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLMF_EXT_REFRAL_NO",
+   "type": "varchar",
+   "attributes": 18.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLMF_EXT_PREATH_NO",
+   "type": "varchar",
+   "attributes": 18.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLMF_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_CLSD_SUPP_DATA": [
+  {
+   "column": "CLCL_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": true
+  },
+  {
+   "column": "MEME_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLSD_OPTOUT_INPUT",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLSD_OPTOUT_CALC",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLSD_REDIRECT_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLSD_EXT_RECD_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "DOFR_ID",
+   "type": "varchar",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLSD_ACPLUS_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLSD_PRPR_ID_IPA",
+   "type": "varchar",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLSD_EMERG_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLSD_EXT_ENC_ID",
+   "type": "varchar",
+   "attributes": 25.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEET_EXCP_TYPE",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEET_MCTR_MRSN",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLSD_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLSD_PRPR_ID_REND_NVL",
+   "type": "varchar",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLSD_PRPR_RE_NPI_NVL",
+   "type": "varchar",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLSD_PRPR_RE_TAX_NVL",
+   "type": "varchar",
+   "attributes": 9.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_CLVC_VAL_CODE": [
+  {
+   "column": "CLCL_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": true
+  },
+  {
+   "column": "CLVC_NUMBER",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": true
+  },
+  {
+   "column": "CLVC_LETTER",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": true
+  },
+  {
+   "column": "MEME_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLVC_CODE",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLVC_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLVC_VALUE",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CLVC_ID_VALUE",
+   "type": "varchar",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "CLVC_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  }
+ ],
+ "CMC_CSCS_CLASS": [
+  {
+   "column": "GRGR_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "CSCS_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": true
+  },
+  {
+   "column": "CSCS_DESC",
+   "type": "char",
+   "attributes": 70.0,
+   "primary_key": false
+  },
+  {
+   "column": "TPCT_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "CSCS_OPTS",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PLPB_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "CSCS_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "CSCS_SP_NWST_PFX_NVL",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "CSCS_SP_PDPD_ID_NVL",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_CSPD_DESC": [
+  {
+   "column": "CSPD_CAT",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": true
+  },
+  {
+   "column": "CSPD_CAT_DESC",
+   "type": "char",
+   "attributes": 70.0,
+   "primary_key": false
+  },
+  {
+   "column": "CSPD_TYPE",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CSPD_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_CSPI_CS_PLAN": [
+  {
+   "column": "GRGR_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "CSCS_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": true
+  },
+  {
+   "column": "CSPD_CAT",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": true
+  },
+  {
+   "column": "CSPI_ID",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": true
+  },
+  {
+   "column": "CSPI_EFF_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "CSPI_TERM_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "PDPD_ID",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "CSPI_SEL_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CSPI_FI",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CSPI_GUAR_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CSPI_GUAR_PER_MOS",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CSPI_GUAR_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PMAR_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "WMDS_SEQ_NO",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CSPI_OPEN_BEG_MMDD",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CSPI_OPEN_END_MMDD",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "GPAI_ID",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "CSPI_ITS_PREFIX",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "CSPI_AGE_CALC_METH",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CSPI_CARD_STOCK",
+   "type": "char",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "CSPI_MCTR_CTYP",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "CSPI_HEDIS_CEBREAK",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CSPI_HEDIS_DAYS",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CSPI_PDPD_BEG_MMDD",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CSPI_PDPD_CO_MNTH",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "NWST_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "CVST_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "HSAI_ID",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "CSPI_POSTPONE_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRDC_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "UTED_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "VBBR_ID",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "SVBL_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "CSPI_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "CSPI_SEC_PLAN_CD_NVL",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCRE_ID_NVL",
+   "type": "char",
+   "attributes": 9.0,
+   "primary_key": false
+  },
+  {
+   "column": "CSPI_ITS_ACCT_EXCP_NVL",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "CSPI_REN_BEG_MMDD_NVL",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  }
+ ],
+ "CMC_DEDE_DEDUCT": [
+  {
+   "column": "DEDE_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": true
+  },
+  {
+   "column": "ACAC_ACC_NO",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "DEDE_DESC",
+   "type": "char",
+   "attributes": 70.0,
+   "primary_key": false
+  },
+  {
+   "column": "DEDE_RULE",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "DEDE_REL_ACC_ID",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "DEDE_COB_OOP_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "DEDE_SL_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "DEDE_PERIOD_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "DEDE_AGG_PERSON",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "DEDE_AGG_PERSON_CO",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "DEDE_FAM_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "DEDE_FAM_AMT_CO",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "DEDE_MEME_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "DEDE_MEME_AMT_CO",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "DEDE_OPTS",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "DEDE_CO_BYPASS",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "DEDE_MEM_SAL_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "DEDE_FAM_SAL_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "DEDE_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_GRGR_GROUP": [
+  {
+   "column": "GRGR_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "CICI_ID",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_ID",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "PAGR_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_NAME",
+   "type": "char",
+   "attributes": 50.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_ADDR1",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_ADDR2",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_ADDR3",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_CITY",
+   "type": "char",
+   "attributes": 19.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_STATE",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_ZIP",
+   "type": "char",
+   "attributes": 11.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_COUNTY",
+   "type": "char",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_CTRY_CD",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_PHONE",
+   "type": "char",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_PHONE_EXT",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_FAX",
+   "type": "char",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_FAX_EXT",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_EMAIL",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_MCTR_TYPE",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_MCTR_VIP",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCAR_AREA_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "CSCS_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_STS",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_ORIG_EFF_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_TERM_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_MCTR_TRSN",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "EXCD_ID",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_RNST_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_CONV_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_RENEW_MMDD",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_PREV_ANNV_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_CURR_ANNV_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_NEXT_ANNV_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_MCTR_PTYP",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_UNDW_USUS_ID",
+   "type": "char",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_CAP_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_LAST_CAP_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_CAP_BAT_STS",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_BILL_LEVEL",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_LMT_ADJ_MOS",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_BL_CONV_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_NAME_XLOW",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_CITY_XLOW",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_MCTR_LANG",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_EXTN_ADDR_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "WMDS_SEQ_NO",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_TOTAL_EMPL",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_TOTAL_ELIG",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_TOTAL_CONTR",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_POL_NO",
+   "type": "char",
+   "attributes": 30.0,
+   "primary_key": false
+  },
+  {
+   "column": "CRCY_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_EIN",
+   "type": "char",
+   "attributes": 9.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_ERIS_MMDD",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_RECD_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_DEN_CHT_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_CAP_CONV_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_RUNOUT_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_RUNOUT_EXCD",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_TRANS_ACCEPT",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_ITS_CODE",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_AUTONUM_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_CONT_EFF_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_TERM_PREM_MOS",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_RNST_TYPE",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_RNST_VAL",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_IDCD_DIAG_CD": [
+  {
+   "column": "IDCD_ID",
+   "type": "varchar",
+   "attributes": 10.0,
+   "primary_key": true
+  },
+  {
+   "column": "IDCD_TYPE",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": true
+  },
+  {
+   "column": "IDCD_EFF_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "IDCD_TERM_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "IDCD_DESC",
+   "type": "varchar",
+   "attributes": 228.0,
+   "primary_key": false
+  },
+  {
+   "column": "IDCD_ID_REL",
+   "type": "varchar",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "IDCD_GEN_ID_1",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "IDCD_GEN_ID_2",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "TPCT_MCTR_TCAT",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "MDCD_ID_M",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "MDCD_ID_F",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "IDCD_OPL_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "IDCD_ACTION",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "EXCD_ID",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "IDCD_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_IPCD_PROC_CD": [
+  {
+   "column": "IPCD_ID",
+   "type": "char",
+   "attributes": 7.0,
+   "primary_key": true
+  },
+  {
+   "column": "IPCD_EFF_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "IPCD_TERM_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "IPCD_DESC",
+   "type": "varchar",
+   "attributes": 175.0,
+   "primary_key": false
+  },
+  {
+   "column": "IPCD_GEN_ID_1",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "IPCD_GEN_ID_2",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "WMDS_SEQ_NO",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "IPCD_SRCH_DISP",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "IPCD_ACTION",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "EXCD_ID",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "IPCD_TYPE",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "IPCD_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "IPCD_DESC1_NVL",
+   "type": "varchar",
+   "attributes": 35.0,
+   "primary_key": false
+  },
+  {
+   "column": "IPCD_DESC2_NVL",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "IPCD_DESC3_NVL",
+   "type": "varchar",
+   "attributes": 500.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_LOBD_LINE_BUS": [
+  {
+   "column": "LOBD_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": true
+  },
+  {
+   "column": "LOBD_MCTR_TYPE",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "LOBD_NAME",
+   "type": "char",
+   "attributes": 50.0,
+   "primary_key": false
+  },
+  {
+   "column": "LOBD_ADDR1",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "LOBD_ADDR2",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "LOBD_ADDR3",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "LOBD_CITY",
+   "type": "char",
+   "attributes": 19.0,
+   "primary_key": false
+  },
+  {
+   "column": "LOBD_STATE",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "LOBD_ZIP",
+   "type": "char",
+   "attributes": 11.0,
+   "primary_key": false
+  },
+  {
+   "column": "LOBD_COUNTY",
+   "type": "char",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "LOBD_CTRY_CD",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "LOBD_PHONE",
+   "type": "char",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "LOBD_PHONE_EXT",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "LOBD_FAX",
+   "type": "char",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "LOBD_FAX_EXT",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "LOBD_EMAIL",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "LOBD_PAY_CL_METH",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "LOBD_EOB_COPY_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "LOBD_OVP_EXCD_ID",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "ACPE_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_ID",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "LOBD_ID_COMM",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "LOBD_CR_RED_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "LOBD_PR_RED_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "LOBD_SB_RED_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "LOBD_CO_RED_IND",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "LOBD_PAY_FSAC_METH",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "LOBD_FSA_RED_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "LOBD_PAY_DIS_METH",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "LOBD_DIS_RED_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "LOBD_PAY_VIS_METH",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "LOBD_VIS_RED_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "LOBD_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_LTLT_LIMIT": [
+  {
+   "column": "LTLT_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": true
+  },
+  {
+   "column": "ACAC_ACC_NO",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "LTLT_DESC",
+   "type": "varchar",
+   "attributes": 70.0,
+   "primary_key": false
+  },
+  {
+   "column": "LTLT_CAT",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "LTLT_LEVEL",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "LTLT_PERIOD_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "LTLT_RULE",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "LTLT_IX_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "LTLT_IX_TYPE",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "EXCD_ID",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "LTLT_AMT1",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "LTLT_AMT2",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "LTLT_OPTS",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "LTLT_SAL_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "LTLT_DAYS",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "WMDS_SEQ_NO",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "LTLT_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_LTSE_SE_IX": [
+  {
+   "column": "LTLT_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": true
+  },
+  {
+   "column": "ACAC_ACC_NO",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "SESE_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": true
+  },
+  {
+   "column": "LTSE_WT_CTR",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "LTSE_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_MALK_LINK": [
+  {
+   "column": "MAME_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "MEME_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "MALK_CREATE_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "MALK_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_MAME_MASTER": [
+  {
+   "column": "MAME_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "MAME_ID",
+   "type": "char",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "MAME_STS",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "MAME_STS_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "MAME_ID_NAME",
+   "type": "char",
+   "attributes": 6.0,
+   "primary_key": false
+  },
+  {
+   "column": "MAME_LAST_NAME",
+   "type": "varchar",
+   "attributes": 60.0,
+   "primary_key": false
+  },
+  {
+   "column": "MAME_FIRST_NAME",
+   "type": "varchar",
+   "attributes": 35.0,
+   "primary_key": false
+  },
+  {
+   "column": "MAME_MIDDLE_NAME",
+   "type": "varchar",
+   "attributes": 25.0,
+   "primary_key": false
+  },
+  {
+   "column": "MAME_MID_INIT",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "MAME_MAIDEN_NAME",
+   "type": "varchar",
+   "attributes": 60.0,
+   "primary_key": false
+  },
+  {
+   "column": "MAME_PATERNAL_NAME",
+   "type": "varchar",
+   "attributes": 60.0,
+   "primary_key": false
+  },
+  {
+   "column": "MAME_MATERNAL_NAME",
+   "type": "varchar",
+   "attributes": 60.0,
+   "primary_key": false
+  },
+  {
+   "column": "MAME_TITLE",
+   "type": "varchar",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "MAME_TITLE2",
+   "type": "varchar",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "MAME_SEX",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "MAME_BIRTH_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "MAME_DEATH_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "MAME_SSN",
+   "type": "char",
+   "attributes": 9.0,
+   "primary_key": false
+  },
+  {
+   "column": "MAME_RECORD_NO",
+   "type": "varchar",
+   "attributes": 11.0,
+   "primary_key": false
+  },
+  {
+   "column": "MAME_HICN",
+   "type": "varchar",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "MAME_MEDCD_NO",
+   "type": "varchar",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "MAME_FAM_LINK_ID",
+   "type": "varchar",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "MAME_HIST_LINK_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "MAME_HEALTH_ID",
+   "type": "varchar",
+   "attributes": 80.0,
+   "primary_key": false
+  },
+  {
+   "column": "MAME_LAST_NAME_XLOW",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "MAME_MCTR_LANG",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "MAME_MARITAL_STATUS",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "MAME_CELL_PHONE",
+   "type": "varchar",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "MAME_MCTR_RACE",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "MAME_MCTR_ETHN",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "MAME_CITIZEN_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "MAME_MCTR_TYP1",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "MAME_MCTR_TYP2",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "MAME_MCTR_TYP3",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "MAME_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_MCRE_RELAT_ENT": [
+  {
+   "column": "MCRE_ID",
+   "type": "char",
+   "attributes": 9.0,
+   "primary_key": true
+  },
+  {
+   "column": "MCRE_NAME",
+   "type": "char",
+   "attributes": 50.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCRE_TYPE",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCRE_ADDR1",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCRE_ADDR2",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCRE_ADDR3",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCRE_CITY",
+   "type": "char",
+   "attributes": 19.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCRE_STATE",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCRE_ZIP",
+   "type": "char",
+   "attributes": 11.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCRE_COUNTY",
+   "type": "char",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCRE_CTRY_CD",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCRE_PHONE",
+   "type": "char",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCRE_PHONE_EXT",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCRE_FAX",
+   "type": "char",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCRE_FAX_EXT",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCRE_EMAIL",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCRE_NAME_XLOW",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCRE_CITY_XLOW",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCRE_MCTR_LANG",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCRE_EXTN_ADDR_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCRE_MCTR_CODE",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCRE_DESC",
+   "type": "char",
+   "attributes": 80.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCRE_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_MCTI_TAX_INFO": [
+  {
+   "column": "MCTI_ENTY_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": true
+  },
+  {
+   "column": "MCTI_TYPE",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": true
+  },
+  {
+   "column": "MCTI_EFF_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "MCTI_TERM_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "MCTI_MCTR_TRSN",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCTN_ID",
+   "type": "char",
+   "attributes": 9.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCTN_TYPE",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCTI_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  }
+ ],
+ "CMC_MCTN_TAX_NAME": [
+  {
+   "column": "MCTN_ID",
+   "type": "char",
+   "attributes": 9.0,
+   "primary_key": true
+  },
+  {
+   "column": "MCTN_TYPE",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": true
+  },
+  {
+   "column": "MCTN_NAME",
+   "type": "char",
+   "attributes": 55.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCTN_LST_NAME",
+   "type": "char",
+   "attributes": 35.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCTN_FIRST_NAME",
+   "type": "char",
+   "attributes": 15.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCTN_MID_INIT",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCTN_TITLE",
+   "type": "char",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCTN_STATUS",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCTN_ADDR1",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCTN_ADDR2",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCTN_ADDR3",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCTN_CITY",
+   "type": "char",
+   "attributes": 19.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCTN_STATE",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCTN_ZIP",
+   "type": "char",
+   "attributes": 11.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCTN_COUNTY",
+   "type": "char",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCTN_CTRY_CD",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCTN_PHONE",
+   "type": "char",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCTN_PHONE_EXT",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCTN_FAX",
+   "type": "char",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCTN_FAX_EXT",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCTN_EMAIL",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCTN_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  }
+ ],
+ "CMC_MECB_COB": [
+  {
+   "column": "MEME_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "MECB_INSUR_TYPE",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": true
+  },
+  {
+   "column": "MECB_INSUR_ORDER",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": true
+  },
+  {
+   "column": "MECB_MCTR_STYP",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": true
+  },
+  {
+   "column": "MECB_EFF_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "MECB_TERM_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "MECB_MCTR_TRSN",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "MCRE_ID",
+   "type": "char",
+   "attributes": 9.0,
+   "primary_key": false
+  },
+  {
+   "column": "MECB_POLICY_ID",
+   "type": "varchar",
+   "attributes": 25.0,
+   "primary_key": false
+  },
+  {
+   "column": "MECB_MCTR_MSP",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "MECB_MCTR_PTYP",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "MECB_RXBIN",
+   "type": "char",
+   "attributes": 6.0,
+   "primary_key": false
+  },
+  {
+   "column": "MECB_RXPCN",
+   "type": "varchar",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "MECB_RX_GROUP",
+   "type": "varchar",
+   "attributes": 15.0,
+   "primary_key": false
+  },
+  {
+   "column": "MECB_RX_ID",
+   "type": "varchar",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "MECB_LAST_VER_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "MECB_LAST_VER_NAME",
+   "type": "varchar",
+   "attributes": 30.0,
+   "primary_key": false
+  },
+  {
+   "column": "MECB_MCTR_VMTH",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "MECB_LOI_START_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "MECB_PRIM_LAST_NM",
+   "type": "varchar",
+   "attributes": 35.0,
+   "primary_key": false
+  },
+  {
+   "column": "MECB_PRIM_FIRST_NM",
+   "type": "varchar",
+   "attributes": 15.0,
+   "primary_key": false
+  },
+  {
+   "column": "MECB_PRIM_ID",
+   "type": "varchar",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "MECB_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_MEME_MEMBER": [
+  {
+   "column": "MEME_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "GRGR_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SBSB_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_SFX",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_REL",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_ID_NAME",
+   "type": "char",
+   "attributes": 6.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_LAST_NAME",
+   "type": "char",
+   "attributes": 35.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_FIRST_NAME",
+   "type": "char",
+   "attributes": 15.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_MID_INIT",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_TITLE",
+   "type": "char",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_ORIG_EFF_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_SSN",
+   "type": "char",
+   "attributes": 9.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_SEX",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_BIRTH_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_WRK_PHONE",
+   "type": "char",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_WRK_PHONE_EXT",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_MCTR_STS",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_MCTR_LANG",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_RECORD_NO",
+   "type": "char",
+   "attributes": 11.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_LATE_ENR_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_MARITAL_STATUS",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_HICN",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_MEDCD_NO",
+   "type": "char",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_FAM_LINK_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBAD_TYPE_HOME",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBAD_TYPE_MAIL",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBAD_TYPE_WORK",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_LAST_NAME_XLOW",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_CCC_START_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_CCC_END_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_PREX_EFF_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_PRX_CRED_DAYS",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_EXC_CRED_DAYS",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_MCTR_ATYP",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_ELIG_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_QUALIFY_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_NEW_SIG_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_PRBL_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_PRBL_EFF_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_EOI_TERM_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_PREX_TERM_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_PREX_LIMIT1",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_PREX_LIMIT2",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_PREX_LIMIT3",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "MCRL_MEME_CREL_CD",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_HIST_LINK_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_CELL_PHONE",
+   "type": "varchar",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_HEALTH_ID",
+   "type": "varchar",
+   "attributes": 80.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_MEPE_PRCS_ELIG": [
+  {
+   "column": "MEME_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "CSPD_CAT",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": true
+  },
+  {
+   "column": "MEPE_EFF_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "MEPE_TERM_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "MEPE_CREATE_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CSCS_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "CSPI_ID",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDPD_ID",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEPE_ELIG_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "EXCD_ID",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEPE_MCTR_RSN",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEPE_SYS_INEL_CD",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEPE_FI",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEPE_ELIG_OVR_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEPE_HAS_MEDX_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEPE_HAS_WARN_CD",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEPE_PRCS_STS",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEPE_SOURCE",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEPE_PLAN_ENTRY_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "MEPE_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  }
+ ],
+ "CMC_MEPR_PRIM_PROV": [
+  {
+   "column": "MEME_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "MEPR_PCP_TYPE",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": true
+  },
+  {
+   "column": "MEPR_EFF_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "MEPR_TERM_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "MEPR_MCTR_TRSN",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEPR_MCTR_ORSN",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEPR_MCTR_ERSN",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "GRGR_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "PRPR_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEPR_SOURCE",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEPR_DEMGRPHC_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEPR_CR_EFF_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "MEPR_CR_TERM_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "MEPR_CAP_REL_ENT",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDPD_CAP_RET_MOS",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "MEPR_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_NWNW_NETWORK": [
+  {
+   "column": "NWNW_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": true
+  },
+  {
+   "column": "MCAR_AREA_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWNW_NAME",
+   "type": "char",
+   "attributes": 50.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWNW_ADDR1",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWNW_ADDR2",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWNW_ADDR3",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWNW_CITY",
+   "type": "char",
+   "attributes": 19.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWNW_STATE",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWNW_ZIP",
+   "type": "char",
+   "attributes": 11.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWNW_COUNTY",
+   "type": "char",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWNW_CTRY_CD",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWNW_PHONE",
+   "type": "char",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWNW_PHONE_EXT",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWNW_FAX",
+   "type": "char",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWNW_FAX_EXT",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWNW_EMAIL",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWNW_MCTR_TYPE",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWNW_NAME_XLOW",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWNW_CITY_XLOW",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWNW_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  }
+ ],
+ "CMC_NWPR_RELATION": [
+  {
+   "column": "PRPR_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": true
+  },
+  {
+   "column": "NWNW_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": true
+  },
+  {
+   "column": "NWPR_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": true
+  },
+  {
+   "column": "NWPR_PCP_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": true
+  },
+  {
+   "column": "NWPR_EFF_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "NWPR_TERM_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "NWPR_MCTR_TRSN",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWPR_MAX_PATIENT",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "NWPR_MIN_AGE",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "NWPR_MAX_AGE",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "NWPR_SEX",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWPR_ACC_PAT_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWPR_ACC_MEDCR_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWPR_ACC_MEDCD_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWPR_DIRECTORY_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWPR_PROV_DIR_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWPR_PAY_HOLD_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "NWPR_RWH_OVR_PCT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "NWPR_OPTS",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWPR_RWH_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWPR_PAT_CTR",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "NWPR_MCTR_RSTR",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWPR_PAT_CTR_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "NWPR_AUTO_PCP_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "SVAR_ID",
+   "type": "varchar",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWPR_CAP_RET_CD",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWPR_CAP_RET_MOS",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "NWPR_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_NWST_NET_SET": [
+  {
+   "column": "NWST_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": true
+  },
+  {
+   "column": "NWST_EFF_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "NWST_SEQ_NO",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "NWST_TERM_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "NWST_PR_NW_STS",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWNW_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWPR_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWPE_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWCR_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWST_PCP_CAT",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWST_OPTS",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWST_NWCR_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDVC_TIER",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "NWST_BYPASS_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWST_OPTOUT_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWST_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_PDBC_PROD_COMP": [
+  {
+   "column": "PDPD_ID",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": true
+  },
+  {
+   "column": "PDBC_TYPE",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": true
+  },
+  {
+   "column": "PDBC_EFF_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "PDBC_TERM_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "PDBC_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDBC_OPTS",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDBC_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_PDDS_PROD_DESC": [
+  {
+   "column": "PDPD_ID",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": true
+  },
+  {
+   "column": "PDDS_DESC",
+   "type": "varchar",
+   "attributes": 70.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDDS_UM_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDDS_MED_PRICE_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDDS_MED_CLMS_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDDS_DEN_UM_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDDS_DEN_PD_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDDS_DEN_PRICE_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDDS_DEN_CLMS_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDDS_PREM_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDDS_CLED_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDDS_CAP_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDDS_INT_STATE_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDDS_MCTR_BCAT",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDDS_MCTR_VAL1",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDDS_MCTR_VAL2",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDDS_APP_TYPE",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDDS_PROD_TYPE",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDDS_DOFR_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDDS_OPTOUT_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDDS_OOA_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDDS_OON_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDDS_DISP_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDDS_ALT_DISP_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDDS_ORD_SYS_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDDS_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_PDPD_PRODUCT": [
+  {
+   "column": "PDPD_ID",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": true
+  },
+  {
+   "column": "PDPD_EFF_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "PDPD_TERM_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "PDPD_RISK_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "LOBD_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "LOBD_ALT_RISK_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDPD_ACC_SFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDPD_OPTS",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDPD_CAP_POP_LVL",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDPD_CAP_RET_MOS",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "PDPD_MCTR_CCAT",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDPD_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDPD_ACC_SHDW_SFX_NVL",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_PDVC_VAR_COMP": [
+  {
+   "column": "PDPD_ID",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": true
+  },
+  {
+   "column": "PDVC_TIER",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "PDVC_TYPE",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": true
+  },
+  {
+   "column": "PDVC_EFF_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "PDVC_SEQ_NO",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "PDVC_TERM_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "PDVC_PR_PCP",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDVC_PR_IN",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDVC_PR_PAR",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDVC_PR_NONPAR",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDVC_PC_NR",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDVC_PC_OBT",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDVC_PC_VIOL",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDVC_REF_NR",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDVC_REF_OBT",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDVC_REF_VIOL",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDVC_LOBD_PTR",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "SEPY_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "DEDE_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "LTLT_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "DPPY_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "CGPY_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "BSME_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDVC_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SEPY_SHDW_PFX_NVL",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "DEDE_SHDW_PFX_NVL",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "LTLT_SHDW_PFX_NVL",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "DPPY_SHDW_PFX_NVL",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "CGPY_SHDW_PFX_NVL",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_PLDS_PLAN_DESC": [
+  {
+   "column": "CSPI_ID",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": true
+  },
+  {
+   "column": "PLDS_DESC",
+   "type": "char",
+   "attributes": 70.0,
+   "primary_key": false
+  },
+  {
+   "column": "PLDS_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_PRAD_ADDRESS": [
+  {
+   "column": "PRAD_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": true
+  },
+  {
+   "column": "PRAD_TYPE",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": true
+  },
+  {
+   "column": "PRAD_EFF_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "PRAD_TERM_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "PRAD_ADDR1",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRAD_ADDR2",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRAD_ADDR3",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRAD_CITY",
+   "type": "char",
+   "attributes": 19.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRAD_STATE",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRAD_ZIP",
+   "type": "char",
+   "attributes": 11.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRAD_COUNTY",
+   "type": "char",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRAD_CTRY_CD",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRAD_PHONE",
+   "type": "char",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRAD_PHONE_EXT",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRAD_FAX",
+   "type": "char",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRAD_FAX_EXT",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRAD_EMAIL",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRAD_HD_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRAD_PRACTICE_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRAD_CITY_XLOW",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRAD_TYPE_MAIL",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRAD_MCTR_TRSN",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRAD_DIRECTORY_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRAD_LONG",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "PRAD_LAT",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "PRAD_GEO_RTRN_CD",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRAD_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_PRAF_FAC_AFFIL": [
+  {
+   "column": "PRPR_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": true
+  },
+  {
+   "column": "PRCR_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": true
+  },
+  {
+   "column": "PRAF_STS",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRAF_MCTR_SPEC",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRAF_FROM_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "PRAF_TO_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "PRAF_PRIM_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRAF_MCTR_TRSN",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRAF_LAST_VER_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "PRAF_INIT_VER_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "PRAF_NEXT_VER_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "PRAF_RCVD_VER_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "PRAF_MCTR_VSRC",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRAF_PRIM_VER_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRAF_MCTR_VRSL",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRAF_LAST_VER_NAME",
+   "type": "char",
+   "attributes": 50.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRAF_MCTR_VMTH",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRAF_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  }
+ ],
+ "CMC_PRCP_COMM_PRAC": [
+  {
+   "column": "PRCP_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": true
+  },
+  {
+   "column": "PRCP_SSN",
+   "type": "char",
+   "attributes": 9.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRCP_LAST_NAME",
+   "type": "char",
+   "attributes": 35.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRCP_FIRST_NAME",
+   "type": "char",
+   "attributes": 15.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRCP_MID_INIT",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRCP_TITLE",
+   "type": "char",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRCP_SEX",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRCP_BIRTH_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "PRCP_LAST_CHAN_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "PRCP_TIER_NO",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "PRCP_LAST_NAME_XLOW",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRCP_MCCY_CTRY",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRCR_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRCP_MCTR_LANG",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRCP_EXTN_ADDR_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRCP_NPI",
+   "type": "char",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRCP_TERM_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "PRCP_MCTR_TRSN",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRCP_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_PRDS_DATE": [
+  {
+   "column": "PRPR_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": true
+  },
+  {
+   "column": "PRDS_EFF_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "PRDS_TERM_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "PRDS_MCTR_TRSN",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRDS_PAY_CL_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRDS_PAY_CAP_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRDS_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  }
+ ],
+ "CMC_PRER_RELATION": [
+  {
+   "column": "PRPR_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": true
+  },
+  {
+   "column": "PRER_PRPR_ENTITY",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": true
+  },
+  {
+   "column": "PRER_EFF_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "PRER_TERM_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "PRER_MCTR_TRSN",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRER_PRPR_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCRV_REL_VALUE_CD",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRER_REL_VAL_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRER_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_PRFA_FACILITY": [
+  {
+   "column": "PRPR_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": true
+  },
+  {
+   "column": "PRFA_NAME",
+   "type": "char",
+   "attributes": 50.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRFA_AHA_FAC_NO",
+   "type": "char",
+   "attributes": 15.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRFA_AMA_FAC_NO",
+   "type": "char",
+   "attributes": 15.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRFA_SP_ROOM_RATE",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "PRFA_LAST_CHAN_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "PRFA_NAME_XLOW",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRCR_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRFA_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  }
+ ],
+ "CMC_PRPR_PROV": [
+  {
+   "column": "PRPR_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": true
+  },
+  {
+   "column": "PRPR_ENTITY",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRCR_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "TPCT_MCTR_TCAT",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRPR_PAY_CL_METH",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRPR_MCTR_TYPE",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRPR_MCTR_PRTY",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRCF_MCTR_SPEC",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRPR_NAME",
+   "type": "char",
+   "attributes": 55.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRPR_NPI",
+   "type": "char",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRCP_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRAD_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRAD_TYPE_CHECK",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRAD_TYPE_PRIM",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCTN_ID",
+   "type": "char",
+   "attributes": 9.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRPR_STS",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRPR_MCTR_REV",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRPR_PREAUTH_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRPR_PAY_HOLD_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "PRPR_OPTS",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRPR_CL_EFT_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRPR_CAP_EFT_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRPR_NAME_XLOW",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRPR_LAST_CHAN_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "PRPR_MCTR_LANG",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRPR_EXTN_ADDR_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCBR_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "USUS_ID",
+   "type": "char",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "CRCY_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRPR_TERM_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "PRPR_MCTR_TRSN",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRPR_TAXONOMY_CD",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRPR_EDI_DEST_ID",
+   "type": "char",
+   "attributes": 15.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRPR_EDI_DEST_QUAL",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRPR_RA_DEST_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRPR_CLRNGHOUSE_ID",
+   "type": "char",
+   "attributes": 30.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRPR_LAST_MCPA_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "PRPR_PR_RED_CD",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRCF_MCTR_SPEC2",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRPR_MCTR_VAL1",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRPR_MCTR_VAL2",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRPR_RMT_TRANS_CD",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRPR_RMT_DEL_NAME",
+   "type": "varchar",
+   "attributes": 50.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRPR_RMT_COMM_NO",
+   "type": "varchar",
+   "attributes": 256.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRPR_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRPR_PA_RA_END_DT_NVL",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  }
+ ],
+ "CMC_PSCD_POS_DESC": [
+  {
+   "column": "PSCD_ID",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": true
+  },
+  {
+   "column": "PSCD_DESC",
+   "type": "char",
+   "attributes": 70.0,
+   "primary_key": false
+  },
+  {
+   "column": "PSCD_POS_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "TPCT_MCTR_TCAT",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "TPCT_MCTR_SETG",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PSCD_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_PYPY_PAYOR": [
+  {
+   "column": "PYPY_ID",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": true
+  },
+  {
+   "column": "PYPY_EFF_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "PYPY_TERM_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "PYBA_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_TAX_ID",
+   "type": "char",
+   "attributes": 9.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_PAYOR_NAME",
+   "type": "char",
+   "attributes": 50.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_ADDR1",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_ADDR2",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_ADDR3",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_CITY",
+   "type": "char",
+   "attributes": 19.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_STATE",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_ZIP",
+   "type": "char",
+   "attributes": 11.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_COUNTY",
+   "type": "char",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_CTRY_CD",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_PHONE",
+   "type": "char",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_PHONE_EXT",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_FAX",
+   "type": "char",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_FAX_EXT",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_EMAIL",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_CK_STOCK",
+   "type": "char",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_LASER_CK_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_EDI_835_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_EDI_DEST_ID",
+   "type": "char",
+   "attributes": 15.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_EDI_DEST_QUAL",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_835_PAY_METH",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_835_ACH_FMT",
+   "type": "char",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_DFI_ID_QUAL",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_NATL_PLAN_ID",
+   "type": "varchar",
+   "attributes": 80.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_ID_NO",
+   "type": "varchar",
+   "attributes": 50.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_HLTH_IND_NO",
+   "type": "varchar",
+   "attributes": 50.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_NAIC_CODE",
+   "type": "varchar",
+   "attributes": 50.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_WEBSITE",
+   "type": "varchar",
+   "attributes": 256.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_BC_NAME",
+   "type": "varchar",
+   "attributes": 50.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_BC_PHONE",
+   "type": "varchar",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_BC_PHONE_EXT",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_BC_FAX",
+   "type": "varchar",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_BC_EMAIL",
+   "type": "varchar",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_TC_NAME",
+   "type": "varchar",
+   "attributes": 50.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_TC_PHONE",
+   "type": "varchar",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_TC_PHONE_EXT",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_TC_FAX",
+   "type": "varchar",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_TC_EMAIL",
+   "type": "varchar",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_TC_WEBSITE",
+   "type": "varchar",
+   "attributes": 256.0,
+   "primary_key": false
+  },
+  {
+   "column": "PYPY_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_RCCT_CONV": [
+  {
+   "column": "TPCT_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": true
+  },
+  {
+   "column": "TPCT_MCTR_TCAT",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": true
+  },
+  {
+   "column": "RCCT_MCTR_SETG",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": true
+  },
+  {
+   "column": "RCCT_RCRC_ID_LOW",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": true
+  },
+  {
+   "column": "RCCT_RCRC_ID_HIGH",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "SESE_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "CSPD_CAT",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "RPTC_RPT_CAT",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "RCCT_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_SBAD_ADDR": [
+  {
+   "column": "SBSB_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "SBAD_TYPE",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": true
+  },
+  {
+   "column": "GRGR_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SBAD_ADDR1",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBAD_ADDR2",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBAD_ADDR3",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBAD_CITY",
+   "type": "char",
+   "attributes": 19.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBAD_STATE",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBAD_ZIP",
+   "type": "char",
+   "attributes": 11.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBAD_COUNTY",
+   "type": "char",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBAD_CTRY_CD",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBAD_PHONE",
+   "type": "char",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBAD_PHONE_EXT",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBAD_FAX",
+   "type": "char",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBAD_FAX_EXT",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBAD_EMAIL",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBAD_CITY_XLOW",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBAD_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_SBSB_SUBSC": [
+  {
+   "column": "SBSB_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "GRGR_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SBSB_ID",
+   "type": "char",
+   "attributes": 9.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBSB_LAST_NAME",
+   "type": "char",
+   "attributes": 35.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBSB_FIRST_NAME",
+   "type": "char",
+   "attributes": 15.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBSB_MID_INIT",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBSB_TITLE",
+   "type": "char",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBSB_ORIG_EFF_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SBSB_MCTR_STS",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBSB_MCTR_VIP",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBSB_MCTR_SRSN",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBSB_PRCS_STS",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBSB_EMPLOY_ID",
+   "type": "char",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBSB_HIRE_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SBSB_RETIRE_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SBSB_CONV_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SBSB_FI",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBSB_PAY_CL_METH",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBSB_EFT_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBAD_TYPE_HOME",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBAD_TYPE_MAIL",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBAD_TYPE_WORK",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBSB_LAST_NAME_XLOW",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "MCBR_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SBSB_SIG_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SBSB_RECD_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SBSB_PAY_FSAC_METH",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBSB_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBSB_MLR_EFT_IND_NVL",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_SBSG_RELATION": [
+  {
+   "column": "SBSB_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "SBSG_EFF_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "GRGR_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SBSG_TERM_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SBSG_MCTR_TRSN",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "SBSG_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_SECT_CONV": [
+  {
+   "column": "TPCT_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": true
+  },
+  {
+   "column": "SESE_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": true
+  },
+  {
+   "column": "CSPD_CAT",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "RPTC_RPT_CAT",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "SECT_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  }
+ ],
+ "CMC_SEDF_SE_DEFN": [
+  {
+   "column": "PDBC_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": true
+  },
+  {
+   "column": "SEDF_EFF_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "SESE_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": true
+  },
+  {
+   "column": "SEDF_TERM_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SEPC_PRICE_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "SEDF_TYPE",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "SEDF_UM_REQ_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "SEDF_UM_BP_REF_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "SEDF_UM_MAT_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "SEDF_RWH_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "SEDF_CAP_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "SEDF_OPTS",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "SEDF_UM_AUTH_WAIVE",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SEDF_UM_AUTH_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SEDF_UM_UNITS_WAIVE",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SEDF_AUTH_WV_DAYS",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SEDF_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  }
+ ],
+ "CMC_SEDS_SE_DESC": [
+  {
+   "column": "SESE_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": true
+  },
+  {
+   "column": "SEDS_DESC",
+   "type": "char",
+   "attributes": 70.0,
+   "primary_key": false
+  },
+  {
+   "column": "SEDS_TYPE",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "SESE_ID_XLOW",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "SEDS_DESC_XLOW",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "SEDS_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  }
+ ],
+ "CMC_SEPY_SE_PYMT": [
+  {
+   "column": "SEPY_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": true
+  },
+  {
+   "column": "SEPY_EFF_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "SESE_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": true
+  },
+  {
+   "column": "SEPY_TERM_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SESE_RULE",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "SEPY_EXP_CAT",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "SEPY_ACCT_CAT",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "SEPY_OPTS",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "SESE_RULE_ALT",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "SESE_RULE_ALT_COND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "SEPY_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  }
+ ],
+ "CMC_SESE_SERVICE": [
+  {
+   "column": "SESE_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": true
+  },
+  {
+   "column": "SESE_RULE",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": true
+  },
+  {
+   "column": "SESE_DESC",
+   "type": "char",
+   "attributes": 70.0,
+   "primary_key": false
+  },
+  {
+   "column": "SESE_CM_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "SESE_PA_AMT_REQ",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "SESE_PA_UNIT_REQ",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "SESE_PA_PROC_REQ",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "SESE_VALID_SEX",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "SESE_SEX_EXCD_ID",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "SESE_MIN_AGE",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SESE_MAX_AGE",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SESE_AGE_EXCD_ID",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "SESE_COV_TYPE",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "SESE_COV_EXCD_ID",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "SESE_RULE_TYPE",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "SESE_CALC_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "SERL_REL_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "SESE_OPTS",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "WMDS_SEQ_NO",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SESE_ID_XLOW",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "SESE_DESC_XLOW",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "SESE_DIS_EXCD_ID",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "SESE_MAX_CPAY_PCT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SESE_FSA_REIMB_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "SESE_HSA_REIMB_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "SESE_HRA_DED_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "SESE_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SESE_MAX_CPAY_ACT_NVL",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "SESE_CPAY_EXCD_ID_NVL",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_SETR_TIER": [
+  {
+   "column": "SESE_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": true
+  },
+  {
+   "column": "SESE_RULE",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": true
+  },
+  {
+   "column": "SETR_TIER_NO",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "SETR_ALLOW_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SETR_ALLOW_CTR",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SETR_COPAY_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SETR_COIN_PCT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ACAC_ACC_NO",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SETR_OPTS",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "SETR_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_SGSG_SUB_GROUP": [
+  {
+   "column": "SGSG_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "GRGR_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_NAME",
+   "type": "char",
+   "attributes": 50.0,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_ADDR1",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_ADDR2",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_ADDR3",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_CITY",
+   "type": "char",
+   "attributes": 19.0,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_STATE",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_ZIP",
+   "type": "char",
+   "attributes": 11.0,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_COUNTY",
+   "type": "char",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_CTRY_CD",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_PHONE",
+   "type": "char",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_PHONE_EXT",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_FAX",
+   "type": "char",
+   "attributes": 20.0,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_FAX_EXT",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_EMAIL",
+   "type": "char",
+   "attributes": 40.0,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_MCTR_TYPE",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_MCTR_VIP",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "CSCS_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_STS",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_ORIG_EFF_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_TERM_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_MCTR_TRSN",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "EXCD_ID",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_RNST_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_CONV_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_RENEW_MMDD",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_PREV_ANNV_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_CURR_ANNV_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_NEXT_ANNV_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_MCTR_PTYP",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_UNDW_USUS_ID",
+   "type": "char",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_BL_CONV_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_NAME_XLOW",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_CITY_XLOW",
+   "type": "char",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_MCTR_LANG",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_EXTN_ADDR_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "WMDS_SEQ_NO",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_TOTAL_EMPL",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_TOTAL_ELIG",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_TOTAL_CONTR",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_POL_NO",
+   "type": "char",
+   "attributes": 30.0,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_EIN",
+   "type": "char",
+   "attributes": 9.0,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_ERIS_MMDD",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_RECD_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_RUNOUT_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_RUNOUT_EXCD",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_TRANS_ACCEPT",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_CONT_EFF_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_TERM_PREM_MOS",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_RNST_TYPE",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_RNST_VAL",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SGSG_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_TPCT_CPT_CONV": [
+  {
+   "column": "TPCT_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": true
+  },
+  {
+   "column": "TPCT_MCTR_TCAT",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": true
+  },
+  {
+   "column": "TPCT_MCTR_SETG",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": true
+  },
+  {
+   "column": "TPCT_IPCD_LOW",
+   "type": "char",
+   "attributes": 5.0,
+   "primary_key": true
+  },
+  {
+   "column": "TPCT_MODIFIER",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": true
+  },
+  {
+   "column": "TPCT_IPCD_HIGH",
+   "type": "char",
+   "attributes": 5.0,
+   "primary_key": false
+  },
+  {
+   "column": "SESE_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "CSPD_CAT",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "RPTC_RPT_CAT",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "TPCT_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  }
+ ],
+ "CMC_UMSV_SERVICES": [
+  {
+   "column": "UMUM_REF_ID",
+   "type": "char",
+   "attributes": 9.0,
+   "primary_key": true
+  },
+  {
+   "column": "UMSV_SEQ_NO",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": true
+  },
+  {
+   "column": "MEME_CK",
+   "type": "int",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_AUTH_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_REF_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_TYPE",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_CAT",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_INPUT_USID",
+   "type": "char",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_INPUT_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_RECD_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_NEXT_REV_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_AUTH_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "UMVT_STS",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMVT_STS_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "UMVT_SEQ_NO",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_FROM_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_TO_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_PRPR_ID_REQ",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_PRPR_ID_SVC",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_PRPR_ID_FAC",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_PRPR_ID_PCP",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_MED_INFO_REL",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_IDCD_ID_PRI",
+   "type": "varchar",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_IDCD_ID_REL",
+   "type": "varchar",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_MDCD_ID_PRI",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMDX_REF_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_PSCD_ID_REQ",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_PSCD_POS_REQ",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_PSCD_ID_AUTH",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_PSCD_POS_AUTH",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_MCTR_PSOR",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_PR_NW_STS",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_OUT_AREA_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_MCTR_RIND",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "SESE_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "SESE_RULE",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "SEPC_PRICE_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "SEGR_ID",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "IPCD_ID",
+   "type": "char",
+   "attributes": 7.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_UNITS_REQ",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_UNITS_AUTH",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_MCTR_UNIT",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_CHARGE",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_CONTRACT_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_NEGOTIATE_AMT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_NEGOTIATE_PCT",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_MCTR_NFEE",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_PRICE",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_PRICE_EXCD",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_DISALL_EXCD",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_MCTR_LDNY",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_USID_LDNY",
+   "type": "char",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_PRE_AUTH_TOS",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_PRE_AUTH_PROC",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_PRE_AUTH_DIAG",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_PRE_AUTH_PROV",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_CASE_MGT_TOS",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_CASE_MGT_PROC",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_CASE_MGT_DIAG",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_ME_AGE",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_PER_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_MCTR_PVIO",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_PR_COMP_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_MCTR_PRCM",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_AS_NORM1",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_SSO_REQ",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_SSO_OBTAIN",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_AS_NORM2",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_POS_NORM",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_RECORD_NO",
+   "type": "char",
+   "attributes": 11.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_USID_SITE",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "NWPR_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDBC_PFX_NPPR",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDBC_PFX_SEDF",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "LTLT_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "SEPY_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_PCP_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "PDBC_PFX_SEGR",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_AMT_ALLOW",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_UNITS_ALLOW",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_AMT_PAID",
+   "type": "money",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_UNITS_PAID",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_DENY_DT",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "NWNW_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "AGAG_ID",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_CE_EDIT_ACT",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_CE_EDIT_TYPE",
+   "type": "char",
+   "attributes": 2.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_CE_FMT_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_CE_SEQ_NO",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_MCTR_CALL",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_MCTR_ASOR",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "MEME_HICN",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_NWNW_ID_REQ",
+   "type": "char",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_REQ_NW_STS",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_PRAD_TYPE_SVC",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_PRAD_TYPE_REQ",
+   "type": "char",
+   "attributes": 3.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_MICRO_ID",
+   "type": "char",
+   "attributes": 18.0,
+   "primary_key": false
+  },
+  {
+   "column": "PCAG_PFX",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_OOA_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_SVC_AREA_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_COMG_OBT_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "DFSC_ID",
+   "type": "varchar",
+   "attributes": 8.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_DOFR_RISK_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_DOFR_RISK_ID",
+   "type": "varchar",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_DOFR_DELG_CL",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_DOFR_CL_ID",
+   "type": "varchar",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_DOFR_DELG_UM",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_DOFR_UM_ID",
+   "type": "varchar",
+   "attributes": 12.0,
+   "primary_key": false
+  },
+  {
+   "column": "PRCF_MCTR_SPEC",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  },
+  {
+   "column": "IDCD_ID_PRI_SUB",
+   "type": "varchar",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "IDCD_ID_SUB_RELP",
+   "type": "varchar",
+   "attributes": 10.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_IDCD_MAN_IND",
+   "type": "char",
+   "attributes": 1.0,
+   "primary_key": false
+  },
+  {
+   "column": "UMSV_LOCK_TOKEN",
+   "type": "smallint",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "ATXR_SOURCE_ID",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_LAST_UPD_DTM",
+   "type": "datetime",
+   "attributes": null,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_USUS_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "SYS_DBUSER_ID",
+   "type": "varchar",
+   "attributes": 48.0,
+   "primary_key": false
+  },
+  {
+   "column": "EHBD_ID_NVL",
+   "type": "char",
+   "attributes": 4.0,
+   "primary_key": false
+  }
+ ]
+}

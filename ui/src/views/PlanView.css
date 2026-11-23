@@ -1,0 +1,209 @@
+.planview {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  max-width: 1060px;
+}
+
+.planview__title {
+  font-size: var(--t-large);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+.planview__lede {
+  margin-top: var(--space-2);
+  color: var(--ink-soft);
+  font-size: var(--t-small);
+  max-width: 66ch;
+  line-height: 1.55;
+}
+
+/* Provenance bar ---------------------------------------------------- */
+
+.planview__provenance {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.planview__bar {
+  display: flex;
+  height: 10px;
+  border-radius: 2px;
+  overflow: hidden;
+  gap: 1px;
+}
+.planview__bar-part--structural { background: var(--structural); }
+.planview__bar-part--catalog    { background: var(--catalog); }
+.planview__bar-part--learned    { background: var(--learned); }
+.planview__bar-part--user       { background: var(--user); }
+.planview__bar-part--physical   { background: var(--physical); }
+
+.planview__legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+}
+.planview__legend li {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  font-size: var(--t-small);
+}
+.planview__swatch {
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+  align-self: center;
+}
+.planview__swatch--structural { background: var(--structural); }
+.planview__swatch--catalog    { background: var(--catalog); }
+.planview__swatch--learned    { background: var(--learned); }
+.planview__swatch--user       { background: var(--user); }
+.planview__swatch--physical   { background: var(--physical); }
+.planview__legend-count { font-weight: 700; }
+.planview__legend-label { color: var(--ink-soft); }
+.planview__legend-share { color: var(--ink-faint); font-size: var(--t-micro); }
+
+.planview__warnings {
+  margin: var(--space-2) 0 0;
+  padding-left: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-weight: 400;
+}
+
+/* Field grid -------------------------------------------------------- */
+
+.planview__table-head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  font-size: var(--t-base);
+  font-weight: 600;
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--rule-strong);
+}
+.planview__table-meta {
+  font-size: var(--t-small);
+  font-weight: 400;
+  color: var(--ink-faint);
+}
+
+.planview__grid {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--t-small);
+}
+.planview__grid th {
+  text-align: left;
+  font-size: var(--t-micro);
+  font-weight: 600;
+  color: var(--ink-faint);
+  padding: 5px var(--space-3) 5px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.planview__grid td {
+  padding: 5px var(--space-3) 5px 0;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: baseline;
+}
+.planview__grid tbody tr {
+  cursor: pointer;
+}
+.planview__grid tbody tr:hover {
+  background: var(--paper-sunk);
+}
+.planview__grid tbody tr.is-open {
+  background: var(--paper-sunk);
+}
+.planview__col {
+  font-weight: 600;
+  white-space: nowrap;
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+.planview__element {
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+.planview__params {
+  color: var(--ink-faint);
+  font-size: var(--t-micro);
+  max-width: 340px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.planview__beat {
+  color: var(--user);
+  font-size: var(--t-micro);
+  white-space: nowrap;
+}
+
+.planview__expanded td {
+  padding: 0 0 var(--space-4);
+  background: var(--paper-sunk);
+}
+.planview__detail {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 210px;
+  gap: var(--space-5);
+  padding: var(--space-4);
+}
+.planview__detail-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-width: 0;
+}
+.planview__overrode {
+  font-size: var(--t-small);
+  color: var(--ink-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.planview__inline {
+  font-weight: 600;
+}
+.planview__inline--structural { color: var(--structural); }
+.planview__inline--catalog    { color: var(--catalog); }
+.planview__inline--learned    { color: var(--learned); }
+.planview__inline--user       { color: var(--user); }
+.planview__inline--physical   { color: var(--physical); }
+
+.planview__detail-side {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  border-left: 1px solid var(--rule);
+  padding-left: var(--space-4);
+}
+.planview__detail-side dt {
+  font-size: var(--t-micro);
+  color: var(--ink-faint);
+}
+.planview__detail-side dd {
+  font-size: var(--t-small);
+  margin: 0;
+}
+
+@media (max-width: 860px) {
+  .planview__detail {
+    grid-template-columns: 1fr;
+  }
+  .planview__detail-side {
+    border-left: none;
+    border-top: 1px solid var(--rule);
+    padding-left: 0;
+    padding-top: var(--space-3);
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+}

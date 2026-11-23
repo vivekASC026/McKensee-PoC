@@ -1,0 +1,108 @@
+/* Defining a layout by hand. Sits under the sample reader on the Layouts tab,
+   because reading a sample is the quicker route when there is one. */
+.designer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  margin-top: var(--space-5);
+  background: var(--paper-sunk);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+}
+.designer__head h3 {
+  font-size: var(--t-small);
+  font-weight: 600;
+}
+.designer__controls,
+.designer__add {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+.designer__modes {
+  display: flex;
+  border: 1px solid var(--rule-strong);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.designer__mode {
+  font-family: var(--sans);
+  font-size: var(--t-small);
+  padding: 5px var(--space-4);
+  background: var(--paper-raised);
+  border: 0;
+  cursor: pointer;
+  color: var(--ink-soft);
+}
+.designer__mode + .designer__mode {
+  border-left: 1px solid var(--rule-strong);
+}
+.designer__mode--on {
+  background: var(--ink);
+  color: var(--paper);
+}
+.designer__name input {
+  min-width: 28ch;
+}
+.designer__add select {
+  min-width: 34ch;
+}
+.designer__width {
+  width: 7ch;
+  text-align: right;
+}
+.designer__row-actions {
+  white-space: nowrap;
+}
+.designer__row-actions button {
+  font-size: var(--t-small);
+  padding: 2px 7px;
+  margin-left: 3px;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  cursor: pointer;
+  color: var(--ink-soft);
+}
+.designer__row-actions button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.designer__field {
+  width: 20ch;
+  font-size: var(--t-small);
+  padding: 2px 6px;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+/* A field's rule: what fills it, and how that was decided. Shared by a sample
+   just read, a saved layout being edited, and the designer. */
+.fieldrule {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+.fieldrule select {
+  max-width: 38ch;
+  font-size: var(--t-small);
+}
+.fields__format {
+  color: var(--ink-faint);
+  font-size: var(--t-micro);
+}
+.fields__sample {
+  color: var(--ink-faint);
+  max-width: 16ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.editor {
+  border-color: var(--rule-strong);
+}

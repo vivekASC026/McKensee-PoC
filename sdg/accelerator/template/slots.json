@@ -1,0 +1,76 @@
+{
+ "_about": "Every place the accelerator's builder writes, by a neutral slot name: the builder names slots only, never a pack place, so no key name of the code's own (some health-shaped) sits in a .py file. <primary> and <child> stand for the record kinds' keys. A file is pack, features, story or glossary.",
+ "slots": {
+  "pack_id": "pack:id",
+  "pack_name": "pack:name",
+  "plan_name": "pack:plan_name",
+  "record_kinds": "pack:entities",
+  "modules": "pack:modules",
+  "formats": "pack:formats",
+  "extract": "pack:extract",
+
+  "continuous_features": "features:analyzer.continuous_features",
+  "categorical_features": "features:analyzer.categorical_features",
+  "geography_columns": "features:analyzer.geography_columns",
+  "description_columns": "features:analyzer.description_columns",
+  "filter_columns": "features:analyzer.filter_columns",
+  "feature_labels": "features:analyzer.feature_labels",
+
+  "primary_columns": "features:store.member_columns",
+  "child_columns": "features:store.claim_columns",
+  "primary_key": "features:store.member_key",
+  "report_keys": "features:store.report_keys",
+  "personal_columns": "features:store.personal_columns",
+  "personal_columns_rows": "features:store.personal_columns_rows",
+  "child_filters": "features:store.claims_filters",
+  "combo_key": "features:store.combo_key",
+  "type_filter": "features:store.type_filter",
+  "baseline_scope": "features:store.baseline_scope",
+
+  "defined_patterns": "features:patterns.defined",
+  "discovery_defaults": "features:patterns.discovery_defaults",
+  "scope_levels": "features:patterns.scope_levels",
+  "scenario_dimensions": "features:patterns.scenario_dimensions",
+  "scenario_split": "features:patterns.scenario_split",
+  "primary_report_fields": "features:patterns.report_fields.<primary>",
+  "child_report_fields": "features:patterns.report_fields.<child>",
+  "primary_over_child": "features:patterns.report_fields.member_claims",
+  "report_generation": "features:patterns.report_generation",
+
+  "loaders": "features:loaders",
+
+  "child_record_key": "features:child_analysis.record_key",
+  "child_primary_key": "features:child_analysis.primary_key",
+  "child_type_column": "features:child_analysis.type_column",
+  "child_histograms": "features:child_analysis.histograms",
+  "child_continuous": "features:child_analysis.continuous",
+  "child_categorical": "features:child_analysis.categorical",
+  "child_shown_continuous": "features:child_analysis.shown_continuous",
+  "child_shown_categorical": "features:child_analysis.shown_categorical",
+  "child_name_type": "features:child_analysis.name.type",
+  "child_name_amount": "features:child_analysis.name.amount",
+  "child_name_amount_words": "features:child_analysis.name.amount_words",
+  "child_name_fallback": "features:child_analysis.name.fallback",
+  "child_line_prefixes": "features:child_analysis.line_column_prefixes",
+
+  "primary_histograms": "features:primary_analysis.histograms",
+  "primary_naming_levels": "features:primary_analysis.naming.levels",
+  "primary_age_feature": "features:primary_analysis.naming.age_feature",
+
+  "screen_facts": "features:screen_facts",
+
+  "stop_words": "story:stop_words",
+  "reading_child_words": "story:reading.child_words",
+  "reading_names": "story:reading.names",
+  "reading_ages": "story:reading.ages",
+  "reading_amount": "story:reading.amount",
+  "reading_count_nouns": "story:reading.count_nouns",
+  "reading_data_types": "story:reading.data_types",
+
+  "primary_glossary": "glossary:<primary>",
+  "child_glossary": "glossary:<child>",
+  "chart_ranges": "glossary:charts.ranges",
+  "chart_mixes": "glossary:charts.mixes",
+  "phrases": "glossary:phrases"
+ }
+}

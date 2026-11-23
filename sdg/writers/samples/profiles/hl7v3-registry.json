@@ -1,0 +1,99 @@
+{
+  "about": "An HL7 v3 Patient Registry message (IHE PIX/PDQ v3: PRPA_IN201301UV02 add, PRPA_IN201302UV02 revise) modeled on a sample: one message per member, the sample's message filled by the config. The transmission wrapper (sender, receiver, processing codes) and the control act are the sample's; the message's id is its own and its creation time the file's as-of date. The patient is under controlActProcess/subject/registrationEvent/subject1/patient. Same XML as CDA (the cda reader); a kind's profile (hl7v3-prpa-add.json) extends this one.",
+  "syntax": "cda",
+  "version": "NE2008",
+  "subject": "members",
+  "match": [],
+
+  "units": [
+    {"name": "member", "group": "MEMBER_ID", "row": "count", "starts": "message",
+     "about": "A message per member: a registry hears of each patient on their own.",
+     "missing": "The sample has no message to model on."}
+  ],
+
+  "counts": {"ids": "controlActProcess/subject/registrationEvent/subject1/patient/id",
+             "names": "controlActProcess/subject/registrationEvent/subject1/patient/patientPerson/name",
+             "addresses": "controlActProcess/subject/registrationEvent/subject1/patient/patientPerson/addr"},
+  "summary": "1 message · 1 patient · {ids} ids · {names} names · {addresses} addresses",
+
+  "structural": {
+    "about": "What routes and frames the message, never a value anybody generates: the interaction, processing and acknowledgement codes, the sender's and receiver's devices, and HL7 v3's class, mood, type and null-flavor codes. Never proposed.",
+    "elements": ["interactionId", "processingCode", "processingModeCode", "acceptAckCode",
+                 "receiver", "sender", "templateId", "typeId", "realmCode"],
+    "attributes": ["root", "codeSystem", "codeSystemName", "codeSystemVersion", "displayName",
+                   "classCode", "moodCode", "typeCode", "nullFlavor", "use", "qualifier",
+                   "xsi:type", "determinerCode", "assigningAuthorityName", "ITSVersion"]
+  },
+
+  "qualified": {
+    "about": "An id's extension is a registry number or an SSN by its root.",
+    "id/@extension": ["root"]
+  },
+
+  "member": {
+    "about": "Where a place's suggestion can be for the member: the patient. Their mother (personalRelationship) and the provider organization are somebody else's.",
+    "under": ["controlActProcess/subject/registrationEvent/subject1/patient"],
+    "except": ["controlActProcess/subject/registrationEvent/subject1/patient/providerOrganization",
+               "controlActProcess/subject/registrationEvent/subject1/patient/patientPerson/personalRelationship"]
+  },
+
+  "levels": {"about": "A message is the member's own: nothing in it is an enclosing unit's."},
+
+  "places": {
+    "about": "What a place of the patient holds, when a config's algorithm name does not say. First fitting wins: the SSN before any other id. null keeps the sample's value (SDM makes no religion, race or ethnicity).",
+    "list": [
+      {"at": "controlActProcess/subject/registrationEvent/subject1/patient/patientPerson/asOtherIDs/id/@extension", "where": {"root": "2.16.840.1.113883.4.1"}, "is": "SSN"},
+      {"at": "controlActProcess/subject/registrationEvent/subject1/patient/patientPerson/asOtherIDs/id/@extension", "is": null},
+      {"at": "controlActProcess/subject/registrationEvent/subject1/patient/id/@extension", "is": "MEMBER_ID"},
+      {"at": "controlActProcess/subject/registrationEvent/subject1/patient/patientPerson/name/given", "is": "FIRST_NAME"},
+      {"at": "controlActProcess/subject/registrationEvent/subject1/patient/patientPerson/name/family", "is": "LAST_NAME"},
+      {"at": "controlActProcess/subject/registrationEvent/subject1/patient/patientPerson/name/prefix", "is": null},
+      {"at": "controlActProcess/subject/registrationEvent/subject1/patient/patientPerson/name/suffix", "is": null},
+      {"at": "controlActProcess/subject/registrationEvent/subject1/patient/patientPerson/telecom/@value", "prefix": "tel:", "is": "PHONE"},
+      {"at": "controlActProcess/subject/registrationEvent/subject1/patient/patientPerson/telecom/@value", "prefix": "fax:", "is": "PHONE"},
+      {"at": "controlActProcess/subject/registrationEvent/subject1/patient/patientPerson/telecom/@value", "is": null},
+      {"at": "controlActProcess/subject/registrationEvent/subject1/patient/patientPerson/administrativeGenderCode/@code", "is": "SEX"},
+      {"at": "controlActProcess/subject/registrationEvent/subject1/patient/patientPerson/birthTime/@value", "is": "DOB"},
+      {"at": "controlActProcess/subject/registrationEvent/subject1/patient/patientPerson/addr/streetAddressLine", "is": "STREET_1"},
+      {"at": "controlActProcess/subject/registrationEvent/subject1/patient/patientPerson/addr/city", "is": "ADDRESS_CITY"},
+      {"at": "controlActProcess/subject/registrationEvent/subject1/patient/patientPerson/addr/state", "is": "ADDRESS_STATE"},
+      {"at": "controlActProcess/subject/registrationEvent/subject1/patient/patientPerson/addr/postalCode", "is": "ADDRESS_ZIP"},
+      {"at": "controlActProcess/subject/registrationEvent/subject1/patient/patientPerson/addr/country", "is": null},
+      {"at": "controlActProcess/subject/registrationEvent/subject1/patient/patientPerson/addr/houseNumber", "is": null},
+      {"at": "controlActProcess/subject/registrationEvent/subject1/patient/patientPerson/maritalStatusCode/@code", "is": "MARITAL_STATUS"},
+      {"at": "controlActProcess/subject/registrationEvent/subject1/patient/patientPerson/religiousAffiliationCode/@code", "is": null},
+      {"at": "controlActProcess/subject/registrationEvent/subject1/patient/patientPerson/raceCode/@code", "is": null},
+      {"at": "controlActProcess/subject/registrationEvent/subject1/patient/patientPerson/ethnicGroupCode/@code", "is": null},
+      {"at": "controlActProcess/subject/registrationEvent/subject1/patient/statusCode/@code", "is": null},
+      {"at": "controlActProcess/subject/registrationEvent/subject1/patient/veryImportantPersonCode/@code", "is": null},
+      {"at": "controlActProcess/subject/registrationEvent/statusCode/@code", "is": null},
+      {"at": "controlActProcess/code/@code", "is": null}
+    ]
+  },
+
+  "derive": [
+    {"about": "Every message written is a new one: its id is its own.",
+     "op": "rename", "at": "id/@extension", "to": "{id}-{n}"},
+    {"about": "A message is created on the file's as-of date, as an X12 envelope is.",
+     "op": "set", "at": "creationTime/@value", "value": "20260630120000"}
+  ],
+
+  "checks": {
+    "about": "What a written message is checked for: the transmission wrapper HL7 v3 requires of every interaction, the patient, and HL7 AdministrativeGender codes.",
+    "disclaimer": "Each message is checked as well-formed HL7 v3 XML with its root interaction, the transmission wrapper and control act it requires, unique message ids and AdministrativeGender codes. Not a schema (multicacheschemas) or IHE conformance validation.",
+    "required": ["id", "creationTime", "interactionId", "processingCode", "processingModeCode",
+                 "acceptAckCode", "receiver", "sender", "controlActProcess",
+                 "controlActProcess/subject/registrationEvent/subject1/patient/patientPerson"],
+    "codes": [
+      {"at": "controlActProcess/subject/registrationEvent/subject1/patient/patientPerson/administrativeGenderCode/@code", "in": ["M", "F", "UN"]}
+    ]
+  },
+
+  "codes": {
+    "about": "Where HL7 v3 codes a value the store codes otherwise: the store's value -> HL7's, else 'default'.",
+    "list": [
+      {"at": "controlActProcess/subject/registrationEvent/subject1/patient/patientPerson/administrativeGenderCode/@code", "element": "SEX",
+       "map": {"M": "M", "F": "F", "U": "UN"}, "default": "UN"}
+    ]
+  }
+}

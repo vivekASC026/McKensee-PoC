@@ -1,0 +1,32 @@
+{
+ "defaults": [
+  "gender",
+  "age_band"
+ ],
+ "dimensions": [
+  {
+   "key": "gender",
+   "label": "Gender"
+  },
+  {
+   "key": "marital_status",
+   "label": "Marital status"
+  },
+  {
+   "key": "relationship",
+   "label": "Relationship"
+  },
+  {
+   "key": "plan",
+   "label": "Plan"
+  },
+  {
+   "key": "product",
+   "label": "Product"
+  },
+  {
+   "key": "age_band",
+   "label": "Age band"
+  }
+ ]
+}

@@ -1,0 +1,1827 @@
+{
+  // HL7 v2.5.1 masking configuration - one config for every v2.5.1 message type.
+  //
+  // HL7 segment layouts are defined per VERSION, not per message. PID-5 is the patient name in
+  // an ADT^A01, an ORU^R01 and a DFT^P03 alike; message types only draw different subsets of the
+  // same segments. So one config serves all 121 message types in the reference. That is the
+  // opposite of X12, where an 837 and an 835 need separate configs because the same segment id
+  // means different things in each.
+  //
+  // Every segment referenced by the 20 documented message structures is covered.
+  //
+  // SOURCES, which differ in how much they should be trusted:
+  //
+  //   The 31 segments in HL7_v2.5.1_Layout_Reference.xlsx take both their field layout and their
+  //   PHI category from that workbook.
+  //
+  //   The other segments - IN2, IN3, ACC, PDA, IAM, UB1, UB2, DRG, RXA, RXO, ODS, ODT, RQD,
+  //   TQ2, BLG, SPM, CTD, CON, SAC, CTI, DSC - take their FIELD LAYOUT from the HL7 v2.5.1
+  //   standard text at hl7.eu/HL7v2x/v251/std251, but their PHI CATEGORY is a judgement applied
+  //   here, following the same Safe Harbor categories the workbook uses. Those judgements are
+  //   worth a review; the layouts are not guesses.
+  //
+  // REVIEWED AND DELIBERATELY NOT MASKED:
+  //   TCD - all eight fields are dilution factors, repeat flags or a test code. Nothing to mask.
+  //   RXR - route, site, device and method codes. Clinical, not identifying.
+  //   RQ1 - vendor pricing and catalogue references, no patient link.
+  //   SAC equipment, carrier and tray identifiers (5, 10, 13) name machine slots, not patients.
+  //   CTI-2 and CTI-3 are study phase and time point codes; only the sponsor study id is masked.
+
+  // =====================================================================================
+  // HOW TO CHANGE THIS FILE
+  //
+  // Edits take effect when the engine next loads this file: at startup, or when somebody presses
+  // "Reload configs" on the console's Run screen. Editing it while the engine runs changes nothing
+  // until one of those happens, and a run already going keeps the config it started with - so a
+  // masked file can be said to have been masked by one config from beginning to end.
+  //
+  // ------------------------------------------------------------------- POSITION IS OFF BY ONE
+  //
+  // "position" COUNTS THE SEGMENT ID AS 1. So position = the HL7 field number + 1. This is the
+  // most common mistake made in this file and it is a silent one: a rule addressing a field that
+  // happens to be empty matches nothing, and the run still reports success.
+  //
+  //     PID|1||MRN123456^^^GENHOSP^MR|
+  //     ---  -  ---------
+  //      |   |      +----- PID-3,  "position": 4
+  //      |   +------------ PID-1,  "position": 2
+  //      +---------------- the segment id, "position": 1
+  //                        (PID-2 is the empty field between them, "position": 3)
+  //
+  // The comment above each block names the HL7 field; the position inside it is one higher. When a
+  // rule seems to do nothing, check this first. The run prints a line for every rule that matched
+  // nothing, and it names the address it was given rather than the field you meant:
+  //
+  //     no matches: PID-02.1  (PID position 3.1 -> alnumId)
+  //
+  // "component" is 1-based and has NO such offset: component 1 is the first component. Repetitions
+  // need nothing said about them - a rule applies to every repetition separated by ~.
+  //
+  //     PID|1||MRN123456^^^GENHOSP^MR~MBR987654^^^PAYERX^MB
+  //            ---------   -------    ---------   ------
+  //                |          |
+  //                |          +-- component 4, matched in BOTH repetitions
+  //                +------------- component 1, matched in BOTH repetitions
+  //
+  // ------------------------------------------------------------------------ WORKED EXAMPLES
+  //
+  // CHANGE WHICH ALGORITHM MASKS A FIELD - edit the name and nothing else:
+  //
+  //     { "position": 6, "component": 1, "algorithm_reference": { "name": "lastName" } }
+  //                                                                        --------
+  //     Any algorithm or instance name the engine knows works here. If the name is not one of
+  //     them the config is refused when it loads, with the full list printed, so a typo cannot
+  //     reach a file.
+  //
+  // STOP MASKING A FIELD - delete its line. There is no "noMask" algorithm: a field with no rule
+  // is retained exactly as it was, and deleting the line is how you say "leave this alone".
+  //
+  // MASK A FIELD NOTHING COVERS YET - add a line to that segment's block:
+  //
+  //     { "segment_id": "PID",
+  //       // PID-3 Patient Identifier List [CX] - Identifier
+  //       "maskFields": [
+  //         { "position": 4, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+  //         { "position": 4, "component": 4, "algorithm_reference": { "name": "orgName" } } ] },
+  //                       -             -                                     -------
+  //                    PID-3   the assigning authority        a facility code, so orgName rather
+  //                                                           than a person algorithm
+  //
+  //     Think about whether the value should move at all before adding a rule. The assigning
+  //     authority above is the namespace that makes an MRN mean something: masking it keeps the
+  //     join but changes what a downstream system reads as the issuing facility. It is
+  //     deliberately NOT masked as this file stands, and a test pins that.
+  //
+  // MASK A SEGMENT WITH NO BLOCK AT ALL - add a whole one. Nothing in the Java knows these segment
+  // names; every one of them comes from this file.
+  //
+  //     { "segment_id": "ZPD",
+  //       "maskFields": [
+  //         { "position": 2, "algorithm_reference": { "name": "memberId" } } ] },
+  //
+  // A RULE WITH NO "component" masks the whole field, separators and all. Use that for simple
+  // fields - a date, an id - and name a component for composite ones like a name or an address.
+  // =====================================================================================
+
+  "record_delimiter":      "\r",
+  "segment_delimiter":     "|",
+  "component_delimiter":   "^",
+  "repetition_delimiter":  "~",
+
+  // No "subjects" block. This config is the profiling output - segment, PHI element, algorithm -
+  // and it says nothing about whose dates are whose, so every date it shifts takes one offset for
+  // the whole run. Every date in a message therefore moves together, MSH-7 and EVN-2 included; what
+  // is gone is the per-patient, per-encounter and per-order separation, so one recovered date
+  // recovers the rest.
+
+  "maskSegments": [
+
+    // ------------------------------------------------------------------ MSH
+    //
+    // MSH-7 is the time the sending system built the message, which reads like envelope metadata -
+    // the HL7 equivalent of an X12 ISA/GS date, and those are deliberately left alone.
+    //
+    // It is not the same case. An 837 is a batch assembled well after the care it bills, so its
+    // interchange date is related to no one; a real-time ADT^A01 exists BECAUSE the admission
+    // happened and goes out seconds later. In the reference sample MSH-7 is 15 seconds after EVN-2
+    // and half an hour after the PV1-44 admit, so it IS the admission date kept somewhere else.
+    // Left in the clear beside a shifted PV1-44 it hands over the encounter offset and unmasks
+    // every other encounter date in the message.
+    //
+    // It follows the encounter, so a message keeps its internal chronology. Note that MSH is also
+    // the subject-reset segment and the first segment there is: this rule only resolves because
+    // subjects are resolved for the whole message before any rule runs.
+    //
+    // A deployment that genuinely ships batch files spanning many patients can drop this rule -
+    // there MSH-7 is the batch run and relates to nobody.
+    { "segment_id": "MSH",
+      // MSH-7 Date/Time Of Message [TS] - Date
+      "maskFields": [
+        { "position": 7, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+
+    // ------------------------------------------------------------------ EVN
+    { "segment_id": "EVN",
+      // EVN-2 Recorded Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 3, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+    { "segment_id": "EVN",
+      // EVN-5 Operator ID [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 6, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 6, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 6, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "EVN",
+      // EVN-6 Event Occurred [TS] - Date
+      "maskFields": [
+        { "position": 7, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+
+    // ------------------------------------------------------------------ PID
+    { "segment_id": "PID",
+      // PID-2 Patient ID [CX] - Identifier
+      "maskFields": [
+        { "position": 3, "component": 1, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "PID",
+      // PID-3 Patient Identifier List [CX] - Identifier
+      "maskFields": [
+        { "position": 4, "component": 1, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "PID",
+      // PID-4 Alternate Patient ID - PID [CX] - Identifier
+      "maskFields": [
+        { "position": 5, "component": 1, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "PID",
+      // PID-5 Patient Name [XPN] - Name
+      "maskFields": [
+        { "position": 6, "component": 1, "algorithm_reference": { "name": "lastName" } },
+        { "position": 6, "component": 2, "algorithm_reference": { "name": "firstName" } },
+        { "position": 6, "component": 3, "algorithm_reference": { "name": "middleName" } } ] },
+    { "segment_id": "PID",
+      // PID-6 Mother's Maiden Name [XPN] - Name
+      "maskFields": [
+        { "position": 7, "component": 1, "algorithm_reference": { "name": "lastName" } },
+        { "position": 7, "component": 2, "algorithm_reference": { "name": "firstName" } },
+        { "position": 7, "component": 3, "algorithm_reference": { "name": "middleName" } } ] },
+    { "segment_id": "PID",
+      // PID-7 Date/Time of Birth [TS] - Date
+      "maskFields": [
+        { "position": 8, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+    { "segment_id": "PID",
+      // PID-9 Patient Alias [XPN] - Name
+      "maskFields": [
+        { "position": 10, "component": 1, "algorithm_reference": { "name": "lastName" } },
+        { "position": 10, "component": 2, "algorithm_reference": { "name": "firstName" } },
+        { "position": 10, "component": 3, "algorithm_reference": { "name": "middleName" } } ] },
+    { "segment_id": "PID",
+      // PID-11 Patient Address [XAD] - Address/Geo
+      "maskFields": [
+        { "position": 12, "component": 1, "algorithm_reference": { "name": "address" } },
+        { "position": 12, "component": 3, "algorithm_reference": { "name": "city" } },
+        { "position": 12, "component": 5, "algorithm_reference": { "name": "zip" } } ] },
+    { "segment_id": "PID",
+      // PID-12 County Code [IS] - Address/Geo
+      "maskFields": [
+        { "position": 13, "algorithm_reference": { "name": "city" } } ] },
+    { "segment_id": "PID",
+      // PID-13 Phone Number - Home [XTN] - Phone/Contact
+      "maskFields": [
+        { "position": 14, "component": 4, "algorithm_reference": { "name": "email" } },
+        { "position": 14, "component": 6, "algorithm_reference": { "name": "numericId" } },
+        { "position": 14, "component": 7, "algorithm_reference": { "name": "numericId" } } ] },
+    { "segment_id": "PID",
+      // PID-14 Phone Number - Business [XTN] - Phone/Contact
+      "maskFields": [
+        { "position": 15, "component": 4, "algorithm_reference": { "name": "email" } },
+        { "position": 15, "component": 6, "algorithm_reference": { "name": "numericId" } },
+        { "position": 15, "component": 7, "algorithm_reference": { "name": "numericId" } } ] },
+    { "segment_id": "PID",
+      // PID-18 Patient Account Number [CX] - Identifier
+      "maskFields": [
+        { "position": 19, "component": 1, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "PID",
+      // PID-19 SSN Number - Patient [ST] - SSN
+      "maskFields": [
+        { "position": 20, "algorithm_reference": { "name": "ssn" } } ] },
+    { "segment_id": "PID",
+      // PID-20 Driver's License Number - Patient [DLN] - Identifier
+      "maskFields": [
+        { "position": 21, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 21, "component": 3, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+    { "segment_id": "PID",
+      // PID-21 Mother's Identifier [CX] - Identifier
+      "maskFields": [
+        { "position": 22, "component": 1, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "PID",
+      // PID-23 Birth Place [ST] - Address/Geo
+      "maskFields": [
+        { "position": 24, "algorithm_reference": { "name": "city" } } ] },
+    { "segment_id": "PID",
+      // PID-29 Patient Death Date and Time [TS] - Date
+      "maskFields": [
+        { "position": 30, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+
+    // ------------------------------------------------------------------ PD1
+    { "segment_id": "PD1",
+      // PD1-4 Patient Primary Care Provider Name & ID No. [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 5, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 5, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 5, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "PD1",
+      // PD1-10 Duplicate Patient [CX] - Identifier
+      "maskFields": [
+        { "position": 11, "component": 1, "algorithm_reference": { "name": "alnumId" } } ] },
+
+    // ------------------------------------------------------------------ NK1
+    { "segment_id": "NK1",
+      // NK1-2 Name [XPN] - Name
+      "maskFields": [
+        { "position": 3, "component": 1, "algorithm_reference": { "name": "lastName" } },
+        { "position": 3, "component": 2, "algorithm_reference": { "name": "firstName" } },
+        { "position": 3, "component": 3, "algorithm_reference": { "name": "middleName" } } ] },
+    { "segment_id": "NK1",
+      // NK1-4 Address [XAD] - Address/Geo
+      "maskFields": [
+        { "position": 5, "component": 1, "algorithm_reference": { "name": "address" } },
+        { "position": 5, "component": 3, "algorithm_reference": { "name": "city" } },
+        { "position": 5, "component": 5, "algorithm_reference": { "name": "zip" } } ] },
+    { "segment_id": "NK1",
+      // NK1-5 Phone Number [XTN] - Phone/Contact
+      "maskFields": [
+        { "position": 6, "component": 4, "algorithm_reference": { "name": "email" } },
+        { "position": 6, "component": 6, "algorithm_reference": { "name": "numericId" } },
+        { "position": 6, "component": 7, "algorithm_reference": { "name": "numericId" } } ] },
+    { "segment_id": "NK1",
+      // NK1-6 Business Phone Number [XTN] - Phone/Contact
+      "maskFields": [
+        { "position": 7, "component": 4, "algorithm_reference": { "name": "email" } },
+        { "position": 7, "component": 6, "algorithm_reference": { "name": "numericId" } },
+        { "position": 7, "component": 7, "algorithm_reference": { "name": "numericId" } } ] },
+    { "segment_id": "NK1",
+      // NK1-12 Next of Kin / Associated Parties Employee Number [CX] - Identifier
+      "maskFields": [
+        { "position": 13, "component": 1, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "NK1",
+      // NK1-13 Organization Name - NK1 [XON] - Employer
+      "maskFields": [
+        { "position": 14, "component": 1, "algorithm_reference": { "name": "orgName" } } ] },
+    { "segment_id": "NK1",
+      // NK1-16 Date/Time of Birth [TS] - Date
+      "maskFields": [
+        { "position": 17, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+    { "segment_id": "NK1",
+      // NK1-26 Mother's Maiden Name [XPN] - Name
+      "maskFields": [
+        { "position": 27, "component": 1, "algorithm_reference": { "name": "lastName" } },
+        { "position": 27, "component": 2, "algorithm_reference": { "name": "firstName" } },
+        { "position": 27, "component": 3, "algorithm_reference": { "name": "middleName" } } ] },
+    { "segment_id": "NK1",
+      // NK1-30 Contact Person's Name [XPN] - Name
+      "maskFields": [
+        { "position": 31, "component": 1, "algorithm_reference": { "name": "lastName" } },
+        { "position": 31, "component": 2, "algorithm_reference": { "name": "firstName" } },
+        { "position": 31, "component": 3, "algorithm_reference": { "name": "middleName" } } ] },
+    { "segment_id": "NK1",
+      // NK1-31 Contact Person's Telephone Number [XTN] - Phone/Contact
+      "maskFields": [
+        { "position": 32, "component": 4, "algorithm_reference": { "name": "email" } },
+        { "position": 32, "component": 6, "algorithm_reference": { "name": "numericId" } },
+        { "position": 32, "component": 7, "algorithm_reference": { "name": "numericId" } } ] },
+    { "segment_id": "NK1",
+      // NK1-32 Contact Person's Address [XAD] - Address/Geo
+      "maskFields": [
+        { "position": 33, "component": 1, "algorithm_reference": { "name": "address" } },
+        { "position": 33, "component": 3, "algorithm_reference": { "name": "city" } },
+        { "position": 33, "component": 5, "algorithm_reference": { "name": "zip" } } ] },
+    { "segment_id": "NK1",
+      // NK1-33 Next of Kin/Associated Party's Identifiers [CX] - Identifier
+      "maskFields": [
+        { "position": 34, "component": 1, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "NK1",
+      // NK1-37 Contact Person Social Security Number [ST] - SSN
+      "maskFields": [
+        { "position": 38, "algorithm_reference": { "name": "ssn" } } ] },
+    { "segment_id": "NK1",
+      // NK1-38 Next of Kin Birth Place [ST] - Address/Geo
+      "maskFields": [
+        { "position": 39, "algorithm_reference": { "name": "city" } } ] },
+
+    // ------------------------------------------------------------------ PV1
+    { "segment_id": "PV1",
+      // PV1-5 Preadmit Number [CX] - Identifier
+      "maskFields": [
+        { "position": 6, "component": 1, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "PV1",
+      // PV1-7 Attending Doctor [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 8, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 8, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 8, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "PV1",
+      // PV1-8 Referring Doctor [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 9, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 9, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 9, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "PV1",
+      // PV1-9 Consulting Doctor [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 10, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 10, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 10, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "PV1",
+      // PV1-17 Admitting Doctor [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 18, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 18, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 18, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "PV1",
+      // PV1-19 Visit Number [CX] - Identifier
+      "maskFields": [
+        { "position": 20, "component": 1, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "PV1",
+      // PV1-44 Admit Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 45, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+    { "segment_id": "PV1",
+      // PV1-45 Discharge Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 46, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+    { "segment_id": "PV1",
+      // PV1-50 Alternate Visit ID [CX] - Identifier
+      "maskFields": [
+        { "position": 51, "component": 1, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "PV1",
+      // PV1-52 Other Healthcare Provider [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 53, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 53, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 53, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+
+    // ------------------------------------------------------------------ PV2
+    { "segment_id": "PV2",
+      // PV2-5 Patient Valuables [ST] - Free Text (review)
+      "maskFields": [
+        { "position": 6, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "PV2",
+      // PV2-8 Expected Admit Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 9, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+    { "segment_id": "PV2",
+      // PV2-9 Expected Discharge Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 10, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+    { "segment_id": "PV2",
+      // PV2-12 Visit Description [ST] - Free Text (review)
+      "maskFields": [
+        { "position": 13, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "PV2",
+      // PV2-13 Referral Source Code [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 14, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 14, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 14, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "PV2",
+      // PV2-14 Previous Service Date [DT] - Date
+      "maskFields": [
+        { "position": 15, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+    { "segment_id": "PV2",
+      // PV2-26 Previous Treatment Date [DT] - Date
+      "maskFields": [
+        { "position": 27, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+    { "segment_id": "PV2",
+      // PV2-28 Signature on File Date [DT] - Date
+      "maskFields": [
+        { "position": 29, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+    { "segment_id": "PV2",
+      // PV2-29 First Similar Illness Date [DT] - Date
+      "maskFields": [
+        { "position": 30, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+    { "segment_id": "PV2",
+      // PV2-33 Expected Surgery Date and Time [TS] - Date
+      "maskFields": [
+        { "position": 34, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+    { "segment_id": "PV2",
+      // PV2-46 Patient Status Effective Date [DT] - Date
+      "maskFields": [
+        { "position": 47, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+    { "segment_id": "PV2",
+      // PV2-47 Expected LOA Return Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 48, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+    { "segment_id": "PV2",
+      // PV2-48 Expected Pre-admission Testing Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 49, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+
+    // ------------------------------------------------------------------ ROL
+    { "segment_id": "ROL",
+      // ROL-4 Role Person [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 5, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 5, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 5, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "ROL",
+      // ROL-11 Office/Home Address/Birthplace [XAD] - Provider/Staff
+      "maskFields": [
+        { "position": 12, "component": 1, "algorithm_reference": { "name": "address" } },
+        { "position": 12, "component": 3, "algorithm_reference": { "name": "city" } },
+        { "position": 12, "component": 5, "algorithm_reference": { "name": "zip" } } ] },
+    { "segment_id": "ROL",
+      // ROL-12 Phone [XTN] - Provider/Staff
+      "maskFields": [
+        { "position": 13, "component": 4, "algorithm_reference": { "name": "email" } },
+        { "position": 13, "component": 6, "algorithm_reference": { "name": "numericId" } },
+        { "position": 13, "component": 7, "algorithm_reference": { "name": "numericId" } } ] },
+
+    // ------------------------------------------------------------------ DB1
+    { "segment_id": "DB1",
+      // DB1-3 Disabled Person Identifier [CX] - Identifier
+      "maskFields": [
+        { "position": 4, "component": 1, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "DB1",
+      // DB1-5 Disability Start Date [DT] - Date
+      "maskFields": [
+        { "position": 6, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+    { "segment_id": "DB1",
+      // DB1-6 Disability End Date [DT] - Date
+      "maskFields": [
+        { "position": 7, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+    { "segment_id": "DB1",
+      // DB1-7 Disability Return to Work Date [DT] - Date
+      "maskFields": [
+        { "position": 8, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+    { "segment_id": "DB1",
+      // DB1-8 Disability Unable to Work Date [DT] - Date
+      "maskFields": [
+        { "position": 9, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+
+    // ------------------------------------------------------------------ AL1
+    { "segment_id": "AL1",
+      // AL1-6 Identification Date [DT] - Date
+      "maskFields": [
+        { "position": 7, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+
+    // ------------------------------------------------------------------ DG1
+    { "segment_id": "DG1",
+      // DG1-5 Diagnosis Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 6, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+    { "segment_id": "DG1",
+      // DG1-16 Diagnosing Clinician [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 17, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 17, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 17, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "DG1",
+      // DG1-19 Attestation Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 20, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+
+    // ------------------------------------------------------------------ PR1
+    { "segment_id": "PR1",
+      // PR1-5 Procedure Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 6, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+    { "segment_id": "PR1",
+      // PR1-8 Anesthesiologist [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 9, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 9, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 9, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "PR1",
+      // PR1-11 Surgeon [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 12, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 12, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 12, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "PR1",
+      // PR1-12 Procedure Practitioner [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 13, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 13, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 13, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+
+    // ------------------------------------------------------------------ GT1
+    { "segment_id": "GT1",
+      // GT1-2 Guarantor Number [CX] - Identifier
+      "maskFields": [
+        { "position": 3, "component": 1, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "GT1",
+      // GT1-3 Guarantor Name [XPN] - Name
+      "maskFields": [
+        { "position": 4, "component": 1, "algorithm_reference": { "name": "lastName" } },
+        { "position": 4, "component": 2, "algorithm_reference": { "name": "firstName" } },
+        { "position": 4, "component": 3, "algorithm_reference": { "name": "middleName" } } ] },
+    { "segment_id": "GT1",
+      // GT1-4 Guarantor Spouse Name [XPN] - Name
+      "maskFields": [
+        { "position": 5, "component": 1, "algorithm_reference": { "name": "lastName" } },
+        { "position": 5, "component": 2, "algorithm_reference": { "name": "firstName" } },
+        { "position": 5, "component": 3, "algorithm_reference": { "name": "middleName" } } ] },
+    { "segment_id": "GT1",
+      // GT1-5 Guarantor Address [XAD] - Address/Geo
+      "maskFields": [
+        { "position": 6, "component": 1, "algorithm_reference": { "name": "address" } },
+        { "position": 6, "component": 3, "algorithm_reference": { "name": "city" } },
+        { "position": 6, "component": 5, "algorithm_reference": { "name": "zip" } } ] },
+    { "segment_id": "GT1",
+      // GT1-6 Guarantor Ph Num - Home [XTN] - Phone/Contact
+      "maskFields": [
+        { "position": 7, "component": 4, "algorithm_reference": { "name": "email" } },
+        { "position": 7, "component": 6, "algorithm_reference": { "name": "numericId" } },
+        { "position": 7, "component": 7, "algorithm_reference": { "name": "numericId" } } ] },
+    { "segment_id": "GT1",
+      // GT1-7 Guarantor Ph Num - Business [XTN] - Phone/Contact
+      "maskFields": [
+        { "position": 8, "component": 4, "algorithm_reference": { "name": "email" } },
+        { "position": 8, "component": 6, "algorithm_reference": { "name": "numericId" } },
+        { "position": 8, "component": 7, "algorithm_reference": { "name": "numericId" } } ] },
+    { "segment_id": "GT1",
+      // GT1-8 Guarantor Date/Time of Birth [TS] - Date
+      "maskFields": [
+        { "position": 9, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+    { "segment_id": "GT1",
+      // GT1-12 Guarantor SSN [ST] - SSN
+      "maskFields": [
+        { "position": 13, "algorithm_reference": { "name": "ssn" } } ] },
+    { "segment_id": "GT1",
+      // GT1-16 Guarantor Employer Name [XPN] - Employer
+      "maskFields": [
+        { "position": 17, "component": 1, "algorithm_reference": { "name": "orgName" } } ] },
+    { "segment_id": "GT1",
+      // GT1-17 Guarantor Employer Address [XAD] - Employer
+      "maskFields": [
+        { "position": 18, "component": 1, "algorithm_reference": { "name": "address" } },
+        { "position": 18, "component": 3, "algorithm_reference": { "name": "city" } },
+        { "position": 18, "component": 5, "algorithm_reference": { "name": "zip" } } ] },
+    { "segment_id": "GT1",
+      // GT1-18 Guarantor Employer Phone Number [XTN] - Employer
+      "maskFields": [
+        { "position": 19, "component": 4, "algorithm_reference": { "name": "email" } },
+        { "position": 19, "component": 6, "algorithm_reference": { "name": "numericId" } },
+        { "position": 19, "component": 7, "algorithm_reference": { "name": "numericId" } } ] },
+    { "segment_id": "GT1",
+      // GT1-19 Guarantor Employee ID Number [CX] - Identifier
+      "maskFields": [
+        { "position": 20, "component": 1, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "GT1",
+      // GT1-21 Guarantor Organization Name [XON] - Employer
+      "maskFields": [
+        { "position": 22, "component": 1, "algorithm_reference": { "name": "orgName" } } ] },
+    { "segment_id": "GT1",
+      // GT1-24 Guarantor Death Date And Time [TS] - Date
+      "maskFields": [
+        { "position": 25, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+    { "segment_id": "GT1",
+      // GT1-29 Guarantor Employer ID Number [CX] - Employer
+      "maskFields": [
+        { "position": 30, "component": 1, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "GT1",
+      // GT1-31 Guarantor Hire Effective Date [DT] - Date
+      "maskFields": [
+        { "position": 32, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+    { "segment_id": "GT1",
+      // GT1-32 Employment Stop Date [DT] - Date
+      "maskFields": [
+        { "position": 33, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+    { "segment_id": "GT1",
+      // GT1-42 Mother's Maiden Name [XPN] - Name
+      "maskFields": [
+        { "position": 43, "component": 1, "algorithm_reference": { "name": "lastName" } },
+        { "position": 43, "component": 2, "algorithm_reference": { "name": "firstName" } },
+        { "position": 43, "component": 3, "algorithm_reference": { "name": "middleName" } } ] },
+    { "segment_id": "GT1",
+      // GT1-45 Contact Person's Name [XPN] - Name
+      "maskFields": [
+        { "position": 46, "component": 1, "algorithm_reference": { "name": "lastName" } },
+        { "position": 46, "component": 2, "algorithm_reference": { "name": "firstName" } },
+        { "position": 46, "component": 3, "algorithm_reference": { "name": "middleName" } } ] },
+    { "segment_id": "GT1",
+      // GT1-46 Contact Person's Telephone Number [XTN] - Phone/Contact
+      "maskFields": [
+        { "position": 47, "component": 4, "algorithm_reference": { "name": "email" } },
+        { "position": 47, "component": 6, "algorithm_reference": { "name": "numericId" } },
+        { "position": 47, "component": 7, "algorithm_reference": { "name": "numericId" } } ] },
+    { "segment_id": "GT1",
+      // GT1-51 Guarantor Employer's Organization Name [XON] - Employer
+      "maskFields": [
+        { "position": 52, "component": 1, "algorithm_reference": { "name": "orgName" } } ] },
+    { "segment_id": "GT1",
+      // GT1-56 Guarantor Birth Place [ST] - Address/Geo
+      "maskFields": [
+        { "position": 57, "algorithm_reference": { "name": "city" } } ] },
+
+    // ------------------------------------------------------------------ IN1
+    { "segment_id": "IN1",
+      // IN1-8 Group Number [ST] - Identifier
+      "maskFields": [
+        { "position": 9, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "IN1",
+      // IN1-9 Group Name [XON] - Employer
+      "maskFields": [
+        { "position": 10, "component": 1, "algorithm_reference": { "name": "orgName" } } ] },
+    { "segment_id": "IN1",
+      // IN1-10 Insured's Group Emp ID [CX] - Employer
+      "maskFields": [
+        { "position": 11, "component": 1, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "IN1",
+      // IN1-11 Insured's Group Emp Name [XON] - Employer
+      "maskFields": [
+        { "position": 12, "component": 1, "algorithm_reference": { "name": "orgName" } } ] },
+    { "segment_id": "IN1",
+      // IN1-12 Plan Effective Date [DT] - Date
+      "maskFields": [
+        { "position": 13, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+    { "segment_id": "IN1",
+      // IN1-13 Plan Expiration Date [DT] - Date
+      "maskFields": [
+        { "position": 14, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+    { "segment_id": "IN1",
+      // IN1-14 Authorization Information [AUI] - Identifier
+      "maskFields": [
+        { "position": 15, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 15, "component": 2, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+    { "segment_id": "IN1",
+      // IN1-16 Name of Insured [XPN] - Name
+      "maskFields": [
+        { "position": 17, "component": 1, "algorithm_reference": { "name": "lastName" } },
+        { "position": 17, "component": 2, "algorithm_reference": { "name": "firstName" } },
+        { "position": 17, "component": 3, "algorithm_reference": { "name": "middleName" } } ] },
+    { "segment_id": "IN1",
+      // IN1-18 Insured's Date of Birth [TS] - Date
+      "maskFields": [
+        { "position": 19, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+    { "segment_id": "IN1",
+      // IN1-19 Insured's Address [XAD] - Address/Geo
+      "maskFields": [
+        { "position": 20, "component": 1, "algorithm_reference": { "name": "address" } },
+        { "position": 20, "component": 3, "algorithm_reference": { "name": "city" } },
+        { "position": 20, "component": 5, "algorithm_reference": { "name": "zip" } } ] },
+    { "segment_id": "IN1",
+      // IN1-24 Notice of Admission Date [DT] - Date
+      "maskFields": [
+        { "position": 25, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+    { "segment_id": "IN1",
+      // IN1-26 Report of Eligibility Date [DT] - Date
+      "maskFields": [
+        { "position": 27, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+    { "segment_id": "IN1",
+      // IN1-28 Pre-Admit Cert (PAC) [ST] - Identifier
+      "maskFields": [
+        { "position": 29, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "IN1",
+      // IN1-29 Verification Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 30, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+    { "segment_id": "IN1",
+      // IN1-30 Verification By [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 31, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 31, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 31, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "IN1",
+      // IN1-36 Policy Number [ST] - Identifier
+      "maskFields": [
+        { "position": 37, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "IN1",
+      // IN1-44 Insured's Employer's Address [XAD] - Employer
+      "maskFields": [
+        { "position": 45, "component": 1, "algorithm_reference": { "name": "address" } },
+        { "position": 45, "component": 3, "algorithm_reference": { "name": "city" } },
+        { "position": 45, "component": 5, "algorithm_reference": { "name": "zip" } } ] },
+    { "segment_id": "IN1",
+      // IN1-49 Insured's ID Number [CX] - Identifier
+      "maskFields": [
+        { "position": 50, "component": 1, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "IN1",
+      // IN1-51 Signature Code Date [DT] - Date
+      "maskFields": [
+        { "position": 52, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+    { "segment_id": "IN1",
+      // IN1-52 Insured's Birth Place [ST] - Address/Geo
+      "maskFields": [
+        { "position": 53, "algorithm_reference": { "name": "city" } } ] },
+
+    // ------------------------------------------------------------------ MRG
+    { "segment_id": "MRG",
+      // MRG-1 Prior Patient Identifier List [CX] - Identifier
+      "maskFields": [
+        { "position": 2, "component": 1, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "MRG",
+      // MRG-2 Prior Alternate Patient ID [CX] - Identifier
+      "maskFields": [
+        { "position": 3, "component": 1, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "MRG",
+      // MRG-3 Prior Patient Account Number [CX] - Identifier
+      "maskFields": [
+        { "position": 4, "component": 1, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "MRG",
+      // MRG-4 Prior Patient ID [CX] - Identifier
+      "maskFields": [
+        { "position": 5, "component": 1, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "MRG",
+      // MRG-5 Prior Visit Number [CX] - Identifier
+      "maskFields": [
+        { "position": 6, "component": 1, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "MRG",
+      // MRG-6 Prior Alternate Visit ID [CX] - Identifier
+      "maskFields": [
+        { "position": 7, "component": 1, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "MRG",
+      // MRG-7 Prior Patient Name [XPN] - Name
+      "maskFields": [
+        { "position": 8, "component": 1, "algorithm_reference": { "name": "lastName" } },
+        { "position": 8, "component": 2, "algorithm_reference": { "name": "firstName" } },
+        { "position": 8, "component": 3, "algorithm_reference": { "name": "middleName" } } ] },
+
+    // ------------------------------------------------------------------ ORC
+    { "segment_id": "ORC",
+      // ORC-2 Placer Order Number [EI] - Identifier
+      "maskFields": [
+        { "position": 3, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "ORC",
+      // ORC-3 Filler Order Number [EI] - Identifier
+      "maskFields": [
+        { "position": 4, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "ORC",
+      // ORC-4 Placer Group Number [EI] - Identifier
+      "maskFields": [
+        { "position": 5, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "ORC",
+      // ORC-9 Date/Time of Transaction [TS] - Date
+      "maskFields": [
+        { "position": 10, "algorithm_reference": { "name": "ORDER_DATE" } } ] },
+    { "segment_id": "ORC",
+      // ORC-10 Entered By [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 11, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 11, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 11, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "ORC",
+      // ORC-11 Verified By [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 12, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 12, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 12, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "ORC",
+      // ORC-12 Ordering Provider [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 13, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 13, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 13, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "ORC",
+      // ORC-14 Call Back Phone Number [XTN] - Provider/Staff
+      "maskFields": [
+        { "position": 15, "component": 4, "algorithm_reference": { "name": "email" } },
+        { "position": 15, "component": 6, "algorithm_reference": { "name": "numericId" } },
+        { "position": 15, "component": 7, "algorithm_reference": { "name": "numericId" } } ] },
+    { "segment_id": "ORC",
+      // ORC-15 Order Effective Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 16, "algorithm_reference": { "name": "ORDER_DATE" } } ] },
+    { "segment_id": "ORC",
+      // ORC-19 Action By [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 20, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 20, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 20, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "ORC",
+      // ORC-24 Ordering Provider Address [XAD] - Provider/Staff
+      "maskFields": [
+        { "position": 25, "component": 1, "algorithm_reference": { "name": "address" } },
+        { "position": 25, "component": 3, "algorithm_reference": { "name": "city" } },
+        { "position": 25, "component": 5, "algorithm_reference": { "name": "zip" } } ] },
+
+    // ------------------------------------------------------------------ OBR
+    { "segment_id": "OBR",
+      // OBR-2 Placer Order Number [EI] - Identifier
+      "maskFields": [
+        { "position": 3, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "OBR",
+      // OBR-3 Filler Order Number [EI] - Identifier
+      "maskFields": [
+        { "position": 4, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "OBR",
+      // OBR-6 Requested Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 7, "algorithm_reference": { "name": "ORDER_DATE" } } ] },
+    { "segment_id": "OBR",
+      // OBR-7 Observation Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 8, "algorithm_reference": { "name": "ORDER_DATE" } } ] },
+    { "segment_id": "OBR",
+      // OBR-8 Observation End Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 9, "algorithm_reference": { "name": "ORDER_DATE" } } ] },
+    { "segment_id": "OBR",
+      // OBR-10 Collector Identifier [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 11, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 11, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 11, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "OBR",
+      // OBR-13 Relevant Clinical Information [ST] - Free Text (review)
+      "maskFields": [
+        { "position": 14, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "OBR",
+      // OBR-14 Specimen Received Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 15, "algorithm_reference": { "name": "ORDER_DATE" } } ] },
+    { "segment_id": "OBR",
+      // OBR-16 Ordering Provider [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 17, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 17, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 17, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "OBR",
+      // OBR-17 Order Callback Phone Number [XTN] - Provider/Staff
+      "maskFields": [
+        { "position": 18, "component": 4, "algorithm_reference": { "name": "email" } },
+        { "position": 18, "component": 6, "algorithm_reference": { "name": "numericId" } },
+        { "position": 18, "component": 7, "algorithm_reference": { "name": "numericId" } } ] },
+    { "segment_id": "OBR",
+      // OBR-18 Placer Field 1 [ST] - Free Text (review)
+      "maskFields": [
+        { "position": 19, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "OBR",
+      // OBR-19 Placer Field 2 [ST] - Free Text (review)
+      "maskFields": [
+        { "position": 20, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "OBR",
+      // OBR-20 Filler Field 1 [ST] - Free Text (review)
+      "maskFields": [
+        { "position": 21, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "OBR",
+      // OBR-21 Filler Field 2 [ST] - Free Text (review)
+      "maskFields": [
+        { "position": 22, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "OBR",
+      // OBR-22 Results Rpt/Status Chng - Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 23, "algorithm_reference": { "name": "ORDER_DATE" } } ] },
+    { "segment_id": "OBR",
+      // OBR-28 Result Copies To [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 29, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 29, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 29, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "OBR",
+      // OBR-32 Principal Result Interpreter [NDL] - Provider/Staff
+      "maskFields": [
+        { "position": 33, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 33, "component": 2, "algorithm_reference": { "name": "ORDER_DATE" } },
+        { "position": 33, "component": 3, "algorithm_reference": { "name": "ORDER_DATE" } } ] },
+    { "segment_id": "OBR",
+      // OBR-33 Assistant Result Interpreter [NDL] - Provider/Staff
+      "maskFields": [
+        { "position": 34, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 34, "component": 2, "algorithm_reference": { "name": "ORDER_DATE" } },
+        { "position": 34, "component": 3, "algorithm_reference": { "name": "ORDER_DATE" } } ] },
+    { "segment_id": "OBR",
+      // OBR-34 Technician [NDL] - Provider/Staff
+      "maskFields": [
+        { "position": 35, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 35, "component": 2, "algorithm_reference": { "name": "ORDER_DATE" } },
+        { "position": 35, "component": 3, "algorithm_reference": { "name": "ORDER_DATE" } } ] },
+    { "segment_id": "OBR",
+      // OBR-35 Transcriptionist [NDL] - Provider/Staff
+      "maskFields": [
+        { "position": 36, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 36, "component": 2, "algorithm_reference": { "name": "ORDER_DATE" } },
+        { "position": 36, "component": 3, "algorithm_reference": { "name": "ORDER_DATE" } } ] },
+    { "segment_id": "OBR",
+      // OBR-36 Scheduled Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 37, "algorithm_reference": { "name": "ORDER_DATE" } } ] },
+    { "segment_id": "OBR",
+      // OBR-39 Collector's Comment [CE] - Free Text (review)
+      "maskFields": [
+        { "position": 40, "component": 2, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "OBR",
+      // OBR-43 Planned Patient Transport Comment [CE] - Free Text (review)
+      "maskFields": [
+        { "position": 44, "component": 2, "algorithm_reference": { "name": "redact" } } ] },
+
+    // ------------------------------------------------------------------ OBX
+    { "segment_id": "OBX",
+      // OBX-5 Observation Value [Varies (per OBX-2)] - Free Text (review)
+      "maskFields": [
+        { "position": 6, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "OBX",
+      // OBX-14 Date/Time of the Observation [TS] - Date
+      "maskFields": [
+        { "position": 15, "algorithm_reference": { "name": "ORDER_DATE" } } ] },
+    { "segment_id": "OBX",
+      // OBX-16 Responsible Observer [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 17, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 17, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 17, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "OBX",
+      // OBX-19 Date/Time of the Analysis [TS] - Date
+      "maskFields": [
+        { "position": 20, "algorithm_reference": { "name": "ORDER_DATE" } } ] },
+    { "segment_id": "OBX",
+      // OBX-25 Performing Organization Medical Director [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 26, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 26, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 26, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+
+    // ------------------------------------------------------------------ NTE
+    { "segment_id": "NTE",
+      // NTE-3 Comment [FT] - Free Text (review)
+      "maskFields": [
+        { "position": 4, "algorithm_reference": { "name": "redact" } } ] },
+
+    // ------------------------------------------------------------------ TQ1
+    { "segment_id": "TQ1",
+      // TQ1-7 Start Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 8, "algorithm_reference": { "name": "ORDER_DATE" } } ] },
+    { "segment_id": "TQ1",
+      // TQ1-8 End Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 9, "algorithm_reference": { "name": "ORDER_DATE" } } ] },
+    { "segment_id": "TQ1",
+      // TQ1-10 Condition Text [TX] - Free Text (review)
+      "maskFields": [
+        { "position": 11, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "TQ1",
+      // TQ1-11 Text Instruction [TX] - Free Text (review)
+      "maskFields": [
+        { "position": 12, "algorithm_reference": { "name": "redact" } } ] },
+
+    // ------------------------------------------------------------------ FT1
+    { "segment_id": "FT1",
+      // FT1-4 Transaction Date [DR] - Date
+      "maskFields": [
+        { "position": 5, "component": 1, "algorithm_reference": { "name": "ENCOUNTER_DATE" } },
+        { "position": 5, "component": 2, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+    { "segment_id": "FT1",
+      // FT1-5 Transaction Posting Date [TS] - Date
+      "maskFields": [
+        { "position": 6, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+    { "segment_id": "FT1",
+      // FT1-20 Performed By Code [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 21, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 21, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 21, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "FT1",
+      // FT1-21 Ordered By Code [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 22, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 22, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 22, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "FT1",
+      // FT1-23 Filler Order Number [EI] - Identifier
+      "maskFields": [
+        { "position": 24, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "FT1",
+      // FT1-24 Entered By Code [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 25, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 25, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 25, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "FT1",
+      // FT1-30 Payment Reference ID [CX] - Identifier
+      "maskFields": [
+        { "position": 31, "component": 1, "algorithm_reference": { "name": "alnumId" } } ] },
+
+    // ------------------------------------------------------------------ TXA
+    { "segment_id": "TXA",
+      // TXA-4 Activity Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 5, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+    { "segment_id": "TXA",
+      // TXA-5 Primary Activity Provider Code/Name [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 6, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 6, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 6, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "TXA",
+      // TXA-6 Origination Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 7, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+    { "segment_id": "TXA",
+      // TXA-7 Transcription Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 8, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+    { "segment_id": "TXA",
+      // TXA-8 Edit Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 9, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+    { "segment_id": "TXA",
+      // TXA-9 Originator Code/Name [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 10, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 10, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 10, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "TXA",
+      // TXA-10 Assigned Document Authenticator [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 11, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 11, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 11, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "TXA",
+      // TXA-11 Transcriptionist Code/Name [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 12, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 12, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 12, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "TXA",
+      // TXA-12 Unique Document Number [EI] - Identifier
+      "maskFields": [
+        { "position": 13, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "TXA",
+      // TXA-13 Parent Document Number [EI] - Identifier
+      "maskFields": [
+        { "position": 14, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "TXA",
+      // TXA-14 Placer Order Number [EI] - Identifier
+      "maskFields": [
+        { "position": 15, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "TXA",
+      // TXA-15 Filler Order Number [EI] - Identifier
+      "maskFields": [
+        { "position": 16, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "TXA",
+      // TXA-16 Unique Document File Name [ST] - Free Text (review)
+      "maskFields": [
+        { "position": 17, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "TXA",
+      // TXA-21 Document Change Reason [ST] - Free Text (review)
+      "maskFields": [
+        { "position": 22, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "TXA",
+      // TXA-22 Authentication Person, Time Stamp [PPN] - Provider/Staff
+      "maskFields": [
+        { "position": 23, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 23, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 23, "component": 3, "algorithm_reference": { "name": "firstName" } },
+        { "position": 23, "component": 15, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+    { "segment_id": "TXA",
+      // TXA-23 Distributed Copies (Code and Name of Recipients) [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 24, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 24, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 24, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+
+    // ------------------------------------------------------------------ SCH
+    { "segment_id": "SCH",
+      // SCH-1 Placer Appointment ID [EI] - Identifier
+      "maskFields": [
+        { "position": 2, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "SCH",
+      // SCH-2 Filler Appointment ID [EI] - Identifier
+      "maskFields": [
+        { "position": 3, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "SCH",
+      // SCH-4 Placer Group Number [EI] - Identifier
+      "maskFields": [
+        { "position": 5, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "SCH",
+      // SCH-11 Appointment Timing Quantity [TQ] - Date
+      "maskFields": [
+        { "position": 12, "component": 4, "algorithm_reference": { "name": "ORDER_DATE" } },
+        { "position": 12, "component": 5, "algorithm_reference": { "name": "ORDER_DATE" } } ] },
+    { "segment_id": "SCH",
+      // SCH-12 Placer Contact Person [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 13, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 13, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 13, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "SCH",
+      // SCH-13 Placer Contact Phone Number [XTN] - Provider/Staff
+      "maskFields": [
+        { "position": 14, "component": 4, "algorithm_reference": { "name": "email" } },
+        { "position": 14, "component": 6, "algorithm_reference": { "name": "numericId" } },
+        { "position": 14, "component": 7, "algorithm_reference": { "name": "numericId" } } ] },
+    { "segment_id": "SCH",
+      // SCH-14 Placer Contact Address [XAD] - Provider/Staff
+      "maskFields": [
+        { "position": 15, "component": 1, "algorithm_reference": { "name": "address" } },
+        { "position": 15, "component": 3, "algorithm_reference": { "name": "city" } },
+        { "position": 15, "component": 5, "algorithm_reference": { "name": "zip" } } ] },
+    { "segment_id": "SCH",
+      // SCH-16 Filler Contact Person [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 17, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 17, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 17, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "SCH",
+      // SCH-17 Filler Contact Phone Number [XTN] - Provider/Staff
+      "maskFields": [
+        { "position": 18, "component": 4, "algorithm_reference": { "name": "email" } },
+        { "position": 18, "component": 6, "algorithm_reference": { "name": "numericId" } },
+        { "position": 18, "component": 7, "algorithm_reference": { "name": "numericId" } } ] },
+    { "segment_id": "SCH",
+      // SCH-18 Filler Contact Address [XAD] - Provider/Staff
+      "maskFields": [
+        { "position": 19, "component": 1, "algorithm_reference": { "name": "address" } },
+        { "position": 19, "component": 3, "algorithm_reference": { "name": "city" } },
+        { "position": 19, "component": 5, "algorithm_reference": { "name": "zip" } } ] },
+    { "segment_id": "SCH",
+      // SCH-20 Entered By Person [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 21, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 21, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 21, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "SCH",
+      // SCH-21 Entered By Phone Number [XTN] - Provider/Staff
+      "maskFields": [
+        { "position": 22, "component": 4, "algorithm_reference": { "name": "email" } },
+        { "position": 22, "component": 6, "algorithm_reference": { "name": "numericId" } },
+        { "position": 22, "component": 7, "algorithm_reference": { "name": "numericId" } } ] },
+    { "segment_id": "SCH",
+      // SCH-23 Parent Placer Appointment ID [EI] - Identifier
+      "maskFields": [
+        { "position": 24, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "SCH",
+      // SCH-24 Parent Filler Appointment ID [EI] - Identifier
+      "maskFields": [
+        { "position": 25, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "SCH",
+      // SCH-26 Placer Order Number [EI] - Identifier
+      "maskFields": [
+        { "position": 27, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "SCH",
+      // SCH-27 Filler Order Number [EI] - Identifier
+      "maskFields": [
+        { "position": 28, "algorithm_reference": { "name": "alnumId" } } ] },
+
+    // ------------------------------------------------------------------ AIS
+    { "segment_id": "AIS",
+      // AIS-4 Start Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 5, "algorithm_reference": { "name": "ORDER_DATE" } } ] },
+
+    // ------------------------------------------------------------------ AIG
+    { "segment_id": "AIG",
+      // AIG-8 Start Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 9, "algorithm_reference": { "name": "ORDER_DATE" } } ] },
+
+    // ------------------------------------------------------------------ AIL
+    { "segment_id": "AIL",
+      // AIL-6 Start Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 7, "algorithm_reference": { "name": "ORDER_DATE" } } ] },
+
+    // ------------------------------------------------------------------ AIP
+    { "segment_id": "AIP",
+      // AIP-3 Personnel Resource ID [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 4, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 4, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 4, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "AIP",
+      // AIP-6 Start Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 7, "algorithm_reference": { "name": "ORDER_DATE" } } ] },
+
+    // ------------------------------------------------------------------ ERR
+    { "segment_id": "ERR",
+      // ERR-7 Diagnostic Information [TX] - Free Text (review)
+      "maskFields": [
+        { "position": 8, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "ERR",
+      // ERR-8 User Message [TX] - Free Text (review)
+      "maskFields": [
+        { "position": 9, "algorithm_reference": { "name": "redact" } } ] },
+
+    // ------------------------------------------------------------------ IN2
+    { "segment_id": "IN2",
+      // IN2-1 Insured's Employee ID [CX] - Identifier
+      "maskFields": [
+        { "position": 2, "component": 1, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "IN2",
+      // IN2-2 Insured's Social Security Number [ST] - SSN
+      "maskFields": [
+        { "position": 3, "algorithm_reference": { "name": "ssn" } } ] },
+    { "segment_id": "IN2",
+      // IN2-3 Insured's Employer's Name and ID [XCN] - Employer
+      "maskFields": [
+        { "position": 4, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 4, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 4, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "IN2",
+      // IN2-6 Medicare Health Ins Card Number [ST] - Identifier
+      "maskFields": [
+        { "position": 7, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "IN2",
+      // IN2-7 Medicaid Case Name [XPN] - Name
+      "maskFields": [
+        { "position": 8, "component": 1, "algorithm_reference": { "name": "lastName" } },
+        { "position": 8, "component": 2, "algorithm_reference": { "name": "firstName" } },
+        { "position": 8, "component": 3, "algorithm_reference": { "name": "middleName" } } ] },
+    { "segment_id": "IN2",
+      // IN2-8 Medicaid Case Number [ST] - Identifier
+      "maskFields": [
+        { "position": 9, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "IN2",
+      // IN2-9 Military Sponsor Name [XPN] - Name
+      "maskFields": [
+        { "position": 10, "component": 1, "algorithm_reference": { "name": "lastName" } },
+        { "position": 10, "component": 2, "algorithm_reference": { "name": "firstName" } },
+        { "position": 10, "component": 3, "algorithm_reference": { "name": "middleName" } } ] },
+    { "segment_id": "IN2",
+      // IN2-10 Military ID Number [ST] - Identifier
+      "maskFields": [
+        { "position": 11, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "IN2",
+      // IN2-17 Military Retire Date [DT] - Date
+      "maskFields": [
+        { "position": 18, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+    { "segment_id": "IN2",
+      // IN2-22 Special Coverage Approval Name [XPN] - Name
+      "maskFields": [
+        { "position": 23, "component": 1, "algorithm_reference": { "name": "lastName" } },
+        { "position": 23, "component": 2, "algorithm_reference": { "name": "firstName" } },
+        { "position": 23, "component": 3, "algorithm_reference": { "name": "middleName" } } ] },
+    { "segment_id": "IN2",
+      // IN2-25 Payor ID [CX] - Identifier
+      "maskFields": [
+        { "position": 26, "component": 1, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "IN2",
+      // IN2-26 Payor Subscriber ID [CX] - Identifier
+      "maskFields": [
+        { "position": 27, "component": 1, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "IN2",
+      // IN2-40 Mother's Maiden Name [XPN] - Name
+      "maskFields": [
+        { "position": 41, "component": 1, "algorithm_reference": { "name": "lastName" } },
+        { "position": 41, "component": 2, "algorithm_reference": { "name": "firstName" } },
+        { "position": 41, "component": 3, "algorithm_reference": { "name": "middleName" } } ] },
+    { "segment_id": "IN2",
+      // IN2-44 Insured's Employment Start Date [DT] - Date
+      "maskFields": [
+        { "position": 45, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+    { "segment_id": "IN2",
+      // IN2-45 Employment Stop Date [DT] - Date
+      "maskFields": [
+        { "position": 46, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+    { "segment_id": "IN2",
+      // IN2-46 Job Title [ST] - Employer
+      "maskFields": [
+        { "position": 47, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "IN2",
+      // IN2-49 Employer Contact Person Name [XPN] - Name
+      "maskFields": [
+        { "position": 50, "component": 1, "algorithm_reference": { "name": "lastName" } },
+        { "position": 50, "component": 2, "algorithm_reference": { "name": "firstName" } },
+        { "position": 50, "component": 3, "algorithm_reference": { "name": "middleName" } } ] },
+    { "segment_id": "IN2",
+      // IN2-50 Employer Contact Person Phone Number [XTN] - Phone/Contact
+      "maskFields": [
+        { "position": 51, "component": 4, "algorithm_reference": { "name": "email" } },
+        { "position": 51, "component": 6, "algorithm_reference": { "name": "numericId" } },
+        { "position": 51, "component": 7, "algorithm_reference": { "name": "numericId" } } ] },
+    { "segment_id": "IN2",
+      // IN2-52 Insured's Contact Person's Name [XPN] - Name
+      "maskFields": [
+        { "position": 53, "component": 1, "algorithm_reference": { "name": "lastName" } },
+        { "position": 53, "component": 2, "algorithm_reference": { "name": "firstName" } },
+        { "position": 53, "component": 3, "algorithm_reference": { "name": "middleName" } } ] },
+    { "segment_id": "IN2",
+      // IN2-53 Insured's Contact Person Phone Number [XTN] - Phone/Contact
+      "maskFields": [
+        { "position": 54, "component": 4, "algorithm_reference": { "name": "email" } },
+        { "position": 54, "component": 6, "algorithm_reference": { "name": "numericId" } },
+        { "position": 54, "component": 7, "algorithm_reference": { "name": "numericId" } } ] },
+    { "segment_id": "IN2",
+      // IN2-55 Relationship to the Patient Start Date [DT] - Date
+      "maskFields": [
+        { "position": 56, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+    { "segment_id": "IN2",
+      // IN2-56 Relationship to the Patient Stop Date [DT] - Date
+      "maskFields": [
+        { "position": 57, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+    { "segment_id": "IN2",
+      // IN2-58 Insurance Co Contact Phone Number [XTN] - Phone/Contact
+      "maskFields": [
+        { "position": 59, "component": 4, "algorithm_reference": { "name": "email" } },
+        { "position": 59, "component": 6, "algorithm_reference": { "name": "numericId" } },
+        { "position": 59, "component": 7, "algorithm_reference": { "name": "numericId" } } ] },
+    { "segment_id": "IN2",
+      // IN2-61 Patient ID Number [CX] - Identifier
+      "maskFields": [
+        { "position": 62, "component": 1, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "IN2",
+      // IN2-63 Insured's Phone Number - Home [XTN] - Phone/Contact
+      "maskFields": [
+        { "position": 64, "component": 4, "algorithm_reference": { "name": "email" } },
+        { "position": 64, "component": 6, "algorithm_reference": { "name": "numericId" } },
+        { "position": 64, "component": 7, "algorithm_reference": { "name": "numericId" } } ] },
+    { "segment_id": "IN2",
+      // IN2-64 Insured's Employer Phone Number [XTN] - Employer
+      "maskFields": [
+        { "position": 65, "component": 4, "algorithm_reference": { "name": "email" } },
+        { "position": 65, "component": 6, "algorithm_reference": { "name": "numericId" } },
+        { "position": 65, "component": 7, "algorithm_reference": { "name": "numericId" } } ] },
+    { "segment_id": "IN2",
+      // IN2-69 Insured Organization Name and ID [XON] - Employer
+      "maskFields": [
+        { "position": 70, "component": 1, "algorithm_reference": { "name": "orgName" } } ] },
+    { "segment_id": "IN2",
+      // IN2-70 Insured Employer Organization Name and ID [XON] - Employer
+      "maskFields": [
+        { "position": 71, "component": 1, "algorithm_reference": { "name": "orgName" } } ] },
+
+    // ------------------------------------------------------------------ IN3
+    { "segment_id": "IN3",
+      // IN3-2 Certification Number [CX] - Identifier
+      "maskFields": [
+        { "position": 3, "component": 1, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "IN3",
+      // IN3-3 Certified By [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 4, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 4, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 4, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "IN3",
+      // IN3-6 Certification Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 7, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+    { "segment_id": "IN3",
+      // IN3-7 Certification Modify Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 8, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+    { "segment_id": "IN3",
+      // IN3-8 Operator [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 9, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 9, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 9, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "IN3",
+      // IN3-9 Certification Begin Date [DT] - Date
+      "maskFields": [
+        { "position": 10, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+    { "segment_id": "IN3",
+      // IN3-10 Certification End Date [DT] - Date
+      "maskFields": [
+        { "position": 11, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+    { "segment_id": "IN3",
+      // IN3-13 Non-Concur Effective Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 14, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+    { "segment_id": "IN3",
+      // IN3-14 Physician Reviewer [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 15, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 15, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 15, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "IN3",
+      // IN3-15 Certification Contact [ST] - Name
+      "maskFields": [
+        { "position": 16, "algorithm_reference": { "name": "lastName" } } ] },
+    { "segment_id": "IN3",
+      // IN3-16 Certification Contact Phone Number [XTN] - Phone/Contact
+      "maskFields": [
+        { "position": 17, "component": 4, "algorithm_reference": { "name": "email" } },
+        { "position": 17, "component": 6, "algorithm_reference": { "name": "numericId" } },
+        { "position": 17, "component": 7, "algorithm_reference": { "name": "numericId" } } ] },
+    { "segment_id": "IN3",
+      // IN3-19 Certification Agency Phone Number [XTN] - Phone/Contact
+      "maskFields": [
+        { "position": 20, "component": 4, "algorithm_reference": { "name": "email" } },
+        { "position": 20, "component": 6, "algorithm_reference": { "name": "numericId" } },
+        { "position": 20, "component": 7, "algorithm_reference": { "name": "numericId" } } ] },
+    { "segment_id": "IN3",
+      // IN3-21 Case Manager [ST] - Provider/Staff
+      "maskFields": [
+        { "position": 22, "algorithm_reference": { "name": "lastName" } } ] },
+    { "segment_id": "IN3",
+      // IN3-22 Second Opinion Date [DT] - Date
+      "maskFields": [
+        { "position": 23, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+    { "segment_id": "IN3",
+      // IN3-25 Second Opinion Physician [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 26, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 26, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 26, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+
+    // ------------------------------------------------------------------ ACC
+    { "segment_id": "ACC",
+      // ACC-1 Accident Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 2, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+    { "segment_id": "ACC",
+      // ACC-3 Accident Location [ST] - Address/Geo
+      "maskFields": [
+        { "position": 4, "algorithm_reference": { "name": "city" } } ] },
+    { "segment_id": "ACC",
+      // ACC-7 Entered By [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 8, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 8, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 8, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "ACC",
+      // ACC-8 Accident Description [ST] - Free Text (review)
+      "maskFields": [
+        { "position": 9, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "ACC",
+      // ACC-9 Brought in By [ST] - Name
+      "maskFields": [
+        { "position": 10, "algorithm_reference": { "name": "lastName" } } ] },
+    { "segment_id": "ACC",
+      // ACC-11 Accident Address [XAD] - Address/Geo
+      "maskFields": [
+        { "position": 12, "component": 1, "algorithm_reference": { "name": "address" } },
+        { "position": 12, "component": 3, "algorithm_reference": { "name": "city" } },
+        { "position": 12, "component": 5, "algorithm_reference": { "name": "zip" } } ] },
+
+    // ------------------------------------------------------------------ PDA
+    { "segment_id": "PDA",
+      // PDA-2 Death Location [PL] - Address/Geo
+      "maskFields": [
+        { "position": 3, "component": 1, "algorithm_reference": { "name": "city" } } ] },
+    { "segment_id": "PDA",
+      // PDA-4 Death Certificate Signed Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 5, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+    { "segment_id": "PDA",
+      // PDA-5 Death Certified by [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 6, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 6, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 6, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "PDA",
+      // PDA-7 Autopsy Start and End Date/Time [DR] - Date
+      "maskFields": [
+        { "position": 8, "component": 1, "algorithm_reference": { "name": "PATIENT_DATE" } },
+        { "position": 8, "component": 2, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+    { "segment_id": "PDA",
+      // PDA-8 Autopsy Performed by [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 9, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 9, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 9, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+
+    // ------------------------------------------------------------------ IAM
+    { "segment_id": "IAM",
+      // IAM-8 Action Reason [ST] - Free Text (review)
+      "maskFields": [
+        { "position": 9, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "IAM",
+      // IAM-11 Onset Date [DT] - Date
+      "maskFields": [
+        { "position": 12, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+    { "segment_id": "IAM",
+      // IAM-12 Onset Date Text [ST] - Free Text (review)
+      "maskFields": [
+        { "position": 13, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "IAM",
+      // IAM-13 Reported Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 14, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+    { "segment_id": "IAM",
+      // IAM-14 Reported by [XPN] - Name
+      "maskFields": [
+        { "position": 15, "component": 1, "algorithm_reference": { "name": "lastName" } },
+        { "position": 15, "component": 2, "algorithm_reference": { "name": "firstName" } },
+        { "position": 15, "component": 3, "algorithm_reference": { "name": "middleName" } } ] },
+    { "segment_id": "IAM",
+      // IAM-18 Statused by Person [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 19, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 19, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 19, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "IAM",
+      // IAM-19 Statused by Organization [XON] - Employer
+      "maskFields": [
+        { "position": 20, "component": 1, "algorithm_reference": { "name": "orgName" } } ] },
+    { "segment_id": "IAM",
+      // IAM-20 Statused at Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 21, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+
+    // ------------------------------------------------------------------ UB1
+    { "segment_id": "UB1",
+      // UB1-14 PSRO/UR Approved Stay-Fm [DT] - Date
+      "maskFields": [
+        { "position": 15, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+    { "segment_id": "UB1",
+      // UB1-15 PSRO/UR Approved Stay-To [DT] - Date
+      "maskFields": [
+        { "position": 16, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+    { "segment_id": "UB1",
+      // UB1-18 Occur Span Start Date [DT] - Date
+      "maskFields": [
+        { "position": 19, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+    { "segment_id": "UB1",
+      // UB1-19 Occur Span End Date [DT] - Date
+      "maskFields": [
+        { "position": 20, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+    { "segment_id": "UB1",
+      // UB1-20 UB-82 Locator 2 [ST] - Free Text (review)
+      "maskFields": [
+        { "position": 21, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "UB1",
+      // UB1-21 UB-82 Locator 9 [ST] - Free Text (review)
+      "maskFields": [
+        { "position": 22, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "UB1",
+      // UB1-22 UB-82 Locator 27 [ST] - Free Text (review)
+      "maskFields": [
+        { "position": 23, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "UB1",
+      // UB1-23 UB-82 Locator 45 [ST] - Free Text (review)
+      "maskFields": [
+        { "position": 24, "algorithm_reference": { "name": "redact" } } ] },
+
+    // ------------------------------------------------------------------ UB2
+    { "segment_id": "UB2",
+      // UB2-7 Occurrence Code and Date [OCD] - Date
+      "maskFields": [
+        { "position": 8, "component": 2, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+    { "segment_id": "UB2",
+      // UB2-8 Occurrence Span Code/Dates [OSP] - Date
+      "maskFields": [
+        { "position": 9, "component": 2, "algorithm_reference": { "name": "ENCOUNTER_DATE" } },
+        { "position": 9, "component": 3, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+    { "segment_id": "UB2",
+      // UB2-9 UB92 Locator 2 [ST] - Free Text (review)
+      "maskFields": [
+        { "position": 10, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "UB2",
+      // UB2-10 UB92 Locator 11 [ST] - Free Text (review)
+      "maskFields": [
+        { "position": 11, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "UB2",
+      // UB2-11 UB92 Locator 31 [ST] - Free Text (review)
+      "maskFields": [
+        { "position": 12, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "UB2",
+      // UB2-12 Document Control Number [ST] - Identifier
+      "maskFields": [
+        { "position": 13, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "UB2",
+      // UB2-13 UB92 Locator 49 [ST] - Free Text (review)
+      "maskFields": [
+        { "position": 14, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "UB2",
+      // UB2-14 UB92 Locator 56 [ST] - Free Text (review)
+      "maskFields": [
+        { "position": 15, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "UB2",
+      // UB2-15 UB92 Locator 57 [ST] - Free Text (review)
+      "maskFields": [
+        { "position": 16, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "UB2",
+      // UB2-16 UB92 Locator 78 [ST] - Free Text (review)
+      "maskFields": [
+        { "position": 17, "algorithm_reference": { "name": "redact" } } ] },
+
+    // ------------------------------------------------------------------ DRG
+    { "segment_id": "DRG",
+      // DRG-2 DRG Assigned Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 3, "algorithm_reference": { "name": "ENCOUNTER_DATE" } } ] },
+
+    // ------------------------------------------------------------------ RXA
+    { "segment_id": "RXA",
+      // RXA-3 Date/Time Start of Administration [TS] - Date
+      "maskFields": [
+        { "position": 4, "algorithm_reference": { "name": "ORDER_DATE" } } ] },
+    { "segment_id": "RXA",
+      // RXA-4 Date/Time End of Administration [TS] - Date
+      "maskFields": [
+        { "position": 5, "algorithm_reference": { "name": "ORDER_DATE" } } ] },
+    { "segment_id": "RXA",
+      // RXA-9 Administration Notes [CE] - Free Text (review)
+      "maskFields": [
+        { "position": 10, "component": 2, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "RXA",
+      // RXA-10 Administering Provider [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 11, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 11, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 11, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "RXA",
+      // RXA-22 System Entry Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 23, "algorithm_reference": { "name": "ORDER_DATE" } } ] },
+
+    // ------------------------------------------------------------------ RXO
+    { "segment_id": "RXO",
+      // RXO-6 Provider's Pharmacy/Treatment Instructions [CE] - Free Text (review)
+      "maskFields": [
+        { "position": 7, "component": 2, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "RXO",
+      // RXO-7 Provider's Administration Instructions [CE] - Free Text (review)
+      "maskFields": [
+        { "position": 8, "component": 2, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "RXO",
+      // RXO-14 Ordering Provider's DEA Number [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 15, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 15, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 15, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+    { "segment_id": "RXO",
+      // RXO-15 Pharmacist/Treatment Supplier's Verifier ID [XCN] - Provider/Staff
+      "maskFields": [
+        { "position": 16, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 16, "component": 2, "algorithm_reference": { "name": "lastName" } },
+        { "position": 16, "component": 3, "algorithm_reference": { "name": "firstName" } } ] },
+
+    // ------------------------------------------------------------------ ODS
+    { "segment_id": "ODS",
+      // ODS-4 Text Instruction [ST] - Free Text (review)
+      "maskFields": [
+        { "position": 5, "algorithm_reference": { "name": "redact" } } ] },
+
+    // ------------------------------------------------------------------ ODT
+    { "segment_id": "ODT",
+      // ODT-3 Text Instruction [ST] - Free Text (review)
+      "maskFields": [
+        { "position": 4, "algorithm_reference": { "name": "redact" } } ] },
+
+    // ------------------------------------------------------------------ RQD
+    { "segment_id": "RQD",
+      // RQD-10 Date Needed [DT] - Date
+      "maskFields": [
+        { "position": 11, "algorithm_reference": { "name": "ORDER_DATE" } } ] },
+
+    // ------------------------------------------------------------------ TQ2
+    { "segment_id": "TQ2",
+      // TQ2-3 Related Placer Number [EI] - Identifier
+      "maskFields": [
+        { "position": 4, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "TQ2",
+      // TQ2-4 Related Filler Number [EI] - Identifier
+      "maskFields": [
+        { "position": 5, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "TQ2",
+      // TQ2-5 Related Placer Group Number [EI] - Identifier
+      "maskFields": [
+        { "position": 6, "algorithm_reference": { "name": "alnumId" } } ] },
+
+    // ------------------------------------------------------------------ BLG
+    { "segment_id": "BLG",
+      // BLG-3 Account ID [CX] - Identifier
+      "maskFields": [
+        { "position": 4, "component": 1, "algorithm_reference": { "name": "alnumId" } } ] },
+
+    // ------------------------------------------------------------------ SPM
+    { "segment_id": "SPM",
+      // SPM-2 Specimen ID [EIP] - Identifier
+      "maskFields": [
+        { "position": 3, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 3, "component": 2, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "SPM",
+      // SPM-3 Specimen Parent IDs [EIP] - Identifier
+      "maskFields": [
+        { "position": 4, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 4, "component": 2, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "SPM",
+      // SPM-14 Specimen Description [ST] - Free Text (review)
+      "maskFields": [
+        { "position": 15, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "SPM",
+      // SPM-17 Specimen Collection Date/Time [DR] - Date
+      "maskFields": [
+        { "position": 18, "component": 1, "algorithm_reference": { "name": "ORDER_DATE" } },
+        { "position": 18, "component": 2, "algorithm_reference": { "name": "ORDER_DATE" } } ] },
+    { "segment_id": "SPM",
+      // SPM-18 Specimen Received Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 19, "algorithm_reference": { "name": "ORDER_DATE" } } ] },
+    { "segment_id": "SPM",
+      // SPM-19 Specimen Expiration Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 20, "algorithm_reference": { "name": "ORDER_DATE" } } ] },
+
+    // ------------------------------------------------------------------ CTD
+    { "segment_id": "CTD",
+      // CTD-2 Contact Name [XPN] - Name
+      "maskFields": [
+        { "position": 3, "component": 1, "algorithm_reference": { "name": "lastName" } },
+        { "position": 3, "component": 2, "algorithm_reference": { "name": "firstName" } },
+        { "position": 3, "component": 3, "algorithm_reference": { "name": "middleName" } } ] },
+    { "segment_id": "CTD",
+      // CTD-3 Contact Address [XAD] - Address/Geo
+      "maskFields": [
+        { "position": 4, "component": 1, "algorithm_reference": { "name": "address" } },
+        { "position": 4, "component": 3, "algorithm_reference": { "name": "city" } },
+        { "position": 4, "component": 5, "algorithm_reference": { "name": "zip" } } ] },
+    { "segment_id": "CTD",
+      // CTD-5 Contact Communication Information [XTN] - Phone/Contact
+      "maskFields": [
+        { "position": 6, "component": 4, "algorithm_reference": { "name": "email" } },
+        { "position": 6, "component": 6, "algorithm_reference": { "name": "numericId" } },
+        { "position": 6, "component": 7, "algorithm_reference": { "name": "numericId" } } ] },
+    { "segment_id": "CTD",
+      // CTD-7 Contact Identifiers [PLN] - Identifier
+      "maskFields": [
+        { "position": 8, "component": 1, "algorithm_reference": { "name": "alnumId" } },
+        { "position": 8, "component": 4, "algorithm_reference": { "name": "ORDER_DATE" } } ] },
+
+    // ------------------------------------------------------------------ CON
+    { "segment_id": "CON",
+      // CON-4 Consent Form Number [EI] - Identifier
+      "maskFields": [
+        { "position": 5, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "CON",
+      // CON-5 Consent Text [FT] - Free Text (review)
+      "maskFields": [
+        { "position": 6, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "CON",
+      // CON-6 Subject-specific Consent Text [FT] - Free Text (review)
+      "maskFields": [
+        { "position": 7, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "CON",
+      // CON-7 Background Text [FT] - Free Text (review)
+      "maskFields": [
+        { "position": 8, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "CON",
+      // CON-8 Subject-specific Background Text [FT] - Free Text (review)
+      "maskFields": [
+        { "position": 9, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "CON",
+      // CON-9 Consenter-imposed Limitations [FT] - Free Text (review)
+      "maskFields": [
+        { "position": 10, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "CON",
+      // CON-12 Consent Discussion Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 13, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+    { "segment_id": "CON",
+      // CON-13 Consent Decision Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 14, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+    { "segment_id": "CON",
+      // CON-14 Consent Effective Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 15, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+    { "segment_id": "CON",
+      // CON-15 Consent End Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 16, "algorithm_reference": { "name": "PATIENT_DATE" } } ] },
+    { "segment_id": "CON",
+      // CON-24 Consenter ID [XPN] - Name
+      "maskFields": [
+        { "position": 25, "component": 1, "algorithm_reference": { "name": "lastName" } },
+        { "position": 25, "component": 2, "algorithm_reference": { "name": "firstName" } },
+        { "position": 25, "component": 3, "algorithm_reference": { "name": "middleName" } } ] },
+
+    // ------------------------------------------------------------------ SAC
+    { "segment_id": "SAC",
+      // SAC-1 External Accession Identifier [EI] - Identifier
+      "maskFields": [
+        { "position": 2, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "SAC",
+      // SAC-2 Accession Identifier [EI] - Identifier
+      "maskFields": [
+        { "position": 3, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "SAC",
+      // SAC-3 Container Identifier [EI] - Identifier
+      "maskFields": [
+        { "position": 4, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "SAC",
+      // SAC-4 Primary (Parent) Container Identifier [EI] - Identifier
+      "maskFields": [
+        { "position": 5, "algorithm_reference": { "name": "alnumId" } } ] },
+    { "segment_id": "SAC",
+      // SAC-6 Specimen Source [SPS] - Free Text (review)
+      "maskFields": [
+        { "position": 7, "component": 3, "algorithm_reference": { "name": "redact" } } ] },
+    { "segment_id": "SAC",
+      // SAC-7 Registration Date/Time [TS] - Date
+      "maskFields": [
+        { "position": 8, "algorithm_reference": { "name": "ORDER_DATE" } } ] },
+
+    // ------------------------------------------------------------------ CTI
+    { "segment_id": "CTI",
+      // CTI-1 Sponsor Study ID [EI] - Identifier
+      "maskFields": [
+        { "position": 2, "algorithm_reference": { "name": "alnumId" } } ] },
+
+    // ------------------------------------------------------------------ DSC
+    { "segment_id": "DSC",
+      // DSC-1 Continuation Pointer [ST] - Identifier
+      "maskFields": [
+        { "position": 2, "algorithm_reference": { "name": "alnumId" } } ] }
+  ]
+}

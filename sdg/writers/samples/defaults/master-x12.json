@@ -1,0 +1,703 @@
+{
+    "maskSegments": [
+        {
+            "qualifier": "D8",
+            "maskFields": [
+                {
+                    "position": 4,
+                    "algorithm_reference": {
+                        "name": "P4_TDM_DATE_YYYYMMDD"
+                    }
+                }
+            ],
+            "segment_id": "DTP\\*096",
+            "loop_qualifier": null,
+            "loop_segment_id": null
+        },
+        {
+            "qualifier": "D8",
+            "maskFields": [
+                {
+                    "position": 4,
+                    "algorithm_reference": {
+                        "name": "P4_TDM_DATE_YYYYMMDD"
+                    }
+                }
+            ],
+            "segment_id": "DTP\\*196",
+            "loop_qualifier": null,
+            "loop_segment_id": null
+        },
+        {
+            "qualifier": "D8",
+            "maskFields": [
+                {
+                    "position": 4,
+                    "algorithm_reference": {
+                        "name": "P4_TDM_DATE_YYYYMMDD"
+                    }
+                }
+            ],
+            "segment_id": "DTP\\*198",
+            "loop_qualifier": null,
+            "loop_segment_id": null
+        },
+        {
+            "qualifier": "DT",
+            "maskFields": [
+                {
+                    "position": 4,
+                    "algorithm_reference": {
+                        "name": "P4_TDM_DATE_YYYYMMDD"
+                    }
+                }
+            ],
+            "segment_id": "DTP\\*304",
+            "loop_qualifier": null,
+            "loop_segment_id": null
+        },
+        {
+            "qualifier": "D8",
+            "maskFields": [
+                {
+                    "position": 4,
+                    "algorithm_reference": {
+                        "name": "P4_TDM_DATE_YYYYMMDD"
+                    }
+                }
+            ],
+            "segment_id": "DTP\\*435",
+            "loop_qualifier": null,
+            "loop_segment_id": null
+        },
+        {
+            "qualifier": "DT",
+            "maskFields": [
+                {
+                    "position": 4,
+                    "algorithm_reference": {
+                        "name": "P4_TDM_DATE_YYYYMMDD"
+                    }
+                }
+            ],
+            "segment_id": "DTP\\*435",
+            "loop_qualifier": null,
+            "loop_segment_id": null
+        },
+        {
+            "qualifier": "D8",
+            "maskFields": [
+                {
+                    "position": 4,
+                    "algorithm_reference": {
+                        "name": "P4_TDM_DATE_YYYYMMDD"
+                    }
+                }
+            ],
+            "segment_id": "DTP\\*454",
+            "loop_qualifier": null,
+            "loop_segment_id": null
+        },
+        {
+            "qualifier": "D8",
+            "maskFields": [
+                {
+                    "position": 4,
+                    "algorithm_reference": {
+                        "name": "P4_TDM_DATE_YYYYMMDD"
+                    }
+                }
+            ],
+            "segment_id": "DTP\\*463",
+            "loop_qualifier": null,
+            "loop_segment_id": null
+        },
+        {
+            "qualifier": "D8",
+            "maskFields": [
+                {
+                    "position": 4,
+                    "algorithm_reference": {
+                        "name": "P4_TDM_DATE_YYYYMMDD"
+                    }
+                }
+            ],
+            "segment_id": "DTP\\*472",
+            "loop_qualifier": null,
+            "loop_segment_id": null
+        },
+        {
+            "qualifier": "RD8",
+            "maskFields": [
+                {
+                    "position": 4,
+                    "algorithm_reference": {
+                        "name": "P4_TDM_DATE_RANGE_YYYYMMDD"
+                    }
+                },
+                {
+                    "position": 5,
+                    "algorithm_reference": {
+                        "name": "P4_TDM_DATE_YYYYMMDD"
+                    }
+                }
+            ],
+            "segment_id": "DTP\\*472",
+            "loop_qualifier": null,
+            "loop_segment_id": null
+        },
+        {
+            "qualifier": "IL",
+            "maskFields": [
+                {
+                    "position": 4,
+                    "algorithm_reference": {
+                        "name": "P2_LASTNAME2_AL"
+                    }
+                },
+                {
+                    "position": 5,
+                    "algorithm_reference": {
+                        "name": "P2_FIRSTNAME2_AL"
+                    }
+                },
+                {
+                    "position": 6,
+                    "algorithm_reference": {
+                        "name": "P4_MIDINIT_AL"
+                    }
+                },
+                {
+                    "position": 10,
+                    "algorithm_reference": {
+                        "name": "P4_SBSBID_MEMEHIST_LINK_AL"
+                    }
+                }
+            ],
+            "segment_id": "NM1",
+            "loop_qualifier": null,
+            "loop_segment_id": null
+        },
+        {
+            "qualifier": "QC",
+            "maskFields": [
+                {
+                    "position": 4,
+                    "algorithm_reference": {
+                        "name": "P2_LASTNAME2_AL"
+                    }
+                },
+                {
+                    "position": 5,
+                    "algorithm_reference": {
+                        "name": "P2_FIRSTNAME2_AL"
+                    }
+                },
+                {
+                    "position": 6,
+                    "algorithm_reference": {
+                        "name": "P4_MIDINIT_AL"
+                    }
+                }
+            ],
+            "segment_id": "NM1",
+            "loop_qualifier": null,
+            "loop_segment_id": null
+        },
+        {
+            "qualifier": "01",
+            "maskFields": [
+                {
+                    "position": 7,
+                    "algorithm_reference": {
+                        "name": "P4_TDM_DATE_YYYYMMDD"
+                    }
+                }
+            ],
+            "segment_id": "PAT",
+            "loop_qualifier": null,
+            "loop_segment_id": null
+        },
+        {
+            "qualifier": "EI",
+            "maskFields": [
+                {
+                    "position": 3,
+                    "algorithm_reference": {
+                        "name": "P5_TAX_SSN_AL"
+                    }
+                }
+            ],
+            "segment_id": "REF",
+            "loop_qualifier": null,
+            "loop_segment_id": null
+        },
+        {
+            "qualifier": "SY",
+            "maskFields": [
+                {
+                    "position": 3,
+                    "algorithm_reference": {
+                        "name": "P5_TAX_SSN_AL"
+                    }
+                }
+            ],
+            "segment_id": "REF",
+            "loop_qualifier": null,
+            "loop_segment_id": null
+        },
+        {
+            "qualifier": "ADD",
+            "maskFields": [
+                {
+                    "position": 3,
+                    "algorithm_reference": {
+                        "name": "P4_EDI_COMMENT_AL"
+                    }
+                }
+            ],
+            "segment_id": "NTE",
+            "loop_qualifier": null,
+            "loop_segment_id": null
+        },
+        {
+            "qualifier": "CER",
+            "maskFields": [
+                {
+                    "position": 3,
+                    "algorithm_reference": {
+                        "name": "P4_EDI_COMMENT_AL"
+                    }
+                }
+            ],
+            "segment_id": "NTE",
+            "loop_qualifier": null,
+            "loop_segment_id": null
+        },
+        {
+            "qualifier": "DCP",
+            "maskFields": [
+                {
+                    "position": 3,
+                    "algorithm_reference": {
+                        "name": "P4_EDI_COMMENT_AL"
+                    }
+                }
+            ],
+            "segment_id": "NTE",
+            "loop_qualifier": null,
+            "loop_segment_id": null
+        },
+        {
+            "qualifier": "NTR",
+            "maskFields": [
+                {
+                    "position": 3,
+                    "algorithm_reference": {
+                        "name": "P4_EDI_COMMENT_AL"
+                    }
+                }
+            ],
+            "segment_id": "NTE",
+            "loop_qualifier": null,
+            "loop_segment_id": null
+        },
+        {
+            "qualifier": "TPO",
+            "maskFields": [
+                {
+                    "position": 3,
+                    "algorithm_reference": {
+                        "name": "P4_EDI_COMMENT_AL"
+                    }
+                }
+            ],
+            "segment_id": "NTE",
+            "loop_qualifier": null,
+            "loop_segment_id": null
+        },
+        {
+            "qualifier": "D8",
+            "maskFields": [
+                {
+                    "position": 3,
+                    "algorithm_reference": {
+                        "name": "P4_TDM_DATE_YYYYMMDD"
+                    }
+                }
+            ],
+            "segment_id": "DMG",
+            "loop_qualifier": "IL",
+            "loop_segment_id": "NM1"
+        },
+        {
+            "qualifier": null,
+            "maskFields": [
+                {
+                    "position": 2,
+                    "algorithm_reference": {
+                        "name": "AddrLookup"
+                    }
+                },
+                {
+                    "position": 3,
+                    "algorithm_reference": {
+                        "name": "AddrLine2Lookup"
+                    }
+                }
+            ],
+            "segment_id": "N3",
+            "loop_qualifier": "IL",
+            "loop_segment_id": "NM1"
+        },
+        {
+            "qualifier": null,
+            "maskFields": [
+                {
+                    "position": 4,
+                    "algorithm_reference": {
+                        "name": "P2_ZIP_11D2_AL"
+                    }
+                }
+            ],
+            "segment_id": "N4",
+            "loop_qualifier": "IL",
+            "loop_segment_id": "NM1"
+        },
+        {
+            "qualifier": "IC",
+            "maskFields": [
+                {
+                    "position": 3,
+                    "algorithm_reference": {
+                        "name": "P2_FIRSTNAME2_AL"
+                    }
+                },
+                {
+                    "position": 5,
+                    "algorithm_reference": {
+                        "name": "P4_PHONE_AL"
+                    }
+                },
+                {
+                    "position": 7,
+                    "algorithm_reference": {
+                        "name": "P4_PHONE_EXT_AL"
+                    }
+                }
+            ],
+            "segment_id": "PER",
+            "loop_qualifier": "IL",
+            "loop_segment_id": "NM1"
+        },
+        {
+            "qualifier": "D8",
+            "maskFields": [
+                {
+                    "position": 3,
+                    "algorithm_reference": {
+                        "name": "P4_TDM_DATE_YYYYMMDD"
+                    }
+                }
+            ],
+            "segment_id": "DMG",
+            "loop_qualifier": "QC",
+            "loop_segment_id": "NM1"
+        },
+        {
+            "qualifier": null,
+            "maskFields": [
+                {
+                    "position": 2,
+                    "algorithm_reference": {
+                        "name": "AddrLookup"
+                    }
+                },
+                {
+                    "position": 3,
+                    "algorithm_reference": {
+                        "name": "AddrLine2Lookup"
+                    }
+                }
+            ],
+            "segment_id": "N3",
+            "loop_qualifier": "QC",
+            "loop_segment_id": "NM1"
+        },
+        {
+            "qualifier": null,
+            "maskFields": [
+                {
+                    "position": 4,
+                    "algorithm_reference": {
+                        "name": "P2_ZIP_11D2_AL"
+                    }
+                }
+            ],
+            "segment_id": "N4",
+            "loop_qualifier": "QC",
+            "loop_segment_id": "NM1"
+        },
+        {
+            "qualifier": "IC",
+            "maskFields": [
+                {
+                    "position": 3,
+                    "algorithm_reference": {
+                        "name": "P2_FIRSTNAME2_AL"
+                    }
+                },
+                {
+                    "position": 5,
+                    "algorithm_reference": {
+                        "name": "P4_PHONE_AL"
+                    }
+                },
+                {
+                    "position": 7,
+                    "algorithm_reference": {
+                        "name": "P4_PHONE_EXT_AL"
+                    }
+                }
+            ],
+            "segment_id": "PER",
+            "loop_qualifier": "QC",
+            "loop_segment_id": "NM1"
+        },
+        {
+            "qualifier": "D8",
+            "maskFields": [
+                {
+                    "position": 3,
+                    "algorithm_reference": {
+                        "name": "P4_TDM_DATE_YYYYMMDD"
+                    }
+                }
+            ],
+            "segment_id": "DMG",
+            "loop_qualifier": "70",
+            "loop_segment_id": "NM1"
+        },
+        {
+            "qualifier": null,
+            "maskFields": [
+                {
+                    "position": 2,
+                    "algorithm_reference": {
+                        "name": "AddrLookup"
+                    }
+                },
+                {
+                    "position": 3,
+                    "algorithm_reference": {
+                        "name": "AddrLine2Lookup"
+                    }
+                }
+            ],
+            "segment_id": "N3",
+            "loop_qualifier": "70",
+            "loop_segment_id": "NM1"
+        },
+        {
+            "qualifier": null,
+            "maskFields": [
+                {
+                    "position": 4,
+                    "algorithm_reference": {
+                        "name": "P2_ZIP_11D2_AL"
+                    }
+                }
+            ],
+            "segment_id": "N4",
+            "loop_qualifier": "70",
+            "loop_segment_id": "NM1"
+        },
+        {
+            "qualifier": "D8",
+            "maskFields": [
+                {
+                    "position": 3,
+                    "algorithm_reference": {
+                        "name": "P4_TDM_DATE_YYYYMMDD"
+                    }
+                }
+            ],
+            "segment_id": "DMG",
+            "loop_qualifier": "74",
+            "loop_segment_id": "NM1"
+        },
+        {
+            "qualifier": null,
+            "maskFields": [
+                {
+                    "position": 2,
+                    "algorithm_reference": {
+                        "name": "AddrLookup"
+                    }
+                },
+                {
+                    "position": 3,
+                    "algorithm_reference": {
+                        "name": "AddrLine2Lookup"
+                    }
+                }
+            ],
+            "segment_id": "N3",
+            "loop_qualifier": "74",
+            "loop_segment_id": "NM1"
+        },
+        {
+            "qualifier": null,
+            "maskFields": [
+                {
+                    "position": 4,
+                    "algorithm_reference": {
+                        "name": "P2_ZIP_11D2_AL"
+                    }
+                }
+            ],
+            "segment_id": "N4",
+            "loop_qualifier": "74",
+            "loop_segment_id": "NM1"
+        },
+        {
+            "qualifier": null,
+            "maskFields": [
+                {
+                    "position": 2,
+                    "algorithm_reference": {
+                        "name": "AddrLookup"
+                    }
+                },
+                {
+                    "position": 3,
+                    "algorithm_reference": {
+                        "name": "AddrLine2Lookup"
+                    }
+                }
+            ],
+            "segment_id": "N3",
+            "loop_qualifier": "31",
+            "loop_segment_id": "NM1"
+        },
+        {
+            "qualifier": null,
+            "maskFields": [
+                {
+                    "position": 4,
+                    "algorithm_reference": {
+                        "name": "P2_ZIP_11D2_AL"
+                    }
+                }
+            ],
+            "segment_id": "N4",
+            "loop_qualifier": "31",
+            "loop_segment_id": "NM1"
+        },
+        {
+            "qualifier": null,
+            "maskFields": [
+                {
+                    "position": 2,
+                    "algorithm_reference": {
+                        "name": "AddrLookup"
+                    }
+                },
+                {
+                    "position": 3,
+                    "algorithm_reference": {
+                        "name": "AddrLine2Lookup"
+                    }
+                }
+            ],
+            "segment_id": "N3",
+            "loop_qualifier": "45",
+            "loop_segment_id": "NM1"
+        },
+        {
+            "qualifier": null,
+            "maskFields": [
+                {
+                    "position": 4,
+                    "algorithm_reference": {
+                        "name": "P2_ZIP_11D2_AL"
+                    }
+                }
+            ],
+            "segment_id": "N4",
+            "loop_qualifier": "45",
+            "loop_segment_id": "NM1"
+        },
+        {
+            "qualifier": null,
+            "maskFields": [
+                {
+                    "position": 2,
+                    "algorithm_reference": {
+                        "name": "AddrLookup"
+                    }
+                },
+                {
+                    "position": 3,
+                    "algorithm_reference": {
+                        "name": "AddrLine2Lookup"
+                    }
+                }
+            ],
+            "segment_id": "N3",
+            "loop_qualifier": "6Y",
+            "loop_segment_id": "NM1"
+        },
+        {
+            "qualifier": null,
+            "maskFields": [
+                {
+                    "position": 4,
+                    "algorithm_reference": {
+                        "name": "P2_ZIP_11D2_AL"
+                    }
+                }
+            ],
+            "segment_id": "N4",
+            "loop_qualifier": "6Y",
+            "loop_segment_id": "NM1"
+        },
+        {
+            "qualifier": null,
+            "maskFields": [
+                {
+                    "position": 2,
+                    "algorithm_reference": {
+                        "name": "AddrLookup"
+                    }
+                },
+                {
+                    "position": 3,
+                    "algorithm_reference": {
+                        "name": "AddrLine2Lookup"
+                    }
+                }
+            ],
+            "segment_id": "N3",
+            "loop_qualifier": "S3",
+            "loop_segment_id": "NM1"
+        },
+        {
+            "qualifier": null,
+            "maskFields": [
+                {
+                    "position": 4,
+                    "algorithm_reference": {
+                        "name": "P2_ZIP_11D2_AL"
+                    }
+                }
+            ],
+            "segment_id": "N4",
+            "loop_qualifier": "S3",
+            "loop_segment_id": "NM1"
+        }
+    ],
+    "hipaa_indicator": false,
+    "record_delimiter": "~",
+    "segment_delimiter": "*"
+}

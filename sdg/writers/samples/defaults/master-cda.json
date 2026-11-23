@@ -1,0 +1,325 @@
+{
+  // =====================================================================================
+  // HOW TO CHANGE THIS FILE
+  //
+  // Edits are live. This file is read from disk every time a run is planned, so there is nothing
+  // to restart and nothing to reload - unlike the X12 and HL7 v2 configs, which the engine loads
+  // once at startup. Save it, start a run, and the run uses what you saved.
+  //
+  // Everything below is checked when the file loads, before any document is opened: every path
+  // parses, every algorithm name exists, and no two rules can reach the same value. That last
+  // check matters more here than anywhere else because of "//" - see OVERLAPS at the end.
+  //
+  // ------------------------------------------------------------------------- HOW PATHS WORK
+  //
+  // A CDA is one ClinicalDocument, so the rules are one flat list rather than grouped by type.
+  // Paths are XPath-shaped, and most values live in ATTRIBUTES rather than element text:
+  //
+  //     recordTarget/patientRole/patient/name/family   an element's text, addressed from the root
+  //     //id/@extension                                any <id extension="..."> at any depth
+  //     //telecom/@value                               an attribute
+  //
+  //     "//" is a descendant step: it matches at any depth, anywhere in the document.
+  //     "@name" addresses an attribute rather than the element's text.
+  //
+  // ------------------------------------------------------------------------ WORKED EXAMPLES
+  //
+  // CHANGE WHICH ALGORITHM MASKS A PATH - edit the name and nothing else:
+  //
+  //     { "path": "//name/family", "algorithm_reference": { "name": "lastName" } }
+  //                                                                  --------
+  //     An unknown name is refused when the file loads, with the full list printed, so a typo
+  //     cannot reach a document.
+  //
+  // STOP MASKING SOMETHING - delete its line. There is no "noMask" algorithm: an element with no
+  // rule is retained exactly as it was, and deleting the rule is how you say "leave this alone".
+  //
+  // MASK SOMETHING NOTHING COVERS YET - add a rule to "maskPaths":
+  //
+  //     { "path": "//assignedAuthor/assignedPerson/name/family",
+  //       "algorithm_reference": { "name": "lastName" } },
+  //
+  // SPLIT ONE PATH BETWEEN RULES - "valuePrefix". CDA writes a contact as a URI, so tel: and
+  // mailto: share one attribute and need different algorithms. The prefix selects the rule and is
+  // put back afterwards, so the scheme survives:
+  //
+  //     { "path": "//telecom/@value", "valuePrefix": "tel:",    ... phone ... },
+  //     { "path": "//telecom/@value", "valuePrefix": "mailto:", ... email ... },
+  //
+  // KEEP A TIMEZONE ON A TIMESTAMP - "preserveTimezone": true. HL7 v3 writes a point in time as
+  // 20141001103026-0500. The offset is split off, the rest is masked, and the offset is put back.
+  // Without it the value is 19 characters long, no date algorithm recognises it, and the
+  // timestamp is reported non-conformant and RETAINED - which is to say published.
+  //
+  // DROP AN ELEMENT INSTEAD OF MASKING IT - "removePaths". For content no algorithm can help with.
+  // Removal loses content, so the count of what went is reported on every run.
+  //
+  // CHANGE ONE PARAMETER IN MANY PLACES AT ONCE - name an instance under "instances" and point the
+  // rules at it. "freeText" is the only one this file needs: its wording is written once and every
+  // free-text rule follows it.
+  //
+  // CHANGE WHAT A REDACTED NARRATIVE BLOCK SAYS, which elements bound one, or which date shapes
+  // are counted - the four keys under "narrative" below. They are shown with the values the engine
+  // uses when they are absent, so deleting any of them changes nothing.
+  //
+  // ------------------------------------------------------------------------------ OVERLAPS
+  //
+  // Two rules that can reach the same value are refused when the file loads, and with "//" that is
+  // easy to do by accident - this check was written after a config in this repository did it:
+  //
+  //     { "path": "//id/@extension", ... }                          these two
+  //     { "path": "recordTarget/patientRole/id/@extension", ... }    are the same value
+  //
+  // Different strings, one element. The refusal names both paths. Two rules on one path are fine
+  // when they cannot both match - the tel:/mailto: pair above is exactly that.
+  // =====================================================================================
+  // HL7 v3 CDA R2 masking configuration.
+  //
+  // Addressing is XPath-shaped, because the document is XML:
+  //
+  //     recordTarget/patientRole/patient/name/family
+  //     recordTarget/patientRole/telecom/@value
+  //
+  // A step matches EVERY child of that name, so one path reaches both <id> elements and every
+  // <telecom> without saying so. There is no [*] and no index: the published CCD carries a
+  // medical record number and a social security number as two <id> elements side by side, so a
+  // rule that could address only the first would mask the record number and publish the SSN.
+  //
+  // "//" MEANS AT ANY DEPTH, AND THIS CONFIG WOULD NOT BE WRITABLE WITHOUT IT.
+  //
+  // CDA nests the same structures wherever it likes. A performer's address is at
+  //   entry/act/performer/assignedEntity/addr
+  // in one section and at
+  //   entry/organizer/component/observation/performer/assignedEntity/addr
+  // in the next. The published CCD names FIFTEEN people - the patient, her guardian, her next of
+  // kin twice over, and eleven clinicians and organisations - across as many shapes. Enumerating
+  // full paths for all of them would be a config nobody could keep correct, and the first nesting
+  // somebody missed would publish a name while the run reported success. So the people rules are
+  // written once against //, and the patient's own rules are written exactly because the patient
+  // is the one person whose blocks are fixed.
+  //
+  // VALUEPREFIX, AND WHY IT BOTH SELECTS AND SURVIVES.
+  //
+  // CDA writes a contact as a URI. telecom/@value holds "tel:+1(444)444-4444" in one element and
+  // "mailto:someone@example.com" in the next, and the scheme is the only thing that says which is
+  // which - @use says HP or MC and does not distinguish them at all. So the scheme selects the
+  // rule. It is also not part of the value: masking "mailto:x@y.com" whole would produce a URI
+  // with no scheme that nothing can send to, so the prefix is put back and only the rest is
+  // masked. Selecting and preserving are the same decision, so one field does both.
+  //
+  // WHAT IS DELIBERATELY NOT MASKED:
+  //   templateId/@extension, typeId/@extension - these are template versions and a document type
+  //     code, not identifiers of anybody. "2014-06-09" is a template release date. Masking them
+  //     would make the document claim conformance to templates that do not exist. Note that the
+  //     rules below say "id", not "templateId", so they never reach these.
+  //   @root on any id - it names the assigning authority, not the person. Masking it would say
+  //     the record came from an organisation that does not exist, and it is not the patient's to
+  //     hide. Only @extension moves.
+  //   addr/state, addr/country - Safe Harbor permits state; country more so.
+  //   every code, codeSystem, displayName and value on an observation - clinical content, and the
+  //     thing a downstream system is usually being tested on.
+
+  // WHAT HAPPENS TO A VALUE NO ALGORITHM CAN MASK.
+  //
+  //   "onNonConformant" is RETAIN unless set here, and RETAIN means the original value stays in
+  //   the file and the run reports it. That is deliberate and it is the default everywhere in
+  //   this project: a run that destroys a value it did not understand also destroys any way of
+  //   noticing it was there.
+  //
+  //   It also means the value SHIPS. The four-digit postcode 3999 is refused by the strict zip
+  //   algorithm and therefore published, with a warning naming it. If that is not acceptable,
+  //   set it here:
+  //
+  //       "onNonConformant": "REDACT",     // overwrite with redactToken
+  //       "redactToken": "X",
+  //
+  //   or, better, on the one rule that needs it, leaving everything else reported honestly:
+  //
+  //       { "path": "//addr/postalCode", "onNonConformant": "REDACT",
+  //         "algorithm_reference": { "name": "zip" } }
+  //
+  //   FAIL stops the run instead. Use it where nothing unmasked may leave the building.
+
+  "format": "HL7 v3 CDA R2",
+
+  // The section narratives: the human-readable rendering a clinician actually reads, and in a
+  // document context the part that was attested. It repeats what the entries hold, so a document
+  // masked without this step still prints values that were masked everywhere else.
+  //
+  // Substituted and then verified, the same as the FHIR narrative. What differs is that CDA has
+  // no "status" element saying whether the narrative derives from the entries, so that question
+  // cannot be asked and the policy was chosen instead: substitute and check, rather than replace
+  // every narrative and lose the clinical text with it.
+  //
+  // WHAT THAT CANNOT REACH: dates. The entries say 20141001103026-0500 and the narrative beside
+  // them says "September 10, 2012 11:45am", "03 Feb 2014 09:22am", "8/6/2012". They share no
+  // characters, so substitution cannot replace them and the residual check cannot detect them.
+  // They are published. The run counts them and says how many, which is the difference between
+  // an accepted limitation and an undiscovered one.
+  // The four settings below are shown with the values the engine uses when they are absent, so
+  // deleting any one of them changes nothing. Each is a judgement about your documents rather than
+  // about CDA, which is why none of them is fixed in the code.
+  "narrative": {
+    "path": "//text",
+
+    // What a block becomes when the check could not show it was clean. Wording only - the block
+    // is replaced either way.
+    "redactWith": "de-identified",
+
+    // Which elements bound a block. CDA has its own vocabulary rather than XHTML's: paragraph
+    // where HTML says p, item where it says li. content and reference are inline and deliberately
+    // absent - a value split across a <content> anchor has to substitute as one run, so those stay
+    // inside their block. Anything not listed is treated as inline and never redacted on its own.
+    "blockElements": ["paragraph", "td", "th", "li", "item", "caption", "title", "footnote"],
+
+    // How short a masked value can be before it is ignored when substituting and when checking for
+    // residue. Lower catches more and costs false redactions.
+    "minTokenLength": 3,
+
+    // The date shapes a renderer writes for a person to read. These cannot be masked - the entry
+    // says 20141001103026-0500 and the narrative says "September 10, 2012", sharing no characters -
+    // so they are COUNTED, and every run reports how many remain. Add a pattern here if your
+    // renderer writes a shape that is not listed, and the count will include it.
+    //
+    // An empty list [] turns the counting off entirely. That does not remove the dates; it removes
+    // the line that tells you they are there.
+    "proseDatePatterns": [
+      "\\b\\d{1,2}[/-]\\d{1,2}[/-]\\d{2,4}\\b",
+      "\\b\\d{1,2} (?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]* \\d{4}\\b",
+      "\\b(?:January|February|March|April|May|June|July|August|September|October|November|December) \\d{1,2}, \\d{4}\\b"
+    ]
+  },
+
+  "onNonConformant": "RETAIN",
+  "redactToken": "X",
+
+  // Named algorithms with their parameters fixed, as configs/algorithm-instances.json does on the
+  // EDI side. A rule names one exactly as it would name an engine algorithm.
+  "instances": {
+
+    // ============================== THE FREE-TEXT REPLACEMENT ==============================
+    // CHANGE THE WORDING HERE. Used by every free-text rule in this file.
+    "freeText": {
+      "algorithm": "fixed",
+      "options": { "value": "This data is de-identified" }
+    }
+  },
+
+  "maskPaths": [
+
+    // ================================================================================
+    // The patient. Written exactly, because these blocks are where CDA fixes them.
+    // ================================================================================
+
+    // Only the name is written exactly, because only the name has no general rule that reaches
+    // it: <patient><name> is the patient's own and nobody else's.
+    //
+    // The medical record number and the social security number beside it are NOT listed here,
+    // and neither is the birth date. They are covered by //id/@extension and //birthTime/@value
+    // below, and writing them twice would be a contradiction rather than emphasis: both rules
+    // would fire, the second would mask the first's output, and the record number would stop
+    // matching the same number masked in a claim. The loader refuses that, which is how this
+    // comment came to be written.
+    { "path": "recordTarget/patientRole/patient/name/family",
+      "algorithm_reference": { "name": "lastName" } },
+    { "path": "recordTarget/patientRole/patient/name/given",
+      "algorithm_reference": { "name": "firstName" } },
+
+    // ================================================================================
+    // Everybody else, at any depth. The guardian, the next of kin, the informant, the
+    // author, the data enterer, the recipient, both authenticators, the custodian and
+    // every performer in every entry.
+    // ================================================================================
+
+    { "path": "//assignedPerson/name/family",     "algorithm_reference": { "name": "lastName" } },
+    { "path": "//assignedPerson/name/given",      "algorithm_reference": { "name": "firstName" } },
+    { "path": "//guardianPerson/name/family",     "algorithm_reference": { "name": "lastName" } },
+    { "path": "//guardianPerson/name/given",      "algorithm_reference": { "name": "firstName" } },
+    { "path": "//relatedPerson/name/family",      "algorithm_reference": { "name": "lastName" } },
+    { "path": "//relatedPerson/name/given",       "algorithm_reference": { "name": "firstName" } },
+    { "path": "//associatedPerson/name/family",   "algorithm_reference": { "name": "lastName" } },
+    { "path": "//associatedPerson/name/given",    "algorithm_reference": { "name": "firstName" } },
+    { "path": "//informationRecipient/name/family", "algorithm_reference": { "name": "lastName" } },
+    { "path": "//informationRecipient/name/given",  "algorithm_reference": { "name": "firstName" } },
+
+    // Organisation names, wherever they hang: representedOrganization, receivedOrganization,
+    // representedCustodianOrganization, providerOrganization, serviceProviderOrganization.
+    { "path": "//representedOrganization/name",   "algorithm_reference": { "name": "orgName" } },
+    { "path": "//receivedOrganization/name",      "algorithm_reference": { "name": "orgName" } },
+    { "path": "//representedCustodianOrganization/name",
+      "algorithm_reference": { "name": "orgName" } },
+    { "path": "//providerOrganization/name",      "algorithm_reference": { "name": "orgName" } },
+    { "path": "//serviceProviderOrganization/name", "algorithm_reference": { "name": "orgName" } },
+    { "path": "//scopingOrganization/name",       "algorithm_reference": { "name": "orgName" } },
+    { "path": "//manufacturerOrganization/name",  "algorithm_reference": { "name": "orgName" } },
+
+    // ================================================================================
+    // Addresses, anywhere. The patient's, the guardian's, her birthplace, and every
+    // clinician's and organisation's.
+    // ================================================================================
+
+    { "path": "//addr/streetAddressLine",         "algorithm_reference": { "name": "address" } },
+    { "path": "//addr/city",                      "algorithm_reference": { "name": "city" } },
+    { "path": "//addr/county",                    "algorithm_reference": { "name": "city" } },
+    { "path": "//addr/postalCode",                "algorithm_reference": { "name": "zip" } },
+    { "path": "//addr/additionalLocator",         "algorithm_reference": { "name": "address" } },
+    { "path": "//addr/unitID",                    "algorithm_reference": { "name": "address" } },
+    { "path": "//addr/houseNumber",               "algorithm_reference": { "name": "address" } },
+
+    // ================================================================================
+    // Contacts. The scheme selects the rule and is put back afterwards.
+    // ================================================================================
+
+    { "path": "//telecom/@value", "valuePrefix": "tel:",
+      "algorithm_reference": { "name": "phone" } },
+    { "path": "//telecom/@value", "valuePrefix": "fax:",
+      "algorithm_reference": { "name": "phone" } },
+    { "path": "//telecom/@value", "valuePrefix": "mailto:",
+      "algorithm_reference": { "name": "email" } },
+
+    // The fallback, and it is not decorative. SIX of the twenty-three telecom values in HL7's
+    // own published CCD carry no scheme at all - a bare "+1(555)555-5000". The prefixed rules
+    // above would have skipped every one of them and published six phone numbers while the run
+    // reported success. This rule takes whatever they did not claim; a contact with no scheme is
+    // treated as a phone number, which is what such a value has always turned out to be.
+    { "path": "//telecom/@value",
+      "algorithm_reference": { "name": "phone" } },
+
+    // ================================================================================
+    // Identifiers, anywhere. <id> only - never templateId or typeId, which name templates
+    // rather than people, and never @root, which names the assigning authority.
+    // ================================================================================
+
+    { "path": "//id/@extension",                  "algorithm_reference": { "name": "alnumId" } },
+    { "path": "//setId/@extension",               "algorithm_reference": { "name": "alnumId" } },
+
+    // ================================================================================
+    // Dates. Every one takes the run's single offset, so intervals survive.
+    //
+    // preserveTimezone is not optional decoration here. HL7 v3 writes a point in time as
+    // "20141001103026-0500": fourteen digits of timestamp, then the offset of the zone the clock
+    // was in. The offset says WHERE, not WHEN, and leaving it attached makes the value nineteen
+    // characters that no date algorithm recognises. Every timestamp in HL7's published CCD is
+    // written that way, so without this its thirty-four service dates are retained in the clear
+    // while the run dutifully reports them as non-conformant - masked nothing, warned about
+    // everything, and published the lot.
+    //
+    // birthTime carries no offset in that document and does not need the flag, but a feed that
+    // writes one would hit exactly the same wall, so it has it too. Splitting off a timezone that
+    // is not there costs nothing.
+    // ================================================================================
+
+    { "path": "//effectiveTime/@value",        "preserveTimezone": true,
+      "algorithm_reference": { "name": "dateShift" } },
+    { "path": "//effectiveTime/low/@value",    "preserveTimezone": true,
+      "algorithm_reference": { "name": "dateShift" } },
+    { "path": "//effectiveTime/high/@value",   "preserveTimezone": true,
+      "algorithm_reference": { "name": "dateShift" } },
+    { "path": "//effectiveTime/center/@value", "preserveTimezone": true,
+      "algorithm_reference": { "name": "dateShift" } },
+    { "path": "//time/@value",                 "preserveTimezone": true,
+      "algorithm_reference": { "name": "dateShift" } },
+    { "path": "//birthTime/@value",            "preserveTimezone": true,
+      "algorithm_reference": { "name": "dateShift" } }
+  ]
+}

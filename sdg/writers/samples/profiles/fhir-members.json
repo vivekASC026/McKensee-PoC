@@ -1,0 +1,22 @@
+{
+  "about": "Members modeled on a FHIR sample: one Patient, and the resources after it up to the next Patient (its Coverage), per member written, taken in turn from the sample's patients. Resources before the first Patient (an Organization the coverage names) are written once, as the sample has them.",
+  "extends": "fhir",
+  "kind": "members",
+  "subject": "members",
+  "match": ["Patient"],
+
+  "counts": {"members": "Patient", "coverages": "Coverage"},
+  "summary": "{members} patients · {coverages} coverages",
+
+  "units": [
+    {"name": "member", "starts": "Patient", "row": "count",
+     "missing": "The sample has no Patient to model members on."}
+  ],
+
+  "derive": [
+    {"about": "Every resource written is a new one: a new id, and every reference to it in the member's resources follows (Coverage.beneficiary).",
+     "op": "rename", "at": "* id", "to": "{id}-{n}"},
+    {"about": "The narrative describes the sample's person, not the one written (a name's or address's text is said again from its parts: fhir.json texts).",
+     "op": "drop", "at": "* text"}
+  ]
+}

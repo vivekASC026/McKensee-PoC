@@ -1,0 +1,323 @@
+{
+ "_about": "The words a story or a search is read in, and the names patterns are given.",
+ "stop_words": [
+  "a",
+  "all",
+  "an",
+  "and",
+  "any",
+  "are",
+  "as",
+  "at",
+  "be",
+  "by",
+  "claim",
+  "claims",
+  "data",
+  "each",
+  "for",
+  "from",
+  "generate",
+  "has",
+  "have",
+  "in",
+  "is",
+  "level",
+  "member",
+  "members",
+  "need",
+  "needs",
+  "of",
+  "on",
+  "or",
+  "patient",
+  "patients",
+  "people",
+  "per",
+  "plan",
+  "plans",
+  "product",
+  "some",
+  "test",
+  "the",
+  "their",
+  "them",
+  "they",
+  "to",
+  "type",
+  "who",
+  "whose",
+  "with",
+  "without"
+ ],
+ "gender": [
+  [
+   "\\b(female|females|women|woman|girls?)\\b",
+   "F"
+  ],
+  [
+   "\\b(male|males|men|man|boys?)\\b",
+   "M"
+  ]
+ ],
+ "marital": [
+  [
+   "\\bmarried\\b",
+   "M"
+  ],
+  [
+   "\\bsingle\\b",
+   "S"
+  ],
+  [
+   "\\bdivorced\\b",
+   "D"
+  ],
+  [
+   "\\bwidow(ed|s|ers?)?\\b",
+   "W"
+  ]
+ ],
+ "claim_types": [
+  [
+   "\\bprofessional\\b",
+   "P"
+  ],
+  [
+   "\\b(institutional|inpatient|hospital)\\b",
+   "I"
+  ],
+  [
+   "\\bdental\\b",
+   "D"
+  ]
+ ],
+ "network": [
+  [
+   "\\bout[- ]of[- ]network\\b",
+   "O"
+  ],
+  [
+   "\\bin[- ]network\\b",
+   "I"
+  ]
+ ],
+ "age_words": [
+  [
+   "\\b(children|child|pediatric|paediatric|kids|minors?)\\b",
+   [
+    0,
+    17
+   ]
+  ],
+  [
+   "\\b(seniors?|elderly|retirees?|medicare[- ]age)\\b",
+   [
+    65,
+    null
+   ]
+  ],
+  [
+   "\\badults?\\b",
+   [
+    18,
+    64
+   ]
+  ]
+ ],
+ "states": {
+  "alabama": "AL",
+  "alaska": "AK",
+  "arizona": "AZ",
+  "arkansas": "AR",
+  "california": "CA",
+  "colorado": "CO",
+  "connecticut": "CT",
+  "delaware": "DE",
+  "florida": "FL",
+  "georgia": "GA",
+  "hawaii": "HI",
+  "idaho": "ID",
+  "illinois": "IL",
+  "indiana": "IN",
+  "iowa": "IA",
+  "kansas": "KS",
+  "kentucky": "KY",
+  "louisiana": "LA",
+  "maine": "ME",
+  "maryland": "MD",
+  "massachusetts": "MA",
+  "michigan": "MI",
+  "minnesota": "MN",
+  "mississippi": "MS",
+  "missouri": "MO",
+  "montana": "MT",
+  "nebraska": "NE",
+  "nevada": "NV",
+  "new hampshire": "NH",
+  "new jersey": "NJ",
+  "new mexico": "NM",
+  "new york": "NY",
+  "north carolina": "NC",
+  "north dakota": "ND",
+  "ohio": "OH",
+  "oklahoma": "OK",
+  "oregon": "OR",
+  "pennsylvania": "PA",
+  "rhode island": "RI",
+  "south carolina": "SC",
+  "south dakota": "SD",
+  "tennessee": "TN",
+  "texas": "TX",
+  "utah": "UT",
+  "vermont": "VT",
+  "virginia": "VA",
+  "washington": "WA",
+  "west virginia": "WV",
+  "wisconsin": "WI",
+  "wyoming": "WY",
+  "district of columbia": "DC"
+ },
+ "spoken_for": [
+  "adult",
+  "adults",
+  "boy",
+  "boys",
+  "child",
+  "children",
+  "divorced",
+  "elderly",
+  "female",
+  "females",
+  "girl",
+  "girls",
+  "inpatient",
+  "institutional",
+  "kids",
+  "male",
+  "males",
+  "man",
+  "married",
+  "men",
+  "minor",
+  "minors",
+  "network",
+  "paediatric",
+  "pediatric",
+  "professional",
+  "retiree",
+  "retirees",
+  "senior",
+  "seniors",
+  "single",
+  "widowed",
+  "woman",
+  "women"
+ ],
+ "keyword_aliases": {
+  "oh": "ohio",
+  "ky": "kentucky",
+  "in": "indiana",
+  "ga": "georgia",
+  "wv": "west virginia",
+  "ar": "arkansas",
+  "nc": "north carolina",
+  "ma": "medicare advantage",
+  "aca": "exchange",
+  "marketplace": "exchange",
+  "seniors": "senior",
+  "elderly": "senior",
+  "geriatric": "senior",
+  "adults": "adult",
+  "kids": "pediatric",
+  "child": "pediatric",
+  "children": "pediatric",
+  "minors": "pediatric",
+  "minor": "pediatric",
+  "women": "female",
+  "men": "male"
+ },
+ "naming_states": {
+  "ohio": "OH",
+  "kentucky": "KY",
+  "indiana": "IN",
+  "georgia": "GA",
+  "west virginia": "WV",
+  "arkansas": "AR",
+  "north carolina": "NC"
+ },
+ "reading": {
+  "_about": "How a story is read (sdg/analyzer/services/story_reading.py): the words that make it about the child records, the features matched by their names and written as codes, the word tables for the rest, the state, the one word that names a category, the age and amount features, and the nouns a count is read from.",
+  "child_words": "\\b(claims?|837|diagnos\\w*|procedures?|charges?|encounters?)\\b",
+  "names": [
+   "grgr_ck",
+   "cspi_id",
+   "pdpd_id",
+   "diagnosis",
+   "procedure"
+  ],
+  "named_by": {
+   "pdpd_id": "cspi_id"
+  },
+  "codes": [
+   "diagnosis",
+   "procedure",
+   "cspi_id"
+  ],
+  "words": [
+   [
+    "gender",
+    "gender",
+    null
+   ],
+   [
+    "marital_status",
+    "marital",
+    null
+   ],
+   [
+    "claim_type",
+    "claim_types",
+    "child"
+   ],
+   [
+    "network",
+    "network",
+    null
+   ]
+  ],
+  "state": "state",
+  "category_word": {
+   "word": "dental",
+   "key": "cspd_cat",
+   "values": [
+    "D",
+    "DEN"
+   ],
+   "unless": [
+    "claim_type",
+    "cspi_id"
+   ]
+  },
+  "ages": {
+   "primary": "age",
+   "child": "member_age"
+  },
+  "amount": "charge",
+  "count_nouns": "claims?|members?|patients?|records?|subscribers?|people|lines?|children|kids|seniors|adults|women|men|employees|dependents|enrollees|encounters",
+  "data_types": [
+   [
+    "claims",
+    "\\bclaims?\\b"
+   ],
+   [
+    "enrollments",
+    "\\benroll(?:ment|ments|ees?)?\\b|834"
+   ],
+   [
+    "members",
+    "\\bmembers?\\b|subscribers?\\b"
+   ]
+  ]
+ }
+}

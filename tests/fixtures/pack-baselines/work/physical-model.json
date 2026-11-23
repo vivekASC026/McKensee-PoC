@@ -1,0 +1,1940 @@
+{
+  "connection": {
+    "name": "source",
+    "kind": "mssql",
+    "server": "localhost",
+    "database": "dl_facets_demo",
+    "driver": "ODBC Driver 18 for SQL Server"
+  },
+  "discovered": "2026-11-05T03:37:09+00:00",
+  "tables": [
+    {
+      "name": "dbo.CMC_CSPD_CAT_DESC",
+      "schema_name": "dbo",
+      "table_name": "CMC_CSPD_CAT_DESC",
+      "row_count": 4,
+      "columns": [
+        {
+          "name": "CSPD_CAT",
+          "ordinal": 1,
+          "type_name": "char",
+          "max_length": 1,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": true,
+          "primary_key_ordinal": 1,
+          "is_unique": true,
+          "bucket": "business_key",
+          "bucket_reason": "part of the primary key and not an identity"
+        },
+        {
+          "name": "CSPD_CAT_DESC",
+          "ordinal": 2,
+          "type_name": "varchar",
+          "max_length": 30,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        }
+      ],
+      "primary_key": [
+        "CSPD_CAT"
+      ],
+      "unique_constraints": [
+        {
+          "name": "pk_CMC_CSPD_CAT_DESC",
+          "columns": [
+            "CSPD_CAT"
+          ],
+          "is_primary_key": true
+        }
+      ],
+      "foreign_keys": [],
+      "check_constraints": [],
+      "triggers": [],
+      "indexed": [
+        "CSPD_CAT"
+      ]
+    },
+    {
+      "name": "dbo.CMC_CSPI_CS_PLAN",
+      "schema_name": "dbo",
+      "table_name": "CMC_CSPI_CS_PLAN",
+      "row_count": 21,
+      "columns": [
+        {
+          "name": "CSPI_ID",
+          "ordinal": 1,
+          "type_name": "char",
+          "max_length": 8,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": true,
+          "primary_key_ordinal": 1,
+          "is_unique": true,
+          "bucket": "business_key",
+          "bucket_reason": "part of the primary key and not an identity"
+        },
+        {
+          "name": "GRGR_CK",
+          "ordinal": 2,
+          "type_name": "int",
+          "max_length": 4,
+          "precision": 10,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "code",
+          "bucket_reason": "inferred foreign key to dbo.CMC_GRGR_GROUP, which holds 7 rows and reads as a code table"
+        },
+        {
+          "name": "CSPD_CAT",
+          "ordinal": 3,
+          "type_name": "char",
+          "max_length": 1,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "code",
+          "bucket_reason": "inferred foreign key to dbo.CMC_CSPD_CAT_DESC, which holds 4 rows and reads as a code table"
+        },
+        {
+          "name": "PDPD_ID",
+          "ordinal": 4,
+          "type_name": "char",
+          "max_length": 8,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "code",
+          "bucket_reason": "inferred foreign key to dbo.CMC_PDDS_PROD_DESC, which holds 14 rows and reads as a code table"
+        },
+        {
+          "name": "CSPI_EFF_DT",
+          "ordinal": 5,
+          "type_name": "date",
+          "max_length": 3,
+          "precision": 10,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "CSPI_TERM_DT",
+          "ordinal": 6,
+          "type_name": "date",
+          "max_length": 3,
+          "precision": 10,
+          "scale": 0,
+          "nullable": true,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        }
+      ],
+      "primary_key": [
+        "CSPI_ID"
+      ],
+      "unique_constraints": [
+        {
+          "name": "pk_CMC_CSPI_CS_PLAN",
+          "columns": [
+            "CSPI_ID"
+          ],
+          "is_primary_key": true
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "GRGR_CK"
+          ],
+          "parent_table": "dbo.CMC_GRGR_GROUP",
+          "parent_columns": [
+            "GRGR_CK"
+          ],
+          "kind": "inferred",
+          "coverage": 1.0,
+          "evidence": [
+            "100.0% of 7 distinct values exist in dbo.CMC_GRGR_GROUP.GRGR_CK",
+            "names share GRGR"
+          ]
+        },
+        {
+          "columns": [
+            "CSPD_CAT"
+          ],
+          "parent_table": "dbo.CMC_CSPD_CAT_DESC",
+          "parent_columns": [
+            "CSPD_CAT"
+          ],
+          "kind": "inferred",
+          "coverage": 1.0,
+          "evidence": [
+            "100.0% of 4 distinct values exist in dbo.CMC_CSPD_CAT_DESC.CSPD_CAT",
+            "names share CAT, CSPD"
+          ]
+        },
+        {
+          "columns": [
+            "PDPD_ID"
+          ],
+          "parent_table": "dbo.CMC_PDDS_PROD_DESC",
+          "parent_columns": [
+            "PDPD_ID"
+          ],
+          "kind": "inferred",
+          "coverage": 1.0,
+          "evidence": [
+            "100.0% of 14 distinct values exist in dbo.CMC_PDDS_PROD_DESC.PDPD_ID",
+            "names share PDPD"
+          ]
+        },
+        {
+          "columns": [
+            "PDPD_ID"
+          ],
+          "parent_table": "dbo.CMC_PDPD_PRODUCT",
+          "parent_columns": [
+            "PDPD_ID"
+          ],
+          "kind": "inferred",
+          "coverage": 1.0,
+          "evidence": [
+            "100.0% of 14 distinct values exist in dbo.CMC_PDPD_PRODUCT.PDPD_ID",
+            "names share PDPD"
+          ]
+        }
+      ],
+      "check_constraints": [],
+      "triggers": [],
+      "indexed": [
+        "CSPI_ID"
+      ]
+    },
+    {
+      "name": "dbo.CMC_GRGR_GROUP",
+      "schema_name": "dbo",
+      "table_name": "CMC_GRGR_GROUP",
+      "row_count": 7,
+      "columns": [
+        {
+          "name": "GRGR_CK",
+          "ordinal": 1,
+          "type_name": "int",
+          "max_length": 4,
+          "precision": 10,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": true,
+          "primary_key_ordinal": 1,
+          "is_unique": true,
+          "bucket": "business_key",
+          "bucket_reason": "part of the primary key and not an identity"
+        },
+        {
+          "name": "GRGR_ID",
+          "ordinal": 2,
+          "type_name": "char",
+          "max_length": 8,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": true,
+          "bucket": "business_key",
+          "bucket_reason": "unique constraint and not an identity"
+        },
+        {
+          "name": "GRGR_NAME",
+          "ordinal": 3,
+          "type_name": "varchar",
+          "max_length": 50,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "GRGR_STATE",
+          "ordinal": 4,
+          "type_name": "char",
+          "max_length": 2,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "GRGR_MCTR_TYPE",
+          "ordinal": 5,
+          "type_name": "char",
+          "max_length": 4,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "GRGR_STS",
+          "ordinal": 6,
+          "type_name": "char",
+          "max_length": 2,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "GRGR_ORIG_EFF_DT",
+          "ordinal": 7,
+          "type_name": "date",
+          "max_length": 3,
+          "precision": 10,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "GRGR_TERM_DT",
+          "ordinal": 8,
+          "type_name": "date",
+          "max_length": 3,
+          "precision": 10,
+          "scale": 0,
+          "nullable": true,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        }
+      ],
+      "primary_key": [
+        "GRGR_CK"
+      ],
+      "unique_constraints": [
+        {
+          "name": "pk_CMC_GRGR_GROUP",
+          "columns": [
+            "GRGR_CK"
+          ],
+          "is_primary_key": true
+        },
+        {
+          "name": "uq_CMC_GRGR_GROUP_1",
+          "columns": [
+            "GRGR_ID"
+          ],
+          "is_primary_key": false
+        }
+      ],
+      "foreign_keys": [],
+      "check_constraints": [],
+      "triggers": [],
+      "indexed": [
+        "GRGR_CK",
+        "GRGR_ID"
+      ]
+    },
+    {
+      "name": "dbo.CMC_LOBD_LINE_BUS",
+      "schema_name": "dbo",
+      "table_name": "CMC_LOBD_LINE_BUS",
+      "row_count": 4,
+      "columns": [
+        {
+          "name": "LOBD_ID",
+          "ordinal": 1,
+          "type_name": "char",
+          "max_length": 4,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": true,
+          "primary_key_ordinal": 1,
+          "is_unique": true,
+          "bucket": "business_key",
+          "bucket_reason": "part of the primary key and not an identity"
+        },
+        {
+          "name": "LOBD_DESC",
+          "ordinal": 2,
+          "type_name": "varchar",
+          "max_length": 40,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        }
+      ],
+      "primary_key": [
+        "LOBD_ID"
+      ],
+      "unique_constraints": [
+        {
+          "name": "pk_CMC_LOBD_LINE_BUS",
+          "columns": [
+            "LOBD_ID"
+          ],
+          "is_primary_key": true
+        }
+      ],
+      "foreign_keys": [],
+      "check_constraints": [],
+      "triggers": [],
+      "indexed": [
+        "LOBD_ID"
+      ]
+    },
+    {
+      "name": "dbo.CMC_MEME_MEMBER",
+      "schema_name": "dbo",
+      "table_name": "CMC_MEME_MEMBER",
+      "row_count": 12420,
+      "columns": [
+        {
+          "name": "MEME_CK",
+          "ordinal": 1,
+          "type_name": "int",
+          "max_length": 4,
+          "precision": 10,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": true,
+          "primary_key_ordinal": 1,
+          "is_unique": true,
+          "bucket": "business_key",
+          "bucket_reason": "part of the primary key and not an identity"
+        },
+        {
+          "name": "SBSB_CK",
+          "ordinal": 2,
+          "type_name": "int",
+          "max_length": 4,
+          "precision": 10,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "reference",
+          "bucket_reason": "inferred foreign key to dbo.CMC_SBSB_SUBSC"
+        },
+        {
+          "name": "GRGR_CK",
+          "ordinal": 3,
+          "type_name": "int",
+          "max_length": 4,
+          "precision": 10,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "code",
+          "bucket_reason": "inferred foreign key to dbo.CMC_GRGR_GROUP, which holds 7 rows and reads as a code table"
+        },
+        {
+          "name": "MEME_SFX",
+          "ordinal": 4,
+          "type_name": "smallint",
+          "max_length": 2,
+          "precision": 5,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "MEME_FIRST_NAME",
+          "ordinal": 5,
+          "type_name": "varchar",
+          "max_length": 40,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "MEME_LAST_NAME",
+          "ordinal": 6,
+          "type_name": "varchar",
+          "max_length": 40,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "MEME_BIRTH_DT",
+          "ordinal": 7,
+          "type_name": "date",
+          "max_length": 3,
+          "precision": 10,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "MEME_SEX",
+          "ordinal": 8,
+          "type_name": "char",
+          "max_length": 1,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "MEME_REL",
+          "ordinal": 9,
+          "type_name": "char",
+          "max_length": 1,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "MEME_SSN",
+          "ordinal": 10,
+          "type_name": "char",
+          "max_length": 9,
+          "precision": 0,
+          "scale": 0,
+          "nullable": true,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "MEME_MEDCD_NO",
+          "ordinal": 11,
+          "type_name": "char",
+          "max_length": 12,
+          "precision": 0,
+          "scale": 0,
+          "nullable": true,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "MEME_HICN_MBI",
+          "ordinal": 12,
+          "type_name": "char",
+          "max_length": 11,
+          "precision": 0,
+          "scale": 0,
+          "nullable": true,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "MEME_STATE",
+          "ordinal": 13,
+          "type_name": "char",
+          "max_length": 2,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "MEME_COUNTY",
+          "ordinal": 14,
+          "type_name": "varchar",
+          "max_length": 30,
+          "precision": 0,
+          "scale": 0,
+          "nullable": true,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "MEME_ZIP",
+          "ordinal": 15,
+          "type_name": "char",
+          "max_length": 5,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "MEME_EFF_DT",
+          "ordinal": 16,
+          "type_name": "date",
+          "max_length": 3,
+          "precision": 10,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "MEME_TERM_DT",
+          "ordinal": 17,
+          "type_name": "date",
+          "max_length": 3,
+          "precision": 10,
+          "scale": 0,
+          "nullable": true,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        }
+      ],
+      "primary_key": [
+        "MEME_CK"
+      ],
+      "unique_constraints": [
+        {
+          "name": "pk_CMC_MEME_MEMBER",
+          "columns": [
+            "MEME_CK"
+          ],
+          "is_primary_key": true
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "SBSB_CK"
+          ],
+          "parent_table": "dbo.CMC_SBSB_SUBSC",
+          "parent_columns": [
+            "SBSB_CK"
+          ],
+          "kind": "inferred",
+          "coverage": 1.0,
+          "evidence": [
+            "100.0% of 5,000 distinct values exist in dbo.CMC_SBSB_SUBSC.SBSB_CK, read from a sample of dbo.CMC_MEME_MEMBER",
+            "names share SBSB"
+          ]
+        },
+        {
+          "columns": [
+            "GRGR_CK"
+          ],
+          "parent_table": "dbo.CMC_GRGR_GROUP",
+          "parent_columns": [
+            "GRGR_CK"
+          ],
+          "kind": "inferred",
+          "coverage": 1.0,
+          "evidence": [
+            "100.0% of 7 distinct values exist in dbo.CMC_GRGR_GROUP.GRGR_CK",
+            "names share GRGR"
+          ]
+        }
+      ],
+      "check_constraints": [],
+      "triggers": [],
+      "indexed": [
+        "MEME_CK"
+      ]
+    },
+    {
+      "name": "dbo.CMC_MEPE_PRCS_ELIG",
+      "schema_name": "dbo",
+      "table_name": "CMC_MEPE_PRCS_ELIG",
+      "row_count": 39799,
+      "columns": [
+        {
+          "name": "MEME_CK",
+          "ordinal": 1,
+          "type_name": "int",
+          "max_length": 4,
+          "precision": 10,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": true,
+          "primary_key_ordinal": 1,
+          "is_unique": false,
+          "bucket": "reference",
+          "bucket_reason": "inferred foreign key to dbo.CMC_MEME_MEMBER"
+        },
+        {
+          "name": "CSPD_CAT",
+          "ordinal": 2,
+          "type_name": "char",
+          "max_length": 1,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": true,
+          "primary_key_ordinal": 2,
+          "is_unique": false,
+          "bucket": "code",
+          "bucket_reason": "inferred foreign key to dbo.CMC_CSPD_CAT_DESC, which holds 4 rows and reads as a code table"
+        },
+        {
+          "name": "MEPE_EFF_DT",
+          "ordinal": 3,
+          "type_name": "date",
+          "max_length": 3,
+          "precision": 10,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": true,
+          "primary_key_ordinal": 3,
+          "is_unique": false,
+          "bucket": "business_key",
+          "bucket_reason": "part of the primary key and not an identity"
+        },
+        {
+          "name": "MEPE_TERM_DT",
+          "ordinal": 4,
+          "type_name": "date",
+          "max_length": 3,
+          "precision": 10,
+          "scale": 0,
+          "nullable": true,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "GRGR_CK",
+          "ordinal": 5,
+          "type_name": "int",
+          "max_length": 4,
+          "precision": 10,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "code",
+          "bucket_reason": "inferred foreign key to dbo.CMC_GRGR_GROUP, which holds 7 rows and reads as a code table"
+        },
+        {
+          "name": "SGSG_CK",
+          "ordinal": 6,
+          "type_name": "int",
+          "max_length": 4,
+          "precision": 10,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "code",
+          "bucket_reason": "inferred foreign key to dbo.CMC_SGSG_SUBGROUP, which holds 13 rows and reads as a code table"
+        },
+        {
+          "name": "CSPI_ID",
+          "ordinal": 7,
+          "type_name": "char",
+          "max_length": 8,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "code",
+          "bucket_reason": "inferred foreign key to dbo.CMC_CSPI_CS_PLAN, which holds 21 rows and reads as a code table"
+        },
+        {
+          "name": "PDPD_ID",
+          "ordinal": 8,
+          "type_name": "char",
+          "max_length": 8,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "code",
+          "bucket_reason": "inferred foreign key to dbo.CMC_PDDS_PROD_DESC, which holds 14 rows and reads as a code table"
+        },
+        {
+          "name": "MEPE_ELIG_IND",
+          "ordinal": 9,
+          "type_name": "char",
+          "max_length": 1,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        }
+      ],
+      "primary_key": [
+        "MEME_CK",
+        "CSPD_CAT",
+        "MEPE_EFF_DT"
+      ],
+      "unique_constraints": [
+        {
+          "name": "pk_CMC_MEPE_PRCS_ELIG",
+          "columns": [
+            "MEME_CK",
+            "CSPD_CAT",
+            "MEPE_EFF_DT"
+          ],
+          "is_primary_key": true
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "MEME_CK"
+          ],
+          "parent_table": "dbo.CMC_MEME_MEMBER",
+          "parent_columns": [
+            "MEME_CK"
+          ],
+          "kind": "inferred",
+          "coverage": 1.0,
+          "evidence": [
+            "100.0% of 5,000 distinct values exist in dbo.CMC_MEME_MEMBER.MEME_CK, read from a sample of dbo.CMC_MEPE_PRCS_ELIG",
+            "names share MEME"
+          ]
+        },
+        {
+          "columns": [
+            "CSPD_CAT"
+          ],
+          "parent_table": "dbo.CMC_CSPD_CAT_DESC",
+          "parent_columns": [
+            "CSPD_CAT"
+          ],
+          "kind": "inferred",
+          "coverage": 1.0,
+          "evidence": [
+            "100.0% of 4 distinct values exist in dbo.CMC_CSPD_CAT_DESC.CSPD_CAT",
+            "names share CAT, CSPD"
+          ]
+        },
+        {
+          "columns": [
+            "GRGR_CK"
+          ],
+          "parent_table": "dbo.CMC_GRGR_GROUP",
+          "parent_columns": [
+            "GRGR_CK"
+          ],
+          "kind": "inferred",
+          "coverage": 1.0,
+          "evidence": [
+            "100.0% of 7 distinct values exist in dbo.CMC_GRGR_GROUP.GRGR_CK",
+            "names share GRGR"
+          ]
+        },
+        {
+          "columns": [
+            "SGSG_CK"
+          ],
+          "parent_table": "dbo.CMC_SGSG_SUBGROUP",
+          "parent_columns": [
+            "SGSG_CK"
+          ],
+          "kind": "inferred",
+          "coverage": 1.0,
+          "evidence": [
+            "100.0% of 13 distinct values exist in dbo.CMC_SGSG_SUBGROUP.SGSG_CK",
+            "names share SGSG"
+          ]
+        },
+        {
+          "columns": [
+            "CSPI_ID"
+          ],
+          "parent_table": "dbo.CMC_CSPI_CS_PLAN",
+          "parent_columns": [
+            "CSPI_ID"
+          ],
+          "kind": "inferred",
+          "coverage": 1.0,
+          "evidence": [
+            "100.0% of 21 distinct values exist in dbo.CMC_CSPI_CS_PLAN.CSPI_ID",
+            "names share CSPI"
+          ]
+        },
+        {
+          "columns": [
+            "CSPI_ID"
+          ],
+          "parent_table": "dbo.CMC_PLDS_PLAN_DESC",
+          "parent_columns": [
+            "CSPI_ID"
+          ],
+          "kind": "inferred",
+          "coverage": 1.0,
+          "evidence": [
+            "100.0% of 21 distinct values exist in dbo.CMC_PLDS_PLAN_DESC.CSPI_ID",
+            "names share CSPI"
+          ]
+        },
+        {
+          "columns": [
+            "PDPD_ID"
+          ],
+          "parent_table": "dbo.CMC_PDDS_PROD_DESC",
+          "parent_columns": [
+            "PDPD_ID"
+          ],
+          "kind": "inferred",
+          "coverage": 1.0,
+          "evidence": [
+            "100.0% of 14 distinct values exist in dbo.CMC_PDDS_PROD_DESC.PDPD_ID",
+            "names share PDPD"
+          ]
+        },
+        {
+          "columns": [
+            "PDPD_ID"
+          ],
+          "parent_table": "dbo.CMC_PDPD_PRODUCT",
+          "parent_columns": [
+            "PDPD_ID"
+          ],
+          "kind": "inferred",
+          "coverage": 1.0,
+          "evidence": [
+            "100.0% of 14 distinct values exist in dbo.CMC_PDPD_PRODUCT.PDPD_ID",
+            "names share PDPD"
+          ]
+        }
+      ],
+      "check_constraints": [],
+      "triggers": [],
+      "indexed": [
+        "MEME_CK"
+      ]
+    },
+    {
+      "name": "dbo.CMC_MEPR_PRIM_PROV",
+      "schema_name": "dbo",
+      "table_name": "CMC_MEPR_PRIM_PROV",
+      "row_count": 9133,
+      "columns": [
+        {
+          "name": "MEME_CK",
+          "ordinal": 1,
+          "type_name": "int",
+          "max_length": 4,
+          "precision": 10,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": true,
+          "primary_key_ordinal": 1,
+          "is_unique": false,
+          "bucket": "reference",
+          "bucket_reason": "inferred foreign key to dbo.CMC_MEME_MEMBER"
+        },
+        {
+          "name": "MEPR_PCP_TYPE",
+          "ordinal": 2,
+          "type_name": "char",
+          "max_length": 1,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": true,
+          "primary_key_ordinal": 2,
+          "is_unique": false,
+          "bucket": "business_key",
+          "bucket_reason": "part of the primary key and not an identity"
+        },
+        {
+          "name": "MEPR_EFF_DT",
+          "ordinal": 3,
+          "type_name": "date",
+          "max_length": 3,
+          "precision": 10,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": true,
+          "primary_key_ordinal": 3,
+          "is_unique": false,
+          "bucket": "business_key",
+          "bucket_reason": "part of the primary key and not an identity"
+        },
+        {
+          "name": "MEPR_TERM_DT",
+          "ordinal": 4,
+          "type_name": "date",
+          "max_length": 3,
+          "precision": 10,
+          "scale": 0,
+          "nullable": true,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "PRPR_ID",
+          "ordinal": 5,
+          "type_name": "char",
+          "max_length": 12,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "reference",
+          "bucket_reason": "inferred foreign key to dbo.CMC_PRPR_PROV"
+        }
+      ],
+      "primary_key": [
+        "MEME_CK",
+        "MEPR_PCP_TYPE",
+        "MEPR_EFF_DT"
+      ],
+      "unique_constraints": [
+        {
+          "name": "pk_CMC_MEPR_PRIM_PROV",
+          "columns": [
+            "MEME_CK",
+            "MEPR_PCP_TYPE",
+            "MEPR_EFF_DT"
+          ],
+          "is_primary_key": true
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "MEME_CK"
+          ],
+          "parent_table": "dbo.CMC_MEME_MEMBER",
+          "parent_columns": [
+            "MEME_CK"
+          ],
+          "kind": "inferred",
+          "coverage": 1.0,
+          "evidence": [
+            "100.0% of 5,000 distinct values exist in dbo.CMC_MEME_MEMBER.MEME_CK, read from a sample of dbo.CMC_MEPR_PRIM_PROV",
+            "names share MEME"
+          ]
+        },
+        {
+          "columns": [
+            "PRPR_ID"
+          ],
+          "parent_table": "dbo.CMC_PRPR_PROV",
+          "parent_columns": [
+            "PRPR_ID"
+          ],
+          "kind": "inferred",
+          "coverage": 1.0,
+          "evidence": [
+            "100.0% of 169 distinct values exist in dbo.CMC_PRPR_PROV.PRPR_ID",
+            "names share PRPR"
+          ]
+        }
+      ],
+      "check_constraints": [],
+      "triggers": [],
+      "indexed": [
+        "MEME_CK"
+      ]
+    },
+    {
+      "name": "dbo.CMC_PDDS_PROD_DESC",
+      "schema_name": "dbo",
+      "table_name": "CMC_PDDS_PROD_DESC",
+      "row_count": 14,
+      "columns": [
+        {
+          "name": "PDPD_ID",
+          "ordinal": 1,
+          "type_name": "char",
+          "max_length": 8,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": true,
+          "primary_key_ordinal": 1,
+          "is_unique": true,
+          "bucket": "business_key",
+          "bucket_reason": "part of the primary key and not an identity"
+        },
+        {
+          "name": "PDDS_DESC",
+          "ordinal": 2,
+          "type_name": "varchar",
+          "max_length": 50,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        }
+      ],
+      "primary_key": [
+        "PDPD_ID"
+      ],
+      "unique_constraints": [
+        {
+          "name": "pk_CMC_PDDS_PROD_DESC",
+          "columns": [
+            "PDPD_ID"
+          ],
+          "is_primary_key": true
+        }
+      ],
+      "foreign_keys": [],
+      "check_constraints": [],
+      "triggers": [],
+      "indexed": [
+        "PDPD_ID"
+      ]
+    },
+    {
+      "name": "dbo.CMC_PDPD_PRODUCT",
+      "schema_name": "dbo",
+      "table_name": "CMC_PDPD_PRODUCT",
+      "row_count": 14,
+      "columns": [
+        {
+          "name": "PDPD_ID",
+          "ordinal": 1,
+          "type_name": "char",
+          "max_length": 8,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": true,
+          "primary_key_ordinal": 1,
+          "is_unique": true,
+          "bucket": "code",
+          "bucket_reason": "inferred foreign key to dbo.CMC_PDDS_PROD_DESC, which holds 14 rows and reads as a code table"
+        },
+        {
+          "name": "LOBD_ID",
+          "ordinal": 2,
+          "type_name": "char",
+          "max_length": 4,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "code",
+          "bucket_reason": "inferred foreign key to dbo.CMC_LOBD_LINE_BUS, which holds 4 rows and reads as a code table"
+        },
+        {
+          "name": "CSPD_CAT",
+          "ordinal": 3,
+          "type_name": "char",
+          "max_length": 1,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "code",
+          "bucket_reason": "inferred foreign key to dbo.CMC_CSPD_CAT_DESC, which holds 4 rows and reads as a code table"
+        },
+        {
+          "name": "PDPD_EFF_DT",
+          "ordinal": 4,
+          "type_name": "date",
+          "max_length": 3,
+          "precision": 10,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "PDPD_TERM_DT",
+          "ordinal": 5,
+          "type_name": "date",
+          "max_length": 3,
+          "precision": 10,
+          "scale": 0,
+          "nullable": true,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        }
+      ],
+      "primary_key": [
+        "PDPD_ID"
+      ],
+      "unique_constraints": [
+        {
+          "name": "pk_CMC_PDPD_PRODUCT",
+          "columns": [
+            "PDPD_ID"
+          ],
+          "is_primary_key": true
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "PDPD_ID"
+          ],
+          "parent_table": "dbo.CMC_PDDS_PROD_DESC",
+          "parent_columns": [
+            "PDPD_ID"
+          ],
+          "kind": "inferred",
+          "coverage": 1.0,
+          "evidence": [
+            "100.0% of 14 distinct values exist in dbo.CMC_PDDS_PROD_DESC.PDPD_ID",
+            "names share PDPD"
+          ]
+        },
+        {
+          "columns": [
+            "LOBD_ID"
+          ],
+          "parent_table": "dbo.CMC_LOBD_LINE_BUS",
+          "parent_columns": [
+            "LOBD_ID"
+          ],
+          "kind": "inferred",
+          "coverage": 1.0,
+          "evidence": [
+            "100.0% of 3 distinct values exist in dbo.CMC_LOBD_LINE_BUS.LOBD_ID",
+            "names share LOBD"
+          ]
+        },
+        {
+          "columns": [
+            "CSPD_CAT"
+          ],
+          "parent_table": "dbo.CMC_CSPD_CAT_DESC",
+          "parent_columns": [
+            "CSPD_CAT"
+          ],
+          "kind": "inferred",
+          "coverage": 1.0,
+          "evidence": [
+            "100.0% of 4 distinct values exist in dbo.CMC_CSPD_CAT_DESC.CSPD_CAT",
+            "names share CAT, CSPD"
+          ]
+        }
+      ],
+      "check_constraints": [],
+      "triggers": [],
+      "indexed": [
+        "PDPD_ID"
+      ]
+    },
+    {
+      "name": "dbo.CMC_PLDS_PLAN_DESC",
+      "schema_name": "dbo",
+      "table_name": "CMC_PLDS_PLAN_DESC",
+      "row_count": 21,
+      "columns": [
+        {
+          "name": "CSPI_ID",
+          "ordinal": 1,
+          "type_name": "char",
+          "max_length": 8,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": true,
+          "primary_key_ordinal": 1,
+          "is_unique": true,
+          "bucket": "code",
+          "bucket_reason": "inferred foreign key to dbo.CMC_CSPI_CS_PLAN, which holds 21 rows and reads as a code table"
+        },
+        {
+          "name": "PLDS_DESC",
+          "ordinal": 2,
+          "type_name": "varchar",
+          "max_length": 60,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        }
+      ],
+      "primary_key": [
+        "CSPI_ID"
+      ],
+      "unique_constraints": [
+        {
+          "name": "pk_CMC_PLDS_PLAN_DESC",
+          "columns": [
+            "CSPI_ID"
+          ],
+          "is_primary_key": true
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "CSPI_ID"
+          ],
+          "parent_table": "dbo.CMC_CSPI_CS_PLAN",
+          "parent_columns": [
+            "CSPI_ID"
+          ],
+          "kind": "inferred",
+          "coverage": 1.0,
+          "evidence": [
+            "100.0% of 21 distinct values exist in dbo.CMC_CSPI_CS_PLAN.CSPI_ID",
+            "names share CSPI"
+          ]
+        }
+      ],
+      "check_constraints": [],
+      "triggers": [],
+      "indexed": [
+        "CSPI_ID"
+      ]
+    },
+    {
+      "name": "dbo.CMC_PRPR_PROV",
+      "schema_name": "dbo",
+      "table_name": "CMC_PRPR_PROV",
+      "row_count": 420,
+      "columns": [
+        {
+          "name": "PRPR_ID",
+          "ordinal": 1,
+          "type_name": "char",
+          "max_length": 12,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": true,
+          "primary_key_ordinal": 1,
+          "is_unique": true,
+          "bucket": "business_key",
+          "bucket_reason": "part of the primary key and not an identity"
+        },
+        {
+          "name": "PRPR_NPI",
+          "ordinal": 2,
+          "type_name": "char",
+          "max_length": 10,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "PRPR_ENTITY",
+          "ordinal": 3,
+          "type_name": "char",
+          "max_length": 1,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "PRPR_STATE",
+          "ordinal": 4,
+          "type_name": "char",
+          "max_length": 2,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "PRPR_MCTR_SPEC",
+          "ordinal": 5,
+          "type_name": "char",
+          "max_length": 4,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        }
+      ],
+      "primary_key": [
+        "PRPR_ID"
+      ],
+      "unique_constraints": [
+        {
+          "name": "pk_CMC_PRPR_PROV",
+          "columns": [
+            "PRPR_ID"
+          ],
+          "is_primary_key": true
+        }
+      ],
+      "foreign_keys": [],
+      "check_constraints": [],
+      "triggers": [],
+      "indexed": [
+        "PRPR_ID"
+      ]
+    },
+    {
+      "name": "dbo.CMC_SBSB_SUBSC",
+      "schema_name": "dbo",
+      "table_name": "CMC_SBSB_SUBSC",
+      "row_count": 6350,
+      "columns": [
+        {
+          "name": "SBSB_CK",
+          "ordinal": 1,
+          "type_name": "int",
+          "max_length": 4,
+          "precision": 10,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": true,
+          "primary_key_ordinal": 1,
+          "is_unique": true,
+          "bucket": "business_key",
+          "bucket_reason": "part of the primary key and not an identity"
+        },
+        {
+          "name": "GRGR_CK",
+          "ordinal": 2,
+          "type_name": "int",
+          "max_length": 4,
+          "precision": 10,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "code",
+          "bucket_reason": "inferred foreign key to dbo.CMC_GRGR_GROUP, which holds 7 rows and reads as a code table"
+        },
+        {
+          "name": "SBSB_ID",
+          "ordinal": 3,
+          "type_name": "char",
+          "max_length": 9,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": true,
+          "bucket": "business_key",
+          "bucket_reason": "unique constraint and not an identity"
+        },
+        {
+          "name": "SBSB_LAST_NAME",
+          "ordinal": 4,
+          "type_name": "varchar",
+          "max_length": 40,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "SBSB_FIRST_NAME",
+          "ordinal": 5,
+          "type_name": "varchar",
+          "max_length": 40,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "SBSB_EFF_DT",
+          "ordinal": 6,
+          "type_name": "date",
+          "max_length": 3,
+          "precision": 10,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "SBSB_MCTR_STS",
+          "ordinal": 7,
+          "type_name": "char",
+          "max_length": 2,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        }
+      ],
+      "primary_key": [
+        "SBSB_CK"
+      ],
+      "unique_constraints": [
+        {
+          "name": "pk_CMC_SBSB_SUBSC",
+          "columns": [
+            "SBSB_CK"
+          ],
+          "is_primary_key": true
+        },
+        {
+          "name": "uq_CMC_SBSB_SUBSC_1",
+          "columns": [
+            "SBSB_ID"
+          ],
+          "is_primary_key": false
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "GRGR_CK"
+          ],
+          "parent_table": "dbo.CMC_GRGR_GROUP",
+          "parent_columns": [
+            "GRGR_CK"
+          ],
+          "kind": "inferred",
+          "coverage": 1.0,
+          "evidence": [
+            "100.0% of 7 distinct values exist in dbo.CMC_GRGR_GROUP.GRGR_CK",
+            "names share GRGR"
+          ]
+        }
+      ],
+      "check_constraints": [],
+      "triggers": [],
+      "indexed": [
+        "SBSB_CK",
+        "SBSB_ID"
+      ]
+    },
+    {
+      "name": "dbo.CMC_SGSG_SUBGROUP",
+      "schema_name": "dbo",
+      "table_name": "CMC_SGSG_SUBGROUP",
+      "row_count": 13,
+      "columns": [
+        {
+          "name": "SGSG_CK",
+          "ordinal": 1,
+          "type_name": "int",
+          "max_length": 4,
+          "precision": 10,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": true,
+          "primary_key_ordinal": 1,
+          "is_unique": true,
+          "bucket": "business_key",
+          "bucket_reason": "part of the primary key and not an identity"
+        },
+        {
+          "name": "GRGR_CK",
+          "ordinal": 2,
+          "type_name": "int",
+          "max_length": 4,
+          "precision": 10,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "code",
+          "bucket_reason": "inferred foreign key to dbo.CMC_GRGR_GROUP, which holds 7 rows and reads as a code table"
+        },
+        {
+          "name": "SGSG_ID",
+          "ordinal": 3,
+          "type_name": "char",
+          "max_length": 8,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": true,
+          "bucket": "business_key",
+          "bucket_reason": "unique constraint and not an identity"
+        },
+        {
+          "name": "SGSG_NAME",
+          "ordinal": 4,
+          "type_name": "varchar",
+          "max_length": 60,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "SGSG_STATE",
+          "ordinal": 5,
+          "type_name": "char",
+          "max_length": 2,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "SGSG_STS",
+          "ordinal": 6,
+          "type_name": "char",
+          "max_length": 2,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "SGSG_ORIG_EFF_DT",
+          "ordinal": 7,
+          "type_name": "date",
+          "max_length": 3,
+          "precision": 10,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        }
+      ],
+      "primary_key": [
+        "SGSG_CK"
+      ],
+      "unique_constraints": [
+        {
+          "name": "pk_CMC_SGSG_SUBGROUP",
+          "columns": [
+            "SGSG_CK"
+          ],
+          "is_primary_key": true
+        },
+        {
+          "name": "uq_CMC_SGSG_SUBGROUP_1",
+          "columns": [
+            "SGSG_ID"
+          ],
+          "is_primary_key": false
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "GRGR_CK"
+          ],
+          "parent_table": "dbo.CMC_GRGR_GROUP",
+          "parent_columns": [
+            "GRGR_CK"
+          ],
+          "kind": "inferred",
+          "coverage": 1.0,
+          "evidence": [
+            "100.0% of 7 distinct values exist in dbo.CMC_GRGR_GROUP.GRGR_CK",
+            "names share GRGR"
+          ]
+        }
+      ],
+      "check_constraints": [],
+      "triggers": [],
+      "indexed": [
+        "SGSG_CK",
+        "SGSG_ID"
+      ]
+    }
+  ]
+}

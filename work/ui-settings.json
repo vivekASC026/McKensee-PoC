@@ -1,0 +1,10 @@
+{
+  "rootCounts": {
+    "dbo.CMC_SBSB_SUBSC": 5000
+  },
+  "drivingParents": {},
+  "subjects": {},
+  "seed": "demo-seed-001",
+  "planName": "facets-slice",
+  "targetDb": "MDM_REF"
+}

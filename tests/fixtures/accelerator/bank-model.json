@@ -1,0 +1,932 @@
+{
+  "connection": {
+    "name": "source",
+    "kind": "mssql",
+    "server": "localhost",
+    "database": "BANK_DEMO",
+    "driver": "ODBC Driver 18 for SQL Server"
+  },
+  "discovered": "2026-11-21T05:51:28+00:00",
+  "tables": [
+    {
+      "name": "dbo.ACCOUNT",
+      "schema_name": "dbo",
+      "table_name": "ACCOUNT",
+      "row_count": 4897,
+      "columns": [
+        {
+          "name": "ACCOUNT_ID",
+          "ordinal": 1,
+          "type_name": "bigint",
+          "max_length": 8,
+          "precision": 19,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": true,
+          "primary_key_ordinal": 1,
+          "is_unique": true,
+          "bucket": "business_key",
+          "bucket_reason": "part of the primary key and not an identity"
+        },
+        {
+          "name": "CUSTOMER_ID",
+          "ordinal": 2,
+          "type_name": "int",
+          "max_length": 4,
+          "precision": 10,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "reference",
+          "bucket_reason": "declared foreign key to dbo.CUSTOMER"
+        },
+        {
+          "name": "PRODUCT_CODE",
+          "ordinal": 3,
+          "type_name": "varchar",
+          "max_length": 8,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "code",
+          "bucket_reason": "declared foreign key to dbo.PRODUCT, which holds 8 rows and reads as a code table"
+        },
+        {
+          "name": "OPEN_DATE",
+          "ordinal": 4,
+          "type_name": "date",
+          "max_length": 3,
+          "precision": 10,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "ACCT_STATUS",
+          "ordinal": 5,
+          "type_name": "char",
+          "max_length": 1,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "BALANCE",
+          "ordinal": 6,
+          "type_name": "decimal",
+          "max_length": 9,
+          "precision": 12,
+          "scale": 2,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        }
+      ],
+      "primary_key": [
+        "ACCOUNT_ID"
+      ],
+      "unique_constraints": [
+        {
+          "name": "PK__ACCOUNT__05B22F6075D17D9E",
+          "columns": [
+            "ACCOUNT_ID"
+          ],
+          "is_primary_key": true
+        }
+      ],
+      "foreign_keys": [
+        {
+          "name": "FK__ACCOUNT__CUSTOME__534D60F1",
+          "columns": [
+            "CUSTOMER_ID"
+          ],
+          "parent_table": "dbo.CUSTOMER",
+          "parent_columns": [
+            "CUSTOMER_ID"
+          ],
+          "kind": "declared",
+          "evidence": []
+        },
+        {
+          "name": "FK__ACCOUNT__PRODUCT__5441852A",
+          "columns": [
+            "PRODUCT_CODE"
+          ],
+          "parent_table": "dbo.PRODUCT",
+          "parent_columns": [
+            "PRODUCT_CODE"
+          ],
+          "kind": "declared",
+          "evidence": []
+        }
+      ],
+      "check_constraints": [],
+      "triggers": [],
+      "indexed": [
+        "ACCOUNT_ID"
+      ]
+    },
+    {
+      "name": "dbo.AUDIT_LOG",
+      "schema_name": "dbo",
+      "table_name": "AUDIT_LOG",
+      "row_count": 100,
+      "columns": [
+        {
+          "name": "AUDIT_ID",
+          "ordinal": 1,
+          "type_name": "bigint",
+          "max_length": 8,
+          "precision": 19,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": true,
+          "primary_key_ordinal": 1,
+          "is_unique": true,
+          "bucket": "business_key",
+          "bucket_reason": "part of the primary key and not an identity"
+        },
+        {
+          "name": "TABLE_NAME",
+          "ordinal": 2,
+          "type_name": "varchar",
+          "max_length": 40,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "CHANGED_AT",
+          "ordinal": 3,
+          "type_name": "datetime2",
+          "max_length": 8,
+          "precision": 27,
+          "scale": 7,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "CHANGED_BY",
+          "ordinal": 4,
+          "type_name": "varchar",
+          "max_length": 40,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        }
+      ],
+      "primary_key": [
+        "AUDIT_ID"
+      ],
+      "unique_constraints": [
+        {
+          "name": "PK__AUDIT_LO__CDFE70876A68F794",
+          "columns": [
+            "AUDIT_ID"
+          ],
+          "is_primary_key": true
+        }
+      ],
+      "foreign_keys": [],
+      "check_constraints": [],
+      "triggers": [],
+      "indexed": [
+        "AUDIT_ID"
+      ]
+    },
+    {
+      "name": "dbo.BRANCH",
+      "schema_name": "dbo",
+      "table_name": "BRANCH",
+      "row_count": 6,
+      "columns": [
+        {
+          "name": "BRANCH_ID",
+          "ordinal": 1,
+          "type_name": "int",
+          "max_length": 4,
+          "precision": 10,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": true,
+          "primary_key_ordinal": 1,
+          "is_unique": true,
+          "bucket": "business_key",
+          "bucket_reason": "part of the primary key and not an identity"
+        },
+        {
+          "name": "BRANCH_NAME",
+          "ordinal": 2,
+          "type_name": "varchar",
+          "max_length": 60,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "BRANCH_STATE",
+          "ordinal": 3,
+          "type_name": "char",
+          "max_length": 2,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "BRANCH_CITY",
+          "ordinal": 4,
+          "type_name": "varchar",
+          "max_length": 40,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        }
+      ],
+      "primary_key": [
+        "BRANCH_ID"
+      ],
+      "unique_constraints": [
+        {
+          "name": "PK__BRANCH__766E0D23A6E19E65",
+          "columns": [
+            "BRANCH_ID"
+          ],
+          "is_primary_key": true
+        }
+      ],
+      "foreign_keys": [],
+      "check_constraints": [],
+      "triggers": [],
+      "indexed": [
+        "BRANCH_ID"
+      ]
+    },
+    {
+      "name": "dbo.CUSTOMER",
+      "schema_name": "dbo",
+      "table_name": "CUSTOMER",
+      "row_count": 2000,
+      "columns": [
+        {
+          "name": "CUSTOMER_ID",
+          "ordinal": 1,
+          "type_name": "int",
+          "max_length": 4,
+          "precision": 10,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": true,
+          "primary_key_ordinal": 1,
+          "is_unique": true,
+          "bucket": "business_key",
+          "bucket_reason": "part of the primary key and not an identity"
+        },
+        {
+          "name": "FIRST_NAME",
+          "ordinal": 2,
+          "type_name": "varchar",
+          "max_length": 40,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "LAST_NAME",
+          "ordinal": 3,
+          "type_name": "varchar",
+          "max_length": 40,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "BIRTH_DATE",
+          "ordinal": 4,
+          "type_name": "date",
+          "max_length": 3,
+          "precision": 10,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "SEGMENT",
+          "ordinal": 5,
+          "type_name": "varchar",
+          "max_length": 12,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "CUST_SINCE",
+          "ordinal": 6,
+          "type_name": "date",
+          "max_length": 3,
+          "precision": 10,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "ADDR_CITY",
+          "ordinal": 7,
+          "type_name": "varchar",
+          "max_length": 40,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "ADDR_STATE",
+          "ordinal": 8,
+          "type_name": "char",
+          "max_length": 2,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "ADDR_ZIP",
+          "ordinal": 9,
+          "type_name": "char",
+          "max_length": 5,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "EMAIL",
+          "ordinal": 10,
+          "type_name": "varchar",
+          "max_length": 80,
+          "precision": 0,
+          "scale": 0,
+          "nullable": true,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "BRANCH_ID",
+          "ordinal": 11,
+          "type_name": "int",
+          "max_length": 4,
+          "precision": 10,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "code",
+          "bucket_reason": "declared foreign key to dbo.BRANCH, which holds 6 rows and reads as a code table"
+        }
+      ],
+      "primary_key": [
+        "CUSTOMER_ID"
+      ],
+      "unique_constraints": [
+        {
+          "name": "PK__CUSTOMER__1CE12D37193600D1",
+          "columns": [
+            "CUSTOMER_ID"
+          ],
+          "is_primary_key": true
+        }
+      ],
+      "foreign_keys": [
+        {
+          "name": "FK__CUSTOMER__BRANCH__5070F446",
+          "columns": [
+            "BRANCH_ID"
+          ],
+          "parent_table": "dbo.BRANCH",
+          "parent_columns": [
+            "BRANCH_ID"
+          ],
+          "kind": "declared",
+          "evidence": []
+        }
+      ],
+      "check_constraints": [],
+      "triggers": [],
+      "indexed": [
+        "CUSTOMER_ID"
+      ]
+    },
+    {
+      "name": "dbo.GL_ENTRY",
+      "schema_name": "dbo",
+      "table_name": "GL_ENTRY",
+      "row_count": 200,
+      "columns": [
+        {
+          "name": "GL_ID",
+          "ordinal": 1,
+          "type_name": "bigint",
+          "max_length": 8,
+          "precision": 19,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": true,
+          "primary_key_ordinal": 1,
+          "is_unique": true,
+          "bucket": "business_key",
+          "bucket_reason": "part of the primary key and not an identity"
+        },
+        {
+          "name": "GL_ACCOUNT",
+          "ordinal": 2,
+          "type_name": "varchar",
+          "max_length": 12,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "POSTED_DATE",
+          "ordinal": 3,
+          "type_name": "date",
+          "max_length": 3,
+          "precision": 10,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "AMOUNT",
+          "ordinal": 4,
+          "type_name": "decimal",
+          "max_length": 9,
+          "precision": 14,
+          "scale": 2,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        }
+      ],
+      "primary_key": [
+        "GL_ID"
+      ],
+      "unique_constraints": [
+        {
+          "name": "PK__GL_ENTRY__E2DBDB91056B6D22",
+          "columns": [
+            "GL_ID"
+          ],
+          "is_primary_key": true
+        }
+      ],
+      "foreign_keys": [],
+      "check_constraints": [],
+      "triggers": [],
+      "indexed": [
+        "GL_ID"
+      ]
+    },
+    {
+      "name": "dbo.MCC",
+      "schema_name": "dbo",
+      "table_name": "MCC",
+      "row_count": 12,
+      "columns": [
+        {
+          "name": "MCC_CODE",
+          "ordinal": 1,
+          "type_name": "char",
+          "max_length": 4,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": true,
+          "primary_key_ordinal": 1,
+          "is_unique": true,
+          "bucket": "business_key",
+          "bucket_reason": "part of the primary key and not an identity"
+        },
+        {
+          "name": "MCC_DESC",
+          "ordinal": 2,
+          "type_name": "varchar",
+          "max_length": 60,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        }
+      ],
+      "primary_key": [
+        "MCC_CODE"
+      ],
+      "unique_constraints": [
+        {
+          "name": "PK__MCC__869101FBACDE16B7",
+          "columns": [
+            "MCC_CODE"
+          ],
+          "is_primary_key": true
+        }
+      ],
+      "foreign_keys": [],
+      "check_constraints": [],
+      "triggers": [],
+      "indexed": [
+        "MCC_CODE"
+      ]
+    },
+    {
+      "name": "dbo.PRODUCT",
+      "schema_name": "dbo",
+      "table_name": "PRODUCT",
+      "row_count": 8,
+      "columns": [
+        {
+          "name": "PRODUCT_CODE",
+          "ordinal": 1,
+          "type_name": "varchar",
+          "max_length": 8,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": true,
+          "primary_key_ordinal": 1,
+          "is_unique": true,
+          "bucket": "business_key",
+          "bucket_reason": "part of the primary key and not an identity"
+        },
+        {
+          "name": "PRODUCT_NAME",
+          "ordinal": 2,
+          "type_name": "varchar",
+          "max_length": 60,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "PRODUCT_TYPE",
+          "ordinal": 3,
+          "type_name": "varchar",
+          "max_length": 10,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        }
+      ],
+      "primary_key": [
+        "PRODUCT_CODE"
+      ],
+      "unique_constraints": [
+        {
+          "name": "PK__PRODUCT__24BA53A672C1FF93",
+          "columns": [
+            "PRODUCT_CODE"
+          ],
+          "is_primary_key": true
+        }
+      ],
+      "foreign_keys": [],
+      "check_constraints": [],
+      "triggers": [],
+      "indexed": [
+        "PRODUCT_CODE"
+      ]
+    },
+    {
+      "name": "dbo.TXN",
+      "schema_name": "dbo",
+      "table_name": "TXN",
+      "row_count": 48182,
+      "columns": [
+        {
+          "name": "ACCOUNT_ID",
+          "ordinal": 1,
+          "type_name": "bigint",
+          "max_length": 8,
+          "precision": 19,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": true,
+          "primary_key_ordinal": 1,
+          "is_unique": false,
+          "bucket": "reference",
+          "bucket_reason": "declared foreign key to dbo.ACCOUNT"
+        },
+        {
+          "name": "TXN_SEQ",
+          "ordinal": 2,
+          "type_name": "int",
+          "max_length": 4,
+          "precision": 10,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": true,
+          "primary_key_ordinal": 2,
+          "is_unique": false,
+          "bucket": "business_key",
+          "bucket_reason": "part of the primary key and not an identity"
+        },
+        {
+          "name": "TXN_DATE",
+          "ordinal": 3,
+          "type_name": "date",
+          "max_length": 3,
+          "precision": 10,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "TXN_TYPE",
+          "ordinal": 4,
+          "type_name": "varchar",
+          "max_length": 10,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "CHANNEL",
+          "ordinal": 5,
+          "type_name": "varchar",
+          "max_length": 10,
+          "precision": 0,
+          "scale": 0,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        },
+        {
+          "name": "MCC_CODE",
+          "ordinal": 6,
+          "type_name": "char",
+          "max_length": 4,
+          "precision": 0,
+          "scale": 0,
+          "nullable": true,
+          "is_identity": false,
+          "is_computed": false,
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "code",
+          "bucket_reason": "declared foreign key to dbo.MCC, which holds 12 rows and reads as a code table"
+        },
+        {
+          "name": "AMOUNT",
+          "ordinal": 7,
+          "type_name": "decimal",
+          "max_length": 9,
+          "precision": 12,
+          "scale": 2,
+          "nullable": false,
+          "is_identity": false,
+          "is_computed": false,
+          "is_primary_key": false,
+          "is_unique": false,
+          "bucket": "free",
+          "bucket_reason": "no structural rule applies"
+        }
+      ],
+      "primary_key": [
+        "ACCOUNT_ID",
+        "TXN_SEQ"
+      ],
+      "unique_constraints": [
+        {
+          "name": "PK_TXN",
+          "columns": [
+            "ACCOUNT_ID",
+            "TXN_SEQ"
+          ],
+          "is_primary_key": true
+        }
+      ],
+      "foreign_keys": [
+        {
+          "name": "FK__TXN__ACCOUNT_ID__571DF1D5",
+          "columns": [
+            "ACCOUNT_ID"
+          ],
+          "parent_table": "dbo.ACCOUNT",
+          "parent_columns": [
+            "ACCOUNT_ID"
+          ],
+          "kind": "declared",
+          "evidence": []
+        },
+        {
+          "name": "FK__TXN__MCC_CODE__5812160E",
+          "columns": [
+            "MCC_CODE"
+          ],
+          "parent_table": "dbo.MCC",
+          "parent_columns": [
+            "MCC_CODE"
+          ],
+          "kind": "declared",
+          "evidence": []
+        }
+      ],
+      "check_constraints": [],
+      "triggers": [],
+      "indexed": [
+        "ACCOUNT_ID"
+      ]
+    }
+  ]
+}

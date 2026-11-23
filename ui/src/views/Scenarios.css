@@ -1,0 +1,43 @@
+/* A pattern's scenarios, chosen and generated together. */
+.scenarios {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--paper-sunk);
+}
+.scenarios h4 {
+  font-size: var(--t-small);
+  font-weight: 600;
+}
+.scenarios__dims {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+.scenarios__dim {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--t-small);
+}
+.scenarios__table {
+  max-height: 24rem;
+  overflow-y: auto;
+  display: block;
+}
+.scenarios__which {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin: var(--space-3) 0;
+}
+.scenarios__which label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}

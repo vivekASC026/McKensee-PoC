@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ title }}</title>
+<style>
+  :root {
+    --bg: #f6f7f9;
+    --panel: #ffffff;
+    --ink: #1b1f24;
+    --muted: #616b76;
+    --line: #dfe3e8;
+    --accent: #1f6feb;
+    --high: #1a7f4b;
+    --high-bg: #e7f5ed;
+    --medium: #9a6700;
+    --medium-bg: #fdf3d8;
+    --low: #a8322a;
+    --low-bg: #fbe9e7;
+    --code: #f2f4f7;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #12161b; --panel: #1a1f26; --ink: #e6eaf0; --muted: #9aa5b1;
+      --line: #2b323b; --accent: #6ba2ff; --high: #5bd08c; --high-bg: #16301f;
+      --medium: #e0b341; --medium-bg: #322a13; --low: #f08a80; --low-bg: #331d1b;
+      --code: #222831;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 0 0 4rem;
+    background: var(--bg); color: var(--ink);
+    font: 15px/1.55 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  header {
+    background: var(--panel); border-bottom: 1px solid var(--line);
+    padding: 1.75rem 0 1.25rem;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 2rem; }
+  h1 { margin: 0 0 .25rem; font-size: 1.5rem; letter-spacing: -.01em; }
+  h2 { font-size: 1.15rem; margin: 2.5rem 0 .75rem; letter-spacing: -.01em; }
+  h3 { font-size: 1rem; margin: 1.5rem 0 .6rem; color: var(--muted);
+       text-transform: uppercase; letter-spacing: .06em; font-weight: 600; }
+  .sub { color: var(--muted); font-size: .9rem; }
+  main { max-width: 1180px; margin: 0 auto; padding: 0 2rem; }
+  @media (max-width: 1240px) { .wrap, main { max-width: 100%; } }
+  .stats { display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 1rem; }
+  .stat .value { font-size: 1.7rem; font-weight: 650; letter-spacing: -.02em; }
+  .stat .label { color: var(--muted); font-size: .8rem; text-transform: uppercase;
+                 letter-spacing: .05em; }
+  .panel { background: var(--panel); border: 1px solid var(--line);
+           border-radius: 10px; padding: 1rem 1.15rem; margin-bottom: .75rem; }
+  .badge { display: inline-block; padding: .1rem .5rem; border-radius: 999px;
+           font-size: .74rem; font-weight: 600; letter-spacing: .02em;
+           border: 1px solid transparent; white-space: nowrap; }
+  .high   { color: var(--high);   background: var(--high-bg); }
+  .medium { color: var(--medium); background: var(--medium-bg); }
+  .low    { color: var(--low);    background: var(--low-bg); }
+  .bucket { color: var(--muted); background: var(--code); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+          gap: .75rem; }
+  .card header { background: none; border: 0; padding: 0; }
+  .card .name { font-weight: 650; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+  .card .type { color: var(--muted); font-size: .82rem;
+                font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+  .row { display: flex; justify-content: space-between; gap: .75rem;
+         align-items: baseline; }
+  dl.measures { display: grid; grid-template-columns: auto 1fr; gap: .1rem .75rem;
+                margin: .6rem 0 0; font-size: .85rem; }
+  dl.measures dt { color: var(--muted); }
+  dl.measures dd { margin: 0; font-variant-numeric: tabular-nums; }
+  code, .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+                font-size: .84rem; }
+  .rule { margin-top: .7rem; padding-top: .7rem; border-top: 1px solid var(--line); }
+  .rule .gen { font-weight: 650; color: var(--accent); }
+  .params { background: var(--code); border-radius: 6px; padding: .4rem .55rem;
+            margin-top: .35rem; overflow: auto; max-height: 8rem;
+            white-space: pre-wrap; word-break: break-word; font-size: .8rem;
+            font-family: ui-monospace, Menlo, Consolas, monospace; }
+  ul.evidence { margin: .5rem 0 0; padding-left: 1.05rem; font-size: .84rem;
+                color: var(--muted); }
+  ul.evidence li { margin-bottom: .15rem; }
+  ul.evidence .kind { color: var(--ink); font-weight: 600; }
+  table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+  th, td { text-align: left; padding: .45rem .6rem; border-bottom: 1px solid var(--line); }
+  th { color: var(--muted); font-weight: 600; font-size: .78rem;
+       text-transform: uppercase; letter-spacing: .05em; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .scroll { overflow-x: auto; }
+  .tree-name { font-family: ui-monospace, Menlo, Consolas, monospace; font-weight: 600; }
+  .why { color: var(--low); font-size: .85rem; margin-top: .35rem; }
+  .note { color: var(--medium); font-size: .85rem; margin-top: .35rem; }
+  .empty { color: var(--muted); font-style: italic; }
+  .topvals { display: flex; flex-wrap: wrap; gap: .3rem; margin-top: .4rem; }
+  .topvals span { background: var(--code); border-radius: 4px; padding: .05rem .4rem;
+                  font-size: .78rem; font-family: ui-monospace, Menlo, Consolas, monospace; }
+  .bar { height: 4px; background: var(--code); border-radius: 2px; margin-top: .3rem; }
+  .bar > i { display: block; height: 100%; border-radius: 2px; background: var(--accent); }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>{{ title }}</h1>
+    <div class="sub">{{ subtitle }}</div>
+    <div class="stats">
+      {% for stat in stats %}
+      <div class="stat">
+        <div class="value">{{ stat.value }}</div>
+        <div class="label">{{ stat.label }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</header>
+
+<main>
+
+<h2>Review queue</h2>
+{% if queue %}
+<div class="sub">{{ queue|length }} column{{ '' if queue|length == 1 else 's' }} the tool
+  will not decide on its own. Everything else was accepted automatically and can still be changed.</div>
+{% for item in queue %}
+<div class="panel">
+  <div class="row">
+    <span class="name mono">{{ item.qualified }}</span>
+    <span>
+      <span class="badge bucket">{{ item.bucket }}</span>
+      {% if item.proposal_confidence %}
+      <span class="badge {{ item.proposal_confidence }}">{{ item.proposal_confidence }}</span>
+      {% endif %}
+    </span>
+  </div>
+  <div class="why">Needs a decision because {{ item.explain() }}.</div>
+  <div style="margin-top:.5rem">
+    Nearest element: <strong>{{ item.element or 'none' }}</strong>
+    {% if item.alternatives %}
+    <span class="sub">&nbsp;other candidates: {{ item.alternatives|join(', ') }}</span>
+    {% endif %}
+  </div>
+  {% if item.generator %}
+  <div style="margin-top:.5rem">Proposed rule: <span class="gen">{{ item.generator }}</span></div>
+  {% if item.params_preview %}<div class="params">{{ item.params_preview }}</div>{% endif %}
+  {% endif %}
+  {% if item.mapping_evidence or item.proposal_evidence %}
+  <ul class="evidence">
+    {% for e in item.mapping_evidence + item.proposal_evidence %}
+    <li><span class="kind">{{ e.kind }}</span> &mdash; {{ e.detail }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</div>
+{% endfor %}
+{% else %}
+<div class="panel empty">Nothing is waiting. Every column mapped and every rule was
+  proposed at high confidence.</div>
+{% endif %}
+
+<h2>Hierarchy and volumes</h2>
+{% if ratios %}
+<div class="sub">Each child table takes a ratio to one driving parent. The proposal
+  comes from the data; the evidence behind it is shown so you can judge it.</div>
+<div class="panel scroll">
+  <table>
+    <thead>
+      <tr><th>child</th><th>parent</th><th>key</th><th>proposal</th>
+          <th class="num">mean</th><th class="num">median (with children)</th>
+          <th class="num">90th</th><th class="num">none</th><th>evidence</th></tr>
+    </thead>
+    <tbody>
+    {% for r in ratios %}
+      <tr>
+        <td class="tree-name">{{ r.child_table.split('.')[-1] }}</td>
+        <td class="tree-name">{{ r.parent_table.split('.')[-1] }}</td>
+        <td><span class="badge bucket">{{ r.kind }}</span> <span class="mono">{{ r.child_column }}</span></td>
+        <td><strong>{{ r.proposal.kind }}</strong>
+            {% if r.proposal.kind == 'fixed' %}<span class="mono">{{ r.proposal.value }}</span>{% endif %}</td>
+        <td class="num">{{ '%.2f'|format(r.mean) }}</td>
+        <td class="num">{{ r.median_nonzero }}</td>
+        <td class="num">{{ r.p90_nonzero }}</td>
+        <td class="num">{{ '%.0f%%'|format(r.zero_share * 100) }}</td>
+        <td class="sub">{{ r.evidence }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% else %}
+<div class="panel empty">No parent-to-child relationships were measured.</div>
+{% endif %}
+
+<h2>Profile cards</h2>
+<div class="sub">What the tool knows about every column, and the rule it proposes.</div>
+
+{% for table in tables %}
+<h3>{{ table.name }} &nbsp;<span style="text-transform:none;letter-spacing:0">
+  {{ '{:,}'.format(table.row_count) }} rows &middot; {{ table.columns|length }} columns
+  {%- if table.triggers %} &middot; trigger {{ table.triggers|join(', ') }}{% endif %}</span></h3>
+<div class="grid">
+{% for column in table.columns %}
+  <div class="panel card">
+    <div class="row">
+      <span class="name">{{ column.name }}</span>
+      <span class="badge bucket">{{ column.bucket }}</span>
+    </div>
+    <div class="type">{{ column.type }}{{ ' null' if column.nullable else '' }}</div>
+
+    <dl class="measures">
+      {% for label, value in column.measures %}
+      <dt>{{ label }}</dt><dd>{{ value }}</dd>
+      {% endfor %}
+    </dl>
+
+    {% if column.top_values %}
+    <div class="topvals">
+      {% for value, share in column.top_values %}
+      <span>{{ value }} {{ share }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="rule">
+      <div class="row">
+        <span>
+          {% if column.element %}
+          <span class="mono">{{ column.element }}</span>
+          {% else %}<span class="empty">no element</span>{% endif %}
+        </span>
+        {% if column.mapping_confidence %}
+        <span class="badge {{ column.mapping_confidence }}">{{ column.mapping_confidence }}</span>
+        {% endif %}
+      </div>
+      <div style="margin-top:.4rem">
+        <span class="gen">{{ column.generator }}</span>
+        {% if column.proposal_confidence %}
+        <span class="badge {{ column.proposal_confidence }}">{{ column.proposal_confidence }}</span>
+        {% endif %}
+        {% if column.coverage is not none %}
+        <span class="sub">&nbsp;{{ column.coverage }} coverage</span>
+        {% endif %}
+      </div>
+      {% if column.params_preview %}
+      <div class="params">{{ column.params_preview }}</div>
+      {% endif %}
+      {% if column.evidence %}
+      <ul class="evidence">
+        {% for e in column.evidence %}
+        <li><span class="kind">{{ e.kind }}</span> &mdash; {{ e.detail }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% if column.note %}<div class="note">{{ column.note }}</div>{% endif %}
+    </div>
+  </div>
+{% endfor %}
+</div>
+{% endfor %}
+
+<h2>Catalog</h2>
+<div class="panel scroll">
+  <table>
+    <thead><tr><th>element</th><th>domain</th><th>rule</th><th>format</th>
+               <th>PII</th><th>aliases</th><th>used by</th></tr></thead>
+    <tbody>
+    {% for e in elements %}
+      <tr>
+        <td class="mono">{{ e.name }}</td>
+        <td>{{ e.domain }}</td>
+        <td><span class="badge bucket">{{ e.rule }}</span></td>
+        <td class="mono">{{ e.format or '' }}</td>
+        <td>{{ e.pii }}</td>
+        <td class="sub">{{ e.aliases }}</td>
+        <td class="num">{{ e.used_by }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<p class="sub" style="margin-top:2rem">
+  Generated by sdg review. To approve or change anything, edit
+  <code>{{ decisions_path }}</code> and run <code>sdg plan</code>.
+</p>
+
+</main>
+</body>
+</html>

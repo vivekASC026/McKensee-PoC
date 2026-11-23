@@ -1,0 +1,5926 @@
+{
+  "connection": {
+    "name": "source",
+    "kind": "mssql",
+    "server": "localhost",
+    "database": "FACETS_QA",
+    "driver": "ODBC Driver 18 for SQL Server"
+  },
+  "profiled": "2026-11-21T05:51:29+00:00",
+  "sample_cap": 100000,
+  "seconds": 10.587,
+  "columns": [
+    {
+      "table": "dbo.CMC_CDML_CL_LINE",
+      "column": "CLCL_ID",
+      "row_count": 649391,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 216130,
+      "distinct_ratio": 0.3328195185951145,
+      "approximate_distinct": true,
+      "cardinality": "high",
+      "min_length": 12,
+      "max_length": 12,
+      "fitted_format": {
+        "regex": "\\d{12}",
+        "coverage": 1.0,
+        "sample_size": 100000,
+        "matched": 100000,
+        "kind": "literal"
+      },
+      "sample_size": 100000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_CDML_CL_LINE",
+      "column": "CDML_SEQ_NO",
+      "row_count": 649391,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 5,
+      "distinct_ratio": 7.699521551730776e-06,
+      "approximate_distinct": true,
+      "cardinality": "low",
+      "top_values": [
+        {
+          "value": 1,
+          "count": 210955,
+          "share": 0.32485
+        },
+        {
+          "value": 2,
+          "count": 189960,
+          "share": 0.29252
+        },
+        {
+          "value": 3,
+          "count": 147678,
+          "share": 0.22741
+        },
+        {
+          "value": 4,
+          "count": 73602,
+          "share": 0.11334
+        },
+        {
+          "value": 5,
+          "count": 27196,
+          "share": 0.04188
+        }
+      ],
+      "distribution": {
+        "kind": "uniform",
+        "skew": 0.6057
+      },
+      "sample_size": 100000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_CDML_CL_LINE",
+      "column": "CDML_SVC_CD",
+      "row_count": 649391,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 395,
+      "distinct_ratio": 0.0006082622025867313,
+      "approximate_distinct": true,
+      "cardinality": "low",
+      "min_length": 5,
+      "max_length": 5,
+      "top_values": [
+        {
+          "value": "T0582",
+          "count": 1903,
+          "share": 0.00293
+        },
+        {
+          "value": "V6527",
+          "count": 1903,
+          "share": 0.00293
+        },
+        {
+          "value": "A8510",
+          "count": 1890,
+          "share": 0.00291
+        },
+        {
+          "value": "A1489",
+          "count": 1883,
+          "share": 0.0029
+        },
+        {
+          "value": "S1362",
+          "count": 1883,
+          "share": 0.0029
+        },
+        {
+          "value": "A2646",
+          "count": 1877,
+          "share": 0.00289
+        },
+        {
+          "value": "E4378",
+          "count": 1877,
+          "share": 0.00289
+        },
+        {
+          "value": "K6003",
+          "count": 1870,
+          "share": 0.00288
+        },
+        {
+          "value": "C9921",
+          "count": 1857,
+          "share": 0.00286
+        },
+        {
+          "value": "H0121",
+          "count": 1857,
+          "share": 0.00286
+        },
+        {
+          "value": "H3464",
+          "count": 1857,
+          "share": 0.00286
+        },
+        {
+          "value": "D2690",
+          "count": 1844,
+          "share": 0.00284
+        },
+        {
+          "value": "B3766",
+          "count": 1831,
+          "share": 0.00282
+        },
+        {
+          "value": "D1650",
+          "count": 1831,
+          "share": 0.00282
+        },
+        {
+          "value": "A9902",
+          "count": 1825,
+          "share": 0.00281
+        },
+        {
+          "value": "T8258",
+          "count": 1825,
+          "share": 0.00281
+        },
+        {
+          "value": "L5675",
+          "count": 1818,
+          "share": 0.0028
+        },
+        {
+          "value": "L0710",
+          "count": 1812,
+          "share": 0.00279
+        },
+        {
+          "value": "V0302",
+          "count": 1812,
+          "share": 0.00279
+        },
+        {
+          "value": "S9003",
+          "count": 1805,
+          "share": 0.00278
+        }
+      ],
+      "fitted_format": {
+        "regex": "[A-Z]\\d{4}",
+        "coverage": 1.0,
+        "sample_size": 100000,
+        "matched": 100000,
+        "kind": "literal"
+      },
+      "sample_size": 100000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_CDML_CL_LINE",
+      "column": "CDML_CHG_AMT",
+      "row_count": 649391,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 61785,
+      "distinct_ratio": 0.09514298781473719,
+      "approximate_distinct": true,
+      "cardinality": "high",
+      "distribution": {
+        "kind": "lognormal",
+        "skew": 4.2545
+      },
+      "sample_size": 100000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_CDML_CL_LINE",
+      "column": "CDML_UNITS",
+      "row_count": 649391,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 6,
+      "distinct_ratio": 9.23942586207693e-06,
+      "approximate_distinct": true,
+      "cardinality": "low",
+      "top_values": [
+        {
+          "value": 1,
+          "count": 357542,
+          "share": 0.55058
+        },
+        {
+          "value": 2,
+          "count": 130917,
+          "share": 0.2016
+        },
+        {
+          "value": 3,
+          "count": 64049,
+          "share": 0.09863
+        },
+        {
+          "value": 4,
+          "count": 45548,
+          "share": 0.07014
+        },
+        {
+          "value": 5,
+          "count": 32093,
+          "share": 0.04942
+        },
+        {
+          "value": 10,
+          "count": 19241,
+          "share": 0.02963
+        }
+      ],
+      "distribution": {
+        "kind": "lognormal",
+        "skew": 2.6932
+      },
+      "sample_size": 100000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_CLCL_AUDIT",
+      "column": "AUDIT_ID",
+      "row_count": 2579398,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 2579398,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": true,
+      "cardinality": "unique",
+      "sequence": {
+        "is_sequence": true,
+        "step": 1,
+        "agreement": 0.9947,
+        "gaps": 2382128,
+        "values_tested": 100000
+      },
+      "sample_size": 100000,
+      "measured_rows": 1000000
+    },
+    {
+      "table": "dbo.CMC_CLCL_AUDIT",
+      "column": "CLCL_ID",
+      "row_count": 2579398,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 215377,
+      "distinct_ratio": 0.08349894045044619,
+      "approximate_distinct": true,
+      "cardinality": "high",
+      "min_length": 12,
+      "max_length": 12,
+      "fitted_format": {
+        "regex": "\\d{12}",
+        "coverage": 1.0,
+        "sample_size": 100000,
+        "matched": 100000,
+        "kind": "literal"
+      },
+      "sample_size": 100000,
+      "measured_rows": 1000000
+    },
+    {
+      "table": "dbo.CMC_CLCL_AUDIT",
+      "column": "AUDIT_ACTION",
+      "row_count": 2579398,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 1,
+      "distinct_ratio": 3.876873596087149e-07,
+      "approximate_distinct": true,
+      "cardinality": "constant",
+      "min_length": 6,
+      "max_length": 6,
+      "top_values": [
+        {
+          "value": "INSERT",
+          "count": 2579398,
+          "share": 1.0
+        }
+      ],
+      "fitted_format": {
+        "regex": "INSERT",
+        "coverage": 1.0,
+        "sample_size": 100000,
+        "matched": 100000,
+        "kind": "literal"
+      },
+      "sample_size": 100000,
+      "measured_rows": 1000000
+    },
+    {
+      "table": "dbo.CMC_CLCL_AUDIT",
+      "column": "AUDIT_TS",
+      "row_count": 2579398,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 37096,
+      "distinct_ratio": 0.014381650292044888,
+      "approximate_distinct": true,
+      "cardinality": "high",
+      "has_time_component": true,
+      "sample_size": 100000,
+      "measured_rows": 1000000
+    },
+    {
+      "table": "dbo.CMC_CLCL_CLAIM",
+      "column": "CLCL_ID",
+      "row_count": 210727,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 216130,
+      "distinct_ratio": 1.0256398088522116,
+      "approximate_distinct": true,
+      "cardinality": "unique",
+      "min_length": 12,
+      "max_length": 12,
+      "fitted_format": {
+        "regex": "\\d{12}",
+        "coverage": 1.0,
+        "sample_size": 100000,
+        "matched": 100000,
+        "kind": "literal"
+      },
+      "sample_size": 100000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_CLCL_CLAIM",
+      "column": "MEME_CK",
+      "row_count": 210727,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 32233,
+      "distinct_ratio": 0.1529609399839603,
+      "approximate_distinct": true,
+      "cardinality": "high",
+      "sequence": {
+        "is_sequence": false,
+        "step": 1,
+        "agreement": 0.612,
+        "gaps": 17983,
+        "values_tested": 28094
+      },
+      "distribution": {
+        "kind": "uniform",
+        "skew": 0.002
+      },
+      "sample_size": 100000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_CLCL_CLAIM",
+      "column": "PRPR_ID",
+      "row_count": 210727,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 298,
+      "distinct_ratio": 0.001414151959644469,
+      "approximate_distinct": true,
+      "cardinality": "high",
+      "min_length": 12,
+      "max_length": 12,
+      "sample_size": 100000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_CLCL_CLAIM",
+      "column": "PDPD_ID",
+      "row_count": 210727,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 25,
+      "distinct_ratio": 0.00011863690936614672,
+      "approximate_distinct": true,
+      "cardinality": "low",
+      "min_length": 8,
+      "max_length": 8,
+      "top_values": [
+        {
+          "value": "PD000016",
+          "count": 9904,
+          "share": 0.047
+        },
+        {
+          "value": "PD000007",
+          "count": 9851,
+          "share": 0.04675
+        },
+        {
+          "value": "PD000017",
+          "count": 9620,
+          "share": 0.04565
+        },
+        {
+          "value": "PD000008",
+          "count": 9597,
+          "share": 0.04554
+        },
+        {
+          "value": "PD000012",
+          "count": 9556,
+          "share": 0.04535
+        },
+        {
+          "value": "PD000018",
+          "count": 9554,
+          "share": 0.04534
+        },
+        {
+          "value": "PD000019",
+          "count": 9516,
+          "share": 0.04516
+        },
+        {
+          "value": "PD000013",
+          "count": 9504,
+          "share": 0.0451
+        },
+        {
+          "value": "PD000021",
+          "count": 9417,
+          "share": 0.04469
+        },
+        {
+          "value": "PD000004",
+          "count": 9219,
+          "share": 0.04375
+        },
+        {
+          "value": "PD000003",
+          "count": 9192,
+          "share": 0.04362
+        },
+        {
+          "value": "PD000011",
+          "count": 9095,
+          "share": 0.04316
+        },
+        {
+          "value": "PD000014",
+          "count": 8897,
+          "share": 0.04222
+        },
+        {
+          "value": "PD000024",
+          "count": 8848,
+          "share": 0.04199
+        },
+        {
+          "value": "PD000023",
+          "count": 8825,
+          "share": 0.04188
+        },
+        {
+          "value": "PD000001",
+          "count": 8792,
+          "share": 0.04172
+        },
+        {
+          "value": "PD000006",
+          "count": 8756,
+          "share": 0.04155
+        },
+        {
+          "value": "PD000009",
+          "count": 8724,
+          "share": 0.0414
+        },
+        {
+          "value": "PD000022",
+          "count": 8239,
+          "share": 0.0391
+        },
+        {
+          "value": "PD000002",
+          "count": 8216,
+          "share": 0.03899
+        },
+        {
+          "value": "PD000005",
+          "count": 5806,
+          "share": 0.02755
+        },
+        {
+          "value": "PD000015",
+          "count": 5559,
+          "share": 0.02638
+        },
+        {
+          "value": "PD000020",
+          "count": 5460,
+          "share": 0.02591
+        },
+        {
+          "value": "PD000010",
+          "count": 5374,
+          "share": 0.0255
+        },
+        {
+          "value": "PD000025",
+          "count": 5205,
+          "share": 0.0247
+        }
+      ],
+      "fitted_format": {
+        "regex": "PD\\d{6}",
+        "coverage": 1.0,
+        "sample_size": 100000,
+        "matched": 100000,
+        "kind": "literal"
+      },
+      "sample_size": 100000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_CLCL_CLAIM",
+      "column": "CLCL_CUR_STS",
+      "row_count": 210727,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 6,
+      "distinct_ratio": 2.847285824787521e-05,
+      "approximate_distinct": true,
+      "cardinality": "low",
+      "min_length": 2,
+      "max_length": 2,
+      "top_values": [
+        {
+          "value": "02",
+          "count": 147916,
+          "share": 0.70193
+        },
+        {
+          "value": "01",
+          "count": 20959,
+          "share": 0.09946
+        },
+        {
+          "value": "04",
+          "count": 14416,
+          "share": 0.06841
+        },
+        {
+          "value": "11",
+          "count": 12760,
+          "share": 0.06055
+        },
+        {
+          "value": "22",
+          "count": 8412,
+          "share": 0.03992
+        },
+        {
+          "value": "99",
+          "count": 6265,
+          "share": 0.02973
+        }
+      ],
+      "fitted_format": {
+        "regex": "\\d{2}",
+        "coverage": 1.0,
+        "sample_size": 100000,
+        "matched": 100000,
+        "kind": "literal"
+      },
+      "sample_size": 100000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_CLCL_CLAIM",
+      "column": "CLCL_CL_TYPE",
+      "row_count": 210727,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 3,
+      "distinct_ratio": 1.4236429123937606e-05,
+      "approximate_distinct": true,
+      "cardinality": "low",
+      "min_length": 1,
+      "max_length": 1,
+      "top_values": [
+        {
+          "value": "P",
+          "count": 150021,
+          "share": 0.71192
+        },
+        {
+          "value": "I",
+          "count": 33303,
+          "share": 0.15804
+        },
+        {
+          "value": "D",
+          "count": 27403,
+          "share": 0.13004
+        }
+      ],
+      "fitted_format": {
+        "regex": "[A-Z]",
+        "coverage": 1.0,
+        "sample_size": 100000,
+        "matched": 100000,
+        "kind": "literal"
+      },
+      "sample_size": 100000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_CLCL_CLAIM",
+      "column": "CLCL_NTWK_IND",
+      "row_count": 210727,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 2,
+      "distinct_ratio": 9.490952749291738e-06,
+      "approximate_distinct": true,
+      "cardinality": "low",
+      "min_length": 1,
+      "max_length": 1,
+      "top_values": [
+        {
+          "value": "I",
+          "count": 182852,
+          "share": 0.86772
+        },
+        {
+          "value": "O",
+          "count": 27875,
+          "share": 0.13228
+        }
+      ],
+      "fitted_format": {
+        "regex": "[A-Z]",
+        "coverage": 1.0,
+        "sample_size": 100000,
+        "matched": 100000,
+        "kind": "literal"
+      },
+      "sample_size": 100000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_CLCL_CLAIM",
+      "column": "NWNW_ID",
+      "row_count": 210727,
+      "null_count": 28115,
+      "null_rate": 0.1334190682731686,
+      "distinct_count": 7,
+      "distinct_ratio": 3.3218334622521084e-05,
+      "approximate_distinct": true,
+      "cardinality": "low",
+      "min_length": 12,
+      "max_length": 12,
+      "sample_size": 86772,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_CLCL_CLAIM",
+      "column": "CLCL_IDCD_ID",
+      "row_count": 210727,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 30,
+      "distinct_ratio": 0.00014236429123937606,
+      "approximate_distinct": true,
+      "cardinality": "low",
+      "min_length": 7,
+      "max_length": 7,
+      "top_values": [
+        {
+          "value": "E119000",
+          "count": 21159,
+          "share": 0.10041
+        },
+        {
+          "value": "I10X000",
+          "count": 19307,
+          "share": 0.09162
+        },
+        {
+          "value": "K029000",
+          "count": 16803,
+          "share": 0.07974
+        },
+        {
+          "value": "K051000",
+          "count": 16768,
+          "share": 0.07957
+        },
+        {
+          "value": "J069000",
+          "count": 15229,
+          "share": 0.07227
+        },
+        {
+          "value": "M545000",
+          "count": 13396,
+          "share": 0.06357
+        },
+        {
+          "value": "F411000",
+          "count": 11834,
+          "share": 0.05616
+        },
+        {
+          "value": "E785000",
+          "count": 10699,
+          "share": 0.05077
+        },
+        {
+          "value": "J450000",
+          "count": 9653,
+          "share": 0.04581
+        },
+        {
+          "value": "K219000",
+          "count": 8751,
+          "share": 0.04153
+        },
+        {
+          "value": "M179000",
+          "count": 7835,
+          "share": 0.03718
+        },
+        {
+          "value": "F329000",
+          "count": 7403,
+          "share": 0.03513
+        },
+        {
+          "value": "N390000",
+          "count": 6636,
+          "share": 0.03149
+        },
+        {
+          "value": "R519000",
+          "count": 5879,
+          "share": 0.0279
+        },
+        {
+          "value": "I251000",
+          "count": 5350,
+          "share": 0.02539
+        },
+        {
+          "value": "E668000",
+          "count": 4899,
+          "share": 0.02325
+        },
+        {
+          "value": "G470000",
+          "count": 4215,
+          "share": 0.02
+        },
+        {
+          "value": "L309000",
+          "count": 3888,
+          "share": 0.01845
+        },
+        {
+          "value": "H520000",
+          "count": 3431,
+          "share": 0.01628
+        },
+        {
+          "value": "Z010000",
+          "count": 2763,
+          "share": 0.01311
+        },
+        {
+          "value": "J029000",
+          "count": 2341,
+          "share": 0.01111
+        },
+        {
+          "value": "M255000",
+          "count": 2261,
+          "share": 0.01073
+        },
+        {
+          "value": "R109000",
+          "count": 1985,
+          "share": 0.00942
+        },
+        {
+          "value": "N189000",
+          "count": 1732,
+          "share": 0.00822
+        },
+        {
+          "value": "I489000",
+          "count": 1526,
+          "share": 0.00724
+        },
+        {
+          "value": "E039000",
+          "count": 1488,
+          "share": 0.00706
+        },
+        {
+          "value": "B349000",
+          "count": 1153,
+          "share": 0.00547
+        },
+        {
+          "value": "S934000",
+          "count": 969,
+          "share": 0.0046
+        },
+        {
+          "value": "H669000",
+          "count": 773,
+          "share": 0.00367
+        },
+        {
+          "value": "D649000",
+          "count": 601,
+          "share": 0.00285
+        }
+      ],
+      "fitted_format": {
+        "regex": "[A-Z0-9]{7}",
+        "coverage": 1.0,
+        "sample_size": 100000,
+        "matched": 100000,
+        "kind": "fallback"
+      },
+      "sample_size": 100000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_CLCL_CLAIM",
+      "column": "CLCL_SVC_DT",
+      "row_count": 210727,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 2883,
+      "distinct_ratio": 0.01368120838810404,
+      "approximate_distinct": true,
+      "cardinality": "high",
+      "sample_size": 100000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_CLCL_CLAIM",
+      "column": "CLCL_RECD_DT",
+      "row_count": 210727,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 2910,
+      "distinct_ratio": 0.013809336250219479,
+      "approximate_distinct": true,
+      "cardinality": "high",
+      "sample_size": 100000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_CLCL_CLAIM",
+      "column": "CLCL_PAID_DT",
+      "row_count": 210727,
+      "null_count": 42277,
+      "null_rate": 0.2006245046909034,
+      "distinct_count": 2918,
+      "distinct_ratio": 0.013847300061216644,
+      "approximate_distinct": true,
+      "cardinality": "high",
+      "sample_size": 80087,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_CLCL_CLAIM",
+      "column": "CLCL_TOT_CHG",
+      "row_count": 210727,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 85705,
+      "distinct_ratio": 0.4067110526890242,
+      "approximate_distinct": true,
+      "cardinality": "high",
+      "distribution": {
+        "kind": "lognormal",
+        "skew": 1.9909
+      },
+      "sample_size": 100000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_CLCL_CLAIM",
+      "column": "CLCL_CREATED_TS",
+      "row_count": 210727,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 2334,
+      "distinct_ratio": 0.011075941858423458,
+      "approximate_distinct": true,
+      "cardinality": "high",
+      "has_time_component": true,
+      "sample_size": 100000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_CLCL_CLAIM",
+      "column": "CLCL_ROW_HASH",
+      "row_count": 210727,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 213715,
+      "distinct_ratio": 1.0141794834074418,
+      "approximate_distinct": true,
+      "cardinality": "unique",
+      "min_length": 64,
+      "max_length": 64,
+      "fitted_format": {
+        "regex": "[A-Z0-9]{64}",
+        "coverage": 1.0,
+        "sample_size": 100000,
+        "matched": 100000,
+        "kind": "fallback"
+      },
+      "sample_size": 100000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_CSPD_CAT_DESC",
+      "column": "CSPD_CAT",
+      "row_count": 2,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 2,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "min_length": 1,
+      "max_length": 1,
+      "fitted_format": {
+        "regex": "[A-Z]",
+        "coverage": 1.0,
+        "sample_size": 2,
+        "matched": 2,
+        "kind": "literal"
+      },
+      "sample_size": 2,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_CSPD_CAT_DESC",
+      "column": "CSPD_CAT_DESC",
+      "row_count": 2,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 2,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "min_length": 6,
+      "max_length": 20,
+      "fitted_format": {
+        "regex": "[A-Za-z ]{6,20}",
+        "coverage": 1.0,
+        "sample_size": 2,
+        "matched": 2,
+        "kind": "fallback"
+      },
+      "sample_size": 2,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_CSPD_CAT_DESC",
+      "column": "CSPD_TYPE",
+      "row_count": 2,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 2,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "min_length": 6,
+      "max_length": 7,
+      "fitted_format": {
+        "regex": "[A-Z]{6,7}",
+        "coverage": 1.0,
+        "sample_size": 2,
+        "matched": 2,
+        "kind": "ranged"
+      },
+      "sample_size": 2,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_CSPI_CS_PLAN",
+      "column": "CSPI_ID",
+      "row_count": 25,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 25,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "min_length": 8,
+      "max_length": 8,
+      "sample_size": 25,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_CSPI_CS_PLAN",
+      "column": "CSPD_CAT",
+      "row_count": 25,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 2,
+      "distinct_ratio": 0.08,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "min_length": 1,
+      "max_length": 1,
+      "fitted_format": {
+        "regex": "[A-Z]",
+        "coverage": 1.0,
+        "sample_size": 25,
+        "matched": 25,
+        "kind": "literal"
+      },
+      "sample_size": 25,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_CSPI_CS_PLAN",
+      "column": "PDPD_ID",
+      "row_count": 25,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 25,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "min_length": 8,
+      "max_length": 8,
+      "sample_size": 25,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_CSPI_CS_PLAN",
+      "column": "CSPI_EFF_DT",
+      "row_count": 25,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 25,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "sample_size": 25,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_CSPI_CS_PLAN",
+      "column": "CSPI_TERM_DT",
+      "row_count": 25,
+      "null_count": 25,
+      "null_rate": 1.0,
+      "distinct_count": 0,
+      "distinct_ratio": 0.0,
+      "approximate_distinct": false,
+      "cardinality": "empty",
+      "sample_size": 0,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_CSPI_CS_PLAN",
+      "column": "CSPI_SEL_IND",
+      "row_count": 25,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 1,
+      "distinct_ratio": 0.04,
+      "approximate_distinct": false,
+      "cardinality": "constant",
+      "min_length": 1,
+      "max_length": 1,
+      "sample_size": 25,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_CSPI_CS_PLAN",
+      "column": "NWST_PFX",
+      "row_count": 25,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 25,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "min_length": 4,
+      "max_length": 4,
+      "sample_size": 25,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_GRGR_GROUP",
+      "column": "GRGR_CK",
+      "row_count": 8,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 8,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "sequence": {
+        "is_sequence": true,
+        "step": 1,
+        "agreement": 1.0,
+        "gaps": 0,
+        "values_tested": 8
+      },
+      "sample_size": 8,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_GRGR_GROUP",
+      "column": "GRGR_ID",
+      "row_count": 8,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 8,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "min_length": 8,
+      "max_length": 8,
+      "fitted_format": {
+        "regex": "[A-Z]{3}\\d{5}",
+        "coverage": 1.0,
+        "sample_size": 8,
+        "matched": 8,
+        "kind": "literal"
+      },
+      "sample_size": 8,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_GRGR_GROUP",
+      "column": "GRGR_NAME",
+      "row_count": 8,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 8,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "min_length": 16,
+      "max_length": 28,
+      "fitted_format": {
+        "regex": "[A-Za-z ]{16,28}",
+        "coverage": 1.0,
+        "sample_size": 8,
+        "matched": 8,
+        "kind": "fallback"
+      },
+      "sample_size": 8,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_GRGR_GROUP",
+      "column": "GRGR_STATE",
+      "row_count": 8,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 8,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "min_length": 2,
+      "max_length": 2,
+      "fitted_format": {
+        "regex": "[A-Z]{2}",
+        "coverage": 1.0,
+        "sample_size": 8,
+        "matched": 8,
+        "kind": "literal"
+      },
+      "sample_size": 8,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_GRGR_GROUP",
+      "column": "GRGR_COUNTY",
+      "row_count": 8,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 8,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "min_length": 4,
+      "max_length": 9,
+      "fitted_format": {
+        "regex": "[A-Z][a-z]{3,8}",
+        "coverage": 1.0,
+        "sample_size": 8,
+        "matched": 8,
+        "kind": "ranged"
+      },
+      "sample_size": 8,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_GRGR_GROUP",
+      "column": "GRGR_STS",
+      "row_count": 8,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 1,
+      "distinct_ratio": 0.125,
+      "approximate_distinct": false,
+      "cardinality": "constant",
+      "min_length": 2,
+      "max_length": 2,
+      "fitted_format": {
+        "regex": "[A-Z]{2}",
+        "coverage": 1.0,
+        "sample_size": 8,
+        "matched": 8,
+        "kind": "literal"
+      },
+      "sample_size": 8,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_GRGR_GROUP",
+      "column": "GRGR_MCTR_TYPE",
+      "row_count": 8,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 6,
+      "distinct_ratio": 0.75,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "min_length": 3,
+      "max_length": 4,
+      "fitted_format": {
+        "regex": "[A-Z]{3,4}",
+        "coverage": 1.0,
+        "sample_size": 8,
+        "matched": 8,
+        "kind": "ranged"
+      },
+      "sample_size": 8,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_GRGR_GROUP",
+      "column": "GRGR_ORIG_EFF_DT",
+      "row_count": 8,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 8,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "sample_size": 8,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_GRGR_GROUP",
+      "column": "GRGR_TERM_DT",
+      "row_count": 8,
+      "null_count": 8,
+      "null_rate": 1.0,
+      "distinct_count": 0,
+      "distinct_ratio": 0.0,
+      "approximate_distinct": false,
+      "cardinality": "empty",
+      "sample_size": 0,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_IDCD_DIAG_CODE",
+      "column": "IDCD_ID",
+      "row_count": 30,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 30,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "min_length": 7,
+      "max_length": 7,
+      "fitted_format": {
+        "regex": "[A-Z]\\d{6}",
+        "coverage": 0.9667,
+        "sample_size": 30,
+        "matched": 29,
+        "kind": "literal"
+      },
+      "sample_size": 30,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_IDCD_DIAG_CODE",
+      "column": "IDCD_DESC",
+      "row_count": 30,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 30,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "min_length": 7,
+      "max_length": 37,
+      "fitted_format": {
+        "regex": "[A-Za-z0-9 ,\\-]{7,37}",
+        "coverage": 1.0,
+        "sample_size": 30,
+        "matched": 30,
+        "kind": "fallback"
+      },
+      "sample_size": 30,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_IDCD_DIAG_CODE",
+      "column": "IDCD_CHAPTER",
+      "row_count": 30,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 16,
+      "distinct_ratio": 0.5333333333333333,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "min_length": 3,
+      "max_length": 15,
+      "fitted_format": {
+        "regex": "[A-Za-z ]{3,15}",
+        "coverage": 1.0,
+        "sample_size": 30,
+        "matched": 30,
+        "kind": "fallback"
+      },
+      "sample_size": 30,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_IPCD_PROC_CODE",
+      "column": "IPCD_ID",
+      "row_count": 400,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 400,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "min_length": 5,
+      "max_length": 5,
+      "fitted_format": {
+        "regex": "[A-Z]\\d{4}",
+        "coverage": 1.0,
+        "sample_size": 400,
+        "matched": 400,
+        "kind": "literal"
+      },
+      "sample_size": 400,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_IPCD_PROC_CODE",
+      "column": "IPCD_DESC",
+      "row_count": 400,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 55,
+      "distinct_ratio": 0.1375,
+      "approximate_distinct": false,
+      "cardinality": "high",
+      "min_length": 21,
+      "max_length": 32,
+      "fitted_format": {
+        "regex": "[A-Za-z0-9 ,]{21,32}",
+        "coverage": 1.0,
+        "sample_size": 400,
+        "matched": 400,
+        "kind": "fallback"
+      },
+      "sample_size": 400,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_CK",
+      "row_count": 46077,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 46077,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "sequence": {
+        "is_sequence": true,
+        "step": 1,
+        "agreement": 1.0,
+        "gaps": 0,
+        "values_tested": 46077
+      },
+      "sample_size": 46077,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "SBSB_CK",
+      "row_count": 46077,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 20000,
+      "distinct_ratio": 0.4340560366343295,
+      "approximate_distinct": false,
+      "cardinality": "high",
+      "sequence": {
+        "is_sequence": true,
+        "step": 1,
+        "agreement": 1.0,
+        "gaps": 0,
+        "values_tested": 20000
+      },
+      "sample_size": 46077,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_ID",
+      "row_count": 46077,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 46077,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "min_length": 11,
+      "max_length": 11,
+      "fitted_format": {
+        "regex": "[A-Z]{3}\\d{8}",
+        "coverage": 1.0,
+        "sample_size": 46077,
+        "matched": 46077,
+        "kind": "literal"
+      },
+      "sample_size": 46077,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_FIRST_NAME",
+      "row_count": 46077,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 80,
+      "distinct_ratio": 0.001736224146537318,
+      "approximate_distinct": false,
+      "cardinality": "high",
+      "min_length": 3,
+      "max_length": 11,
+      "fitted_format": {
+        "regex": "[A-Z][a-z]{2,10}",
+        "coverage": 1.0,
+        "sample_size": 46077,
+        "matched": 46077,
+        "kind": "ranged"
+      },
+      "sample_size": 46077,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_LAST_NAME",
+      "row_count": 46077,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 80,
+      "distinct_ratio": 0.001736224146537318,
+      "approximate_distinct": false,
+      "cardinality": "high",
+      "min_length": 3,
+      "max_length": 10,
+      "fitted_format": {
+        "regex": "[A-Z][a-z]{2,9}",
+        "coverage": 1.0,
+        "sample_size": 46077,
+        "matched": 46077,
+        "kind": "ranged"
+      },
+      "sample_size": 46077,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_MID_INIT",
+      "row_count": 46077,
+      "null_count": 18403,
+      "null_rate": 0.39939666210907826,
+      "distinct_count": 18,
+      "distinct_ratio": 0.00039065043297089653,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "min_length": 1,
+      "max_length": 1,
+      "sample_size": 27674,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_BIRTH_DT",
+      "row_count": 46077,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 20501,
+      "distinct_ratio": 0.44492914035201947,
+      "approximate_distinct": false,
+      "cardinality": "high",
+      "sample_size": 46077,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_SEX",
+      "row_count": 46077,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 2,
+      "distinct_ratio": 4.340560366343295e-05,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "min_length": 1,
+      "max_length": 1,
+      "top_values": [
+        {
+          "value": "F",
+          "count": 23615,
+          "share": 0.512512
+        },
+        {
+          "value": "M",
+          "count": 22462,
+          "share": 0.487488
+        }
+      ],
+      "fitted_format": {
+        "regex": "[A-Z]",
+        "coverage": 1.0,
+        "sample_size": 46077,
+        "matched": 46077,
+        "kind": "literal"
+      },
+      "sample_size": 46077,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_MARITAL_STATUS",
+      "row_count": 46077,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 4,
+      "distinct_ratio": 8.68112073268659e-05,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "min_length": 1,
+      "max_length": 1,
+      "top_values": [
+        {
+          "value": "S",
+          "count": 23361,
+          "share": 0.506999
+        },
+        {
+          "value": "M",
+          "count": 18401,
+          "share": 0.399353
+        },
+        {
+          "value": "D",
+          "count": 3143,
+          "share": 0.068212
+        },
+        {
+          "value": "W",
+          "count": 1172,
+          "share": 0.025436
+        }
+      ],
+      "fitted_format": {
+        "regex": "[A-Z]",
+        "coverage": 1.0,
+        "sample_size": 46077,
+        "matched": 46077,
+        "kind": "literal"
+      },
+      "sample_size": 46077,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_SSN",
+      "row_count": 46077,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 46076,
+      "distinct_ratio": 0.9999782971981683,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "min_length": 9,
+      "max_length": 9,
+      "sample_size": 46077,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_MCTR_STS",
+      "row_count": 46077,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 2,
+      "distinct_ratio": 4.340560366343295e-05,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "min_length": 2,
+      "max_length": 2,
+      "top_values": [
+        {
+          "value": "AC",
+          "count": 36847,
+          "share": 0.799683
+        },
+        {
+          "value": "TM",
+          "count": 9230,
+          "share": 0.200317
+        }
+      ],
+      "fitted_format": {
+        "regex": "[A-Z]{2}",
+        "coverage": 1.0,
+        "sample_size": 46077,
+        "matched": 46077,
+        "kind": "literal"
+      },
+      "sample_size": 46077,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_REL",
+      "row_count": 46077,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 4,
+      "distinct_ratio": 8.68112073268659e-05,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "min_length": 1,
+      "max_length": 1,
+      "top_values": [
+        {
+          "value": "M",
+          "count": 20000,
+          "share": 0.434056
+        },
+        {
+          "value": "D",
+          "count": 15834,
+          "share": 0.343642
+        },
+        {
+          "value": "S",
+          "count": 9329,
+          "share": 0.202465
+        },
+        {
+          "value": "P",
+          "count": 914,
+          "share": 0.019836
+        }
+      ],
+      "fitted_format": {
+        "regex": "[A-Z]",
+        "coverage": 1.0,
+        "sample_size": 46077,
+        "matched": 46077,
+        "kind": "literal"
+      },
+      "sample_size": 46077,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_SFX",
+      "row_count": 46077,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 5,
+      "distinct_ratio": 0.00010851400915858238,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "top_values": [
+        {
+          "value": 0,
+          "count": 20000,
+          "share": 0.434056
+        },
+        {
+          "value": 1,
+          "count": 14364,
+          "share": 0.311739
+        },
+        {
+          "value": 2,
+          "count": 7566,
+          "share": 0.164203
+        },
+        {
+          "value": 3,
+          "count": 3155,
+          "share": 0.068472
+        },
+        {
+          "value": 4,
+          "count": 992,
+          "share": 0.021529
+        }
+      ],
+      "distribution": {
+        "kind": "uniform",
+        "skew": 0.9851
+      },
+      "sample_size": 46077,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_EFF_DT",
+      "row_count": 46077,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 3008,
+      "distinct_ratio": 0.06528202790980316,
+      "approximate_distinct": false,
+      "cardinality": "high",
+      "sample_size": 46077,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_ORIG_EFF_DT",
+      "row_count": 46077,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 7726,
+      "distinct_ratio": 0.16767584695184148,
+      "approximate_distinct": false,
+      "cardinality": "high",
+      "sample_size": 46077,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_TERM_DT",
+      "row_count": 46077,
+      "null_count": 39123,
+      "null_rate": 0.8490787160622436,
+      "distinct_count": 2939,
+      "distinct_ratio": 0.06378453458341472,
+      "approximate_distinct": false,
+      "cardinality": "high",
+      "sample_size": 6954,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_ZIP",
+      "row_count": 46077,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 604,
+      "distinct_ratio": 0.01310849230635675,
+      "approximate_distinct": false,
+      "cardinality": "high",
+      "min_length": 5,
+      "max_length": 5,
+      "sample_size": 46077,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_CITY",
+      "row_count": 46077,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 144,
+      "distinct_ratio": 0.0031252034637671722,
+      "approximate_distinct": false,
+      "cardinality": "high",
+      "min_length": 4,
+      "max_length": 16,
+      "fitted_format": {
+        "regex": "[A-Za-z ]{4,16}",
+        "coverage": 1.0,
+        "sample_size": 46077,
+        "matched": 46077,
+        "kind": "fallback"
+      },
+      "sample_size": 46077,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_STATE",
+      "row_count": 46077,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 51,
+      "distinct_ratio": 0.0011068428934175403,
+      "approximate_distinct": false,
+      "cardinality": "high",
+      "min_length": 2,
+      "max_length": 2,
+      "fitted_format": {
+        "regex": "[A-Z]{2}",
+        "coverage": 1.0,
+        "sample_size": 46077,
+        "matched": 46077,
+        "kind": "literal"
+      },
+      "sample_size": 46077,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_MEPR_PRIM_PROV",
+      "column": "MEME_CK",
+      "row_count": 28740,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 28740,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "sequence": {
+        "is_sequence": false,
+        "step": 1,
+        "agreement": 0.7218,
+        "gaps": 17337,
+        "values_tested": 28740
+      },
+      "distribution": {
+        "kind": "uniform",
+        "skew": 0.002
+      },
+      "sample_size": 28740,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_MEPR_PRIM_PROV",
+      "column": "MEPR_PCP_TYPE",
+      "row_count": 28740,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 1,
+      "distinct_ratio": 3.479471120389701e-05,
+      "approximate_distinct": false,
+      "cardinality": "constant",
+      "min_length": 2,
+      "max_length": 2,
+      "top_values": [
+        {
+          "value": "MP",
+          "count": 28740,
+          "share": 1.0
+        }
+      ],
+      "fitted_format": {
+        "regex": "MP",
+        "coverage": 1.0,
+        "sample_size": 28740,
+        "matched": 28740,
+        "kind": "literal"
+      },
+      "sample_size": 28740,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_MEPR_PRIM_PROV",
+      "column": "MEPR_EFF_DT",
+      "row_count": 28740,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 2924,
+      "distinct_ratio": 0.10173973556019485,
+      "approximate_distinct": false,
+      "cardinality": "high",
+      "sample_size": 28740,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_MEPR_PRIM_PROV",
+      "column": "MEPR_TERM_DT",
+      "row_count": 28740,
+      "null_count": 24428,
+      "null_rate": 0.8499652052887962,
+      "distinct_count": 2395,
+      "distinct_ratio": 0.08333333333333333,
+      "approximate_distinct": false,
+      "cardinality": "high",
+      "sample_size": 4312,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_MEPR_PRIM_PROV",
+      "column": "GRGR_CK",
+      "row_count": 28740,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 7,
+      "distinct_ratio": 0.00024356297842727904,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "top_values": [
+        {
+          "value": 2,
+          "count": 5206,
+          "share": 0.181141
+        },
+        {
+          "value": 3,
+          "count": 4957,
+          "share": 0.172477
+        },
+        {
+          "value": 4,
+          "count": 4800,
+          "share": 0.167015
+        },
+        {
+          "value": 1,
+          "count": 4539,
+          "share": 0.157933
+        },
+        {
+          "value": 7,
+          "count": 3552,
+          "share": 0.123591
+        },
+        {
+          "value": 6,
+          "count": 3179,
+          "share": 0.110612
+        },
+        {
+          "value": 8,
+          "count": 2507,
+          "share": 0.08723
+        }
+      ],
+      "distribution": {
+        "kind": "uniform",
+        "skew": 0.4129
+      },
+      "sample_size": 28740,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_MEPR_PRIM_PROV",
+      "column": "PRPR_ID",
+      "row_count": 28740,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 54,
+      "distinct_ratio": 0.0018789144050104384,
+      "approximate_distinct": false,
+      "cardinality": "high",
+      "min_length": 12,
+      "max_length": 12,
+      "sample_size": 28740,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_NWNW_NETWORK",
+      "column": "NWNW_ID",
+      "row_count": 7,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 7,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "min_length": 12,
+      "max_length": 12,
+      "fitted_format": {
+        "regex": "[A-Z]{2}\\d{10}",
+        "coverage": 1.0,
+        "sample_size": 7,
+        "matched": 7,
+        "kind": "literal"
+      },
+      "sample_size": 7,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_NWNW_NETWORK",
+      "column": "NWNW_NAME",
+      "row_count": 7,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 7,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "min_length": 15,
+      "max_length": 22,
+      "fitted_format": {
+        "regex": "[A-Za-z ]{15,22}",
+        "coverage": 1.0,
+        "sample_size": 7,
+        "matched": 7,
+        "kind": "fallback"
+      },
+      "sample_size": 7,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_NWNW_NETWORK",
+      "column": "NWNW_MCTR_TYPE",
+      "row_count": 7,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 4,
+      "distinct_ratio": 0.5714285714285714,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "min_length": 3,
+      "max_length": 4,
+      "fitted_format": {
+        "regex": "[A-Z]{3,4}",
+        "coverage": 1.0,
+        "sample_size": 7,
+        "matched": 7,
+        "kind": "ranged"
+      },
+      "sample_size": 7,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_NWPR_RELATION",
+      "column": "PRPR_ID",
+      "row_count": 396,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 300,
+      "distinct_ratio": 0.7575757575757576,
+      "approximate_distinct": false,
+      "cardinality": "high",
+      "min_length": 12,
+      "max_length": 12,
+      "sample_size": 396,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_NWPR_RELATION",
+      "column": "NWNW_ID",
+      "row_count": 396,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 7,
+      "distinct_ratio": 0.017676767676767676,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "min_length": 12,
+      "max_length": 12,
+      "sample_size": 396,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_NWPR_RELATION",
+      "column": "NWPR_PFX",
+      "row_count": 396,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 1,
+      "distinct_ratio": 0.0025252525252525255,
+      "approximate_distinct": false,
+      "cardinality": "constant",
+      "min_length": 3,
+      "max_length": 3,
+      "top_values": [
+        {
+          "value": "STD",
+          "count": 396,
+          "share": 1.0
+        }
+      ],
+      "fitted_format": {
+        "regex": "STD",
+        "coverage": 1.0,
+        "sample_size": 396,
+        "matched": 396,
+        "kind": "literal"
+      },
+      "sample_size": 396,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_NWPR_RELATION",
+      "column": "NWPR_PCP_IND",
+      "row_count": 396,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 2,
+      "distinct_ratio": 0.005050505050505051,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "min_length": 1,
+      "max_length": 1,
+      "top_values": [
+        {
+          "value": "N",
+          "count": 327,
+          "share": 0.825758
+        },
+        {
+          "value": "Y",
+          "count": 69,
+          "share": 0.174242
+        }
+      ],
+      "fitted_format": {
+        "regex": "[A-Z]",
+        "coverage": 1.0,
+        "sample_size": 396,
+        "matched": 396,
+        "kind": "literal"
+      },
+      "sample_size": 396,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_NWPR_RELATION",
+      "column": "NWPR_EFF_DT",
+      "row_count": 396,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 326,
+      "distinct_ratio": 0.8232323232323232,
+      "approximate_distinct": false,
+      "cardinality": "high",
+      "sample_size": 396,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_NWPR_RELATION",
+      "column": "NWPR_TERM_DT",
+      "row_count": 396,
+      "null_count": 366,
+      "null_rate": 0.9242424242424242,
+      "distinct_count": 29,
+      "distinct_ratio": 0.07323232323232323,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "sample_size": 30,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_NWPR_RELATION",
+      "column": "AGAG_ID",
+      "row_count": 396,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 12,
+      "distinct_ratio": 0.030303030303030304,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "min_length": 7,
+      "max_length": 7,
+      "top_values": [
+        {
+          "value": "AG0002S",
+          "count": 72,
+          "share": 0.181818
+        },
+        {
+          "value": "AG0004S",
+          "count": 69,
+          "share": 0.174242
+        },
+        {
+          "value": "AG0005S",
+          "count": 61,
+          "share": 0.15404
+        },
+        {
+          "value": "AG0001S",
+          "count": 57,
+          "share": 0.143939
+        },
+        {
+          "value": "AG0003S",
+          "count": 52,
+          "share": 0.131313
+        }
+      ],
+      "fitted_format": {
+        "regex": "AG\\d{4}[A-Z]",
+        "coverage": 1.0,
+        "sample_size": 396,
+        "matched": 396,
+        "kind": "literal"
+      },
+      "sample_size": 396,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_NWST_NET_SET",
+      "column": "NWST_PFX",
+      "row_count": 41,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 25,
+      "distinct_ratio": 0.6097560975609756,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "min_length": 4,
+      "max_length": 4,
+      "sample_size": 41,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_NWST_NET_SET",
+      "column": "NWST_EFF_DT",
+      "row_count": 41,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 1,
+      "distinct_ratio": 0.024390243902439025,
+      "approximate_distinct": false,
+      "cardinality": "constant",
+      "sample_size": 41,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_NWST_NET_SET",
+      "column": "NWST_SEQ_NO",
+      "row_count": 41,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 2,
+      "distinct_ratio": 0.04878048780487805,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "distribution": {
+        "kind": "normal",
+        "skew": 0.4336
+      },
+      "sample_size": 41,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_NWST_NET_SET",
+      "column": "NWST_TERM_DT",
+      "row_count": 41,
+      "null_count": 41,
+      "null_rate": 1.0,
+      "distinct_count": 0,
+      "distinct_ratio": 0.0,
+      "approximate_distinct": false,
+      "cardinality": "empty",
+      "sample_size": 0,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_NWST_NET_SET",
+      "column": "NWST_PR_NW_STS",
+      "row_count": 41,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 1,
+      "distinct_ratio": 0.024390243902439025,
+      "approximate_distinct": false,
+      "cardinality": "constant",
+      "min_length": 1,
+      "max_length": 1,
+      "sample_size": 41,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_NWST_NET_SET",
+      "column": "NWNW_ID",
+      "row_count": 41,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 7,
+      "distinct_ratio": 0.17073170731707318,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "min_length": 12,
+      "max_length": 12,
+      "sample_size": 41,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_NWST_NET_SET",
+      "column": "NWPR_PFX",
+      "row_count": 41,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 1,
+      "distinct_ratio": 0.024390243902439025,
+      "approximate_distinct": false,
+      "cardinality": "constant",
+      "min_length": 3,
+      "max_length": 3,
+      "sample_size": 41,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_NWST_NET_SET",
+      "column": "PDVC_TIER",
+      "row_count": 41,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 2,
+      "distinct_ratio": 0.04878048780487805,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "distribution": {
+        "kind": "normal",
+        "skew": 0.4336
+      },
+      "sample_size": 41,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_PDDS_PROD_DESC",
+      "column": "PDPD_ID",
+      "row_count": 25,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 25,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "min_length": 8,
+      "max_length": 8,
+      "sample_size": 25,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_PDDS_PROD_DESC",
+      "column": "PDDS_DESC",
+      "row_count": 25,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 10,
+      "distinct_ratio": 0.4,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "min_length": 25,
+      "max_length": 29,
+      "fitted_format": {
+        "regex": "[A-Za-z ]{25,29}",
+        "coverage": 1.0,
+        "sample_size": 25,
+        "matched": 25,
+        "kind": "fallback"
+      },
+      "sample_size": 25,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_PDPD_PRODUCT",
+      "column": "PDPD_ID",
+      "row_count": 25,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 25,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "min_length": 8,
+      "max_length": 8,
+      "sample_size": 25,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_PDPD_PRODUCT",
+      "column": "PDPD_TYPE",
+      "row_count": 25,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 2,
+      "distinct_ratio": 0.08,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "min_length": 1,
+      "max_length": 1,
+      "fitted_format": {
+        "regex": "[A-Z]",
+        "coverage": 1.0,
+        "sample_size": 25,
+        "matched": 25,
+        "kind": "literal"
+      },
+      "sample_size": 25,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_PLDS_PLAN_DESC",
+      "column": "CSPI_ID",
+      "row_count": 25,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 25,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "min_length": 8,
+      "max_length": 8,
+      "sample_size": 25,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_PLDS_PLAN_DESC",
+      "column": "PLDS_DESC",
+      "row_count": 25,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 10,
+      "distinct_ratio": 0.4,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "min_length": 17,
+      "max_length": 21,
+      "fitted_format": {
+        "regex": "[A-Z][a-z]{4,8}\\s[A-Z][a-z]{5,6}\\s[A-Z]{3,4}",
+        "coverage": 1.0,
+        "sample_size": 25,
+        "matched": 25,
+        "kind": "ranged"
+      },
+      "sample_size": 25,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_PRPR_PROV",
+      "column": "PRPR_ID",
+      "row_count": 300,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 300,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "min_length": 12,
+      "max_length": 12,
+      "sample_size": 300,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_PRPR_PROV",
+      "column": "PRPR_NPI",
+      "row_count": 300,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 300,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "min_length": 10,
+      "max_length": 10,
+      "fitted_format": {
+        "regex": "\\d{10}",
+        "coverage": 1.0,
+        "sample_size": 300,
+        "matched": 300,
+        "kind": "literal"
+      },
+      "check_digit": {
+        "scheme": "npi",
+        "share": 1.0,
+        "tested": 300
+      },
+      "sample_size": 300,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_PRPR_PROV",
+      "column": "PRPR_SPECIALTY",
+      "row_count": 300,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 20,
+      "distinct_ratio": 0.06666666666666667,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "min_length": 3,
+      "max_length": 3,
+      "fitted_format": {
+        "regex": "[A-Z]{3}",
+        "coverage": 1.0,
+        "sample_size": 300,
+        "matched": 300,
+        "kind": "literal"
+      },
+      "sample_size": 300,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_PRPR_PROV",
+      "column": "PRPR_STATE",
+      "row_count": 300,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 51,
+      "distinct_ratio": 0.17,
+      "approximate_distinct": false,
+      "cardinality": "high",
+      "min_length": 2,
+      "max_length": 2,
+      "fitted_format": {
+        "regex": "[A-Z]{2}",
+        "coverage": 1.0,
+        "sample_size": 300,
+        "matched": 300,
+        "kind": "literal"
+      },
+      "sample_size": 300,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_PRPR_PROV",
+      "column": "PRPR_ENTITY",
+      "row_count": 300,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 3,
+      "distinct_ratio": 0.01,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "min_length": 1,
+      "max_length": 1,
+      "top_values": [
+        {
+          "value": "P",
+          "count": 254,
+          "share": 0.846667
+        },
+        {
+          "value": "F",
+          "count": 34,
+          "share": 0.113333
+        }
+      ],
+      "fitted_format": {
+        "regex": "[A-Z]",
+        "coverage": 1.0,
+        "sample_size": 300,
+        "matched": 300,
+        "kind": "literal"
+      },
+      "sample_size": 300,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_SBSB_SUBSC",
+      "column": "SBSB_CK",
+      "row_count": 20000,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 20000,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "sequence": {
+        "is_sequence": true,
+        "step": 1,
+        "agreement": 1.0,
+        "gaps": 0,
+        "values_tested": 20000
+      },
+      "sample_size": 20000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_SBSB_SUBSC",
+      "column": "SBSB_ID",
+      "row_count": 20000,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 20000,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "min_length": 9,
+      "max_length": 9,
+      "fitted_format": {
+        "regex": "[A-Z]{3}\\d{6}",
+        "coverage": 1.0,
+        "sample_size": 20000,
+        "matched": 20000,
+        "kind": "literal"
+      },
+      "sample_size": 20000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_SBSB_SUBSC",
+      "column": "SBSB_LAST_NAME",
+      "row_count": 20000,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 80,
+      "distinct_ratio": 0.004,
+      "approximate_distinct": false,
+      "cardinality": "high",
+      "min_length": 3,
+      "max_length": 10,
+      "fitted_format": {
+        "regex": "[A-Z][a-z]{2,9}",
+        "coverage": 1.0,
+        "sample_size": 20000,
+        "matched": 20000,
+        "kind": "ranged"
+      },
+      "sample_size": 20000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_SBSB_SUBSC",
+      "column": "SBSB_FIRST_NAME",
+      "row_count": 20000,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 80,
+      "distinct_ratio": 0.004,
+      "approximate_distinct": false,
+      "cardinality": "high",
+      "min_length": 3,
+      "max_length": 11,
+      "fitted_format": {
+        "regex": "[A-Z][a-z]{2,10}",
+        "coverage": 1.0,
+        "sample_size": 20000,
+        "matched": 20000,
+        "kind": "ranged"
+      },
+      "sample_size": 20000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_SBSB_SUBSC",
+      "column": "SBSB_EFF_DT",
+      "row_count": 20000,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 2371,
+      "distinct_ratio": 0.11855,
+      "approximate_distinct": false,
+      "cardinality": "high",
+      "sample_size": 20000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_SBSB_SUBSC",
+      "column": "SBSB_ORIG_EFF_DT",
+      "row_count": 20000,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 6452,
+      "distinct_ratio": 0.3226,
+      "approximate_distinct": false,
+      "cardinality": "high",
+      "sample_size": 20000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_SBSB_SUBSC",
+      "column": "SBSB_MCTR_STS",
+      "row_count": 20000,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 1,
+      "distinct_ratio": 5e-05,
+      "approximate_distinct": false,
+      "cardinality": "constant",
+      "min_length": 2,
+      "max_length": 2,
+      "top_values": [
+        {
+          "value": "AC",
+          "count": 20000,
+          "share": 1.0
+        }
+      ],
+      "fitted_format": {
+        "regex": "AC",
+        "coverage": 1.0,
+        "sample_size": 20000,
+        "matched": 20000,
+        "kind": "literal"
+      },
+      "sample_size": 20000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_SBSB_SUBSC",
+      "column": "SBSB_EMPLOY_ID",
+      "row_count": 20000,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 20000,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "min_length": 10,
+      "max_length": 10,
+      "sample_size": 20000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_SBSB_SUBSC",
+      "column": "GRGR_CK",
+      "row_count": 20000,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 8,
+      "distinct_ratio": 0.0004,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "top_values": [
+        {
+          "value": 3,
+          "count": 3358,
+          "share": 0.1679
+        },
+        {
+          "value": 1,
+          "count": 3209,
+          "share": 0.16045
+        },
+        {
+          "value": 2,
+          "count": 2828,
+          "share": 0.1414
+        },
+        {
+          "value": 4,
+          "count": 2609,
+          "share": 0.13045
+        },
+        {
+          "value": 5,
+          "count": 2485,
+          "share": 0.12425
+        },
+        {
+          "value": 6,
+          "count": 2179,
+          "share": 0.10895
+        },
+        {
+          "value": 7,
+          "count": 1955,
+          "share": 0.09775
+        },
+        {
+          "value": 8,
+          "count": 1377,
+          "share": 0.06885
+        }
+      ],
+      "sequence": {
+        "is_sequence": true,
+        "step": 1,
+        "agreement": 1.0,
+        "gaps": 0,
+        "values_tested": 8
+      },
+      "sample_size": 20000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_SBSB_SUBSC",
+      "column": "SGSG_CK",
+      "row_count": 20000,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 19,
+      "distinct_ratio": 0.00095,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "top_values": [
+        {
+          "value": 2,
+          "count": 1614,
+          "share": 0.0807
+        },
+        {
+          "value": 1,
+          "count": 1595,
+          "share": 0.07975
+        },
+        {
+          "value": 13,
+          "count": 1251,
+          "share": 0.06255
+        },
+        {
+          "value": 12,
+          "count": 1234,
+          "share": 0.0617
+        },
+        {
+          "value": 8,
+          "count": 1166,
+          "share": 0.0583
+        },
+        {
+          "value": 14,
+          "count": 1151,
+          "share": 0.05755
+        },
+        {
+          "value": 7,
+          "count": 1125,
+          "share": 0.05625
+        },
+        {
+          "value": 6,
+          "count": 1067,
+          "share": 0.05335
+        },
+        {
+          "value": 15,
+          "count": 1028,
+          "share": 0.0514
+        },
+        {
+          "value": 16,
+          "count": 1026,
+          "share": 0.0513
+        },
+        {
+          "value": 5,
+          "count": 981,
+          "share": 0.04905
+        },
+        {
+          "value": 4,
+          "count": 930,
+          "share": 0.0465
+        },
+        {
+          "value": 17,
+          "count": 929,
+          "share": 0.04645
+        },
+        {
+          "value": 3,
+          "count": 917,
+          "share": 0.04585
+        },
+        {
+          "value": 10,
+          "count": 883,
+          "share": 0.04415
+        },
+        {
+          "value": 9,
+          "count": 881,
+          "share": 0.04405
+        },
+        {
+          "value": 11,
+          "count": 845,
+          "share": 0.04225
+        },
+        {
+          "value": 18,
+          "count": 699,
+          "share": 0.03495
+        },
+        {
+          "value": 19,
+          "count": 678,
+          "share": 0.0339
+        }
+      ],
+      "sequence": {
+        "is_sequence": true,
+        "step": 1,
+        "agreement": 1.0,
+        "gaps": 0,
+        "values_tested": 19
+      },
+      "sample_size": 20000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_SBSB_SUBSC",
+      "column": "CSPI_ID",
+      "row_count": 20000,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 25,
+      "distinct_ratio": 0.00125,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "min_length": 8,
+      "max_length": 8,
+      "top_values": [
+        {
+          "value": "CSPI0005",
+          "count": 899,
+          "share": 0.04495
+        },
+        {
+          "value": "CSPI0020",
+          "count": 890,
+          "share": 0.0445
+        },
+        {
+          "value": "CSPI0015",
+          "count": 889,
+          "share": 0.04445
+        },
+        {
+          "value": "CSPI0010",
+          "count": 861,
+          "share": 0.04305
+        },
+        {
+          "value": "CSPI0025",
+          "count": 838,
+          "share": 0.0419
+        },
+        {
+          "value": "CSPI0013",
+          "count": 822,
+          "share": 0.0411
+        },
+        {
+          "value": "CSPI0016",
+          "count": 812,
+          "share": 0.0406
+        },
+        {
+          "value": "CSPI0004",
+          "count": 811,
+          "share": 0.04055
+        },
+        {
+          "value": "CSPI0011",
+          "count": 802,
+          "share": 0.0401
+        },
+        {
+          "value": "CSPI0012",
+          "count": 800,
+          "share": 0.04
+        },
+        {
+          "value": "CSPI0008",
+          "count": 796,
+          "share": 0.0398
+        },
+        {
+          "value": "CSPI0021",
+          "count": 792,
+          "share": 0.0396
+        },
+        {
+          "value": "CSPI0003",
+          "count": 790,
+          "share": 0.0395
+        },
+        {
+          "value": "CSPI0009",
+          "count": 788,
+          "share": 0.0394
+        },
+        {
+          "value": "CSPI0007",
+          "count": 781,
+          "share": 0.03905
+        },
+        {
+          "value": "CSPI0024",
+          "count": 781,
+          "share": 0.03905
+        },
+        {
+          "value": "CSPI0019",
+          "count": 780,
+          "share": 0.039
+        },
+        {
+          "value": "CSPI0023",
+          "count": 779,
+          "share": 0.03895
+        },
+        {
+          "value": "CSPI0018",
+          "count": 776,
+          "share": 0.0388
+        },
+        {
+          "value": "CSPI0017",
+          "count": 768,
+          "share": 0.0384
+        },
+        {
+          "value": "CSPI0006",
+          "count": 757,
+          "share": 0.03785
+        },
+        {
+          "value": "CSPI0001",
+          "count": 754,
+          "share": 0.0377
+        },
+        {
+          "value": "CSPI0022",
+          "count": 753,
+          "share": 0.03765
+        },
+        {
+          "value": "CSPI0014",
+          "count": 742,
+          "share": 0.0371
+        },
+        {
+          "value": "CSPI0002",
+          "count": 739,
+          "share": 0.03695
+        }
+      ],
+      "fitted_format": {
+        "regex": "CSPI\\d{4}",
+        "coverage": 1.0,
+        "sample_size": 20000,
+        "matched": 20000,
+        "kind": "literal"
+      },
+      "sample_size": 20000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_SGSG_SUBGROUP",
+      "column": "SGSG_CK",
+      "row_count": 19,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 19,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "sequence": {
+        "is_sequence": true,
+        "step": 1,
+        "agreement": 1.0,
+        "gaps": 0,
+        "values_tested": 19
+      },
+      "sample_size": 19,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_SGSG_SUBGROUP",
+      "column": "GRGR_CK",
+      "row_count": 19,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 8,
+      "distinct_ratio": 0.42105263157894735,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "sequence": {
+        "is_sequence": true,
+        "step": 1,
+        "agreement": 1.0,
+        "gaps": 0,
+        "values_tested": 8
+      },
+      "sample_size": 19,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_SGSG_SUBGROUP",
+      "column": "SGSG_ID",
+      "row_count": 19,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 19,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "min_length": 8,
+      "max_length": 8,
+      "fitted_format": {
+        "regex": "[A-Z]{2}\\d{6}",
+        "coverage": 1.0,
+        "sample_size": 19,
+        "matched": 19,
+        "kind": "literal"
+      },
+      "sample_size": 19,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_SGSG_SUBGROUP",
+      "column": "SGSG_NAME",
+      "row_count": 19,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 19,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "min_length": 24,
+      "max_length": 36,
+      "fitted_format": {
+        "regex": "[A-Za-z \\-]{24,36}",
+        "coverage": 1.0,
+        "sample_size": 19,
+        "matched": 19,
+        "kind": "fallback"
+      },
+      "sample_size": 19,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_SGSG_SUBGROUP",
+      "column": "CSCS_ID",
+      "row_count": 19,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 19,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "min_length": 8,
+      "max_length": 8,
+      "fitted_format": {
+        "regex": "[A-Z]{2}\\d{6}",
+        "coverage": 1.0,
+        "sample_size": 19,
+        "matched": 19,
+        "kind": "literal"
+      },
+      "sample_size": 19,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_SGSG_SUBGROUP",
+      "column": "SGSG_STATE",
+      "row_count": 19,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 8,
+      "distinct_ratio": 0.42105263157894735,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "min_length": 2,
+      "max_length": 2,
+      "fitted_format": {
+        "regex": "[A-Z]{2}",
+        "coverage": 1.0,
+        "sample_size": 19,
+        "matched": 19,
+        "kind": "literal"
+      },
+      "sample_size": 19,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_SGSG_SUBGROUP",
+      "column": "SGSG_STS",
+      "row_count": 19,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 1,
+      "distinct_ratio": 0.05263157894736842,
+      "approximate_distinct": false,
+      "cardinality": "constant",
+      "min_length": 2,
+      "max_length": 2,
+      "fitted_format": {
+        "regex": "[A-Z]{2}",
+        "coverage": 1.0,
+        "sample_size": 19,
+        "matched": 19,
+        "kind": "literal"
+      },
+      "sample_size": 19,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_SGSG_SUBGROUP",
+      "column": "SGSG_ORIG_EFF_DT",
+      "row_count": 19,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 19,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "sample_size": 19,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CMC_SGSG_SUBGROUP",
+      "column": "SGSG_TERM_DT",
+      "row_count": 19,
+      "null_count": 19,
+      "null_rate": 1.0,
+      "distinct_count": 0,
+      "distinct_ratio": 0.0,
+      "approximate_distinct": false,
+      "cardinality": "empty",
+      "sample_size": 0,
+      "measured_rows": 0
+    }
+  ],
+  "dependencies": [
+    {
+      "table": "dbo.CMC_CLCL_CLAIM",
+      "determinant": "NWNW_ID",
+      "dependent": "CLCL_NTWK_IND",
+      "distinct_determinant": 7,
+      "distinct_pair": 7,
+      "holds": true,
+      "coverage": 1.0
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "determinant": "MEME_ZIP",
+      "dependent": "MEME_CITY",
+      "distinct_determinant": 604,
+      "distinct_pair": 604,
+      "holds": true,
+      "coverage": 1.0
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "determinant": "MEME_ZIP",
+      "dependent": "MEME_STATE",
+      "distinct_determinant": 604,
+      "distinct_pair": 604,
+      "holds": true,
+      "coverage": 1.0
+    },
+    {
+      "table": "dbo.CMC_NWPR_RELATION",
+      "determinant": "AGAG_ID",
+      "dependent": "NWNW_ID",
+      "distinct_determinant": 12,
+      "distinct_pair": 12,
+      "holds": true,
+      "coverage": 1.0
+    },
+    {
+      "table": "dbo.CMC_NWPR_RELATION",
+      "determinant": "AGAG_ID",
+      "dependent": "NWPR_PCP_IND",
+      "distinct_determinant": 12,
+      "distinct_pair": 12,
+      "holds": true,
+      "coverage": 1.0
+    },
+    {
+      "table": "dbo.CMC_NWPR_RELATION",
+      "determinant": "NWPR_TERM_DT",
+      "dependent": "NWPR_PCP_IND",
+      "distinct_determinant": 29,
+      "distinct_pair": 29,
+      "holds": true,
+      "coverage": 1.0
+    },
+    {
+      "table": "dbo.CMC_NWPR_RELATION",
+      "determinant": "NWPR_EFF_DT",
+      "dependent": "NWPR_TERM_DT",
+      "distinct_determinant": 30,
+      "distinct_pair": 30,
+      "holds": true,
+      "coverage": 1.0
+    },
+    {
+      "table": "dbo.CMC_NWST_NET_SET",
+      "determinant": "NWST_SEQ_NO",
+      "dependent": "PDVC_TIER",
+      "distinct_determinant": 2,
+      "distinct_pair": 2,
+      "holds": true,
+      "coverage": 1.0
+    },
+    {
+      "table": "dbo.CMC_NWST_NET_SET",
+      "determinant": "PDVC_TIER",
+      "dependent": "NWST_SEQ_NO",
+      "distinct_determinant": 2,
+      "distinct_pair": 2,
+      "holds": true,
+      "coverage": 1.0
+    },
+    {
+      "table": "dbo.CMC_SBSB_SUBSC",
+      "determinant": "SGSG_CK",
+      "dependent": "GRGR_CK",
+      "distinct_determinant": 19,
+      "distinct_pair": 19,
+      "holds": true,
+      "coverage": 1.0
+    },
+    {
+      "table": "dbo.CMC_SGSG_SUBGROUP",
+      "determinant": "GRGR_CK",
+      "dependent": "SGSG_STATE",
+      "distinct_determinant": 8,
+      "distinct_pair": 8,
+      "holds": true,
+      "coverage": 1.0
+    },
+    {
+      "table": "dbo.CMC_SGSG_SUBGROUP",
+      "determinant": "SGSG_STATE",
+      "dependent": "GRGR_CK",
+      "distinct_determinant": 8,
+      "distinct_pair": 8,
+      "holds": true,
+      "coverage": 1.0
+    }
+  ],
+  "orderings": [
+    {
+      "kind": "row",
+      "table": "dbo.CMC_CLCL_CLAIM",
+      "earlier": "CLCL_SVC_DT",
+      "later": "CLCL_RECD_DT",
+      "rows_compared": 100000,
+      "share_in_order": 1.0,
+      "gap_min": 0,
+      "gap_max": 30,
+      "gap_mean": 14.98,
+      "gap_stddev": 8.9308
+    },
+    {
+      "kind": "row",
+      "table": "dbo.CMC_CLCL_CLAIM",
+      "earlier": "CLCL_SVC_DT",
+      "later": "CLCL_PAID_DT",
+      "rows_compared": 79982,
+      "share_in_order": 1.0,
+      "gap_min": 5,
+      "gap_max": 90,
+      "gap_mean": 47.4112,
+      "gap_stddev": 18.4786
+    },
+    {
+      "kind": "row",
+      "table": "dbo.CMC_CLCL_CLAIM",
+      "earlier": "CLCL_RECD_DT",
+      "later": "CLCL_PAID_DT",
+      "rows_compared": 79982,
+      "share_in_order": 1.0,
+      "gap_min": 5,
+      "gap_max": 60,
+      "gap_mean": 32.4205,
+      "gap_stddev": 16.1472
+    },
+    {
+      "kind": "join",
+      "table": "dbo.CMC_CLCL_CLAIM",
+      "earlier": "dbo.CMC_MEME_MEMBER.MEME_BIRTH_DT",
+      "later": "CLCL_SVC_DT",
+      "rows_compared": 100000,
+      "share_in_order": 1.0,
+      "gap_min": 0,
+      "gap_max": 27331,
+      "gap_mean": 10987.3133,
+      "gap_stddev": 6559.1396,
+      "parent_table": "dbo.CMC_MEME_MEMBER"
+    },
+    {
+      "kind": "join",
+      "table": "dbo.CMC_CLCL_CLAIM",
+      "earlier": "dbo.CMC_MEME_MEMBER.MEME_BIRTH_DT",
+      "later": "CLCL_RECD_DT",
+      "rows_compared": 100000,
+      "share_in_order": 1.0,
+      "gap_min": 0,
+      "gap_max": 27338,
+      "gap_mean": 11002.2933,
+      "gap_stddev": 6559.1359,
+      "parent_table": "dbo.CMC_MEME_MEMBER"
+    },
+    {
+      "kind": "join",
+      "table": "dbo.CMC_CLCL_CLAIM",
+      "earlier": "dbo.CMC_MEME_MEMBER.MEME_BIRTH_DT",
+      "later": "CLCL_PAID_DT",
+      "rows_compared": 79982,
+      "share_in_order": 1.0,
+      "gap_min": 12,
+      "gap_max": 27380,
+      "gap_mean": 11029.2448,
+      "gap_stddev": 6567.5814,
+      "parent_table": "dbo.CMC_MEME_MEMBER"
+    },
+    {
+      "kind": "join",
+      "table": "dbo.CMC_CLCL_CLAIM",
+      "earlier": "dbo.CMC_MEME_MEMBER.MEME_EFF_DT",
+      "later": "CLCL_SVC_DT",
+      "rows_compared": 100000,
+      "share_in_order": 1.0,
+      "gap_min": 0,
+      "gap_max": 3050,
+      "gap_mean": 784.6741,
+      "gap_stddev": 623.1173,
+      "parent_table": "dbo.CMC_MEME_MEMBER"
+    },
+    {
+      "kind": "join",
+      "table": "dbo.CMC_CLCL_CLAIM",
+      "earlier": "dbo.CMC_MEME_MEMBER.MEME_EFF_DT",
+      "later": "CLCL_RECD_DT",
+      "rows_compared": 100000,
+      "share_in_order": 1.0,
+      "gap_min": 0,
+      "gap_max": 3075,
+      "gap_mean": 799.6541,
+      "gap_stddev": 623.1988,
+      "parent_table": "dbo.CMC_MEME_MEMBER"
+    },
+    {
+      "kind": "join",
+      "table": "dbo.CMC_CLCL_CLAIM",
+      "earlier": "dbo.CMC_MEME_MEMBER.MEME_EFF_DT",
+      "later": "CLCL_PAID_DT",
+      "rows_compared": 79982,
+      "share_in_order": 1.0,
+      "gap_min": 8,
+      "gap_max": 3096,
+      "gap_mean": 831.295,
+      "gap_stddev": 622.9479,
+      "parent_table": "dbo.CMC_MEME_MEMBER"
+    },
+    {
+      "kind": "join",
+      "table": "dbo.CMC_CLCL_CLAIM",
+      "earlier": "dbo.CMC_MEME_MEMBER.MEME_ORIG_EFF_DT",
+      "later": "CLCL_SVC_DT",
+      "rows_compared": 100000,
+      "share_in_order": 1.0,
+      "gap_min": 0,
+      "gap_max": 9073,
+      "gap_mean": 2622.887,
+      "gap_stddev": 1977.5629,
+      "parent_table": "dbo.CMC_MEME_MEMBER"
+    },
+    {
+      "kind": "join",
+      "table": "dbo.CMC_CLCL_CLAIM",
+      "earlier": "dbo.CMC_MEME_MEMBER.MEME_ORIG_EFF_DT",
+      "later": "CLCL_RECD_DT",
+      "rows_compared": 100000,
+      "share_in_order": 1.0,
+      "gap_min": 3,
+      "gap_max": 9094,
+      "gap_mean": 2637.867,
+      "gap_stddev": 1977.6139,
+      "parent_table": "dbo.CMC_MEME_MEMBER"
+    },
+    {
+      "kind": "join",
+      "table": "dbo.CMC_CLCL_CLAIM",
+      "earlier": "dbo.CMC_MEME_MEMBER.MEME_ORIG_EFF_DT",
+      "later": "CLCL_PAID_DT",
+      "rows_compared": 79982,
+      "share_in_order": 1.0,
+      "gap_min": 19,
+      "gap_max": 9138,
+      "gap_mean": 2668.0683,
+      "gap_stddev": 1977.7665,
+      "parent_table": "dbo.CMC_MEME_MEMBER"
+    },
+    {
+      "kind": "join",
+      "table": "dbo.CMC_CLCL_CLAIM",
+      "earlier": "CLCL_SVC_DT",
+      "later": "dbo.CMC_MEME_MEMBER.MEME_TERM_DT",
+      "rows_compared": 14748,
+      "share_in_order": 0.999051,
+      "gap_min": 0,
+      "gap_max": 1788,
+      "gap_mean": 546.7267,
+      "gap_stddev": 417.807,
+      "parent_table": "dbo.CMC_MEME_MEMBER"
+    },
+    {
+      "kind": "join",
+      "table": "dbo.CMC_CLCL_CLAIM",
+      "earlier": "CLCL_RECD_DT",
+      "later": "dbo.CMC_MEME_MEMBER.MEME_TERM_DT",
+      "rows_compared": 14748,
+      "share_in_order": 0.98115,
+      "gap_min": -29,
+      "gap_max": 1781,
+      "gap_mean": 531.7325,
+      "gap_stddev": 417.9159,
+      "parent_table": "dbo.CMC_MEME_MEMBER"
+    },
+    {
+      "kind": "row",
+      "table": "dbo.CMC_MEME_MEMBER",
+      "earlier": "MEME_BIRTH_DT",
+      "later": "MEME_EFF_DT",
+      "rows_compared": 46077,
+      "share_in_order": 1.0,
+      "gap_min": 0,
+      "gap_max": 26590,
+      "gap_mean": 9892.674,
+      "gap_stddev": 6390.6162
+    },
+    {
+      "kind": "row",
+      "table": "dbo.CMC_MEME_MEMBER",
+      "earlier": "MEME_BIRTH_DT",
+      "later": "MEME_TERM_DT",
+      "rows_compared": 6954,
+      "share_in_order": 1.0,
+      "gap_min": 180,
+      "gap_max": 28059,
+      "gap_mean": 10915.8421,
+      "gap_stddev": 6350.4742
+    },
+    {
+      "kind": "row",
+      "table": "dbo.CMC_MEME_MEMBER",
+      "earlier": "MEME_EFF_DT",
+      "later": "MEME_TERM_DT",
+      "rows_compared": 6954,
+      "share_in_order": 1.0,
+      "gap_min": 180,
+      "gap_max": 1800,
+      "gap_mean": 991.061,
+      "gap_stddev": 467.7904
+    },
+    {
+      "kind": "row",
+      "table": "dbo.CMC_MEME_MEMBER",
+      "earlier": "MEME_ORIG_EFF_DT",
+      "later": "MEME_TERM_DT",
+      "rows_compared": 6954,
+      "share_in_order": 1.0,
+      "gap_min": 185,
+      "gap_max": 10026,
+      "gap_mean": 2731.8681,
+      "gap_stddev": 1976.047
+    },
+    {
+      "kind": "join",
+      "table": "dbo.CMC_MEME_MEMBER",
+      "earlier": "dbo.CMC_SBSB_SUBSC.SBSB_EFF_DT",
+      "later": "MEME_EFF_DT",
+      "rows_compared": 46077,
+      "share_in_order": 1.0,
+      "gap_min": 0,
+      "gap_max": 3078,
+      "gap_mean": 243.4906,
+      "gap_stddev": 306.5793,
+      "parent_table": "dbo.CMC_SBSB_SUBSC"
+    },
+    {
+      "kind": "join",
+      "table": "dbo.CMC_MEME_MEMBER",
+      "earlier": "dbo.CMC_SBSB_SUBSC.SBSB_EFF_DT",
+      "later": "MEME_TERM_DT",
+      "rows_compared": 6954,
+      "share_in_order": 1.0,
+      "gap_min": 191,
+      "gap_max": 4737,
+      "gap_mean": 1231.6186,
+      "gap_stddev": 556.6868,
+      "parent_table": "dbo.CMC_SBSB_SUBSC"
+    },
+    {
+      "kind": "join",
+      "table": "dbo.CMC_MEME_MEMBER",
+      "earlier": "dbo.CMC_SBSB_SUBSC.SBSB_ORIG_EFF_DT",
+      "later": "MEME_EFF_DT",
+      "rows_compared": 46077,
+      "share_in_order": 1.0,
+      "gap_min": 0,
+      "gap_max": 9043,
+      "gap_mean": 1800.6819,
+      "gap_stddev": 1920.8593,
+      "parent_table": "dbo.CMC_SBSB_SUBSC"
+    },
+    {
+      "kind": "join",
+      "table": "dbo.CMC_MEME_MEMBER",
+      "earlier": "dbo.CMC_SBSB_SUBSC.SBSB_ORIG_EFF_DT",
+      "later": "MEME_ORIG_EFF_DT",
+      "rows_compared": 46077,
+      "share_in_order": 1.0,
+      "gap_min": 0,
+      "gap_max": 120,
+      "gap_mean": 57.7918,
+      "gap_stddev": 34.7606,
+      "parent_table": "dbo.CMC_SBSB_SUBSC"
+    },
+    {
+      "kind": "join",
+      "table": "dbo.CMC_MEME_MEMBER",
+      "earlier": "dbo.CMC_SBSB_SUBSC.SBSB_ORIG_EFF_DT",
+      "later": "MEME_TERM_DT",
+      "rows_compared": 6954,
+      "share_in_order": 1.0,
+      "gap_min": 191,
+      "gap_max": 10137,
+      "gap_mean": 2789.7003,
+      "gap_stddev": 1977.7074,
+      "parent_table": "dbo.CMC_SBSB_SUBSC"
+    },
+    {
+      "kind": "row",
+      "table": "dbo.CMC_MEPR_PRIM_PROV",
+      "earlier": "MEPR_EFF_DT",
+      "later": "MEPR_TERM_DT",
+      "rows_compared": 4312,
+      "share_in_order": 1.0,
+      "gap_min": 180,
+      "gap_max": 1800,
+      "gap_mean": 984.8263,
+      "gap_stddev": 470.3571
+    },
+    {
+      "kind": "join",
+      "table": "dbo.CMC_MEPR_PRIM_PROV",
+      "earlier": "dbo.CMC_GRGR_GROUP.GRGR_ORIG_EFF_DT",
+      "later": "MEPR_EFF_DT",
+      "rows_compared": 28740,
+      "share_in_order": 1.0,
+      "gap_min": 440,
+      "gap_max": 9451,
+      "gap_mean": 4781.8199,
+      "gap_stddev": 2311.8254,
+      "parent_table": "dbo.CMC_GRGR_GROUP"
+    },
+    {
+      "kind": "join",
+      "table": "dbo.CMC_MEPR_PRIM_PROV",
+      "earlier": "dbo.CMC_GRGR_GROUP.GRGR_ORIG_EFF_DT",
+      "later": "MEPR_TERM_DT",
+      "rows_compared": 4312,
+      "share_in_order": 1.0,
+      "gap_min": 881,
+      "gap_max": 10966,
+      "gap_mean": 5758.5589,
+      "gap_stddev": 2361.1468,
+      "parent_table": "dbo.CMC_GRGR_GROUP"
+    },
+    {
+      "kind": "join",
+      "table": "dbo.CMC_MEPR_PRIM_PROV",
+      "earlier": "dbo.CMC_MEME_MEMBER.MEME_BIRTH_DT",
+      "later": "MEPR_EFF_DT",
+      "rows_compared": 28740,
+      "share_in_order": 1.0,
+      "gap_min": 0,
+      "gap_max": 26561,
+      "gap_mean": 10554.2335,
+      "gap_stddev": 6682.4821,
+      "parent_table": "dbo.CMC_MEME_MEMBER"
+    },
+    {
+      "kind": "join",
+      "table": "dbo.CMC_MEPR_PRIM_PROV",
+      "earlier": "dbo.CMC_MEME_MEMBER.MEME_BIRTH_DT",
+      "later": "MEPR_TERM_DT",
+      "rows_compared": 4312,
+      "share_in_order": 1.0,
+      "gap_min": 180,
+      "gap_max": 28059,
+      "gap_mean": 11591.3115,
+      "gap_stddev": 6622.5275,
+      "parent_table": "dbo.CMC_MEME_MEMBER"
+    },
+    {
+      "kind": "join",
+      "table": "dbo.CMC_MEPR_PRIM_PROV",
+      "earlier": "dbo.CMC_MEME_MEMBER.MEME_EFF_DT",
+      "later": "MEPR_EFF_DT",
+      "rows_compared": 28740,
+      "share_in_order": 1.0,
+      "gap_min": 0,
+      "gap_max": 0,
+      "gap_mean": 0.0,
+      "gap_stddev": 0.0,
+      "parent_table": "dbo.CMC_MEME_MEMBER"
+    },
+    {
+      "kind": "join",
+      "table": "dbo.CMC_MEPR_PRIM_PROV",
+      "earlier": "dbo.CMC_MEME_MEMBER.MEME_EFF_DT",
+      "later": "MEPR_TERM_DT",
+      "rows_compared": 4312,
+      "share_in_order": 1.0,
+      "gap_min": 180,
+      "gap_max": 1800,
+      "gap_mean": 984.8263,
+      "gap_stddev": 470.3571,
+      "parent_table": "dbo.CMC_MEME_MEMBER"
+    },
+    {
+      "kind": "join",
+      "table": "dbo.CMC_MEPR_PRIM_PROV",
+      "earlier": "dbo.CMC_MEME_MEMBER.MEME_ORIG_EFF_DT",
+      "later": "MEPR_EFF_DT",
+      "rows_compared": 28740,
+      "share_in_order": 1.0,
+      "gap_min": 0,
+      "gap_max": 8947,
+      "gap_mean": 2029.4842,
+      "gap_stddev": 1992.8948,
+      "parent_table": "dbo.CMC_MEME_MEMBER"
+    },
+    {
+      "kind": "join",
+      "table": "dbo.CMC_MEPR_PRIM_PROV",
+      "earlier": "dbo.CMC_MEME_MEMBER.MEME_ORIG_EFF_DT",
+      "later": "MEPR_TERM_DT",
+      "rows_compared": 4312,
+      "share_in_order": 1.0,
+      "gap_min": 193,
+      "gap_max": 10026,
+      "gap_mean": 3019.7565,
+      "gap_stddev": 2050.0249,
+      "parent_table": "dbo.CMC_MEME_MEMBER"
+    },
+    {
+      "kind": "join",
+      "table": "dbo.CMC_MEPR_PRIM_PROV",
+      "earlier": "MEPR_EFF_DT",
+      "later": "dbo.CMC_MEME_MEMBER.MEME_TERM_DT",
+      "rows_compared": 4312,
+      "share_in_order": 1.0,
+      "gap_min": 180,
+      "gap_max": 1800,
+      "gap_mean": 984.8263,
+      "gap_stddev": 470.3571,
+      "parent_table": "dbo.CMC_MEME_MEMBER"
+    },
+    {
+      "kind": "join",
+      "table": "dbo.CMC_MEPR_PRIM_PROV",
+      "earlier": "dbo.CMC_MEME_MEMBER.MEME_TERM_DT",
+      "later": "MEPR_TERM_DT",
+      "rows_compared": 4312,
+      "share_in_order": 1.0,
+      "gap_min": 0,
+      "gap_max": 0,
+      "gap_mean": 0.0,
+      "gap_stddev": 0.0,
+      "parent_table": "dbo.CMC_MEME_MEMBER"
+    },
+    {
+      "kind": "row",
+      "table": "dbo.CMC_NWPR_RELATION",
+      "earlier": "NWPR_EFF_DT",
+      "later": "NWPR_TERM_DT",
+      "rows_compared": 30,
+      "share_in_order": 1.0,
+      "gap_min": 4762,
+      "gap_max": 5914,
+      "gap_mean": 5296.3333,
+      "gap_stddev": 317.15
+    },
+    {
+      "kind": "join",
+      "table": "dbo.CMC_SBSB_SUBSC",
+      "earlier": "dbo.CMC_GRGR_GROUP.GRGR_ORIG_EFF_DT",
+      "later": "SBSB_EFF_DT",
+      "rows_compared": 20000,
+      "share_in_order": 1.0,
+      "gap_min": 422,
+      "gap_max": 9107,
+      "gap_mean": 4964.7896,
+      "gap_stddev": 2450.1807,
+      "parent_table": "dbo.CMC_GRGR_GROUP"
+    }
+  ],
+  "ratios": [
+    {
+      "child_table": "dbo.CMC_CDML_CL_LINE",
+      "child_column": "CLCL_ID",
+      "parent_table": "dbo.CMC_CLCL_CLAIM",
+      "parent_column": "CLCL_ID",
+      "kind": "declared",
+      "parents": 210727,
+      "children": 650074,
+      "minimum": 1,
+      "maximum": 5,
+      "mean": 3.0849,
+      "stddev": 1.1504,
+      "median": 3.0,
+      "p90": 5.0,
+      "p99": 5.0,
+      "median_nonzero": 3.0,
+      "p90_nonzero": 5.0,
+      "zero_share": 0.0,
+      "histogram": [
+        {
+          "children": 1,
+          "weight": 0.09779
+        },
+        {
+          "children": 2,
+          "weight": 0.1995
+        },
+        {
+          "children": 3,
+          "weight": 0.35265
+        },
+        {
+          "children": 4,
+          "weight": 0.22013
+        },
+        {
+          "children": 5,
+          "weight": 0.12993
+        }
+      ],
+      "proposal": {
+        "kind": "distribution",
+        "dispersion": 0.3729,
+        "zero_share": 0.0,
+        "reason": "standard deviation is 0.37 of the mean, at or above 0.25, so the shape matters"
+      },
+      "evidence": "about 650,074 CMC_CDML_CL_LINE rows across 210,727 CMC_CLCL_CLAIM rows (from 100,000 of them); 0% have none, median 3 among those that do, 90th percentile 5, maximum 5",
+      "sampled_parents": 100000,
+      "from_sizes": false
+    },
+    {
+      "child_table": "dbo.CMC_CLCL_CLAIM",
+      "child_column": "CLCL_IDCD_ID",
+      "parent_table": "dbo.CMC_IDCD_DIAG_CODE",
+      "parent_column": "IDCD_ID",
+      "kind": "declared",
+      "parents": 30,
+      "children": 210727,
+      "minimum": 617,
+      "maximum": 21316,
+      "mean": 7024.2333,
+      "stddev": 6094.2754,
+      "median": 5035.0,
+      "p90": 16690.5,
+      "p99": 20759.78,
+      "median_nonzero": 5035.0,
+      "p90_nonzero": 16690.5,
+      "zero_share": 0.0,
+      "histogram": [
+        {
+          "children": 617,
+          "weight": 0.033333
+        },
+        {
+          "children": 733,
+          "weight": 0.033333
+        },
+        {
+          "children": 976,
+          "weight": 0.033333
+        },
+        {
+          "children": 1174,
+          "weight": 0.033333
+        },
+        {
+          "children": 1422,
+          "weight": 0.033333
+        },
+        {
+          "children": 1536,
+          "weight": 0.033333
+        },
+        {
+          "children": 1708,
+          "weight": 0.033333
+        },
+        {
+          "children": 2012,
+          "weight": 0.033333
+        },
+        {
+          "children": 2152,
+          "weight": 0.033333
+        },
+        {
+          "children": 2397,
+          "weight": 0.033333
+        },
+        {
+          "children": 2760,
+          "weight": 0.033333
+        },
+        {
+          "children": 3420,
+          "weight": 0.033333
+        },
+        {
+          "children": 3816,
+          "weight": 0.033333
+        },
+        {
+          "children": 4263,
+          "weight": 0.033333
+        },
+        {
+          "children": 4862,
+          "weight": 0.033333
+        },
+        {
+          "children": 5208,
+          "weight": 0.033333
+        },
+        {
+          "children": 5831,
+          "weight": 0.033333
+        },
+        {
+          "children": 6602,
+          "weight": 0.033333
+        },
+        {
+          "children": 7484,
+          "weight": 0.033333
+        },
+        {
+          "children": 7664,
+          "weight": 0.033333
+        },
+        {
+          "children": 8734,
+          "weight": 0.033333
+        },
+        {
+          "children": 9740,
+          "weight": 0.033333
+        },
+        {
+          "children": 10646,
+          "weight": 0.033333
+        },
+        {
+          "children": 11706,
+          "weight": 0.033333
+        },
+        {
+          "children": 13558,
+          "weight": 0.033333
+        },
+        {
+          "children": 15487,
+          "weight": 0.033333
+        },
+        {
+          "children": 16675,
+          "weight": 0.033333
+        },
+        {
+          "children": 16830,
+          "weight": 0.033333
+        },
+        {
+          "children": 19398,
+          "weight": 0.033333
+        },
+        {
+          "children": 21316,
+          "weight": 0.033333
+        }
+      ],
+      "proposal": {
+        "kind": "distribution",
+        "dispersion": 0.8676,
+        "zero_share": 0.0,
+        "reason": "standard deviation is 0.87 of the mean, at or above 0.25, so the shape matters"
+      },
+      "evidence": "observed 210,727 CMC_CLCL_CLAIM rows across 30 CMC_IDCD_DIAG_CODE rows; 0% have none, median 5035 among those that do, 90th percentile 16690.5, maximum 21,316",
+      "sampled_parents": 0,
+      "from_sizes": false
+    },
+    {
+      "child_table": "dbo.CMC_CLCL_CLAIM",
+      "child_column": "NWNW_ID",
+      "parent_table": "dbo.CMC_NWNW_NETWORK",
+      "parent_column": "NWNW_ID",
+      "kind": "declared",
+      "parents": 7,
+      "children": 182612,
+      "minimum": 10219,
+      "maximum": 47102,
+      "mean": 26087.4286,
+      "stddev": 13089.846,
+      "median": 23830.0,
+      "p90": 42057.2,
+      "p99": 46597.52,
+      "median_nonzero": 23830.0,
+      "p90_nonzero": 42057.2,
+      "zero_share": 0.0,
+      "histogram": [
+        {
+          "children": 10219,
+          "weight": 0.142857
+        },
+        {
+          "children": 15069,
+          "weight": 0.142857
+        },
+        {
+          "children": 19422,
+          "weight": 0.142857
+        },
+        {
+          "children": 23830,
+          "weight": 0.142857
+        },
+        {
+          "children": 28276,
+          "weight": 0.142857
+        },
+        {
+          "children": 38694,
+          "weight": 0.142857
+        },
+        {
+          "children": 47102,
+          "weight": 0.142857
+        }
+      ],
+      "proposal": {
+        "kind": "distribution",
+        "dispersion": 0.5018,
+        "zero_share": 0.0,
+        "reason": "standard deviation is 0.50 of the mean, at or above 0.25, so the shape matters"
+      },
+      "evidence": "observed 182,612 CMC_CLCL_CLAIM rows across 7 CMC_NWNW_NETWORK rows; 0% have none, median 23830 among those that do, 90th percentile 42057.2, maximum 47,102",
+      "sampled_parents": 0,
+      "from_sizes": false
+    },
+    {
+      "child_table": "dbo.CMC_CLCL_CLAIM",
+      "child_column": "PDPD_ID",
+      "parent_table": "dbo.CMC_PDPD_PRODUCT",
+      "parent_column": "PDPD_ID",
+      "kind": "declared",
+      "parents": 25,
+      "children": 210727,
+      "minimum": 5100,
+      "maximum": 10106,
+      "mean": 8429.08,
+      "stddev": 1556.243,
+      "median": 9021.0,
+      "p90": 9623.6,
+      "p99": 10016.48,
+      "median_nonzero": 9021.0,
+      "p90_nonzero": 9623.6,
+      "zero_share": 0.0,
+      "histogram": [
+        {
+          "children": 5100,
+          "weight": 0.04
+        },
+        {
+          "children": 5361,
+          "weight": 0.04
+        },
+        {
+          "children": 5526,
+          "weight": 0.04
+        },
+        {
+          "children": 5710,
+          "weight": 0.04
+        },
+        {
+          "children": 5811,
+          "weight": 0.04
+        },
+        {
+          "children": 8264,
+          "weight": 0.04
+        },
+        {
+          "children": 8347,
+          "weight": 0.04
+        },
+        {
+          "children": 8753,
+          "weight": 0.04
+        },
+        {
+          "children": 8754,
+          "weight": 0.04
+        },
+        {
+          "children": 8772,
+          "weight": 0.04
+        },
+        {
+          "children": 8788,
+          "weight": 0.04
+        },
+        {
+          "children": 8793,
+          "weight": 0.04
+        },
+        {
+          "children": 9021,
+          "weight": 0.04
+        },
+        {
+          "children": 9155,
+          "weight": 0.04
+        },
+        {
+          "children": 9213,
+          "weight": 0.04
+        },
+        {
+          "children": 9221,
+          "weight": 0.04
+        },
+        {
+          "children": 9333,
+          "weight": 0.04
+        },
+        {
+          "children": 9345,
+          "weight": 0.04
+        },
+        {
+          "children": 9364,
+          "weight": 0.04
+        },
+        {
+          "children": 9514,
+          "weight": 0.04
+        },
+        {
+          "children": 9516,
+          "weight": 0.04
+        },
+        {
+          "children": 9563,
+          "weight": 0.04
+        },
+        {
+          "children": 9664,
+          "weight": 0.04
+        },
+        {
+          "children": 9733,
+          "weight": 0.04
+        },
+        {
+          "children": 10106,
+          "weight": 0.04
+        }
+      ],
+      "proposal": {
+        "kind": "fixed",
+        "value": 8429.08,
+        "dispersion": 0.1846,
+        "reason": "standard deviation is 0.18 of the mean, below 0.25, so one number describes it"
+      },
+      "evidence": "observed 210,727 CMC_CLCL_CLAIM rows across 25 CMC_PDPD_PRODUCT rows; 0% have none, median 9021 among those that do, 90th percentile 9623.6, maximum 10,106",
+      "sampled_parents": 0,
+      "from_sizes": false
+    },
+    {
+      "child_table": "dbo.CMC_CLCL_CLAIM",
+      "child_column": "PRPR_ID",
+      "parent_table": "dbo.CMC_PRPR_PROV",
+      "parent_column": "PRPR_ID",
+      "kind": "declared",
+      "parents": 300,
+      "children": 210727,
+      "minimum": 256,
+      "maximum": 3658,
+      "mean": 702.4233,
+      "stddev": 446.2978,
+      "median": 569.5,
+      "p90": 1074.3,
+      "p99": 3497.04,
+      "median_nonzero": 569.5,
+      "p90_nonzero": 1074.3,
+      "zero_share": 0.0,
+      "histogram": [
+        {
+          "children": 256,
+          "weight": 0.003333
+        },
+        {
+          "children": 343,
+          "weight": 0.09,
+          "low": 320,
+          "high": 362
+        },
+        {
+          "children": 377,
+          "weight": 0.06,
+          "low": 364,
+          "high": 413
+        },
+        {
+          "children": 456,
+          "weight": 0.07,
+          "low": 427,
+          "high": 471
+        },
+        {
+          "children": 499,
+          "weight": 0.14,
+          "low": 473,
+          "high": 524
+        },
+        {
+          "children": 547,
+          "weight": 0.15,
+          "low": 526,
+          "high": 575
+        },
+        {
+          "children": 592,
+          "weight": 0.05,
+          "low": 583,
+          "high": 613
+        },
+        {
+          "children": 670,
+          "weight": 0.023333,
+          "low": 636,
+          "high": 686
+        },
+        {
+          "children": 714,
+          "weight": 0.09,
+          "low": 690,
+          "high": 741
+        },
+        {
+          "children": 763,
+          "weight": 0.07,
+          "low": 742,
+          "high": 795
+        },
+        {
+          "children": 811,
+          "weight": 0.023333,
+          "low": 798,
+          "high": 839
+        },
+        {
+          "children": 878,
+          "weight": 0.046667,
+          "low": 851,
+          "high": 903
+        },
+        {
+          "children": 938,
+          "weight": 0.04,
+          "low": 918,
+          "high": 957
+        },
+        {
+          "children": 983,
+          "weight": 0.026667,
+          "low": 959,
+          "high": 1010
+        },
+        {
+          "children": 1047,
+          "weight": 0.013333,
+          "low": 1027,
+          "high": 1056
+        },
+        {
+          "children": 1091,
+          "weight": 0.026667,
+          "low": 1074,
+          "high": 1110
+        },
+        {
+          "children": 1152,
+          "weight": 0.016667,
+          "low": 1126,
+          "high": 1173
+        },
+        {
+          "children": 1192,
+          "weight": 0.023333,
+          "low": 1178,
+          "high": 1224
+        },
+        {
+          "children": 1251,
+          "weight": 0.01,
+          "low": 1243,
+          "high": 1261
+        },
+        {
+          "children": 1288,
+          "weight": 0.003333
+        },
+        {
+          "children": 1336,
+          "weight": 0.003333
+        },
+        {
+          "children": 2748,
+          "weight": 0.003333
+        },
+        {
+          "children": 2989,
+          "weight": 0.003333
+        },
+        {
+          "children": 3504,
+          "weight": 0.01,
+          "low": 3497,
+          "high": 3515
+        },
+        {
+          "children": 3658,
+          "weight": 0.003333
+        }
+      ],
+      "proposal": {
+        "kind": "distribution",
+        "dispersion": 0.6354,
+        "zero_share": 0.0,
+        "reason": "standard deviation is 0.64 of the mean, at or above 0.25, so the shape matters"
+      },
+      "evidence": "observed 210,727 CMC_CLCL_CLAIM rows across 300 CMC_PRPR_PROV rows; 0% have none, median 569.5 among those that do, 90th percentile 1074.3, maximum 3,658",
+      "sampled_parents": 0,
+      "from_sizes": false
+    },
+    {
+      "child_table": "dbo.CMC_CLCL_CLAIM",
+      "child_column": "MEME_CK",
+      "parent_table": "dbo.CMC_MEME_MEMBER",
+      "parent_column": "MEME_CK",
+      "kind": "inferred",
+      "parents": 46077,
+      "children": 210727,
+      "minimum": 0,
+      "maximum": 40,
+      "mean": 4.5734,
+      "stddev": 5.8187,
+      "median": 3.0,
+      "p90": 11.0,
+      "p99": 28.0,
+      "median_nonzero": 5.0,
+      "p90_nonzero": 14.0,
+      "zero_share": 0.296808,
+      "histogram": [
+        {
+          "children": 0,
+          "weight": 0.296808
+        },
+        {
+          "children": 1,
+          "weight": 0.059726
+        },
+        {
+          "children": 2,
+          "weight": 0.101048
+        },
+        {
+          "children": 3,
+          "weight": 0.097511
+        },
+        {
+          "children": 4,
+          "weight": 0.081407
+        },
+        {
+          "children": 5,
+          "weight": 0.066107
+        },
+        {
+          "children": 6,
+          "weight": 0.054604
+        },
+        {
+          "children": 7,
+          "weight": 0.042906
+        },
+        {
+          "children": 8,
+          "weight": 0.033921
+        },
+        {
+          "children": 9,
+          "weight": 0.028517
+        },
+        {
+          "children": 10,
+          "weight": 0.022224
+        },
+        {
+          "children": 11,
+          "weight": 0.017471
+        },
+        {
+          "children": 12,
+          "weight": 0.014997
+        },
+        {
+          "children": 13,
+          "weight": 0.01224
+        },
+        {
+          "children": 14,
+          "weight": 0.009636
+        },
+        {
+          "children": 15,
+          "weight": 0.00816
+        },
+        {
+          "children": 16,
+          "weight": 0.007661
+        },
+        {
+          "children": 17,
+          "weight": 0.005708
+        },
+        {
+          "children": 18,
+          "weight": 0.004927
+        },
+        {
+          "children": 19,
+          "weight": 0.004644
+        },
+        {
+          "children": 20,
+          "weight": 0.004341
+        },
+        {
+          "children": 21,
+          "weight": 0.00319
+        },
+        {
+          "children": 22,
+          "weight": 0.002604
+        },
+        {
+          "children": 23,
+          "weight": 0.002583
+        },
+        {
+          "children": 24,
+          "weight": 0.002322
+        },
+        {
+          "children": 25,
+          "weight": 0.001823
+        },
+        {
+          "children": 26,
+          "weight": 0.001324
+        },
+        {
+          "children": 27,
+          "weight": 0.001042
+        },
+        {
+          "children": 28,
+          "weight": 0.001129
+        },
+        {
+          "children": 29,
+          "weight": 0.000846
+        },
+        {
+          "children": 30,
+          "weight": 0.000738
+        },
+        {
+          "children": 31,
+          "weight": 0.000629
+        },
+        {
+          "children": 32,
+          "weight": 0.000846
+        },
+        {
+          "children": 33,
+          "weight": 0.000586
+        },
+        {
+          "children": 34,
+          "weight": 0.000499
+        },
+        {
+          "children": 35,
+          "weight": 0.000456
+        },
+        {
+          "children": 36,
+          "weight": 0.000608
+        },
+        {
+          "children": 37,
+          "weight": 0.000369
+        },
+        {
+          "children": 38,
+          "weight": 0.000412
+        },
+        {
+          "children": 39,
+          "weight": 0.000347
+        },
+        {
+          "children": 40,
+          "weight": 0.003082
+        }
+      ],
+      "proposal": {
+        "kind": "distribution",
+        "dispersion": 1.2723,
+        "zero_share": 0.296808,
+        "reason": "standard deviation is 1.27 of the mean, at or above 0.25, so the shape matters"
+      },
+      "evidence": "observed 210,727 CMC_CLCL_CLAIM rows across 46,077 CMC_MEME_MEMBER rows; 30% have none, median 5 among those that do, 90th percentile 14, maximum 40",
+      "sampled_parents": 0,
+      "from_sizes": false
+    },
+    {
+      "child_table": "dbo.CMC_CLCL_CLAIM",
+      "child_column": "PDPD_ID",
+      "parent_table": "dbo.CMC_PDDS_PROD_DESC",
+      "parent_column": "PDPD_ID",
+      "kind": "inferred",
+      "parents": 25,
+      "children": 210727,
+      "minimum": 5100,
+      "maximum": 10106,
+      "mean": 8429.08,
+      "stddev": 1556.243,
+      "median": 9021.0,
+      "p90": 9623.6,
+      "p99": 10016.48,
+      "median_nonzero": 9021.0,
+      "p90_nonzero": 9623.6,
+      "zero_share": 0.0,
+      "histogram": [
+        {
+          "children": 5100,
+          "weight": 0.04
+        },
+        {
+          "children": 5361,
+          "weight": 0.04
+        },
+        {
+          "children": 5526,
+          "weight": 0.04
+        },
+        {
+          "children": 5710,
+          "weight": 0.04
+        },
+        {
+          "children": 5811,
+          "weight": 0.04
+        },
+        {
+          "children": 8264,
+          "weight": 0.04
+        },
+        {
+          "children": 8347,
+          "weight": 0.04
+        },
+        {
+          "children": 8753,
+          "weight": 0.04
+        },
+        {
+          "children": 8754,
+          "weight": 0.04
+        },
+        {
+          "children": 8772,
+          "weight": 0.04
+        },
+        {
+          "children": 8788,
+          "weight": 0.04
+        },
+        {
+          "children": 8793,
+          "weight": 0.04
+        },
+        {
+          "children": 9021,
+          "weight": 0.04
+        },
+        {
+          "children": 9155,
+          "weight": 0.04
+        },
+        {
+          "children": 9213,
+          "weight": 0.04
+        },
+        {
+          "children": 9221,
+          "weight": 0.04
+        },
+        {
+          "children": 9333,
+          "weight": 0.04
+        },
+        {
+          "children": 9345,
+          "weight": 0.04
+        },
+        {
+          "children": 9364,
+          "weight": 0.04
+        },
+        {
+          "children": 9514,
+          "weight": 0.04
+        },
+        {
+          "children": 9516,
+          "weight": 0.04
+        },
+        {
+          "children": 9563,
+          "weight": 0.04
+        },
+        {
+          "children": 9664,
+          "weight": 0.04
+        },
+        {
+          "children": 9733,
+          "weight": 0.04
+        },
+        {
+          "children": 10106,
+          "weight": 0.04
+        }
+      ],
+      "proposal": {
+        "kind": "fixed",
+        "value": 8429.08,
+        "dispersion": 0.1846,
+        "reason": "standard deviation is 0.18 of the mean, below 0.25, so one number describes it"
+      },
+      "evidence": "observed 210,727 CMC_CLCL_CLAIM rows across 25 CMC_PDDS_PROD_DESC rows; 0% have none, median 9021 among those that do, 90th percentile 9623.6, maximum 10,106",
+      "sampled_parents": 0,
+      "from_sizes": false
+    },
+    {
+      "child_table": "dbo.CMC_CSPI_CS_PLAN",
+      "child_column": "CSPD_CAT",
+      "parent_table": "dbo.CMC_CSPD_CAT_DESC",
+      "parent_column": "CSPD_CAT",
+      "kind": "declared",
+      "parents": 2,
+      "children": 25,
+      "minimum": 5,
+      "maximum": 20,
+      "mean": 12.5,
+      "stddev": 10.6066,
+      "median": 12.5,
+      "p90": 18.5,
+      "p99": 19.85,
+      "median_nonzero": 12.5,
+      "p90_nonzero": 18.5,
+      "zero_share": 0.0,
+      "histogram": [
+        {
+          "children": 5,
+          "weight": 0.5
+        },
+        {
+          "children": 20,
+          "weight": 0.5
+        }
+      ],
+      "proposal": {
+        "kind": "distribution",
+        "dispersion": 0.8485,
+        "zero_share": 0.0,
+        "reason": "standard deviation is 0.85 of the mean, at or above 0.25, so the shape matters"
+      },
+      "evidence": "observed 25 CMC_CSPI_CS_PLAN rows across 2 CMC_CSPD_CAT_DESC rows; 0% have none, median 12.5 among those that do, 90th percentile 18.5, maximum 20",
+      "sampled_parents": 0,
+      "from_sizes": false
+    },
+    {
+      "child_table": "dbo.CMC_CSPI_CS_PLAN",
+      "child_column": "PDPD_ID",
+      "parent_table": "dbo.CMC_PDPD_PRODUCT",
+      "parent_column": "PDPD_ID",
+      "kind": "declared",
+      "parents": 25,
+      "children": 25,
+      "minimum": 1,
+      "maximum": 1,
+      "mean": 1.0,
+      "stddev": 0.0,
+      "median": 1.0,
+      "p90": 1.0,
+      "p99": 1.0,
+      "median_nonzero": 1.0,
+      "p90_nonzero": 1.0,
+      "zero_share": 0.0,
+      "histogram": [
+        {
+          "children": 1,
+          "weight": 1.0
+        }
+      ],
+      "proposal": {
+        "kind": "fixed",
+        "value": 1.0,
+        "dispersion": 0.0,
+        "reason": "standard deviation is 0.00 of the mean, below 0.25, so one number describes it"
+      },
+      "evidence": "observed 25 CMC_CSPI_CS_PLAN rows across 25 CMC_PDPD_PRODUCT rows; 0% have none, median 1 among those that do, 90th percentile 1, maximum 1",
+      "sampled_parents": 0,
+      "from_sizes": false
+    },
+    {
+      "child_table": "dbo.CMC_CSPI_CS_PLAN",
+      "child_column": "PDPD_ID",
+      "parent_table": "dbo.CMC_PDDS_PROD_DESC",
+      "parent_column": "PDPD_ID",
+      "kind": "inferred",
+      "parents": 25,
+      "children": 25,
+      "minimum": 1,
+      "maximum": 1,
+      "mean": 1.0,
+      "stddev": 0.0,
+      "median": 1.0,
+      "p90": 1.0,
+      "p99": 1.0,
+      "median_nonzero": 1.0,
+      "p90_nonzero": 1.0,
+      "zero_share": 0.0,
+      "histogram": [
+        {
+          "children": 1,
+          "weight": 1.0
+        }
+      ],
+      "proposal": {
+        "kind": "fixed",
+        "value": 1.0,
+        "dispersion": 0.0,
+        "reason": "standard deviation is 0.00 of the mean, below 0.25, so one number describes it"
+      },
+      "evidence": "observed 25 CMC_CSPI_CS_PLAN rows across 25 CMC_PDDS_PROD_DESC rows; 0% have none, median 1 among those that do, 90th percentile 1, maximum 1",
+      "sampled_parents": 0,
+      "from_sizes": false
+    },
+    {
+      "child_table": "dbo.CMC_MEME_MEMBER",
+      "child_column": "SBSB_CK",
+      "parent_table": "dbo.CMC_SBSB_SUBSC",
+      "parent_column": "SBSB_CK",
+      "kind": "declared",
+      "parents": 20000,
+      "children": 46077,
+      "minimum": 1,
+      "maximum": 5,
+      "mean": 2.3039,
+      "stddev": 1.1354,
+      "median": 2.0,
+      "p90": 4.0,
+      "p99": 5.0,
+      "median_nonzero": 2.0,
+      "p90_nonzero": 4.0,
+      "zero_share": 0.0,
+      "histogram": [
+        {
+          "children": 1,
+          "weight": 0.2818
+        },
+        {
+          "children": 2,
+          "weight": 0.3399
+        },
+        {
+          "children": 3,
+          "weight": 0.22055
+        },
+        {
+          "children": 4,
+          "weight": 0.10815
+        },
+        {
+          "children": 5,
+          "weight": 0.0496
+        }
+      ],
+      "proposal": {
+        "kind": "distribution",
+        "dispersion": 0.4928,
+        "zero_share": 0.0,
+        "reason": "standard deviation is 0.49 of the mean, at or above 0.25, so the shape matters"
+      },
+      "evidence": "observed 46,077 CMC_MEME_MEMBER rows across 20,000 CMC_SBSB_SUBSC rows; 0% have none, median 2 among those that do, 90th percentile 4, maximum 5",
+      "sampled_parents": 0,
+      "from_sizes": false
+    },
+    {
+      "child_table": "dbo.CMC_MEPR_PRIM_PROV",
+      "child_column": "GRGR_CK",
+      "parent_table": "dbo.CMC_GRGR_GROUP",
+      "parent_column": "GRGR_CK",
+      "kind": "declared",
+      "parents": 8,
+      "children": 28740,
+      "minimum": 0,
+      "maximum": 5206,
+      "mean": 3592.5,
+      "stddev": 1735.1883,
+      "median": 4045.5,
+      "p90": 5031.7,
+      "p99": 5188.57,
+      "median_nonzero": 4539.0,
+      "p90_nonzero": 5056.6,
+      "zero_share": 0.125,
+      "histogram": [
+        {
+          "children": 0,
+          "weight": 0.125
+        },
+        {
+          "children": 2507,
+          "weight": 0.125
+        },
+        {
+          "children": 3179,
+          "weight": 0.125
+        },
+        {
+          "children": 3552,
+          "weight": 0.125
+        },
+        {
+          "children": 4539,
+          "weight": 0.125
+        },
+        {
+          "children": 4800,
+          "weight": 0.125
+        },
+        {
+          "children": 4957,
+          "weight": 0.125
+        },
+        {
+          "children": 5206,
+          "weight": 0.125
+        }
+      ],
+      "proposal": {
+        "kind": "distribution",
+        "dispersion": 0.483,
+        "zero_share": 0.125,
+        "reason": "standard deviation is 0.48 of the mean, at or above 0.25, so the shape matters"
+      },
+      "evidence": "observed 28,740 CMC_MEPR_PRIM_PROV rows across 8 CMC_GRGR_GROUP rows; 12% have none, median 4539 among those that do, 90th percentile 5056.6, maximum 5,206",
+      "sampled_parents": 0,
+      "from_sizes": false
+    },
+    {
+      "child_table": "dbo.CMC_MEPR_PRIM_PROV",
+      "child_column": "MEME_CK",
+      "parent_table": "dbo.CMC_MEME_MEMBER",
+      "parent_column": "MEME_CK",
+      "kind": "declared",
+      "parents": 46077,
+      "children": 28740,
+      "minimum": 0,
+      "maximum": 1,
+      "mean": 0.6237,
+      "stddev": 0.4845,
+      "median": 1.0,
+      "p90": 1.0,
+      "p99": 1.0,
+      "median_nonzero": 1.0,
+      "p90_nonzero": 1.0,
+      "zero_share": 0.376261,
+      "histogram": [
+        {
+          "children": 0,
+          "weight": 0.376261
+        },
+        {
+          "children": 1,
+          "weight": 0.623739
+        }
+      ],
+      "proposal": {
+        "kind": "distribution",
+        "dispersion": 0.7768,
+        "zero_share": 0.376261,
+        "reason": "standard deviation is 0.78 of the mean, at or above 0.25, so the shape matters"
+      },
+      "evidence": "observed 28,740 CMC_MEPR_PRIM_PROV rows across 46,077 CMC_MEME_MEMBER rows; 38% have none, median 1 among those that do, 90th percentile 1, maximum 1",
+      "sampled_parents": 0,
+      "from_sizes": false
+    },
+    {
+      "child_table": "dbo.CMC_MEPR_PRIM_PROV",
+      "child_column": "PRPR_ID",
+      "parent_table": "dbo.CMC_PRPR_PROV",
+      "parent_column": "PRPR_ID",
+      "kind": "declared",
+      "parents": 300,
+      "children": 28740,
+      "minimum": 0,
+      "maximum": 1057,
+      "mean": 95.8,
+      "stddev": 228.5998,
+      "median": 0.0,
+      "p90": 474.7,
+      "p99": 981.22,
+      "median_nonzero": 500.0,
+      "p90_nonzero": 876.2,
+      "zero_share": 0.82,
+      "histogram": [
+        {
+          "children": 0,
+          "weight": 0.82
+        },
+        {
+          "children": 239,
+          "weight": 0.003333
+        },
+        {
+          "children": 246,
+          "weight": 0.003333
+        },
+        {
+          "children": 248,
+          "weight": 0.003333
+        },
+        {
+          "children": 252,
+          "weight": 0.003333
+        },
+        {
+          "children": 259,
+          "weight": 0.003333
+        },
+        {
+          "children": 261,
+          "weight": 0.003333
+        },
+        {
+          "children": 263,
+          "weight": 0.006667
+        },
+        {
+          "children": 268,
+          "weight": 0.003333
+        },
+        {
+          "children": 275,
+          "weight": 0.003333
+        },
+        {
+          "children": 277,
+          "weight": 0.003333
+        },
+        {
+          "children": 287,
+          "weight": 0.003333
+        },
+        {
+          "children": 292,
+          "weight": 0.003333
+        },
+        {
+          "children": 296,
+          "weight": 0.003333
+        },
+        {
+          "children": 297,
+          "weight": 0.003333
+        },
+        {
+          "children": 298,
+          "weight": 0.003333
+        },
+        {
+          "children": 299,
+          "weight": 0.003333
+        },
+        {
+          "children": 309,
+          "weight": 0.003333
+        },
+        {
+          "children": 435,
+          "weight": 0.003333
+        },
+        {
+          "children": 443,
+          "weight": 0.006667
+        },
+        {
+          "children": 451,
+          "weight": 0.003333
+        },
+        {
+          "children": 464,
+          "weight": 0.003333
+        },
+        {
+          "children": 474,
+          "weight": 0.003333
+        },
+        {
+          "children": 481,
+          "weight": 0.003333
+        },
+        {
+          "children": 489,
+          "weight": 0.003333
+        },
+        {
+          "children": 494,
+          "weight": 0.003333
+        },
+        {
+          "children": 506,
+          "weight": 0.003333
+        },
+        {
+          "children": 509,
+          "weight": 0.003333
+        },
+        {
+          "children": 516,
+          "weight": 0.003333
+        },
+        {
+          "children": 556,
+          "weight": 0.003333
+        },
+        {
+          "children": 558,
+          "weight": 0.003333
+        },
+        {
+          "children": 559,
+          "weight": 0.003333
+        },
+        {
+          "children": 560,
+          "weight": 0.003333
+        },
+        {
+          "children": 577,
+          "weight": 0.003333
+        },
+        {
+          "children": 587,
+          "weight": 0.003333
+        },
+        {
+          "children": 594,
+          "weight": 0.003333
+        },
+        {
+          "children": 595,
+          "weight": 0.003333
+        },
+        {
+          "children": 611,
+          "weight": 0.003333
+        },
+        {
+          "children": 712,
+          "weight": 0.003333
+        },
+        {
+          "children": 714,
+          "weight": 0.003333
+        },
+        {
+          "children": 730,
+          "weight": 0.003333
+        },
+        {
+          "children": 737,
+          "weight": 0.003333
+        },
+        {
+          "children": 800,
+          "weight": 0.003333
+        },
+        {
+          "children": 821,
+          "weight": 0.003333
+        },
+        {
+          "children": 830,
+          "weight": 0.003333
+        },
+        {
+          "children": 848,
+          "weight": 0.003333
+        },
+        {
+          "children": 851,
+          "weight": 0.003333
+        },
+        {
+          "children": 887,
+          "weight": 0.003333
+        },
+        {
+          "children": 913,
+          "weight": 0.003333
+        },
+        {
+          "children": 981,
+          "weight": 0.003333
+        },
+        {
+          "children": 1003,
+          "weight": 0.003333
+        },
+        {
+          "children": 1025,
+          "weight": 0.003333
+        },
+        {
+          "children": 1057,
+          "weight": 0.003333
+        }
+      ],
+      "proposal": {
+        "kind": "distribution",
+        "dispersion": 2.3862,
+        "zero_share": 0.82,
+        "reason": "standard deviation is 2.39 of the mean, at or above 0.25, so the shape matters"
+      },
+      "evidence": "observed 28,740 CMC_MEPR_PRIM_PROV rows across 300 CMC_PRPR_PROV rows; 82% have none, median 500 among those that do, 90th percentile 876.2, maximum 1,057",
+      "sampled_parents": 0,
+      "from_sizes": false
+    },
+    {
+      "child_table": "dbo.CMC_NWPR_RELATION",
+      "child_column": "NWNW_ID",
+      "parent_table": "dbo.CMC_NWNW_NETWORK",
+      "parent_column": "NWNW_ID",
+      "kind": "declared",
+      "parents": 7,
+      "children": 396,
+      "minimum": 6,
+      "maximum": 83,
+      "mean": 56.5714,
+      "stddev": 33.585,
+      "median": 72.0,
+      "p90": 82.4,
+      "p99": 82.94,
+      "median_nonzero": 72.0,
+      "p90_nonzero": 82.4,
+      "zero_share": 0.0,
+      "histogram": [
+        {
+          "children": 6,
+          "weight": 0.142857
+        },
+        {
+          "children": 10,
+          "weight": 0.142857
+        },
+        {
+          "children": 69,
+          "weight": 0.142857
+        },
+        {
+          "children": 72,
+          "weight": 0.142857
+        },
+        {
+          "children": 74,
+          "weight": 0.142857
+        },
+        {
+          "children": 82,
+          "weight": 0.142857
+        },
+        {
+          "children": 83,
+          "weight": 0.142857
+        }
+      ],
+      "proposal": {
+        "kind": "distribution",
+        "dispersion": 0.5937,
+        "zero_share": 0.0,
+        "reason": "standard deviation is 0.59 of the mean, at or above 0.25, so the shape matters"
+      },
+      "evidence": "observed 396 CMC_NWPR_RELATION rows across 7 CMC_NWNW_NETWORK rows; 0% have none, median 72 among those that do, 90th percentile 82.4, maximum 83",
+      "sampled_parents": 0,
+      "from_sizes": false
+    },
+    {
+      "child_table": "dbo.CMC_NWPR_RELATION",
+      "child_column": "PRPR_ID",
+      "parent_table": "dbo.CMC_PRPR_PROV",
+      "parent_column": "PRPR_ID",
+      "kind": "declared",
+      "parents": 300,
+      "children": 396,
+      "minimum": 1,
+      "maximum": 2,
+      "mean": 1.32,
+      "stddev": 0.4673,
+      "median": 1.0,
+      "p90": 2.0,
+      "p99": 2.0,
+      "median_nonzero": 1.0,
+      "p90_nonzero": 2.0,
+      "zero_share": 0.0,
+      "histogram": [
+        {
+          "children": 1,
+          "weight": 0.68
+        },
+        {
+          "children": 2,
+          "weight": 0.32
+        }
+      ],
+      "proposal": {
+        "kind": "distribution",
+        "dispersion": 0.354,
+        "zero_share": 0.0,
+        "reason": "standard deviation is 0.35 of the mean, at or above 0.25, so the shape matters"
+      },
+      "evidence": "observed 396 CMC_NWPR_RELATION rows across 300 CMC_PRPR_PROV rows; 0% have none, median 1 among those that do, 90th percentile 2, maximum 2",
+      "sampled_parents": 0,
+      "from_sizes": false
+    },
+    {
+      "child_table": "dbo.CMC_NWST_NET_SET",
+      "child_column": "NWNW_ID",
+      "parent_table": "dbo.CMC_NWNW_NETWORK",
+      "parent_column": "NWNW_ID",
+      "kind": "declared",
+      "parents": 7,
+      "children": 41,
+      "minimum": 3,
+      "maximum": 10,
+      "mean": 5.8571,
+      "stddev": 2.6095,
+      "median": 5.0,
+      "p90": 9.4,
+      "p99": 9.94,
+      "median_nonzero": 5.0,
+      "p90_nonzero": 9.4,
+      "zero_share": 0.0,
+      "histogram": [
+        {
+          "children": 3,
+          "weight": 0.142857
+        },
+        {
+          "children": 4,
+          "weight": 0.142857
+        },
+        {
+          "children": 5,
+          "weight": 0.428571
+        },
+        {
+          "children": 9,
+          "weight": 0.142857
+        },
+        {
+          "children": 10,
+          "weight": 0.142857
+        }
+      ],
+      "proposal": {
+        "kind": "distribution",
+        "dispersion": 0.4455,
+        "zero_share": 0.0,
+        "reason": "standard deviation is 0.45 of the mean, at or above 0.25, so the shape matters"
+      },
+      "evidence": "observed 41 CMC_NWST_NET_SET rows across 7 CMC_NWNW_NETWORK rows; 0% have none, median 5 among those that do, 90th percentile 9.4, maximum 10",
+      "sampled_parents": 0,
+      "from_sizes": false
+    },
+    {
+      "child_table": "dbo.CMC_PDDS_PROD_DESC",
+      "child_column": "PDPD_ID",
+      "parent_table": "dbo.CMC_PDPD_PRODUCT",
+      "parent_column": "PDPD_ID",
+      "kind": "declared",
+      "parents": 25,
+      "children": 25,
+      "minimum": 1,
+      "maximum": 1,
+      "mean": 1.0,
+      "stddev": 0.0,
+      "median": 1.0,
+      "p90": 1.0,
+      "p99": 1.0,
+      "median_nonzero": 1.0,
+      "p90_nonzero": 1.0,
+      "zero_share": 0.0,
+      "histogram": [
+        {
+          "children": 1,
+          "weight": 1.0
+        }
+      ],
+      "proposal": {
+        "kind": "fixed",
+        "value": 1.0,
+        "dispersion": 0.0,
+        "reason": "standard deviation is 0.00 of the mean, below 0.25, so one number describes it"
+      },
+      "evidence": "observed 25 CMC_PDDS_PROD_DESC rows across 25 CMC_PDPD_PRODUCT rows; 0% have none, median 1 among those that do, 90th percentile 1, maximum 1",
+      "sampled_parents": 0,
+      "from_sizes": false
+    },
+    {
+      "child_table": "dbo.CMC_PLDS_PLAN_DESC",
+      "child_column": "CSPI_ID",
+      "parent_table": "dbo.CMC_CSPI_CS_PLAN",
+      "parent_column": "CSPI_ID",
+      "kind": "declared",
+      "parents": 25,
+      "children": 25,
+      "minimum": 1,
+      "maximum": 1,
+      "mean": 1.0,
+      "stddev": 0.0,
+      "median": 1.0,
+      "p90": 1.0,
+      "p99": 1.0,
+      "median_nonzero": 1.0,
+      "p90_nonzero": 1.0,
+      "zero_share": 0.0,
+      "histogram": [
+        {
+          "children": 1,
+          "weight": 1.0
+        }
+      ],
+      "proposal": {
+        "kind": "fixed",
+        "value": 1.0,
+        "dispersion": 0.0,
+        "reason": "standard deviation is 0.00 of the mean, below 0.25, so one number describes it"
+      },
+      "evidence": "observed 25 CMC_PLDS_PLAN_DESC rows across 25 CMC_CSPI_CS_PLAN rows; 0% have none, median 1 among those that do, 90th percentile 1, maximum 1",
+      "sampled_parents": 0,
+      "from_sizes": false
+    },
+    {
+      "child_table": "dbo.CMC_SBSB_SUBSC",
+      "child_column": "CSPI_ID",
+      "parent_table": "dbo.CMC_CSPI_CS_PLAN",
+      "parent_column": "CSPI_ID",
+      "kind": "declared",
+      "parents": 25,
+      "children": 20000,
+      "minimum": 739,
+      "maximum": 899,
+      "mean": 800.0,
+      "stddev": 44.9472,
+      "median": 790.0,
+      "p90": 877.8,
+      "p99": 896.84,
+      "median_nonzero": 790.0,
+      "p90_nonzero": 877.8,
+      "zero_share": 0.0,
+      "histogram": [
+        {
+          "children": 739,
+          "weight": 0.04
+        },
+        {
+          "children": 742,
+          "weight": 0.04
+        },
+        {
+          "children": 753,
+          "weight": 0.04
+        },
+        {
+          "children": 754,
+          "weight": 0.04
+        },
+        {
+          "children": 757,
+          "weight": 0.04
+        },
+        {
+          "children": 768,
+          "weight": 0.04
+        },
+        {
+          "children": 776,
+          "weight": 0.04
+        },
+        {
+          "children": 779,
+          "weight": 0.04
+        },
+        {
+          "children": 780,
+          "weight": 0.04
+        },
+        {
+          "children": 781,
+          "weight": 0.08
+        },
+        {
+          "children": 788,
+          "weight": 0.04
+        },
+        {
+          "children": 790,
+          "weight": 0.04
+        },
+        {
+          "children": 792,
+          "weight": 0.04
+        },
+        {
+          "children": 796,
+          "weight": 0.04
+        },
+        {
+          "children": 800,
+          "weight": 0.04
+        },
+        {
+          "children": 802,
+          "weight": 0.04
+        },
+        {
+          "children": 811,
+          "weight": 0.04
+        },
+        {
+          "children": 812,
+          "weight": 0.04
+        },
+        {
+          "children": 822,
+          "weight": 0.04
+        },
+        {
+          "children": 838,
+          "weight": 0.04
+        },
+        {
+          "children": 861,
+          "weight": 0.04
+        },
+        {
+          "children": 889,
+          "weight": 0.04
+        },
+        {
+          "children": 890,
+          "weight": 0.04
+        },
+        {
+          "children": 899,
+          "weight": 0.04
+        }
+      ],
+      "proposal": {
+        "kind": "fixed",
+        "value": 800.0,
+        "dispersion": 0.0562,
+        "reason": "standard deviation is 0.06 of the mean, below 0.25, so one number describes it"
+      },
+      "evidence": "observed 20,000 CMC_SBSB_SUBSC rows across 25 CMC_CSPI_CS_PLAN rows; 0% have none, median 790 among those that do, 90th percentile 877.8, maximum 899",
+      "sampled_parents": 0,
+      "from_sizes": false
+    },
+    {
+      "child_table": "dbo.CMC_SBSB_SUBSC",
+      "child_column": "GRGR_CK",
+      "parent_table": "dbo.CMC_GRGR_GROUP",
+      "parent_column": "GRGR_CK",
+      "kind": "declared",
+      "parents": 8,
+      "children": 20000,
+      "minimum": 1377,
+      "maximum": 3358,
+      "mean": 2500.0,
+      "stddev": 656.8029,
+      "median": 2547.0,
+      "p90": 3253.7,
+      "p99": 3347.57,
+      "median_nonzero": 2547.0,
+      "p90_nonzero": 3253.7,
+      "zero_share": 0.0,
+      "histogram": [
+        {
+          "children": 1377,
+          "weight": 0.125
+        },
+        {
+          "children": 1955,
+          "weight": 0.125
+        },
+        {
+          "children": 2179,
+          "weight": 0.125
+        },
+        {
+          "children": 2485,
+          "weight": 0.125
+        },
+        {
+          "children": 2609,
+          "weight": 0.125
+        },
+        {
+          "children": 2828,
+          "weight": 0.125
+        },
+        {
+          "children": 3209,
+          "weight": 0.125
+        },
+        {
+          "children": 3358,
+          "weight": 0.125
+        }
+      ],
+      "proposal": {
+        "kind": "distribution",
+        "dispersion": 0.2627,
+        "zero_share": 0.0,
+        "reason": "standard deviation is 0.26 of the mean, at or above 0.25, so the shape matters"
+      },
+      "evidence": "observed 20,000 CMC_SBSB_SUBSC rows across 8 CMC_GRGR_GROUP rows; 0% have none, median 2547 among those that do, 90th percentile 3253.7, maximum 3,358",
+      "sampled_parents": 0,
+      "from_sizes": false
+    },
+    {
+      "child_table": "dbo.CMC_SBSB_SUBSC",
+      "child_column": "SGSG_CK",
+      "parent_table": "dbo.CMC_SGSG_SUBGROUP",
+      "parent_column": "SGSG_CK",
+      "kind": "declared",
+      "parents": 19,
+      "children": 20000,
+      "minimum": 678,
+      "maximum": 1614,
+      "mean": 1052.6316,
+      "stddev": 250.7133,
+      "median": 1026.0,
+      "p90": 1319.8,
+      "p99": 1610.58,
+      "median_nonzero": 1026.0,
+      "p90_nonzero": 1319.8,
+      "zero_share": 0.0,
+      "histogram": [
+        {
+          "children": 678,
+          "weight": 0.052632
+        },
+        {
+          "children": 699,
+          "weight": 0.052632
+        },
+        {
+          "children": 845,
+          "weight": 0.052632
+        },
+        {
+          "children": 881,
+          "weight": 0.052632
+        },
+        {
+          "children": 883,
+          "weight": 0.052632
+        },
+        {
+          "children": 917,
+          "weight": 0.052632
+        },
+        {
+          "children": 929,
+          "weight": 0.052632
+        },
+        {
+          "children": 930,
+          "weight": 0.052632
+        },
+        {
+          "children": 981,
+          "weight": 0.052632
+        },
+        {
+          "children": 1026,
+          "weight": 0.052632
+        },
+        {
+          "children": 1028,
+          "weight": 0.052632
+        },
+        {
+          "children": 1067,
+          "weight": 0.052632
+        },
+        {
+          "children": 1125,
+          "weight": 0.052632
+        },
+        {
+          "children": 1151,
+          "weight": 0.052632
+        },
+        {
+          "children": 1166,
+          "weight": 0.052632
+        },
+        {
+          "children": 1234,
+          "weight": 0.052632
+        },
+        {
+          "children": 1251,
+          "weight": 0.052632
+        },
+        {
+          "children": 1595,
+          "weight": 0.052632
+        },
+        {
+          "children": 1614,
+          "weight": 0.052632
+        }
+      ],
+      "proposal": {
+        "kind": "fixed",
+        "value": 1052.6316,
+        "dispersion": 0.2382,
+        "reason": "standard deviation is 0.24 of the mean, below 0.25, so one number describes it"
+      },
+      "evidence": "observed 20,000 CMC_SBSB_SUBSC rows across 19 CMC_SGSG_SUBGROUP rows; 0% have none, median 1026 among those that do, 90th percentile 1319.8, maximum 1,614",
+      "sampled_parents": 0,
+      "from_sizes": false
+    },
+    {
+      "child_table": "dbo.CMC_SBSB_SUBSC",
+      "child_column": "CSPI_ID",
+      "parent_table": "dbo.CMC_PLDS_PLAN_DESC",
+      "parent_column": "CSPI_ID",
+      "kind": "inferred",
+      "parents": 25,
+      "children": 20000,
+      "minimum": 739,
+      "maximum": 899,
+      "mean": 800.0,
+      "stddev": 44.9472,
+      "median": 790.0,
+      "p90": 877.8,
+      "p99": 896.84,
+      "median_nonzero": 790.0,
+      "p90_nonzero": 877.8,
+      "zero_share": 0.0,
+      "histogram": [
+        {
+          "children": 739,
+          "weight": 0.04
+        },
+        {
+          "children": 742,
+          "weight": 0.04
+        },
+        {
+          "children": 753,
+          "weight": 0.04
+        },
+        {
+          "children": 754,
+          "weight": 0.04
+        },
+        {
+          "children": 757,
+          "weight": 0.04
+        },
+        {
+          "children": 768,
+          "weight": 0.04
+        },
+        {
+          "children": 776,
+          "weight": 0.04
+        },
+        {
+          "children": 779,
+          "weight": 0.04
+        },
+        {
+          "children": 780,
+          "weight": 0.04
+        },
+        {
+          "children": 781,
+          "weight": 0.08
+        },
+        {
+          "children": 788,
+          "weight": 0.04
+        },
+        {
+          "children": 790,
+          "weight": 0.04
+        },
+        {
+          "children": 792,
+          "weight": 0.04
+        },
+        {
+          "children": 796,
+          "weight": 0.04
+        },
+        {
+          "children": 800,
+          "weight": 0.04
+        },
+        {
+          "children": 802,
+          "weight": 0.04
+        },
+        {
+          "children": 811,
+          "weight": 0.04
+        },
+        {
+          "children": 812,
+          "weight": 0.04
+        },
+        {
+          "children": 822,
+          "weight": 0.04
+        },
+        {
+          "children": 838,
+          "weight": 0.04
+        },
+        {
+          "children": 861,
+          "weight": 0.04
+        },
+        {
+          "children": 889,
+          "weight": 0.04
+        },
+        {
+          "children": 890,
+          "weight": 0.04
+        },
+        {
+          "children": 899,
+          "weight": 0.04
+        }
+      ],
+      "proposal": {
+        "kind": "fixed",
+        "value": 800.0,
+        "dispersion": 0.0562,
+        "reason": "standard deviation is 0.06 of the mean, below 0.25, so one number describes it"
+      },
+      "evidence": "observed 20,000 CMC_SBSB_SUBSC rows across 25 CMC_PLDS_PLAN_DESC rows; 0% have none, median 790 among those that do, 90th percentile 877.8, maximum 899",
+      "sampled_parents": 0,
+      "from_sizes": false
+    },
+    {
+      "child_table": "dbo.CMC_SGSG_SUBGROUP",
+      "child_column": "GRGR_CK",
+      "parent_table": "dbo.CMC_GRGR_GROUP",
+      "parent_column": "GRGR_CK",
+      "kind": "declared",
+      "parents": 8,
+      "children": 19,
+      "minimum": 2,
+      "maximum": 3,
+      "mean": 2.375,
+      "stddev": 0.5175,
+      "median": 2.0,
+      "p90": 3.0,
+      "p99": 3.0,
+      "median_nonzero": 2.0,
+      "p90_nonzero": 3.0,
+      "zero_share": 0.0,
+      "histogram": [
+        {
+          "children": 2,
+          "weight": 0.625
+        },
+        {
+          "children": 3,
+          "weight": 0.375
+        }
+      ],
+      "proposal": {
+        "kind": "fixed",
+        "value": 2.375,
+        "dispersion": 0.2179,
+        "reason": "standard deviation is 0.22 of the mean, below 0.25, so one number describes it"
+      },
+      "evidence": "observed 19 CMC_SGSG_SUBGROUP rows across 8 CMC_GRGR_GROUP rows; 0% have none, median 2 among those that do, 90th percentile 3, maximum 3",
+      "sampled_parents": 0,
+      "from_sizes": false
+    }
+  ],
+  "skipped": [
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "analysis": "functional_dependency",
+      "reason": "1 column pairs left untested within the budget"
+    }
+  ],
+  "table_seconds": {
+    "dbo.CMC_CDML_CL_LINE": 1.154,
+    "dbo.CMC_CLCL_AUDIT": 2.596,
+    "dbo.CMC_CLCL_CLAIM": 10.375,
+    "dbo.CMC_CSPD_CAT_DESC": 0.271,
+    "dbo.CMC_CSPI_CS_PLAN": 0.325,
+    "dbo.CMC_GRGR_GROUP": 0.301,
+    "dbo.CMC_IDCD_DIAG_CODE": 0.209,
+    "dbo.CMC_IPCD_PROC_CODE": 0.204,
+    "dbo.CMC_MEME_MEMBER": 3.104,
+    "dbo.CMC_MEPR_PRIM_PROV": 2.492,
+    "dbo.CMC_NWNW_NETWORK": 1.379,
+    "dbo.CMC_NWPR_RELATION": 1.357,
+    "dbo.CMC_NWST_NET_SET": 1.361,
+    "dbo.CMC_PDDS_PROD_DESC": 0.677,
+    "dbo.CMC_PDPD_PRODUCT": 0.948,
+    "dbo.CMC_PLDS_PLAN_DESC": 0.939,
+    "dbo.CMC_PRPR_PROV": 4.417,
+    "dbo.CMC_SBSB_SUBSC": 4.805,
+    "dbo.CMC_SGSG_SUBGROUP": 3.72
+  }
+}

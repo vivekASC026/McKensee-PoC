@@ -1,0 +1,29 @@
+{
+  "about": "DFT^P03 charges modeled on a sample: one message per claim, its member's PID from the claim's first line, one FT1 (with any NTE/PR1 after it) per claim line, taken in turn from the sample's FT1s; the segments after the last FT1 (DG1, DRG, IN1...) are the claim's and are written once after its lines.",
+  "extends": "hl7v2",
+  "kind": "DFT",
+  "subject": "claims",
+
+  "counts": {"messages": "MSH", "charges": "FT1"},
+  "summary": "{messages} messages · {charges} charges",
+
+  "message": {"about": "The segments every DFT^P03 has (HL7 2.5.1): a charge is an FT1.",
+              "required": ["MSH", "EVN", "PID", "FT1"]},
+
+  "units": [
+    {"name": "claim", "starts": "MSH", "group": "CLAIM_ID", "row": "count", "requires": "line",
+     "missing": "The sample has no MSH followed by an FT1: no charge to model claims on.",
+     "units": [
+       {"name": "line", "starts": "FT1", "while": ["NTE", "PR1"], "row": "count"}
+     ]}
+  ],
+
+  "derive": [
+    {"about": "MSH-10, the message control id, is each message's own.",
+     "op": "rename", "at": "MSH MSH10", "to": "{id}-{n}"},
+    {"about": "DG1-3.2 is the text of the sample's diagnosis code; a generated code is written without it.",
+     "op": "drop", "at": "DG1 DG103-2"},
+    {"about": "FT1-1, the set id, counts a message's charges from 1.",
+     "op": "index", "at": "FT1 FT101"}
+  ]
+}

@@ -1,0 +1,108 @@
+{
+ "_about": "Every word the screens use for this business's records. Each form is stated outright.",
+ "members": {
+  "one": "member",
+  "many": "members",
+  "One": "Member",
+  "Many": "Members",
+  "counts": [
+   [
+    "n_members",
+    null
+   ],
+   [
+    "n_groups",
+    "Groups"
+   ],
+   [
+    "n_plans",
+    "Plans"
+   ]
+  ],
+  "depths": [
+   "Groups",
+   "Groups and categories",
+   "Groups, categories and plans",
+   "Groups, categories, plans and products"
+  ]
+ },
+ "claims": {
+  "one": "claim",
+  "many": "claims",
+  "One": "Claim",
+  "Many": "Claims",
+  "line": "claim line",
+  "lines": "claim lines",
+  "Line": "Claim line",
+  "counts": [
+   [
+    "n_claims",
+    null
+   ],
+   [
+    "n_claim_lines",
+    "Lines"
+   ],
+   [
+    "n_diagnoses",
+    "Diagnoses"
+   ]
+  ],
+  "types": {
+   "P": "Professional",
+   "I": "Institutional",
+   "D": "Dental",
+   "M": "Medical",
+   "H": "Hospital"
+  },
+  "depths": [
+   "Groups",
+   "Groups and plans",
+   "Groups, plans and products"
+  ]
+ },
+ "subscribers": {
+  "one": "subscriber",
+  "many": "subscribers",
+  "One": "Subscriber",
+  "Many": "Subscribers"
+ },
+ "charts": {
+  "_about": "The features the pattern charts draw, and what each is called: a range (with its unit) or a mix of values.",
+  "ranges": {
+   "_age": {
+    "label": "Age",
+    "unit": "years"
+   },
+   "member_age": {
+    "label": "Age",
+    "unit": "years"
+   },
+   "_tenure": {
+    "label": "Tenure",
+    "unit": "months"
+   },
+   "charge_amount": {
+    "label": "Charge per line",
+    "unit": "$",
+    "money": true
+   }
+  },
+  "mixes": {
+   "MEME_SEX": "Sex",
+   "gender": "Sex",
+   "MEME_MARITAL_STATUS": "Marital status",
+   "claim_status": "Claim status",
+   "claim_type": "Claim type",
+   "network": "Network"
+  }
+ },
+ "phrases": {
+  "_about": "Whole phrases the screens say where composing them from the words above reads badly.",
+  "field_examples": "a group, plan, age range or diagnosis",
+  "outside_range_risk": "the pattern's diagnoses and procedures may not be clinically appropriate for them.",
+  "scope_heading": "Plan and group",
+  "joined_heading": "Provider and network",
+  "joined_words": "provider|network|pcp"
+ }
+}

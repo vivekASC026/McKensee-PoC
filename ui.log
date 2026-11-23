@@ -1,0 +1,234 @@
+SDM on http://127.0.0.1:8777
+reading FACETS_QA; the API is at http://127.0.0.1:8777/api/docs
+Could not read the chosen discovery features for members; using the defaults until the store can be read
+Traceback (most recent call last):
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 74, in chosen
+    ensure_table()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 38, in ensure_table
+    conn = _conn()
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 34, in _conn
+    return connect()
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\entity_loader.py", line 77, in connect
+    return pyodbc.connect(get_connection_string())
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+InterfaceError (SQL Server 28000; the driver's message is withheld from the log, as it can quote row values)
+Could not tell whether the store holds child records
+Traceback (most recent call last):
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\api\routers\claims.py", line 46, in available
+    return {"available": bool(cdl.claims_available())}
+                              ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\claims_data_loader.py", line 39, in claims_available
+    conn = _conn()
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\entity_loader.py", line 77, in connect
+    return pyodbc.connect(get_connection_string())
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+InterfaceError (SQL Server 28000; the driver's message is withheld from the log, as it can quote row values)
+Could not read the data fingerprint; caching is keyed to this moment until it can be read
+Traceback (most recent call last):
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\disk_cache.py", line 237, in data_fingerprint
+    with pyodbc.connect(get_connection_string(), timeout=5) as connection:
+         ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+InterfaceError (SQL Server 28000; the driver's message is withheld from the log, as it can quote row values)
+Could not read the data fingerprint; caching is keyed to this moment until it can be read
+Traceback (most recent call last):
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\disk_cache.py", line 237, in data_fingerprint
+    with pyodbc.connect(get_connection_string(), timeout=5) as connection:
+         ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+InterfaceError (SQL Server 28000; the driver's message is withheld from the log, as it can quote row values)
+Could not read the chosen discovery features for claims; using the defaults until the store can be read
+Traceback (most recent call last):
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 74, in chosen
+    ensure_table()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 38, in ensure_table
+    conn = _conn()
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 34, in _conn
+    return connect()
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\entity_loader.py", line 77, in connect
+    return pyodbc.connect(get_connection_string())
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+InterfaceError (SQL Server 28000; the driver's message is withheld from the log, as it can quote row values)
+Could not read the chosen discovery features for claims; using the defaults until the store can be read
+Traceback (most recent call last):
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 74, in chosen
+    ensure_table()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 38, in ensure_table
+    conn = _conn()
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 34, in _conn
+    return connect()
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\entity_loader.py", line 77, in connect
+    return pyodbc.connect(get_connection_string())
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+InterfaceError (SQL Server 28000; the driver's message is withheld from the log, as it can quote row values)
+Could not read the chosen discovery features for claims; using the defaults until the store can be read
+Traceback (most recent call last):
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 74, in chosen
+    ensure_table()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 38, in ensure_table
+    conn = _conn()
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 34, in _conn
+    return connect()
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\entity_loader.py", line 77, in connect
+    return pyodbc.connect(get_connection_string())
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+InterfaceError (SQL Server 28000; the driver's message is withheld from the log, as it can quote row values)
+Could not read the chosen discovery features for members; using the defaults until the store can be read
+Traceback (most recent call last):
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 74, in chosen
+    ensure_table()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 38, in ensure_table
+    conn = _conn()
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 34, in _conn
+    return connect()
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\entity_loader.py", line 77, in connect
+    return pyodbc.connect(get_connection_string())
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+InterfaceError (SQL Server 28000; the driver's message is withheld from the log, as it can quote row values)
+Could not read the chosen discovery features for members; using the defaults until the store can be read
+Traceback (most recent call last):
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 74, in chosen
+    ensure_table()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 38, in ensure_table
+    conn = _conn()
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 34, in _conn
+    return connect()
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\entity_loader.py", line 77, in connect
+    return pyodbc.connect(get_connection_string())
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+InterfaceError (SQL Server 28000; the driver's message is withheld from the log, as it can quote row values)
+Hierarchy lookup overview failed
+Traceback (most recent call last):
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\api\routers\hierarchy.py", line 37, in _guard
+    return fn(*args)
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\cache.py", line 155, in wrapper
+    value = fn(*args, **kwargs)
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\service.py", line 140, in overview
+    return to_py(entity_loader.overview(ENTITY))
+                 ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\entity_loader.py", line 446, in overview
+    conn = connect()
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\entity_loader.py", line 77, in connect
+    return pyodbc.connect(get_connection_string())
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+InterfaceError (SQL Server 28000; the driver's message is withheld from the log, as it can quote row values)
+Could not read the chosen discovery features for members; using the defaults until the store can be read
+Traceback (most recent call last):
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 74, in chosen
+    ensure_table()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 38, in ensure_table
+    conn = _conn()
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 34, in _conn
+    return connect()
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\entity_loader.py", line 77, in connect
+    return pyodbc.connect(get_connection_string())
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+InterfaceError (SQL Server 28000; the driver's message is withheld from the log, as it can quote row values)
+Could not read the data fingerprint; caching is keyed to this moment until it can be read
+Traceback (most recent call last):
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\disk_cache.py", line 237, in data_fingerprint
+    with pyodbc.connect(get_connection_string(), timeout=5) as connection:
+         ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+InterfaceError (SQL Server 28000; the driver's message is withheld from the log, as it can quote row values)
+Could not read the data fingerprint; caching is keyed to this moment until it can be read
+Traceback (most recent call last):
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\disk_cache.py", line 237, in data_fingerprint
+    with pyodbc.connect(get_connection_string(), timeout=5) as connection:
+         ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+InterfaceError (SQL Server 28000; the driver's message is withheld from the log, as it can quote row values)
+Could not tell whether the store holds child records
+Traceback (most recent call last):
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\api\routers\claims.py", line 46, in available
+    return {"available": bool(cdl.claims_available())}
+                              ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\claims_data_loader.py", line 39, in claims_available
+    conn = _conn()
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\entity_loader.py", line 77, in connect
+    return pyodbc.connect(get_connection_string())
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+InterfaceError (SQL Server 28000; the driver's message is withheld from the log, as it can quote row values)
+Could not read the chosen discovery features for claims; using the defaults until the store can be read
+Traceback (most recent call last):
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 74, in chosen
+    ensure_table()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 38, in ensure_table
+    conn = _conn()
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 34, in _conn
+    return connect()
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\entity_loader.py", line 77, in connect
+    return pyodbc.connect(get_connection_string())
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+InterfaceError (SQL Server 28000; the driver's message is withheld from the log, as it can quote row values)
+Could not read the chosen discovery features for claims; using the defaults until the store can be read
+Traceback (most recent call last):
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 74, in chosen
+    ensure_table()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 38, in ensure_table
+    conn = _conn()
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 34, in _conn
+    return connect()
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\entity_loader.py", line 77, in connect
+    return pyodbc.connect(get_connection_string())
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+InterfaceError (SQL Server 28000; the driver's message is withheld from the log, as it can quote row values)
+Could not read the chosen discovery features for claims; using the defaults until the store can be read
+Traceback (most recent call last):
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 74, in chosen
+    ensure_table()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 38, in ensure_table
+    conn = _conn()
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 34, in _conn
+    return connect()
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\entity_loader.py", line 77, in connect
+    return pyodbc.connect(get_connection_string())
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+InterfaceError (SQL Server 28000; the driver's message is withheld from the log, as it can quote row values)
+Could not read the chosen discovery features for members; using the defaults until the store can be read
+Traceback (most recent call last):
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 74, in chosen
+    ensure_table()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 38, in ensure_table
+    conn = _conn()
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 34, in _conn
+    return connect()
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\entity_loader.py", line 77, in connect
+    return pyodbc.connect(get_connection_string())
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+InterfaceError (SQL Server 28000; the driver's message is withheld from the log, as it can quote row values)
+Could not read the chosen discovery features for members; using the defaults until the store can be read
+Traceback (most recent call last):
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 74, in chosen
+    ensure_table()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 38, in ensure_table
+    conn = _conn()
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\discovery_features.py", line 34, in _conn
+    return connect()
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\entity_loader.py", line 77, in connect
+    return pyodbc.connect(get_connection_string())
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+InterfaceError (SQL Server 28000; the driver's message is withheld from the log, as it can quote row values)
+Hierarchy lookup overview failed
+Traceback (most recent call last):
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\api\routers\hierarchy.py", line 37, in _guard
+    return fn(*args)
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\cache.py", line 155, in wrapper
+    value = fn(*args, **kwargs)
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\services\service.py", line 140, in overview
+    return to_py(entity_loader.overview(ENTITY))
+                 ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\entity_loader.py", line 446, in overview
+    conn = connect()
+  File "C:\Users\vivek.lade\Downloads\MCKENSEE POC\TOOL\SDM\sdg\analyzer\entity_loader.py", line 77, in connect
+    return pyodbc.connect(get_connection_string())
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+InterfaceError (SQL Server 28000; the driver's message is withheld from the log, as it can quote row values)

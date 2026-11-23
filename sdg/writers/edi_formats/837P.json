@@ -1,0 +1,678 @@
+{
+  "id": "837P",
+  "name": "837 Professional claim",
+  "transaction": "837",
+  "version": "005010X222A1",
+  "functional_code": "HC",
+  "subject": "claims",
+  "description": "One claim per group of lines, a service line for each, under the submitter, receiver and billing provider loops the 837P requires and with the payer on every subscriber. A claim for a dependent names the subscriber, then the patient in a loop of their own (HL 23, PAT, NM1*QC); a subscriber's own claim has no patient loop. Every position that carries data names a rule; positions holding X12's own vocabulary carry a const. CLM02 is the claim's lines added up, and HL and LX number themselves. Submitter, receiver, billing provider and payer are constants to set for a real trading relationship. Consecutive claims of one subscriber share their subscriber loop (2000B), and of one patient their patient loop (2000C): a segment's \"loop\" names the loop it is in, and the loop's first segment says by \"once_per\" which elements make it the same one.",
+  "header": [
+    {
+      "segment": "BHT",
+      "elements": [
+        {
+          "position": 1,
+          "const": "0019"
+        },
+        {
+          "position": 2,
+          "const": "00"
+        },
+        {
+          "position": 3,
+          "const": "_reference"
+        },
+        {
+          "position": 4,
+          "const": "_date"
+        },
+        {
+          "position": 5,
+          "const": "0000"
+        },
+        {
+          "position": 6,
+          "const": "CH"
+        }
+      ]
+    },
+    {
+      "segment": "NM1",
+      "elements": [
+        {
+          "position": 1,
+          "const": "41"
+        },
+        {
+          "position": 2,
+          "const": "2"
+        },
+        {
+          "position": 3,
+          "const": "SDM SYNTHETIC"
+        },
+        {
+          "position": 8,
+          "const": "46"
+        },
+        {
+          "position": 9,
+          "const": "SDM001"
+        }
+      ]
+    },
+    {
+      "segment": "PER",
+      "elements": [
+        {
+          "position": 1,
+          "const": "IC"
+        },
+        {
+          "position": 2,
+          "const": "SDM SUPPORT"
+        },
+        {
+          "position": 3,
+          "const": "TE"
+        },
+        {
+          "position": 4,
+          "const": "8005550100"
+        }
+      ]
+    },
+    {
+      "segment": "NM1",
+      "elements": [
+        {
+          "position": 1,
+          "const": "40"
+        },
+        {
+          "position": 2,
+          "const": "2"
+        },
+        {
+          "position": 3,
+          "const": "SDM RECEIVER"
+        },
+        {
+          "position": 8,
+          "const": "46"
+        },
+        {
+          "position": 9,
+          "const": "RECEIVER"
+        }
+      ]
+    },
+    {
+      "segment": "HL",
+      "elements": [
+        {
+          "position": 1,
+          "const": "1"
+        },
+        {
+          "position": 3,
+          "const": "20"
+        },
+        {
+          "position": 4,
+          "const": "1"
+        }
+      ]
+    },
+    {
+      "segment": "NM1",
+      "elements": [
+        {
+          "position": 1,
+          "const": "85"
+        },
+        {
+          "position": 2,
+          "const": "2"
+        },
+        {
+          "position": 3,
+          "const": "SDM SYNTHETIC CLINIC"
+        },
+        {
+          "position": 8,
+          "const": "XX"
+        },
+        {
+          "position": 9,
+          "const": "1234567893"
+        }
+      ]
+    },
+    {
+      "segment": "N3",
+      "elements": [
+        {
+          "position": 1,
+          "const": "100 MAIN STREET"
+        }
+      ]
+    },
+    {
+      "segment": "N4",
+      "elements": [
+        {
+          "position": 1,
+          "const": "SPRINGFIELD"
+        },
+        {
+          "position": 2,
+          "const": "IL"
+        },
+        {
+          "position": 3,
+          "const": "627010001"
+        }
+      ]
+    },
+    {
+      "segment": "REF",
+      "elements": [
+        {
+          "position": 1,
+          "const": "EI"
+        },
+        {
+          "position": 2,
+          "const": "999999999"
+        }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "opens_on": "CLAIM_ID",
+      "segments": [
+        {
+          "segment": "HL",
+          "unless_held": "SUBSCRIBER_LAST_NAME",
+          "loop": "2000B",
+          "once_per": [
+            "SUBSCRIBER_MEMBER_ID",
+            "MEMBER_ID"
+          ],
+          "elements": [
+            {
+              "position": 1,
+              "counter": "hl",
+              "starts_at": 1,
+              "names": "2000B"
+            },
+            {
+              "position": 2,
+              "const": "1"
+            },
+            {
+              "position": 3,
+              "const": "22"
+            },
+            {
+              "position": 4,
+              "const": "0"
+            }
+          ]
+        },
+        {
+          "segment": "HL",
+          "only_if_held": "SUBSCRIBER_LAST_NAME",
+          "loop": "2000B",
+          "once_per": [
+            "SUBSCRIBER_MEMBER_ID"
+          ],
+          "elements": [
+            {
+              "position": 1,
+              "counter": "hl",
+              "starts_at": 1,
+              "names": "2000B"
+            },
+            {
+              "position": 2,
+              "const": "1"
+            },
+            {
+              "position": 3,
+              "const": "22"
+            },
+            {
+              "position": 4,
+              "const": "1"
+            }
+          ]
+        },
+        {
+          "segment": "SBR",
+          "unless_held": "SUBSCRIBER_LAST_NAME",
+          "loop": "2000B",
+          "elements": [
+            {
+              "position": 1,
+              "const": "P"
+            },
+            {
+              "position": 2,
+              "const": "18"
+            },
+            {
+              "position": 9,
+              "const": "CI"
+            }
+          ]
+        },
+        {
+          "segment": "SBR",
+          "only_if_held": "SUBSCRIBER_LAST_NAME",
+          "loop": "2000B",
+          "elements": [
+            {
+              "position": 1,
+              "const": "P"
+            },
+            {
+              "position": 9,
+              "const": "CI"
+            }
+          ]
+        },
+        {
+          "segment": "NM1",
+          "unless_held": "SUBSCRIBER_LAST_NAME",
+          "loop": "2000B",
+          "elements": [
+            {
+              "position": 1,
+              "const": "IL"
+            },
+            {
+              "position": 2,
+              "const": "1"
+            },
+            {
+              "position": 3,
+              "rule": "LAST_NAME"
+            },
+            {
+              "position": 4,
+              "rule": "FIRST_NAME"
+            },
+            {
+              "position": 8,
+              "const": "MI"
+            },
+            {
+              "position": 9,
+              "rule": "MEMBER_ID"
+            }
+          ]
+        },
+        {
+          "segment": "NM1",
+          "only_if_held": "SUBSCRIBER_LAST_NAME",
+          "loop": "2000B",
+          "elements": [
+            {
+              "position": 1,
+              "const": "IL"
+            },
+            {
+              "position": 2,
+              "const": "1"
+            },
+            {
+              "position": 3,
+              "rule": "SUBSCRIBER_LAST_NAME"
+            },
+            {
+              "position": 4,
+              "rule": "SUBSCRIBER_FIRST_NAME"
+            },
+            {
+              "position": 8,
+              "const": "MI"
+            },
+            {
+              "position": 9,
+              "rule": "SUBSCRIBER_MEMBER_ID"
+            }
+          ]
+        },
+        {
+          "segment": "N3",
+          "loop": "2000B",
+          "elements": [
+            {
+              "position": 1,
+              "const": "100 MAIN STREET"
+            }
+          ]
+        },
+        {
+          "segment": "N4",
+          "loop": "2000B",
+          "elements": [
+            {
+              "position": 1,
+              "rule": "ADDRESS_CITY"
+            },
+            {
+              "position": 2,
+              "rule": "ADDRESS_STATE"
+            },
+            {
+              "position": 3,
+              "rule": "ADDRESS_ZIP"
+            }
+          ]
+        },
+        {
+          "segment": "DMG",
+          "unless_held": "SUBSCRIBER_LAST_NAME",
+          "loop": "2000B",
+          "elements": [
+            {
+              "position": 1,
+              "const": "D8"
+            },
+            {
+              "position": 2,
+              "rule": "DOB",
+              "date": true
+            },
+            {
+              "position": 3,
+              "rule": "SEX",
+              "const": "U"
+            }
+          ]
+        },
+        {
+          "segment": "NM1",
+          "loop": "2000B",
+          "elements": [
+            {
+              "position": 1,
+              "const": "PR"
+            },
+            {
+              "position": 2,
+              "const": "2"
+            },
+            {
+              "position": 3,
+              "const": "SDM SYNTHETIC HEALTH PLAN"
+            },
+            {
+              "position": 8,
+              "const": "PI"
+            },
+            {
+              "position": 9,
+              "const": "SDMPAYER01"
+            }
+          ]
+        },
+        {
+          "segment": "HL",
+          "only_if_held": "SUBSCRIBER_LAST_NAME",
+          "loop": "2000C",
+          "once_per": [
+            "SUBSCRIBER_MEMBER_ID",
+            "MEMBER_ID"
+          ],
+          "elements": [
+            {
+              "position": 1,
+              "counter": "hl",
+              "starts_at": 1
+            },
+            {
+              "position": 2,
+              "counter": "hl",
+              "parent": "2000B"
+            },
+            {
+              "position": 3,
+              "const": "23"
+            },
+            {
+              "position": 4,
+              "const": "0"
+            }
+          ]
+        },
+        {
+          "segment": "PAT",
+          "only_if_held": "SUBSCRIBER_LAST_NAME",
+          "loop": "2000C",
+          "elements": [
+            {
+              "position": 1,
+              "rule": "RELATIONSHIP_CODE",
+              "map": {
+                "S": "01",
+                "D": "19",
+                "P": "53",
+                "01": "01",
+                "19": "19",
+                "53": "53"
+              },
+              "const": "G8"
+            }
+          ]
+        },
+        {
+          "segment": "NM1",
+          "only_if_held": "SUBSCRIBER_LAST_NAME",
+          "loop": "2000C",
+          "elements": [
+            {
+              "position": 1,
+              "const": "QC"
+            },
+            {
+              "position": 2,
+              "const": "1"
+            },
+            {
+              "position": 3,
+              "rule": "LAST_NAME"
+            },
+            {
+              "position": 4,
+              "rule": "FIRST_NAME"
+            }
+          ]
+        },
+        {
+          "segment": "N3",
+          "only_if_held": "SUBSCRIBER_LAST_NAME",
+          "loop": "2000C",
+          "elements": [
+            {
+              "position": 1,
+              "const": "100 MAIN STREET"
+            }
+          ]
+        },
+        {
+          "segment": "N4",
+          "only_if_held": "SUBSCRIBER_LAST_NAME",
+          "loop": "2000C",
+          "elements": [
+            {
+              "position": 1,
+              "rule": "ADDRESS_CITY"
+            },
+            {
+              "position": 2,
+              "rule": "ADDRESS_STATE"
+            },
+            {
+              "position": 3,
+              "rule": "ADDRESS_ZIP"
+            }
+          ]
+        },
+        {
+          "segment": "DMG",
+          "only_if_held": "SUBSCRIBER_LAST_NAME",
+          "loop": "2000C",
+          "elements": [
+            {
+              "position": 1,
+              "const": "D8"
+            },
+            {
+              "position": 2,
+              "rule": "DOB",
+              "date": true
+            },
+            {
+              "position": 3,
+              "rule": "SEX",
+              "const": "U"
+            }
+          ]
+        },
+        {
+          "segment": "CLM",
+          "elements": [
+            {
+              "position": 1,
+              "rule": "CLAIM_ID"
+            },
+            {
+              "position": 2,
+              "rule": "CHARGE_AMOUNT",
+              "const": "0",
+              "sum": true
+            },
+            {
+              "position": 5,
+              "composite": [
+                {
+                  "const": "11"
+                },
+                {
+                  "const": "B"
+                },
+                {
+                  "const": "1"
+                }
+              ]
+            },
+            {
+              "position": 6,
+              "const": "Y"
+            },
+            {
+              "position": 7,
+              "const": "A"
+            },
+            {
+              "position": 8,
+              "const": "Y"
+            },
+            {
+              "position": 9,
+              "const": "Y"
+            }
+          ]
+        },
+        {
+          "segment": "HI",
+          "only_if": "DIAGNOSIS_CODE",
+          "elements": [
+            {
+              "position": 1,
+              "composite": [
+                {
+                  "const": "ABK"
+                },
+                {
+                  "rule": "DIAGNOSIS_CODE"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "resets": [
+        "line"
+      ]
+    }
+  ],
+  "per_record": [
+    {
+      "segment": "LX",
+      "elements": [
+        {
+          "position": 1,
+          "counter": "line"
+        }
+      ]
+    },
+    {
+      "segment": "SV1",
+      "elements": [
+        {
+          "position": 1,
+          "composite": [
+            {
+              "const": "HC"
+            },
+            {
+              "rule": "PROCEDURE_CODE"
+            }
+          ]
+        },
+        {
+          "position": 2,
+          "rule": "CHARGE_AMOUNT",
+          "const": "0"
+        },
+        {
+          "position": 3,
+          "const": "UN"
+        },
+        {
+          "position": 4,
+          "rule": "SERVICE_UNITS",
+          "const": "1"
+        },
+        {
+          "position": 7,
+          "const": "1"
+        }
+      ]
+    },
+    {
+      "segment": "DTP",
+      "elements": [
+        {
+          "position": 1,
+          "const": "472"
+        },
+        {
+          "position": 2,
+          "const": "D8"
+        },
+        {
+          "position": 3,
+          "rule": "SERVICE_DATE",
+          "date": true
+        }
+      ]
+    }
+  ]
+}

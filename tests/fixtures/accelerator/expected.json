@@ -1,0 +1,21 @@
+{
+ "_about": "The hand-defined hierarchies of the two demo sources, in source terms, as the packs' loaders.<entity>.scope define them: walk levels are those in store.combo_key, narrow the ones after. Each level is named by its id, TABLE.COLUMN (the table its values are kept in), so a column of the same name on another table is not taken for it. selected_narrow are narrowing levels the first proposal must select. Read by tests/test_accelerator_proposer.py and test_accelerator_recovery.py; source names live here, never in sdg/accelerator.",
+ "facets_qa": {
+  "primary": {"table": "dbo.CMC_MEME_MEMBER", "lines": null,
+              "walk": ["dbo.CMC_GRGR_GROUP.GRGR_CK", "dbo.CMC_CSPD_CAT_DESC.CSPD_CAT",
+                       "dbo.CMC_CSPI_CS_PLAN.CSPI_ID", "dbo.CMC_PDPD_PRODUCT.PDPD_ID"],
+              "narrow": [], "selected_narrow": []},
+  "child": {"table": "dbo.CMC_CLCL_CLAIM", "lines": "dbo.CMC_CDML_CL_LINE",
+            "walk": ["dbo.CMC_GRGR_GROUP.GRGR_CK", "dbo.CMC_CSPI_CS_PLAN.CSPI_ID",
+                     "dbo.CMC_PDPD_PRODUCT.PDPD_ID"],
+            "narrow": ["dbo.CMC_CLCL_CLAIM.CLCL_CL_TYPE"],
+            "selected_narrow": ["dbo.CMC_CLCL_CLAIM.CLCL_CL_TYPE"]}
+ },
+ "bank": {
+  "primary": {"table": "dbo.CUSTOMER", "lines": null,
+              "walk": ["dbo.BRANCH.BRANCH_ID"], "narrow": [], "selected_narrow": []},
+  "child": {"table": "dbo.ACCOUNT", "lines": "dbo.TXN",
+            "walk": ["dbo.BRANCH.BRANCH_ID", "dbo.PRODUCT.PRODUCT_CODE"],
+            "narrow": ["dbo.PRODUCT.PRODUCT_TYPE"], "selected_narrow": []}
+ }
+}

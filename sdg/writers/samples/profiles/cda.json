@@ -1,0 +1,103 @@
+{
+  "about": "What every HL7 CDA R2 document modeled on a sample shares. A kind's profile (cda-document.json, cda-ccd.json) extends this one and says what repeats and what follows from what. XML's and HL7 v3's grammar -- namespaces, a URI keeping its scheme, a timestamp keeping its precision and zone, a displayName following its code -- is the reader's. Places are written as the masking tool's CDA config writes paths: from the document's root ('recordTarget/patientRole/patient/name/family'), '//' at any depth, '@name' an attribute.",
+  "syntax": "cda",
+
+  "structural": {
+    "about": "What ties the document together or says how to read a value, never a value anybody generates: template and type ids, the narrative (section 'text', which a reference points into), an id's assigning authority (root), code systems and display names (a displayName follows its code), and the class, mood, type and null-flavor codes HL7 v3 builds a statement from. Never proposed.",
+    "elements": ["templateId", "typeId", "realmCode", "text", "reference"],
+    "attributes": ["root", "codeSystem", "codeSystemName", "codeSystemVersion", "displayName",
+                   "classCode", "moodCode", "typeCode", "nullFlavor", "use", "qualifier",
+                   "xsi:type", "ID", "inversionInd", "contextConductionInd", "negationInd",
+                   "unit", "mediaType", "representation"]
+  },
+
+  "qualified": {
+    "about": "Attributes of the same element that say what a value is, by the value's last two steps: an id's extension is a record number or an SSN by its root. Shown on the screen and written into a saved config as 'where'. A URI's scheme (tel:, mailto:) says what it is too; that is CDA's grammar and needs no entry here.",
+    "id/@extension": ["root"]
+  },
+
+  "within": {
+    "about": "What an enclosing element says about the places inside it: a place in a section is that section's, by the section's LOINC code (procedures 47519-4, results 30954-2, ...). Shown on the screen and written into a saved config as 'where' (section=47519-4), so a date among the procedures and a date among the allergies take different algorithms.",
+    "section": "code/@code"
+  },
+
+  "member": {
+    "about": "Where a place's suggestion can be for the member: the patient's own blocks. The patient's guardian and birthplace and the provider organization sit inside them and are somebody else's; so is everyone outside them (authors, performers, the custodian).",
+    "under": ["recordTarget/patientRole"],
+    "except": ["recordTarget/patientRole/providerOrganization",
+               "recordTarget/patientRole/patient/guardian",
+               "recordTarget/patientRole/patient/birthplace"]
+  },
+
+  "levels": {
+    "about": "Places that are an enclosing unit's, by where they are: everything under recordTarget is the member's, filled from the member's record, so all of a member's documents name the same person. Every other place is the document's own, filled from its claim.",
+    "member": ["recordTarget"]
+  },
+
+  "places": {
+    "about": "What a place holds, when a config's algorithm name does not say, wherever it is. First fitting wins: the SSN's root before any id. The document's dates are its encounter's: the claim's service date (a timestamp keeps the sample's time of day and zone).",
+    "list": [
+      {"at": "recordTarget/patientRole/id/@extension", "where": {"root": "2.16.840.1.113883.4.1"}, "is": "SSN"},
+      {"at": "recordTarget/patientRole/id/@extension", "is": "MEMBER_ID"},
+      {"at": "recordTarget/patientRole/addr/streetAddressLine", "is": "STREET_1"},
+      {"at": "recordTarget/patientRole/addr/city", "is": "ADDRESS_CITY"},
+      {"at": "recordTarget/patientRole/addr/state", "is": "ADDRESS_STATE"},
+      {"at": "recordTarget/patientRole/addr/postalCode", "is": "ADDRESS_ZIP"},
+      {"at": "recordTarget/patientRole/patient/name/given", "is": "FIRST_NAME"},
+      {"at": "recordTarget/patientRole/patient/name/family", "is": "LAST_NAME"},
+      {"at": "recordTarget/patientRole/patient/administrativeGenderCode/@code", "is": "SEX"},
+      {"at": "recordTarget/patientRole/patient/birthTime/@value", "is": "DOB"},
+      {"at": "recordTarget/patientRole/patient/maritalStatusCode/@code", "is": "MARITAL_STATUS"},
+      {"at": "effectiveTime/@value", "is": "SERVICE_DATE"},
+      {"at": "author/time/@value", "is": "SERVICE_DATE"},
+      {"at": "legalAuthenticator/time/@value", "is": "SERVICE_DATE"},
+      {"at": "authenticator/time/@value", "is": "SERVICE_DATE"},
+      {"at": "documentationOf/serviceEvent/effectiveTime/low/@value", "is": "SERVICE_DATE"},
+      {"at": "documentationOf/serviceEvent/effectiveTime/high/@value", "is": "SERVICE_DATE"},
+      {"at": "componentOf/encompassingEncounter/effectiveTime/@value", "is": "SERVICE_DATE"},
+      {"at": "componentOf/encompassingEncounter/effectiveTime/low/@value", "is": "SERVICE_DATE"},
+      {"at": "componentOf/encompassingEncounter/effectiveTime/high/@value", "is": "SERVICE_DATE"},
+      {"at": "component/structuredBody/component/section/entry/procedure/code/@code", "where": {"section": "47519-4"}, "is": "PROCEDURE_CODE"},
+      {"at": "component/structuredBody/component/section/entry/observation/code/@code", "where": {"section": "47519-4"}, "is": "PROCEDURE_CODE"},
+      {"at": "component/structuredBody/component/section/entry/act/code/@code", "where": {"section": "47519-4"}, "is": "PROCEDURE_CODE"},
+      {"at": "component/structuredBody/component/section/entry//effectiveTime/@value", "where": {"section": "47519-4"}, "is": "SERVICE_DATE"},
+      {"at": "component/structuredBody/component/section/entry//effectiveTime/low/@value", "where": {"section": "47519-4"}, "is": "SERVICE_DATE"},
+      {"at": "component/structuredBody/component/section/entry//effectiveTime/high/@value", "where": {"section": "47519-4"}, "is": "SERVICE_DATE"},
+      {"at": "component/structuredBody/component/section/entry/act/entryRelationship/observation/value/@code", "where": {"section": "11450-4"}, "is": "DIAGNOSIS_CODE"},
+      {"at": "component/structuredBody/component/section/entry//effectiveTime/low/@value", "where": {"section": "11450-4"}, "is": "SERVICE_DATE"}
+    ]
+  },
+
+  "checks": {
+    "about": "What a written document is checked for: the header elements CDA R2 requires of every ClinicalDocument, and value sets for coded places (HL7 AdministrativeGender, Confidentiality).",
+    "required": ["typeId", "id", "code", "effectiveTime", "confidentialityCode", "recordTarget",
+                 "author", "custodian", "component"],
+    "codes": [
+      {"at": "recordTarget/patientRole/patient/administrativeGenderCode/@code", "in": ["M", "F", "UN"]},
+      {"at": "confidentialityCode/@code", "in": ["N", "R", "V"]}
+    ]
+  },
+
+  "codes": {
+    "about": "Where HL7 v3 codes a value the store codes otherwise: the store's value -> HL7's, else 'default'; 'display' is the displayName written with it. Without 'map' the value is the code as it is; 'systems' is the code system written with it, the first whose 'match' the code fits (a claim's procedure code is HCPCS when it starts with a letter, else CPT).",
+    "list": [
+      {"at": "recordTarget/patientRole/patient/administrativeGenderCode/@code", "element": "SEX",
+       "map": {"M": "M", "F": "F", "U": "UN"}, "default": "UN",
+       "display": {"M": "Male", "F": "Female", "UN": "Undifferentiated"}},
+      {"at": "component/structuredBody/component/section/entry/procedure/code/@code", "element": "PROCEDURE_CODE",
+       "systems": [
+         {"match": "[A-Z][0-9A-Z]{4}", "set": {"codeSystem": "2.16.840.1.113883.6.285", "codeSystemName": "HCPCS"}},
+         {"set": {"codeSystem": "2.16.840.1.113883.6.12", "codeSystemName": "CPT"}}]},
+      {"at": "component/structuredBody/component/section/entry/observation/code/@code", "element": "PROCEDURE_CODE",
+       "systems": [
+         {"match": "[A-Z][0-9A-Z]{4}", "set": {"codeSystem": "2.16.840.1.113883.6.285", "codeSystemName": "HCPCS"}},
+         {"set": {"codeSystem": "2.16.840.1.113883.6.12", "codeSystemName": "CPT"}}]},
+      {"at": "component/structuredBody/component/section/entry/act/code/@code", "element": "PROCEDURE_CODE",
+       "systems": [
+         {"match": "[A-Z][0-9A-Z]{4}", "set": {"codeSystem": "2.16.840.1.113883.6.285", "codeSystemName": "HCPCS"}},
+         {"set": {"codeSystem": "2.16.840.1.113883.6.12", "codeSystemName": "CPT"}}]},
+      {"at": "component/structuredBody/component/section/entry/act/entryRelationship/observation/value/@code", "element": "DIAGNOSIS_CODE",
+       "systems": [{"set": {"codeSystem": "2.16.840.1.113883.6.90", "codeSystemName": "ICD-10-CM"}}]}
+    ]
+  }
+}

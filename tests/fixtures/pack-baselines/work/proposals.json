@@ -1,0 +1,5363 @@
+[
+  {
+    "table": "dbo.CMC_CSPD_CAT_DESC",
+    "column": "CSPD_CAT",
+    "bucket": "business_key",
+    "generator": "pattern",
+    "params": {
+      "regex": "[A-Z]",
+      "unique": true
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "fitted_format",
+        "detail": "[A-Z] covers 100% of the sample",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_CSPD_CAT_DESC",
+    "column": "CSPD_CAT_DESC",
+    "bucket": "free",
+    "generator": "lookup",
+    "params": {
+      "values": [
+        "Medical and hospital",
+        "Dental"
+      ]
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "element_dictionary",
+        "detail": "maps to PLAN_CATEGORY_DESC, whose dictionary holds 2 values; a pattern fitted to 4 distinct values would only reproduce their shape",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "catalog",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_CSPI_CS_PLAN",
+    "column": "CSPI_ID",
+    "bucket": "business_key",
+    "generator": "pattern",
+    "params": {
+      "regex": "[A-Z]{4,5}\\d{3}",
+      "unique": true
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "fitted_format",
+        "detail": "[A-Z]{4,5}\\d{3} covers 100% of the sample",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_CSPI_CS_PLAN",
+    "column": "GRGR_CK",
+    "bucket": "code",
+    "generator": "reference",
+    "params": {
+      "parent_table": "dbo.CMC_GRGR_GROUP",
+      "parent_column": "GRGR_CK",
+      "pick": "hash"
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "value_inclusion",
+        "detail": "inferred foreign key to dbo.CMC_GRGR_GROUP, which holds 7 rows and reads as a code table",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "structural",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_CSPI_CS_PLAN",
+    "column": "CSPD_CAT",
+    "bucket": "code",
+    "generator": "reference",
+    "params": {
+      "parent_table": "dbo.CMC_CSPD_CAT_DESC",
+      "parent_column": "CSPD_CAT",
+      "pick": "hash"
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "value_inclusion",
+        "detail": "inferred foreign key to dbo.CMC_CSPD_CAT_DESC, which holds 4 rows and reads as a code table",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "structural",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_CSPI_CS_PLAN",
+    "column": "PDPD_ID",
+    "bucket": "code",
+    "generator": "reference",
+    "params": {
+      "parent_table": "dbo.CMC_PDDS_PROD_DESC",
+      "parent_column": "PDPD_ID",
+      "pick": "hash"
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "value_inclusion",
+        "detail": "inferred foreign key to dbo.CMC_PDDS_PROD_DESC, which holds 14 rows and reads as a code table",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "structural",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_CSPI_CS_PLAN",
+    "column": "CSPI_EFF_DT",
+    "bucket": "free",
+    "generator": "date_relative",
+    "params": {
+      "anchor": "dbo.CMC_PDPD_PRODUCT.PDPD_EFF_DT",
+      "min_days": 0,
+      "max_days": 0,
+      "max_date": "2024-01-01",
+      "upper_anchor": "dbo.CMC_PDPD_PRODUCT.PDPD_TERM_DT"
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "date_ordering",
+        "detail": "follows dbo.CMC_PDPD_PRODUCT.PDPD_EFF_DT by 0 to 0 days in 100.0% of 21 rows",
+        "coverage": 1.0
+      },
+      {
+        "kind": "observed_range",
+        "detail": "no value in the column is later than 2024-01-01",
+        "coverage": 1.0
+      },
+      {
+        "kind": "date_ordering",
+        "detail": "stays at or before dbo.CMC_PDPD_PRODUCT.PDPD_TERM_DT in 100.0% of 1 rows",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_CSPI_CS_PLAN",
+    "column": "CSPI_TERM_DT",
+    "bucket": "free",
+    "generator": "constant",
+    "params": {
+      "value": "2023-12-31"
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "single_value",
+        "detail": "every row holds '2023-12-31'",
+        "coverage": 1.0
+      },
+      {
+        "kind": "null_rate",
+        "detail": "null in 95% of rows",
+        "coverage": 0.952381
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_GRGR_GROUP",
+    "column": "GRGR_CK",
+    "bucket": "business_key",
+    "generator": "number",
+    "params": {
+      "distribution": "uniform",
+      "min": 0,
+      "max": 1000,
+      "decimals": 0
+    },
+    "confidence": "low",
+    "coverage": null,
+    "evidence": [
+      {
+        "kind": "fallback",
+        "detail": "no profile signature fit; falling back to the column's type and length"
+      }
+    ],
+    "provenance": "physical",
+    "note": "nothing in the data suggested a rule; please confirm or replace"
+  },
+  {
+    "table": "dbo.CMC_GRGR_GROUP",
+    "column": "GRGR_ID",
+    "bucket": "business_key",
+    "generator": "pattern",
+    "params": {
+      "regex": "[A-Z_]{5,8}",
+      "unique": true
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "fitted_format",
+        "detail": "[A-Z_]{5,8} covers 100% of the sample",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_GRGR_GROUP",
+    "column": "GRGR_NAME",
+    "bucket": "free",
+    "generator": "lookup",
+    "params": {
+      "values": [
+        "Riverside University",
+        "Metro Transit Authority",
+        "Northside Health System",
+        "Lakeshore Manufacturing",
+        "Summit Retail Group",
+        "Cedar Valley School District",
+        "Harbor Logistics",
+        "Pine Ridge Senior Care",
+        "Clearwater Municipal Services",
+        "Granite State Engineering",
+        "Bayview Medical Partners",
+        "Fairfield County Schools",
+        "Ironbridge Steel Works",
+        "Meridian Insurance Group",
+        "Oakhurst Hospitality",
+        "Prairie Grain Cooperative",
+        "Silverlake Technologies",
+        "Thornton Construction",
+        "Westgate Pharmaceuticals",
+        "Yellowstone Parks Authority",
+        "Ashford Legal Services",
+        "Brookfield Dairy",
+        "Crestline Aviation",
+        "Dunmore Textiles",
+        "Eastport Fisheries"
+      ]
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "element_dictionary",
+        "detail": "maps to GROUP_NAME, whose dictionary holds 25 values; a pattern fitted to 7 distinct values would only reproduce their shape",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "catalog",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_GRGR_GROUP",
+    "column": "GRGR_STATE",
+    "bucket": "free",
+    "generator": "lookup",
+    "params": {
+      "values": [
+        "OH",
+        "KY",
+        "PA"
+      ],
+      "weights": [
+        0.571429,
+        0.285714,
+        0.142857
+      ]
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "top_values",
+        "detail": "3 distinct values; 'OH' is the most common at 57%",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_GRGR_GROUP",
+    "column": "GRGR_MCTR_TYPE",
+    "bucket": "free",
+    "generator": "lookup",
+    "params": {
+      "values": [
+        "GOVT",
+        "EMP",
+        "EDU",
+        "RTL"
+      ],
+      "weights": [
+        0.428571,
+        0.285714,
+        0.142857,
+        0.142857
+      ]
+    },
+    "confidence": "high",
+    "coverage": 0.999999,
+    "evidence": [
+      {
+        "kind": "top_values",
+        "detail": "4 distinct values; 'GOVT' is the most common at 43%",
+        "coverage": 0.999999
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_GRGR_GROUP",
+    "column": "GRGR_STS",
+    "bucket": "free",
+    "generator": "constant",
+    "params": {
+      "value": "AC"
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "single_value",
+        "detail": "every row holds 'AC'",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_GRGR_GROUP",
+    "column": "GRGR_ORIG_EFF_DT",
+    "bucket": "free",
+    "generator": "date_relative",
+    "params": {
+      "anchor": "2005-01-01",
+      "min_days": 0,
+      "max_days": 4564
+    },
+    "confidence": "medium",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "observed_range",
+        "detail": "values run from 2005-01-01 to 2017-07-01",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_GRGR_GROUP",
+    "column": "GRGR_TERM_DT",
+    "bucket": "free",
+    "generator": "constant",
+    "params": {
+      "value": null
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "always_null",
+        "detail": "null in all 7 rows",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_LOBD_LINE_BUS",
+    "column": "LOBD_ID",
+    "bucket": "business_key",
+    "generator": "pattern",
+    "params": {
+      "regex": "[A-Z]{3}",
+      "unique": true
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "fitted_format",
+        "detail": "[A-Z]{3} covers 100% of the sample",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_LOBD_LINE_BUS",
+    "column": "LOBD_DESC",
+    "bucket": "free",
+    "generator": "lookup",
+    "params": {
+      "values": [
+        "Children's Health Insurance Program",
+        "Commercial",
+        "Medicaid",
+        "Medicare Advantage"
+      ],
+      "weights": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ]
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "top_values",
+        "detail": "4 distinct values; \"Children's Health Insurance Program\" is the most common at 25%",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_MEME_MEMBER",
+    "column": "MEME_CK",
+    "bucket": "business_key",
+    "generator": "sequence",
+    "params": {
+      "start": 512421,
+      "step": 1
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "sequence",
+        "detail": "values advance by 1 with 0 gaps; the highest is 512,420",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_MEME_MEMBER",
+    "column": "SBSB_CK",
+    "bucket": "reference",
+    "generator": "reference",
+    "params": {
+      "parent_table": "dbo.CMC_SBSB_SUBSC",
+      "parent_column": "SBSB_CK",
+      "pick": "hash"
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "value_inclusion",
+        "detail": "inferred foreign key to dbo.CMC_SBSB_SUBSC",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "structural",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_MEME_MEMBER",
+    "column": "GRGR_CK",
+    "bucket": "code",
+    "generator": "reference",
+    "params": {
+      "parent_table": "dbo.CMC_GRGR_GROUP",
+      "parent_column": "GRGR_CK",
+      "pick": "hash"
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "value_inclusion",
+        "detail": "inferred foreign key to dbo.CMC_GRGR_GROUP, which holds 7 rows and reads as a code table",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "structural",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_MEME_MEMBER",
+    "column": "MEME_SFX",
+    "bucket": "free",
+    "generator": "lookup",
+    "params": {
+      "values": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "weights": [
+        0.511272,
+        0.281159,
+        0.145089,
+        0.06248
+      ]
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "top_values",
+        "detail": "4 distinct values; 0 is the most common at 51%",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_MEME_MEMBER",
+    "column": "MEME_FIRST_NAME",
+    "bucket": "free",
+    "generator": "lookup",
+    "params": {
+      "values": [
+        "James",
+        "Mary",
+        "Robert",
+        "Patricia",
+        "John",
+        "Jennifer",
+        "Michael",
+        "Linda",
+        "David",
+        "Elizabeth",
+        "William",
+        "Barbara",
+        "Richard",
+        "Susan",
+        "Joseph",
+        "Jessica",
+        "Thomas",
+        "Sarah",
+        "Charles",
+        "Karen",
+        "Christopher",
+        "Lisa",
+        "Daniel",
+        "Nancy",
+        "Matthew",
+        "Betty",
+        "Anthony",
+        "Margaret",
+        "Mark",
+        "Sandra",
+        "Donald",
+        "Ashley",
+        "Steven",
+        "Kimberly",
+        "Andrew",
+        "Emily",
+        "Paul",
+        "Donna",
+        "Joshua",
+        "Michelle",
+        "Kenneth",
+        "Carol",
+        "Kevin",
+        "Amanda",
+        "Brian",
+        "Dorothy",
+        "George",
+        "Melissa",
+        "Timothy",
+        "Deborah",
+        "Ronald",
+        "Stephanie",
+        "Jason",
+        "Rebecca",
+        "Edward",
+        "Sharon",
+        "Jeffrey",
+        "Laura",
+        "Ryan",
+        "Cynthia",
+        "Jacob",
+        "Kathleen",
+        "Gary",
+        "Amy",
+        "Nicholas",
+        "Angela",
+        "Eric",
+        "Shirley",
+        "Jonathan",
+        "Anna",
+        "Stephen",
+        "Brenda",
+        "Larry",
+        "Pamela",
+        "Justin",
+        "Emma",
+        "Scott",
+        "Nicole",
+        "Brandon",
+        "Helen"
+      ]
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "element_dictionary",
+        "detail": "maps to FIRST_NAME, whose dictionary holds 80 values; a pattern fitted to 60 distinct values would only reproduce their shape",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "catalog",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_MEME_MEMBER",
+    "column": "MEME_LAST_NAME",
+    "bucket": "free",
+    "generator": "lookup",
+    "params": {
+      "values": [
+        "Smith",
+        "Johnson",
+        "Williams",
+        "Brown",
+        "Jones",
+        "Garcia",
+        "Miller",
+        "Davis",
+        "Rodriguez",
+        "Martinez",
+        "Hernandez",
+        "Lopez",
+        "Gonzalez",
+        "Wilson",
+        "Anderson",
+        "Thomas",
+        "Taylor",
+        "Moore",
+        "Jackson",
+        "Martin",
+        "Lee",
+        "Perez",
+        "Thompson",
+        "White",
+        "Harris",
+        "Sanchez",
+        "Clark",
+        "Ramirez",
+        "Lewis",
+        "Robinson",
+        "Walker",
+        "Young",
+        "Allen",
+        "King",
+        "Wright",
+        "Scott",
+        "Torres",
+        "Nguyen",
+        "Hill",
+        "Flores",
+        "Green",
+        "Adams",
+        "Nelson",
+        "Baker",
+        "Hall",
+        "Rivera",
+        "Campbell",
+        "Mitchell",
+        "Carter",
+        "Roberts",
+        "Gomez",
+        "Phillips",
+        "Evans",
+        "Turner",
+        "Diaz",
+        "Parker",
+        "Cruz",
+        "Edwards",
+        "Collins",
+        "Reyes",
+        "Stewart",
+        "Morris",
+        "Morales",
+        "Murphy",
+        "Cook",
+        "Rogers",
+        "Gutierrez",
+        "Ortiz",
+        "Morgan",
+        "Cooper",
+        "Peterson",
+        "Bailey",
+        "Reed",
+        "Kelly",
+        "Howard",
+        "Ramos",
+        "Kim",
+        "Cox",
+        "Ward",
+        "Richardson"
+      ]
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "element_dictionary",
+        "detail": "maps to LAST_NAME, whose dictionary holds 80 values; a pattern fitted to 75 distinct values would only reproduce their shape",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "catalog",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_MEME_MEMBER",
+    "column": "MEME_BIRTH_DT",
+    "bucket": "free",
+    "generator": "date_relative",
+    "params": {
+      "anchor": "1934-11-10",
+      "min_days": 0,
+      "max_days": 33563
+    },
+    "confidence": "medium",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "observed_range",
+        "detail": "values run from 1934-11-10 to 2026-10-01",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_MEME_MEMBER",
+    "column": "MEME_SEX",
+    "bucket": "free",
+    "generator": "lookup",
+    "params": {
+      "values": [
+        "M",
+        "F"
+      ],
+      "weights": [
+        0.504106,
+        0.495894
+      ]
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "top_values",
+        "detail": "2 distinct values; 'M' is the most common at 50%",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_MEME_MEMBER",
+    "column": "MEME_REL",
+    "bucket": "free",
+    "generator": "lookup",
+    "params": {
+      "values": [
+        "M",
+        "D",
+        "S"
+      ],
+      "weights": [
+        0.511272,
+        0.349034,
+        0.139694
+      ]
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "top_values",
+        "detail": "3 distinct values; 'M' is the most common at 51%",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_MEME_MEMBER",
+    "column": "MEME_SSN",
+    "bucket": "free",
+    "generator": "pattern",
+    "params": {
+      "regex": "\\d{9}",
+      "unique": true
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "fitted_format",
+        "detail": "\\d{9} covers 100% of the sample",
+        "coverage": 1.0
+      },
+      {
+        "kind": "null_rate",
+        "detail": "null in 2% of rows",
+        "coverage": 0.015137
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_MEME_MEMBER",
+    "column": "MEME_MEDCD_NO",
+    "bucket": "free",
+    "generator": "pattern",
+    "params": {
+      "regex": "\\d{12}",
+      "unique": true
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "fitted_format",
+        "detail": "\\d{12} covers 100% of the sample",
+        "coverage": 1.0
+      },
+      {
+        "kind": "null_rate",
+        "detail": "null in 43% of rows",
+        "coverage": 0.434702
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_MEME_MEMBER",
+    "column": "MEME_HICN_MBI",
+    "bucket": "free",
+    "generator": "pattern",
+    "params": {
+      "regex": "\\d[A-Z]\\d{9}",
+      "unique": true
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "fitted_format",
+        "detail": "\\d[A-Z]\\d{9} covers 100% of the sample",
+        "coverage": 1.0
+      },
+      {
+        "kind": "null_rate",
+        "detail": "null in 93% of rows",
+        "coverage": 0.927536
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_MEME_MEMBER",
+    "column": "MEME_STATE",
+    "bucket": "free",
+    "generator": "lookup",
+    "params": {
+      "values": [
+        "OH",
+        "KY",
+        "PA",
+        "IN",
+        "WV"
+      ],
+      "weights": [
+        0.640902,
+        0.25314,
+        0.088003,
+        0.009098,
+        0.008857
+      ]
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "top_values",
+        "detail": "5 distinct values; 'OH' is the most common at 64%",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_MEME_MEMBER",
+    "column": "MEME_COUNTY",
+    "bucket": "free",
+    "generator": "lookup",
+    "params": {
+      "values": [
+        "Hamilton",
+        "Summit",
+        "Stark",
+        "Lucas",
+        "Franklin",
+        "Montgomery",
+        "Cuyahoga",
+        "Jefferson",
+        "Boone",
+        "Fayette",
+        "Warren",
+        "Kenton",
+        "Dauphin",
+        "Allegheny",
+        "Philadelphia",
+        "Unknown"
+      ],
+      "weights": [
+        0.103867,
+        0.10296,
+        0.101712,
+        0.100918,
+        0.098424,
+        0.097857,
+        0.093208,
+        0.059644,
+        0.057149,
+        0.054882,
+        0.051366,
+        0.049439,
+        0.008391,
+        0.007937,
+        0.007824,
+        0.004422
+      ]
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "top_values",
+        "detail": "16 distinct values; 'Hamilton' is the most common at 10%",
+        "coverage": 1.0
+      },
+      {
+        "kind": "null_rate",
+        "detail": "null in 29% of rows",
+        "coverage": 0.289936
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_MEME_MEMBER",
+    "column": "MEME_ZIP",
+    "bucket": "free",
+    "generator": "lookup",
+    "params": {
+      "record_key": "address",
+      "field": "zip",
+      "values": [
+        {
+          "zip": "01103",
+          "city": "Springfield",
+          "state": "MA"
+        },
+        {
+          "zip": "01104",
+          "city": "Springfield",
+          "state": "MA"
+        },
+        {
+          "zip": "01105",
+          "city": "Springfield",
+          "state": "MA"
+        },
+        {
+          "zip": "01106",
+          "city": "Springfield",
+          "state": "MA"
+        },
+        {
+          "zip": "01601",
+          "city": "Worcester",
+          "state": "MA"
+        },
+        {
+          "zip": "01602",
+          "city": "Worcester",
+          "state": "MA"
+        },
+        {
+          "zip": "01603",
+          "city": "Worcester",
+          "state": "MA"
+        },
+        {
+          "zip": "01604",
+          "city": "Worcester",
+          "state": "MA"
+        },
+        {
+          "zip": "01851",
+          "city": "Lowell",
+          "state": "MA"
+        },
+        {
+          "zip": "01852",
+          "city": "Lowell",
+          "state": "MA"
+        },
+        {
+          "zip": "01853",
+          "city": "Lowell",
+          "state": "MA"
+        },
+        {
+          "zip": "01854",
+          "city": "Lowell",
+          "state": "MA"
+        },
+        {
+          "zip": "02108",
+          "city": "Boston",
+          "state": "MA"
+        },
+        {
+          "zip": "02109",
+          "city": "Boston",
+          "state": "MA"
+        },
+        {
+          "zip": "02110",
+          "city": "Boston",
+          "state": "MA"
+        },
+        {
+          "zip": "02111",
+          "city": "Boston",
+          "state": "MA"
+        },
+        {
+          "zip": "02138",
+          "city": "Cambridge",
+          "state": "MA"
+        },
+        {
+          "zip": "02139",
+          "city": "Cambridge",
+          "state": "MA"
+        },
+        {
+          "zip": "02140",
+          "city": "Cambridge",
+          "state": "MA"
+        },
+        {
+          "zip": "02141",
+          "city": "Cambridge",
+          "state": "MA"
+        },
+        {
+          "zip": "02903",
+          "city": "Providence",
+          "state": "RI"
+        },
+        {
+          "zip": "02904",
+          "city": "Providence",
+          "state": "RI"
+        },
+        {
+          "zip": "02905",
+          "city": "Providence",
+          "state": "RI"
+        },
+        {
+          "zip": "02906",
+          "city": "Providence",
+          "state": "RI"
+        },
+        {
+          "zip": "03101",
+          "city": "Manchester",
+          "state": "NH"
+        },
+        {
+          "zip": "03102",
+          "city": "Manchester",
+          "state": "NH"
+        },
+        {
+          "zip": "03103",
+          "city": "Manchester",
+          "state": "NH"
+        },
+        {
+          "zip": "03104",
+          "city": "Manchester",
+          "state": "NH"
+        },
+        {
+          "zip": "04101",
+          "city": "Portland",
+          "state": "ME"
+        },
+        {
+          "zip": "04102",
+          "city": "Portland",
+          "state": "ME"
+        },
+        {
+          "zip": "04103",
+          "city": "Portland",
+          "state": "ME"
+        },
+        {
+          "zip": "04104",
+          "city": "Portland",
+          "state": "ME"
+        },
+        {
+          "zip": "05401",
+          "city": "Burlington",
+          "state": "VT"
+        },
+        {
+          "zip": "05402",
+          "city": "Burlington",
+          "state": "VT"
+        },
+        {
+          "zip": "05403",
+          "city": "Burlington",
+          "state": "VT"
+        },
+        {
+          "zip": "05404",
+          "city": "Burlington",
+          "state": "VT"
+        },
+        {
+          "zip": "06103",
+          "city": "Hartford",
+          "state": "CT"
+        },
+        {
+          "zip": "06104",
+          "city": "Hartford",
+          "state": "CT"
+        },
+        {
+          "zip": "06105",
+          "city": "Hartford",
+          "state": "CT"
+        },
+        {
+          "zip": "06106",
+          "city": "Hartford",
+          "state": "CT"
+        },
+        {
+          "zip": "06510",
+          "city": "New Haven",
+          "state": "CT"
+        },
+        {
+          "zip": "06511",
+          "city": "New Haven",
+          "state": "CT"
+        },
+        {
+          "zip": "06512",
+          "city": "New Haven",
+          "state": "CT"
+        },
+        {
+          "zip": "06513",
+          "city": "New Haven",
+          "state": "CT"
+        },
+        {
+          "zip": "06604",
+          "city": "Bridgeport",
+          "state": "CT"
+        },
+        {
+          "zip": "06605",
+          "city": "Bridgeport",
+          "state": "CT"
+        },
+        {
+          "zip": "06606",
+          "city": "Bridgeport",
+          "state": "CT"
+        },
+        {
+          "zip": "06607",
+          "city": "Bridgeport",
+          "state": "CT"
+        },
+        {
+          "zip": "07102",
+          "city": "Newark",
+          "state": "NJ"
+        },
+        {
+          "zip": "07103",
+          "city": "Newark",
+          "state": "NJ"
+        },
+        {
+          "zip": "07104",
+          "city": "Newark",
+          "state": "NJ"
+        },
+        {
+          "zip": "07105",
+          "city": "Newark",
+          "state": "NJ"
+        },
+        {
+          "zip": "07302",
+          "city": "Jersey City",
+          "state": "NJ"
+        },
+        {
+          "zip": "07303",
+          "city": "Jersey City",
+          "state": "NJ"
+        },
+        {
+          "zip": "07304",
+          "city": "Jersey City",
+          "state": "NJ"
+        },
+        {
+          "zip": "07305",
+          "city": "Jersey City",
+          "state": "NJ"
+        },
+        {
+          "zip": "07501",
+          "city": "Paterson",
+          "state": "NJ"
+        },
+        {
+          "zip": "07502",
+          "city": "Paterson",
+          "state": "NJ"
+        },
+        {
+          "zip": "07503",
+          "city": "Paterson",
+          "state": "NJ"
+        },
+        {
+          "zip": "07504",
+          "city": "Paterson",
+          "state": "NJ"
+        },
+        {
+          "zip": "08608",
+          "city": "Trenton",
+          "state": "NJ"
+        },
+        {
+          "zip": "08609",
+          "city": "Trenton",
+          "state": "NJ"
+        },
+        {
+          "zip": "08610",
+          "city": "Trenton",
+          "state": "NJ"
+        },
+        {
+          "zip": "08611",
+          "city": "Trenton",
+          "state": "NJ"
+        },
+        {
+          "zip": "10001",
+          "city": "New York",
+          "state": "NY"
+        },
+        {
+          "zip": "10002",
+          "city": "New York",
+          "state": "NY"
+        },
+        {
+          "zip": "10003",
+          "city": "New York",
+          "state": "NY"
+        },
+        {
+          "zip": "10004",
+          "city": "New York",
+          "state": "NY"
+        },
+        {
+          "zip": "11201",
+          "city": "Brooklyn",
+          "state": "NY"
+        },
+        {
+          "zip": "11202",
+          "city": "Brooklyn",
+          "state": "NY"
+        },
+        {
+          "zip": "11203",
+          "city": "Brooklyn",
+          "state": "NY"
+        },
+        {
+          "zip": "11204",
+          "city": "Brooklyn",
+          "state": "NY"
+        },
+        {
+          "zip": "12201",
+          "city": "Albany",
+          "state": "NY"
+        },
+        {
+          "zip": "12202",
+          "city": "Albany",
+          "state": "NY"
+        },
+        {
+          "zip": "12203",
+          "city": "Albany",
+          "state": "NY"
+        },
+        {
+          "zip": "12204",
+          "city": "Albany",
+          "state": "NY"
+        },
+        {
+          "zip": "13202",
+          "city": "Syracuse",
+          "state": "NY"
+        },
+        {
+          "zip": "13203",
+          "city": "Syracuse",
+          "state": "NY"
+        },
+        {
+          "zip": "13204",
+          "city": "Syracuse",
+          "state": "NY"
+        },
+        {
+          "zip": "13205",
+          "city": "Syracuse",
+          "state": "NY"
+        },
+        {
+          "zip": "14201",
+          "city": "Buffalo",
+          "state": "NY"
+        },
+        {
+          "zip": "14202",
+          "city": "Buffalo",
+          "state": "NY"
+        },
+        {
+          "zip": "14203",
+          "city": "Buffalo",
+          "state": "NY"
+        },
+        {
+          "zip": "14204",
+          "city": "Buffalo",
+          "state": "NY"
+        },
+        {
+          "zip": "14604",
+          "city": "Rochester",
+          "state": "NY"
+        },
+        {
+          "zip": "14605",
+          "city": "Rochester",
+          "state": "NY"
+        },
+        {
+          "zip": "14606",
+          "city": "Rochester",
+          "state": "NY"
+        },
+        {
+          "zip": "14607",
+          "city": "Rochester",
+          "state": "NY"
+        },
+        {
+          "zip": "15201",
+          "city": "Pittsburgh",
+          "state": "PA"
+        },
+        {
+          "zip": "15202",
+          "city": "Pittsburgh",
+          "state": "PA"
+        },
+        {
+          "zip": "15203",
+          "city": "Pittsburgh",
+          "state": "PA"
+        },
+        {
+          "zip": "15204",
+          "city": "Pittsburgh",
+          "state": "PA"
+        },
+        {
+          "zip": "16501",
+          "city": "Erie",
+          "state": "PA"
+        },
+        {
+          "zip": "16502",
+          "city": "Erie",
+          "state": "PA"
+        },
+        {
+          "zip": "16503",
+          "city": "Erie",
+          "state": "PA"
+        },
+        {
+          "zip": "16504",
+          "city": "Erie",
+          "state": "PA"
+        },
+        {
+          "zip": "17101",
+          "city": "Harrisburg",
+          "state": "PA"
+        },
+        {
+          "zip": "17102",
+          "city": "Harrisburg",
+          "state": "PA"
+        },
+        {
+          "zip": "17103",
+          "city": "Harrisburg",
+          "state": "PA"
+        },
+        {
+          "zip": "17104",
+          "city": "Harrisburg",
+          "state": "PA"
+        },
+        {
+          "zip": "18101",
+          "city": "Allentown",
+          "state": "PA"
+        },
+        {
+          "zip": "18102",
+          "city": "Allentown",
+          "state": "PA"
+        },
+        {
+          "zip": "18103",
+          "city": "Allentown",
+          "state": "PA"
+        },
+        {
+          "zip": "18104",
+          "city": "Allentown",
+          "state": "PA"
+        },
+        {
+          "zip": "19102",
+          "city": "Philadelphia",
+          "state": "PA"
+        },
+        {
+          "zip": "19103",
+          "city": "Philadelphia",
+          "state": "PA"
+        },
+        {
+          "zip": "19104",
+          "city": "Philadelphia",
+          "state": "PA"
+        },
+        {
+          "zip": "19105",
+          "city": "Philadelphia",
+          "state": "PA"
+        },
+        {
+          "zip": "19801",
+          "city": "Wilmington",
+          "state": "DE"
+        },
+        {
+          "zip": "19802",
+          "city": "Wilmington",
+          "state": "DE"
+        },
+        {
+          "zip": "19803",
+          "city": "Wilmington",
+          "state": "DE"
+        },
+        {
+          "zip": "19804",
+          "city": "Wilmington",
+          "state": "DE"
+        },
+        {
+          "zip": "20001",
+          "city": "Washington",
+          "state": "DC"
+        },
+        {
+          "zip": "20002",
+          "city": "Washington",
+          "state": "DC"
+        },
+        {
+          "zip": "20003",
+          "city": "Washington",
+          "state": "DC"
+        },
+        {
+          "zip": "20004",
+          "city": "Washington",
+          "state": "DC"
+        },
+        {
+          "zip": "20850",
+          "city": "Rockville",
+          "state": "MD"
+        },
+        {
+          "zip": "20851",
+          "city": "Rockville",
+          "state": "MD"
+        },
+        {
+          "zip": "20852",
+          "city": "Rockville",
+          "state": "MD"
+        },
+        {
+          "zip": "20853",
+          "city": "Rockville",
+          "state": "MD"
+        },
+        {
+          "zip": "21201",
+          "city": "Baltimore",
+          "state": "MD"
+        },
+        {
+          "zip": "21202",
+          "city": "Baltimore",
+          "state": "MD"
+        },
+        {
+          "zip": "21203",
+          "city": "Baltimore",
+          "state": "MD"
+        },
+        {
+          "zip": "21204",
+          "city": "Baltimore",
+          "state": "MD"
+        },
+        {
+          "zip": "21701",
+          "city": "Frederick",
+          "state": "MD"
+        },
+        {
+          "zip": "21702",
+          "city": "Frederick",
+          "state": "MD"
+        },
+        {
+          "zip": "21703",
+          "city": "Frederick",
+          "state": "MD"
+        },
+        {
+          "zip": "21704",
+          "city": "Frederick",
+          "state": "MD"
+        },
+        {
+          "zip": "22201",
+          "city": "Arlington",
+          "state": "VA"
+        },
+        {
+          "zip": "22202",
+          "city": "Arlington",
+          "state": "VA"
+        },
+        {
+          "zip": "22203",
+          "city": "Arlington",
+          "state": "VA"
+        },
+        {
+          "zip": "22204",
+          "city": "Arlington",
+          "state": "VA"
+        },
+        {
+          "zip": "23219",
+          "city": "Richmond",
+          "state": "VA"
+        },
+        {
+          "zip": "23220",
+          "city": "Richmond",
+          "state": "VA"
+        },
+        {
+          "zip": "23221",
+          "city": "Richmond",
+          "state": "VA"
+        },
+        {
+          "zip": "23222",
+          "city": "Richmond",
+          "state": "VA"
+        },
+        {
+          "zip": "23450",
+          "city": "Virginia Beach",
+          "state": "VA"
+        },
+        {
+          "zip": "23451",
+          "city": "Virginia Beach",
+          "state": "VA"
+        },
+        {
+          "zip": "23452",
+          "city": "Virginia Beach",
+          "state": "VA"
+        },
+        {
+          "zip": "23453",
+          "city": "Virginia Beach",
+          "state": "VA"
+        },
+        {
+          "zip": "23510",
+          "city": "Norfolk",
+          "state": "VA"
+        },
+        {
+          "zip": "23511",
+          "city": "Norfolk",
+          "state": "VA"
+        },
+        {
+          "zip": "23512",
+          "city": "Norfolk",
+          "state": "VA"
+        },
+        {
+          "zip": "23513",
+          "city": "Norfolk",
+          "state": "VA"
+        },
+        {
+          "zip": "25301",
+          "city": "Charleston",
+          "state": "WV"
+        },
+        {
+          "zip": "25302",
+          "city": "Charleston",
+          "state": "WV"
+        },
+        {
+          "zip": "25303",
+          "city": "Charleston",
+          "state": "WV"
+        },
+        {
+          "zip": "25304",
+          "city": "Charleston",
+          "state": "WV"
+        },
+        {
+          "zip": "27101",
+          "city": "Winston Salem",
+          "state": "NC"
+        },
+        {
+          "zip": "27102",
+          "city": "Winston Salem",
+          "state": "NC"
+        },
+        {
+          "zip": "27103",
+          "city": "Winston Salem",
+          "state": "NC"
+        },
+        {
+          "zip": "27104",
+          "city": "Winston Salem",
+          "state": "NC"
+        },
+        {
+          "zip": "27401",
+          "city": "Greensboro",
+          "state": "NC"
+        },
+        {
+          "zip": "27402",
+          "city": "Greensboro",
+          "state": "NC"
+        },
+        {
+          "zip": "27403",
+          "city": "Greensboro",
+          "state": "NC"
+        },
+        {
+          "zip": "27404",
+          "city": "Greensboro",
+          "state": "NC"
+        },
+        {
+          "zip": "27601",
+          "city": "Raleigh",
+          "state": "NC"
+        },
+        {
+          "zip": "27602",
+          "city": "Raleigh",
+          "state": "NC"
+        },
+        {
+          "zip": "27603",
+          "city": "Raleigh",
+          "state": "NC"
+        },
+        {
+          "zip": "27604",
+          "city": "Raleigh",
+          "state": "NC"
+        },
+        {
+          "zip": "27701",
+          "city": "Durham",
+          "state": "NC"
+        },
+        {
+          "zip": "27702",
+          "city": "Durham",
+          "state": "NC"
+        },
+        {
+          "zip": "27703",
+          "city": "Durham",
+          "state": "NC"
+        },
+        {
+          "zip": "27704",
+          "city": "Durham",
+          "state": "NC"
+        },
+        {
+          "zip": "28202",
+          "city": "Charlotte",
+          "state": "NC"
+        },
+        {
+          "zip": "28203",
+          "city": "Charlotte",
+          "state": "NC"
+        },
+        {
+          "zip": "28204",
+          "city": "Charlotte",
+          "state": "NC"
+        },
+        {
+          "zip": "28205",
+          "city": "Charlotte",
+          "state": "NC"
+        },
+        {
+          "zip": "29201",
+          "city": "Columbia",
+          "state": "SC"
+        },
+        {
+          "zip": "29202",
+          "city": "Columbia",
+          "state": "SC"
+        },
+        {
+          "zip": "29203",
+          "city": "Columbia",
+          "state": "SC"
+        },
+        {
+          "zip": "29204",
+          "city": "Columbia",
+          "state": "SC"
+        },
+        {
+          "zip": "29401",
+          "city": "Charleston",
+          "state": "SC"
+        },
+        {
+          "zip": "29402",
+          "city": "Charleston",
+          "state": "SC"
+        },
+        {
+          "zip": "29403",
+          "city": "Charleston",
+          "state": "SC"
+        },
+        {
+          "zip": "29404",
+          "city": "Charleston",
+          "state": "SC"
+        },
+        {
+          "zip": "30303",
+          "city": "Atlanta",
+          "state": "GA"
+        },
+        {
+          "zip": "30304",
+          "city": "Atlanta",
+          "state": "GA"
+        },
+        {
+          "zip": "30305",
+          "city": "Atlanta",
+          "state": "GA"
+        },
+        {
+          "zip": "30306",
+          "city": "Atlanta",
+          "state": "GA"
+        },
+        {
+          "zip": "30901",
+          "city": "Augusta",
+          "state": "GA"
+        },
+        {
+          "zip": "30902",
+          "city": "Augusta",
+          "state": "GA"
+        },
+        {
+          "zip": "30903",
+          "city": "Augusta",
+          "state": "GA"
+        },
+        {
+          "zip": "30904",
+          "city": "Augusta",
+          "state": "GA"
+        },
+        {
+          "zip": "31401",
+          "city": "Savannah",
+          "state": "GA"
+        },
+        {
+          "zip": "31402",
+          "city": "Savannah",
+          "state": "GA"
+        },
+        {
+          "zip": "31403",
+          "city": "Savannah",
+          "state": "GA"
+        },
+        {
+          "zip": "31404",
+          "city": "Savannah",
+          "state": "GA"
+        },
+        {
+          "zip": "31901",
+          "city": "Columbus",
+          "state": "GA"
+        },
+        {
+          "zip": "31902",
+          "city": "Columbus",
+          "state": "GA"
+        },
+        {
+          "zip": "31903",
+          "city": "Columbus",
+          "state": "GA"
+        },
+        {
+          "zip": "31904",
+          "city": "Columbus",
+          "state": "GA"
+        },
+        {
+          "zip": "32202",
+          "city": "Jacksonville",
+          "state": "FL"
+        },
+        {
+          "zip": "32203",
+          "city": "Jacksonville",
+          "state": "FL"
+        },
+        {
+          "zip": "32204",
+          "city": "Jacksonville",
+          "state": "FL"
+        },
+        {
+          "zip": "32205",
+          "city": "Jacksonville",
+          "state": "FL"
+        },
+        {
+          "zip": "32301",
+          "city": "Tallahassee",
+          "state": "FL"
+        },
+        {
+          "zip": "32302",
+          "city": "Tallahassee",
+          "state": "FL"
+        },
+        {
+          "zip": "32303",
+          "city": "Tallahassee",
+          "state": "FL"
+        },
+        {
+          "zip": "32304",
+          "city": "Tallahassee",
+          "state": "FL"
+        },
+        {
+          "zip": "32801",
+          "city": "Orlando",
+          "state": "FL"
+        },
+        {
+          "zip": "32802",
+          "city": "Orlando",
+          "state": "FL"
+        },
+        {
+          "zip": "32803",
+          "city": "Orlando",
+          "state": "FL"
+        },
+        {
+          "zip": "32804",
+          "city": "Orlando",
+          "state": "FL"
+        },
+        {
+          "zip": "33101",
+          "city": "Miami",
+          "state": "FL"
+        },
+        {
+          "zip": "33102",
+          "city": "Miami",
+          "state": "FL"
+        },
+        {
+          "zip": "33103",
+          "city": "Miami",
+          "state": "FL"
+        },
+        {
+          "zip": "33104",
+          "city": "Miami",
+          "state": "FL"
+        },
+        {
+          "zip": "33602",
+          "city": "Tampa",
+          "state": "FL"
+        },
+        {
+          "zip": "33603",
+          "city": "Tampa",
+          "state": "FL"
+        },
+        {
+          "zip": "33604",
+          "city": "Tampa",
+          "state": "FL"
+        },
+        {
+          "zip": "33605",
+          "city": "Tampa",
+          "state": "FL"
+        },
+        {
+          "zip": "33701",
+          "city": "Saint Petersburg",
+          "state": "FL"
+        },
+        {
+          "zip": "33702",
+          "city": "Saint Petersburg",
+          "state": "FL"
+        },
+        {
+          "zip": "33703",
+          "city": "Saint Petersburg",
+          "state": "FL"
+        },
+        {
+          "zip": "33704",
+          "city": "Saint Petersburg",
+          "state": "FL"
+        },
+        {
+          "zip": "35203",
+          "city": "Birmingham",
+          "state": "AL"
+        },
+        {
+          "zip": "35204",
+          "city": "Birmingham",
+          "state": "AL"
+        },
+        {
+          "zip": "35205",
+          "city": "Birmingham",
+          "state": "AL"
+        },
+        {
+          "zip": "35206",
+          "city": "Birmingham",
+          "state": "AL"
+        },
+        {
+          "zip": "36104",
+          "city": "Montgomery",
+          "state": "AL"
+        },
+        {
+          "zip": "36105",
+          "city": "Montgomery",
+          "state": "AL"
+        },
+        {
+          "zip": "36106",
+          "city": "Montgomery",
+          "state": "AL"
+        },
+        {
+          "zip": "36107",
+          "city": "Montgomery",
+          "state": "AL"
+        },
+        {
+          "zip": "37201",
+          "city": "Nashville",
+          "state": "TN"
+        },
+        {
+          "zip": "37202",
+          "city": "Nashville",
+          "state": "TN"
+        },
+        {
+          "zip": "37203",
+          "city": "Nashville",
+          "state": "TN"
+        },
+        {
+          "zip": "37204",
+          "city": "Nashville",
+          "state": "TN"
+        },
+        {
+          "zip": "37402",
+          "city": "Chattanooga",
+          "state": "TN"
+        },
+        {
+          "zip": "37403",
+          "city": "Chattanooga",
+          "state": "TN"
+        },
+        {
+          "zip": "37404",
+          "city": "Chattanooga",
+          "state": "TN"
+        },
+        {
+          "zip": "37405",
+          "city": "Chattanooga",
+          "state": "TN"
+        },
+        {
+          "zip": "37902",
+          "city": "Knoxville",
+          "state": "TN"
+        },
+        {
+          "zip": "37903",
+          "city": "Knoxville",
+          "state": "TN"
+        },
+        {
+          "zip": "37904",
+          "city": "Knoxville",
+          "state": "TN"
+        },
+        {
+          "zip": "37905",
+          "city": "Knoxville",
+          "state": "TN"
+        },
+        {
+          "zip": "38103",
+          "city": "Memphis",
+          "state": "TN"
+        },
+        {
+          "zip": "38104",
+          "city": "Memphis",
+          "state": "TN"
+        },
+        {
+          "zip": "38105",
+          "city": "Memphis",
+          "state": "TN"
+        },
+        {
+          "zip": "38106",
+          "city": "Memphis",
+          "state": "TN"
+        },
+        {
+          "zip": "39201",
+          "city": "Jackson",
+          "state": "MS"
+        },
+        {
+          "zip": "39202",
+          "city": "Jackson",
+          "state": "MS"
+        },
+        {
+          "zip": "39203",
+          "city": "Jackson",
+          "state": "MS"
+        },
+        {
+          "zip": "39204",
+          "city": "Jackson",
+          "state": "MS"
+        },
+        {
+          "zip": "40202",
+          "city": "Louisville",
+          "state": "KY"
+        },
+        {
+          "zip": "40203",
+          "city": "Louisville",
+          "state": "KY"
+        },
+        {
+          "zip": "40204",
+          "city": "Louisville",
+          "state": "KY"
+        },
+        {
+          "zip": "40205",
+          "city": "Louisville",
+          "state": "KY"
+        },
+        {
+          "zip": "40507",
+          "city": "Lexington",
+          "state": "KY"
+        },
+        {
+          "zip": "40508",
+          "city": "Lexington",
+          "state": "KY"
+        },
+        {
+          "zip": "40509",
+          "city": "Lexington",
+          "state": "KY"
+        },
+        {
+          "zip": "40510",
+          "city": "Lexington",
+          "state": "KY"
+        },
+        {
+          "zip": "43201",
+          "city": "Columbus",
+          "state": "OH"
+        },
+        {
+          "zip": "43202",
+          "city": "Columbus",
+          "state": "OH"
+        },
+        {
+          "zip": "43203",
+          "city": "Columbus",
+          "state": "OH"
+        },
+        {
+          "zip": "43204",
+          "city": "Columbus",
+          "state": "OH"
+        },
+        {
+          "zip": "43604",
+          "city": "Toledo",
+          "state": "OH"
+        },
+        {
+          "zip": "43605",
+          "city": "Toledo",
+          "state": "OH"
+        },
+        {
+          "zip": "43606",
+          "city": "Toledo",
+          "state": "OH"
+        },
+        {
+          "zip": "43607",
+          "city": "Toledo",
+          "state": "OH"
+        },
+        {
+          "zip": "44101",
+          "city": "Cleveland",
+          "state": "OH"
+        },
+        {
+          "zip": "44102",
+          "city": "Cleveland",
+          "state": "OH"
+        },
+        {
+          "zip": "44103",
+          "city": "Cleveland",
+          "state": "OH"
+        },
+        {
+          "zip": "44104",
+          "city": "Cleveland",
+          "state": "OH"
+        },
+        {
+          "zip": "44301",
+          "city": "Akron",
+          "state": "OH"
+        },
+        {
+          "zip": "44302",
+          "city": "Akron",
+          "state": "OH"
+        },
+        {
+          "zip": "44303",
+          "city": "Akron",
+          "state": "OH"
+        },
+        {
+          "zip": "44304",
+          "city": "Akron",
+          "state": "OH"
+        },
+        {
+          "zip": "45202",
+          "city": "Cincinnati",
+          "state": "OH"
+        },
+        {
+          "zip": "45203",
+          "city": "Cincinnati",
+          "state": "OH"
+        },
+        {
+          "zip": "45204",
+          "city": "Cincinnati",
+          "state": "OH"
+        },
+        {
+          "zip": "45205",
+          "city": "Cincinnati",
+          "state": "OH"
+        },
+        {
+          "zip": "45402",
+          "city": "Dayton",
+          "state": "OH"
+        },
+        {
+          "zip": "45403",
+          "city": "Dayton",
+          "state": "OH"
+        },
+        {
+          "zip": "45404",
+          "city": "Dayton",
+          "state": "OH"
+        },
+        {
+          "zip": "45405",
+          "city": "Dayton",
+          "state": "OH"
+        },
+        {
+          "zip": "46201",
+          "city": "Indianapolis",
+          "state": "IN"
+        },
+        {
+          "zip": "46202",
+          "city": "Indianapolis",
+          "state": "IN"
+        },
+        {
+          "zip": "46203",
+          "city": "Indianapolis",
+          "state": "IN"
+        },
+        {
+          "zip": "46204",
+          "city": "Indianapolis",
+          "state": "IN"
+        },
+        {
+          "zip": "46601",
+          "city": "South Bend",
+          "state": "IN"
+        },
+        {
+          "zip": "46602",
+          "city": "South Bend",
+          "state": "IN"
+        },
+        {
+          "zip": "46603",
+          "city": "South Bend",
+          "state": "IN"
+        },
+        {
+          "zip": "46604",
+          "city": "South Bend",
+          "state": "IN"
+        },
+        {
+          "zip": "46802",
+          "city": "Fort Wayne",
+          "state": "IN"
+        },
+        {
+          "zip": "46803",
+          "city": "Fort Wayne",
+          "state": "IN"
+        },
+        {
+          "zip": "46804",
+          "city": "Fort Wayne",
+          "state": "IN"
+        },
+        {
+          "zip": "46805",
+          "city": "Fort Wayne",
+          "state": "IN"
+        },
+        {
+          "zip": "47708",
+          "city": "Evansville",
+          "state": "IN"
+        },
+        {
+          "zip": "47709",
+          "city": "Evansville",
+          "state": "IN"
+        },
+        {
+          "zip": "47710",
+          "city": "Evansville",
+          "state": "IN"
+        },
+        {
+          "zip": "47711",
+          "city": "Evansville",
+          "state": "IN"
+        },
+        {
+          "zip": "48089",
+          "city": "Warren",
+          "state": "MI"
+        },
+        {
+          "zip": "48090",
+          "city": "Warren",
+          "state": "MI"
+        },
+        {
+          "zip": "48091",
+          "city": "Warren",
+          "state": "MI"
+        },
+        {
+          "zip": "48092",
+          "city": "Warren",
+          "state": "MI"
+        },
+        {
+          "zip": "48104",
+          "city": "Ann Arbor",
+          "state": "MI"
+        },
+        {
+          "zip": "48105",
+          "city": "Ann Arbor",
+          "state": "MI"
+        },
+        {
+          "zip": "48106",
+          "city": "Ann Arbor",
+          "state": "MI"
+        },
+        {
+          "zip": "48107",
+          "city": "Ann Arbor",
+          "state": "MI"
+        },
+        {
+          "zip": "48201",
+          "city": "Detroit",
+          "state": "MI"
+        },
+        {
+          "zip": "48202",
+          "city": "Detroit",
+          "state": "MI"
+        },
+        {
+          "zip": "48203",
+          "city": "Detroit",
+          "state": "MI"
+        },
+        {
+          "zip": "48204",
+          "city": "Detroit",
+          "state": "MI"
+        },
+        {
+          "zip": "48901",
+          "city": "Lansing",
+          "state": "MI"
+        },
+        {
+          "zip": "48902",
+          "city": "Lansing",
+          "state": "MI"
+        },
+        {
+          "zip": "48903",
+          "city": "Lansing",
+          "state": "MI"
+        },
+        {
+          "zip": "48904",
+          "city": "Lansing",
+          "state": "MI"
+        },
+        {
+          "zip": "49503",
+          "city": "Grand Rapids",
+          "state": "MI"
+        },
+        {
+          "zip": "49504",
+          "city": "Grand Rapids",
+          "state": "MI"
+        },
+        {
+          "zip": "49505",
+          "city": "Grand Rapids",
+          "state": "MI"
+        },
+        {
+          "zip": "49506",
+          "city": "Grand Rapids",
+          "state": "MI"
+        },
+        {
+          "zip": "50309",
+          "city": "Des Moines",
+          "state": "IA"
+        },
+        {
+          "zip": "50310",
+          "city": "Des Moines",
+          "state": "IA"
+        },
+        {
+          "zip": "50311",
+          "city": "Des Moines",
+          "state": "IA"
+        },
+        {
+          "zip": "50312",
+          "city": "Des Moines",
+          "state": "IA"
+        },
+        {
+          "zip": "52401",
+          "city": "Cedar Rapids",
+          "state": "IA"
+        },
+        {
+          "zip": "52402",
+          "city": "Cedar Rapids",
+          "state": "IA"
+        },
+        {
+          "zip": "52403",
+          "city": "Cedar Rapids",
+          "state": "IA"
+        },
+        {
+          "zip": "52404",
+          "city": "Cedar Rapids",
+          "state": "IA"
+        },
+        {
+          "zip": "53202",
+          "city": "Milwaukee",
+          "state": "WI"
+        },
+        {
+          "zip": "53203",
+          "city": "Milwaukee",
+          "state": "WI"
+        },
+        {
+          "zip": "53204",
+          "city": "Milwaukee",
+          "state": "WI"
+        },
+        {
+          "zip": "53205",
+          "city": "Milwaukee",
+          "state": "WI"
+        },
+        {
+          "zip": "53703",
+          "city": "Madison",
+          "state": "WI"
+        },
+        {
+          "zip": "53704",
+          "city": "Madison",
+          "state": "WI"
+        },
+        {
+          "zip": "53705",
+          "city": "Madison",
+          "state": "WI"
+        },
+        {
+          "zip": "53706",
+          "city": "Madison",
+          "state": "WI"
+        },
+        {
+          "zip": "54301",
+          "city": "Green Bay",
+          "state": "WI"
+        },
+        {
+          "zip": "54302",
+          "city": "Green Bay",
+          "state": "WI"
+        },
+        {
+          "zip": "54303",
+          "city": "Green Bay",
+          "state": "WI"
+        },
+        {
+          "zip": "54304",
+          "city": "Green Bay",
+          "state": "WI"
+        },
+        {
+          "zip": "55101",
+          "city": "Saint Paul",
+          "state": "MN"
+        },
+        {
+          "zip": "55102",
+          "city": "Saint Paul",
+          "state": "MN"
+        },
+        {
+          "zip": "55103",
+          "city": "Saint Paul",
+          "state": "MN"
+        },
+        {
+          "zip": "55104",
+          "city": "Saint Paul",
+          "state": "MN"
+        },
+        {
+          "zip": "55401",
+          "city": "Minneapolis",
+          "state": "MN"
+        },
+        {
+          "zip": "55402",
+          "city": "Minneapolis",
+          "state": "MN"
+        },
+        {
+          "zip": "55403",
+          "city": "Minneapolis",
+          "state": "MN"
+        },
+        {
+          "zip": "55404",
+          "city": "Minneapolis",
+          "state": "MN"
+        },
+        {
+          "zip": "55802",
+          "city": "Duluth",
+          "state": "MN"
+        },
+        {
+          "zip": "55803",
+          "city": "Duluth",
+          "state": "MN"
+        },
+        {
+          "zip": "55804",
+          "city": "Duluth",
+          "state": "MN"
+        },
+        {
+          "zip": "55805",
+          "city": "Duluth",
+          "state": "MN"
+        },
+        {
+          "zip": "57104",
+          "city": "Sioux Falls",
+          "state": "SD"
+        },
+        {
+          "zip": "57105",
+          "city": "Sioux Falls",
+          "state": "SD"
+        },
+        {
+          "zip": "57106",
+          "city": "Sioux Falls",
+          "state": "SD"
+        },
+        {
+          "zip": "57107",
+          "city": "Sioux Falls",
+          "state": "SD"
+        },
+        {
+          "zip": "58102",
+          "city": "Fargo",
+          "state": "ND"
+        },
+        {
+          "zip": "58103",
+          "city": "Fargo",
+          "state": "ND"
+        },
+        {
+          "zip": "58104",
+          "city": "Fargo",
+          "state": "ND"
+        },
+        {
+          "zip": "58105",
+          "city": "Fargo",
+          "state": "ND"
+        },
+        {
+          "zip": "59101",
+          "city": "Billings",
+          "state": "MT"
+        },
+        {
+          "zip": "59102",
+          "city": "Billings",
+          "state": "MT"
+        },
+        {
+          "zip": "59103",
+          "city": "Billings",
+          "state": "MT"
+        },
+        {
+          "zip": "59104",
+          "city": "Billings",
+          "state": "MT"
+        },
+        {
+          "zip": "60502",
+          "city": "Aurora",
+          "state": "IL"
+        },
+        {
+          "zip": "60503",
+          "city": "Aurora",
+          "state": "IL"
+        },
+        {
+          "zip": "60504",
+          "city": "Aurora",
+          "state": "IL"
+        },
+        {
+          "zip": "60505",
+          "city": "Aurora",
+          "state": "IL"
+        },
+        {
+          "zip": "60540",
+          "city": "Naperville",
+          "state": "IL"
+        },
+        {
+          "zip": "60541",
+          "city": "Naperville",
+          "state": "IL"
+        },
+        {
+          "zip": "60542",
+          "city": "Naperville",
+          "state": "IL"
+        },
+        {
+          "zip": "60543",
+          "city": "Naperville",
+          "state": "IL"
+        },
+        {
+          "zip": "60601",
+          "city": "Chicago",
+          "state": "IL"
+        },
+        {
+          "zip": "60602",
+          "city": "Chicago",
+          "state": "IL"
+        },
+        {
+          "zip": "60603",
+          "city": "Chicago",
+          "state": "IL"
+        },
+        {
+          "zip": "60604",
+          "city": "Chicago",
+          "state": "IL"
+        },
+        {
+          "zip": "61602",
+          "city": "Peoria",
+          "state": "IL"
+        },
+        {
+          "zip": "61603",
+          "city": "Peoria",
+          "state": "IL"
+        },
+        {
+          "zip": "61604",
+          "city": "Peoria",
+          "state": "IL"
+        },
+        {
+          "zip": "61605",
+          "city": "Peoria",
+          "state": "IL"
+        },
+        {
+          "zip": "62701",
+          "city": "Springfield",
+          "state": "IL"
+        },
+        {
+          "zip": "62702",
+          "city": "Springfield",
+          "state": "IL"
+        },
+        {
+          "zip": "62703",
+          "city": "Springfield",
+          "state": "IL"
+        },
+        {
+          "zip": "62704",
+          "city": "Springfield",
+          "state": "IL"
+        },
+        {
+          "zip": "63101",
+          "city": "Saint Louis",
+          "state": "MO"
+        },
+        {
+          "zip": "63102",
+          "city": "Saint Louis",
+          "state": "MO"
+        },
+        {
+          "zip": "63103",
+          "city": "Saint Louis",
+          "state": "MO"
+        },
+        {
+          "zip": "63104",
+          "city": "Saint Louis",
+          "state": "MO"
+        },
+        {
+          "zip": "64106",
+          "city": "Kansas City",
+          "state": "MO"
+        },
+        {
+          "zip": "64107",
+          "city": "Kansas City",
+          "state": "MO"
+        },
+        {
+          "zip": "64108",
+          "city": "Kansas City",
+          "state": "MO"
+        },
+        {
+          "zip": "64109",
+          "city": "Kansas City",
+          "state": "MO"
+        },
+        {
+          "zip": "65802",
+          "city": "Springfield",
+          "state": "MO"
+        },
+        {
+          "zip": "65803",
+          "city": "Springfield",
+          "state": "MO"
+        },
+        {
+          "zip": "65804",
+          "city": "Springfield",
+          "state": "MO"
+        },
+        {
+          "zip": "65805",
+          "city": "Springfield",
+          "state": "MO"
+        },
+        {
+          "zip": "66603",
+          "city": "Topeka",
+          "state": "KS"
+        },
+        {
+          "zip": "66604",
+          "city": "Topeka",
+          "state": "KS"
+        },
+        {
+          "zip": "66605",
+          "city": "Topeka",
+          "state": "KS"
+        },
+        {
+          "zip": "66606",
+          "city": "Topeka",
+          "state": "KS"
+        },
+        {
+          "zip": "67202",
+          "city": "Wichita",
+          "state": "KS"
+        },
+        {
+          "zip": "67203",
+          "city": "Wichita",
+          "state": "KS"
+        },
+        {
+          "zip": "67204",
+          "city": "Wichita",
+          "state": "KS"
+        },
+        {
+          "zip": "67205",
+          "city": "Wichita",
+          "state": "KS"
+        },
+        {
+          "zip": "68102",
+          "city": "Omaha",
+          "state": "NE"
+        },
+        {
+          "zip": "68103",
+          "city": "Omaha",
+          "state": "NE"
+        },
+        {
+          "zip": "68104",
+          "city": "Omaha",
+          "state": "NE"
+        },
+        {
+          "zip": "68105",
+          "city": "Omaha",
+          "state": "NE"
+        },
+        {
+          "zip": "68501",
+          "city": "Lincoln",
+          "state": "NE"
+        },
+        {
+          "zip": "68502",
+          "city": "Lincoln",
+          "state": "NE"
+        },
+        {
+          "zip": "68503",
+          "city": "Lincoln",
+          "state": "NE"
+        },
+        {
+          "zip": "68504",
+          "city": "Lincoln",
+          "state": "NE"
+        },
+        {
+          "zip": "70112",
+          "city": "New Orleans",
+          "state": "LA"
+        },
+        {
+          "zip": "70113",
+          "city": "New Orleans",
+          "state": "LA"
+        },
+        {
+          "zip": "70114",
+          "city": "New Orleans",
+          "state": "LA"
+        },
+        {
+          "zip": "70115",
+          "city": "New Orleans",
+          "state": "LA"
+        },
+        {
+          "zip": "70801",
+          "city": "Baton Rouge",
+          "state": "LA"
+        },
+        {
+          "zip": "70802",
+          "city": "Baton Rouge",
+          "state": "LA"
+        },
+        {
+          "zip": "70803",
+          "city": "Baton Rouge",
+          "state": "LA"
+        },
+        {
+          "zip": "70804",
+          "city": "Baton Rouge",
+          "state": "LA"
+        },
+        {
+          "zip": "71101",
+          "city": "Shreveport",
+          "state": "LA"
+        },
+        {
+          "zip": "71102",
+          "city": "Shreveport",
+          "state": "LA"
+        },
+        {
+          "zip": "71103",
+          "city": "Shreveport",
+          "state": "LA"
+        },
+        {
+          "zip": "71104",
+          "city": "Shreveport",
+          "state": "LA"
+        },
+        {
+          "zip": "72201",
+          "city": "Little Rock",
+          "state": "AR"
+        },
+        {
+          "zip": "72202",
+          "city": "Little Rock",
+          "state": "AR"
+        },
+        {
+          "zip": "72203",
+          "city": "Little Rock",
+          "state": "AR"
+        },
+        {
+          "zip": "72204",
+          "city": "Little Rock",
+          "state": "AR"
+        },
+        {
+          "zip": "73102",
+          "city": "Oklahoma City",
+          "state": "OK"
+        },
+        {
+          "zip": "73103",
+          "city": "Oklahoma City",
+          "state": "OK"
+        },
+        {
+          "zip": "73104",
+          "city": "Oklahoma City",
+          "state": "OK"
+        },
+        {
+          "zip": "73105",
+          "city": "Oklahoma City",
+          "state": "OK"
+        },
+        {
+          "zip": "74103",
+          "city": "Tulsa",
+          "state": "OK"
+        },
+        {
+          "zip": "74104",
+          "city": "Tulsa",
+          "state": "OK"
+        },
+        {
+          "zip": "74105",
+          "city": "Tulsa",
+          "state": "OK"
+        },
+        {
+          "zip": "74106",
+          "city": "Tulsa",
+          "state": "OK"
+        },
+        {
+          "zip": "75201",
+          "city": "Dallas",
+          "state": "TX"
+        },
+        {
+          "zip": "75202",
+          "city": "Dallas",
+          "state": "TX"
+        },
+        {
+          "zip": "75203",
+          "city": "Dallas",
+          "state": "TX"
+        },
+        {
+          "zip": "75204",
+          "city": "Dallas",
+          "state": "TX"
+        },
+        {
+          "zip": "76010",
+          "city": "Arlington",
+          "state": "TX"
+        },
+        {
+          "zip": "76011",
+          "city": "Arlington",
+          "state": "TX"
+        },
+        {
+          "zip": "76012",
+          "city": "Arlington",
+          "state": "TX"
+        },
+        {
+          "zip": "76013",
+          "city": "Arlington",
+          "state": "TX"
+        },
+        {
+          "zip": "76102",
+          "city": "Fort Worth",
+          "state": "TX"
+        },
+        {
+          "zip": "76103",
+          "city": "Fort Worth",
+          "state": "TX"
+        },
+        {
+          "zip": "76104",
+          "city": "Fort Worth",
+          "state": "TX"
+        },
+        {
+          "zip": "76105",
+          "city": "Fort Worth",
+          "state": "TX"
+        },
+        {
+          "zip": "77002",
+          "city": "Houston",
+          "state": "TX"
+        },
+        {
+          "zip": "77003",
+          "city": "Houston",
+          "state": "TX"
+        },
+        {
+          "zip": "77004",
+          "city": "Houston",
+          "state": "TX"
+        },
+        {
+          "zip": "77005",
+          "city": "Houston",
+          "state": "TX"
+        },
+        {
+          "zip": "78201",
+          "city": "San Antonio",
+          "state": "TX"
+        },
+        {
+          "zip": "78202",
+          "city": "San Antonio",
+          "state": "TX"
+        },
+        {
+          "zip": "78203",
+          "city": "San Antonio",
+          "state": "TX"
+        },
+        {
+          "zip": "78204",
+          "city": "San Antonio",
+          "state": "TX"
+        },
+        {
+          "zip": "78401",
+          "city": "Corpus Christi",
+          "state": "TX"
+        },
+        {
+          "zip": "78402",
+          "city": "Corpus Christi",
+          "state": "TX"
+        },
+        {
+          "zip": "78403",
+          "city": "Corpus Christi",
+          "state": "TX"
+        },
+        {
+          "zip": "78404",
+          "city": "Corpus Christi",
+          "state": "TX"
+        },
+        {
+          "zip": "78701",
+          "city": "Austin",
+          "state": "TX"
+        },
+        {
+          "zip": "78702",
+          "city": "Austin",
+          "state": "TX"
+        },
+        {
+          "zip": "78703",
+          "city": "Austin",
+          "state": "TX"
+        },
+        {
+          "zip": "78704",
+          "city": "Austin",
+          "state": "TX"
+        },
+        {
+          "zip": "79901",
+          "city": "El Paso",
+          "state": "TX"
+        },
+        {
+          "zip": "79902",
+          "city": "El Paso",
+          "state": "TX"
+        },
+        {
+          "zip": "79903",
+          "city": "El Paso",
+          "state": "TX"
+        },
+        {
+          "zip": "79904",
+          "city": "El Paso",
+          "state": "TX"
+        },
+        {
+          "zip": "80010",
+          "city": "Aurora",
+          "state": "CO"
+        },
+        {
+          "zip": "80011",
+          "city": "Aurora",
+          "state": "CO"
+        },
+        {
+          "zip": "80012",
+          "city": "Aurora",
+          "state": "CO"
+        },
+        {
+          "zip": "80013",
+          "city": "Aurora",
+          "state": "CO"
+        },
+        {
+          "zip": "80202",
+          "city": "Denver",
+          "state": "CO"
+        },
+        {
+          "zip": "80203",
+          "city": "Denver",
+          "state": "CO"
+        },
+        {
+          "zip": "80204",
+          "city": "Denver",
+          "state": "CO"
+        },
+        {
+          "zip": "80205",
+          "city": "Denver",
+          "state": "CO"
+        },
+        {
+          "zip": "80521",
+          "city": "Fort Collins",
+          "state": "CO"
+        },
+        {
+          "zip": "80522",
+          "city": "Fort Collins",
+          "state": "CO"
+        },
+        {
+          "zip": "80523",
+          "city": "Fort Collins",
+          "state": "CO"
+        },
+        {
+          "zip": "80524",
+          "city": "Fort Collins",
+          "state": "CO"
+        },
+        {
+          "zip": "80903",
+          "city": "Colorado Springs",
+          "state": "CO"
+        },
+        {
+          "zip": "80904",
+          "city": "Colorado Springs",
+          "state": "CO"
+        },
+        {
+          "zip": "80905",
+          "city": "Colorado Springs",
+          "state": "CO"
+        },
+        {
+          "zip": "80906",
+          "city": "Colorado Springs",
+          "state": "CO"
+        },
+        {
+          "zip": "82001",
+          "city": "Cheyenne",
+          "state": "WY"
+        },
+        {
+          "zip": "82002",
+          "city": "Cheyenne",
+          "state": "WY"
+        },
+        {
+          "zip": "82003",
+          "city": "Cheyenne",
+          "state": "WY"
+        },
+        {
+          "zip": "82004",
+          "city": "Cheyenne",
+          "state": "WY"
+        },
+        {
+          "zip": "83702",
+          "city": "Boise",
+          "state": "ID"
+        },
+        {
+          "zip": "83703",
+          "city": "Boise",
+          "state": "ID"
+        },
+        {
+          "zip": "83704",
+          "city": "Boise",
+          "state": "ID"
+        },
+        {
+          "zip": "83705",
+          "city": "Boise",
+          "state": "ID"
+        },
+        {
+          "zip": "84101",
+          "city": "Salt Lake City",
+          "state": "UT"
+        },
+        {
+          "zip": "84102",
+          "city": "Salt Lake City",
+          "state": "UT"
+        },
+        {
+          "zip": "84103",
+          "city": "Salt Lake City",
+          "state": "UT"
+        },
+        {
+          "zip": "84104",
+          "city": "Salt Lake City",
+          "state": "UT"
+        },
+        {
+          "zip": "84601",
+          "city": "Provo",
+          "state": "UT"
+        },
+        {
+          "zip": "84602",
+          "city": "Provo",
+          "state": "UT"
+        },
+        {
+          "zip": "84603",
+          "city": "Provo",
+          "state": "UT"
+        },
+        {
+          "zip": "84604",
+          "city": "Provo",
+          "state": "UT"
+        },
+        {
+          "zip": "85001",
+          "city": "Phoenix",
+          "state": "AZ"
+        },
+        {
+          "zip": "85002",
+          "city": "Phoenix",
+          "state": "AZ"
+        },
+        {
+          "zip": "85003",
+          "city": "Phoenix",
+          "state": "AZ"
+        },
+        {
+          "zip": "85004",
+          "city": "Phoenix",
+          "state": "AZ"
+        },
+        {
+          "zip": "85201",
+          "city": "Mesa",
+          "state": "AZ"
+        },
+        {
+          "zip": "85202",
+          "city": "Mesa",
+          "state": "AZ"
+        },
+        {
+          "zip": "85203",
+          "city": "Mesa",
+          "state": "AZ"
+        },
+        {
+          "zip": "85204",
+          "city": "Mesa",
+          "state": "AZ"
+        },
+        {
+          "zip": "85224",
+          "city": "Chandler",
+          "state": "AZ"
+        },
+        {
+          "zip": "85225",
+          "city": "Chandler",
+          "state": "AZ"
+        },
+        {
+          "zip": "85226",
+          "city": "Chandler",
+          "state": "AZ"
+        },
+        {
+          "zip": "85227",
+          "city": "Chandler",
+          "state": "AZ"
+        },
+        {
+          "zip": "85251",
+          "city": "Scottsdale",
+          "state": "AZ"
+        },
+        {
+          "zip": "85252",
+          "city": "Scottsdale",
+          "state": "AZ"
+        },
+        {
+          "zip": "85253",
+          "city": "Scottsdale",
+          "state": "AZ"
+        },
+        {
+          "zip": "85254",
+          "city": "Scottsdale",
+          "state": "AZ"
+        },
+        {
+          "zip": "85701",
+          "city": "Tucson",
+          "state": "AZ"
+        },
+        {
+          "zip": "85702",
+          "city": "Tucson",
+          "state": "AZ"
+        },
+        {
+          "zip": "85703",
+          "city": "Tucson",
+          "state": "AZ"
+        },
+        {
+          "zip": "85704",
+          "city": "Tucson",
+          "state": "AZ"
+        },
+        {
+          "zip": "87102",
+          "city": "Albuquerque",
+          "state": "NM"
+        },
+        {
+          "zip": "87103",
+          "city": "Albuquerque",
+          "state": "NM"
+        },
+        {
+          "zip": "87104",
+          "city": "Albuquerque",
+          "state": "NM"
+        },
+        {
+          "zip": "87105",
+          "city": "Albuquerque",
+          "state": "NM"
+        },
+        {
+          "zip": "89002",
+          "city": "Henderson",
+          "state": "NV"
+        },
+        {
+          "zip": "89003",
+          "city": "Henderson",
+          "state": "NV"
+        },
+        {
+          "zip": "89004",
+          "city": "Henderson",
+          "state": "NV"
+        },
+        {
+          "zip": "89005",
+          "city": "Henderson",
+          "state": "NV"
+        },
+        {
+          "zip": "89101",
+          "city": "Las Vegas",
+          "state": "NV"
+        },
+        {
+          "zip": "89102",
+          "city": "Las Vegas",
+          "state": "NV"
+        },
+        {
+          "zip": "89103",
+          "city": "Las Vegas",
+          "state": "NV"
+        },
+        {
+          "zip": "89104",
+          "city": "Las Vegas",
+          "state": "NV"
+        },
+        {
+          "zip": "89501",
+          "city": "Reno",
+          "state": "NV"
+        },
+        {
+          "zip": "89502",
+          "city": "Reno",
+          "state": "NV"
+        },
+        {
+          "zip": "89503",
+          "city": "Reno",
+          "state": "NV"
+        },
+        {
+          "zip": "89504",
+          "city": "Reno",
+          "state": "NV"
+        },
+        {
+          "zip": "90001",
+          "city": "Los Angeles",
+          "state": "CA"
+        },
+        {
+          "zip": "90002",
+          "city": "Los Angeles",
+          "state": "CA"
+        },
+        {
+          "zip": "90003",
+          "city": "Los Angeles",
+          "state": "CA"
+        },
+        {
+          "zip": "90004",
+          "city": "Los Angeles",
+          "state": "CA"
+        },
+        {
+          "zip": "90802",
+          "city": "Long Beach",
+          "state": "CA"
+        },
+        {
+          "zip": "90803",
+          "city": "Long Beach",
+          "state": "CA"
+        },
+        {
+          "zip": "90804",
+          "city": "Long Beach",
+          "state": "CA"
+        },
+        {
+          "zip": "90805",
+          "city": "Long Beach",
+          "state": "CA"
+        },
+        {
+          "zip": "92101",
+          "city": "San Diego",
+          "state": "CA"
+        },
+        {
+          "zip": "92102",
+          "city": "San Diego",
+          "state": "CA"
+        },
+        {
+          "zip": "92103",
+          "city": "San Diego",
+          "state": "CA"
+        },
+        {
+          "zip": "92104",
+          "city": "San Diego",
+          "state": "CA"
+        },
+        {
+          "zip": "93301",
+          "city": "Bakersfield",
+          "state": "CA"
+        },
+        {
+          "zip": "93302",
+          "city": "Bakersfield",
+          "state": "CA"
+        },
+        {
+          "zip": "93303",
+          "city": "Bakersfield",
+          "state": "CA"
+        },
+        {
+          "zip": "93304",
+          "city": "Bakersfield",
+          "state": "CA"
+        },
+        {
+          "zip": "93701",
+          "city": "Fresno",
+          "state": "CA"
+        },
+        {
+          "zip": "93702",
+          "city": "Fresno",
+          "state": "CA"
+        },
+        {
+          "zip": "93703",
+          "city": "Fresno",
+          "state": "CA"
+        },
+        {
+          "zip": "93704",
+          "city": "Fresno",
+          "state": "CA"
+        },
+        {
+          "zip": "94102",
+          "city": "San Francisco",
+          "state": "CA"
+        },
+        {
+          "zip": "94103",
+          "city": "San Francisco",
+          "state": "CA"
+        },
+        {
+          "zip": "94104",
+          "city": "San Francisco",
+          "state": "CA"
+        },
+        {
+          "zip": "94105",
+          "city": "San Francisco",
+          "state": "CA"
+        },
+        {
+          "zip": "94601",
+          "city": "Oakland",
+          "state": "CA"
+        },
+        {
+          "zip": "94602",
+          "city": "Oakland",
+          "state": "CA"
+        },
+        {
+          "zip": "94603",
+          "city": "Oakland",
+          "state": "CA"
+        },
+        {
+          "zip": "94604",
+          "city": "Oakland",
+          "state": "CA"
+        },
+        {
+          "zip": "95101",
+          "city": "San Jose",
+          "state": "CA"
+        },
+        {
+          "zip": "95102",
+          "city": "San Jose",
+          "state": "CA"
+        },
+        {
+          "zip": "95103",
+          "city": "San Jose",
+          "state": "CA"
+        },
+        {
+          "zip": "95104",
+          "city": "San Jose",
+          "state": "CA"
+        },
+        {
+          "zip": "95814",
+          "city": "Sacramento",
+          "state": "CA"
+        },
+        {
+          "zip": "95815",
+          "city": "Sacramento",
+          "state": "CA"
+        },
+        {
+          "zip": "95816",
+          "city": "Sacramento",
+          "state": "CA"
+        },
+        {
+          "zip": "95817",
+          "city": "Sacramento",
+          "state": "CA"
+        },
+        {
+          "zip": "96813",
+          "city": "Honolulu",
+          "state": "HI"
+        },
+        {
+          "zip": "96814",
+          "city": "Honolulu",
+          "state": "HI"
+        },
+        {
+          "zip": "96815",
+          "city": "Honolulu",
+          "state": "HI"
+        },
+        {
+          "zip": "96816",
+          "city": "Honolulu",
+          "state": "HI"
+        },
+        {
+          "zip": "97201",
+          "city": "Portland",
+          "state": "OR"
+        },
+        {
+          "zip": "97202",
+          "city": "Portland",
+          "state": "OR"
+        },
+        {
+          "zip": "97203",
+          "city": "Portland",
+          "state": "OR"
+        },
+        {
+          "zip": "97204",
+          "city": "Portland",
+          "state": "OR"
+        },
+        {
+          "zip": "97301",
+          "city": "Salem",
+          "state": "OR"
+        },
+        {
+          "zip": "97302",
+          "city": "Salem",
+          "state": "OR"
+        },
+        {
+          "zip": "97303",
+          "city": "Salem",
+          "state": "OR"
+        },
+        {
+          "zip": "97304",
+          "city": "Salem",
+          "state": "OR"
+        },
+        {
+          "zip": "97401",
+          "city": "Eugene",
+          "state": "OR"
+        },
+        {
+          "zip": "97402",
+          "city": "Eugene",
+          "state": "OR"
+        },
+        {
+          "zip": "97403",
+          "city": "Eugene",
+          "state": "OR"
+        },
+        {
+          "zip": "97404",
+          "city": "Eugene",
+          "state": "OR"
+        },
+        {
+          "zip": "98004",
+          "city": "Bellevue",
+          "state": "WA"
+        },
+        {
+          "zip": "98005",
+          "city": "Bellevue",
+          "state": "WA"
+        },
+        {
+          "zip": "98006",
+          "city": "Bellevue",
+          "state": "WA"
+        },
+        {
+          "zip": "98007",
+          "city": "Bellevue",
+          "state": "WA"
+        },
+        {
+          "zip": "98101",
+          "city": "Seattle",
+          "state": "WA"
+        },
+        {
+          "zip": "98102",
+          "city": "Seattle",
+          "state": "WA"
+        },
+        {
+          "zip": "98103",
+          "city": "Seattle",
+          "state": "WA"
+        },
+        {
+          "zip": "98104",
+          "city": "Seattle",
+          "state": "WA"
+        },
+        {
+          "zip": "98402",
+          "city": "Tacoma",
+          "state": "WA"
+        },
+        {
+          "zip": "98403",
+          "city": "Tacoma",
+          "state": "WA"
+        },
+        {
+          "zip": "98404",
+          "city": "Tacoma",
+          "state": "WA"
+        },
+        {
+          "zip": "98405",
+          "city": "Tacoma",
+          "state": "WA"
+        },
+        {
+          "zip": "98660",
+          "city": "Vancouver",
+          "state": "WA"
+        },
+        {
+          "zip": "98661",
+          "city": "Vancouver",
+          "state": "WA"
+        },
+        {
+          "zip": "98662",
+          "city": "Vancouver",
+          "state": "WA"
+        },
+        {
+          "zip": "98663",
+          "city": "Vancouver",
+          "state": "WA"
+        },
+        {
+          "zip": "99201",
+          "city": "Spokane",
+          "state": "WA"
+        },
+        {
+          "zip": "99202",
+          "city": "Spokane",
+          "state": "WA"
+        },
+        {
+          "zip": "99203",
+          "city": "Spokane",
+          "state": "WA"
+        },
+        {
+          "zip": "99204",
+          "city": "Spokane",
+          "state": "WA"
+        },
+        {
+          "zip": "99501",
+          "city": "Anchorage",
+          "state": "AK"
+        },
+        {
+          "zip": "99502",
+          "city": "Anchorage",
+          "state": "AK"
+        },
+        {
+          "zip": "99503",
+          "city": "Anchorage",
+          "state": "AK"
+        },
+        {
+          "zip": "99504",
+          "city": "Anchorage",
+          "state": "AK"
+        }
+      ]
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "element_dictionary",
+        "detail": "maps to ADDRESS_ZIP, whose dictionary holds 604 values; a pattern fitted to 2,074 distinct values would only reproduce their shape",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "catalog",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_MEME_MEMBER",
+    "column": "MEME_EFF_DT",
+    "bucket": "free",
+    "generator": "date_relative",
+    "params": {
+      "anchor": "dbo.CMC_SBSB_SUBSC.SBSB_EFF_DT",
+      "min_days": 0,
+      "max_days": 0,
+      "max_date": "2026-09-01"
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "date_ordering",
+        "detail": "follows dbo.CMC_SBSB_SUBSC.SBSB_EFF_DT by 0 to 0 days in 100.0% of 12,420 rows",
+        "coverage": 1.0
+      },
+      {
+        "kind": "observed_range",
+        "detail": "no value in the column is later than 2026-09-01",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_MEME_MEMBER",
+    "column": "MEME_TERM_DT",
+    "bucket": "free",
+    "generator": "date_relative",
+    "params": {
+      "anchor": "MEME_EFF_DT",
+      "min_days": 91,
+      "max_days": 899,
+      "max_date": "2028-10-09"
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "date_ordering",
+        "detail": "follows MEME_EFF_DT by 91 to 899 days in 100.0% of 872 rows",
+        "coverage": 1.0
+      },
+      {
+        "kind": "observed_range",
+        "detail": "no value in the column is later than 2028-10-09",
+        "coverage": 1.0
+      },
+      {
+        "kind": "null_rate",
+        "detail": "null in 93% of rows",
+        "coverage": 0.929791
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_MEPE_PRCS_ELIG",
+    "column": "MEME_CK",
+    "bucket": "reference",
+    "generator": "reference",
+    "params": {
+      "parent_table": "dbo.CMC_MEME_MEMBER",
+      "parent_column": "MEME_CK",
+      "pick": "hash"
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "value_inclusion",
+        "detail": "inferred foreign key to dbo.CMC_MEME_MEMBER",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "structural",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_MEPE_PRCS_ELIG",
+    "column": "CSPD_CAT",
+    "bucket": "code",
+    "generator": "reference",
+    "params": {
+      "parent_table": "dbo.CMC_CSPD_CAT_DESC",
+      "parent_column": "CSPD_CAT",
+      "pick": "hash"
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "value_inclusion",
+        "detail": "inferred foreign key to dbo.CMC_CSPD_CAT_DESC, which holds 4 rows and reads as a code table",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "structural",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_MEPE_PRCS_ELIG",
+    "column": "MEPE_EFF_DT",
+    "bucket": "business_key",
+    "generator": "date_relative",
+    "params": {
+      "anchor": "dbo.CMC_MEME_MEMBER.MEME_EFF_DT",
+      "min_days": 0,
+      "max_days": 1395,
+      "max_date": "2026-09-01",
+      "upper_anchor": "dbo.CMC_MEME_MEMBER.MEME_TERM_DT"
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "date_ordering",
+        "detail": "follows dbo.CMC_MEME_MEMBER.MEME_EFF_DT by 0 to 1395 days in 100.0% of 39,799 rows",
+        "coverage": 1.0
+      },
+      {
+        "kind": "observed_range",
+        "detail": "no value in the column is later than 2026-09-01",
+        "coverage": 1.0
+      },
+      {
+        "kind": "date_ordering",
+        "detail": "stays at or before dbo.CMC_MEME_MEMBER.MEME_TERM_DT in 100.0% of 2,599 rows",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_MEPE_PRCS_ELIG",
+    "column": "MEPE_TERM_DT",
+    "bucket": "free",
+    "generator": "date_relative",
+    "params": {
+      "anchor": "dbo.CMC_CSPI_CS_PLAN.CSPI_TERM_DT",
+      "min_days": 0,
+      "max_days": 0,
+      "max_date": "2028-10-09"
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "date_ordering",
+        "detail": "follows dbo.CMC_CSPI_CS_PLAN.CSPI_TERM_DT by 0 to 0 days in 100.0% of 2,886 rows",
+        "coverage": 1.0
+      },
+      {
+        "kind": "observed_range",
+        "detail": "no value in the column is later than 2028-10-09",
+        "coverage": 1.0
+      },
+      {
+        "kind": "null_rate",
+        "detail": "null in 87% of rows",
+        "coverage": 0.866404
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_MEPE_PRCS_ELIG",
+    "column": "GRGR_CK",
+    "bucket": "code",
+    "generator": "reference",
+    "params": {
+      "parent_table": "dbo.CMC_GRGR_GROUP",
+      "parent_column": "GRGR_CK",
+      "pick": "hash"
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "value_inclusion",
+        "detail": "inferred foreign key to dbo.CMC_GRGR_GROUP, which holds 7 rows and reads as a code table",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "structural",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_MEPE_PRCS_ELIG",
+    "column": "SGSG_CK",
+    "bucket": "code",
+    "generator": "reference",
+    "params": {
+      "parent_table": "dbo.CMC_SGSG_SUBGROUP",
+      "parent_column": "SGSG_CK",
+      "pick": "hash"
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "value_inclusion",
+        "detail": "inferred foreign key to dbo.CMC_SGSG_SUBGROUP, which holds 13 rows and reads as a code table",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "structural",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_MEPE_PRCS_ELIG",
+    "column": "CSPI_ID",
+    "bucket": "code",
+    "generator": "reference",
+    "params": {
+      "parent_table": "dbo.CMC_CSPI_CS_PLAN",
+      "parent_column": "CSPI_ID",
+      "pick": "hash"
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "value_inclusion",
+        "detail": "inferred foreign key to dbo.CMC_CSPI_CS_PLAN, which holds 21 rows and reads as a code table",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "structural",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_MEPE_PRCS_ELIG",
+    "column": "PDPD_ID",
+    "bucket": "code",
+    "generator": "reference",
+    "params": {
+      "parent_table": "dbo.CMC_PDDS_PROD_DESC",
+      "parent_column": "PDPD_ID",
+      "pick": "hash"
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "value_inclusion",
+        "detail": "inferred foreign key to dbo.CMC_PDDS_PROD_DESC, which holds 14 rows and reads as a code table",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "structural",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_MEPE_PRCS_ELIG",
+    "column": "MEPE_ELIG_IND",
+    "bucket": "free",
+    "generator": "constant",
+    "params": {
+      "value": "Y"
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "single_value",
+        "detail": "every row holds 'Y'",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_MEPR_PRIM_PROV",
+    "column": "MEME_CK",
+    "bucket": "reference",
+    "generator": "reference",
+    "params": {
+      "parent_table": "dbo.CMC_MEME_MEMBER",
+      "parent_column": "MEME_CK",
+      "pick": "hash"
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "value_inclusion",
+        "detail": "inferred foreign key to dbo.CMC_MEME_MEMBER",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "structural",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_MEPR_PRIM_PROV",
+    "column": "MEPR_PCP_TYPE",
+    "bucket": "business_key",
+    "generator": "constant",
+    "params": {
+      "value": "P"
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "single_value",
+        "detail": "every row holds 'P'",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_MEPR_PRIM_PROV",
+    "column": "MEPR_EFF_DT",
+    "bucket": "business_key",
+    "generator": "date_relative",
+    "params": {
+      "anchor": "dbo.CMC_MEME_MEMBER.MEME_EFF_DT",
+      "min_days": 0,
+      "max_days": 0,
+      "max_date": "2026-09-01",
+      "upper_anchor": "MEPR_TERM_DT"
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "date_ordering",
+        "detail": "follows dbo.CMC_MEME_MEMBER.MEME_EFF_DT by 0 to 0 days in 100.0% of 9,133 rows",
+        "coverage": 1.0
+      },
+      {
+        "kind": "observed_range",
+        "detail": "no value in the column is later than 2026-09-01",
+        "coverage": 1.0
+      },
+      {
+        "kind": "date_ordering",
+        "detail": "stays at or before MEPR_TERM_DT in 100.0% of 621 rows",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_MEPR_PRIM_PROV",
+    "column": "MEPR_TERM_DT",
+    "bucket": "free",
+    "generator": "date_relative",
+    "params": {
+      "anchor": "dbo.CMC_MEME_MEMBER.MEME_TERM_DT",
+      "min_days": 0,
+      "max_days": 0,
+      "max_date": "2028-10-09"
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "date_ordering",
+        "detail": "follows dbo.CMC_MEME_MEMBER.MEME_TERM_DT by 0 to 0 days in 100.0% of 621 rows",
+        "coverage": 1.0
+      },
+      {
+        "kind": "observed_range",
+        "detail": "no value in the column is later than 2028-10-09",
+        "coverage": 1.0
+      },
+      {
+        "kind": "null_rate",
+        "detail": "null in 93% of rows",
+        "coverage": 0.932005
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_MEPR_PRIM_PROV",
+    "column": "PRPR_ID",
+    "bucket": "reference",
+    "generator": "reference",
+    "params": {
+      "parent_table": "dbo.CMC_PRPR_PROV",
+      "parent_column": "PRPR_ID",
+      "pick": "hash"
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "value_inclusion",
+        "detail": "inferred foreign key to dbo.CMC_PRPR_PROV",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "structural",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_PDDS_PROD_DESC",
+    "column": "PDPD_ID",
+    "bucket": "business_key",
+    "generator": "pattern",
+    "params": {
+      "regex": "[A-Z0-9]{8}",
+      "unique": true
+    },
+    "confidence": "low",
+    "coverage": null,
+    "evidence": [
+      {
+        "kind": "does_not_fit",
+        "detail": "PDPD_ID holds 8 characters and this rule can produce 9. The load would stop partway through. -- so it is generated from char(8) instead"
+      },
+      {
+        "kind": "physical",
+        "detail": "declared char(8); no rows to measure"
+      }
+    ],
+    "provenance": "physical",
+    "note": "a unique string of the declared width"
+  },
+  {
+    "table": "dbo.CMC_PDDS_PROD_DESC",
+    "column": "PDDS_DESC",
+    "bucket": "free",
+    "generator": "lookup",
+    "params": {
+      "values": [
+        "Choice Medical PPO",
+        "Select Medical HMO",
+        "Preferred Medical EPO",
+        "Advantage Medical POS",
+        "Essential Medical HDHP",
+        "Premier Medical PPO",
+        "Classic Medical HMO",
+        "Value Medical EPO",
+        "Heritage Medical POS",
+        "Summit Medical HDHP",
+        "Choice Dental PPO",
+        "Select Dental HMO",
+        "Preferred Dental EPO",
+        "Advantage Dental POS",
+        "Essential Dental HDHP",
+        "Premier Dental PPO",
+        "Classic Dental HMO",
+        "Value Dental EPO",
+        "Heritage Dental POS",
+        "Summit Dental HDHP",
+        "Cornerstone Medical PPO",
+        "Horizon Medical HMO",
+        "Keystone Dental PPO",
+        "Pinnacle Medical EPO",
+        "Vantage Dental HMO"
+      ]
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "element_dictionary",
+        "detail": "maps to PRODUCT_DESCRIPTION, whose dictionary holds 25 values; a pattern fitted to 14 distinct values would only reproduce their shape",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "catalog",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_PDPD_PRODUCT",
+    "column": "PDPD_ID",
+    "bucket": "code",
+    "generator": "reference",
+    "params": {
+      "parent_table": "dbo.CMC_PDDS_PROD_DESC",
+      "parent_column": "PDPD_ID",
+      "pick": "hash"
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "value_inclusion",
+        "detail": "inferred foreign key to dbo.CMC_PDDS_PROD_DESC, which holds 14 rows and reads as a code table",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "structural",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_PDPD_PRODUCT",
+    "column": "LOBD_ID",
+    "bucket": "code",
+    "generator": "reference",
+    "params": {
+      "parent_table": "dbo.CMC_LOBD_LINE_BUS",
+      "parent_column": "LOBD_ID",
+      "pick": "hash"
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "value_inclusion",
+        "detail": "inferred foreign key to dbo.CMC_LOBD_LINE_BUS, which holds 4 rows and reads as a code table",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "structural",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_PDPD_PRODUCT",
+    "column": "CSPD_CAT",
+    "bucket": "code",
+    "generator": "reference",
+    "params": {
+      "parent_table": "dbo.CMC_CSPD_CAT_DESC",
+      "parent_column": "CSPD_CAT",
+      "pick": "hash"
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "value_inclusion",
+        "detail": "inferred foreign key to dbo.CMC_CSPD_CAT_DESC, which holds 4 rows and reads as a code table",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "structural",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_PDPD_PRODUCT",
+    "column": "PDPD_EFF_DT",
+    "bucket": "free",
+    "generator": "lookup",
+    "params": {
+      "values": [
+        "2018-01-01",
+        "2019-01-01",
+        "2020-01-01",
+        "2021-01-01",
+        "2024-01-01"
+      ],
+      "weights": [
+        0.285714,
+        0.285714,
+        0.214286,
+        0.142857,
+        0.071429
+      ]
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "top_values",
+        "detail": "5 distinct values; '2018-01-01' is the most common at 29%",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_PDPD_PRODUCT",
+    "column": "PDPD_TERM_DT",
+    "bucket": "free",
+    "generator": "constant",
+    "params": {
+      "value": "2023-12-31"
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "single_value",
+        "detail": "every row holds '2023-12-31'",
+        "coverage": 1.0
+      },
+      {
+        "kind": "null_rate",
+        "detail": "null in 93% of rows",
+        "coverage": 0.928571
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_PLDS_PLAN_DESC",
+    "column": "CSPI_ID",
+    "bucket": "code",
+    "generator": "reference",
+    "params": {
+      "parent_table": "dbo.CMC_CSPI_CS_PLAN",
+      "parent_column": "CSPI_ID",
+      "pick": "hash"
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "value_inclusion",
+        "detail": "inferred foreign key to dbo.CMC_CSPI_CS_PLAN, which holds 21 rows and reads as a code table",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "structural",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_PLDS_PLAN_DESC",
+    "column": "PLDS_DESC",
+    "bucket": "free",
+    "generator": "lookup",
+    "params": {
+      "values": [
+        "Choice Medical PPO",
+        "Select Medical HMO",
+        "Preferred Medical EPO",
+        "Advantage Medical POS",
+        "Essential Medical HDHP",
+        "Premier Medical PPO",
+        "Classic Medical HMO",
+        "Value Medical EPO",
+        "Heritage Medical POS",
+        "Summit Medical HDHP",
+        "Choice Dental PPO",
+        "Select Dental HMO",
+        "Preferred Dental EPO",
+        "Advantage Dental POS",
+        "Essential Dental HDHP",
+        "Premier Dental PPO",
+        "Classic Dental HMO",
+        "Value Dental EPO",
+        "Heritage Dental POS",
+        "Summit Dental HDHP",
+        "Cornerstone Medical PPO",
+        "Horizon Medical HMO",
+        "Keystone Dental PPO",
+        "Pinnacle Medical EPO",
+        "Vantage Dental HMO"
+      ]
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "element_dictionary",
+        "detail": "maps to PLAN_DESCRIPTION, whose dictionary holds 25 values; a pattern fitted to 21 distinct values would only reproduce their shape",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "catalog",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_PRPR_PROV",
+    "column": "PRPR_ID",
+    "bucket": "business_key",
+    "generator": "pattern",
+    "params": {
+      "regex": "PR\\d{10}",
+      "unique": true
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "fitted_format",
+        "detail": "PR\\d{10} covers 100% of the sample",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_PRPR_PROV",
+    "column": "PRPR_NPI",
+    "bucket": "free",
+    "generator": "pattern",
+    "params": {
+      "regex": "\\d{10}",
+      "unique": true
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "fitted_format",
+        "detail": "\\d{10} covers 100% of the sample",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_PRPR_PROV",
+    "column": "PRPR_ENTITY",
+    "bucket": "free",
+    "generator": "lookup",
+    "params": {
+      "values": [
+        "P",
+        "G"
+      ],
+      "weights": [
+        0.797619,
+        0.202381
+      ]
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "top_values",
+        "detail": "2 distinct values; 'P' is the most common at 80%",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_PRPR_PROV",
+    "column": "PRPR_STATE",
+    "bucket": "free",
+    "generator": "lookup",
+    "params": {
+      "values": [
+        "OH",
+        "KY",
+        "PA",
+        "WV",
+        "IN"
+      ],
+      "weights": [
+        0.430952,
+        0.266667,
+        0.142857,
+        0.083333,
+        0.07619
+      ]
+    },
+    "confidence": "high",
+    "coverage": 0.999999,
+    "evidence": [
+      {
+        "kind": "top_values",
+        "detail": "5 distinct values; 'OH' is the most common at 43%",
+        "coverage": 0.999999
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_PRPR_PROV",
+    "column": "PRPR_MCTR_SPEC",
+    "bucket": "free",
+    "generator": "lookup",
+    "params": {
+      "values": [
+        "FAMP",
+        "OBGY",
+        "INTM",
+        "CARD",
+        "PEDS",
+        "ORTH"
+      ],
+      "weights": [
+        0.188095,
+        0.183333,
+        0.171429,
+        0.159524,
+        0.157143,
+        0.140476
+      ]
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "top_values",
+        "detail": "6 distinct values; 'FAMP' is the most common at 19%",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_SBSB_SUBSC",
+    "column": "SBSB_CK",
+    "bucket": "business_key",
+    "generator": "sequence",
+    "params": {
+      "start": 106351,
+      "step": 1
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "sequence",
+        "detail": "values advance by 1 with 0 gaps; the highest is 106,350",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_SBSB_SUBSC",
+    "column": "GRGR_CK",
+    "bucket": "code",
+    "generator": "reference",
+    "params": {
+      "parent_table": "dbo.CMC_GRGR_GROUP",
+      "parent_column": "GRGR_CK",
+      "pick": "hash"
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "value_inclusion",
+        "detail": "inferred foreign key to dbo.CMC_GRGR_GROUP, which holds 7 rows and reads as a code table",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "structural",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_SBSB_SUBSC",
+    "column": "SBSB_ID",
+    "bucket": "business_key",
+    "generator": "pattern",
+    "params": {
+      "regex": "[A-Z]{2}\\d{7}",
+      "unique": true
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "fitted_format",
+        "detail": "[A-Z]{2}\\d{7} covers 100% of the sample",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_SBSB_SUBSC",
+    "column": "SBSB_LAST_NAME",
+    "bucket": "free",
+    "generator": "lookup",
+    "params": {
+      "values": [
+        "Smith",
+        "Johnson",
+        "Williams",
+        "Brown",
+        "Jones",
+        "Garcia",
+        "Miller",
+        "Davis",
+        "Rodriguez",
+        "Martinez",
+        "Hernandez",
+        "Lopez",
+        "Gonzalez",
+        "Wilson",
+        "Anderson",
+        "Thomas",
+        "Taylor",
+        "Moore",
+        "Jackson",
+        "Martin",
+        "Lee",
+        "Perez",
+        "Thompson",
+        "White",
+        "Harris",
+        "Sanchez",
+        "Clark",
+        "Ramirez",
+        "Lewis",
+        "Robinson",
+        "Walker",
+        "Young",
+        "Allen",
+        "King",
+        "Wright",
+        "Scott",
+        "Torres",
+        "Nguyen",
+        "Hill",
+        "Flores",
+        "Green",
+        "Adams",
+        "Nelson",
+        "Baker",
+        "Hall",
+        "Rivera",
+        "Campbell",
+        "Mitchell",
+        "Carter",
+        "Roberts",
+        "Gomez",
+        "Phillips",
+        "Evans",
+        "Turner",
+        "Diaz",
+        "Parker",
+        "Cruz",
+        "Edwards",
+        "Collins",
+        "Reyes",
+        "Stewart",
+        "Morris",
+        "Morales",
+        "Murphy",
+        "Cook",
+        "Rogers",
+        "Gutierrez",
+        "Ortiz",
+        "Morgan",
+        "Cooper",
+        "Peterson",
+        "Bailey",
+        "Reed",
+        "Kelly",
+        "Howard",
+        "Ramos",
+        "Kim",
+        "Cox",
+        "Ward",
+        "Richardson"
+      ]
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "element_dictionary",
+        "detail": "maps to LAST_NAME, whose dictionary holds 80 values; a pattern fitted to 75 distinct values would only reproduce their shape",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "catalog",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_SBSB_SUBSC",
+    "column": "SBSB_FIRST_NAME",
+    "bucket": "free",
+    "generator": "lookup",
+    "params": {
+      "values": [
+        "James",
+        "Mary",
+        "Robert",
+        "Patricia",
+        "John",
+        "Jennifer",
+        "Michael",
+        "Linda",
+        "David",
+        "Elizabeth",
+        "William",
+        "Barbara",
+        "Richard",
+        "Susan",
+        "Joseph",
+        "Jessica",
+        "Thomas",
+        "Sarah",
+        "Charles",
+        "Karen",
+        "Christopher",
+        "Lisa",
+        "Daniel",
+        "Nancy",
+        "Matthew",
+        "Betty",
+        "Anthony",
+        "Margaret",
+        "Mark",
+        "Sandra",
+        "Donald",
+        "Ashley",
+        "Steven",
+        "Kimberly",
+        "Andrew",
+        "Emily",
+        "Paul",
+        "Donna",
+        "Joshua",
+        "Michelle",
+        "Kenneth",
+        "Carol",
+        "Kevin",
+        "Amanda",
+        "Brian",
+        "Dorothy",
+        "George",
+        "Melissa",
+        "Timothy",
+        "Deborah",
+        "Ronald",
+        "Stephanie",
+        "Jason",
+        "Rebecca",
+        "Edward",
+        "Sharon",
+        "Jeffrey",
+        "Laura",
+        "Ryan",
+        "Cynthia",
+        "Jacob",
+        "Kathleen",
+        "Gary",
+        "Amy",
+        "Nicholas",
+        "Angela",
+        "Eric",
+        "Shirley",
+        "Jonathan",
+        "Anna",
+        "Stephen",
+        "Brenda",
+        "Larry",
+        "Pamela",
+        "Justin",
+        "Emma",
+        "Scott",
+        "Nicole",
+        "Brandon",
+        "Helen"
+      ]
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "element_dictionary",
+        "detail": "maps to FIRST_NAME, whose dictionary holds 80 values; a pattern fitted to 60 distinct values would only reproduce their shape",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "catalog",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_SBSB_SUBSC",
+    "column": "SBSB_EFF_DT",
+    "bucket": "free",
+    "generator": "date_relative",
+    "params": {
+      "anchor": "dbo.CMC_GRGR_GROUP.GRGR_ORIG_EFF_DT",
+      "min_days": 986,
+      "max_days": 7913,
+      "max_date": "2026-09-01"
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "date_ordering",
+        "detail": "follows dbo.CMC_GRGR_GROUP.GRGR_ORIG_EFF_DT by 986 to 7913 days in 100.0% of 6,350 rows",
+        "coverage": 1.0
+      },
+      {
+        "kind": "observed_range",
+        "detail": "no value in the column is later than 2026-09-01",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_SBSB_SUBSC",
+    "column": "SBSB_MCTR_STS",
+    "bucket": "free",
+    "generator": "lookup",
+    "params": {
+      "values": [
+        "AC",
+        "TM"
+      ],
+      "weights": [
+        0.929764,
+        0.070236
+      ]
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "top_values",
+        "detail": "2 distinct values; 'AC' is the most common at 93%",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_SGSG_SUBGROUP",
+    "column": "SGSG_CK",
+    "bucket": "business_key",
+    "generator": "sequence",
+    "params": {
+      "start": 5014,
+      "step": 1
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "sequence",
+        "detail": "values advance by 1 with 0 gaps; the highest is 5,013",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_SGSG_SUBGROUP",
+    "column": "GRGR_CK",
+    "bucket": "code",
+    "generator": "reference",
+    "params": {
+      "parent_table": "dbo.CMC_GRGR_GROUP",
+      "parent_column": "GRGR_CK",
+      "pick": "hash"
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "value_inclusion",
+        "detail": "inferred foreign key to dbo.CMC_GRGR_GROUP, which holds 7 rows and reads as a code table",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "structural",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_SGSG_SUBGROUP",
+    "column": "SGSG_ID",
+    "bucket": "business_key",
+    "generator": "pattern",
+    "params": {
+      "regex": "[A-Z]{7}\\d",
+      "unique": true
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "fitted_format",
+        "detail": "[A-Z]{7}\\d covers 100% of the sample",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_SGSG_SUBGROUP",
+    "column": "SGSG_NAME",
+    "bucket": "free",
+    "generator": "lookup",
+    "params": {
+      "values": [
+        "Riverside University",
+        "Metro Transit Authority",
+        "Northside Health System",
+        "Lakeshore Manufacturing",
+        "Summit Retail Group",
+        "Cedar Valley School District",
+        "Harbor Logistics",
+        "Pine Ridge Senior Care",
+        "Clearwater Municipal Services",
+        "Granite State Engineering",
+        "Bayview Medical Partners",
+        "Fairfield County Schools",
+        "Ironbridge Steel Works",
+        "Meridian Insurance Group",
+        "Oakhurst Hospitality",
+        "Prairie Grain Cooperative",
+        "Silverlake Technologies",
+        "Thornton Construction",
+        "Westgate Pharmaceuticals",
+        "Yellowstone Parks Authority",
+        "Ashford Legal Services",
+        "Brookfield Dairy",
+        "Crestline Aviation",
+        "Dunmore Textiles",
+        "Eastport Fisheries"
+      ]
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "element_dictionary",
+        "detail": "maps to SUBGROUP_NAME, whose dictionary holds 25 values; a pattern fitted to 13 distinct values would only reproduce their shape",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "catalog",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_SGSG_SUBGROUP",
+    "column": "SGSG_STATE",
+    "bucket": "free",
+    "generator": "lookup",
+    "params": {
+      "values": [
+        "OH",
+        "KY",
+        "PA"
+      ],
+      "weights": [
+        0.615385,
+        0.230769,
+        0.153846
+      ]
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "top_values",
+        "detail": "3 distinct values; 'OH' is the most common at 62%",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_SGSG_SUBGROUP",
+    "column": "SGSG_STS",
+    "bucket": "free",
+    "generator": "constant",
+    "params": {
+      "value": "AC"
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "single_value",
+        "detail": "every row holds 'AC'",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  },
+  {
+    "table": "dbo.CMC_SGSG_SUBGROUP",
+    "column": "SGSG_ORIG_EFF_DT",
+    "bucket": "free",
+    "generator": "date_relative",
+    "params": {
+      "anchor": "dbo.CMC_GRGR_GROUP.GRGR_ORIG_EFF_DT",
+      "min_days": 0,
+      "max_days": 0,
+      "max_date": "2017-07-01"
+    },
+    "confidence": "high",
+    "coverage": 1.0,
+    "evidence": [
+      {
+        "kind": "date_ordering",
+        "detail": "follows dbo.CMC_GRGR_GROUP.GRGR_ORIG_EFF_DT by 0 to 0 days in 100.0% of 13 rows",
+        "coverage": 1.0
+      },
+      {
+        "kind": "observed_range",
+        "detail": "no value in the column is later than 2017-07-01",
+        "coverage": 1.0
+      }
+    ],
+    "provenance": "learned",
+    "note": ""
+  }
+]

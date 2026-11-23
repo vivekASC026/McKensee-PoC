@@ -1,0 +1,6 @@
+# Speed-ups for the web server (uvicorn[standard]); the tool runs without them.
+# scripts\setup_offline.cmd installs them where this Python has a build of them
+# (none for ARM64 Windows).
+httptools==0.8.0
+watchfiles==1.2.0
+websockets==17.1

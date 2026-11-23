@@ -1,0 +1,660 @@
+{
+  // =====================================================================================
+  // HOW TO CHANGE THIS FILE
+  //
+  // Edits are live. This file is read from disk every time a run is planned, so there is nothing
+  // to restart and nothing to reload - unlike the X12 and HL7 v2 configs, which the engine loads
+  // once at startup. Save the file, start a run, and the run uses what you saved.
+  //
+  // Everything below is checked when the file loads, before any document is opened: every path
+  // parses, every algorithm name exists, no two rules can reach the same value, a resource type
+  // appears once, and a rule masking something "removePaths" deletes is refused. A bad edit is an
+  // error with a message, never a half-masked directory.
+  //
+  // ------------------------------------------------------------------------ WORKED EXAMPLES
+  //
+  // CHANGE WHICH ALGORITHM MASKS A PATH - edit the name and nothing else:
+  //
+  //     { "path": "name[*].family", "algorithm_reference": { "name": "lastName" } }
+  //                                                                   --------
+  //     Any algorithm or instance name the engine knows. An unknown one is refused when the file
+  //     loads, with the full list printed, so a typo cannot reach a document.
+  //
+  // STOP MASKING SOMETHING - delete its line. There is no "noMask" algorithm: an element with no
+  // rule is retained exactly as it was, and deleting the rule is how you say "leave this alone".
+  //
+  // MASK SOMETHING NOTHING COVERS YET - add a rule to that resource type's "maskPaths":
+  //
+  //     { "path": "contact[*].telecom[*].value", "where": { "system": "phone" },
+  //       "algorithm_reference": { "name": "phone" } }
+  //
+  //     [*] means every occurrence and it nests: name[*].given[*] reaches all five values in a
+  //     patient with two names and three given names between them. "where" tests sibling fields
+  //     of the matched value, which is how one path is split between rules - it is this format's
+  //     equivalent of the "qualifier" the X12 and HL7 v2 configs use.
+  //
+  // MASK A RESOURCE TYPE THAT IS NOT HERE - add a whole block to "maskResources". Nothing in the
+  // Java holds a list of resource types; the masker reads resourceType off the document and looks
+  // it up here, so this is all it takes:
+  //
+  //     { "resourceType": "Immunization",
+  //       "maskPaths": [
+  //         { "path": "lotNumber", "algorithm_reference": { "name": "alnumId" } } ] },
+  //
+  //     A type with no block is NOT masked and passes through whole. Every run says so on stderr,
+  //     naming the type and the count, because otherwise the only evidence is an unmasked record
+  //     in the output directory:
+  //
+  //       warning: 2 resources of type Immunization had no rules configured and were written
+  //                through unmasked; add a maskResources block for "Immunization"
+  //
+  // DROP AN ELEMENT INSTEAD OF MASKING IT - "removePaths" on the resource type. For content no
+  // algorithm can help with; "photo" below is the case that forced it. Removal loses content, so
+  // the count of what went is reported on every run.
+  //
+  // REBUILD A SUMMARY RATHER THAN MASK IT - "regenerate" joins the masked components back together
+  // after everything else has run. Address.text is a whole address, and masking it with the
+  // address algorithm would produce a street line that summarises nothing:
+  //
+  //     { "path": "address[*].text",
+  //       "regenerate": { "from": ["line[*]", "city", "district", "state", "postalCode"],
+  //                       "separator": ", " } },
+  //
+  // CHANGE ONE PARAMETER IN MANY PLACES AT ONCE - name an instance under "instances" and point the
+  // rules at it. "freeText" below is the only one this file needs: ten rules share its wording, so
+  // the wording is written once.
+  //
+  // STOP MASKING IDS AND REFERENCES - delete the whole "references" block. It is all or nothing on
+  // purpose: a resource's id and every reference pointing at it must move together or the document
+  // stops resolving, so there is no way to exempt one resource type from it today.
+  //
+  // CHANGE WHAT A REDACTED NARRATIVE BLOCK SAYS, or which elements bound one - the four keys under
+  // "narrative" below. They are shown with the values the engine uses when they are absent, so
+  // deleting any of them changes nothing.
+  // =====================================================================================
+  // FHIR R4 masking configuration.
+  //
+  // Addressing here is a PATH, not a segment and position. X12 and HL7 v2 are flat lines of
+  // delimited fields, so "NM1 element 3" identifies a value exactly. A FHIR resource is a tree
+  // with repeating elements at several depths, so a rule names name[*].family and
+  // address[*].line[*] instead. [*] means every occurrence and it nests - name[*].given[*] is an
+  // array inside an array.
+  //
+  // Only [*] is accepted. An indexed path would let a rule mask name[0] and publish name[1],
+  // which for this resource means masking the official name and leaving the maiden name in the
+  // clear. That is refused when the config loads rather than discovered in an output file.
+  //
+  // WHERE, and why it exists.
+  //
+  // FHIR puts values of different kinds at one path and distinguishes them with a sibling field.
+  // telecom[*].value is a phone number when telecom[*].system is "phone" and an email address
+  // when it is "email". One algorithm cannot serve both: masking an email with the phone
+  // algorithm emits something that is neither, and a validator downstream rejects it. "where"
+  // tests sibling fields of the matched value and is this format's equivalent of the "qualifier"
+  // the X12 and HL7 v2 configs use for the same purpose.
+  //
+  // WHAT IS DELIBERATELY NOT MASKED:
+  //   gender, maritalStatus, communication.language - not identifiers under Safe Harbor, and
+  //     masking them destroys the distributions a downstream system is usually being tested on.
+  //   address[*].state, address[*].country - Safe Harbor permits state; country more so.
+  //   active, deceasedBoolean, multipleBirth[x] - booleans and integers. The masker addresses
+  //     strings only, because writing a string over a boolean changes the element's datatype and
+  //     the resource stops being valid FHIR.
+  //   id, and every .reference - not unmasked, but not rules either. They tie resources together,
+  //     so they move as a set under the "references" block below rather than path by path.
+  //
+  // FREE TEXT IS REPLACED WITH A CONSTANT, not transformed. See the "freeText" instance below
+  //   for the wording and the reasoning. The structured part of a note is still masked properly:
+  //   Annotation.authorString is a person's name and Annotation.time is a date, so those take
+  //   the name and date algorithms rather than the constant.
+  //
+  //   Attachment is not masked either - it is REMOVED. See "removePaths" on Patient,
+  //   Practitioner and RelatedPerson. photo holds base64 image bytes or a url pointing at them,
+  //   and there is no masked form of a photograph that is still a photograph of nobody; text in
+  //   its place would leave an attachment that is not an image. Removal loses content, so the
+  //   count of what went is reported on every run rather than left to be noticed.
+  //
+  // THE .text FIELDS ARE NOT NARRATIVE, AND THEY ARE REBUILT RATHER THAN MASKED.
+  //
+  //   HumanName.text and Address.text are summary renderings of the components beside them. They
+  //   do not always agree with those components - the published Patient example carries
+  //   "PeasantVille" in address[0].text where address[0].city says "PleasantVille" - so leaving
+  //   them alone would publish the original spelling of a value that was just masked.
+  //
+  //   Masking them as ordinary values was worse than it looked. Address.text is a whole address,
+  //   and the address algorithm produces a street line, so
+  //       "534 Erewhon St PeasantVille, Rainbow, Vic  3999"
+  //   became
+  //       "3443 HAWTHORNE DR"
+  //   which is safe and is no longer a summary of anything. A downstream system reading .text
+  //   instead of the components now sees an address with no town and no postcode.
+  //
+  //   So a "regenerate" rule joins the masked components back into the summary. It runs after
+  //   everything else, because it can only work once the components have moved. Where nothing
+  //   survives to rebuild from, the element is removed rather than left holding the original.
+  //
+  // POSTAL CODES ARE STRICT.
+  //
+  //   The zip algorithm keeps the first three digits and pads. Given "3999" - a four-digit
+  //   Australian postcode - it returned "39900", which is not a masked postcode but a different
+  //   country's postcode that happens to be wrong, and an AU validator would reject it. With
+  //   "strict" it is refused instead and reported as non-conformant, which is the truth: this is
+  //   not a US ZIP and this algorithm cannot mask it.
+
+  // WHAT HAPPENS TO A VALUE NO ALGORITHM CAN MASK.
+  //
+  //   "onNonConformant" is RETAIN unless set here, and RETAIN means the original value stays in
+  //   the file and the run reports it. That is deliberate and it is the default everywhere in
+  //   this project: a run that destroys a value it did not understand also destroys any way of
+  //   noticing it was there.
+  //
+  //   It also means the value SHIPS. The four-digit postcode 3999 is refused by the strict zip
+  //   algorithm and therefore published, with a warning naming it. If that is not acceptable,
+  //   set it here:
+  //
+  //       "onNonConformant": "REDACT",     // overwrite with redactToken
+  //       "redactToken": "X",
+  //
+  //   or, better, on the one rule that needs it, leaving everything else reported honestly:
+  //
+  //       { "path": "address[*].postalCode", "onNonConformant": "REDACT",
+  //         "algorithm_reference": { "name": "zip", "options": { "strict": true } } }
+  //
+  //   FAIL stops the run instead. Use it where nothing unmasked may leave the building.
+
+  "format": "FHIR R4",
+
+  "onNonConformant": "RETAIN",
+  "redactToken": "X",
+
+  // Named algorithms with their parameters already fixed, the same idea as
+  // configs/algorithm-instances.json on the EDI side. A rule names one exactly as it would name
+  // an engine algorithm, and the parameter is written once instead of repeated in every rule that
+  // needs it - which is what stops a dozen copies of one string drifting apart.
+  "instances": {
+
+    // ============================== THE FREE-TEXT REPLACEMENT ==============================
+    //
+    // CHANGE THE WORDING HERE. It is used by every free-text rule in this file, so one edit
+    // covers all of them.
+    //
+    // Free text cannot be masked the way a name or a date can. Observation.valueString, the
+    // onset and abatement strings on Condition, and every Annotation.text are prose: a clinician
+    // may put a name, an employer or a town in any of them, and nothing here could find it,
+    // because there is no structured counterpart to compare against. That is the same reason a
+    // narrative marked "additional" is replaced rather than checked.
+    //
+    // So the value is replaced outright rather than transformed. What is lost is real - the
+    // clinical content of the note goes with the identifiers in it - and that is the trade this
+    // makes deliberately: an unreadable note is recoverable from the source system, and a
+    // published name is not.
+    "freeText": {
+      "algorithm": "fixed",
+      "options": { "value": "This data is de-identified" }
+    }
+  },
+
+  // text.div is the human-readable narrative: one JSON string holding XHTML, which no path can
+  // address the inside of. text.status says whether that string is a rendering of the structured
+  // data or carries content of its own, which decides what may be done with it.
+  // The four settings below are shown with the values the engine uses when they are absent, so
+  // deleting any one of them changes nothing. Each is a judgement about your documents rather than
+  // about FHIR, which is why none of them is fixed in the code.
+  "narrative": {
+    "path": "text.div",
+    "statusPath": "text.status",
+
+    // What a block becomes when the check could not show it was clean. Wording only - the block
+    // is replaced either way.
+    "redactWith": "de-identified",
+
+    // Which elements bound a block. The innermost one holding a run of text is the unit that gets
+    // replaced, so a failure costs one table cell rather than the whole narrative. Inline markup
+    // (b, em, span, a) is deliberately absent: a name split across a <b> has to substitute as one
+    // run, so those stay inside their block. Add an element here if your renderer uses one that
+    // is not listed - anything not listed is treated as inline and never redacted on its own.
+    "blockElements": ["p", "td", "th", "li", "dd", "dt", "caption", "div",
+                      "h1", "h2", "h3", "h4", "h5", "h6", "blockquote", "pre", "figcaption"],
+
+    // How short a masked value can be before it is ignored when substituting and when checking
+    // for residue. Lower catches more and costs false redactions: at 2 a surname "Li" is found,
+    // and so is every "li" inside another word. Raise it if narratives are being redacted over
+    // initials and units.
+    "minTokenLength": 3
+  },
+
+  // Resource ids and every reference to one, masked as a set.
+  //
+  // Not a path rule, because Reference is a datatype rather than an element: it turns up as
+  // subject, managingOrganization, performer, link[*].other and anywhere a profile puts one, at
+  // any depth in any resource. Listing the paths would mean listing every reference element in
+  // the specification and being wrong about the next one, so the walk recognises the shape
+  // instead.
+  //
+  // ONE algorithm, and it has to be one. Patient.id and the "Patient/example" pointing at it are
+  // masked independently and must land on the same value; that holds only while the same
+  // algorithm sees the same input. Determinism is what makes it work with no table and no
+  // resolution step - and it is also why a reference into a file masked last year still lands.
+  //
+  // Only the id moves. "Patient/example" keeps its type, an absolute URL keeps its server and
+  // base path, and "/_history/2" keeps its version: masking the type would name a resource type
+  // that does not exist, and the server is not the patient's to hide.
+  "references": {
+    "algorithm_reference": { "name": "alnumId" }
+  },
+
+  "maskResources": [
+
+    // ====================================================================================
+    // Bundle - the envelope, not clinical content, but not nothing either.
+    //
+    // Bundle.id, every entry's fullUrl and every entry.request.url are already handled by the
+    // "references" block above, structurally, so they are not repeated here. What that leaves is
+    // the envelope's own identity and its clock, both of which survive otherwise: a Bundle
+    // assembled for one patient carries an identifier that is as persistent as any other, and
+    // timestamp is a real point in time with the same disclosure as any other date.
+    //
+    // signature is REMOVED rather than masked. It is a cryptographic signature over the content
+    // that has just been changed, so it no longer verifies anything, and it carries the signer's
+    // certificate - a named person or organisation - inside the signed blob where no path can
+    // reach them. A signature that cannot verify and cannot be cleaned has no reason to travel.
+    // ====================================================================================
+    {
+      "resourceType": "Bundle",
+      "removePaths": ["signature"],
+      "maskPaths": [
+        { "path": "identifier.value",
+          "algorithm_reference": { "name": "alnumId" } },
+        { "path": "timestamp",
+          "algorithm_reference": { "name": "dateShift" } }
+      ]
+    },
+
+    {
+      "resourceType": "Patient",
+            // Dropped, not masked. photo is an Attachment: base64 image bytes, or a url pointing at
+      // them. There is no masked form of a photograph that is still a photograph of nobody, and
+      // writing text into data would leave an attachment that is not an image with a contentType
+      // claiming it is. So it goes, and the count of what went is reported.
+      "removePaths": ["photo"],
+
+      "maskPaths": [
+
+        // --- identifiers -------------------------------------------------------------------
+        { "path": "identifier[*].value",
+          "algorithm_reference": { "name": "memberId" } },
+        // "Acme Healthcare" in the published example, and it is reproduced in the narrative.
+        { "path": "identifier[*].assigner.display",
+          "algorithm_reference": { "name": "orgName" } },
+
+        // --- names -------------------------------------------------------------------------
+        { "path": "name[*].family",
+          "algorithm_reference": { "name": "lastName" } },
+        { "path": "name[*].given[*]",
+          "algorithm_reference": { "name": "firstName" } },
+        { "path": "name[*].text",
+          "regenerate": { "from": ["given[*]", "family"], "separator": " " } },
+
+        // --- contact points ----------------------------------------------------------------
+        { "path": "telecom[*].value", "where": { "system": "phone" },
+          "algorithm_reference": { "name": "phone" } },
+        { "path": "telecom[*].value", "where": { "system": "fax" },
+          "algorithm_reference": { "name": "phone" } },
+        { "path": "telecom[*].value", "where": { "system": "email" },
+          "algorithm_reference": { "name": "email" } },
+
+        // --- dates -------------------------------------------------------------------------
+        { "path": "birthDate",
+          "algorithm_reference": { "name": "dateShift" } },
+        // The exact birth time hides in an extension beside birthDate. Shifting the date and not
+        // this one leaves the real date of birth in the file, to the second.
+        { "path": "_birthDate.extension[*].valueDateTime",
+          "algorithm_reference": { "name": "dateShift" } },
+        { "path": "deceasedDateTime",
+          "algorithm_reference": { "name": "dateShift" } },
+
+        // Every Period in the resource, and this is not housekeeping. In the published example
+        // address[0].period.start holds 1974-12-25, which is the patient's date of birth exactly.
+        // Leaving these shifts birthDate while publishing the real one beside it - and because
+        // both are then in the file, the difference between them discloses the run's offset, which
+        // recovers every other date in every other file. A Period attached to a person is a date
+        // about that person, whatever element it hangs from.
+        { "path": "identifier[*].period.start", "algorithm_reference": { "name": "dateShift" } },
+        { "path": "identifier[*].period.end",   "algorithm_reference": { "name": "dateShift" } },
+        { "path": "name[*].period.start",       "algorithm_reference": { "name": "dateShift" } },
+        { "path": "name[*].period.end",         "algorithm_reference": { "name": "dateShift" } },
+        { "path": "telecom[*].period.start",    "algorithm_reference": { "name": "dateShift" } },
+        { "path": "telecom[*].period.end",      "algorithm_reference": { "name": "dateShift" } },
+        { "path": "address[*].period.start",    "algorithm_reference": { "name": "dateShift" } },
+        { "path": "address[*].period.end",      "algorithm_reference": { "name": "dateShift" } },
+        { "path": "contact[*].period.start",    "algorithm_reference": { "name": "dateShift" } },
+        { "path": "contact[*].period.end",      "algorithm_reference": { "name": "dateShift" } },
+        { "path": "contact[*].name.period.start", "algorithm_reference": { "name": "dateShift" } },
+        { "path": "contact[*].name.period.end",   "algorithm_reference": { "name": "dateShift" } },
+        { "path": "contact[*].address.period.start", "algorithm_reference": { "name": "dateShift" } },
+        { "path": "contact[*].address.period.end",   "algorithm_reference": { "name": "dateShift" } },
+        { "path": "contact[*].telecom[*].period.start", "algorithm_reference": { "name": "dateShift" } },
+        { "path": "contact[*].telecom[*].period.end",   "algorithm_reference": { "name": "dateShift" } },
+
+        // --- addresses ---------------------------------------------------------------------
+        { "path": "address[*].line[*]",
+          "algorithm_reference": { "name": "address" } },
+        { "path": "address[*].city",
+          "algorithm_reference": { "name": "city" } },
+        { "path": "address[*].district",
+          "algorithm_reference": { "name": "city" } },
+        { "path": "address[*].postalCode",
+          "algorithm_reference": { "name": "zip", "options": { "strict": true } } },
+        // Rebuilt from the components beside it, not masked. See the note at the top of this file.
+        { "path": "address[*].text",
+          "regenerate": { "from": ["line[*]", "city", "district", "state", "postalCode"],
+                          "separator": ", " } },
+
+        // --- the emergency contact, who is another person ----------------------------------
+        { "path": "contact[*].name.family",
+          "algorithm_reference": { "name": "lastName" } },
+        { "path": "contact[*].name.given[*]",
+          "algorithm_reference": { "name": "firstName" } },
+        { "path": "contact[*].name.text",
+          "algorithm_reference": { "name": "lastName" } },
+        { "path": "contact[*].telecom[*].value", "where": { "system": "phone" },
+          "algorithm_reference": { "name": "phone" } },
+        { "path": "contact[*].telecom[*].value", "where": { "system": "email" },
+          "algorithm_reference": { "name": "email" } },
+        { "path": "contact[*].address.line[*]",
+          "algorithm_reference": { "name": "address" } },
+        { "path": "contact[*].address.city",
+          "algorithm_reference": { "name": "city" } },
+        { "path": "contact[*].address.postalCode",
+          "algorithm_reference": { "name": "zip", "options": { "strict": true } } },
+        { "path": "contact[*].address.text",
+          "algorithm_reference": { "name": "address" } },
+
+        // --- named organisations and practitioners -----------------------------------------
+        { "path": "managingOrganization.display",
+          "algorithm_reference": { "name": "orgName" } },
+        { "path": "generalPractitioner[*].display",
+          "algorithm_reference": { "name": "lastName" } },
+        { "path": "contact[*].organization.display",
+          "algorithm_reference": { "name": "orgName" } }
+      ]
+    },
+
+    // ==================================================================================
+    // Practitioner - a named individual, masked like a patient because that is what it is.
+    // ==================================================================================
+    {
+      "resourceType": "Practitioner",
+            // Dropped, not masked. photo is an Attachment: base64 image bytes, or a url pointing at
+      // them. There is no masked form of a photograph that is still a photograph of nobody, and
+      // writing text into data would leave an attachment that is not an image with a contentType
+      // claiming it is. So it goes, and the count of what went is reported.
+      "removePaths": ["photo"],
+
+      "maskPaths": [
+        { "path": "identifier[*].value",          "algorithm_reference": { "name": "alnumId" } },
+        { "path": "identifier[*].assigner.display", "algorithm_reference": { "name": "orgName" } },
+        { "path": "identifier[*].period.start",   "algorithm_reference": { "name": "dateShift" } },
+        { "path": "identifier[*].period.end",     "algorithm_reference": { "name": "dateShift" } },
+
+        { "path": "name[*].family",               "algorithm_reference": { "name": "lastName" } },
+        { "path": "name[*].given[*]",             "algorithm_reference": { "name": "firstName" } },
+        { "path": "name[*].text",
+          "regenerate": { "from": ["given[*]", "family"], "separator": " " } },
+        { "path": "name[*].period.start",         "algorithm_reference": { "name": "dateShift" } },
+        { "path": "name[*].period.end",           "algorithm_reference": { "name": "dateShift" } },
+
+        { "path": "telecom[*].value", "where": { "system": "phone" },
+          "algorithm_reference": { "name": "phone" } },
+        { "path": "telecom[*].value", "where": { "system": "fax" },
+          "algorithm_reference": { "name": "phone" } },
+        { "path": "telecom[*].value", "where": { "system": "email" },
+          "algorithm_reference": { "name": "email" } },
+        { "path": "telecom[*].period.start",      "algorithm_reference": { "name": "dateShift" } },
+        { "path": "telecom[*].period.end",        "algorithm_reference": { "name": "dateShift" } },
+
+        { "path": "address[*].line[*]",           "algorithm_reference": { "name": "address" } },
+        { "path": "address[*].city",              "algorithm_reference": { "name": "city" } },
+        { "path": "address[*].district",          "algorithm_reference": { "name": "city" } },
+        { "path": "address[*].postalCode",        "algorithm_reference": { "name": "zip", "options": { "strict": true } } },
+        { "path": "address[*].text",
+          "regenerate": { "from": ["line[*]", "city", "state", "postalCode"], "separator": ", " } },
+        { "path": "address[*].period.start",      "algorithm_reference": { "name": "dateShift" } },
+        { "path": "address[*].period.end",        "algorithm_reference": { "name": "dateShift" } },
+
+        { "path": "birthDate",                    "algorithm_reference": { "name": "dateShift" } },
+
+        // A licence number, and the body that issued it. The published example carries 12345
+        // against "Example University" - both identify the practitioner as surely as the name.
+        { "path": "qualification[*].identifier[*].value",
+          "algorithm_reference": { "name": "alnumId" } },
+        { "path": "qualification[*].issuer.display",
+          "algorithm_reference": { "name": "orgName" } },
+        { "path": "qualification[*].period.start", "algorithm_reference": { "name": "dateShift" } },
+        { "path": "qualification[*].period.end",   "algorithm_reference": { "name": "dateShift" } }
+      ]
+    },
+
+    // ==================================================================================
+    // RelatedPerson - a second person in the record: a parent, a spouse, an emergency contact.
+    // ==================================================================================
+    {
+      "resourceType": "RelatedPerson",
+            // Dropped, not masked. photo is an Attachment: base64 image bytes, or a url pointing at
+      // them. There is no masked form of a photograph that is still a photograph of nobody, and
+      // writing text into data would leave an attachment that is not an image with a contentType
+      // claiming it is. So it goes, and the count of what went is reported.
+      "removePaths": ["photo"],
+
+      "maskPaths": [
+        { "path": "identifier[*].value",          "algorithm_reference": { "name": "alnumId" } },
+        { "path": "identifier[*].assigner.display", "algorithm_reference": { "name": "orgName" } },
+        { "path": "identifier[*].period.start",   "algorithm_reference": { "name": "dateShift" } },
+        { "path": "identifier[*].period.end",     "algorithm_reference": { "name": "dateShift" } },
+
+        { "path": "name[*].family",               "algorithm_reference": { "name": "lastName" } },
+        { "path": "name[*].given[*]",             "algorithm_reference": { "name": "firstName" } },
+        { "path": "name[*].text",
+          "regenerate": { "from": ["given[*]", "family"], "separator": " " } },
+        // The same trap as _birthDate on Patient: a shadow element beside family carries an
+        // extension, and the published example puts the name's own prefix in it. Masking family
+        // and leaving this publishes a piece of the name that was supposed to have gone.
+        { "path": "name[*]._family.extension[*].valueString",
+          "algorithm_reference": { "name": "lastName" } },
+        { "path": "name[*].period.start",         "algorithm_reference": { "name": "dateShift" } },
+        { "path": "name[*].period.end",           "algorithm_reference": { "name": "dateShift" } },
+
+        { "path": "telecom[*].value", "where": { "system": "phone" },
+          "algorithm_reference": { "name": "phone" } },
+        { "path": "telecom[*].value", "where": { "system": "fax" },
+          "algorithm_reference": { "name": "phone" } },
+        { "path": "telecom[*].value", "where": { "system": "email" },
+          "algorithm_reference": { "name": "email" } },
+        { "path": "telecom[*].period.start",      "algorithm_reference": { "name": "dateShift" } },
+        { "path": "telecom[*].period.end",        "algorithm_reference": { "name": "dateShift" } },
+
+        { "path": "address[*].line[*]",           "algorithm_reference": { "name": "address" } },
+        { "path": "address[*].city",              "algorithm_reference": { "name": "city" } },
+        { "path": "address[*].district",          "algorithm_reference": { "name": "city" } },
+        { "path": "address[*].postalCode",        "algorithm_reference": { "name": "zip", "options": { "strict": true } } },
+        { "path": "address[*].text",
+          "regenerate": { "from": ["line[*]", "city", "state", "postalCode"], "separator": ", " } },
+        { "path": "address[*].period.start",      "algorithm_reference": { "name": "dateShift" } },
+        { "path": "address[*].period.end",        "algorithm_reference": { "name": "dateShift" } },
+
+        { "path": "birthDate",                    "algorithm_reference": { "name": "dateShift" } },
+        { "path": "period.start",                 "algorithm_reference": { "name": "dateShift" } },
+        { "path": "period.end",                   "algorithm_reference": { "name": "dateShift" } }
+      ]
+    },
+
+    // ==================================================================================
+    // Organization - not a person, but it names the small practice a patient attends.
+    // ==================================================================================
+    {
+      "resourceType": "Organization",
+      "maskPaths": [
+        { "path": "identifier[*].value",          "algorithm_reference": { "name": "alnumId" } },
+        { "path": "identifier[*].period.start",   "algorithm_reference": { "name": "dateShift" } },
+        { "path": "identifier[*].period.end",     "algorithm_reference": { "name": "dateShift" } },
+
+        { "path": "name",                         "algorithm_reference": { "name": "orgName" } },
+        { "path": "alias[*]",                     "algorithm_reference": { "name": "orgName" } },
+
+        { "path": "telecom[*].value", "where": { "system": "phone" },
+          "algorithm_reference": { "name": "phone" } },
+        { "path": "telecom[*].value", "where": { "system": "fax" },
+          "algorithm_reference": { "name": "phone" } },
+        { "path": "telecom[*].value", "where": { "system": "email" },
+          "algorithm_reference": { "name": "email" } },
+
+        { "path": "address[*].line[*]",           "algorithm_reference": { "name": "address" } },
+        { "path": "address[*].city",              "algorithm_reference": { "name": "city" } },
+        { "path": "address[*].district",          "algorithm_reference": { "name": "city" } },
+        { "path": "address[*].postalCode",        "algorithm_reference": { "name": "zip", "options": { "strict": true } } },
+        { "path": "address[*].text",
+          "regenerate": { "from": ["line[*]", "city", "state", "postalCode"], "separator": ", " } },
+
+        // A named individual inside an organisation record.
+        { "path": "contact[*].name.family",       "algorithm_reference": { "name": "lastName" } },
+        { "path": "contact[*].name.given[*]",     "algorithm_reference": { "name": "firstName" } },
+        { "path": "contact[*].name.text",
+          "regenerate": { "from": ["given[*]", "family"], "separator": " " } },
+        { "path": "contact[*].telecom[*].value", "where": { "system": "phone" },
+          "algorithm_reference": { "name": "phone" } },
+        { "path": "contact[*].telecom[*].value", "where": { "system": "email" },
+          "algorithm_reference": { "name": "email" } },
+        { "path": "contact[*].address.line[*]",   "algorithm_reference": { "name": "address" } },
+        { "path": "contact[*].address.city",      "algorithm_reference": { "name": "city" } },
+        { "path": "contact[*].address.postalCode","algorithm_reference": { "name": "zip", "options": { "strict": true } } }
+      ]
+    },
+
+    // ==================================================================================
+    // Coverage - the insurance record, and where the member id lives outside Patient.
+    // ==================================================================================
+    {
+      "resourceType": "Coverage",
+      "maskPaths": [
+        { "path": "identifier[*].value",          "algorithm_reference": { "name": "policyNumber" } },
+
+        // memberId, and it has to be memberId. This is the same person's id as
+        // Patient.identifier[*].value, so it must take the same algorithm or the two resources
+        // stop describing one member. memberId, alnumId, subscriberId, policyNumber and
+        // accountNumber are aliases of one algorithm today and therefore agree whatever is
+        // written here - but naming the meaning is what keeps that true if one of them ever
+        // stops being an alias.
+        { "path": "subscriberId",                 "algorithm_reference": { "name": "memberId" } },
+        { "path": "dependent",                    "algorithm_reference": { "name": "alnumId" } },
+
+        { "path": "period.start",                 "algorithm_reference": { "name": "dateShift" } },
+        { "path": "period.end",                   "algorithm_reference": { "name": "dateShift" } },
+
+        // The group number and the group's name. The published example carries "CB135" against
+        // "Corporate Baker's Inc. Local #35" - an employer, which identifies a small group of
+        // people and sometimes one.
+        { "path": "class[*].value",               "algorithm_reference": { "name": "alnumId" } },
+        { "path": "class[*].name",                "algorithm_reference": { "name": "orgName" } }
+      ]
+    },
+
+    // ==================================================================================
+    // Encounter - a visit. Almost everything identifying about it is a date.
+    // ==================================================================================
+    {
+      "resourceType": "Encounter",
+      "maskPaths": [
+        { "path": "identifier[*].value",          "algorithm_reference": { "name": "alnumId" } },
+        { "path": "period.start",                 "algorithm_reference": { "name": "dateShift" } },
+        { "path": "period.end",                   "algorithm_reference": { "name": "dateShift" } },
+        { "path": "statusHistory[*].period.start","algorithm_reference": { "name": "dateShift" } },
+        { "path": "statusHistory[*].period.end",  "algorithm_reference": { "name": "dateShift" } },
+        { "path": "classHistory[*].period.start", "algorithm_reference": { "name": "dateShift" } },
+        { "path": "classHistory[*].period.end",   "algorithm_reference": { "name": "dateShift" } },
+        { "path": "participant[*].period.start",  "algorithm_reference": { "name": "dateShift" } },
+        { "path": "participant[*].period.end",    "algorithm_reference": { "name": "dateShift" } },
+        { "path": "location[*].period.start",     "algorithm_reference": { "name": "dateShift" } },
+        { "path": "location[*].period.end",       "algorithm_reference": { "name": "dateShift" } },
+        { "path": "hospitalization.preAdmissionIdentifier.value",
+          "algorithm_reference": { "name": "alnumId" } }
+      ]
+    },
+
+    // ==================================================================================
+    // Observation - a result. The dates are the identifying part; see the note below on
+    // valueString and note[*].text, which are free text and are not masked here.
+    // ==================================================================================
+    {
+      "resourceType": "Observation",
+      "maskPaths": [
+        { "path": "identifier[*].value",          "algorithm_reference": { "name": "alnumId" } },
+        { "path": "effectiveDateTime",            "algorithm_reference": { "name": "dateShift" } },
+        { "path": "effectivePeriod.start",        "algorithm_reference": { "name": "dateShift" } },
+        { "path": "effectivePeriod.end",          "algorithm_reference": { "name": "dateShift" } },
+        { "path": "issued",                       "algorithm_reference": { "name": "dateShift" } },
+        // Annotation.author[x] as a string is a person's name, written where a Reference would
+        // otherwise go. It is structured, so it is masked; the note's own text is not.
+        { "path": "note[*].authorString",         "algorithm_reference": { "name": "lastName" } },
+        { "path": "note[*].time",                 "algorithm_reference": { "name": "dateShift" } },
+
+        // Free text. Replaced outright - see the freeText instance at the top of this file.
+        { "path": "valueString",                  "algorithm_reference": { "name": "freeText" } },
+        { "path": "note[*].text",                 "algorithm_reference": { "name": "freeText" } },
+        { "path": "component[*].valueString",     "algorithm_reference": { "name": "freeText" } },
+        { "path": "interpretation[*].text",       "algorithm_reference": { "name": "freeText" } },
+        { "path": "bodySite.text",                "algorithm_reference": { "name": "freeText" } },
+        { "path": "method.text",                  "algorithm_reference": { "name": "freeText" } }
+      ]
+    },
+
+    // ==================================================================================
+    // Condition - a diagnosis, and the dates around it.
+    // ==================================================================================
+    {
+      "resourceType": "Condition",
+      "maskPaths": [
+        { "path": "identifier[*].value",          "algorithm_reference": { "name": "alnumId" } },
+        { "path": "onsetDateTime",                "algorithm_reference": { "name": "dateShift" } },
+        { "path": "onsetPeriod.start",            "algorithm_reference": { "name": "dateShift" } },
+        { "path": "onsetPeriod.end",              "algorithm_reference": { "name": "dateShift" } },
+        { "path": "abatementDateTime",            "algorithm_reference": { "name": "dateShift" } },
+        { "path": "abatementPeriod.start",        "algorithm_reference": { "name": "dateShift" } },
+        { "path": "abatementPeriod.end",          "algorithm_reference": { "name": "dateShift" } },
+        { "path": "recordedDate",                 "algorithm_reference": { "name": "dateShift" } },
+        { "path": "note[*].authorString",         "algorithm_reference": { "name": "lastName" } },
+        { "path": "note[*].time",                 "algorithm_reference": { "name": "dateShift" } },
+
+        // Free text. onsetString and abatementString hold things like "about three years ago,
+        // after her mother died" - prose with no structured counterpart.
+        { "path": "onsetString",                  "algorithm_reference": { "name": "freeText" } },
+        { "path": "abatementString",              "algorithm_reference": { "name": "freeText" } },
+        { "path": "note[*].text",                 "algorithm_reference": { "name": "freeText" } }
+      ]
+    },
+
+    // ==================================================================================
+    // Claim - the FHIR shape of what an 837 carries, and masked on the same principles.
+    // ==================================================================================
+    {
+      "resourceType": "Claim",
+      "maskPaths": [
+        { "path": "identifier[*].value",          "algorithm_reference": { "name": "accountNumber" } },
+        { "path": "created",                      "algorithm_reference": { "name": "dateShift" } },
+        { "path": "billablePeriod.start",         "algorithm_reference": { "name": "dateShift" } },
+        { "path": "billablePeriod.end",           "algorithm_reference": { "name": "dateShift" } },
+        { "path": "accident.date",                "algorithm_reference": { "name": "dateShift" } },
+        { "path": "item[*].servicedDate",         "algorithm_reference": { "name": "dateShift" } },
+        { "path": "item[*].servicedPeriod.start", "algorithm_reference": { "name": "dateShift" } },
+        { "path": "item[*].servicedPeriod.end",   "algorithm_reference": { "name": "dateShift" } },
+        { "path": "supportingInfo[*].timingDate", "algorithm_reference": { "name": "dateShift" } },
+        { "path": "supportingInfo[*].timingPeriod.start",
+          "algorithm_reference": { "name": "dateShift" } },
+        { "path": "supportingInfo[*].timingPeriod.end",
+          "algorithm_reference": { "name": "dateShift" } },
+        { "path": "insurance[*].identifier.value",
+          "algorithm_reference": { "name": "policyNumber" } },
+        { "path": "item[*].encounter[*].display", "algorithm_reference": { "name": "freeText" } }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2177 @@
+{
+  "resourceType": "Bundle",
+  "id": "c5c963ff-4514-58d7-bcfb-8d476f364b3c",
+  "type": "collection",
+  "timestamp": "2026-10-14T09:00:00Z",
+  "entry": [
+    {
+      "fullUrl": "http://example.org/fhir/Organization/hl7",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "hl7",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      Health Level Seven International\n      <br/>\n\t\t\t\t3300 Washtenaw Avenue, Suite 227\n      <br/>\n\t\t\t\tAnn Arbor, MI 48104\n      <br/>\n\t\t\t\tUSA\n      <br/>\n\t\t\t\t(+1) 734-677-7777 (phone)\n      <br/>\n\t\t\t\t(+1) 734-677-6622 (fax)\n      <br/>\n\t\t\t\tE-mail:  \n      <a href=\"mailto:hq@HL7.org\">hq@HL7.org</a>\n    \n    </div>"
+        },
+        "name": "Health Level Seven International",
+        "alias": [
+          "HL7 International"
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "(+1) 617-457-0645"
+          },
+          {
+            "system": "fax",
+            "value": "(+1) 617-457-0645"
+          },
+          {
+            "system": "email",
+            "value": "hq@HL7.org"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "3300 Washtenaw Avenue, Suite 227"
+            ],
+            "city": "Ann Arbor",
+            "state": "MI",
+            "postalCode": "48104",
+            "country": "USA"
+          }
+        ],
+        "endpoint": [
+          {
+            "reference": "Endpoint/example"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://example.org/fhir/Patient/example-1",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "example-1",
+        "identifier": [
+          {
+            "use": "usual",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "MR"
+                }
+              ]
+            },
+            "system": "urn:oid:1.2.36.146.595.217.0.1",
+            "value": "ULZ56049896",
+            "period": {
+              "start": "2001-05-06"
+            },
+            "assigner": {
+              "display": "Acme Healthcare"
+            }
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Brown",
+            "given": [
+              "Mary",
+              "Mary"
+            ]
+          },
+          {
+            "use": "usual",
+            "given": [
+              "Donna"
+            ]
+          },
+          {
+            "use": "maiden",
+            "family": "Cruz",
+            "given": [
+              "Ashley",
+              "Stephanie"
+            ],
+            "period": {
+              "end": "2002"
+            }
+          }
+        ],
+        "telecom": [
+          {
+            "use": "home"
+          },
+          {
+            "system": "phone",
+            "value": "(47) 8841 4128",
+            "use": "work",
+            "rank": 1
+          },
+          {
+            "system": "phone",
+            "value": "(53) 4891 1341",
+            "use": "mobile",
+            "rank": 2
+          },
+          {
+            "system": "phone",
+            "value": "(67) 6950 3932",
+            "use": "old",
+            "period": {
+              "end": "2014"
+            }
+          }
+        ],
+        "gender": "female",
+        "birthDate": "2007-08-09",
+        "_birthDate": {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/patient-birthTime",
+              "valueDateTime": "1974-12-25T14:35:45-05:00"
+            }
+          ]
+        },
+        "deceasedBoolean": false,
+        "address": [
+          {
+            "use": "home",
+            "type": "both",
+            "text": "1093 Spruce Ave, Los Angeles, Los Angeles, CA 90002",
+            "line": [
+              "1093 Spruce Ave"
+            ],
+            "city": "Los Angeles",
+            "district": "Los Angeles",
+            "state": "CA",
+            "postalCode": "90002",
+            "period": {
+              "start": "1974-12-25"
+            }
+          }
+        ],
+        "contact": [
+          {
+            "relationship": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v2-0131",
+                    "code": "N"
+                  }
+                ]
+              }
+            ],
+            "name": {
+              "family": "Brown",
+              "_family": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/humanname-own-prefix",
+                    "valueString": "VV"
+                  }
+                ]
+              },
+              "given": [
+                "Mary"
+              ]
+            },
+            "telecom": [
+              {
+                "system": "phone",
+                "value": "+34 (788) 414128"
+              }
+            ],
+            "address": {
+              "use": "home",
+              "type": "both",
+              "line": [
+                "1093 Spruce Ave"
+              ],
+              "city": "Los Angeles",
+              "district": "Rainbow",
+              "state": "Vic",
+              "postalCode": "90002",
+              "period": {
+                "start": "1974-12-25"
+              }
+            },
+            "gender": "female",
+            "period": {
+              "start": "2012"
+            }
+          }
+        ],
+        "managingOrganization": {
+          "reference": "Organization/1"
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.org/fhir/Coverage/9876B1-2",
+      "resource": {
+        "resourceType": "Coverage",
+        "id": "9876B1-2",
+        "identifier": [
+          {
+            "system": "http://benefitsinc.com/certificate",
+            "value": "BMD122686"
+          }
+        ],
+        "status": "active",
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "EHCPOL",
+              "display": "extended healthcare"
+            }
+          ]
+        },
+        "policyHolder": {
+          "reference": "http://benefitsinc.com/FHIR/Organization/CBI35"
+        },
+        "subscriber": {
+          "reference": "Patient/example-1"
+        },
+        "beneficiary": {
+          "reference": "Patient/example-1"
+        },
+        "dependent": "0",
+        "relationship": {
+          "coding": [
+            {
+              "code": "child"
+            }
+          ]
+        },
+        "period": {
+          "start": "2025-02-08",
+          "end": "2028-02-03"
+        },
+        "payor": [
+          {
+            "reference": "Organization/hl7"
+          }
+        ],
+        "class": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "group"
+                }
+              ]
+            },
+            "value": "CB135",
+            "name": "Corporate Baker's Inc. Local #35"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "subgroup"
+                }
+              ]
+            },
+            "value": "123",
+            "name": "Trainee Part-time Benefits"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "plan"
+                }
+              ]
+            },
+            "value": "B37FC",
+            "name": "Full Coverage: Medical, Dental, Pharmacy, Vision, EHC"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "subplan"
+                }
+              ]
+            },
+            "value": "P7",
+            "name": "Includes afterlife benefits"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "class"
+                }
+              ]
+            },
+            "value": "SILVER",
+            "name": "Silver: Family Plan spouse only"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "subclass"
+                }
+              ]
+            },
+            "value": "Tier2",
+            "name": "Low deductable, max $20 copay"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "sequence"
+                }
+              ]
+            },
+            "value": "9"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxid"
+                }
+              ]
+            },
+            "value": "MDF12345"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxbin"
+                }
+              ]
+            },
+            "value": "987654"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxgroup"
+                }
+              ]
+            },
+            "value": "M35PT"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxpcn"
+                }
+              ]
+            },
+            "value": "234516"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "sequence"
+                }
+              ]
+            },
+            "value": "9"
+          }
+        ],
+        "subscriberId": "BMD122686"
+      }
+    },
+    {
+      "fullUrl": "http://example.org/fhir/Patient/example-3",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "example-3",
+        "identifier": [
+          {
+            "use": "usual",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "MR"
+                }
+              ]
+            },
+            "system": "urn:oid:1.2.36.146.595.217.0.1",
+            "value": "XJR91864286",
+            "period": {
+              "start": "2001-05-06"
+            },
+            "assigner": {
+              "display": "Acme Healthcare"
+            }
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Phillips",
+            "given": [
+              "Joseph",
+              "John"
+            ]
+          },
+          {
+            "use": "usual",
+            "given": [
+              "Susan"
+            ]
+          },
+          {
+            "use": "maiden",
+            "family": "Reed",
+            "given": [
+              "Emma",
+              "Angela"
+            ],
+            "period": {
+              "end": "2002"
+            }
+          }
+        ],
+        "telecom": [
+          {
+            "use": "home"
+          },
+          {
+            "system": "phone",
+            "value": "(49) 9630 7573",
+            "use": "work",
+            "rank": 1
+          },
+          {
+            "system": "phone",
+            "value": "(42) 3512 1095",
+            "use": "mobile",
+            "rank": 2
+          },
+          {
+            "system": "phone",
+            "value": "(77) 6628 8905",
+            "use": "old",
+            "period": {
+              "end": "2014"
+            }
+          }
+        ],
+        "gender": "male",
+        "birthDate": "2013-02-25",
+        "_birthDate": {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/patient-birthTime",
+              "valueDateTime": "1974-12-25T14:35:45-05:00"
+            }
+          ]
+        },
+        "deceasedBoolean": false,
+        "address": [
+          {
+            "use": "home",
+            "type": "both",
+            "text": "5735 Pine Ave, Detroit, Detroit, MI 48203",
+            "line": [
+              "5735 Pine Ave"
+            ],
+            "city": "Detroit",
+            "district": "Detroit",
+            "state": "MI",
+            "postalCode": "48203",
+            "period": {
+              "start": "1974-12-25"
+            }
+          }
+        ],
+        "contact": [
+          {
+            "relationship": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v2-0131",
+                    "code": "N"
+                  }
+                ]
+              }
+            ],
+            "name": {
+              "family": "Phillips",
+              "_family": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/humanname-own-prefix",
+                    "valueString": "VV"
+                  }
+                ]
+              },
+              "given": [
+                "Joseph"
+              ]
+            },
+            "telecom": [
+              {
+                "system": "phone",
+                "value": "+34 (996) 307573"
+              }
+            ],
+            "address": {
+              "use": "home",
+              "type": "both",
+              "line": [
+                "5735 Pine Ave"
+              ],
+              "city": "Detroit",
+              "district": "Rainbow",
+              "state": "Vic",
+              "postalCode": "48203",
+              "period": {
+                "start": "1974-12-25"
+              }
+            },
+            "gender": "female",
+            "period": {
+              "start": "2012"
+            }
+          }
+        ],
+        "managingOrganization": {
+          "reference": "Organization/1"
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.org/fhir/Coverage/9876B1-4",
+      "resource": {
+        "resourceType": "Coverage",
+        "id": "9876B1-4",
+        "identifier": [
+          {
+            "system": "http://benefitsinc.com/certificate",
+            "value": "ACD742009"
+          }
+        ],
+        "status": "active",
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "EHCPOL",
+              "display": "extended healthcare"
+            }
+          ]
+        },
+        "policyHolder": {
+          "reference": "http://benefitsinc.com/FHIR/Organization/CBI35"
+        },
+        "subscriber": {
+          "reference": "Patient/example-3"
+        },
+        "beneficiary": {
+          "reference": "Patient/example-3"
+        },
+        "dependent": "0",
+        "relationship": {
+          "coding": [
+            {
+              "code": "self"
+            }
+          ]
+        },
+        "period": {
+          "start": "2025-08-16",
+          "end": "2028-03-09"
+        },
+        "payor": [
+          {
+            "reference": "Organization/hl7"
+          }
+        ],
+        "class": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "group"
+                }
+              ]
+            },
+            "value": "CB135",
+            "name": "Corporate Baker's Inc. Local #35"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "subgroup"
+                }
+              ]
+            },
+            "value": "123",
+            "name": "Trainee Part-time Benefits"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "plan"
+                }
+              ]
+            },
+            "value": "B37FC",
+            "name": "Full Coverage: Medical, Dental, Pharmacy, Vision, EHC"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "subplan"
+                }
+              ]
+            },
+            "value": "P7",
+            "name": "Includes afterlife benefits"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "class"
+                }
+              ]
+            },
+            "value": "SILVER",
+            "name": "Silver: Family Plan spouse only"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "subclass"
+                }
+              ]
+            },
+            "value": "Tier2",
+            "name": "Low deductable, max $20 copay"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "sequence"
+                }
+              ]
+            },
+            "value": "9"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxid"
+                }
+              ]
+            },
+            "value": "MDF12345"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxbin"
+                }
+              ]
+            },
+            "value": "987654"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxgroup"
+                }
+              ]
+            },
+            "value": "M35PT"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxpcn"
+                }
+              ]
+            },
+            "value": "234516"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "sequence"
+                }
+              ]
+            },
+            "value": "9"
+          }
+        ],
+        "subscriberId": "ACD742009"
+      }
+    },
+    {
+      "fullUrl": "http://example.org/fhir/Patient/example-5",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "example-5",
+        "identifier": [
+          {
+            "use": "usual",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "MR"
+                }
+              ]
+            },
+            "system": "urn:oid:1.2.36.146.595.217.0.1",
+            "value": "DWL90506327",
+            "period": {
+              "start": "2001-05-06"
+            },
+            "assigner": {
+              "display": "Acme Healthcare"
+            }
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Bailey",
+            "given": [
+              "Melissa",
+              "Emily"
+            ]
+          },
+          {
+            "use": "usual",
+            "given": [
+              "Anthony"
+            ]
+          },
+          {
+            "use": "maiden",
+            "family": "Richardson",
+            "given": [
+              "Dorothy",
+              "Brenda"
+            ],
+            "period": {
+              "end": "2002"
+            }
+          }
+        ],
+        "telecom": [
+          {
+            "use": "home"
+          },
+          {
+            "system": "phone",
+            "value": "(91) 9677 9995",
+            "use": "work",
+            "rank": 1
+          },
+          {
+            "system": "phone",
+            "value": "(89) 9402 5524",
+            "use": "mobile",
+            "rank": 2
+          },
+          {
+            "system": "phone",
+            "value": "(99) 2655 3549",
+            "use": "old",
+            "period": {
+              "end": "2014"
+            }
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1993-10-28",
+        "_birthDate": {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/patient-birthTime",
+              "valueDateTime": "1974-12-25T14:35:45-05:00"
+            }
+          ]
+        },
+        "deceasedBoolean": false,
+        "address": [
+          {
+            "use": "home",
+            "type": "both",
+            "text": "512 Roosevelt Blvd, Aurora, Aurora, CO 80013",
+            "line": [
+              "512 Roosevelt Blvd"
+            ],
+            "city": "Aurora",
+            "district": "Aurora",
+            "state": "CO",
+            "postalCode": "80013",
+            "period": {
+              "start": "1974-12-25"
+            }
+          }
+        ],
+        "contact": [
+          {
+            "relationship": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v2-0131",
+                    "code": "N"
+                  }
+                ]
+              }
+            ],
+            "name": {
+              "family": "Bailey",
+              "_family": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/humanname-own-prefix",
+                    "valueString": "VV"
+                  }
+                ]
+              },
+              "given": [
+                "Melissa"
+              ]
+            },
+            "telecom": [
+              {
+                "system": "phone",
+                "value": "+39 (196) 779995"
+              }
+            ],
+            "address": {
+              "use": "home",
+              "type": "both",
+              "line": [
+                "512 Roosevelt Blvd"
+              ],
+              "city": "Aurora",
+              "district": "Rainbow",
+              "state": "Vic",
+              "postalCode": "80013",
+              "period": {
+                "start": "1974-12-25"
+              }
+            },
+            "gender": "female",
+            "period": {
+              "start": "2012"
+            }
+          }
+        ],
+        "managingOrganization": {
+          "reference": "Organization/1"
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.org/fhir/Coverage/9876B1-6",
+      "resource": {
+        "resourceType": "Coverage",
+        "id": "9876B1-6",
+        "identifier": [
+          {
+            "system": "http://benefitsinc.com/certificate",
+            "value": "RRD026942"
+          }
+        ],
+        "status": "active",
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "EHCPOL",
+              "display": "extended healthcare"
+            }
+          ]
+        },
+        "policyHolder": {
+          "reference": "http://benefitsinc.com/FHIR/Organization/CBI35"
+        },
+        "subscriber": {
+          "reference": "Patient/example-5"
+        },
+        "beneficiary": {
+          "reference": "Patient/example-5"
+        },
+        "dependent": "0",
+        "relationship": {
+          "coding": [
+            {
+              "code": "self"
+            }
+          ]
+        },
+        "period": {
+          "start": "2018-08-14",
+          "end": "2028-05-10"
+        },
+        "payor": [
+          {
+            "reference": "Organization/hl7"
+          }
+        ],
+        "class": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "group"
+                }
+              ]
+            },
+            "value": "CB135",
+            "name": "Corporate Baker's Inc. Local #35"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "subgroup"
+                }
+              ]
+            },
+            "value": "123",
+            "name": "Trainee Part-time Benefits"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "plan"
+                }
+              ]
+            },
+            "value": "B37FC",
+            "name": "Full Coverage: Medical, Dental, Pharmacy, Vision, EHC"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "subplan"
+                }
+              ]
+            },
+            "value": "P7",
+            "name": "Includes afterlife benefits"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "class"
+                }
+              ]
+            },
+            "value": "SILVER",
+            "name": "Silver: Family Plan spouse only"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "subclass"
+                }
+              ]
+            },
+            "value": "Tier2",
+            "name": "Low deductable, max $20 copay"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "sequence"
+                }
+              ]
+            },
+            "value": "9"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxid"
+                }
+              ]
+            },
+            "value": "MDF12345"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxbin"
+                }
+              ]
+            },
+            "value": "987654"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxgroup"
+                }
+              ]
+            },
+            "value": "M35PT"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxpcn"
+                }
+              ]
+            },
+            "value": "234516"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "sequence"
+                }
+              ]
+            },
+            "value": "9"
+          }
+        ],
+        "subscriberId": "RRD026942"
+      }
+    },
+    {
+      "fullUrl": "http://example.org/fhir/Patient/example-7",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "example-7",
+        "identifier": [
+          {
+            "use": "usual",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "MR"
+                }
+              ]
+            },
+            "system": "urn:oid:1.2.36.146.595.217.0.1",
+            "value": "JTG93344576",
+            "period": {
+              "start": "2001-05-06"
+            },
+            "assigner": {
+              "display": "Acme Healthcare"
+            }
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Cox",
+            "given": [
+              "Michelle",
+              "Justin"
+            ]
+          },
+          {
+            "use": "usual",
+            "given": [
+              "Amanda"
+            ]
+          },
+          {
+            "use": "maiden",
+            "family": "Martin",
+            "given": [
+              "Brian",
+              "Shirley"
+            ],
+            "period": {
+              "end": "2002"
+            }
+          }
+        ],
+        "telecom": [
+          {
+            "use": "home"
+          },
+          {
+            "system": "phone",
+            "value": "(33) 7262 4309",
+            "use": "work",
+            "rank": 1
+          },
+          {
+            "system": "phone",
+            "value": "(27) 6537 1181",
+            "use": "mobile",
+            "rank": 2
+          },
+          {
+            "system": "phone",
+            "value": "(89) 4787 1832",
+            "use": "old",
+            "period": {
+              "end": "2014"
+            }
+          }
+        ],
+        "gender": "female",
+        "birthDate": "2018-10-13",
+        "_birthDate": {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/patient-birthTime",
+              "valueDateTime": "1974-12-25T14:35:45-05:00"
+            }
+          ]
+        },
+        "deceasedBoolean": false,
+        "address": [
+          {
+            "use": "home",
+            "type": "both",
+            "text": "6678 Orchard Ln, Lowell, Lowell, MA 01854",
+            "line": [
+              "6678 Orchard Ln"
+            ],
+            "city": "Lowell",
+            "district": "Lowell",
+            "state": "MA",
+            "postalCode": "01854",
+            "period": {
+              "start": "1974-12-25"
+            }
+          }
+        ],
+        "contact": [
+          {
+            "relationship": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v2-0131",
+                    "code": "N"
+                  }
+                ]
+              }
+            ],
+            "name": {
+              "family": "Cox",
+              "_family": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/humanname-own-prefix",
+                    "valueString": "VV"
+                  }
+                ]
+              },
+              "given": [
+                "Michelle"
+              ]
+            },
+            "telecom": [
+              {
+                "system": "phone",
+                "value": "+33 (372) 624309"
+              }
+            ],
+            "address": {
+              "use": "home",
+              "type": "both",
+              "line": [
+                "6678 Orchard Ln"
+              ],
+              "city": "Lowell",
+              "district": "Rainbow",
+              "state": "Vic",
+              "postalCode": "01854",
+              "period": {
+                "start": "1974-12-25"
+              }
+            },
+            "gender": "female",
+            "period": {
+              "start": "2012"
+            }
+          }
+        ],
+        "managingOrganization": {
+          "reference": "Organization/1"
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.org/fhir/Coverage/9876B1-8",
+      "resource": {
+        "resourceType": "Coverage",
+        "id": "9876B1-8",
+        "identifier": [
+          {
+            "system": "http://benefitsinc.com/certificate",
+            "value": "ELT616283"
+          }
+        ],
+        "status": "active",
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "EHCPOL",
+              "display": "extended healthcare"
+            }
+          ]
+        },
+        "policyHolder": {
+          "reference": "http://benefitsinc.com/FHIR/Organization/CBI35"
+        },
+        "subscriber": {
+          "reference": "Patient/example-7"
+        },
+        "beneficiary": {
+          "reference": "Patient/example-7"
+        },
+        "dependent": "0",
+        "relationship": {
+          "coding": [
+            {
+              "code": "self"
+            }
+          ]
+        },
+        "period": {
+          "start": "2021-11-26",
+          "end": "2026-10-20"
+        },
+        "payor": [
+          {
+            "reference": "Organization/hl7"
+          }
+        ],
+        "class": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "group"
+                }
+              ]
+            },
+            "value": "CB135",
+            "name": "Corporate Baker's Inc. Local #35"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "subgroup"
+                }
+              ]
+            },
+            "value": "123",
+            "name": "Trainee Part-time Benefits"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "plan"
+                }
+              ]
+            },
+            "value": "B37FC",
+            "name": "Full Coverage: Medical, Dental, Pharmacy, Vision, EHC"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "subplan"
+                }
+              ]
+            },
+            "value": "P7",
+            "name": "Includes afterlife benefits"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "class"
+                }
+              ]
+            },
+            "value": "SILVER",
+            "name": "Silver: Family Plan spouse only"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "subclass"
+                }
+              ]
+            },
+            "value": "Tier2",
+            "name": "Low deductable, max $20 copay"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "sequence"
+                }
+              ]
+            },
+            "value": "9"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxid"
+                }
+              ]
+            },
+            "value": "MDF12345"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxbin"
+                }
+              ]
+            },
+            "value": "987654"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxgroup"
+                }
+              ]
+            },
+            "value": "M35PT"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxpcn"
+                }
+              ]
+            },
+            "value": "234516"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "sequence"
+                }
+              ]
+            },
+            "value": "9"
+          }
+        ],
+        "subscriberId": "ELT616283"
+      }
+    },
+    {
+      "fullUrl": "http://example.org/fhir/Patient/example-9",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "example-9",
+        "identifier": [
+          {
+            "use": "usual",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "MR"
+                }
+              ]
+            },
+            "system": "urn:oid:1.2.36.146.595.217.0.1",
+            "value": "SIO16723123",
+            "period": {
+              "start": "2001-05-06"
+            },
+            "assigner": {
+              "display": "Acme Healthcare"
+            }
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Rogers",
+            "given": [
+              "Emma",
+              "Thomas"
+            ]
+          },
+          {
+            "use": "usual",
+            "given": [
+              "Michael"
+            ]
+          },
+          {
+            "use": "maiden",
+            "family": "Wright",
+            "given": [
+              "Amy",
+              "David"
+            ],
+            "period": {
+              "end": "2002"
+            }
+          }
+        ],
+        "telecom": [
+          {
+            "use": "home"
+          },
+          {
+            "system": "phone",
+            "value": "(77) 9531 6485",
+            "use": "work",
+            "rank": 1
+          },
+          {
+            "system": "phone",
+            "value": "(25) 3945 7223",
+            "use": "mobile",
+            "rank": 2
+          },
+          {
+            "system": "phone",
+            "value": "(88) 2226 8820",
+            "use": "old",
+            "period": {
+              "end": "2014"
+            }
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1980-08-13",
+        "_birthDate": {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/patient-birthTime",
+              "valueDateTime": "1974-12-25T14:35:45-05:00"
+            }
+          ]
+        },
+        "deceasedBoolean": false,
+        "address": [
+          {
+            "use": "home",
+            "type": "both",
+            "text": "429 Jefferson Ave, Indianapolis, Indianapolis, IN 46204",
+            "line": [
+              "429 Jefferson Ave"
+            ],
+            "city": "Indianapolis",
+            "district": "Indianapolis",
+            "state": "IN",
+            "postalCode": "46204",
+            "period": {
+              "start": "1974-12-25"
+            }
+          }
+        ],
+        "contact": [
+          {
+            "relationship": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v2-0131",
+                    "code": "N"
+                  }
+                ]
+              }
+            ],
+            "name": {
+              "family": "Rogers",
+              "_family": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/humanname-own-prefix",
+                    "valueString": "VV"
+                  }
+                ]
+              },
+              "given": [
+                "Emma"
+              ]
+            },
+            "telecom": [
+              {
+                "system": "phone",
+                "value": "+37 (795) 316485"
+              }
+            ],
+            "address": {
+              "use": "home",
+              "type": "both",
+              "line": [
+                "429 Jefferson Ave"
+              ],
+              "city": "Indianapolis",
+              "district": "Rainbow",
+              "state": "Vic",
+              "postalCode": "46204",
+              "period": {
+                "start": "1974-12-25"
+              }
+            },
+            "gender": "female",
+            "period": {
+              "start": "2012"
+            }
+          }
+        ],
+        "managingOrganization": {
+          "reference": "Organization/1"
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.org/fhir/Coverage/9876B1-10",
+      "resource": {
+        "resourceType": "Coverage",
+        "id": "9876B1-10",
+        "identifier": [
+          {
+            "system": "http://benefitsinc.com/certificate",
+            "value": "AHG196831"
+          }
+        ],
+        "status": "active",
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "EHCPOL",
+              "display": "extended healthcare"
+            }
+          ]
+        },
+        "policyHolder": {
+          "reference": "http://benefitsinc.com/FHIR/Organization/CBI35"
+        },
+        "subscriber": {
+          "reference": "Patient/example-9"
+        },
+        "beneficiary": {
+          "reference": "Patient/example-9"
+        },
+        "dependent": "0",
+        "relationship": {
+          "coding": [
+            {
+              "code": "self"
+            }
+          ]
+        },
+        "period": {
+          "start": "2019-06-24",
+          "end": "2028-09-11"
+        },
+        "payor": [
+          {
+            "reference": "Organization/hl7"
+          }
+        ],
+        "class": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "group"
+                }
+              ]
+            },
+            "value": "CB135",
+            "name": "Corporate Baker's Inc. Local #35"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "subgroup"
+                }
+              ]
+            },
+            "value": "123",
+            "name": "Trainee Part-time Benefits"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "plan"
+                }
+              ]
+            },
+            "value": "B37FC",
+            "name": "Full Coverage: Medical, Dental, Pharmacy, Vision, EHC"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "subplan"
+                }
+              ]
+            },
+            "value": "P7",
+            "name": "Includes afterlife benefits"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "class"
+                }
+              ]
+            },
+            "value": "SILVER",
+            "name": "Silver: Family Plan spouse only"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "subclass"
+                }
+              ]
+            },
+            "value": "Tier2",
+            "name": "Low deductable, max $20 copay"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "sequence"
+                }
+              ]
+            },
+            "value": "9"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxid"
+                }
+              ]
+            },
+            "value": "MDF12345"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxbin"
+                }
+              ]
+            },
+            "value": "987654"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxgroup"
+                }
+              ]
+            },
+            "value": "M35PT"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxpcn"
+                }
+              ]
+            },
+            "value": "234516"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "sequence"
+                }
+              ]
+            },
+            "value": "9"
+          }
+        ],
+        "subscriberId": "AHG196831"
+      }
+    },
+    {
+      "fullUrl": "http://example.org/fhir/Patient/example-11",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "example-11",
+        "identifier": [
+          {
+            "use": "usual",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "MR"
+                }
+              ]
+            },
+            "system": "urn:oid:1.2.36.146.595.217.0.1",
+            "value": "MRM33186083",
+            "period": {
+              "start": "2001-05-06"
+            },
+            "assigner": {
+              "display": "Acme Healthcare"
+            }
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Hall",
+            "given": [
+              "Justin",
+              "Sarah"
+            ]
+          },
+          {
+            "use": "usual",
+            "given": [
+              "Barbara"
+            ]
+          },
+          {
+            "use": "maiden",
+            "family": "Taylor",
+            "given": [
+              "Donna",
+              "Jacob"
+            ],
+            "period": {
+              "end": "2002"
+            }
+          }
+        ],
+        "telecom": [
+          {
+            "use": "home"
+          },
+          {
+            "system": "phone",
+            "value": "(64) 8822 0435",
+            "use": "work",
+            "rank": 1
+          },
+          {
+            "system": "phone",
+            "value": "(52) 7716 9357",
+            "use": "mobile",
+            "rank": 2
+          },
+          {
+            "system": "phone",
+            "value": "(20) 9784 2836",
+            "use": "old",
+            "period": {
+              "end": "2014"
+            }
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1980-01-02",
+        "_birthDate": {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/patient-birthTime",
+              "valueDateTime": "1974-12-25T14:35:45-05:00"
+            }
+          ]
+        },
+        "deceasedBoolean": false,
+        "address": [
+          {
+            "use": "home",
+            "type": "both",
+            "text": "6356 Union St, Manchester, Manchester, NH 03104",
+            "line": [
+              "6356 Union St"
+            ],
+            "city": "Manchester",
+            "district": "Manchester",
+            "state": "NH",
+            "postalCode": "03104",
+            "period": {
+              "start": "1974-12-25"
+            }
+          }
+        ],
+        "contact": [
+          {
+            "relationship": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v2-0131",
+                    "code": "N"
+                  }
+                ]
+              }
+            ],
+            "name": {
+              "family": "Hall",
+              "_family": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/humanname-own-prefix",
+                    "valueString": "VV"
+                  }
+                ]
+              },
+              "given": [
+                "Justin"
+              ]
+            },
+            "telecom": [
+              {
+                "system": "phone",
+                "value": "+36 (488) 220435"
+              }
+            ],
+            "address": {
+              "use": "home",
+              "type": "both",
+              "line": [
+                "6356 Union St"
+              ],
+              "city": "Manchester",
+              "district": "Rainbow",
+              "state": "Vic",
+              "postalCode": "03104",
+              "period": {
+                "start": "1974-12-25"
+              }
+            },
+            "gender": "female",
+            "period": {
+              "start": "2012"
+            }
+          }
+        ],
+        "managingOrganization": {
+          "reference": "Organization/1"
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.org/fhir/Coverage/9876B1-12",
+      "resource": {
+        "resourceType": "Coverage",
+        "id": "9876B1-12",
+        "identifier": [
+          {
+            "system": "http://benefitsinc.com/certificate",
+            "value": "RBF359050"
+          }
+        ],
+        "status": "active",
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "EHCPOL",
+              "display": "extended healthcare"
+            }
+          ]
+        },
+        "policyHolder": {
+          "reference": "http://benefitsinc.com/FHIR/Organization/CBI35"
+        },
+        "subscriber": {
+          "reference": "Patient/example-11"
+        },
+        "beneficiary": {
+          "reference": "Patient/example-11"
+        },
+        "dependent": "0",
+        "relationship": {
+          "coding": [
+            {
+              "code": "child"
+            }
+          ]
+        },
+        "period": {
+          "start": "2018-08-01",
+          "end": "2028-04-20"
+        },
+        "payor": [
+          {
+            "reference": "Organization/hl7"
+          }
+        ],
+        "class": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "group"
+                }
+              ]
+            },
+            "value": "CB135",
+            "name": "Corporate Baker's Inc. Local #35"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "subgroup"
+                }
+              ]
+            },
+            "value": "123",
+            "name": "Trainee Part-time Benefits"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "plan"
+                }
+              ]
+            },
+            "value": "B37FC",
+            "name": "Full Coverage: Medical, Dental, Pharmacy, Vision, EHC"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "subplan"
+                }
+              ]
+            },
+            "value": "P7",
+            "name": "Includes afterlife benefits"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "class"
+                }
+              ]
+            },
+            "value": "SILVER",
+            "name": "Silver: Family Plan spouse only"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "subclass"
+                }
+              ]
+            },
+            "value": "Tier2",
+            "name": "Low deductable, max $20 copay"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "sequence"
+                }
+              ]
+            },
+            "value": "9"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxid"
+                }
+              ]
+            },
+            "value": "MDF12345"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxbin"
+                }
+              ]
+            },
+            "value": "987654"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxgroup"
+                }
+              ]
+            },
+            "value": "M35PT"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxpcn"
+                }
+              ]
+            },
+            "value": "234516"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "sequence"
+                }
+              ]
+            },
+            "value": "9"
+          }
+        ],
+        "subscriberId": "RBF359050"
+      }
+    }
+  ]
+}

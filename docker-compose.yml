@@ -1,0 +1,27 @@
+# Alternative to a local SQL Server install. The PoC's default is a local
+# instance configured through .env; this file gives the same thing in a
+# container. Databases are created by seed/create_databases.py either way.
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sdg-sqlserver
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "${SDG_MSSQL_PASSWORD}"
+      MSSQL_PID: "Developer"
+    ports:
+      # This machine only: published without an address, the sa login would be
+      # reachable from the rest of the network.
+      - "127.0.0.1:${SDG_MSSQL_PORT:-1433}:1433"
+    volumes:
+      - sdg-mssql-data:/var/opt/mssql
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P "$$MSSQL_SA_PASSWORD" -C -Q "SELECT 1" || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+volumes:
+  sdg-mssql-data:

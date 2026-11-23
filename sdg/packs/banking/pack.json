@@ -1,0 +1,137 @@
+{
+ "id": "banking",
+ "name": "Retail banking",
+ "version": 1,
+ "_about": "A small retail bank: customers hold accounts, accounts carry transactions. The proof that SDM is one framework: no code knows this business; this folder is all of it. Its sample bank is sample/bank_source.sql, filled by seed/bank.py.",
+ "plan_name": "bank-slice",
+ "entities": {
+  "customers": {
+   "role": "primary",
+   "anchor": "CUSTOMER_ID",
+   "key_column": "CUSTOMER_ID"
+  },
+  "accounts": {
+   "role": "child",
+   "parent": "customers",
+   "anchor": "ACCOUNT_ID",
+   "line_anchor": "TXN_SEQ",
+   "key_columns": [
+    "ACCOUNT_ID",
+    "TXN_SEQ"
+   ]
+  }
+ },
+ "tables": {
+  "never_generated": [
+   "dbo.GL_ENTRY"
+  ],
+  "modes": {
+   "dbo.BRANCH": "reuse",
+   "dbo.PRODUCT": "reuse",
+   "dbo.MCC": "reuse",
+   "dbo.GL_ENTRY": "reuse",
+   "dbo.AUDIT_LOG": "exclude"
+  }
+ },
+ "plan": {
+  "root_counts": {},
+  "store_elements": {},
+  "always_together": {},
+  "kind_anchors": {
+   "customer": "CUSTOMER_ID",
+   "account": "ACCOUNT_ID",
+   "line": "TXN_SEQ"
+  },
+  "sex_fields": [],
+  "empty_is_a_value": [],
+  "record_tables": {
+   "customers": {
+    "carries": [
+     "CUSTOMER_ID",
+     "DOB"
+    ]
+   },
+   "accounts": {
+    "carries": [
+     "ACCOUNT_ID",
+     "OPEN_DATE"
+    ],
+    "without": [
+     "TXN_SEQ"
+    ]
+   },
+   "lines": {
+    "carries": [
+     "ACCOUNT_ID",
+     "TXN_SEQ"
+    ]
+   }
+  },
+  "joins": {
+   "primary": "CUSTOMER_ID",
+   "child": "ACCOUNT_ID"
+  },
+  "tenure_element": "CUSTOMER_SINCE"
+ },
+ "files": {
+  "default_elements": {
+   "customers": [
+    "CUSTOMER_ID",
+    "FIRST_NAME",
+    "LAST_NAME",
+    "DOB",
+    "SEGMENT",
+    "ADDRESS_CITY",
+    "ADDRESS_STATE",
+    "ADDRESS_ZIP"
+   ],
+   "accounts": [
+    "ACCOUNT_ID",
+    "TXN_SEQ",
+    "CUSTOMER_ID",
+    "PRODUCT_CODE",
+    "TXN_DATE",
+    "TXN_TYPE",
+    "CHANNEL",
+    "AMOUNT"
+   ]
+  },
+  "scope_elements": {
+   "branch_id": "BRANCH_ID",
+   "product_code": "PRODUCT_CODE"
+  },
+  "record_keys": [
+   "ACCOUNT_ID",
+   "TXN_SEQ",
+   "CUSTOMER_ID"
+  ],
+  "subscriber_codes": [],
+  "household": {
+   "family": [],
+   "partner_codes": [],
+   "child_years": 15
+  },
+  "scope_narrows": [],
+  "composed_id": null,
+  "latest_columns": []
+ },
+ "formats": {
+  "customers": [
+   "csv"
+  ],
+  "accounts": [
+   "csv"
+  ]
+ },
+ "modules": [
+  "pattern_analysis",
+  "pattern_generation"
+ ],
+ "sql": {
+  "_about": "The tables pattern analysis reads, in the SDM platform database (customer_denorm, account_denorm).",
+  "store_tables": [
+   "sql/store_tables.sql"
+  ],
+  "store_indexes": []
+ }
+}

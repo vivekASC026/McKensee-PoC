@@ -1,0 +1,31 @@
+{
+  "version": "1.0",
+  "analyzer": "sdm-pattern-analyzer",
+  "as_of": "2026-09-30",
+  "patterns": [
+    {
+      "id": "P-1043",
+      "kind": "member",
+      "label": "Young adult in New Jersey, ambulance service",
+      "support": 0.032,
+      "parameters": [
+        {"label": "Age", "value": 24, "unit": "years"},
+        {"label": "State", "value": "NJ"},
+        {"label": "Proc Code", "value": "A0000"}
+      ]
+    },
+    {
+      "id": "P-2210",
+      "kind": "claim",
+      "label": "Denied claim, slow turnaround",
+      "support": 0.011,
+      "parameters": [
+        {"label": "Claim Status", "value": "04"},
+        {"label": "Days to Pay", "value": 45, "unit": "days"},
+        {"label": "Service Units", "value": 3},
+        {"label": "Total Charge", "value": 1200.0},
+        {"label": "Provider Specialty", "value": "CARD"}
+      ]
+    }
+  ]
+}

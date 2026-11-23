@@ -1,0 +1,1638 @@
+{
+  "connection": {
+    "name": "source",
+    "kind": "mssql",
+    "server": "localhost",
+    "database": "BANK_DEMO",
+    "driver": "ODBC Driver 18 for SQL Server"
+  },
+  "profiled": "2026-11-21T05:51:28+00:00",
+  "sample_cap": 100000,
+  "seconds": 0.752,
+  "columns": [
+    {
+      "table": "dbo.ACCOUNT",
+      "column": "ACCOUNT_ID",
+      "row_count": 4897,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 4897,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "sequence": {
+        "is_sequence": true,
+        "step": 1,
+        "agreement": 1.0,
+        "gaps": 0,
+        "values_tested": 4897
+      },
+      "sample_size": 4897,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.ACCOUNT",
+      "column": "CUSTOMER_ID",
+      "row_count": 4897,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 2000,
+      "distinct_ratio": 0.4084133142740453,
+      "approximate_distinct": false,
+      "cardinality": "high",
+      "sequence": {
+        "is_sequence": true,
+        "step": 1,
+        "agreement": 1.0,
+        "gaps": 0,
+        "values_tested": 2000
+      },
+      "sample_size": 4897,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.ACCOUNT",
+      "column": "PRODUCT_CODE",
+      "row_count": 4897,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 8,
+      "distinct_ratio": 0.0016336532570961813,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "min_length": 5,
+      "max_length": 5,
+      "top_values": [
+        {
+          "value": "SAV01",
+          "count": 1061,
+          "share": 0.216663
+        },
+        {
+          "value": "CRD02",
+          "count": 906,
+          "share": 0.185011
+        },
+        {
+          "value": "CHK01",
+          "count": 891,
+          "share": 0.181948
+        },
+        {
+          "value": "LON01",
+          "count": 764,
+          "share": 0.156014
+        },
+        {
+          "value": "SAV02",
+          "count": 385,
+          "share": 0.07862
+        },
+        {
+          "value": "CRD01",
+          "count": 379,
+          "share": 0.077394
+        },
+        {
+          "value": "CHK02",
+          "count": 372,
+          "share": 0.075965
+        },
+        {
+          "value": "LON02",
+          "count": 139,
+          "share": 0.028385
+        }
+      ],
+      "fitted_format": {
+        "regex": "[A-Z]{3}\\d{2}",
+        "coverage": 1.0,
+        "sample_size": 4897,
+        "matched": 4897,
+        "kind": "literal"
+      },
+      "sample_size": 4897,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.ACCOUNT",
+      "column": "OPEN_DATE",
+      "row_count": 4897,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 3095,
+      "distinct_ratio": 0.6320196038390852,
+      "approximate_distinct": false,
+      "cardinality": "high",
+      "sample_size": 4897,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.ACCOUNT",
+      "column": "ACCT_STATUS",
+      "row_count": 4897,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 3,
+      "distinct_ratio": 0.000612619971411068,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "min_length": 1,
+      "max_length": 1,
+      "fitted_format": {
+        "regex": "[A-Z]",
+        "coverage": 1.0,
+        "sample_size": 4897,
+        "matched": 4897,
+        "kind": "literal"
+      },
+      "sample_size": 4897,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.ACCOUNT",
+      "column": "BALANCE",
+      "row_count": 4897,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 4884,
+      "distinct_ratio": 0.9973453134572187,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "distribution": {
+        "kind": "lognormal",
+        "skew": 20.4245
+      },
+      "sample_size": 4897,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.AUDIT_LOG",
+      "column": "AUDIT_ID",
+      "row_count": 100,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 100,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "sequence": {
+        "is_sequence": true,
+        "step": 1,
+        "agreement": 1.0,
+        "gaps": 0,
+        "values_tested": 100
+      },
+      "sample_size": 100,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.AUDIT_LOG",
+      "column": "TABLE_NAME",
+      "row_count": 100,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 3,
+      "distinct_ratio": 0.03,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "min_length": 3,
+      "max_length": 8,
+      "fitted_format": {
+        "regex": "[A-Z]{3,8}",
+        "coverage": 1.0,
+        "sample_size": 100,
+        "matched": 100,
+        "kind": "ranged"
+      },
+      "sample_size": 100,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.AUDIT_LOG",
+      "column": "CHANGED_AT",
+      "row_count": 100,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 90,
+      "distinct_ratio": 0.9,
+      "approximate_distinct": false,
+      "cardinality": "high",
+      "has_time_component": true,
+      "sample_size": 100,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.AUDIT_LOG",
+      "column": "CHANGED_BY",
+      "row_count": 100,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 1,
+      "distinct_ratio": 0.01,
+      "approximate_distinct": false,
+      "cardinality": "constant",
+      "min_length": 3,
+      "max_length": 3,
+      "sample_size": 100,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.BRANCH",
+      "column": "BRANCH_ID",
+      "row_count": 6,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 6,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "sample_size": 6,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.BRANCH",
+      "column": "BRANCH_NAME",
+      "row_count": 6,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 6,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "min_length": 15,
+      "max_length": 21,
+      "fitted_format": {
+        "regex": "[A-Za-z ]{15,21}",
+        "coverage": 1.0,
+        "sample_size": 6,
+        "matched": 6,
+        "kind": "fallback"
+      },
+      "sample_size": 6,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.BRANCH",
+      "column": "BRANCH_STATE",
+      "row_count": 6,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 4,
+      "distinct_ratio": 0.6666666666666666,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "min_length": 2,
+      "max_length": 2,
+      "fitted_format": {
+        "regex": "[A-Z]{2}",
+        "coverage": 1.0,
+        "sample_size": 6,
+        "matched": 6,
+        "kind": "literal"
+      },
+      "sample_size": 6,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.BRANCH",
+      "column": "BRANCH_CITY",
+      "row_count": 6,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 6,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "min_length": 7,
+      "max_length": 12,
+      "fitted_format": {
+        "regex": "[A-Z][a-z]{6,11}",
+        "coverage": 1.0,
+        "sample_size": 6,
+        "matched": 6,
+        "kind": "ranged"
+      },
+      "sample_size": 6,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CUSTOMER",
+      "column": "CUSTOMER_ID",
+      "row_count": 2000,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 2000,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "sequence": {
+        "is_sequence": true,
+        "step": 1,
+        "agreement": 1.0,
+        "gaps": 0,
+        "values_tested": 2000
+      },
+      "sample_size": 2000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CUSTOMER",
+      "column": "FIRST_NAME",
+      "row_count": 2000,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 80,
+      "distinct_ratio": 0.04,
+      "approximate_distinct": false,
+      "cardinality": "high",
+      "min_length": 3,
+      "max_length": 11,
+      "fitted_format": {
+        "regex": "[A-Z][a-z]{2,10}",
+        "coverage": 1.0,
+        "sample_size": 2000,
+        "matched": 2000,
+        "kind": "ranged"
+      },
+      "sample_size": 2000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CUSTOMER",
+      "column": "LAST_NAME",
+      "row_count": 2000,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 80,
+      "distinct_ratio": 0.04,
+      "approximate_distinct": false,
+      "cardinality": "high",
+      "min_length": 3,
+      "max_length": 10,
+      "fitted_format": {
+        "regex": "[A-Z][a-z]{2,9}",
+        "coverage": 1.0,
+        "sample_size": 2000,
+        "matched": 2000,
+        "kind": "ranged"
+      },
+      "sample_size": 2000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CUSTOMER",
+      "column": "BIRTH_DATE",
+      "row_count": 2000,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 1928,
+      "distinct_ratio": 0.964,
+      "approximate_distinct": false,
+      "cardinality": "high",
+      "sample_size": 2000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CUSTOMER",
+      "column": "SEGMENT",
+      "row_count": 2000,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 4,
+      "distinct_ratio": 0.002,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "min_length": 4,
+      "max_length": 9,
+      "top_values": [
+        {
+          "value": "MASS",
+          "count": 1221,
+          "share": 0.6105
+        },
+        {
+          "value": "AFFLUENT",
+          "count": 451,
+          "share": 0.2255
+        },
+        {
+          "value": "SMALL_BIZ",
+          "count": 197,
+          "share": 0.0985
+        },
+        {
+          "value": "PRIVATE",
+          "count": 131,
+          "share": 0.0655
+        }
+      ],
+      "fitted_format": {
+        "regex": "[A-Z_]{4,9}",
+        "coverage": 1.0,
+        "sample_size": 2000,
+        "matched": 2000,
+        "kind": "fallback"
+      },
+      "sample_size": 2000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CUSTOMER",
+      "column": "CUST_SINCE",
+      "row_count": 2000,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 1809,
+      "distinct_ratio": 0.9045,
+      "approximate_distinct": false,
+      "cardinality": "high",
+      "sample_size": 2000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CUSTOMER",
+      "column": "ADDR_CITY",
+      "row_count": 2000,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 15,
+      "distinct_ratio": 0.0075,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "min_length": 5,
+      "max_length": 12,
+      "fitted_format": {
+        "regex": "[A-Za-z ]{5,12}",
+        "coverage": 1.0,
+        "sample_size": 2000,
+        "matched": 2000,
+        "kind": "fallback"
+      },
+      "sample_size": 2000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CUSTOMER",
+      "column": "ADDR_STATE",
+      "row_count": 2000,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 4,
+      "distinct_ratio": 0.002,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "min_length": 2,
+      "max_length": 2,
+      "fitted_format": {
+        "regex": "[A-Z]{2}",
+        "coverage": 1.0,
+        "sample_size": 2000,
+        "matched": 2000,
+        "kind": "literal"
+      },
+      "sample_size": 2000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CUSTOMER",
+      "column": "ADDR_ZIP",
+      "row_count": 2000,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 64,
+      "distinct_ratio": 0.032,
+      "approximate_distinct": false,
+      "cardinality": "high",
+      "min_length": 5,
+      "max_length": 5,
+      "sample_size": 2000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CUSTOMER",
+      "column": "EMAIL",
+      "row_count": 2000,
+      "null_count": 364,
+      "null_rate": 0.182,
+      "distinct_count": 1636,
+      "distinct_ratio": 0.818,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "min_length": 22,
+      "max_length": 37,
+      "fitted_format": {
+        "regex": "[a-z0-9\\.@]{22,37}",
+        "coverage": 1.0,
+        "sample_size": 1636,
+        "matched": 1636,
+        "kind": "fallback"
+      },
+      "sample_size": 1636,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.CUSTOMER",
+      "column": "BRANCH_ID",
+      "row_count": 2000,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 6,
+      "distinct_ratio": 0.003,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "top_values": [
+        {
+          "value": 2,
+          "count": 368,
+          "share": 0.184
+        },
+        {
+          "value": 4,
+          "count": 344,
+          "share": 0.172
+        },
+        {
+          "value": 3,
+          "count": 337,
+          "share": 0.1685
+        },
+        {
+          "value": 6,
+          "count": 324,
+          "share": 0.162
+        },
+        {
+          "value": 1,
+          "count": 314,
+          "share": 0.157
+        },
+        {
+          "value": 5,
+          "count": 313,
+          "share": 0.1565
+        }
+      ],
+      "distribution": {
+        "kind": "normal",
+        "skew": 0.045
+      },
+      "sample_size": 2000,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.GL_ENTRY",
+      "column": "GL_ID",
+      "row_count": 200,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 200,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "sequence": {
+        "is_sequence": true,
+        "step": 1,
+        "agreement": 1.0,
+        "gaps": 0,
+        "values_tested": 200
+      },
+      "sample_size": 200,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.GL_ENTRY",
+      "column": "GL_ACCOUNT",
+      "row_count": 200,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 197,
+      "distinct_ratio": 0.985,
+      "approximate_distinct": false,
+      "cardinality": "high",
+      "min_length": 7,
+      "max_length": 7,
+      "sample_size": 200,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.GL_ENTRY",
+      "column": "POSTED_DATE",
+      "row_count": 200,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 148,
+      "distinct_ratio": 0.74,
+      "approximate_distinct": false,
+      "cardinality": "high",
+      "sample_size": 200,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.GL_ENTRY",
+      "column": "AMOUNT",
+      "row_count": 200,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 200,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "distribution": {
+        "kind": "uniform",
+        "skew": -0.0994
+      },
+      "sample_size": 200,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.MCC",
+      "column": "MCC_CODE",
+      "row_count": 12,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 12,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "min_length": 4,
+      "max_length": 4,
+      "fitted_format": {
+        "regex": "\\d{4}",
+        "coverage": 1.0,
+        "sample_size": 12,
+        "matched": 12,
+        "kind": "literal"
+      },
+      "sample_size": 12,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.MCC",
+      "column": "MCC_DESC",
+      "row_count": 12,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 12,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "min_length": 7,
+      "max_length": 18,
+      "fitted_format": {
+        "regex": "[A-Za-z ]{7,18}",
+        "coverage": 1.0,
+        "sample_size": 12,
+        "matched": 12,
+        "kind": "fallback"
+      },
+      "sample_size": 12,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.PRODUCT",
+      "column": "PRODUCT_CODE",
+      "row_count": 8,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 8,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "min_length": 5,
+      "max_length": 5,
+      "fitted_format": {
+        "regex": "[A-Z]{3}\\d{2}",
+        "coverage": 1.0,
+        "sample_size": 8,
+        "matched": 8,
+        "kind": "literal"
+      },
+      "sample_size": 8,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.PRODUCT",
+      "column": "PRODUCT_NAME",
+      "row_count": 8,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 8,
+      "distinct_ratio": 1.0,
+      "approximate_distinct": false,
+      "cardinality": "unique",
+      "min_length": 7,
+      "max_length": 23,
+      "fitted_format": {
+        "regex": "[A-Za-z ]{7,23}",
+        "coverage": 1.0,
+        "sample_size": 8,
+        "matched": 8,
+        "kind": "fallback"
+      },
+      "sample_size": 8,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.PRODUCT",
+      "column": "PRODUCT_TYPE",
+      "row_count": 8,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 4,
+      "distinct_ratio": 0.5,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "min_length": 4,
+      "max_length": 8,
+      "fitted_format": {
+        "regex": "[A-Z]{4,8}",
+        "coverage": 1.0,
+        "sample_size": 8,
+        "matched": 8,
+        "kind": "ranged"
+      },
+      "sample_size": 8,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.TXN",
+      "column": "ACCOUNT_ID",
+      "row_count": 48182,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 4682,
+      "distinct_ratio": 0.09717321821427088,
+      "approximate_distinct": false,
+      "cardinality": "high",
+      "sequence": {
+        "is_sequence": true,
+        "step": 1,
+        "agreement": 0.9558,
+        "gaps": 215,
+        "values_tested": 4682
+      },
+      "sample_size": 48182,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.TXN",
+      "column": "TXN_SEQ",
+      "row_count": 48182,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 30,
+      "distinct_ratio": 0.000622639159852227,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "top_values": [
+        {
+          "value": 1,
+          "count": 4682,
+          "share": 0.097173
+        },
+        {
+          "value": 2,
+          "count": 4368,
+          "share": 0.090656
+        },
+        {
+          "value": 3,
+          "count": 4050,
+          "share": 0.084056
+        },
+        {
+          "value": 4,
+          "count": 3700,
+          "share": 0.076792
+        },
+        {
+          "value": 5,
+          "count": 3315,
+          "share": 0.068802
+        },
+        {
+          "value": 6,
+          "count": 2943,
+          "share": 0.061081
+        },
+        {
+          "value": 7,
+          "count": 2553,
+          "share": 0.052987
+        },
+        {
+          "value": 8,
+          "count": 2359,
+          "share": 0.04896
+        },
+        {
+          "value": 9,
+          "count": 2194,
+          "share": 0.045536
+        },
+        {
+          "value": 10,
+          "count": 2038,
+          "share": 0.042298
+        },
+        {
+          "value": 11,
+          "count": 1832,
+          "share": 0.038022
+        },
+        {
+          "value": 12,
+          "count": 1644,
+          "share": 0.034121
+        },
+        {
+          "value": 13,
+          "count": 1484,
+          "share": 0.0308
+        },
+        {
+          "value": 14,
+          "count": 1386,
+          "share": 0.028766
+        },
+        {
+          "value": 15,
+          "count": 1294,
+          "share": 0.026857
+        },
+        {
+          "value": 16,
+          "count": 1187,
+          "share": 0.024636
+        },
+        {
+          "value": 17,
+          "count": 1098,
+          "share": 0.022789
+        },
+        {
+          "value": 18,
+          "count": 1004,
+          "share": 0.020838
+        },
+        {
+          "value": 19,
+          "count": 922,
+          "share": 0.019136
+        },
+        {
+          "value": 20,
+          "count": 816,
+          "share": 0.016936
+        },
+        {
+          "value": 21,
+          "count": 720,
+          "share": 0.014943
+        },
+        {
+          "value": 22,
+          "count": 620,
+          "share": 0.012868
+        },
+        {
+          "value": 23,
+          "count": 530,
+          "share": 0.011
+        },
+        {
+          "value": 24,
+          "count": 431,
+          "share": 0.008945
+        },
+        {
+          "value": 25,
+          "count": 319,
+          "share": 0.006621
+        },
+        {
+          "value": 26,
+          "count": 229,
+          "share": 0.004753
+        },
+        {
+          "value": 27,
+          "count": 183,
+          "share": 0.003798
+        },
+        {
+          "value": 28,
+          "count": 132,
+          "share": 0.00274
+        },
+        {
+          "value": 29,
+          "count": 97,
+          "share": 0.002013
+        },
+        {
+          "value": 30,
+          "count": 52,
+          "share": 0.001079
+        }
+      ],
+      "sequence": {
+        "is_sequence": true,
+        "step": 1,
+        "agreement": 1.0,
+        "gaps": 0,
+        "values_tested": 30
+      },
+      "sample_size": 48182,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.TXN",
+      "column": "TXN_DATE",
+      "row_count": 48182,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 730,
+      "distinct_ratio": 0.015150886223070856,
+      "approximate_distinct": false,
+      "cardinality": "high",
+      "sample_size": 48182,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.TXN",
+      "column": "TXN_TYPE",
+      "row_count": 48182,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 4,
+      "distinct_ratio": 8.30185546469636e-05,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "min_length": 3,
+      "max_length": 8,
+      "top_values": [
+        {
+          "value": "DEBIT",
+          "count": 29328,
+          "share": 0.608692
+        },
+        {
+          "value": "CREDIT",
+          "count": 15333,
+          "share": 0.318231
+        },
+        {
+          "value": "INTEREST",
+          "count": 2436,
+          "share": 0.050558
+        },
+        {
+          "value": "FEE",
+          "count": 1085,
+          "share": 0.022519
+        }
+      ],
+      "fitted_format": {
+        "regex": "[A-Z]{3,8}",
+        "coverage": 1.0,
+        "sample_size": 48182,
+        "matched": 48182,
+        "kind": "ranged"
+      },
+      "sample_size": 48182,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.TXN",
+      "column": "CHANNEL",
+      "row_count": 48182,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 4,
+      "distinct_ratio": 8.30185546469636e-05,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "min_length": 3,
+      "max_length": 6,
+      "top_values": [
+        {
+          "value": "ONLINE",
+          "count": 20439,
+          "share": 0.424204
+        },
+        {
+          "value": "CARD",
+          "count": 11545,
+          "share": 0.239612
+        },
+        {
+          "value": "BRANCH",
+          "count": 9268,
+          "share": 0.192354
+        },
+        {
+          "value": "ATM",
+          "count": 6930,
+          "share": 0.14383
+        }
+      ],
+      "fitted_format": {
+        "regex": "[A-Z]{3,6}",
+        "coverage": 1.0,
+        "sample_size": 48182,
+        "matched": 48182,
+        "kind": "ranged"
+      },
+      "sample_size": 48182,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.TXN",
+      "column": "MCC_CODE",
+      "row_count": 48182,
+      "null_count": 25018,
+      "null_rate": 0.5192395500394338,
+      "distinct_count": 12,
+      "distinct_ratio": 0.0002490556639408908,
+      "approximate_distinct": false,
+      "cardinality": "low",
+      "min_length": 4,
+      "max_length": 4,
+      "top_values": [
+        {
+          "value": "5732",
+          "count": 1973,
+          "share": 0.085175
+        },
+        {
+          "value": "7011",
+          "count": 1972,
+          "share": 0.085132
+        },
+        {
+          "value": "5311",
+          "count": 1970,
+          "share": 0.085046
+        },
+        {
+          "value": "5912",
+          "count": 1961,
+          "share": 0.084657
+        },
+        {
+          "value": "5411",
+          "count": 1957,
+          "share": 0.084485
+        },
+        {
+          "value": "5942",
+          "count": 1939,
+          "share": 0.083707
+        },
+        {
+          "value": "8220",
+          "count": 1925,
+          "share": 0.083103
+        },
+        {
+          "value": "4900",
+          "count": 1922,
+          "share": 0.082974
+        },
+        {
+          "value": "5812",
+          "count": 1913,
+          "share": 0.082585
+        },
+        {
+          "value": "4111",
+          "count": 1909,
+          "share": 0.082412
+        },
+        {
+          "value": "5541",
+          "count": 1876,
+          "share": 0.080988
+        },
+        {
+          "value": "4511",
+          "count": 1847,
+          "share": 0.079736
+        }
+      ],
+      "fitted_format": {
+        "regex": "\\d{4}",
+        "coverage": 1.0,
+        "sample_size": 23164,
+        "matched": 23164,
+        "kind": "literal"
+      },
+      "sample_size": 23164,
+      "measured_rows": 0
+    },
+    {
+      "table": "dbo.TXN",
+      "column": "AMOUNT",
+      "row_count": 48182,
+      "null_count": 0,
+      "null_rate": 0.0,
+      "distinct_count": 17161,
+      "distinct_ratio": 0.35617035407413555,
+      "approximate_distinct": false,
+      "cardinality": "high",
+      "distribution": {
+        "kind": "lognormal",
+        "skew": 58.1209
+      },
+      "sample_size": 48182,
+      "measured_rows": 0
+    }
+  ],
+  "dependencies": [
+    {
+      "table": "dbo.CUSTOMER",
+      "determinant": "BRANCH_ID",
+      "dependent": "ADDR_STATE",
+      "distinct_determinant": 6,
+      "distinct_pair": 6,
+      "holds": true,
+      "coverage": 1.0
+    },
+    {
+      "table": "dbo.CUSTOMER",
+      "determinant": "ADDR_ZIP",
+      "dependent": "ADDR_CITY",
+      "distinct_determinant": 64,
+      "distinct_pair": 64,
+      "holds": true,
+      "coverage": 1.0
+    },
+    {
+      "table": "dbo.CUSTOMER",
+      "determinant": "ADDR_ZIP",
+      "dependent": "ADDR_STATE",
+      "distinct_determinant": 64,
+      "distinct_pair": 64,
+      "holds": true,
+      "coverage": 1.0
+    },
+    {
+      "table": "dbo.TXN",
+      "determinant": "MCC_CODE",
+      "dependent": "TXN_TYPE",
+      "distinct_determinant": 12,
+      "distinct_pair": 12,
+      "holds": true,
+      "coverage": 1.0
+    }
+  ],
+  "orderings": [
+    {
+      "kind": "join",
+      "table": "dbo.ACCOUNT",
+      "earlier": "dbo.CUSTOMER.BIRTH_DATE",
+      "later": "OPEN_DATE",
+      "rows_compared": 4897,
+      "share_in_order": 1.0,
+      "gap_min": 6650,
+      "gap_max": 32155,
+      "gap_mean": 17805.7311,
+      "gap_stddev": 6873.6439,
+      "parent_table": "dbo.CUSTOMER"
+    },
+    {
+      "kind": "join",
+      "table": "dbo.ACCOUNT",
+      "earlier": "dbo.CUSTOMER.CUST_SINCE",
+      "later": "OPEN_DATE",
+      "rows_compared": 4897,
+      "share_in_order": 1.0,
+      "gap_min": 0,
+      "gap_max": 10670,
+      "gap_mean": 2197.9081,
+      "gap_stddev": 2266.7488,
+      "parent_table": "dbo.CUSTOMER"
+    },
+    {
+      "kind": "row",
+      "table": "dbo.CUSTOMER",
+      "earlier": "BIRTH_DATE",
+      "later": "CUST_SINCE",
+      "rows_compared": 2000,
+      "share_in_order": 1.0,
+      "gap_min": 6591,
+      "gap_max": 31292,
+      "gap_mean": 15622.93,
+      "gap_stddev": 6480.588
+    }
+  ],
+  "ratios": [
+    {
+      "child_table": "dbo.ACCOUNT",
+      "child_column": "CUSTOMER_ID",
+      "parent_table": "dbo.CUSTOMER",
+      "parent_column": "CUSTOMER_ID",
+      "kind": "declared",
+      "parents": 2000,
+      "children": 4897,
+      "minimum": 1,
+      "maximum": 4,
+      "mean": 2.4485,
+      "stddev": 1.0904,
+      "median": 2.0,
+      "p90": 4.0,
+      "p99": 4.0,
+      "median_nonzero": 2.0,
+      "p90_nonzero": 4.0,
+      "zero_share": 0.0,
+      "histogram": [
+        {
+          "children": 1,
+          "weight": 0.2515
+        },
+        {
+          "children": 2,
+          "weight": 0.2675
+        },
+        {
+          "children": 3,
+          "weight": 0.262
+        },
+        {
+          "children": 4,
+          "weight": 0.219
+        }
+      ],
+      "proposal": {
+        "kind": "distribution",
+        "dispersion": 0.4453,
+        "zero_share": 0.0,
+        "reason": "standard deviation is 0.45 of the mean, at or above 0.25, so the shape matters"
+      },
+      "evidence": "observed 4,897 ACCOUNT rows across 2,000 CUSTOMER rows; 0% have none, median 2 among those that do, 90th percentile 4, maximum 4",
+      "sampled_parents": 0,
+      "from_sizes": false
+    },
+    {
+      "child_table": "dbo.ACCOUNT",
+      "child_column": "PRODUCT_CODE",
+      "parent_table": "dbo.PRODUCT",
+      "parent_column": "PRODUCT_CODE",
+      "kind": "declared",
+      "parents": 8,
+      "children": 4897,
+      "minimum": 139,
+      "maximum": 1061,
+      "mean": 612.125,
+      "stddev": 332.9798,
+      "median": 574.5,
+      "p90": 952.5,
+      "p99": 1050.15,
+      "median_nonzero": 574.5,
+      "p90_nonzero": 952.5,
+      "zero_share": 0.0,
+      "histogram": [
+        {
+          "children": 139,
+          "weight": 0.125
+        },
+        {
+          "children": 372,
+          "weight": 0.125
+        },
+        {
+          "children": 379,
+          "weight": 0.125
+        },
+        {
+          "children": 385,
+          "weight": 0.125
+        },
+        {
+          "children": 764,
+          "weight": 0.125
+        },
+        {
+          "children": 891,
+          "weight": 0.125
+        },
+        {
+          "children": 906,
+          "weight": 0.125
+        },
+        {
+          "children": 1061,
+          "weight": 0.125
+        }
+      ],
+      "proposal": {
+        "kind": "distribution",
+        "dispersion": 0.544,
+        "zero_share": 0.0,
+        "reason": "standard deviation is 0.54 of the mean, at or above 0.25, so the shape matters"
+      },
+      "evidence": "observed 4,897 ACCOUNT rows across 8 PRODUCT rows; 0% have none, median 574.5 among those that do, 90th percentile 952.5, maximum 1,061",
+      "sampled_parents": 0,
+      "from_sizes": false
+    },
+    {
+      "child_table": "dbo.CUSTOMER",
+      "child_column": "BRANCH_ID",
+      "parent_table": "dbo.BRANCH",
+      "parent_column": "BRANCH_ID",
+      "kind": "declared",
+      "parents": 6,
+      "children": 2000,
+      "minimum": 313,
+      "maximum": 368,
+      "mean": 333.3333,
+      "stddev": 20.9921,
+      "median": 330.5,
+      "p90": 356.0,
+      "p99": 366.8,
+      "median_nonzero": 330.5,
+      "p90_nonzero": 356.0,
+      "zero_share": 0.0,
+      "histogram": [
+        {
+          "children": 313,
+          "weight": 0.166667
+        },
+        {
+          "children": 314,
+          "weight": 0.166667
+        },
+        {
+          "children": 324,
+          "weight": 0.166667
+        },
+        {
+          "children": 337,
+          "weight": 0.166667
+        },
+        {
+          "children": 344,
+          "weight": 0.166667
+        },
+        {
+          "children": 368,
+          "weight": 0.166667
+        }
+      ],
+      "proposal": {
+        "kind": "fixed",
+        "value": 333.3333,
+        "dispersion": 0.063,
+        "reason": "standard deviation is 0.06 of the mean, below 0.25, so one number describes it"
+      },
+      "evidence": "observed 2,000 CUSTOMER rows across 6 BRANCH rows; 0% have none, median 330.5 among those that do, 90th percentile 356, maximum 368",
+      "sampled_parents": 0,
+      "from_sizes": false
+    },
+    {
+      "child_table": "dbo.TXN",
+      "child_column": "ACCOUNT_ID",
+      "parent_table": "dbo.ACCOUNT",
+      "parent_column": "ACCOUNT_ID",
+      "kind": "declared",
+      "parents": 4897,
+      "children": 48182,
+      "minimum": 0,
+      "maximum": 30,
+      "mean": 9.8391,
+      "stddev": 7.9862,
+      "median": 7.0,
+      "p90": 23.0,
+      "p99": 30.0,
+      "median_nonzero": 8.0,
+      "p90_nonzero": 23.0,
+      "zero_share": 0.043904,
+      "histogram": [
+        {
+          "children": 0,
+          "weight": 0.043904
+        },
+        {
+          "children": 1,
+          "weight": 0.064121
+        },
+        {
+          "children": 2,
+          "weight": 0.064938
+        },
+        {
+          "children": 3,
+          "weight": 0.071472
+        },
+        {
+          "children": 4,
+          "weight": 0.07862
+        },
+        {
+          "children": 5,
+          "weight": 0.075965
+        },
+        {
+          "children": 6,
+          "weight": 0.079641
+        },
+        {
+          "children": 7,
+          "weight": 0.039616
+        },
+        {
+          "children": 8,
+          "weight": 0.033694
+        },
+        {
+          "children": 9,
+          "weight": 0.031856
+        },
+        {
+          "children": 10,
+          "weight": 0.042067
+        },
+        {
+          "children": 11,
+          "weight": 0.038391
+        },
+        {
+          "children": 12,
+          "weight": 0.032673
+        },
+        {
+          "children": 13,
+          "weight": 0.020012
+        },
+        {
+          "children": 14,
+          "weight": 0.018787
+        },
+        {
+          "children": 15,
+          "weight": 0.02185
+        },
+        {
+          "children": 16,
+          "weight": 0.018174
+        },
+        {
+          "children": 17,
+          "weight": 0.019195
+        },
+        {
+          "children": 18,
+          "weight": 0.016745
+        },
+        {
+          "children": 19,
+          "weight": 0.021646
+        },
+        {
+          "children": 20,
+          "weight": 0.019604
+        },
+        {
+          "children": 21,
+          "weight": 0.020421
+        },
+        {
+          "children": 22,
+          "weight": 0.018379
+        },
+        {
+          "children": 23,
+          "weight": 0.020216
+        },
+        {
+          "children": 24,
+          "weight": 0.022871
+        },
+        {
+          "children": 25,
+          "weight": 0.018379
+        },
+        {
+          "children": 26,
+          "weight": 0.009394
+        },
+        {
+          "children": 27,
+          "weight": 0.010415
+        },
+        {
+          "children": 28,
+          "weight": 0.007147
+        },
+        {
+          "children": 29,
+          "weight": 0.009189
+        },
+        {
+          "children": 30,
+          "weight": 0.010619
+        }
+      ],
+      "proposal": {
+        "kind": "distribution",
+        "dispersion": 0.8117,
+        "zero_share": 0.043904,
+        "reason": "standard deviation is 0.81 of the mean, at or above 0.25, so the shape matters"
+      },
+      "evidence": "observed 48,182 TXN rows across 4,897 ACCOUNT rows; 4% have none, median 8 among those that do, 90th percentile 23, maximum 30",
+      "sampled_parents": 0,
+      "from_sizes": false
+    },
+    {
+      "child_table": "dbo.TXN",
+      "child_column": "MCC_CODE",
+      "parent_table": "dbo.MCC",
+      "parent_column": "MCC_CODE",
+      "kind": "declared",
+      "parents": 12,
+      "children": 23164,
+      "minimum": 1847,
+      "maximum": 1973,
+      "mean": 1930.3333,
+      "stddev": 40.0076,
+      "median": 1932.0,
+      "p90": 1971.8,
+      "p99": 1972.89,
+      "median_nonzero": 1932.0,
+      "p90_nonzero": 1971.8,
+      "zero_share": 0.0,
+      "histogram": [
+        {
+          "children": 1847,
+          "weight": 0.083333
+        },
+        {
+          "children": 1876,
+          "weight": 0.083333
+        },
+        {
+          "children": 1909,
+          "weight": 0.083333
+        },
+        {
+          "children": 1913,
+          "weight": 0.083333
+        },
+        {
+          "children": 1922,
+          "weight": 0.083333
+        },
+        {
+          "children": 1925,
+          "weight": 0.083333
+        },
+        {
+          "children": 1939,
+          "weight": 0.083333
+        },
+        {
+          "children": 1957,
+          "weight": 0.083333
+        },
+        {
+          "children": 1961,
+          "weight": 0.083333
+        },
+        {
+          "children": 1970,
+          "weight": 0.083333
+        },
+        {
+          "children": 1972,
+          "weight": 0.083333
+        },
+        {
+          "children": 1973,
+          "weight": 0.083333
+        }
+      ],
+      "proposal": {
+        "kind": "fixed",
+        "value": 1930.3333,
+        "dispersion": 0.0207,
+        "reason": "standard deviation is 0.02 of the mean, below 0.25, so one number describes it"
+      },
+      "evidence": "observed 23,164 TXN rows across 12 MCC rows; 0% have none, median 1932 among those that do, 90th percentile 1971.8, maximum 1,973",
+      "sampled_parents": 0,
+      "from_sizes": false
+    }
+  ],
+  "skipped": [],
+  "table_seconds": {
+    "dbo.ACCOUNT": 0.321,
+    "dbo.AUDIT_LOG": 0.191,
+    "dbo.BRANCH": 0.262,
+    "dbo.CUSTOMER": 0.168,
+    "dbo.GL_ENTRY": 0.076,
+    "dbo.MCC": 0.187,
+    "dbo.PRODUCT": 0.259,
+    "dbo.TXN": 0.667
+  }
+}

@@ -1,0 +1,292 @@
+{
+  "id": "834",
+  "name": "834 Benefit enrollment",
+  "transaction": "834",
+  "version": "005010X220A1",
+  "functional_code": "BE",
+  "subject": "members",
+  "description": "One member per INS loop, after the sponsor (N1*P5) and payer (N1*IN) the 834 requires. Every position that carries data names a rule; positions holding X12's own vocabulary carry a const. The sponsor, payer and coverage level are constants to set for a real trading relationship.",
+  "header": [
+    {
+      "segment": "BGN",
+      "elements": [
+        {
+          "position": 1,
+          "const": "00"
+        },
+        {
+          "position": 2,
+          "const": "_reference"
+        },
+        {
+          "position": 3,
+          "const": "_date"
+        },
+        {
+          "position": 4,
+          "const": "0000"
+        },
+        {
+          "position": 8,
+          "const": "2"
+        }
+      ]
+    },
+    {
+      "segment": "N1",
+      "elements": [
+        {
+          "position": 1,
+          "const": "P5"
+        },
+        {
+          "position": 2,
+          "const": "SDM SYNTHETIC SPONSOR"
+        },
+        {
+          "position": 3,
+          "const": "FI"
+        },
+        {
+          "position": 4,
+          "const": "999999999"
+        }
+      ]
+    },
+    {
+      "segment": "N1",
+      "elements": [
+        {
+          "position": 1,
+          "const": "IN"
+        },
+        {
+          "position": 2,
+          "const": "SDM SYNTHETIC HEALTH PLAN"
+        },
+        {
+          "position": 3,
+          "const": "FI"
+        },
+        {
+          "position": 4,
+          "const": "999999998"
+        }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "opens_on": "MEMBER_ID",
+      "segments": [
+        {
+          "segment": "INS",
+          "elements": [
+            {
+              "position": 1,
+              "const": "N",
+              "rule": "RELATIONSHIP_CODE",
+              "map": {
+                "18": "Y",
+                "M": "Y"
+              }
+            },
+            {
+              "position": 2,
+              "rule": "RELATIONSHIP_CODE",
+              "const": "18",
+              "map": {
+                "18": "18",
+                "01": "01",
+                "19": "19",
+                "53": "53",
+                "M": "18",
+                "S": "01",
+                "D": "19",
+                "P": "53"
+              }
+            },
+            {
+              "position": 3,
+              "const": "021"
+            },
+            {
+              "position": 4,
+              "const": "AI"
+            },
+            {
+              "position": 5,
+              "const": "A"
+            },
+            {
+              "position": 8,
+              "const": "FT"
+            }
+          ]
+        },
+        {
+          "segment": "REF",
+          "only_if": "SUBSCRIBER_ID",
+          "elements": [
+            {
+              "position": 1,
+              "const": "0F"
+            },
+            {
+              "position": 2,
+              "rule": "SUBSCRIBER_ID"
+            }
+          ]
+        },
+        {
+          "segment": "REF",
+          "only_if": "GROUP_KEY",
+          "elements": [
+            {
+              "position": 1,
+              "const": "1L"
+            },
+            {
+              "position": 2,
+              "rule": "GROUP_KEY"
+            }
+          ]
+        },
+        {
+          "segment": "NM1",
+          "elements": [
+            {
+              "position": 1,
+              "const": "IL"
+            },
+            {
+              "position": 2,
+              "const": "1"
+            },
+            {
+              "position": 3,
+              "rule": "LAST_NAME"
+            },
+            {
+              "position": 4,
+              "rule": "FIRST_NAME"
+            },
+            {
+              "position": 5,
+              "rule": "MIDDLE_INITIAL"
+            },
+            {
+              "position": 8,
+              "const": "34"
+            },
+            {
+              "position": 9,
+              "rule": "SSN",
+              "digits": true
+            }
+          ]
+        },
+        {
+          "segment": "N3",
+          "elements": [
+            {
+              "position": 1,
+              "const": "100 MAIN STREET"
+            }
+          ]
+        },
+        {
+          "segment": "N4",
+          "elements": [
+            {
+              "position": 1,
+              "rule": "ADDRESS_CITY"
+            },
+            {
+              "position": 2,
+              "rule": "ADDRESS_STATE"
+            },
+            {
+              "position": 3,
+              "rule": "ADDRESS_ZIP"
+            }
+          ]
+        },
+        {
+          "segment": "DMG",
+          "elements": [
+            {
+              "position": 1,
+              "const": "D8"
+            },
+            {
+              "position": 2,
+              "rule": "DOB",
+              "date": true
+            },
+            {
+              "position": 3,
+              "rule": "SEX",
+              "map": {
+                "M": "M",
+                "F": "F"
+              },
+              "const": "U"
+            },
+            {
+              "position": 4,
+              "rule": "MARITAL_STATUS",
+              "map": {
+                "M": "M",
+                "S": "I",
+                "D": "D",
+                "W": "W"
+              },
+              "const": "R"
+            }
+          ]
+        },
+        {
+          "segment": "HD",
+          "elements": [
+            {
+              "position": 1,
+              "const": "021"
+            },
+            {
+              "position": 3,
+              "const": "HLT"
+            },
+            {
+              "position": 4,
+              "rule": "COVERAGE_PLAN_ID"
+            },
+            {
+              "position": 5,
+              "const": "IND"
+            }
+          ]
+        },
+        {
+          "segment": "DTP",
+          "only_if": "EFFECTIVE_DATE",
+          "elements": [
+            {
+              "position": 1,
+              "const": "348"
+            },
+            {
+              "position": 2,
+              "const": "D8"
+            },
+            {
+              "position": 3,
+              "rule": "EFFECTIVE_DATE",
+              "date": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

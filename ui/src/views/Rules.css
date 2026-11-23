@@ -1,0 +1,120 @@
+/* The rule repository.
+
+   Built from the same primitives as the rest of Output — the table, the panel
+   hint, the chips — so the third tab does not read as a different screen. */
+
+.rules__seed {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  padding: var(--space-4);
+  background: var(--paper-sunk);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  margin-bottom: var(--space-4);
+}
+.rules__seed h3 {
+  font-size: var(--t-small);
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+}
+.rules__seed .panel__hint {
+  margin: 0;
+  max-width: 62ch;
+}
+
+.rules__controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  margin-bottom: var(--space-3);
+}
+.rules__toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--t-small);
+  color: var(--ink-soft);
+}
+.rules__count {
+  margin-left: auto;
+  font-size: var(--t-micro);
+  color: var(--ink-faint);
+}
+
+.rules__table td {
+  vertical-align: baseline;
+}
+.rules__row--retired td {
+  color: var(--ink-faint);
+}
+.rules__category {
+  display: inline-block;
+  margin-left: var(--space-2);
+  font-size: var(--t-micro);
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.rules__used {
+  font-size: var(--t-small);
+  color: var(--ink-soft);
+}
+
+.rules__editor > td {
+  background: var(--paper-sunk);
+  padding: var(--space-4);
+}
+.rules__fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin: var(--space-3) 0;
+}
+
+.rules__aliases {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--rule);
+}
+.rules__aliases-label {
+  font-size: var(--t-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+}
+.rules__aliases input {
+  width: 22ch;
+}
+
+.rules__new {
+  padding: var(--space-4);
+  background: var(--paper-sunk);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+}
+
+.dim {
+  color: var(--ink-faint);
+}
+
+/* A list of values, or its weights, wants room to be read. */
+.rules__wide {
+  flex: 1 1 24ch;
+}
+.rules__wide input {
+  width: 100%;
+}
+
+/* A few values of the rule as it stands. */
+.rules__sample {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  padding-top: var(--space-3);
+}

@@ -1,0 +1,20 @@
+{
+  "about": "Pieces of a masking tool algorithm name that say which element it makes, for every format: a masking config read as a master names its algorithms this way. Checked in order against the name with everything but letters and digits removed; the first piece found wins. null: the name says it is something SDM makes no rule for.",
+  "hints": [
+    ["FIRSTNAME", "FIRST_NAME"],
+    ["LASTNAME", "LAST_NAME"],
+    ["MIDINIT", "MIDDLE_INITIAL"],
+    ["SSN", "SSN"],
+    ["ZIP", "ADDRESS_ZIP"],
+    ["ADDRLINE2", null],
+    ["ADDRLOOKUP", "STREET_1"],
+    ["CITY", "ADDRESS_CITY"],
+    ["EMAIL", null],
+    ["ADDRESSLINE2", null],
+    ["ADDRESS", "STREET_1"],
+    ["ENCOUNTERDATE", "SERVICE_DATE"],
+    ["SBSBID", "MEMBER_ID"],
+    ["PHONEEXT", null],
+    ["PHONE", "PHONE"]
+  ]
+}

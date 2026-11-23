@@ -1,0 +1,14 @@
+{
+  "about": "834 benefit enrollment modeled on a sample: one member loop (INS to the next INS) per member written, taken in turn from the sample's member loops.",
+  "extends": "x12",
+  "kind": "834",
+  "subject": "members",
+
+  "counts": {"members": "INS", "claims": "CLM", "lines": "LX"},
+  "summary": "{members} members",
+
+  "units": [
+    {"name": "member", "starts": "INS", "row": "count",
+     "missing": "The 834 sample has no member (INS) loop to model members on."}
+  ]
+}

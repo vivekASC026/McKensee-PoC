@@ -1,0 +1,100 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "SDM business pack (pack.json)",
+ "$comment": "x-optional-places: places a pack may leave out (sdg.packs.OPTIONAL_PLACES); the code reads each with held_or and a default.",
+ "x-optional-places": [
+  "features:primary_analysis.family",
+  "pack:plan.sex_fields",
+  "pack:plan.tenure_element",
+  "pack:files.household.family",
+  "pack:files.household.partner_codes",
+  "pack:files.household.child_years",
+  "pack:files.subscriber_codes",
+  "story:gender",
+  "story:marital"
+ ],
+ "type": "object",
+ "required": ["id", "name", "version", "entities"],
+ "properties": {
+  "id": {"type": "string", "pattern": "^[a-z][a-z0-9_-]{0,31}$"},
+  "name": {"type": "string", "minLength": 1},
+  "version": {"type": "integer", "minimum": 1},
+  "plan_name": {"type": "string", "minLength": 1},
+  "entities": {
+   "type": "object",
+   "minProperties": 1,
+   "propertyNames": {"pattern": "^[a-z][a-z0-9_]{0,19}$"},
+   "additionalProperties": {
+    "type": "object",
+    "required": ["role", "anchor"],
+    "properties": {
+     "role": {"enum": ["primary", "child", "parent_of_primary"]},
+     "anchor": {"type": "string", "minLength": 1},
+     "parent": {"type": "string"},
+     "line_anchor": {"type": "string"},
+     "key_column": {"type": "string"},
+     "key_columns": {"type": "array", "items": {"type": "string"}}
+    }
+   }
+  },
+  "tables": {
+   "type": "object",
+   "properties": {
+    "never_generated": {"type": "array", "items": {"type": "string"}},
+    "modes": {"type": "object", "additionalProperties": {"enum": ["generate", "reuse", "exclude"]}}
+   }
+  },
+  "plan": {
+   "type": "object",
+   "properties": {
+    "joins": {"type": "object", "propertyNames": {"enum": ["primary", "child", "parent_of_primary"]},
+              "additionalProperties": {"type": "string", "minLength": 1}},
+    "root_counts": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 1}},
+    "tenure_element": {"type": "string", "minLength": 1}
+   }
+  },
+  "files": {
+   "type": "object",
+   "properties": {
+    "composed_id": {"anyOf": [
+     {"type": "null"},
+     {"type": "object", "required": ["element", "from", "suffix", "subscriber_suffix"],
+      "properties": {"element": {"type": "string", "minLength": 1},
+                     "from": {"type": "string", "minLength": 1},
+                     "suffix": {"type": "string", "minLength": 1},
+                     "subscriber_suffix": {"type": "string"}}}]},
+    "latest_columns": {"type": "array", "items": {"type": "string"}},
+    "subscriber_codes": {"type": "array", "items": {"type": "string"}},
+    "person_elements": {"type": "array", "items": {"type": "string"}},
+    "head_names": {"type": "object", "required": ["prefix", "key", "elements"],
+                   "properties": {"prefix": {"type": "string", "minLength": 1},
+                                  "key": {"type": "string", "minLength": 1},
+                                  "elements": {"type": "array", "items": {"type": "string"}}}}
+   }
+  },
+  "extract": {
+   "type": "object",
+   "properties": {
+    "default_source": {"type": "string", "pattern": "^[A-Za-z0-9_-]{1,64}$"},
+    "surrogates": {"type": "object",
+                   "additionalProperties": {"type": "array", "items": {"type": "string",
+                                                                        "minLength": 1}}},
+    "kept": {"type": "object",
+             "additionalProperties": {"type": "array", "items": {"type": "string",
+                                                                  "minLength": 1}}},
+    "withheld": {"type": "object",
+                 "additionalProperties": {"type": "array", "items": {"type": "string",
+                                                                      "minLength": 1}}}
+   }
+  },
+  "formats": {"type": "object", "additionalProperties": {"type": "array", "items": {"type": "string"}}},
+  "modules": {"type": "array", "items": {"type": "string"}},
+  "sql": {
+   "type": "object",
+   "properties": {
+    "store_tables": {"type": "array", "items": {"type": "string", "pattern": "^sql/[A-Za-z0-9_.-]+[.]sql$"}},
+    "store_indexes": {"type": "array", "items": {"type": "string", "pattern": "^sql/[A-Za-z0-9_.-]+[.]sql$"}}
+   }
+  }
+ }
+}

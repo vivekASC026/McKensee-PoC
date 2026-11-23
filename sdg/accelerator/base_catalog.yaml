@@ -1,0 +1,204 @@
+# The accelerator's base catalog: the elements any business has, before it
+# has a pack of its own.
+#
+# It is what reading a new source is measured against. Its first use is
+# privacy: a column whose name matches an element marked `pii: sensitive`
+# (and not a code set) keeps no value in the profile (sdg/profiling/personal.py),
+# and a table with such a column is listed as person-like. A pack built for
+# the source starts from this catalog and adds the source's own column names
+# as aliases.
+#
+# Aliases match on name tokens: FIRST_NAME covers CUST_FIRST_NAME. A word
+# every key column shares (ID, CD, DT, NAME, AMT) never matches on its own.
+# Over-matching is the safe side here: a column wrongly taken as personal only
+# loses its values in the profile.
+
+version: "0.1.0"
+organization: Any business
+description: >
+  Names, birth dates, national identifiers, contacts and addresses, which are
+  personal wherever they are found; and amounts, effective and end dates and
+  status codes, which most record kinds carry.
+
+elements:
+
+  # --- A person ----------------------------------------------------------
+  - name: FIRST_NAME
+    description: A person's given name.
+    domain: Person
+    rule: generate
+    generator: lookup
+    params: {dictionary: first_names}
+    pii: sensitive
+    consistency_scope: single_system
+    aliases: [FIRST_NAME, FNAME, GIVEN_NAME, FIRST_NM]
+
+  - name: MIDDLE_NAME
+    description: A person's middle name or initial.
+    domain: Person
+    rule: generate
+    generator: pattern
+    params: {regex: '[A-Z]'}
+    pii: sensitive
+    consistency_scope: single_system
+    aliases: [MIDDLE_NAME, MIDDLE_INITIAL, MID_INIT, MIDDLE_INIT, MNAME]
+
+  - name: LAST_NAME
+    description: A person's family name.
+    domain: Person
+    rule: generate
+    generator: lookup
+    params: {dictionary: last_names}
+    pii: sensitive
+    consistency_scope: single_system
+    aliases: [LAST_NAME, LNAME, SURNAME, FAMILY_NAME, LAST_NM]
+
+  - name: DOB
+    description: Date of birth.
+    domain: Person
+    rule: generate
+    generator: date_relative
+    params: {anchor: "2026-06-30", min_days: -31025, max_days: -6570}
+    pii: sensitive
+    consistency_scope: cross_system
+    aliases: [DOB, BIRTH_DATE, BIRTH_DT, DATE_OF_BIRTH, BIRTHDATE]
+
+  - name: NATIONAL_ID
+    description: A government-issued personal number (a social security number, say).
+    domain: Person
+    rule: generate
+    generator: pattern
+    params: {regex: '[0-9]{9}'}
+    pii: sensitive
+    consistency_scope: cross_system
+    aliases: [NATIONAL_ID, SSN, SOCIAL_SECURITY_NUMBER, TAX_ID, TIN]
+
+  - name: FULL_NAME
+    description: A person's whole name in one column.
+    domain: Person
+    rule: generate
+    generator: lookup
+    params: {dictionary: last_names}
+    pii: sensitive
+    consistency_scope: single_system
+    aliases: [FULL_NAME, CUSTOMER_NAME, CUST_NAME, CLIENT_NAME, PERSON_NAME, PAYEE_NAME,
+              CONTACT_NAME, HOLDER_NAME, EMPLOYEE_NAME, EMP_NAME]
+
+  # --- A user of the source's own system ---------------------------------
+  - name: USER_LOGIN
+    description: The login or name of whoever created or changed a row.
+    domain: User
+    rule: generate
+    generator: pattern
+    params: {regex: 'user[0-9]{3}'}
+    pii: sensitive
+    consistency_scope: single_system
+    aliases: [CHANGED_BY, CREATED_BY, UPDATED_BY, MODIFIED_BY, USER_ID, USERNAME, USER_NAME,
+              OPERATOR, LOGIN_NAME]
+
+  # --- Contact -----------------------------------------------------------
+  - name: EMAIL
+    description: An email address.
+    domain: Contact
+    rule: generate
+    generator: pattern
+    params: {regex: '[a-z]{6}[0-9]{3}@example[.]com'}
+    pii: sensitive
+    consistency_scope: single_system
+    aliases: [EMAIL, EMAIL_ADDRESS, EMAIL_ADDR, E_MAIL]
+
+  - name: PHONE
+    description: A telephone number.
+    domain: Contact
+    rule: generate
+    generator: pattern
+    params: {regex: '555[0-9]{7}'}
+    pii: sensitive
+    consistency_scope: single_system
+    aliases: [PHONE, TELEPHONE, PHONE_NUMBER, PHONE_NO, MOBILE, CELL_PHONE, FAX]
+
+  # --- Address -----------------------------------------------------------
+  - name: ADDRESS_STREET
+    description: A street address line.
+    domain: Address
+    rule: generate
+    generator: pattern
+    params: {regex: '[0-9]{3,4} [A-Z][a-z]{4,8} St'}
+    pii: sensitive
+    consistency_scope: single_system
+    aliases: [ADDRESS_STREET, STREET, ADDR1, ADDR2, ADDR3, ADDRESS_LINE, ADDRESS1, ADDRESS2,
+              ADDR_LINE, STREET_ADDRESS]
+
+  - name: ADDRESS_CITY
+    description: City name. Determined by the postal code.
+    domain: Address
+    rule: generate
+    generator: lookup
+    params: {dictionary: us_zip, record_key: address, field: city}
+    pii: sensitive
+    consistency_scope: single_system
+    aliases: [ADDRESS_CITY, ADDR_CITY, CITY, TOWN]
+
+  - name: ADDRESS_STATE
+    description: Two-letter state code. Determined by the postal code.
+    domain: Address
+    rule: generate
+    generator: lookup
+    params: {dictionary: us_zip, record_key: address, field: state}
+    format: "[A-Z]{2}"
+    pii: none
+    consistency_scope: single_system
+    aliases: [ADDRESS_STATE, ADDR_STATE, STATE, PROVINCE]
+
+  - name: ADDRESS_ZIP
+    description: Five-digit postal code. Determines city and state.
+    domain: Address
+    rule: generate
+    generator: lookup
+    params: {dictionary: us_zip, record_key: address, field: zip}
+    format: '[0-9]{5}'
+    pii: sensitive
+    consistency_scope: single_system
+    aliases: [ADDRESS_ZIP, ADDR_ZIP, ZIP, ZIP_CODE, ZIPCODE, POSTAL_CODE, POSTCODE]
+
+  # --- What most record kinds carry --------------------------------------
+  - name: AMOUNT
+    description: An amount of money, in dollars and cents.
+    domain: Money
+    rule: generate
+    generator: number
+    params: {distribution: lognormal, mean: 4.0, stddev: 1.2, min: 0, max: 1000000, decimals: 2}
+    pii: none
+    consistency_scope: single_system
+    aliases: [AMOUNT, BALANCE, PRICE, COST, CHARGE, CHG_AMT, PAID_AMT]
+
+  - name: EFFECTIVE_DATE
+    description: The date something starts to apply.
+    domain: Dates
+    rule: generate
+    generator: date_relative
+    params: {anchor: "2026-06-30", min_days: -3650, max_days: 0}
+    pii: none
+    consistency_scope: single_system
+    aliases: [EFFECTIVE_DATE, EFF_DT, EFF_DATE, START_DATE, START_DT, BEGIN_DATE, BEGIN_DT]
+
+  - name: TERM_DATE
+    description: The date something stops applying; often a far-future placeholder.
+    domain: Dates
+    rule: generate
+    generator: date_relative
+    params: {anchor: "2026-06-30", min_days: 0, max_days: 3650}
+    pii: none
+    consistency_scope: single_system
+    aliases: [TERM_DATE, TERM_DT, END_DATE, END_DT, EXPIRY_DATE, EXP_DT, EXPIRATION_DATE]
+
+  - name: STATUS_CODE
+    code_set: true
+    description: A record's status.
+    domain: Status
+    rule: generate
+    generator: lookup
+    params: {values: [A, I]}
+    pii: none
+    consistency_scope: single_system
+    aliases: [STATUS_CODE, STATUS, STS, STATUS_CD]

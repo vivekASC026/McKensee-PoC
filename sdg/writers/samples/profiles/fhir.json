@@ -1,0 +1,120 @@
+{
+  "about": "What every FHIR R4 file modeled on a sample shares. A kind's profile (fhir-members.json, fhir-claims.json) extends this one and says what repeats and what follows from what. FHIR's own grammar -- JSON types, a Coding's display following its code, how resources refer to each other -- is the reader's. Places are written 'Patient name[*].family': a resource type ('*' any), a space, a path as the masking tool's FHIR config writes it.",
+  "syntax": "fhir",
+
+  "structural": {
+    "about": "Fields that tie the document together or say how to read a value, never a value anybody generates: identities and references ('rename' moves them), code systems and extension URLs, the narrative's XHTML, the sequence numbers items and diagnoses are linked by. Never proposed; a place under 'text.' (the narrative) neither.",
+    "fields": ["resourceType", "id", "reference", "fullUrl", "url", "system", "div", "sequence"]
+  },
+
+  "qualified": {
+    "about": "Sibling fields that say what a value is, by the value's field name: a telecom value is a phone or an email by its system. Shown on the screen and written into a saved config as 'where'.",
+    "value": ["system"],
+    "code": ["system"]
+  },
+
+  "member": {
+    "about": "Resources a place's suggestion can be for: the member and the member's coverage and claims. A place in any other resource (a practitioner, an organization) is suggested nothing, unless that resource is what a profile of one resource on its own (fhir-practitioner.json) repeats.",
+    "types": ["Patient", "Coverage", "Claim", "ExplanationOfBenefit"]
+  },
+
+  "places": {
+    "about": "What a place holds, when a config's algorithm name does not say.",
+    "list": [
+      {"at": "Patient identifier[*].value", "is": "MEMBER_ID"},
+      {"at": "Patient name[*].family", "is": "LAST_NAME"},
+      {"at": "Patient name[*].given[*]", "is": "FIRST_NAME"},
+      {"at": "Patient birthDate", "is": "DOB"},
+      {"at": "Patient gender", "is": "SEX"},
+      {"at": "Patient maritalStatus.coding[*].code", "is": "MARITAL_STATUS"},
+      {"at": "Patient address[*].line[*]", "is": "STREET_1"},
+      {"at": "Patient address[*].city", "is": "ADDRESS_CITY"},
+      {"at": "Patient address[*].state", "is": "ADDRESS_STATE"},
+      {"at": "Patient address[*].postalCode", "is": "ADDRESS_ZIP"},
+      {"at": "Patient telecom[*].value", "where": {"system": "phone"}, "is": "PHONE"},
+      {"at": "RelatedPerson name[*].family", "is": "LAST_NAME"},
+      {"at": "RelatedPerson name[*].given[*]", "is": null},
+      {"at": "Patient identifier[*].period.start", "is": null},
+      {"at": "Patient identifier[*].assigner.display", "is": null},
+      {"at": "Patient name[*].period.end", "is": null},
+      {"at": "Patient telecom[*].period.end", "is": null},
+      {"at": "Patient _birthDate.extension[*].valueDateTime", "is": null},
+      {"at": "Patient address[*].period.start", "is": null},
+      {"at": "Patient contact[*].address.period.start", "is": null},
+      {"at": "Patient contact[*].period.start", "is": null},
+      {"at": "Coverage dependent", "is": null},
+      {"at": "Coverage class[*].value", "is": null},
+      {"at": "Coverage class[*].name", "is": null},
+      {"at": "RelatedPerson address[*].line[*]", "is": "STREET_1"},
+      {"at": "RelatedPerson address[*].city", "is": "ADDRESS_CITY"},
+      {"at": "RelatedPerson address[*].state", "is": "ADDRESS_STATE"},
+      {"at": "RelatedPerson address[*].postalCode", "is": "ADDRESS_ZIP"},
+      {"at": "RelatedPerson telecom[*].value", "where": {"system": "phone"}, "is": "PHONE"},
+      {"at": "Coverage identifier[*].value", "is": "SUBSCRIBER_ID"},
+      {"at": "Coverage subscriberId", "is": "SUBSCRIBER_ID"},
+      {"at": "Coverage relationship.coding[*].code", "is": "RELATIONSHIP_CODE"},
+      {"at": "Coverage period.start", "is": "EFFECTIVE_DATE"},
+      {"at": "Coverage period.end", "is": "TERMINATION_DATE"},
+      {"at": "Claim identifier[*].value", "is": "CLAIM_ID"},
+      {"at": "Claim created", "is": "RECEIVED_DATE"},
+      {"at": "Claim insurance[*].identifier.value", "is": "CLAIM_ID"},
+      {"at": "Claim billablePeriod.start", "is": "SERVICE_DATE"},
+      {"at": "Claim billablePeriod.end", "is": "SERVICE_DATE"},
+      {"at": "Claim diagnosis[*].diagnosisCodeableConcept.coding[*].code", "is": "DIAGNOSIS_CODE"},
+      {"at": "Claim item[*].servicedDate", "is": "SERVICE_DATE"},
+      {"at": "Claim item[*].productOrService.coding[*].code", "is": "PROCEDURE_CODE"},
+      {"at": "Claim item[*].quantity.value", "is": "SERVICE_UNITS"},
+      {"at": "Claim item[*].unitPrice.value", "is": "CHARGE_AMOUNT"},
+      {"at": "Claim item[*].net.value", "is": "CHARGE_AMOUNT"},
+      {"at": "ExplanationOfBenefit identifier[*].value", "is": "CLAIM_ID"},
+      {"at": "ExplanationOfBenefit billablePeriod.start", "is": "SERVICE_DATE"},
+      {"at": "ExplanationOfBenefit diagnosis[*].diagnosisCodeableConcept.coding[*].code", "is": "DIAGNOSIS_CODE"},
+      {"at": "ExplanationOfBenefit item[*].servicedDate", "is": "SERVICE_DATE"},
+      {"at": "ExplanationOfBenefit item[*].productOrService.coding[*].code", "is": "PROCEDURE_CODE"},
+      {"at": "ExplanationOfBenefit item[*].quantity.value", "is": "SERVICE_UNITS"},
+      {"at": "ExplanationOfBenefit item[*].net.value", "is": "CHARGE_AMOUNT"},
+      {"at": "Encounter identifier[*].value", "is": "CLAIM_ID"},
+      {"at": "Encounter period.start", "is": "SERVICE_DATE"},
+      {"at": "Encounter period.end", "is": "SERVICE_DATE"},
+      {"at": "Encounter reasonCode[*].coding[*].code", "is": "DIAGNOSIS_CODE"},
+      {"at": "Condition code.coding[*].code", "is": "DIAGNOSIS_CODE"},
+      {"at": "Condition onsetDateTime", "is": "SERVICE_DATE"},
+      {"at": "Condition recordedDate", "is": "SERVICE_DATE"},
+      {"at": "Observation effectiveDateTime", "is": "SERVICE_DATE"},
+      {"at": "Observation issued", "is": "SERVICE_DATE"},
+      {"at": "Practitioner identifier[*].value", "is": "PROVIDER_ID"},
+      {"at": "Organization identifier[*].value", "is": "PROVIDER_ID"}
+    ]
+  },
+
+  "checks": {
+    "about": "Value sets a written file is checked against (FHIR's required bindings for these places). The models check structure; they do not know codes.",
+    "codes": [
+      {"at": "Patient gender", "in": ["male", "female", "other", "unknown"]},
+      {"at": "Coverage status", "in": ["active", "cancelled", "draft", "entered-in-error"]},
+      {"at": "Claim status", "in": ["active", "cancelled", "draft", "entered-in-error"]},
+      {"at": "Claim use", "in": ["claim", "preauthorization", "predetermination"]},
+      {"at": "ExplanationOfBenefit status", "in": ["active", "cancelled", "draft", "entered-in-error"]},
+      {"at": "ExplanationOfBenefit outcome", "in": ["queued", "complete", "error", "partial"]},
+      {"at": "Bundle type", "in": ["document", "message", "transaction", "transaction-response", "batch", "batch-response", "history", "searchset", "collection"]}
+    ]
+  },
+
+  "texts": {
+    "about": "Objects whose 'text' says their parts (FHIR HumanName.text, Address.text): where the sample has one, it is said again from the parts written, by 'text' ({field}; a list's items one after another; a piece missing is left out with its comma). Never proposed.",
+    "list": [
+      {"at": "Patient name[*]", "text": "{prefix} {given} {family} {suffix}"},
+      {"at": "Patient address[*]", "text": "{line}, {city}, {district}, {state} {postalCode}"}
+    ]
+  },
+
+  "codes": {
+    "about": "Where FHIR codes a value the store codes otherwise: the store's value -> FHIR's, else 'default'.",
+    "list": [
+      {"at": "Patient gender", "element": "SEX",
+       "map": {"M": "male", "F": "female", "U": "unknown"}, "default": "unknown"},
+      {"at": "Coverage relationship.coding[*].code", "element": "RELATIONSHIP_CODE",
+       "map": {"M": "self", "S": "spouse", "D": "child", "P": "common"}, "default": "other"}
+    ]
+  }
+}

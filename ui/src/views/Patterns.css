@@ -1,0 +1,490 @@
+/* Find: one search box, filter chips, then the results. */
+.find {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.find__bar {
+  display: flex;
+  gap: var(--space-2);
+  max-width: 960px;
+}
+.find__bar input {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--sans);
+  font-size: var(--t-body, var(--t-small));
+  color: var(--ink);
+  background: var(--paper-raised);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  padding: 8px 12px;
+}
+.find__bar input:focus {
+  outline: 2px solid var(--structural);
+  outline-offset: -1px;
+}
+.find__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+  align-items: center;
+}
+.findchips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+.findchips__label {
+  font-size: var(--t-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+  margin-right: 2px;
+}
+.findchip {
+  font-family: var(--sans);
+  font-size: var(--t-small);
+  padding: 3px 11px;
+  border-radius: 999px;
+  border: 1px solid var(--rule-strong);
+  background: var(--paper-raised);
+  color: var(--ink-soft);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.findchip:hover:not(:disabled) {
+  border-color: var(--ink-faint);
+  color: var(--ink);
+}
+.findchip--on {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+.findchip--on:hover:not(:disabled) {
+  color: var(--paper);
+}
+.findchip:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.patterns__loading {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--t-small);
+  color: var(--ink-soft);
+}
+.patterns__k {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-left: var(--space-4);
+}
+.patterns__k span {
+  font-size: var(--t-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+}
+.kept__confirm {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-left: auto;
+}
+
+/*
+  Patterns.
+
+  A pattern is a claim about a population and a proposal about generation, so
+  the card carries both: what was measured along the top, what it would do to
+  the plan underneath. The second half stays folded until asked for, because the
+  first is what you scan and the second is what you decide on.
+*/
+
+.patterns {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  max-width: 960px;
+}
+
+.patterns__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-5);
+}
+.patterns__head h2 {
+  font-size: var(--t-large);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+.patterns__lede {
+  margin-top: var(--space-2);
+  color: var(--ink-soft);
+  font-size: var(--t-small);
+  max-width: 62ch;
+  line-height: 1.55;
+}
+
+.patterns__scope {
+  display: flex;
+  gap: var(--space-5);
+  flex: none;
+}
+.patterns__scope dt {
+  font-size: var(--t-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+}
+.patterns__scope dd {
+  font-size: var(--t-mid);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+/* ---- Scope ------------------------------------------------------------- */
+
+.patterns__filters {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  background: var(--paper-sunk);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  flex-wrap: wrap;
+}
+.patterns__filters label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+.patterns__filters span {
+  font-size: var(--t-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+}
+.patterns__filters select {
+  font-family: var(--sans);
+  font-size: var(--t-small);
+  color: var(--ink);
+  background: var(--paper-raised);
+  border: 1px solid var(--rule-strong);
+  border-radius: 4px;
+  padding: 6px 8px;
+  min-width: 190px;
+}
+.patterns__filters select:disabled {
+  color: var(--ink-faint);
+  background: var(--paper-sunk);
+}
+
+.patterns__summary {
+  font-size: var(--t-small);
+  color: var(--ink-soft);
+}
+.patterns__sil {
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- The list ---------------------------------------------------------- */
+
+.patterns__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  /* The cards line up with the charts above them, not a list indent. */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pattern {
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--paper-raised);
+  overflow: hidden;
+}
+.pattern--open {
+  border-color: var(--rule-strong);
+  /* Generate file's menu opens below the card's last row of actions. */
+  overflow: visible;
+}
+.pattern__key {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+.pattern__head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  color: inherit;
+}
+.pattern__head:hover {
+  background: var(--paper-sunk);
+}
+.pattern__name {
+  font-weight: 600;
+  font-size: var(--t-base);
+  flex: 1;
+}
+.pattern__size {
+  color: var(--ink-soft);
+  font-size: var(--t-small);
+  flex: none;
+}
+
+/* Facts in columns that line up from one row to the next. */
+.pattern__facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  /* Columns set wider apart than the pairs inside a cell. */
+  gap: var(--space-3) var(--space-6);
+  padding: 0 var(--space-4) var(--space-3);
+  border-top: 1px solid var(--rule);
+  padding-top: var(--space-3);
+}
+
+.fact {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0; /* wrap within the column, never into the next */
+}
+.fact__label {
+  font-size: var(--t-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+}
+.fact__value {
+  font-size: var(--t-small);
+  font-weight: 500;
+}
+/* Each value with its share is one item: a long value wraps inside its
+   column (its share kept on its last word), and pairs are set apart. */
+.fact__shares {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space-2);
+}
+.fact__share {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.pattern__mean {
+  color: var(--ink-faint);
+  font-weight: 400;
+}
+
+/* ---- What it would generate -------------------------------------------- */
+
+.pattern__plan {
+  border-top: 1px solid var(--rule);
+  padding: var(--space-4);
+  background: var(--paper-sunk);
+}
+.pattern__plan h4 {
+  font-size: var(--t-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+  margin-bottom: var(--space-2);
+}
+
+.pattern__targets {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--t-small);
+}
+.pattern__targets th {
+  text-align: left;
+  font-size: var(--t-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+  font-weight: 500;
+  padding-bottom: var(--space-1);
+  border-bottom: 1px solid var(--rule);
+}
+.pattern__targets td {
+  padding: var(--space-2) var(--space-3) var(--space-2) 0;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: middle;
+}
+.pattern__targets td.mono {
+  font-family: var(--mono);
+  font-size: var(--t-micro);
+}
+.pattern__replaces {
+  color: var(--ink-faint);
+  font-size: var(--t-micro);
+}
+
+.pattern__none {
+  font-size: var(--t-small);
+  color: var(--ink-soft);
+}
+
+.pattern__rejected {
+  margin-top: var(--space-4);
+}
+.pattern__rejected ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.pattern__rejected li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-left: var(--space-3);
+  border-left: 2px solid var(--caution);
+  font-size: var(--t-small);
+}
+.pattern__rejected span {
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
+.pattern__actions {
+  margin-top: var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+.pattern__caveat {
+  font-size: var(--t-micro);
+  color: var(--ink-faint);
+  max-width: 52ch;
+  line-height: 1.5;
+}
+
+/* What the claims half of the book holds. Beside the scope rather than on a
+   screen of its own: it is the evidence behind the patterns below it. */
+/* Two lists side by side: each count belongs to its own row, so the lists
+   are set well apart (more than a row's own gaps); a count at the end of the
+   left list sat closer to the right list's code than to its own name. */
+.clinical {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-5) var(--space-7);
+  padding: var(--space-4);
+  background: var(--paper-sunk);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+}
+.clinical h3 {
+  font-size: var(--t-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+  margin-bottom: var(--space-2);
+}
+.clinical ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.clinical li {
+  display: grid;
+  grid-template-columns: 8ch 1fr auto;
+  gap: var(--space-3);
+  align-items: baseline;
+  font-size: var(--t-small);
+}
+.clinical .mono {
+  font-family: var(--mono);
+  font-size: var(--t-micro);
+  color: var(--ink-soft);
+}
+.clinical__desc {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.clinical__n {
+  color: var(--ink-faint);
+  font-size: var(--t-micro);
+}
+
+/* How much of the population a pattern governs. Beside the destination,
+   because they are the two halves of one decision. */
+.pattern__how {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+.pattern__how-label {
+  font-size: var(--t-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+  margin-right: var(--space-1);
+}
+.pattern__how-option {
+  font-family: var(--sans);
+  font-size: var(--t-small);
+  padding: 4px var(--space-3);
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--ink-soft);
+}
+.pattern__how-option--on {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+.pattern__how-option:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* A link that is a button: opens the Config tab. */
+.linklike {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--accent, inherit);
+  text-decoration: underline;
+  cursor: pointer;
+  font: inherit;
+}
+
+/* The one-sheet export of an analysis. */
+.patterns__export {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+.patterns__export-note {
+  font-size: var(--t-small);
+  color: var(--ink-soft);
+}

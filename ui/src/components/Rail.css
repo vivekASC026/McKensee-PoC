@@ -1,0 +1,215 @@
+.rail {
+  width: var(--rail-width);
+  flex: 0 0 var(--rail-width);
+  border-right: 1px solid var(--rule);
+  background: var(--paper-sunk);
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-5) 0 var(--space-4);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.rail__head {
+  padding: 0 var(--space-5) var(--space-6);
+}
+/* The logo: the mark, then the name on two lines beside it. */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.logo__mark {
+  flex: none;
+}
+.logo__name {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--brand-font);
+  font-size: 15px;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+.logo__line {
+  font-weight: 700;
+  color: var(--brand-ink);
+  white-space: nowrap;
+}
+.logo__line--green {
+  font-weight: 500;
+  color: var(--brand-green);
+}
+
+/* The jobs: each one a place to go, none of them waiting on another. */
+.rail__steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+}
+
+.rail__step {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  width: 100%;
+  padding: 7px var(--space-5);
+  text-align: left;
+  position: relative;
+  color: var(--ink-soft);
+  border-left: 2px solid transparent;
+}
+.rail__step:hover {
+  color: var(--ink);
+}
+.rail__step--active {
+  color: var(--ink);
+  background: var(--paper);
+  border-left-color: var(--learned);
+}
+.rail__step--active::before {
+  content: "";
+  position: absolute;
+  inset: 0 -1px 0 auto;
+  width: 1px;
+  background: var(--paper);
+}
+
+.rail__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+.rail__label {
+  font-size: var(--t-base);
+  font-weight: 600;
+  line-height: 1.25;
+}
+.rail__detail {
+  font-size: var(--t-micro);
+  color: var(--ink-faint);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rail__foot {
+  padding: var(--space-4) var(--space-5) 0;
+  margin-top: var(--space-5);
+  border-top: 1px solid var(--rule);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+.rail__target {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  text-align: left;
+  min-width: 0;
+}
+.rail__target-db {
+  font-size: var(--t-small);
+  font-weight: 600;
+  color: var(--ink);
+}
+.rail__target-server {
+  font-size: var(--t-micro);
+  color: var(--ink-faint);
+}
+.rail__theme {
+  font-size: var(--t-micro);
+  color: var(--ink-faint);
+  padding: 3px 7px;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  flex: none;
+}
+.rail__theme:hover {
+  color: var(--ink);
+  border-color: var(--ink-faint);
+}
+
+@media (max-width: 900px) {
+  .rail {
+    width: 100%;
+    flex: none;
+    border-right: none;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: var(--space-3);
+  }
+  .rail__steps {
+    display: flex;
+    overflow-x: auto;
+  }
+  .rail__step {
+    padding: 7px var(--space-4);
+    white-space: nowrap;
+  }
+}
+
+.rail__side-label {
+  display: block;
+  font-size: var(--t-micro);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+  margin-bottom: var(--space-2);
+}
+
+/* A two-way switch: the Members/Claims one on Patterns. */
+.rail__switch {
+  display: flex;
+  border: 1px solid var(--rule-strong);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.rail__switch-option {
+  flex: 1;
+  font-family: var(--sans);
+  font-size: var(--t-small);
+  font-weight: 500;
+  padding: 6px 12px;
+  background: var(--paper-raised);
+  color: var(--ink-soft);
+  border: none;
+  cursor: pointer;
+}
+.rail__switch-option + .rail__switch-option {
+  border-left: 1px solid var(--rule-strong);
+}
+.rail__switch-option--on {
+  background: var(--ink);
+  color: var(--paper);
+}
+.rail__switch-option:disabled {
+  color: var(--ink-faint);
+  cursor: not-allowed;
+}
+
+/* Settings: apart from the jobs, below them. */
+.rail__settings {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-4) var(--space-5) 0;
+  margin-top: var(--space-4);
+  border-top: 1px solid var(--rule);
+}
+.rail__setting {
+  text-align: left;
+  padding: 5px 0;
+  font-size: var(--t-small);
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+.rail__setting:hover {
+  color: var(--ink);
+}
+.rail__setting--on {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

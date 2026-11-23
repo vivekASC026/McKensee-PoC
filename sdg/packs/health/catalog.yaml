@@ -1,0 +1,687 @@
+# Organization element catalog.
+#
+# Rules live here, on business data elements, not on columns. A physical column
+# maps to an element and inherits its rule. The same Member ID definition then
+# serves every application that has a member identifier, and changing the
+# format here changes it everywhere.
+#
+# Three rules:
+#   generate  produce the value from the element's generator, deterministically
+#   reuse     draw from an existing valid set, bound per environment
+#   copy      take the value from a designated source row
+#
+# Aliases are matched on tokens, not on exact text: an alias of FIRST_NAME
+# matches a column called MEME_FIRST_NAME. That is what lets one catalog entry
+# cover the naming conventions of several systems.
+
+version: "0.1.0"
+organization: Ascendion reference catalog
+description: >
+  Seeded for the proof of concept against a Facets-shaped membership and claims
+  slice. Twenty-six elements across membership, provider, product, and claim.
+
+elements:
+
+  # --- Membership --------------------------------------------------------
+  - name: SUBSCRIBER_ID
+    description: The subscriber's business identifier, printed on the card.
+    domain: Membership
+    rule: generate
+    generator: pattern
+    params: {regex: "[A-Z]{3}\\d{6}", unique: true}
+    format: "[A-Z]{3}\\d{6}"
+    pii: identifier
+    consistency_scope: cross_system
+    aliases: [SUBSCRIBER_ID, SUBSC_ID, SBSB_ID, SUB_ID]
+
+  - name: SUBSCRIBER_KEY
+    description: Surrogate key for a subscriber. Assigned by the owning system.
+    domain: Membership
+    rule: generate
+    generator: sequence
+    params: {start: 1, step: 1}
+    pii: none
+    consistency_scope: single_system
+    aliases: [SUBSCRIBER_KEY, SBSB_CK]
+
+  - name: MEMBER_ID
+    description: The member's business identifier. Unique across the enterprise.
+    domain: Membership
+    rule: generate
+    generator: pattern
+    params: {regex: "[A-Z]{3}\\d{8}", unique: true}
+    format: "[A-Z]{3}\\d{8}"
+    pii: identifier
+    consistency_scope: cross_system
+    aliases: [MEMBER_ID, MEMBER_NBR, MBR_ID, MEME_ID]
+
+  - name: MEMBER_KEY
+    description: Surrogate key for a member. Assigned by the owning system.
+    domain: Membership
+    rule: generate
+    generator: sequence
+    params: {start: 1, step: 1}
+    pii: none
+    consistency_scope: single_system
+    aliases: [MEMBER_KEY, MEME_CK]
+
+  - name: FIRST_NAME
+    description: A person's given name.
+    domain: Party
+    rule: generate
+    generator: lookup
+    params: {dictionary: first_names}
+    pii: sensitive
+    consistency_scope: single_system
+    aliases: [FIRST_NAME, FNAME, GIVEN_NAME]
+
+  - name: LAST_NAME
+    description: A person's family name.
+    domain: Party
+    rule: generate
+    generator: lookup
+    params: {dictionary: last_names}
+    pii: sensitive
+    consistency_scope: single_system
+    aliases: [LAST_NAME, LNAME, SURNAME, FAMILY_NAME]
+
+  - name: DOB
+    description: Date of birth. Drives age-based benefit rules.
+    domain: Party
+    rule: generate
+    generator: date_relative
+    params: {anchor: "2026-06-30", min_days: -31025, max_days: 0}
+    pii: sensitive
+    consistency_scope: cross_system
+    aliases: [DOB, BIRTH_DATE, BIRTH_DT, DATE_OF_BIRTH]
+
+  - name: RELATIONSHIP_CODE
+    code_set: true
+    description: How a member relates to the subscriber. Subject to a code list.
+    domain: Membership
+    rule: generate
+    generator: lookup
+    params:
+      values: ["M", "D", "S", "P"]
+      weights: [0.44, 0.34, 0.20, 0.02]
+    format: "[MDSP]"
+    pii: none
+    consistency_scope: single_system
+    aliases: [RELATIONSHIP_CODE, REL_CD, REL, RELATION]
+
+  - name: EFFECTIVE_DATE
+    description: The date coverage or a record takes effect.
+    domain: Membership
+    rule: generate
+    generator: date_relative
+    params: {anchor: "2018-01-01", min_days: 0, max_days: 2372}
+    pii: none
+    consistency_scope: single_system
+    aliases: [EFFECTIVE_DATE, EFF_DT, EFF_DATE, START_DATE]
+
+  - name: TERMINATION_DATE
+    description: The date coverage ends. Null while coverage is open.
+    domain: Membership
+    rule: generate
+    generator: date_relative
+    params: {anchor: EFFECTIVE_DATE, min_days: 180, max_days: 1800}
+    pii: none
+    consistency_scope: single_system
+    aliases: [TERMINATION_DATE, TERM_DT, TERM_DATE, END_DATE]
+
+  # --- Address -----------------------------------------------------------
+  # ZIP, city, and state share a record key, so the three are drawn together
+  # from one real triple rather than picked independently.
+  - name: ADDRESS_ZIP
+    description: Five-digit postal code. Determines city and state.
+    domain: Address
+    rule: generate
+    generator: lookup
+    params: {dictionary: us_zip, record_key: address, field: zip}
+    format: "\\d{5}"
+    pii: sensitive
+    consistency_scope: single_system
+    aliases: [ADDRESS_ZIP, ZIP, ZIP_CODE, POSTAL_CODE]
+
+  - name: ADDRESS_CITY
+    description: City name. Determined by the postal code.
+    domain: Address
+    rule: generate
+    generator: lookup
+    params: {dictionary: us_zip, record_key: address, field: city}
+    pii: sensitive
+    consistency_scope: single_system
+    aliases: [ADDRESS_CITY, CITY, CITY_NAME, TOWN]
+
+  - name: ADDRESS_STATE
+    description: Two-letter state code. Determined by the postal code.
+    domain: Address
+    rule: generate
+    generator: lookup
+    params: {dictionary: us_zip, record_key: address, field: state}
+    format: "[A-Z]{2}"
+    pii: none
+    consistency_scope: single_system
+    aliases: [ADDRESS_STATE, STATE, STATE_CD, ST]
+
+  # --- Provider ----------------------------------------------------------
+  - name: PROVIDER_ID
+    description: The provider's identifier inside the claims system.
+    domain: Provider
+    rule: generate
+    generator: pattern
+    params: {regex: "PRV\\d{9}", unique: true}
+    format: "PRV\\d{9}"
+    pii: identifier
+    consistency_scope: cross_system
+    aliases: [PROVIDER_ID, PROV_ID, PRPR_ID]
+
+  - name: NPI
+    description: >
+      National Provider Identifier. Ten digits whose last is a Luhn check digit
+      over 80840 and the first nine, which is how a column is recognized as one.
+    domain: Provider
+    rule: generate
+    generator: pattern
+    params: {regex: "\\d{10}", unique: true}
+    format: "\\d{10}"
+    check_digit: npi
+    pii: identifier
+    consistency_scope: cross_system
+    aliases: [NPI, NATIONAL_PROVIDER_ID, NPI_NUMBER]
+
+  - name: PROVIDER_SPECIALTY
+    description: Three-letter specialty code. Constrains the service codes a claim may carry.
+    domain: Provider
+    rule: generate
+    generator: lookup
+    params: {dictionary: provider_specialties}
+    format: "[A-Z]{3}"
+    pii: none
+    consistency_scope: single_system
+    aliases: [PROVIDER_SPECIALTY, SPECIALTY, SPCL_CD, SPECIALTY_CODE, MCTR_SPEC, SPEC]
+
+  # --- Product and plan --------------------------------------------------
+  # Both are drawn from master data rather than invented. The location of that
+  # master data is bound per environment, not stored on the element.
+  - name: PRODUCT_CODE
+    description: Product identifier, owned by master data.
+    domain: Product
+    rule: reuse
+    reuse_domain:
+      connection: ref
+      schema: dbo
+      table: REF_PRODUCT_CODE
+      key_column: PRODUCT_CD
+      attributes: [PRODUCT_TYPE]
+    format: "[A-Z]{2}\\d{6}"
+    pii: none
+    consistency_scope: cross_system
+    aliases: [PRODUCT_CODE, PRODUCT_CD, PDPD_ID]
+
+  - name: PRODUCT_TYPE
+    description: Medical or dental. Decides which service codes are valid on a claim.
+    domain: Product
+    rule: generate
+    generator: lookup
+    params:
+      values: ["M", "D"]
+      weights: [0.8, 0.2]
+    format: "[A-Z]"
+    pii: none
+    consistency_scope: single_system
+    aliases: [PRODUCT_TYPE, PDPD_TYPE, PROD_TYPE]
+
+  - name: PLAN_CODE
+    description: >
+      Benefit plan code, owned by master data. No column in this application
+      carries it; the catalog holds it for the applications that do.
+    domain: Product
+    rule: reuse
+    reuse_domain:
+      connection: ref
+      schema: dbo
+      table: REF_PLAN_CODE
+      key_column: PLAN_CD
+      filter: "ACTIVE_FLAG = 'Y'"
+    format: "[A-Z]{2}\\d{4}"
+    pii: none
+    consistency_scope: cross_system
+    aliases: [PLAN_CODE, PLAN_CD, BENEFIT_PLAN]
+
+  # --- Claim -------------------------------------------------------------
+  - name: CLAIM_ID
+    description: Twelve-digit claim number.
+    domain: Claim
+    rule: generate
+    generator: pattern
+    params: {regex: "\\d{12}", unique: true}
+    format: "\\d{12}"
+    pii: identifier
+    consistency_scope: cross_system
+    aliases: [CLAIM_ID, CLCL_ID, CLM_ID, CLAIM_NUMBER]
+
+  - name: CLAIM_STATUS
+    description: Where the claim stands. A small weighted code list.
+    domain: Claim
+    rule: generate
+    generator: lookup
+    params:
+      values: ["02", "01", "04", "11", "22", "99"]
+      weights: [0.70, 0.10, 0.07, 0.06, 0.04, 0.03]
+    format: "\\d{2}"
+    pii: none
+    consistency_scope: single_system
+    aliases: [CLAIM_STATUS, CUR_STS, STATUS_CODE, CLAIM_STS]
+
+  - name: SERVICE_DATE
+    description: The date care was given. Must fall inside the member's coverage.
+    domain: Claim
+    rule: generate
+    generator: date_relative
+    params: {anchor: "2020-01-01", min_days: 0, max_days: 2000}
+    pii: none
+    consistency_scope: single_system
+    aliases: [SERVICE_DATE, SVC_DT, SERVICE_DT, DATE_OF_SERVICE, LOW_SVC_DT, FROM_DT]
+
+  - name: RECEIVED_DATE
+    description: The date the claim arrived. Follows the service date closely.
+    domain: Claim
+    rule: generate
+    generator: date_relative
+    params: {anchor: SERVICE_DATE, min_days: 0, max_days: 30}
+    pii: none
+    consistency_scope: single_system
+    aliases: [RECEIVED_DATE, RECD_DT, RECEIPT_DATE]
+
+  - name: PAID_DATE
+    description: The date the claim was paid. Null while it is unpaid.
+    domain: Claim
+    rule: generate
+    generator: date_relative
+    params: {anchor: RECEIVED_DATE, min_days: 5, max_days: 60}
+    pii: none
+    consistency_scope: single_system
+    aliases: [PAID_DATE, PAID_DT, PAYMENT_DATE]
+
+  - name: PROCEDURE_CODE
+    code_set: true
+    description: >
+      The procedure or service billed. One letter and four digits. In Facets
+      the claim line's service code (CDML_SVC_CD) is the procedure.
+    domain: Claim
+    rule: generate
+    generator: pattern
+    params: {regex: "[A-Z]\\d{4}"}
+    format: "[A-Z]\\d{4}"
+    pii: none
+    consistency_scope: single_system
+    aliases: [PROCEDURE_CODE, PROC_CD, HCPCS, CPT_CODE, SVC_CD, IPCD_ID]
+
+  - name: CHARGE_AMOUNT
+    description: An amount billed, in dollars and cents.
+    domain: Claim
+    rule: generate
+    generator: number
+    params: {distribution: lognormal, mean: 4.5, stddev: 0.9, min: 5, max: 25000, decimals: 2}
+    pii: none
+    consistency_scope: single_system
+    aliases: [CHARGE_AMOUNT, CHG_AMT, TOT_CHG, BILLED_AMOUNT]
+
+  - name: LINE_NUMBER
+    description: Position of a line inside its claim. Restarts at one per claim.
+    domain: Claim
+    rule: generate
+    generator: sequence
+    params: {start: 1, step: 1, scope: parent}
+    pii: none
+    consistency_scope: single_system
+    aliases: [LINE_NUMBER, LINE_NO, CDML_SEQ_NO]
+
+  - name: SERVICE_UNITS
+    description: How many units of the service were billed.
+    domain: Claim
+    rule: generate
+    generator: number
+    params: {distribution: uniform, min: 1, max: 10, decimals: 0}
+    pii: none
+    consistency_scope: single_system
+    aliases: [SERVICE_UNITS, UNITS, UNIT_COUNT]
+
+  # --- Held by the catalog, not used by this application -----------------
+  # Both exist to show that the catalog is the organization's, not the
+  # project's. Nothing in the Facets slice maps to either.
+  - name: SSN
+    description: Social Security Number. Generated, never copied from production.
+    domain: Party
+    rule: generate
+    generator: pattern
+    params: {regex: "\\d{9}", unique: true}
+    format: "\\d{9}"
+    pii: sensitive
+    consistency_scope: cross_system
+    aliases: [SSN, SOCIAL_SECURITY_NUMBER, TAX_ID]
+
+  - name: LEGAL_ENTITY_NAME
+    description: >
+      The registered name of a contracting entity. Taken from the source row
+      rather than invented, because downstream contracts are matched on it.
+    domain: Party
+    rule: copy
+    copy_from: source
+    pii: none
+    consistency_scope: cross_system
+    aliases: [LEGAL_ENTITY_NAME, ENTITY_NAME, LEGAL_NAME]
+
+  # --- Enrollment hierarchy -----------------------------------------------
+  # Added when the pattern analyzer was merged in. The analyzer selects down
+  # this hierarchy before it clusters, so every level needs an element.
+
+  - name: GROUP_KEY
+    description: Surrogate key for an employer group. Assigned by the owning system.
+    domain: Enrollment
+    rule: generate
+    generator: sequence
+    params: {start: 1, step: 1}
+    pii: none
+    consistency_scope: single_system
+    aliases: [GROUP_KEY, GRGR_CK]
+
+  - name: GROUP_ID
+    description: The business identifier for an employer group.
+    domain: Enrollment
+    rule: generate
+    generator: pattern
+    params: {regex: "GRP\\d{5}", unique: true}
+    format: "GRP\\d{5}"
+    pii: none
+    consistency_scope: cross_system
+    aliases: [GROUP_ID, GRGR_ID, GROUP_NBR]
+
+  - name: GROUP_NAME
+    description: The name of the employer or sponsor on the group record.
+    domain: Enrollment
+    rule: generate
+    generator: lookup
+    params: {dictionary: group_names}
+    pii: sensitive
+    consistency_scope: single_system
+    aliases: [GROUP_NAME, GRGR_NAME]
+
+  - name: GROUP_TYPE
+    description: What kind of organization the group is.
+    domain: Enrollment
+    rule: generate
+    generator: lookup
+    params: {values: [EDU, MUNI, HLTH, MFG, RTL, TRAN]}
+    pii: none
+    consistency_scope: single_system
+    aliases: [GROUP_TYPE, GRGR_MCTR_TYPE]
+
+  - name: ADDRESS_COUNTY
+    description: County name, which the postal code determines.
+    domain: Address
+    rule: generate
+    generator: lookup
+    params: {values: [Hampden, Erie, Franklin, Kent, Travis, Lancaster, Hudson,
+                      Pinellas, Cuyahoga, Marion, Dane, Pierce, Bergen, Suffolk]}
+    pii: sensitive
+    consistency_scope: single_system
+    aliases: [ADDRESS_COUNTY, COUNTY, GRGR_COUNTY]
+
+  - name: SUBGROUP_KEY
+    description: Surrogate key for a division inside a group.
+    domain: Enrollment
+    rule: generate
+    generator: sequence
+    params: {start: 1, step: 1}
+    pii: none
+    consistency_scope: single_system
+    aliases: [SUBGROUP_KEY, SGSG_CK]
+
+  - name: SUBGROUP_NAME
+    description: The name of a division within its group.
+    domain: Enrollment
+    rule: generate
+    generator: lookup
+    params: {dictionary: group_names}
+    pii: sensitive
+    consistency_scope: single_system
+    aliases: [SUBGROUP_NAME, SGSG_NAME]
+
+  - name: COVERAGE_PLAN_ID
+    code_set: true
+    description: The coverage plan a subscriber is enrolled on. Level three of the hierarchy.
+    domain: Enrollment
+    rule: generate
+    generator: pattern
+    params: {regex: "CSPI\\d{4}", unique: true}
+    format: "CSPI\\d{4}"
+    pii: none
+    consistency_scope: cross_system
+    aliases: [COVERAGE_PLAN_ID, CSPI_ID, COVERAGE_PLAN]
+
+  - name: PLAN_CATEGORY_DESC
+    description: What a plan category covers, in words.
+    domain: Enrollment
+    rule: generate
+    generator: lookup
+    params: {values: ["Medical and hospital", "Dental"]}
+    pii: none
+    consistency_scope: single_system
+    aliases: [PLAN_CATEGORY_DESC, CSPD_CAT_DESC]
+
+  - name: PLAN_CATEGORY_TYPE
+    description: The kind of coverage a category represents.
+    domain: Enrollment
+    rule: generate
+    generator: lookup
+    params: {values: [MEDICAL, DENTAL]}
+    pii: none
+    consistency_scope: single_system
+    aliases: [PLAN_CATEGORY_TYPE, CSPD_TYPE]
+
+  - name: PLAN_DESCRIPTION
+    description: The name of a plan as a member would recognize it.
+    domain: Enrollment
+    rule: generate
+    generator: lookup
+    params: {dictionary: plan_descriptions}
+    pii: none
+    consistency_scope: single_system
+    aliases: [PLAN_DESCRIPTION, PLDS_DESC]
+
+  - name: PRODUCT_DESCRIPTION
+    description: The name of a product as a member would recognize it.
+    domain: Enrollment
+    rule: generate
+    generator: lookup
+    params: {dictionary: plan_descriptions}
+    pii: none
+    consistency_scope: single_system
+    aliases: [PRODUCT_DESCRIPTION, PDDS_DESC]
+
+  # --- Demographics the analyzer clusters on -----------------------------
+
+  - name: SEX
+    code_set: true
+    description: Administrative sex as recorded on the member record.
+    domain: Party
+    rule: generate
+    generator: lookup
+    params: {values: [M, F], weights: [0.49, 0.51]}
+    pii: sensitive
+    consistency_scope: single_system
+    aliases: [SEX, GENDER, MEME_SEX]
+
+  - name: AGE_AT_SERVICE
+    description: The member's age on the date of service, as a claim records it.
+    domain: Claim
+    rule: generate
+    generator: number
+    params: {distribution: uniform, min: 0, max: 100, decimals: 0}
+    pii: sensitive
+    consistency_scope: single_system
+    aliases: [AGE_AT_SERVICE, CLCL_ME_AGE, AGE_AT_CLAIM]
+  - name: MEDICARE_ID
+    description: A member's Medicare identifier -- the legacy HICN or the Medicare Beneficiary Identifier (MBI).
+    domain: Membership
+    rule: generate
+    generator: pattern
+    params: {regex: "[1-9][A-Z][A-Z0-9][0-9][A-Z][A-Z0-9][0-9][A-Z]{2}[0-9]{2}"}
+    pii: identifier
+    consistency_scope: cross_system
+    aliases: [MEDICARE_ID, HICN, MBI, MEME_HICN]
+  - name: HIOS_PLAN_ID
+    description: The plan's HIOS identifier, as filed with CMS for a marketplace plan.
+    domain: Enrollment
+    rule: generate
+    generator: pattern
+    params: {regex: "[0-9]{5}[A-Z]{2}[0-9]{7}"}
+    pii: none
+    consistency_scope: cross_system
+    aliases: [HIOS_PLAN_ID, HIOS_ID, CSPI_HIOS_ID, CSPI_HIOS_ID_NVL]
+  - name: MARITAL_STATUS
+    code_set: true
+    description: Marital status as recorded on the member record.
+    domain: Party
+    rule: generate
+    generator: lookup
+    params: {values: [M, S, D, W], weights: [0.52, 0.34, 0.11, 0.03]}
+    pii: sensitive
+    consistency_scope: single_system
+    aliases: [MARITAL_STATUS, MARITAL, MEME_MARITAL_STATUS]
+
+  - name: MIDDLE_INITIAL
+    description: A middle initial, where one is held.
+    domain: Party
+    rule: generate
+    generator: pattern
+    params: {regex: "[A-Z]"}
+    pii: sensitive
+    consistency_scope: single_system
+    aliases: [MIDDLE_INITIAL, MID_INIT, MEME_MID_INIT]
+
+  - name: MEMBER_STATUS
+    description: Whether an enrollment record is active or terminated.
+    domain: Membership
+    rule: generate
+    generator: lookup
+    params: {values: [AC, TM], weights: [0.8, 0.2]}
+    pii: none
+    consistency_scope: single_system
+    aliases: [MEMBER_STATUS, MCTR_STS, MEME_MCTR_STS, SBSB_MCTR_STS]
+
+  - name: EMPLOYEE_ID
+    description: The identifier an employer uses for a subscriber.
+    domain: Enrollment
+    rule: generate
+    generator: pattern
+    params: {regex: "EMP\\d{7}", unique: true}
+    format: "EMP\\d{7}"
+    pii: identifier
+    consistency_scope: single_system
+    aliases: [EMPLOYEE_ID, EMPLOY_ID, SBSB_EMPLOY_ID]
+
+  # --- Clinical codes ----------------------------------------------------
+
+  - name: DIAGNOSIS_CODE
+    code_set: true
+    description: The primary diagnosis recorded on a claim.
+    domain: Claim
+    rule: generate
+    generator: pattern
+    params: {regex: "[A-Z]\\d{2}[A-Z0-9]\\d{3}"}
+    format: "[A-Z]\\d{2}[A-Z0-9]\\d{3}"
+    pii: sensitive
+    consistency_scope: cross_system
+    aliases: [DIAGNOSIS_CODE, IDCD_ID, ICD_CODE, DIAG_CD]
+
+  - name: DIAGNOSIS_DESCRIPTION
+    description: What a diagnosis code means, in words.
+    domain: Claim
+    rule: generate
+    generator: lookup
+    params: {dictionary: diagnosis_descriptions}
+    pii: none
+    consistency_scope: single_system
+    aliases: [DIAGNOSIS_DESCRIPTION, IDCD_DESC]
+
+  - name: DIAGNOSIS_CHAPTER
+    description: The body system a diagnosis belongs to.
+    domain: Claim
+    rule: generate
+    generator: lookup
+    params: {values: [Endocrine, Circulatory, Respiratory, Musculoskeletal,
+                      "Mental health", Digestive, Genitourinary, Symptoms,
+                      "Nervous system", Skin, Eye, Ear, Blood, Infectious,
+                      Injury, Factors]}
+    pii: none
+    consistency_scope: single_system
+    aliases: [DIAGNOSIS_CHAPTER, IDCD_CHAPTER]
+
+  - name: PROCEDURE_DESCRIPTION
+    description: What a procedure code means, in words.
+    domain: Claim
+    rule: generate
+    generator: lookup
+    params: {dictionary: procedure_descriptions}
+    pii: none
+    consistency_scope: single_system
+    aliases: [PROCEDURE_DESCRIPTION, IPCD_DESC]
+
+  - name: CLAIM_TYPE
+    description: Whether a claim is professional, institutional, or dental.
+    domain: Claim
+    rule: generate
+    generator: lookup
+    params: {values: [P, I, D], weights: [0.66, 0.14, 0.20]}
+    pii: none
+    consistency_scope: single_system
+    aliases: [CLAIM_TYPE, CL_TYPE, CLCL_CL_TYPE]
+
+  - name: NETWORK_INDICATOR
+    description: Whether the servicing provider was in network.
+    domain: Claim
+    rule: generate
+    generator: lookup
+    params: {values: [I, O], weights: [0.86, 0.14]}
+    pii: none
+    consistency_scope: single_system
+    aliases: [NETWORK_INDICATOR, NTWK_IND, CLCL_NTWK_IND]
+
+  - name: NETWORK_ID
+    description: >
+      The provider network a claim was in network through: one of the networks
+      of the member's plan that the provider participates in on the service
+      date. Empty when out of network. Drawn with the provider, the plan and
+      the network indicator, never alone.
+    domain: Provider
+    rule: generate
+    generator: pattern
+    params: {regex: "NW\\d{10}"}
+    format: "NW\\d{10}"
+    pii: none
+    consistency_scope: single_system
+    aliases: [NETWORK_ID, NWNW_ID, NETWORK_CD]
+
+  - name: AUDIT_ACTION
+    description: What a row in an audit table records.
+    domain: System
+    rule: generate
+    generator: constant
+    params: {value: INSERT}
+    pii: none
+    consistency_scope: single_system
+    aliases: [AUDIT_ACTION]
+
+  - name: ORIGINAL_EFFECTIVE_DATE
+    description: When coverage first began, as distinct from the current enrollment date. Tenure is measured from here.
+    domain: Enrollment
+    rule: generate
+    generator: date_relative
+    params: {anchor: "2018-01-01", min_days: 0, max_days: 2500}
+    pii: none
+    consistency_scope: single_system
+    aliases: [ORIGINAL_EFFECTIVE_DATE, ORIG_EFF_DT, ORIGINAL_EFF_DATE]
+

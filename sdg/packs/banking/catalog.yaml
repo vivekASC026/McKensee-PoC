@@ -1,0 +1,254 @@
+# The banking pack's element catalog.
+#
+# Rules live on business data elements, not on columns: a column maps to an
+# element and inherits its rule. Branches, products and merchant category
+# codes are reference data a run reuses from the bank's own tables (the
+# plan's table modes); the elements below generate everything else.
+
+version: "0.1.0"
+organization: Sample retail bank
+description: >
+  The banking pack's proof catalog: customers, their accounts and the
+  accounts' transactions.
+
+elements:
+
+  # --- Customer ----------------------------------------------------------
+  - name: CUSTOMER_ID
+    description: The bank's identifier for a customer.
+    domain: Customer
+    rule: generate
+    generator: sequence
+    params: {start: 100001, step: 1}
+    pii: identifier
+    consistency_scope: cross_system
+    aliases: [CUSTOMER_ID, CUST_ID, CIF, CUSTOMER_NBR]
+
+  - name: FIRST_NAME
+    description: A person's given name.
+    domain: Party
+    rule: generate
+    generator: lookup
+    params: {dictionary: first_names}
+    pii: sensitive
+    consistency_scope: single_system
+    aliases: [FIRST_NAME, FNAME, GIVEN_NAME]
+
+  - name: LAST_NAME
+    description: A person's family name.
+    domain: Party
+    rule: generate
+    generator: lookup
+    params: {dictionary: last_names}
+    pii: sensitive
+    consistency_scope: single_system
+    aliases: [LAST_NAME, LNAME, SURNAME, FAMILY_NAME]
+
+  - name: DOB
+    description: Date of birth.
+    domain: Party
+    rule: generate
+    generator: date_relative
+    params: {anchor: "2026-06-30", min_days: -31025, max_days: -6570}
+    pii: sensitive
+    consistency_scope: cross_system
+    aliases: [DOB, BIRTH_DATE, BIRTH_DT, DATE_OF_BIRTH]
+
+  - name: SEGMENT
+    code_set: true
+    description: The customer's segment (mass, affluent, private, small business).
+    domain: Customer
+    rule: generate
+    generator: lookup
+    params: {values: [MASS, AFFLUENT, PRIVATE, SMALL_BIZ]}
+    pii: none
+    consistency_scope: single_system
+    aliases: [SEGMENT, CUST_SEGMENT]
+
+  - name: CUSTOMER_SINCE
+    description: The date the customer's first relationship with the bank began.
+    domain: Customer
+    rule: generate
+    generator: date_relative
+    params: {anchor: "2026-06-30", min_days: -9000, max_days: 0}
+    pii: none
+    consistency_scope: single_system
+    aliases: [CUSTOMER_SINCE, CUST_SINCE]
+
+  - name: EMAIL
+    description: An email address.
+    domain: Party
+    rule: generate
+    generator: pattern
+    params: {regex: '[a-z]{6}[0-9]{3}@example[.]com'}
+    pii: sensitive
+    consistency_scope: single_system
+    aliases: [EMAIL, EMAIL_ADDRESS]
+
+  # --- Address -----------------------------------------------------------
+  - name: ADDRESS_CITY
+    description: City name. Determined by the postal code.
+    domain: Address
+    rule: generate
+    generator: lookup
+    params: {dictionary: us_zip, record_key: address, field: city}
+    pii: sensitive
+    consistency_scope: single_system
+    aliases: [ADDRESS_CITY, ADDR_CITY, CITY]
+
+  - name: ADDRESS_STATE
+    description: Two-letter state code. Determined by the postal code.
+    domain: Address
+    rule: generate
+    generator: lookup
+    params: {dictionary: us_zip, record_key: address, field: state}
+    format: "[A-Z]{2}"
+    pii: none
+    consistency_scope: single_system
+    aliases: [ADDRESS_STATE, ADDR_STATE, STATE]
+
+  - name: ADDRESS_ZIP
+    description: Five-digit postal code. Determines city and state.
+    domain: Address
+    rule: generate
+    generator: lookup
+    params: {dictionary: us_zip, record_key: address, field: zip}
+    format: '[0-9]{5}'
+    pii: sensitive
+    consistency_scope: single_system
+    aliases: [ADDRESS_ZIP, ADDR_ZIP, ZIP, ZIP_CODE]
+
+  # --- Account -----------------------------------------------------------
+  - name: ACCOUNT_ID
+    description: The bank's account number.
+    domain: Account
+    rule: generate
+    generator: sequence
+    params: {start: 4000000001, step: 1}
+    pii: identifier
+    consistency_scope: cross_system
+    aliases: [ACCOUNT_ID, ACCT_ID, ACCOUNT_NBR]
+
+  - name: OPEN_DATE
+    description: The date an account was opened.
+    domain: Account
+    rule: generate
+    generator: date_relative
+    params: {anchor: "2026-06-30", min_days: -7000, max_days: 0}
+    pii: none
+    consistency_scope: single_system
+    aliases: [OPEN_DATE, OPENED_DT]
+
+  - name: ACCOUNT_STATUS
+    code_set: true
+    description: Active, dormant or closed.
+    domain: Account
+    rule: generate
+    generator: lookup
+    params: {values: [A, D, C]}
+    pii: none
+    consistency_scope: single_system
+    aliases: [ACCOUNT_STATUS, ACCT_STATUS]
+
+  - name: BALANCE
+    description: The account's balance, in dollars and cents.
+    domain: Account
+    rule: generate
+    generator: number
+    params: {distribution: lognormal, mean: 7.5, stddev: 1.4, min: 0, max: 2000000, decimals: 2}
+    pii: none
+    consistency_scope: single_system
+    aliases: [BALANCE, CURRENT_BALANCE, LEDGER_BALANCE]
+
+  # --- Transaction -------------------------------------------------------
+  - name: TXN_SEQ
+    description: A transaction's number within its account.
+    domain: Transaction
+    rule: generate
+    generator: sequence
+    params: {start: 1, step: 1}
+    pii: none
+    consistency_scope: single_system
+    aliases: [TXN_SEQ, TRAN_SEQ]
+
+  - name: TXN_DATE
+    description: The date a transaction posted.
+    domain: Transaction
+    rule: generate
+    generator: date_relative
+    params: {anchor: "2026-06-30", min_days: -730, max_days: 0}
+    pii: none
+    consistency_scope: single_system
+    aliases: [TXN_DATE, POST_DATE, TRAN_DATE]
+
+  - name: TXN_TYPE
+    code_set: true
+    description: Debit, credit, fee or interest.
+    domain: Transaction
+    rule: generate
+    generator: lookup
+    params: {values: [DEBIT, CREDIT, FEE, INTEREST]}
+    pii: none
+    consistency_scope: single_system
+    aliases: [TXN_TYPE, TRAN_TYPE]
+
+  - name: CHANNEL
+    code_set: true
+    description: Where the transaction was made.
+    domain: Transaction
+    rule: generate
+    generator: lookup
+    params: {values: [BRANCH, ATM, ONLINE, CARD]}
+    pii: none
+    consistency_scope: single_system
+    aliases: [CHANNEL, TXN_CHANNEL]
+
+  - name: AMOUNT
+    description: A transaction's amount, in dollars and cents.
+    domain: Transaction
+    rule: generate
+    generator: number
+    params: {distribution: lognormal, mean: 3.8, stddev: 1.1, min: 0.01, max: 50000, decimals: 2}
+    pii: none
+    consistency_scope: single_system
+    aliases: [AMOUNT, TXN_AMOUNT, TRAN_AMT]
+
+  # --- Reference data, reused from the bank's own tables -----------------
+  - name: BRANCH_ID
+    description: The branch a customer banks with, from the bank's branch table.
+    domain: Branch
+    rule: reuse
+    reuse_domain:
+      connection: ref
+      schema: dbo
+      table: BRANCH
+      key_column: BRANCH_ID
+    pii: none
+    consistency_scope: cross_system
+    aliases: [BRANCH_ID, BRANCH_NBR]
+
+  - name: PRODUCT_CODE
+    description: The account's product, from the bank's product table.
+    domain: Product
+    rule: reuse
+    reuse_domain:
+      connection: ref
+      schema: dbo
+      table: PRODUCT
+      key_column: PRODUCT_CODE
+    pii: none
+    consistency_scope: cross_system
+    aliases: [PRODUCT_CODE, PRODUCT_CD]
+
+  - name: MCC_CODE
+    description: A card transaction's merchant category code.
+    domain: Transaction
+    rule: reuse
+    reuse_domain:
+      connection: ref
+      schema: dbo
+      table: MCC
+      key_column: MCC_CODE
+    pii: none
+    consistency_scope: cross_system
+    aliases: [MCC_CODE, MCC, MERCHANT_CATEGORY]

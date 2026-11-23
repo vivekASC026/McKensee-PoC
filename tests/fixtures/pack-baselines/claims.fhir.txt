@@ -1,0 +1,1663 @@
+{
+  "resourceType": "Bundle",
+  "id": "a782b0f3-8110-5d9d-ba96-6ef86a321db9",
+  "type": "collection",
+  "timestamp": "2026-10-14T09:00:00Z",
+  "entry": [
+    {
+      "fullUrl": "http://example.org/fhir/Organization/hl7",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "hl7",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      Health Level Seven International\n      <br/>\n\t\t\t\t3300 Washtenaw Avenue, Suite 227\n      <br/>\n\t\t\t\tAnn Arbor, MI 48104\n      <br/>\n\t\t\t\tUSA\n      <br/>\n\t\t\t\t(+1) 734-677-7777 (phone)\n      <br/>\n\t\t\t\t(+1) 734-677-6622 (fax)\n      <br/>\n\t\t\t\tE-mail:  \n      <a href=\"mailto:hq@HL7.org\">hq@HL7.org</a>\n    \n    </div>"
+        },
+        "name": "Health Level Seven International",
+        "alias": [
+          "HL7 International"
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "(+1) 886-915-6832"
+          },
+          {
+            "system": "fax",
+            "value": "(+1) 886-915-6832"
+          },
+          {
+            "system": "email",
+            "value": "hq@HL7.org"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "3300 Washtenaw Avenue, Suite 227"
+            ],
+            "city": "Ann Arbor",
+            "state": "MI",
+            "postalCode": "48104",
+            "country": "USA"
+          }
+        ],
+        "endpoint": [
+          {
+            "reference": "Endpoint/example"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://example.org/fhir/Patient/example-1",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "example-1",
+        "identifier": [
+          {
+            "use": "usual",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "MR"
+                }
+              ]
+            },
+            "system": "urn:oid:1.2.36.146.595.217.0.1",
+            "value": "BQE01896000",
+            "period": {
+              "start": "2001-05-06"
+            },
+            "assigner": {
+              "display": "Acme Healthcare"
+            }
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Harris",
+            "given": [
+              "Kimberly",
+              "Mark"
+            ]
+          },
+          {
+            "use": "usual",
+            "given": [
+              "Kenneth"
+            ]
+          },
+          {
+            "use": "maiden",
+            "family": "Collins",
+            "given": [
+              "Anna",
+              "Linda"
+            ],
+            "period": {
+              "end": "2002"
+            }
+          }
+        ],
+        "telecom": [
+          {
+            "use": "home"
+          },
+          {
+            "system": "phone",
+            "value": "(50) 8847 8068",
+            "use": "work",
+            "rank": 1
+          },
+          {
+            "system": "phone",
+            "value": "(93) 9269 0235",
+            "use": "mobile",
+            "rank": 2
+          },
+          {
+            "system": "phone",
+            "value": "(83) 1425 8066",
+            "use": "old",
+            "period": {
+              "end": "2014"
+            }
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1977-03-27",
+        "_birthDate": {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/patient-birthTime",
+              "valueDateTime": "1974-12-25T14:35:45-05:00"
+            }
+          ]
+        },
+        "deceasedBoolean": false,
+        "address": [
+          {
+            "use": "home",
+            "type": "both",
+            "text": "2428 Laurel Dr, Indianapolis, Indianapolis, NY 46220",
+            "line": [
+              "2428 Laurel Dr"
+            ],
+            "city": "Indianapolis",
+            "district": "Indianapolis",
+            "state": "NY",
+            "postalCode": "46220",
+            "period": {
+              "start": "1974-12-25"
+            }
+          }
+        ],
+        "contact": [
+          {
+            "relationship": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v2-0131",
+                    "code": "N"
+                  }
+                ]
+              }
+            ],
+            "name": {
+              "family": "Harris",
+              "_family": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/humanname-own-prefix",
+                    "valueString": "VV"
+                  }
+                ]
+              },
+              "given": [
+                "Kimberly"
+              ]
+            },
+            "telecom": [
+              {
+                "system": "phone",
+                "value": "+35 (088) 478068"
+              }
+            ],
+            "address": {
+              "use": "home",
+              "type": "both",
+              "line": [
+                "2428 Laurel Dr"
+              ],
+              "city": "Indianapolis",
+              "district": "Rainbow",
+              "state": "Vic",
+              "postalCode": "46220",
+              "period": {
+                "start": "1974-12-25"
+              }
+            },
+            "gender": "female",
+            "period": {
+              "start": "2012"
+            }
+          }
+        ],
+        "managingOrganization": {
+          "reference": "Organization/1"
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.org/fhir/Coverage/9876B1-2",
+      "resource": {
+        "resourceType": "Coverage",
+        "id": "9876B1-2",
+        "identifier": [
+          {
+            "system": "http://benefitsinc.com/certificate",
+            "value": "BQE018960"
+          }
+        ],
+        "status": "active",
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "EHCPOL",
+              "display": "extended healthcare"
+            }
+          ]
+        },
+        "policyHolder": {
+          "reference": "http://benefitsinc.com/FHIR/Organization/CBI35"
+        },
+        "subscriber": {
+          "reference": "Patient/example-1"
+        },
+        "beneficiary": {
+          "reference": "Patient/example-1"
+        },
+        "dependent": "0",
+        "relationship": {
+          "coding": [
+            {
+              "code": "self"
+            }
+          ]
+        },
+        "period": {
+          "start": "2019-08-11",
+          "end": "2026-06-05"
+        },
+        "payor": [
+          {
+            "reference": "Organization/hl7"
+          }
+        ],
+        "class": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "group"
+                }
+              ]
+            },
+            "value": "CB135",
+            "name": "Corporate Baker's Inc. Local #35"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "subgroup"
+                }
+              ]
+            },
+            "value": "123",
+            "name": "Trainee Part-time Benefits"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "plan"
+                }
+              ]
+            },
+            "value": "B37FC",
+            "name": "Full Coverage: Medical, Dental, Pharmacy, Vision, EHC"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "subplan"
+                }
+              ]
+            },
+            "value": "P7",
+            "name": "Includes afterlife benefits"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "class"
+                }
+              ]
+            },
+            "value": "SILVER",
+            "name": "Silver: Family Plan spouse only"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "subclass"
+                }
+              ]
+            },
+            "value": "Tier2",
+            "name": "Low deductable, max $20 copay"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "sequence"
+                }
+              ]
+            },
+            "value": "9"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxid"
+                }
+              ]
+            },
+            "value": "MDF12345"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxbin"
+                }
+              ]
+            },
+            "value": "987654"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxgroup"
+                }
+              ]
+            },
+            "value": "M35PT"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxpcn"
+                }
+              ]
+            },
+            "value": "234516"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "sequence"
+                }
+              ]
+            },
+            "value": "9"
+          }
+        ],
+        "subscriberId": "BQE018960"
+      }
+    },
+    {
+      "fullUrl": "http://example.org/fhir/Claim/100150-3",
+      "resource": {
+        "resourceType": "Claim",
+        "id": "100150-3",
+        "identifier": [
+          {
+            "system": "http://happyvalley.com/claim",
+            "value": "602921824890"
+          }
+        ],
+        "status": "active",
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+              "code": "oral"
+            }
+          ]
+        },
+        "use": "claim",
+        "patient": {
+          "reference": "Patient/example-1"
+        },
+        "created": "2026-07-24",
+        "insurer": {
+          "reference": "Organization/hl7"
+        },
+        "provider": {
+          "reference": "Organization/hl7"
+        },
+        "priority": {
+          "coding": [
+            {
+              "code": "normal"
+            }
+          ]
+        },
+        "payee": {
+          "type": {
+            "coding": [
+              {
+                "code": "provider"
+              }
+            ]
+          }
+        },
+        "diagnosis": [
+          {
+            "sequence": 1,
+            "diagnosisCodeableConcept": {
+              "coding": [
+                {
+                  "code": "J069000"
+                }
+              ]
+            }
+          }
+        ],
+        "insurance": [
+          {
+            "sequence": 1,
+            "focal": true,
+            "identifier": {
+              "system": "http://happyvalley.com/claim",
+              "value": "602921824890"
+            },
+            "coverage": {
+              "reference": "Coverage/9876B1-2"
+            }
+          }
+        ],
+        "total": {
+          "value": 391.9,
+          "currency": "USD"
+        },
+        "item": [
+          {
+            "sequence": 1,
+            "productOrService": {
+              "coding": [
+                {
+                  "code": "E4378"
+                }
+              ]
+            },
+            "servicedDate": "2023-02-07",
+            "unitPrice": {
+              "value": 124.67,
+              "currency": "USD"
+            },
+            "net": {
+              "value": 124.67,
+              "currency": "USD"
+            }
+          },
+          {
+            "sequence": 2,
+            "productOrService": {
+              "coding": [
+                {
+                  "code": "E4378"
+                }
+              ]
+            },
+            "servicedDate": "2023-02-07",
+            "unitPrice": {
+              "value": 197.92,
+              "currency": "USD"
+            },
+            "net": {
+              "value": 197.92,
+              "currency": "USD"
+            }
+          },
+          {
+            "sequence": 3,
+            "productOrService": {
+              "coding": [
+                {
+                  "code": "E4378"
+                }
+              ]
+            },
+            "servicedDate": "2023-02-07",
+            "unitPrice": {
+              "value": 69.31,
+              "currency": "USD"
+            },
+            "net": {
+              "value": 69.31,
+              "currency": "USD"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://example.org/fhir/Claim/100150-4",
+      "resource": {
+        "resourceType": "Claim",
+        "id": "100150-4",
+        "identifier": [
+          {
+            "system": "http://happyvalley.com/claim",
+            "value": "163921876839"
+          }
+        ],
+        "status": "active",
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+              "code": "oral"
+            }
+          ]
+        },
+        "use": "claim",
+        "patient": {
+          "reference": "Patient/example-1"
+        },
+        "created": "2026-07-27",
+        "insurer": {
+          "reference": "Organization/hl7"
+        },
+        "provider": {
+          "reference": "Organization/hl7"
+        },
+        "priority": {
+          "coding": [
+            {
+              "code": "normal"
+            }
+          ]
+        },
+        "payee": {
+          "type": {
+            "coding": [
+              {
+                "code": "provider"
+              }
+            ]
+          }
+        },
+        "diagnosis": [
+          {
+            "sequence": 1,
+            "diagnosisCodeableConcept": {
+              "coding": [
+                {
+                  "code": "M179000"
+                }
+              ]
+            }
+          }
+        ],
+        "insurance": [
+          {
+            "sequence": 1,
+            "focal": true,
+            "identifier": {
+              "system": "http://happyvalley.com/claim",
+              "value": "163921876839"
+            },
+            "coverage": {
+              "reference": "Coverage/9876B1-2"
+            }
+          }
+        ],
+        "total": {
+          "value": 276.34,
+          "currency": "USD"
+        },
+        "item": [
+          {
+            "sequence": 1,
+            "productOrService": {
+              "coding": [
+                {
+                  "code": "H5251"
+                }
+              ]
+            },
+            "servicedDate": "2025-02-22",
+            "unitPrice": {
+              "value": 45.48,
+              "currency": "USD"
+            },
+            "net": {
+              "value": 45.48,
+              "currency": "USD"
+            }
+          },
+          {
+            "sequence": 2,
+            "productOrService": {
+              "coding": [
+                {
+                  "code": "H5251"
+                }
+              ]
+            },
+            "servicedDate": "2025-02-22",
+            "unitPrice": {
+              "value": 19.76,
+              "currency": "USD"
+            },
+            "net": {
+              "value": 19.76,
+              "currency": "USD"
+            }
+          },
+          {
+            "sequence": 3,
+            "productOrService": {
+              "coding": [
+                {
+                  "code": "H5251"
+                }
+              ]
+            },
+            "servicedDate": "2025-02-22",
+            "unitPrice": {
+              "value": 211.1,
+              "currency": "USD"
+            },
+            "net": {
+              "value": 211.1,
+              "currency": "USD"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://example.org/fhir/Patient/example-5",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "example-5",
+        "identifier": [
+          {
+            "use": "usual",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "MR"
+                }
+              ]
+            },
+            "system": "urn:oid:1.2.36.146.595.217.0.1",
+            "value": "MKD01274100",
+            "period": {
+              "start": "2001-05-06"
+            },
+            "assigner": {
+              "display": "Acme Healthcare"
+            }
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Adams",
+            "given": [
+              "Matthew",
+              "Kevin"
+            ]
+          },
+          {
+            "use": "usual",
+            "given": [
+              "Patricia"
+            ]
+          },
+          {
+            "use": "maiden",
+            "family": "Bailey",
+            "given": [
+              "David",
+              "Jeffrey"
+            ],
+            "period": {
+              "end": "2002"
+            }
+          }
+        ],
+        "telecom": [
+          {
+            "use": "home"
+          },
+          {
+            "system": "phone",
+            "value": "(40) 9742 5453",
+            "use": "work",
+            "rank": 1
+          },
+          {
+            "system": "phone",
+            "value": "(83) 1911 8497",
+            "use": "mobile",
+            "rank": 2
+          },
+          {
+            "system": "phone",
+            "value": "(39) 7385 7723",
+            "use": "old",
+            "period": {
+              "end": "2014"
+            }
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1970-07-10",
+        "_birthDate": {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/patient-birthTime",
+              "valueDateTime": "1974-12-25T14:35:45-05:00"
+            }
+          ]
+        },
+        "deceasedBoolean": false,
+        "address": [
+          {
+            "use": "home",
+            "type": "both",
+            "text": "8530 Garfield Rd, Westerville, Westerville, NY 43081",
+            "line": [
+              "8530 Garfield Rd"
+            ],
+            "city": "Westerville",
+            "district": "Westerville",
+            "state": "NY",
+            "postalCode": "43081",
+            "period": {
+              "start": "1974-12-25"
+            }
+          }
+        ],
+        "contact": [
+          {
+            "relationship": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v2-0131",
+                    "code": "N"
+                  }
+                ]
+              }
+            ],
+            "name": {
+              "family": "Adams",
+              "_family": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/humanname-own-prefix",
+                    "valueString": "VV"
+                  }
+                ]
+              },
+              "given": [
+                "Matthew"
+              ]
+            },
+            "telecom": [
+              {
+                "system": "phone",
+                "value": "+34 (097) 425453"
+              }
+            ],
+            "address": {
+              "use": "home",
+              "type": "both",
+              "line": [
+                "8530 Garfield Rd"
+              ],
+              "city": "Westerville",
+              "district": "Rainbow",
+              "state": "Vic",
+              "postalCode": "43081",
+              "period": {
+                "start": "1974-12-25"
+              }
+            },
+            "gender": "female",
+            "period": {
+              "start": "2012"
+            }
+          }
+        ],
+        "managingOrganization": {
+          "reference": "Organization/1"
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.org/fhir/Coverage/9876B1-6",
+      "resource": {
+        "resourceType": "Coverage",
+        "id": "9876B1-6",
+        "identifier": [
+          {
+            "system": "http://benefitsinc.com/certificate",
+            "value": "MKD012741"
+          }
+        ],
+        "status": "active",
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "EHCPOL",
+              "display": "extended healthcare"
+            }
+          ]
+        },
+        "policyHolder": {
+          "reference": "http://benefitsinc.com/FHIR/Organization/CBI35"
+        },
+        "subscriber": {
+          "reference": "Patient/example-5"
+        },
+        "beneficiary": {
+          "reference": "Patient/example-5"
+        },
+        "dependent": "0",
+        "relationship": {
+          "coding": [
+            {
+              "code": "self"
+            }
+          ]
+        },
+        "period": {
+          "start": "2016-12-12",
+          "end": "2031-02-03"
+        },
+        "payor": [
+          {
+            "reference": "Organization/hl7"
+          }
+        ],
+        "class": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "group"
+                }
+              ]
+            },
+            "value": "CB135",
+            "name": "Corporate Baker's Inc. Local #35"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "subgroup"
+                }
+              ]
+            },
+            "value": "123",
+            "name": "Trainee Part-time Benefits"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "plan"
+                }
+              ]
+            },
+            "value": "B37FC",
+            "name": "Full Coverage: Medical, Dental, Pharmacy, Vision, EHC"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "subplan"
+                }
+              ]
+            },
+            "value": "P7",
+            "name": "Includes afterlife benefits"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "class"
+                }
+              ]
+            },
+            "value": "SILVER",
+            "name": "Silver: Family Plan spouse only"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "subclass"
+                }
+              ]
+            },
+            "value": "Tier2",
+            "name": "Low deductable, max $20 copay"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "sequence"
+                }
+              ]
+            },
+            "value": "9"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxid"
+                }
+              ]
+            },
+            "value": "MDF12345"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxbin"
+                }
+              ]
+            },
+            "value": "987654"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxgroup"
+                }
+              ]
+            },
+            "value": "M35PT"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxpcn"
+                }
+              ]
+            },
+            "value": "234516"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "sequence"
+                }
+              ]
+            },
+            "value": "9"
+          }
+        ],
+        "subscriberId": "MKD012741"
+      }
+    },
+    {
+      "fullUrl": "http://example.org/fhir/Claim/100150-7",
+      "resource": {
+        "resourceType": "Claim",
+        "id": "100150-7",
+        "identifier": [
+          {
+            "system": "http://happyvalley.com/claim",
+            "value": "638608427910"
+          }
+        ],
+        "status": "active",
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+              "code": "oral"
+            }
+          ]
+        },
+        "use": "claim",
+        "patient": {
+          "reference": "Patient/example-5"
+        },
+        "created": "2026-07-20",
+        "insurer": {
+          "reference": "Organization/hl7"
+        },
+        "provider": {
+          "reference": "Organization/hl7"
+        },
+        "priority": {
+          "coding": [
+            {
+              "code": "normal"
+            }
+          ]
+        },
+        "payee": {
+          "type": {
+            "coding": [
+              {
+                "code": "provider"
+              }
+            ]
+          }
+        },
+        "diagnosis": [
+          {
+            "sequence": 1,
+            "diagnosisCodeableConcept": {
+              "coding": [
+                {
+                  "code": "E119000"
+                }
+              ]
+            }
+          }
+        ],
+        "insurance": [
+          {
+            "sequence": 1,
+            "focal": true,
+            "identifier": {
+              "system": "http://happyvalley.com/claim",
+              "value": "638608427910"
+            },
+            "coverage": {
+              "reference": "Coverage/9876B1-6"
+            }
+          }
+        ],
+        "total": {
+          "value": 394.06,
+          "currency": "USD"
+        },
+        "item": [
+          {
+            "sequence": 1,
+            "productOrService": {
+              "coding": [
+                {
+                  "code": "E0413"
+                }
+              ]
+            },
+            "servicedDate": "2024-12-21",
+            "unitPrice": {
+              "value": 10.19,
+              "currency": "USD"
+            },
+            "net": {
+              "value": 10.19,
+              "currency": "USD"
+            }
+          },
+          {
+            "sequence": 2,
+            "productOrService": {
+              "coding": [
+                {
+                  "code": "E0413"
+                }
+              ]
+            },
+            "servicedDate": "2024-12-21",
+            "unitPrice": {
+              "value": 63.91,
+              "currency": "USD"
+            },
+            "net": {
+              "value": 63.91,
+              "currency": "USD"
+            }
+          },
+          {
+            "sequence": 3,
+            "productOrService": {
+              "coding": [
+                {
+                  "code": "E0413"
+                }
+              ]
+            },
+            "servicedDate": "2024-12-21",
+            "unitPrice": {
+              "value": 319.96,
+              "currency": "USD"
+            },
+            "net": {
+              "value": 319.96,
+              "currency": "USD"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://example.org/fhir/Patient/example-8",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "example-8",
+        "identifier": [
+          {
+            "use": "usual",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "MR"
+                }
+              ]
+            },
+            "system": "urn:oid:1.2.36.146.595.217.0.1",
+            "value": "FNO01552900",
+            "period": {
+              "start": "2001-05-06"
+            },
+            "assigner": {
+              "display": "Acme Healthcare"
+            }
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Flores",
+            "given": [
+              "James",
+              "Karen"
+            ]
+          },
+          {
+            "use": "usual",
+            "given": [
+              "Donald"
+            ]
+          },
+          {
+            "use": "maiden",
+            "family": "Mitchell",
+            "given": [
+              "Susan",
+              "Paul"
+            ],
+            "period": {
+              "end": "2002"
+            }
+          }
+        ],
+        "telecom": [
+          {
+            "use": "home"
+          },
+          {
+            "system": "phone",
+            "value": "(31) 5671 8949",
+            "use": "work",
+            "rank": 1
+          },
+          {
+            "system": "phone",
+            "value": "(88) 2339 8105",
+            "use": "mobile",
+            "rank": 2
+          },
+          {
+            "system": "phone",
+            "value": "(90) 7955 4274",
+            "use": "old",
+            "period": {
+              "end": "2014"
+            }
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1961-09-28",
+        "_birthDate": {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/patient-birthTime",
+              "valueDateTime": "1974-12-25T14:35:45-05:00"
+            }
+          ]
+        },
+        "deceasedBoolean": false,
+        "address": [
+          {
+            "use": "home",
+            "type": "both",
+            "text": "9482 Church St, Hilliard, Hilliard, NY 43026",
+            "line": [
+              "9482 Church St"
+            ],
+            "city": "Hilliard",
+            "district": "Hilliard",
+            "state": "NY",
+            "postalCode": "43026",
+            "period": {
+              "start": "1974-12-25"
+            }
+          }
+        ],
+        "contact": [
+          {
+            "relationship": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v2-0131",
+                    "code": "N"
+                  }
+                ]
+              }
+            ],
+            "name": {
+              "family": "Flores",
+              "_family": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/humanname-own-prefix",
+                    "valueString": "VV"
+                  }
+                ]
+              },
+              "given": [
+                "James"
+              ]
+            },
+            "telecom": [
+              {
+                "system": "phone",
+                "value": "+33 (156) 718949"
+              }
+            ],
+            "address": {
+              "use": "home",
+              "type": "both",
+              "line": [
+                "9482 Church St"
+              ],
+              "city": "Hilliard",
+              "district": "Rainbow",
+              "state": "Vic",
+              "postalCode": "43026",
+              "period": {
+                "start": "1974-12-25"
+              }
+            },
+            "gender": "female",
+            "period": {
+              "start": "2012"
+            }
+          }
+        ],
+        "managingOrganization": {
+          "reference": "Organization/1"
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.org/fhir/Coverage/9876B1-9",
+      "resource": {
+        "resourceType": "Coverage",
+        "id": "9876B1-9",
+        "identifier": [
+          {
+            "system": "http://benefitsinc.com/certificate",
+            "value": "FNO015529"
+          }
+        ],
+        "status": "active",
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "EHCPOL",
+              "display": "extended healthcare"
+            }
+          ]
+        },
+        "policyHolder": {
+          "reference": "http://benefitsinc.com/FHIR/Organization/CBI35"
+        },
+        "subscriber": {
+          "reference": "Patient/example-8"
+        },
+        "beneficiary": {
+          "reference": "Patient/example-8"
+        },
+        "dependent": "0",
+        "relationship": {
+          "coding": [
+            {
+              "code": "self"
+            }
+          ]
+        },
+        "period": {
+          "start": "2018-06-23",
+          "end": "2029-04-29"
+        },
+        "payor": [
+          {
+            "reference": "Organization/hl7"
+          }
+        ],
+        "class": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "group"
+                }
+              ]
+            },
+            "value": "CB135",
+            "name": "Corporate Baker's Inc. Local #35"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "subgroup"
+                }
+              ]
+            },
+            "value": "123",
+            "name": "Trainee Part-time Benefits"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "plan"
+                }
+              ]
+            },
+            "value": "B37FC",
+            "name": "Full Coverage: Medical, Dental, Pharmacy, Vision, EHC"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "subplan"
+                }
+              ]
+            },
+            "value": "P7",
+            "name": "Includes afterlife benefits"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "class"
+                }
+              ]
+            },
+            "value": "SILVER",
+            "name": "Silver: Family Plan spouse only"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "subclass"
+                }
+              ]
+            },
+            "value": "Tier2",
+            "name": "Low deductable, max $20 copay"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "sequence"
+                }
+              ]
+            },
+            "value": "9"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxid"
+                }
+              ]
+            },
+            "value": "MDF12345"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxbin"
+                }
+              ]
+            },
+            "value": "987654"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxgroup"
+                }
+              ]
+            },
+            "value": "M35PT"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "rxpcn"
+                }
+              ]
+            },
+            "value": "234516"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                  "code": "sequence"
+                }
+              ]
+            },
+            "value": "9"
+          }
+        ],
+        "subscriberId": "FNO015529"
+      }
+    },
+    {
+      "fullUrl": "http://example.org/fhir/Claim/100150-10",
+      "resource": {
+        "resourceType": "Claim",
+        "id": "100150-10",
+        "identifier": [
+          {
+            "system": "http://happyvalley.com/claim",
+            "value": "593912892662"
+          }
+        ],
+        "status": "active",
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+              "code": "oral"
+            }
+          ]
+        },
+        "use": "claim",
+        "patient": {
+          "reference": "Patient/example-8"
+        },
+        "created": "2026-07-15",
+        "insurer": {
+          "reference": "Organization/hl7"
+        },
+        "provider": {
+          "reference": "Organization/hl7"
+        },
+        "priority": {
+          "coding": [
+            {
+              "code": "normal"
+            }
+          ]
+        },
+        "payee": {
+          "type": {
+            "coding": [
+              {
+                "code": "provider"
+              }
+            ]
+          }
+        },
+        "diagnosis": [
+          {
+            "sequence": 1,
+            "diagnosisCodeableConcept": {
+              "coding": [
+                {
+                  "code": "E785000"
+                }
+              ]
+            }
+          }
+        ],
+        "insurance": [
+          {
+            "sequence": 1,
+            "focal": true,
+            "identifier": {
+              "system": "http://happyvalley.com/claim",
+              "value": "593912892662"
+            },
+            "coverage": {
+              "reference": "Coverage/9876B1-9"
+            }
+          }
+        ],
+        "total": {
+          "value": 78.35,
+          "currency": "USD"
+        },
+        "item": [
+          {
+            "sequence": 1,
+            "productOrService": {
+              "coding": [
+                {
+                  "code": "A4574"
+                }
+              ]
+            },
+            "servicedDate": "2018-06-19",
+            "unitPrice": {
+              "value": 21.91,
+              "currency": "USD"
+            },
+            "net": {
+              "value": 21.91,
+              "currency": "USD"
+            }
+          },
+          {
+            "sequence": 2,
+            "productOrService": {
+              "coding": [
+                {
+                  "code": "A4574"
+                }
+              ]
+            },
+            "servicedDate": "2018-06-19",
+            "unitPrice": {
+              "value": 10.08,
+              "currency": "USD"
+            },
+            "net": {
+              "value": 10.08,
+              "currency": "USD"
+            }
+          },
+          {
+            "sequence": 3,
+            "productOrService": {
+              "coding": [
+                {
+                  "code": "A4574"
+                }
+              ]
+            },
+            "servicedDate": "2018-06-19",
+            "unitPrice": {
+              "value": 46.36,
+              "currency": "USD"
+            },
+            "net": {
+              "value": 46.36,
+              "currency": "USD"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

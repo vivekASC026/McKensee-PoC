@@ -1,0 +1,41 @@
+{
+  "about": "Observations modeled on a sample of an Observation on its own: one per claim line written (a result is billed as a line), on its date of service, taken in turn from the sample's observations. A claim carries no result values: the sample's are kept.",
+  "extends": "fhir",
+  "kind": "observation",
+  "subject": "claims",
+  "match": [
+    "Observation"
+  ],
+  "fallback": true,
+  "member": {
+    "about": "Whose values a place's suggestion is for: the resource this file repeats.",
+    "types": [
+      "Observation"
+    ]
+  },
+  "counts": {
+    "observations": "Observation"
+  },
+  "summary": "{observations} observations",
+  "units": [
+    {
+      "name": "line",
+      "starts": "Observation",
+      "row": "count",
+      "missing": "The sample has no Observation to model results on."
+    }
+  ],
+  "derive": [
+    {
+      "about": "Every resource written is a new one: a new id, and every reference to it follows.",
+      "op": "rename",
+      "at": "* id",
+      "to": "{id}-{n}"
+    },
+    {
+      "about": "The narrative describes the sample's resource, not the one written.",
+      "op": "drop",
+      "at": "* text"
+    }
+  ]
+}

@@ -1,0 +1,440 @@
+{
+  "id": "835",
+  "name": "835 Remittance advice",
+  "transaction": "835",
+  "version": "005010X221A1",
+  "functional_code": "HP",
+  "subject": "claims",
+  "description": "What was paid against each claim and each of its lines. One CLP per claim, one SVC per service line; BPR02 is every claim's payment added up. The pattern store holds no payments, so each line's is worked out from the terms under \"adjudication\": a claim whose status is listed in denied_statuses pays nothing (CLP02 = 4, CAS CO with denial_reason); any other is paid (CLP02 = 1) its allowed amount, a share of the charge, less the patient's deductible, coinsurance and copay (CAS PR 1, 2, 3, and CLP05), the charge above the allowed amount adjusted as CO 45. Every line balances: its charge less its adjustments is its payment. Claims are under commercial insurance (CLP06 = CI); payer, payee and payee NPI are constants to set for a real trading relationship. A claim for a dependent names the subscriber after the patient (NM1*IL), as X221A1 requires when they differ.",
+  "header": [
+    {
+      "segment": "BPR",
+      "elements": [
+        {
+          "position": 1,
+          "const": "I"
+        },
+        {
+          "position": 2,
+          "total": {
+            "segment": "CLP",
+            "position": 4
+          }
+        },
+        {
+          "position": 3,
+          "const": "C"
+        },
+        {
+          "position": 4,
+          "const": "ACH"
+        },
+        {
+          "position": 5,
+          "const": "CCP"
+        },
+        {
+          "position": 12,
+          "const": "01"
+        },
+        {
+          "position": 13,
+          "const": "999999999"
+        },
+        {
+          "position": 14,
+          "const": "DA"
+        },
+        {
+          "position": 15,
+          "const": "0000000000"
+        },
+        {
+          "position": 16,
+          "const": "_date"
+        }
+      ]
+    },
+    {
+      "segment": "TRN",
+      "elements": [
+        {
+          "position": 1,
+          "const": "1"
+        },
+        {
+          "position": 2,
+          "const": "_reference"
+        },
+        {
+          "position": 3,
+          "const": "1SDM00001"
+        }
+      ]
+    },
+    {
+      "segment": "DTM",
+      "elements": [
+        {
+          "position": 1,
+          "const": "405"
+        },
+        {
+          "position": 2,
+          "const": "_date"
+        }
+      ]
+    },
+    {
+      "segment": "N1",
+      "elements": [
+        {
+          "position": 1,
+          "const": "PR"
+        },
+        {
+          "position": 2,
+          "const": "SDM SYNTHETIC HEALTH PLAN"
+        }
+      ]
+    },
+    {
+      "segment": "N3",
+      "elements": [
+        {
+          "position": 1,
+          "const": "1 PAYER PLAZA"
+        }
+      ]
+    },
+    {
+      "segment": "N4",
+      "elements": [
+        {
+          "position": 1,
+          "const": "SPRINGFIELD"
+        },
+        {
+          "position": 2,
+          "const": "IL"
+        },
+        {
+          "position": 3,
+          "const": "62701"
+        }
+      ]
+    },
+    {
+      "segment": "PER",
+      "elements": [
+        {
+          "position": 1,
+          "const": "BL"
+        },
+        {
+          "position": 2,
+          "const": "SDM SUPPORT"
+        },
+        {
+          "position": 3,
+          "const": "TE"
+        },
+        {
+          "position": 4,
+          "const": "8005550100"
+        }
+      ]
+    },
+    {
+      "segment": "N1",
+      "elements": [
+        {
+          "position": 1,
+          "const": "PE"
+        },
+        {
+          "position": 2,
+          "const": "RECEIVING PROVIDER"
+        },
+        {
+          "position": 3,
+          "const": "XX"
+        },
+        {
+          "position": 4,
+          "const": "1234567893"
+        }
+      ]
+    },
+    {
+      "segment": "LX",
+      "elements": [
+        {
+          "position": 1,
+          "const": "1"
+        }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "opens_on": "CLAIM_ID",
+      "segments": [
+        {
+          "segment": "CLP",
+          "elements": [
+            {
+              "position": 1,
+              "rule": "CLAIM_ID"
+            },
+            {
+              "position": 2,
+              "rule": "CLAIM_PAYMENT_STATUS",
+              "const": "1"
+            },
+            {
+              "position": 3,
+              "rule": "CHARGE_AMOUNT",
+              "const": "0",
+              "sum": true
+            },
+            {
+              "position": 4,
+              "rule": "PAID_AMOUNT",
+              "const": "0",
+              "sum": true
+            },
+            {
+              "position": 5,
+              "rule": "PATIENT_RESPONSIBILITY",
+              "sum": true,
+              "only_if_held": "PATIENT_RESPONSIBILITY"
+            },
+            {
+              "position": 6,
+              "const": "CI"
+            },
+            {
+              "position": 7,
+              "rule": "CLAIM_ID"
+            }
+          ]
+        },
+        {
+          "segment": "NM1",
+          "elements": [
+            {
+              "position": 1,
+              "const": "QC"
+            },
+            {
+              "position": 2,
+              "const": "1"
+            },
+            {
+              "position": 3,
+              "rule": "LAST_NAME"
+            },
+            {
+              "position": 4,
+              "rule": "FIRST_NAME"
+            },
+            {
+              "position": 8,
+              "const": "MI"
+            },
+            {
+              "position": 9,
+              "rule": "MEMBER_ID"
+            }
+          ]
+        },
+        {
+          "segment": "NM1",
+          "only_if_held": "SUBSCRIBER_LAST_NAME",
+          "elements": [
+            {
+              "position": 1,
+              "const": "IL"
+            },
+            {
+              "position": 2,
+              "const": "1"
+            },
+            {
+              "position": 3,
+              "rule": "SUBSCRIBER_LAST_NAME"
+            },
+            {
+              "position": 4,
+              "rule": "SUBSCRIBER_FIRST_NAME"
+            },
+            {
+              "position": 8,
+              "const": "MI"
+            },
+            {
+              "position": 9,
+              "rule": "SUBSCRIBER_MEMBER_ID"
+            }
+          ]
+        },
+        {
+          "segment": "DTM",
+          "only_if": "PAID_DATE",
+          "elements": [
+            {
+              "position": 1,
+              "const": "050"
+            },
+            {
+              "position": 2,
+              "rule": "PAID_DATE",
+              "date": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "per_record": [
+    {
+      "segment": "SVC",
+      "elements": [
+        {
+          "position": 1,
+          "composite": [
+            {
+              "const": "HC"
+            },
+            {
+              "rule": "PROCEDURE_CODE"
+            }
+          ]
+        },
+        {
+          "position": 2,
+          "rule": "CHARGE_AMOUNT",
+          "const": "0"
+        },
+        {
+          "position": 3,
+          "rule": "PAID_AMOUNT",
+          "const": "0"
+        },
+        {
+          "position": 6,
+          "rule": "SERVICE_UNITS",
+          "const": "1"
+        }
+      ]
+    },
+    {
+      "segment": "DTM",
+      "elements": [
+        {
+          "position": 1,
+          "const": "472"
+        },
+        {
+          "position": 2,
+          "rule": "SERVICE_DATE",
+          "date": true
+        }
+      ]
+    },
+    {
+      "segment": "CAS",
+      "only_if_held": "CO_REASON",
+      "elements": [
+        {
+          "position": 1,
+          "const": "CO"
+        },
+        {
+          "position": 2,
+          "rule": "CO_REASON"
+        },
+        {
+          "position": 3,
+          "rule": "CO_AMOUNT"
+        }
+      ]
+    },
+    {
+      "segment": "CAS",
+      "only_if_held": "PR_REASON_1",
+      "elements": [
+        {
+          "position": 1,
+          "const": "PR"
+        },
+        {
+          "position": 2,
+          "rule": "PR_REASON_1"
+        },
+        {
+          "position": 3,
+          "rule": "PR_AMOUNT_1"
+        },
+        {
+          "position": 5,
+          "rule": "PR_REASON_2"
+        },
+        {
+          "position": 6,
+          "rule": "PR_AMOUNT_2"
+        },
+        {
+          "position": 8,
+          "rule": "PR_REASON_3"
+        },
+        {
+          "position": 9,
+          "rule": "PR_AMOUNT_3"
+        }
+      ]
+    },
+    {
+      "segment": "AMT",
+      "only_if_held": "ALLOWED_AMOUNT",
+      "elements": [
+        {
+          "position": 1,
+          "const": "B6"
+        },
+        {
+          "position": 2,
+          "rule": "ALLOWED_AMOUNT"
+        }
+      ]
+    }
+  ],
+  "adjudication": {
+    "denied_statuses": [
+      "04"
+    ],
+    "denial_reason": "96",
+    "allowed_share": [
+      0.5,
+      0.95
+    ],
+    "deductible_share": [
+      0.0,
+      0.15
+    ],
+    "copays": [
+      0,
+      15,
+      20,
+      25,
+      30,
+      40,
+      50
+    ],
+    "coinsurance_share": [
+      0.0,
+      0.2
+    ]
+  }
+}

@@ -1,0 +1,120 @@
+{
+ "_about": "What the records' patterns are found on, counted and reported by: written by the source accelerator from an approved source plan. (patterns.report_fields.member_claims is the code's name for a primary's fields counted over its children.)",
+ "analyzer": {
+  "continuous_features": [],
+  "categorical_features": [],
+  "geography_columns": {},
+  "description_columns": [],
+  "filter_columns": {},
+  "label_cluster_columns": {},
+  "numeric_columns": [],
+  "key_suffixes": [],
+  "enrollment_columns": {},
+  "feature_labels": {},
+  "seed_element_labels": {}
+ },
+ "store": {
+  "member_columns": [],
+  "claim_columns": [],
+  "member_key": null,
+  "report_keys": {},
+  "personal_columns": [],
+  "personal_columns_rows": [],
+  "personal_suffixes_rows": [],
+  "claims_filters": [],
+  "clinical_columns": {},
+  "claim_type_names": {},
+  "combo_key": [],
+  "scope_columns": {},
+  "scope_label_columns": {},
+  "entity_tag": {},
+  "legacy_entity_markers": [],
+  "scope_label_names": {},
+  "type_filter": null,
+  "baseline_scope": {}
+ },
+ "patterns": {
+  "defined": {},
+  "discovery_defaults": {},
+  "scope_levels": [],
+  "scenario_dimensions": {},
+  "scenario_split": {},
+  "amount_bands": [],
+  "report_fields": {
+   "member_claims": []
+  },
+  "report_generation": {},
+  "code_names": {}
+ },
+ "joined": {
+  "provider_member_columns": [],
+  "provider_claim_columns": [],
+  "provider_entity_words": {}
+ },
+ "loaders": {},
+ "child_analysis": {
+  "record_key": null,
+  "primary_key": null,
+  "type_column": null,
+  "histograms": {},
+  "continuous": [],
+  "categorical": [],
+  "top": [],
+  "rates": [],
+  "shown_continuous": [],
+  "shown_categorical": [],
+  "name": {
+   "type": null,
+   "age": null,
+   "sex": null,
+   "top": null,
+   "top_descriptions": null,
+   "top_prefix": null,
+   "ages": [],
+   "amount": null,
+   "amount_words": null,
+   "fallback": null
+  },
+  "marks": {
+   "name_prefix": "",
+   "labels": {}
+  },
+  "line_column_prefixes": [],
+  "shown_top": []
+ },
+ "primary_analysis": {
+  "histograms": {},
+  "family": null,
+  "naming": {
+   "levels": {},
+   "age_feature": null,
+   "ages": [
+    [
+     18,
+     "Under18"
+    ],
+    [
+     30,
+     "Age18to29"
+    ],
+    [
+     45,
+     "Age30to44"
+    ],
+    [
+     65,
+     "Age45to64"
+    ],
+    [
+     null,
+     "Age65plus"
+    ]
+   ]
+  }
+ },
+ "screen_facts": {},
+ "bridge": {
+  "feature_elements": {},
+  "ranked": {}
+ }
+}

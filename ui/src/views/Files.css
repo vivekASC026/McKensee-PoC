@@ -1,0 +1,54 @@
+/* Files as a source: the folder, and what each file in it is and holds. */
+.files {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.files__head h2 {
+  margin-bottom: var(--space-2);
+}
+.files__folder input {
+  min-width: 48ch;
+}
+.files__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.files__file {
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--paper-raised);
+}
+.files__file-head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  background: none;
+  border: 0;
+  font: inherit;
+  color: var(--ink);
+  cursor: pointer;
+  text-align: left;
+}
+.files__facts {
+  margin-left: auto;
+  color: var(--ink-faint);
+  font-size: var(--t-small);
+}
+.files__fields {
+  margin: 0 var(--space-4) var(--space-4);
+  width: calc(100% - 2 * var(--space-4));
+}
+.files__samples {
+  color: var(--ink-faint);
+  max-width: 30ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

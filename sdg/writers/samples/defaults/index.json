@@ -1,0 +1,14 @@
+{
+ "_about": "The standard files each format starts from, as the EDI tab's transaction sets do: a made-up sample of the format and the master config (the masking tool's) whose places it proposes. A person's changes are saved as a new config; these files are never changed by the screens.",
+ "defaults": [
+  {"id": "fhir-members", "format": "fhir", "name": "FHIR R4 members (Patient, Coverage)", "sample": "fhir-members-bundle.json", "master": "master-fhir.json"},
+  {"id": "fhir-claims", "format": "fhir", "name": "FHIR R4 claims (Claim, Encounter)", "sample": "fhir-claims-bundle.json", "master": "master-fhir.json"},
+  {"id": "hl7-adt", "format": "hl7v2", "name": "HL7 v2.5.1 ADT^A01 (admission)", "sample": "hl7-adt-a01.hl7", "master": "master-hl7.json"},
+  {"id": "hl7-dft", "format": "hl7v2", "name": "HL7 v2.5.1 DFT^P03 (charges)", "sample": "hl7-dft-p03.hl7", "master": "master-hl7.json"},
+  {"id": "hl7-oru", "format": "hl7v2", "name": "HL7 v2.5.1 ORU^R01 (lab results)", "sample": "hl7-oru-r01.hl7", "master": "master-hl7.json"},
+  {"id": "cda-ccd", "format": "cda", "name": "C-CDA R2.1 CCD (continuity of care)", "sample": "cda-ccd.xml", "master": "master-cda.json"},
+  {"id": "hl7v3-prpa-add", "format": "cda", "label": "HL7 v3", "name": "HL7 v3 message: patient registry add (PRPA_IN201301UV02)", "sample": "hl7v3-prpa-in201301.xml", "master": "master-hl7v3.json"},
+  {"id": "x12-834", "format": "x12", "name": "X12 834 (enrollment)", "sample": "x12-834.txt", "master": "master-x12.json"},
+  {"id": "x12-837", "format": "x12", "name": "X12 837 (claims)", "sample": "x12-837.txt", "master": "master-x12.json"}
+ ]
+}

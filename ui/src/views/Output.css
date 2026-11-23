@@ -1,0 +1,372 @@
+/*
+  Output.
+
+  Two panels behind one pair of tabs. The tab strip is quiet — these are two
+  halves of one subject, not two destinations, so it reads as a section marker
+  rather than navigation.
+*/
+
+.output {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 960px;
+}
+
+.output__head h2 {
+  font-size: var(--t-large);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+.output__lede {
+  margin-top: var(--space-2);
+  color: var(--ink-soft);
+  font-size: var(--t-small);
+  max-width: 64ch;
+  line-height: 1.55;
+}
+
+/* An inline way to another screen, inside a sentence. */
+.output__link {
+  font: inherit;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.tabs {
+  display: flex;
+  gap: var(--space-4);
+  border-bottom: 1px solid var(--rule-strong);
+}
+.tabs__tab {
+  font-family: var(--sans);
+  font-size: var(--t-small);
+  font-weight: 500;
+  color: var(--ink-faint);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: var(--space-2) 0;
+  margin-bottom: -1px;
+  cursor: pointer;
+}
+.tabs__tab:hover {
+  color: var(--ink-soft);
+}
+.tabs__tab--on {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-top: var(--space-2);
+}
+.panel__title {
+  font-size: var(--t-mid);
+  font-weight: 600;
+}
+.panel__title .num {
+  color: var(--ink-faint);
+  font-weight: 400;
+  font-size: var(--t-small);
+}
+.panel__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  background: var(--paper-sunk);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  flex-wrap: wrap;
+}
+.panel__hint {
+  font-size: var(--t-micro);
+  color: var(--ink-faint);
+  max-width: 62ch;
+  line-height: 1.55;
+}
+.panel__by {
+  font-size: var(--t-micro);
+  color: var(--ink-faint);
+}
+
+/* Approve: the approver's name typed to confirm, in the layout's row. */
+.approve {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: var(--space-2);
+}
+
+.panel__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--t-small);
+}
+.panel__table th {
+  text-align: left;
+  font-size: var(--t-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+  font-weight: 500;
+  /* The same side padding as the cells below, so a right-aligned heading
+     ends where its numbers end. */
+  padding: 0 var(--space-3) var(--space-2) 0;
+  border-bottom: 1px solid var(--rule-strong);
+}
+.panel__table td {
+  padding: var(--space-2) var(--space-3) var(--space-2) 0;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: middle;
+}
+.panel__table .right {
+  text-align: right;
+}
+/* A number aligned right, then text aligned left: set the text well apart,
+   or "115" and "text" read as one value ("WIDTH TYPE" as one heading). */
+.panel__table .right + :is(th, td):not(.right) {
+  padding-left: var(--space-5);
+}
+.panel__table .mono {
+  font-family: var(--mono);
+  font-size: var(--t-micro);
+}
+
+.parsed {
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: var(--space-4);
+  background: var(--paper-raised);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.parsed h3 {
+  font-size: var(--t-small);
+  font-weight: 600;
+}
+
+.algorithms {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.named {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+.named span {
+  font-size: var(--t-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+}
+.named input {
+  font-family: var(--sans);
+  font-size: var(--t-small);
+  color: var(--ink);
+  background: var(--paper-raised);
+  border: 1px solid var(--rule-strong);
+  border-radius: 4px;
+  padding: 6px 8px;
+  min-width: 260px;
+}
+
+/* A button that reads as a link, for moving between tabs mid-sentence. */
+.linked {
+  font: inherit;
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.linked:hover {
+  color: var(--ink);
+}
+
+/* Who the file is for: above the tabs, because it applies to every format. */
+.forwhom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--space-3) var(--space-4);
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--rule);
+}
+.forwhom select {
+  max-width: 100%;
+}
+/* A long pattern name in a list must not widen its field past the column
+   (on a phone, past the screen, where it was cut off). */
+.named {
+  min-width: 0;
+  max-width: 100%;
+}
+.named select {
+  max-width: 100%;
+}
+.forwhom input[type="number"] {
+  width: 9ch;
+}
+.forwhom__hint {
+  flex: 1 1 28ch;
+  margin: 0;
+}
+
+.layouts__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+/* A field's rule, opened under it. */
+.fields__rule > td {
+  background: var(--paper-sunk);
+  padding: var(--space-3);
+}
+
+.forwhom__scenarios {
+  flex-basis: 100%;
+  display: grid;
+  gap: 12px;
+  justify-items: start;
+}
+
+/* The request the files are written under: one line, under who they are for. */
+.forwhom__request {
+  flex: 1 1 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+}
+.forwhom__request .panel__hint {
+  flex: 1 1 32ch;
+  margin: 0;
+}
+
+.requests__card {
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--rule);
+}
+.requests__card--focus {
+  margin: 0 calc(-1 * var(--space-3));
+  padding-left: var(--space-3);
+  padding-right: var(--space-3);
+  background: var(--learned-wash);
+}
+.forwhom__options {
+  flex: 1 1 100%;
+}
+.forwhom__options summary {
+  cursor: pointer;
+  font-size: var(--t-small);
+  font-weight: 600;
+}
+.forwhom__options select {
+  max-width: 100%;
+}
+.forwhom__options[open] summary {
+  margin-bottom: var(--space-2);
+}
+.forwhom__recorded {
+  flex: 1 1 100%;
+  margin: 0;
+  font-size: var(--t-small);
+}
+.requests__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-1) var(--space-3);
+}
+.requests__head h3 {
+  margin: 0;
+}
+.requests__for {
+  font-weight: normal;
+}
+.requests__files {
+  overflow-x: auto;
+}
+.requests__files .panel__table {
+  min-width: 54rem;
+  /* Every run is a table of its own: fixed column widths line the columns
+     up from one run to the next, whatever each run's files are called. */
+  table-layout: fixed;
+  width: 100%;
+}
+.requests__files th:nth-child(1) { width: 25%; }
+.requests__files th:nth-child(2) { width: 18%; }
+.requests__files th:nth-child(3) { width: 10%; }
+.requests__files th:nth-child(4) { width: 15%; }
+.requests__files th:nth-child(5) { width: 21%; }
+.requests__files th:nth-child(6) { width: 11%; min-width: 7rem; }
+.requests__files td {
+  overflow-wrap: anywhere;
+}
+/* A checksum is read whole; its column is sized for it. */
+.requests__files td.mono {
+  overflow-wrap: normal;
+  white-space: nowrap;
+}
+/* A rerun's chip wraps inside its column rather than under the button. */
+.requests__files .chip {
+  white-space: normal;
+}
+.requests__files td + td,
+.requests__files th + th {
+  padding-left: var(--space-3);
+}
+/* Why a run can't be rerun, in its row. */
+.requests__refusal {
+  display: inline-block;
+  max-width: 22rem;
+  color: var(--ink-soft);
+  font-size: 0.875em;
+}
+
+/* Claims for an earlier request's members. */
+.claimsfor {
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--rule);
+}
+.claimsfor__pick {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--space-3) var(--space-4);
+}
+.claimsfor__pick select {
+  max-width: 100%;
+}
+.claimsfor__pick input[type="number"] {
+  width: 11ch;
+}
+.claimsfor__features {
+  margin: var(--space-3) 0;
+  padding-left: var(--space-4);
+}
+.claimsfor__count {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--space-2);
+}
+.claimsfor__count input[type="number"] {
+  width: 7ch;
+}

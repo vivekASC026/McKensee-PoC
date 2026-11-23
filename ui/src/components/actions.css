@@ -1,0 +1,206 @@
+/* Generate file ▾ ---------------------------------------------------- */
+
+.filemenu {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+.filemenu__caret {
+  font-size: 10px;
+  opacity: 0.7;
+}
+.filemenu__list {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: 40;
+  min-width: 168px;
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper-raised);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+.discover__actions .filemenu__list,
+.kept__row .filemenu__list {
+  left: auto;
+  right: 0;
+}
+.filemenu__item {
+  text-align: left;
+  padding: 6px 10px;
+  border-radius: calc(var(--radius) - 2px);
+  font-size: var(--t-small);
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  white-space: nowrap;
+}
+.filemenu__item:hover,
+.filemenu__item:focus-visible {
+  background: var(--paper-sunk);
+}
+.filemenu__rule {
+  height: 1px;
+  margin: 4px 2px;
+  background: var(--rule);
+}
+
+/* Load to database --------------------------------------------------- */
+
+.dialog__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 10vh var(--space-4) var(--space-4);
+  background: rgba(0, 0, 0, 0.32);
+  overflow-y: auto;
+}
+.dialog {
+  width: min(560px, calc(100% - 2 * var(--space-4)));
+  max-height: 80vh;
+  overflow-y: auto;
+  margin: 10vh auto auto;
+  color: var(--ink);
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  background: var(--paper-raised);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+}
+.dialog[open] {
+  display: flex;
+}
+.dialog::backdrop {
+  background: rgba(0, 0, 0, 0.32);
+}
+.dialog__title:focus {
+  outline: none;
+}
+.dialog__confirm {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+.loadbtn__why {
+  font-size: var(--t-micro);
+  color: var(--ink-soft);
+}
+.dialog__title {
+  font-size: var(--t-mid);
+  font-weight: 600;
+}
+.dialog__facts {
+  display: grid;
+  gap: var(--space-2);
+  font-size: var(--t-small);
+}
+.dialog__facts > div {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: var(--space-3);
+}
+.dialog__facts dt {
+  color: var(--ink-soft);
+}
+.dialog__choice {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+.dialog__choice label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.dialog__columns h4 {
+  font-size: var(--t-small);
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+.dialog__columns {
+  max-height: 260px;
+  overflow-y: auto;
+}
+.dialog__step,
+.dialog__result {
+  font-size: var(--t-small);
+}
+.dialog__passed {
+  font-size: var(--t-small);
+  color: var(--affirm);
+}
+.dialog__failed {
+  font-size: var(--t-small);
+  color: var(--alarm);
+}
+.dialog__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+/* The confirmation a one-step action leaves ------------------------- */
+
+.toast {
+  position: fixed;
+  right: var(--space-5);
+  bottom: var(--space-5);
+  z-index: 70;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  max-width: calc(100vw - 2 * var(--space-4));
+  padding: 10px 10px 10px var(--space-4);
+  font-size: var(--t-small);
+  color: var(--paper);
+  background: var(--ink);
+  border-radius: var(--radius);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+}
+.toast--alarm {
+  background: var(--alarm);
+}
+.toast__action {
+  font-weight: 600;
+  color: var(--paper);
+  background: transparent;
+  border: 1px solid color-mix(in srgb, var(--paper) 40%, transparent);
+  border-radius: var(--radius);
+  padding: 4px 10px;
+}
+.toast__action:hover {
+  background: color-mix(in srgb, var(--paper) 14%, transparent);
+}
+.toast__close {
+  color: var(--paper);
+  background: transparent;
+  border: 0;
+  font-size: 16px;
+  line-height: 1;
+  padding: 2px 6px;
+  opacity: 0.75;
+}
+
+/* Save pattern, named in place --------------------------------------- */
+
+.savename {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.savename input {
+  min-width: 220px;
+  font-size: var(--t-small);
+}

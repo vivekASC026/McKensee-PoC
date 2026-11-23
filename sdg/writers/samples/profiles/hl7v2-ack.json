@@ -1,0 +1,22 @@
+{
+  "about": "ACK acknowledgments modeled on a sample: one message (MSH with its MSA and ERR) per member written, taken in turn from the sample's messages. An acknowledgment names no patient: only its control id is each message's own, and every other value is the sample's unless a config names it.",
+  "extends": "hl7v2",
+  "kind": "ACK",
+  "subject": "members",
+
+  "counts": {"messages": "MSH", "errors": "ERR"},
+  "summary": "{messages} messages · {errors} errors",
+
+  "message": {"about": "The segments every ACK has (HL7 2.5.1): the acknowledgment itself is the MSA.",
+              "required": ["MSH", "MSA"]},
+
+  "units": [
+    {"name": "member", "starts": "MSH", "row": "count",
+     "missing": "The sample has no MSH: no message to model acknowledgments on."}
+  ],
+
+  "derive": [
+    {"about": "MSH-10, the message control id, is each message's own.",
+     "op": "rename", "at": "MSH MSH10", "to": "{id}-{n}"}
+  ]
+}

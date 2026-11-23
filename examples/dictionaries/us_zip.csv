@@ -1,0 +1,605 @@
+zip,city,state
+01103,Springfield,MA
+01104,Springfield,MA
+01105,Springfield,MA
+01106,Springfield,MA
+01601,Worcester,MA
+01602,Worcester,MA
+01603,Worcester,MA
+01604,Worcester,MA
+01851,Lowell,MA
+01852,Lowell,MA
+01853,Lowell,MA
+01854,Lowell,MA
+02108,Boston,MA
+02109,Boston,MA
+02110,Boston,MA
+02111,Boston,MA
+02138,Cambridge,MA
+02139,Cambridge,MA
+02140,Cambridge,MA
+02141,Cambridge,MA
+02903,Providence,RI
+02904,Providence,RI
+02905,Providence,RI
+02906,Providence,RI
+03101,Manchester,NH
+03102,Manchester,NH
+03103,Manchester,NH
+03104,Manchester,NH
+04101,Portland,ME
+04102,Portland,ME
+04103,Portland,ME
+04104,Portland,ME
+05401,Burlington,VT
+05402,Burlington,VT
+05403,Burlington,VT
+05404,Burlington,VT
+06103,Hartford,CT
+06104,Hartford,CT
+06105,Hartford,CT
+06106,Hartford,CT
+06510,New Haven,CT
+06511,New Haven,CT
+06512,New Haven,CT
+06513,New Haven,CT
+06604,Bridgeport,CT
+06605,Bridgeport,CT
+06606,Bridgeport,CT
+06607,Bridgeport,CT
+07102,Newark,NJ
+07103,Newark,NJ
+07104,Newark,NJ
+07105,Newark,NJ
+07302,Jersey City,NJ
+07303,Jersey City,NJ
+07304,Jersey City,NJ
+07305,Jersey City,NJ
+07501,Paterson,NJ
+07502,Paterson,NJ
+07503,Paterson,NJ
+07504,Paterson,NJ
+08608,Trenton,NJ
+08609,Trenton,NJ
+08610,Trenton,NJ
+08611,Trenton,NJ
+10001,New York,NY
+10002,New York,NY
+10003,New York,NY
+10004,New York,NY
+11201,Brooklyn,NY
+11202,Brooklyn,NY
+11203,Brooklyn,NY
+11204,Brooklyn,NY
+12201,Albany,NY
+12202,Albany,NY
+12203,Albany,NY
+12204,Albany,NY
+13202,Syracuse,NY
+13203,Syracuse,NY
+13204,Syracuse,NY
+13205,Syracuse,NY
+14201,Buffalo,NY
+14202,Buffalo,NY
+14203,Buffalo,NY
+14204,Buffalo,NY
+14604,Rochester,NY
+14605,Rochester,NY
+14606,Rochester,NY
+14607,Rochester,NY
+15201,Pittsburgh,PA
+15202,Pittsburgh,PA
+15203,Pittsburgh,PA
+15204,Pittsburgh,PA
+16501,Erie,PA
+16502,Erie,PA
+16503,Erie,PA
+16504,Erie,PA
+17101,Harrisburg,PA
+17102,Harrisburg,PA
+17103,Harrisburg,PA
+17104,Harrisburg,PA
+18101,Allentown,PA
+18102,Allentown,PA
+18103,Allentown,PA
+18104,Allentown,PA
+19102,Philadelphia,PA
+19103,Philadelphia,PA
+19104,Philadelphia,PA
+19105,Philadelphia,PA
+19801,Wilmington,DE
+19802,Wilmington,DE
+19803,Wilmington,DE
+19804,Wilmington,DE
+20001,Washington,DC
+20002,Washington,DC
+20003,Washington,DC
+20004,Washington,DC
+20850,Rockville,MD
+20851,Rockville,MD
+20852,Rockville,MD
+20853,Rockville,MD
+21201,Baltimore,MD
+21202,Baltimore,MD
+21203,Baltimore,MD
+21204,Baltimore,MD
+21701,Frederick,MD
+21702,Frederick,MD
+21703,Frederick,MD
+21704,Frederick,MD
+22201,Arlington,VA
+22202,Arlington,VA
+22203,Arlington,VA
+22204,Arlington,VA
+23219,Richmond,VA
+23220,Richmond,VA
+23221,Richmond,VA
+23222,Richmond,VA
+23450,Virginia Beach,VA
+23451,Virginia Beach,VA
+23452,Virginia Beach,VA
+23453,Virginia Beach,VA
+23510,Norfolk,VA
+23511,Norfolk,VA
+23512,Norfolk,VA
+23513,Norfolk,VA
+25301,Charleston,WV
+25302,Charleston,WV
+25303,Charleston,WV
+25304,Charleston,WV
+27101,Winston Salem,NC
+27102,Winston Salem,NC
+27103,Winston Salem,NC
+27104,Winston Salem,NC
+27401,Greensboro,NC
+27402,Greensboro,NC
+27403,Greensboro,NC
+27404,Greensboro,NC
+27601,Raleigh,NC
+27602,Raleigh,NC
+27603,Raleigh,NC
+27604,Raleigh,NC
+27701,Durham,NC
+27702,Durham,NC
+27703,Durham,NC
+27704,Durham,NC
+28202,Charlotte,NC
+28203,Charlotte,NC
+28204,Charlotte,NC
+28205,Charlotte,NC
+29201,Columbia,SC
+29202,Columbia,SC
+29203,Columbia,SC
+29204,Columbia,SC
+29401,Charleston,SC
+29402,Charleston,SC
+29403,Charleston,SC
+29404,Charleston,SC
+30303,Atlanta,GA
+30304,Atlanta,GA
+30305,Atlanta,GA
+30306,Atlanta,GA
+30901,Augusta,GA
+30902,Augusta,GA
+30903,Augusta,GA
+30904,Augusta,GA
+31401,Savannah,GA
+31402,Savannah,GA
+31403,Savannah,GA
+31404,Savannah,GA
+31901,Columbus,GA
+31902,Columbus,GA
+31903,Columbus,GA
+31904,Columbus,GA
+32202,Jacksonville,FL
+32203,Jacksonville,FL
+32204,Jacksonville,FL
+32205,Jacksonville,FL
+32301,Tallahassee,FL
+32302,Tallahassee,FL
+32303,Tallahassee,FL
+32304,Tallahassee,FL
+32801,Orlando,FL
+32802,Orlando,FL
+32803,Orlando,FL
+32804,Orlando,FL
+33101,Miami,FL
+33102,Miami,FL
+33103,Miami,FL
+33104,Miami,FL
+33602,Tampa,FL
+33603,Tampa,FL
+33604,Tampa,FL
+33605,Tampa,FL
+33701,Saint Petersburg,FL
+33702,Saint Petersburg,FL
+33703,Saint Petersburg,FL
+33704,Saint Petersburg,FL
+35203,Birmingham,AL
+35204,Birmingham,AL
+35205,Birmingham,AL
+35206,Birmingham,AL
+36104,Montgomery,AL
+36105,Montgomery,AL
+36106,Montgomery,AL
+36107,Montgomery,AL
+37201,Nashville,TN
+37202,Nashville,TN
+37203,Nashville,TN
+37204,Nashville,TN
+37402,Chattanooga,TN
+37403,Chattanooga,TN
+37404,Chattanooga,TN
+37405,Chattanooga,TN
+37902,Knoxville,TN
+37903,Knoxville,TN
+37904,Knoxville,TN
+37905,Knoxville,TN
+38103,Memphis,TN
+38104,Memphis,TN
+38105,Memphis,TN
+38106,Memphis,TN
+39201,Jackson,MS
+39202,Jackson,MS
+39203,Jackson,MS
+39204,Jackson,MS
+40202,Louisville,KY
+40203,Louisville,KY
+40204,Louisville,KY
+40205,Louisville,KY
+40507,Lexington,KY
+40508,Lexington,KY
+40509,Lexington,KY
+40510,Lexington,KY
+43201,Columbus,OH
+43202,Columbus,OH
+43203,Columbus,OH
+43204,Columbus,OH
+43604,Toledo,OH
+43605,Toledo,OH
+43606,Toledo,OH
+43607,Toledo,OH
+44101,Cleveland,OH
+44102,Cleveland,OH
+44103,Cleveland,OH
+44104,Cleveland,OH
+44301,Akron,OH
+44302,Akron,OH
+44303,Akron,OH
+44304,Akron,OH
+45202,Cincinnati,OH
+45203,Cincinnati,OH
+45204,Cincinnati,OH
+45205,Cincinnati,OH
+45402,Dayton,OH
+45403,Dayton,OH
+45404,Dayton,OH
+45405,Dayton,OH
+46201,Indianapolis,IN
+46202,Indianapolis,IN
+46203,Indianapolis,IN
+46204,Indianapolis,IN
+46601,South Bend,IN
+46602,South Bend,IN
+46603,South Bend,IN
+46604,South Bend,IN
+46802,Fort Wayne,IN
+46803,Fort Wayne,IN
+46804,Fort Wayne,IN
+46805,Fort Wayne,IN
+47708,Evansville,IN
+47709,Evansville,IN
+47710,Evansville,IN
+47711,Evansville,IN
+48089,Warren,MI
+48090,Warren,MI
+48091,Warren,MI
+48092,Warren,MI
+48104,Ann Arbor,MI
+48105,Ann Arbor,MI
+48106,Ann Arbor,MI
+48107,Ann Arbor,MI
+48201,Detroit,MI
+48202,Detroit,MI
+48203,Detroit,MI
+48204,Detroit,MI
+48901,Lansing,MI
+48902,Lansing,MI
+48903,Lansing,MI
+48904,Lansing,MI
+49503,Grand Rapids,MI
+49504,Grand Rapids,MI
+49505,Grand Rapids,MI
+49506,Grand Rapids,MI
+50309,Des Moines,IA
+50310,Des Moines,IA
+50311,Des Moines,IA
+50312,Des Moines,IA
+52401,Cedar Rapids,IA
+52402,Cedar Rapids,IA
+52403,Cedar Rapids,IA
+52404,Cedar Rapids,IA
+53202,Milwaukee,WI
+53203,Milwaukee,WI
+53204,Milwaukee,WI
+53205,Milwaukee,WI
+53703,Madison,WI
+53704,Madison,WI
+53705,Madison,WI
+53706,Madison,WI
+54301,Green Bay,WI
+54302,Green Bay,WI
+54303,Green Bay,WI
+54304,Green Bay,WI
+55101,Saint Paul,MN
+55102,Saint Paul,MN
+55103,Saint Paul,MN
+55104,Saint Paul,MN
+55401,Minneapolis,MN
+55402,Minneapolis,MN
+55403,Minneapolis,MN
+55404,Minneapolis,MN
+55802,Duluth,MN
+55803,Duluth,MN
+55804,Duluth,MN
+55805,Duluth,MN
+57104,Sioux Falls,SD
+57105,Sioux Falls,SD
+57106,Sioux Falls,SD
+57107,Sioux Falls,SD
+58102,Fargo,ND
+58103,Fargo,ND
+58104,Fargo,ND
+58105,Fargo,ND
+59101,Billings,MT
+59102,Billings,MT
+59103,Billings,MT
+59104,Billings,MT
+60502,Aurora,IL
+60503,Aurora,IL
+60504,Aurora,IL
+60505,Aurora,IL
+60540,Naperville,IL
+60541,Naperville,IL
+60542,Naperville,IL
+60543,Naperville,IL
+60601,Chicago,IL
+60602,Chicago,IL
+60603,Chicago,IL
+60604,Chicago,IL
+61602,Peoria,IL
+61603,Peoria,IL
+61604,Peoria,IL
+61605,Peoria,IL
+62701,Springfield,IL
+62702,Springfield,IL
+62703,Springfield,IL
+62704,Springfield,IL
+63101,Saint Louis,MO
+63102,Saint Louis,MO
+63103,Saint Louis,MO
+63104,Saint Louis,MO
+64106,Kansas City,MO
+64107,Kansas City,MO
+64108,Kansas City,MO
+64109,Kansas City,MO
+65802,Springfield,MO
+65803,Springfield,MO
+65804,Springfield,MO
+65805,Springfield,MO
+66603,Topeka,KS
+66604,Topeka,KS
+66605,Topeka,KS
+66606,Topeka,KS
+67202,Wichita,KS
+67203,Wichita,KS
+67204,Wichita,KS
+67205,Wichita,KS
+68102,Omaha,NE
+68103,Omaha,NE
+68104,Omaha,NE
+68105,Omaha,NE
+68501,Lincoln,NE
+68502,Lincoln,NE
+68503,Lincoln,NE
+68504,Lincoln,NE
+70112,New Orleans,LA
+70113,New Orleans,LA
+70114,New Orleans,LA
+70115,New Orleans,LA
+70801,Baton Rouge,LA
+70802,Baton Rouge,LA
+70803,Baton Rouge,LA
+70804,Baton Rouge,LA
+71101,Shreveport,LA
+71102,Shreveport,LA
+71103,Shreveport,LA
+71104,Shreveport,LA
+72201,Little Rock,AR
+72202,Little Rock,AR
+72203,Little Rock,AR
+72204,Little Rock,AR
+73102,Oklahoma City,OK
+73103,Oklahoma City,OK
+73104,Oklahoma City,OK
+73105,Oklahoma City,OK
+74103,Tulsa,OK
+74104,Tulsa,OK
+74105,Tulsa,OK
+74106,Tulsa,OK
+75201,Dallas,TX
+75202,Dallas,TX
+75203,Dallas,TX
+75204,Dallas,TX
+76010,Arlington,TX
+76011,Arlington,TX
+76012,Arlington,TX
+76013,Arlington,TX
+76102,Fort Worth,TX
+76103,Fort Worth,TX
+76104,Fort Worth,TX
+76105,Fort Worth,TX
+77002,Houston,TX
+77003,Houston,TX
+77004,Houston,TX
+77005,Houston,TX
+78201,San Antonio,TX
+78202,San Antonio,TX
+78203,San Antonio,TX
+78204,San Antonio,TX
+78401,Corpus Christi,TX
+78402,Corpus Christi,TX
+78403,Corpus Christi,TX
+78404,Corpus Christi,TX
+78701,Austin,TX
+78702,Austin,TX
+78703,Austin,TX
+78704,Austin,TX
+79901,El Paso,TX
+79902,El Paso,TX
+79903,El Paso,TX
+79904,El Paso,TX
+80010,Aurora,CO
+80011,Aurora,CO
+80012,Aurora,CO
+80013,Aurora,CO
+80202,Denver,CO
+80203,Denver,CO
+80204,Denver,CO
+80205,Denver,CO
+80521,Fort Collins,CO
+80522,Fort Collins,CO
+80523,Fort Collins,CO
+80524,Fort Collins,CO
+80903,Colorado Springs,CO
+80904,Colorado Springs,CO
+80905,Colorado Springs,CO
+80906,Colorado Springs,CO
+82001,Cheyenne,WY
+82002,Cheyenne,WY
+82003,Cheyenne,WY
+82004,Cheyenne,WY
+83702,Boise,ID
+83703,Boise,ID
+83704,Boise,ID
+83705,Boise,ID
+84101,Salt Lake City,UT
+84102,Salt Lake City,UT
+84103,Salt Lake City,UT
+84104,Salt Lake City,UT
+84601,Provo,UT
+84602,Provo,UT
+84603,Provo,UT
+84604,Provo,UT
+85001,Phoenix,AZ
+85002,Phoenix,AZ
+85003,Phoenix,AZ
+85004,Phoenix,AZ
+85201,Mesa,AZ
+85202,Mesa,AZ
+85203,Mesa,AZ
+85204,Mesa,AZ
+85224,Chandler,AZ
+85225,Chandler,AZ
+85226,Chandler,AZ
+85227,Chandler,AZ
+85251,Scottsdale,AZ
+85252,Scottsdale,AZ
+85253,Scottsdale,AZ
+85254,Scottsdale,AZ
+85701,Tucson,AZ
+85702,Tucson,AZ
+85703,Tucson,AZ
+85704,Tucson,AZ
+87102,Albuquerque,NM
+87103,Albuquerque,NM
+87104,Albuquerque,NM
+87105,Albuquerque,NM
+89002,Henderson,NV
+89003,Henderson,NV
+89004,Henderson,NV
+89005,Henderson,NV
+89101,Las Vegas,NV
+89102,Las Vegas,NV
+89103,Las Vegas,NV
+89104,Las Vegas,NV
+89501,Reno,NV
+89502,Reno,NV
+89503,Reno,NV
+89504,Reno,NV
+90001,Los Angeles,CA
+90002,Los Angeles,CA
+90003,Los Angeles,CA
+90004,Los Angeles,CA
+90802,Long Beach,CA
+90803,Long Beach,CA
+90804,Long Beach,CA
+90805,Long Beach,CA
+92101,San Diego,CA
+92102,San Diego,CA
+92103,San Diego,CA
+92104,San Diego,CA
+93301,Bakersfield,CA
+93302,Bakersfield,CA
+93303,Bakersfield,CA
+93304,Bakersfield,CA
+93701,Fresno,CA
+93702,Fresno,CA
+93703,Fresno,CA
+93704,Fresno,CA
+94102,San Francisco,CA
+94103,San Francisco,CA
+94104,San Francisco,CA
+94105,San Francisco,CA
+94601,Oakland,CA
+94602,Oakland,CA
+94603,Oakland,CA
+94604,Oakland,CA
+95101,San Jose,CA
+95102,San Jose,CA
+95103,San Jose,CA
+95104,San Jose,CA
+95814,Sacramento,CA
+95815,Sacramento,CA
+95816,Sacramento,CA
+95817,Sacramento,CA
+96813,Honolulu,HI
+96814,Honolulu,HI
+96815,Honolulu,HI
+96816,Honolulu,HI
+97201,Portland,OR
+97202,Portland,OR
+97203,Portland,OR
+97204,Portland,OR
+97301,Salem,OR
+97302,Salem,OR
+97303,Salem,OR
+97304,Salem,OR
+97401,Eugene,OR
+97402,Eugene,OR
+97403,Eugene,OR
+97404,Eugene,OR
+98004,Bellevue,WA
+98005,Bellevue,WA
+98006,Bellevue,WA
+98007,Bellevue,WA
+98101,Seattle,WA
+98102,Seattle,WA
+98103,Seattle,WA
+98104,Seattle,WA
+98402,Tacoma,WA
+98403,Tacoma,WA
+98404,Tacoma,WA
+98405,Tacoma,WA
+98660,Vancouver,WA
+98661,Vancouver,WA
+98662,Vancouver,WA
+98663,Vancouver,WA
+99201,Spokane,WA
+99202,Spokane,WA
+99203,Spokane,WA
+99204,Spokane,WA
+99501,Anchorage,AK
+99502,Anchorage,AK
+99503,Anchorage,AK
+99504,Anchorage,AK

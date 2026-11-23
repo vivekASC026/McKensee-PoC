@@ -1,0 +1,836 @@
+{
+ "_about": "What a bank's patterns are found on, counted and reported by. (patterns.report_fields.member_claims is the code's name for a primary's fields counted over its children.)",
+ "analyzer": {
+  "continuous_features": [
+   "_age",
+   "_tenure"
+  ],
+  "categorical_features": [
+   "SEGMENT"
+  ],
+  "geography_columns": {
+   "ADDR_ZIP": "ADDRESS_ZIP",
+   "ADDR_CITY": "ADDRESS_CITY",
+   "ADDR_STATE": "ADDRESS_STATE"
+  },
+  "description_columns": [
+   "BRANCH_NAME",
+   "PRODUCT_NAME"
+  ],
+  "filter_columns": {
+   "branch_id": "BRANCH_ID",
+   "product_code": "PRODUCT_CODE"
+  },
+  "label_cluster_columns": {},
+  "numeric_columns": [],
+  "key_suffixes": [
+   "_ID"
+  ],
+  "enrollment_columns": {},
+  "feature_labels": {
+   "_age": [
+    "Age",
+    "years"
+   ],
+   "_tenure": [
+    "Tenure",
+    "months"
+   ],
+   "SEGMENT": [
+    "Segment",
+    null
+   ],
+   "TXN_TYPE": [
+    "Transaction type",
+    null
+   ],
+   "CHANNEL": [
+    "Channel",
+    null
+   ],
+   "amount": [
+    "Amount",
+    null
+   ],
+   "transaction_type": [
+    "Txn Type",
+    null
+   ],
+   "channel": [
+    "Channel",
+    null
+   ],
+   "segment": [
+    "Segment",
+    null
+   ],
+   "account_status": [
+    "Account Status",
+    null
+   ],
+   "product_type": [
+    "Product Type",
+    null
+   ],
+   "customer_age": [
+    "Age",
+    "years"
+   ]
+  },
+  "seed_element_labels": {}
+ },
+ "store": {
+  "member_columns": [
+   "CUSTOMER_ID",
+   "FIRST_NAME",
+   "LAST_NAME",
+   "BIRTH_DATE",
+   "SEGMENT",
+   "CUST_SINCE",
+   "ADDR_CITY",
+   "ADDR_STATE",
+   "ADDR_ZIP",
+   "EMAIL",
+   "BRANCH_ID",
+   "BRANCH_NAME"
+  ],
+  "claim_columns": [
+   "ACCOUNT_ID",
+   "TXN_SEQ",
+   "CUSTOMER_ID",
+   "PRODUCT_CODE",
+   "PRODUCT_NAME",
+   "PRODUCT_TYPE",
+   "OPEN_DATE",
+   "ACCT_STATUS",
+   "TXN_DATE",
+   "TXN_TYPE",
+   "CHANNEL",
+   "MCC_CODE",
+   "AMOUNT",
+   "BRANCH_ID",
+   "BRANCH_NAME",
+   "SEGMENT",
+   "CUST_AGE"
+  ],
+  "member_key": "CUSTOMER_ID",
+  "report_keys": {
+   "customers": [
+    "CUSTOMER_ID"
+   ],
+   "accounts": [
+    "ACCOUNT_ID",
+    "TXN_SEQ"
+   ]
+  },
+  "personal_columns": [
+   "FIRST_NAME",
+   "LAST_NAME",
+   "BIRTH_DATE",
+   "EMAIL",
+   "ADDR_ZIP"
+  ],
+  "personal_columns_rows": [
+   "FIRST_NAME",
+   "LAST_NAME",
+   "BIRTH_DATE",
+   "EMAIL",
+   "ADDR_ZIP"
+  ],
+  "personal_suffixes_rows": [
+   "_DOB",
+   "_ZIP",
+   "EMAIL"
+  ],
+  "claims_filters": [
+   "branch_id",
+   "product_code",
+   "conditions"
+  ],
+  "clinical_columns": {},
+  "claim_type_names": {
+   "CHECKING": "Checking",
+   "SAVINGS": "Savings",
+   "CARD": "Card",
+   "LOAN": "Loan"
+  },
+  "combo_key": [
+   "branch_id",
+   "product_code"
+  ],
+  "scope_columns": {},
+  "scope_label_columns": {},
+  "entity_tag": {},
+  "legacy_entity_markers": [],
+  "scope_label_names": {},
+  "type_filter": "product_type",
+  "baseline_scope": {
+   "prefix": "BRANCH",
+   "label": "branch"
+  }
+ },
+ "patterns": {
+  "defined": {
+   "customers": [
+    {
+     "key": "branch_id",
+     "label": "Branch",
+     "kind": "in",
+     "scope": true,
+     "column": "BRANCH_ID",
+     "describe": "BRANCH_NAME"
+    },
+    {
+     "key": "age",
+     "label": "Age",
+     "kind": "range",
+     "column": "_age",
+     "unit": "years"
+    },
+    {
+     "key": "tenure",
+     "label": "Tenure",
+     "kind": "range",
+     "column": "_tenure",
+     "unit": "months"
+    },
+    {
+     "key": "segment",
+     "label": "Segment",
+     "kind": "in",
+     "column": "SEGMENT"
+    },
+    {
+     "key": "state",
+     "label": "State",
+     "kind": "in",
+     "column": "ADDR_STATE"
+    }
+   ],
+   "accounts": [
+    {
+     "key": "branch_id",
+     "label": "Branch",
+     "kind": "in",
+     "scope": true,
+     "column": "BRANCH_ID",
+     "describe": "BRANCH_NAME"
+    },
+    {
+     "key": "product_code",
+     "label": "Product",
+     "kind": "in",
+     "scope": true,
+     "column": "PRODUCT_CODE",
+     "describe": "PRODUCT_NAME"
+    },
+    {
+     "key": "product_type",
+     "label": "Product type",
+     "kind": "in",
+     "column": "PRODUCT_TYPE"
+    },
+    {
+     "key": "transaction_type",
+     "label": "Transaction type",
+     "kind": "in",
+     "column": "TXN_TYPE"
+    },
+    {
+     "key": "channel",
+     "label": "Channel",
+     "kind": "in",
+     "column": "CHANNEL"
+    },
+    {
+     "key": "segment",
+     "label": "Segment",
+     "kind": "in",
+     "column": "SEGMENT"
+    },
+    {
+     "key": "amount",
+     "label": "Amount",
+     "kind": "range",
+     "column": "AMOUNT",
+     "unit": "dollars"
+    },
+    {
+     "key": "customer_age",
+     "label": "Customer age",
+     "kind": "range",
+     "column": "CUST_AGE",
+     "unit": "years"
+    }
+   ]
+  },
+  "discovery_defaults": {
+   "customers": [
+    "age",
+    "tenure",
+    "segment"
+   ],
+   "accounts": [
+    "amount",
+    "transaction_type",
+    "channel",
+    "product_type"
+   ]
+  },
+  "scope_levels": [
+   "branch_id",
+   "product_code"
+  ],
+  "scenario_dimensions": {
+   "customers": [
+    {
+     "key": "segment",
+     "label": "Segment",
+     "column": "SEGMENT"
+    },
+    {
+     "key": "state",
+     "label": "State",
+     "column": "ADDR_STATE"
+    },
+    {
+     "key": "age_band",
+     "label": "Age band",
+     "column": "_age",
+     "bands": true
+    }
+   ],
+   "accounts": [
+    {
+     "key": "transaction_type",
+     "label": "Transaction type",
+     "column": "TXN_TYPE"
+    },
+    {
+     "key": "channel",
+     "label": "Channel",
+     "column": "CHANNEL"
+    },
+    {
+     "key": "age_band",
+     "label": "Age band",
+     "column": "CUST_AGE",
+     "bands": true
+    }
+   ]
+  },
+  "scenario_split": {
+   "customers": [
+    "segment",
+    "age_band"
+   ],
+   "accounts": [
+    "transaction_type",
+    "age_band"
+   ]
+  },
+  "amount_bands": [
+   [
+    0,
+    100,
+    "$0-99"
+   ],
+   [
+    100,
+    500,
+    "$100-499"
+   ],
+   [
+    500,
+    1000,
+    "$500-999"
+   ],
+   [
+    1000,
+    5000,
+    "$1,000-4,999"
+   ],
+   [
+    5000,
+    10000,
+    "$5,000-9,999"
+   ],
+   [
+    10000,
+    Infinity,
+    "$10,000+"
+   ]
+  ],
+  "report_fields": {
+   "customers": [
+    {
+     "key": "age_band",
+     "label": "Age band",
+     "column": "_age",
+     "bands": "age"
+    },
+    {
+     "key": "segment",
+     "label": "Segment",
+     "column": "SEGMENT"
+    },
+    {
+     "key": "state",
+     "label": "State",
+     "column": "ADDR_STATE"
+    },
+    {
+     "key": "zip",
+     "label": "ZIP",
+     "column": "ADDR_ZIP",
+     "describe": "ADDR_CITY"
+    },
+    {
+     "key": "branch",
+     "label": "Branch",
+     "column": "BRANCH_ID",
+     "describe": "BRANCH_NAME"
+    }
+   ],
+   "member_claims": [],
+   "accounts": [
+    {
+     "key": "product_type",
+     "label": "Product type",
+     "column": "PRODUCT_TYPE",
+     "basis": "child"
+    },
+    {
+     "key": "product",
+     "label": "Product",
+     "column": "PRODUCT_CODE",
+     "describe": "PRODUCT_NAME",
+     "basis": "child"
+    },
+    {
+     "key": "transaction_type",
+     "label": "Transaction type",
+     "column": "TXN_TYPE",
+     "basis": "lines"
+    },
+    {
+     "key": "channel",
+     "label": "Channel",
+     "column": "CHANNEL",
+     "basis": "lines"
+    },
+    {
+     "key": "amount",
+     "label": "Amount",
+     "column": "AMOUNT",
+     "bands": "amount",
+     "basis": "lines"
+    },
+    {
+     "key": "segment",
+     "label": "Segment",
+     "column": "SEGMENT",
+     "basis": "child"
+    },
+    {
+     "key": "age_band",
+     "label": "Customer age band",
+     "column": "CUST_AGE",
+     "bands": "age",
+     "basis": "child"
+    },
+    {
+     "key": "branch",
+     "label": "Branch",
+     "column": "BRANCH_ID",
+     "describe": "BRANCH_NAME",
+     "basis": "child"
+    }
+   ]
+  },
+  "report_generation": {
+   "customers": {
+    "age_band": "No, not referred into and not generated",
+    "segment": "No, not referred into and not generated",
+    "state": "No, not referred into and not generated",
+    "zip": "No, not referred into and not generated",
+    "branch": "No, not referred into and not generated"
+   },
+   "accounts": {
+    "product_type": "No, not referred into and not generated",
+    "product": "No, not referred into and not generated",
+    "transaction_type": "No, not referred into and not generated",
+    "channel": "No, not referred into and not generated",
+    "amount": "No, not referred into and not generated",
+    "segment": "No, not referred into and not generated",
+    "age_band": "No, not referred into and not generated",
+    "branch": "No, not referred into and not generated"
+   }
+  },
+  "code_names": {}
+ },
+ "joined": {
+  "provider_member_columns": [],
+  "provider_claim_columns": [],
+  "provider_entity_words": {}
+ },
+ "loaders": {
+  "_about": "How a bank's records are read for pattern analysis: phase 6b.",
+  "customers": {
+   "table": "customer_denorm",
+   "columns": "store.member_columns",
+   "order": [
+    "CUSTOMER_ID"
+   ],
+   "filters": [
+    {
+     "key": "branch_id",
+     "column": "BRANCH_ID",
+     "kind": "ids"
+    }
+   ],
+   "derive": [
+    {
+     "column": "_age",
+     "op": "elapsed",
+     "from": "BIRTH_DATE",
+     "unit": "years"
+    },
+    {
+     "column": "_tenure",
+     "op": "elapsed",
+     "from": "CUST_SINCE",
+     "unit": "months"
+    }
+   ],
+   "labels": [
+    "CUSTOMER_ID",
+    "BRANCH_ID"
+   ],
+   "strip": [
+    "SEGMENT",
+    "BRANCH_NAME"
+   ],
+   "empty": "No customers match the applied filters: {filters}",
+   "overview": [
+    [
+     "n_customers",
+     "CUSTOMER_ID"
+    ],
+    [
+     "n_branches",
+     "BRANCH_ID"
+    ]
+   ],
+   "sizes": {
+    "levels": [
+     [
+      "BRANCH_ID",
+      "BRANCH_NAME"
+     ]
+    ],
+    "count": "n_customers",
+    "trim": false
+   },
+   "scope": [
+    {
+     "level": "branches",
+     "key": "BRANCH_ID",
+     "label": "BRANCH_NAME",
+     "trim": [],
+     "takes": [],
+     "order": "BRANCH_NAME"
+    }
+   ],
+   "counts": {
+    "records": "n_customers"
+   },
+   "funnel": [
+    "branch"
+   ]
+  },
+  "accounts": {
+   "table": "account_denorm",
+   "columns": "store.claim_columns",
+   "order": [
+    "ACCOUNT_ID",
+    "TXN_SEQ"
+   ],
+   "filters": [
+    {
+     "key": "branch_id",
+     "column": "BRANCH_ID",
+     "kind": "ids"
+    },
+    {
+     "key": "product_code",
+     "column": "PRODUCT_CODE",
+     "kind": "values",
+     "skip_blank": true
+    },
+    {
+     "key": "product_type",
+     "column": "PRODUCT_TYPE",
+     "kind": "values",
+     "skip_blank": true
+    }
+   ],
+   "strip": [
+    "PRODUCT_CODE",
+    "PRODUCT_TYPE",
+    "TXN_TYPE",
+    "CHANNEL",
+    "MCC_CODE",
+    "BRANCH_NAME",
+    "PRODUCT_NAME",
+    "SEGMENT",
+    "ACCT_STATUS"
+   ],
+   "empty": "No transactions match filters: {filters}",
+   "overview": [
+    [
+     "n_transactions",
+     "*"
+    ],
+    [
+     "n_accounts",
+     "ACCOUNT_ID"
+    ],
+    [
+     "n_customers",
+     "CUSTOMER_ID"
+    ],
+    [
+     "n_branches",
+     "BRANCH_ID"
+    ],
+    [
+     "n_products",
+     "PRODUCT_CODE"
+    ]
+   ],
+   "sizes": {
+    "levels": [
+     [
+      "BRANCH_ID",
+      "BRANCH_NAME"
+     ],
+     [
+      "BRANCH_ID",
+      "BRANCH_NAME",
+      "PRODUCT_CODE",
+      "PRODUCT_NAME"
+     ]
+    ],
+    "count": "n_transactions",
+    "trim": true
+   },
+   "scope": [
+    {
+     "level": "branches",
+     "key": "BRANCH_ID",
+     "label": "BRANCH_NAME",
+     "trim": [
+      "BRANCH_NAME"
+     ],
+     "takes": [],
+     "order": "BRANCH_NAME"
+    },
+    {
+     "level": "products",
+     "key": "PRODUCT_CODE",
+     "label": "PRODUCT_NAME",
+     "trim": [
+      "PRODUCT_CODE",
+      "PRODUCT_NAME"
+     ],
+     "takes": [
+      "branch_id"
+     ],
+     "order": "PRODUCT_NAME"
+    },
+    {
+     "level": "types",
+     "key": "PRODUCT_TYPE",
+     "trim": [
+      "PRODUCT_TYPE"
+     ],
+     "takes": [
+      "branch_id",
+      "product_code"
+     ],
+     "order": "PRODUCT_TYPE"
+    }
+   ],
+   "counts": {
+    "records": "n_accounts",
+    "lines": "n_transactions"
+   }
+  }
+ },
+ "child_analysis": {
+  "record_key": "ACCOUNT_ID",
+  "primary_key": "CUSTOMER_ID",
+  "type_column": "PRODUCT_TYPE",
+  "histograms": {
+   "customer_age": "CUST_AGE",
+   "amount": "AMOUNT"
+  },
+  "continuous": [
+   [
+    "AMOUNT",
+    "amount"
+   ],
+   [
+    "CUST_AGE",
+    "customer_age"
+   ]
+  ],
+  "categorical": [
+   [
+    "TXN_TYPE",
+    "transaction_type"
+   ],
+   [
+    "CHANNEL",
+    "channel"
+   ],
+   [
+    "PRODUCT_TYPE",
+    "product_type"
+   ],
+   [
+    "SEGMENT",
+    "segment"
+   ],
+   [
+    "ACCT_STATUS",
+    "account_status"
+   ]
+  ],
+  "top": [
+   {
+    "code": "MCC_CODE",
+    "as": "top_merchant_categories"
+   }
+  ],
+  "rates": [],
+  "shown_continuous": [
+   "customer_age",
+   "amount"
+  ],
+  "shown_categorical": [
+   "segment",
+   "product_type",
+   "transaction_type",
+   "channel",
+   "account_status"
+  ],
+  "name": {
+   "type": "product_type",
+   "age": "customer_age",
+   "sex": null,
+   "top": null,
+   "top_descriptions": null,
+   "top_prefix": null,
+   "ages": [
+    [
+     25,
+     "Young"
+    ],
+    [
+     40,
+     "Early career"
+    ],
+    [
+     60,
+     "Established"
+    ],
+    [
+     null,
+     "Retired"
+    ]
+   ],
+   "amount": "amount",
+   "amount_words": "avg amount",
+   "fallback": "Account pattern"
+  },
+  "marks": {
+   "name_prefix": "",
+   "labels": {}
+  },
+  "line_column_prefixes": [
+   "TXN_",
+   "AMOUNT",
+   "CHANNEL",
+   "MCC_"
+  ],
+  "shown_top": [
+   "top_merchant_categories"
+  ]
+ },
+ "primary_analysis": {
+  "histograms": {
+   "_age": "_age",
+   "_tenure": "_tenure"
+  },
+  "family": null,
+  "naming": {
+   "levels": {
+    "branch_id": {
+     "fallback": "stripped",
+     "length": 16
+    }
+   },
+   "age_feature": "_age",
+   "ages": [
+    [
+     25,
+     "Young"
+    ],
+    [
+     40,
+     "EarlyCareer"
+    ],
+    [
+     60,
+     "Established"
+    ],
+    [
+     null,
+     "Retired"
+    ]
+   ]
+  }
+ },
+ "screen_facts": {
+  "age": [
+   "_age",
+   "customer_age"
+  ],
+  "tenure": "_tenure",
+  "amount": [
+   "amount",
+   "Amount"
+  ],
+  "type": "product_type",
+  "top": [
+   "top_merchant_categories",
+   null,
+   "Top merchant categories"
+  ]
+ },
+ "bridge": {
+  "feature_elements": {
+   "top_merchant_categories": "MCC_CODE",
+   "transaction_type": "TXN_TYPE",
+   "channel": "CHANNEL",
+   "segment": "SEGMENT",
+   "SEGMENT": "SEGMENT",
+   "account_status": "ACCOUNT_STATUS"
+  },
+  "ranked": {
+   "top_merchant_categories": "Mcc Code"
+  }
+ }
+}

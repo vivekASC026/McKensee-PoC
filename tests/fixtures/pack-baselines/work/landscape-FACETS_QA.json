@@ -1,0 +1,7100 @@
+{
+  "source": "FACETS_QA",
+  "derived_from": "SDM_DENORM",
+  "rows_seen": 649391,
+  "elements": [
+    {
+      "element": "ADDRESS_CITY",
+      "observed_in": [
+        "sdm.subscriber_denorm.SBAD_CITY"
+      ],
+      "rows": 0,
+      "null_rate": 0.0,
+      "cardinality": "empty",
+      "distinct_ratio": 0.0
+    },
+    {
+      "element": "ADDRESS_COUNTY",
+      "observed_in": [
+        "sdm.member_denorm.GRGR_COUNTY",
+        "sdm.subscriber_denorm.SBAD_COUNTY"
+      ],
+      "rows": 46077,
+      "null_rate": 0.0,
+      "cardinality": "low",
+      "distinct_ratio": 0.000174,
+      "minimum": "Erie",
+      "maximum": "Travis",
+      "min_length": 4,
+      "max_length": 9
+    },
+    {
+      "element": "ADDRESS_STATE",
+      "observed_in": [
+        "sdm.claims_header_ext_denorm.CLCL_ACD_STATE",
+        "sdm.member_denorm.GRGR_STATE",
+        "sdm.member_denorm.GRGR_STS",
+        "sdm.member_denorm.SGSG_STATE",
+        "sdm.member_denorm.SGSG_STS",
+        "sdm.provider_denorm.PRPR_STS",
+        "sdm.subscriber_denorm.SBAD_STATE"
+      ],
+      "rows": 184608,
+      "null_rate": 0.0,
+      "cardinality": "low",
+      "distinct_ratio": 0.003333,
+      "minimum": "AC",
+      "maximum": "TX",
+      "min_length": 2,
+      "max_length": 2
+    },
+    {
+      "element": "ADDRESS_ZIP",
+      "observed_in": [
+        "sdm.claims_detail_denorm.CDSD_MED_AMB_ZIP",
+        "sdm.claims_detail_denorm.CDSD_SERV_LOC_ZIP",
+        "sdm.subscriber_denorm.SBAD_ZIP"
+      ],
+      "rows": 0,
+      "null_rate": 0.0,
+      "cardinality": "empty",
+      "distinct_ratio": 0.0
+    },
+    {
+      "element": "AGE_AT_SERVICE",
+      "observed_in": [
+        "sdm.claims_denorm.CLCL_INPUT_DT",
+        "sdm.claims_denorm.CLCL_ME_AGE",
+        "sdm.claims_header_ext_denorm.CLCL_ACD_DT",
+        "sdm.claims_header_ext_denorm.CLCL_ACD_IND",
+        "sdm.claims_header_ext_denorm.CLCL_CURR_ILL_DT",
+        "sdm.claims_header_ext_denorm.CLCL_EXT_REF_IND",
+        "sdm.claims_header_ext_denorm.CLCL_MECD_RESUB_NO",
+        "sdm.claims_header_ext_denorm.CLCL_MED_ASSGN_IND",
+        "sdm.claims_header_ext_denorm.CLCL_OTHER_BN_IND",
+        "sdm.claims_header_ext_denorm.CLCL_OUT_LAB_IND",
+        "sdm.claims_header_ext_denorm.CLCL_PAY_PR_IND",
+        "sdm.claims_header_ext_denorm.CLCL_PA_ACCT_NO",
+        "sdm.claims_header_ext_denorm.CLCL_RELHP_TO_DT",
+        "sdm.claims_header_ext_denorm.CLCL_SIMI_ILL_DT",
+        "sdm.claims_header_ext_denorm.CLCL_UNABL_TO_DT",
+        "sdm.plan_benefit_denorm.SESE_MAX_AGE",
+        "sdm.plan_benefit_denorm.SESE_MIN_AGE"
+      ],
+      "rows": 1298782,
+      "null_rate": 0.0,
+      "cardinality": "high",
+      "distinct_ratio": 0.004538,
+      "mean": 30.047897,
+      "stddev": 18.003821
+    },
+    {
+      "element": "CHARGE_AMOUNT",
+      "observed_in": [
+        "sdm.claims_denorm.CDML_CHG_AMT",
+        "sdm.claims_denorm.CLCL_TOT_CHG"
+      ],
+      "rows": 1298782,
+      "null_rate": 0.0,
+      "cardinality": "high",
+      "distinct_ratio": 0.137838,
+      "minimum": 5.0,
+      "maximum": 5278.47,
+      "mean": 304.843381,
+      "stddev": 316.521053,
+      "distribution": {
+        "kind": "lognormal",
+        "mean": 5.953766,
+        "stddev": 0.695783,
+        "min": 5.98,
+        "max": 4709.38,
+        "skew": 2.0516
+      }
+    },
+    {
+      "element": "CLAIM_ID",
+      "observed_in": [
+        "sdm.claims_denorm.CLCL_ID",
+        "sdm.claims_detail_denorm.CLCL_ID",
+        "sdm.claims_header_ext_denorm.CLCL_ID",
+        "sdm.claims_header_ext_denorm.CLCL_ID_ADJ_FROM",
+        "sdm.claims_header_ext_denorm.CLCL_PAYEE_PR_ID",
+        "sdm.claims_header_ext_denorm.CLM_FREQUENCY"
+      ],
+      "rows": 649391,
+      "null_rate": 0.0,
+      "cardinality": "high",
+      "distinct_ratio": 0.33282,
+      "minimum": "000007494032",
+      "maximum": "999999600778",
+      "min_length": 12,
+      "max_length": 12
+    },
+    {
+      "element": "CLAIM_STATUS",
+      "observed_in": [
+        "sdm.claims_denorm.CDML_CUR_STS",
+        "sdm.claims_denorm.CLCL_CUR_STS"
+      ],
+      "rows": 1298782,
+      "null_rate": 0.0,
+      "cardinality": "low",
+      "distinct_ratio": 9e-06,
+      "minimum": "01",
+      "maximum": "99",
+      "min_length": 2,
+      "max_length": 2,
+      "values": [
+        {
+          "value": "02",
+          "weight": 0.701868
+        },
+        {
+          "value": "01",
+          "weight": 0.099623
+        },
+        {
+          "value": "04",
+          "weight": 0.069011
+        },
+        {
+          "value": "11",
+          "weight": 0.059871
+        },
+        {
+          "value": "22",
+          "weight": 0.039965
+        },
+        {
+          "value": "99",
+          "weight": 0.029662
+        }
+      ],
+      "format_regex": "\\d{2}"
+    },
+    {
+      "element": "CLAIM_TYPE",
+      "observed_in": [
+        "sdm.claims_denorm.CLCL_CL_TYPE"
+      ],
+      "rows": 649391,
+      "null_rate": 0.0,
+      "cardinality": "low",
+      "distinct_ratio": 5e-06,
+      "minimum": "D",
+      "maximum": "P",
+      "min_length": 1,
+      "max_length": 1,
+      "values": [
+        {
+          "value": "P",
+          "weight": 0.711354
+        },
+        {
+          "value": "I",
+          "weight": 0.15794
+        },
+        {
+          "value": "D",
+          "weight": 0.130706
+        }
+      ],
+      "format_regex": "[A-Z]"
+    },
+    {
+      "element": "COVERAGE_PLAN_ID",
+      "observed_in": [
+        "sdm.claims_denorm.CSPI_ID",
+        "sdm.member_denorm.CSPI_ID",
+        "sdm.plan_denorm.CSPI_ID"
+      ],
+      "rows": 695628,
+      "null_rate": 0.0,
+      "cardinality": "low",
+      "distinct_ratio": 0.15625,
+      "minimum": "CSPI0001",
+      "maximum": "CSPI0025",
+      "min_length": 8,
+      "max_length": 8,
+      "values": [
+        {
+          "value": "CSPI0016",
+          "weight": 0.04740752
+        },
+        {
+          "value": "CSPI0017",
+          "weight": 0.04573565
+        },
+        {
+          "value": "CSPI0007",
+          "weight": 0.04528426
+        },
+        {
+          "value": "CSPI0008",
+          "weight": 0.04508588
+        },
+        {
+          "value": "CSPI0019",
+          "weight": 0.044876
+        },
+        {
+          "value": "CSPI0012",
+          "weight": 0.04463593
+        },
+        {
+          "value": "CSPI0018",
+          "weight": 0.04407959
+        },
+        {
+          "value": "CSPI0021",
+          "weight": 0.04406953
+        },
+        {
+          "value": "CSPI0013",
+          "weight": 0.04402353
+        },
+        {
+          "value": "CSPI0004",
+          "weight": 0.0434557
+        },
+        {
+          "value": "CSPI0011",
+          "weight": 0.04342695
+        },
+        {
+          "value": "CSPI0003",
+          "weight": 0.04337519
+        },
+        {
+          "value": "CSPI0024",
+          "weight": 0.04272255
+        },
+        {
+          "value": "CSPI0006",
+          "weight": 0.04147907
+        },
+        {
+          "value": "CSPI0023",
+          "weight": 0.04143881
+        },
+        {
+          "value": "CSPI0001",
+          "weight": 0.04139713
+        },
+        {
+          "value": "CSPI0014",
+          "weight": 0.041285
+        },
+        {
+          "value": "CSPI0009",
+          "weight": 0.04113118
+        },
+        {
+          "value": "CSPI0022",
+          "weight": 0.03947225
+        },
+        {
+          "value": "CSPI0002",
+          "weight": 0.03903954
+        },
+        {
+          "value": "CSPI0005",
+          "weight": 0.02886169
+        },
+        {
+          "value": "CSPI0015",
+          "weight": 0.02825217
+        },
+        {
+          "value": "CSPI0020",
+          "weight": 0.02741552
+        },
+        {
+          "value": "CSPI0010",
+          "weight": 0.0266953
+        },
+        {
+          "value": "CSPI0025",
+          "weight": 0.02535407
+        }
+      ],
+      "format_regex": "CSPI\\d{4}"
+    },
+    {
+      "element": "DIAGNOSIS_CODE",
+      "observed_in": [
+        "sdm.claims_denorm.CLMD_DIAG_COUNT",
+        "sdm.claims_denorm.IDCD_ID_PRIMARY",
+        "sdm.claims_detail_denorm.IDCD_ID",
+        "sdm.claims_detail_denorm.IDCD_ID_REL",
+        "sdm.claims_header_ext_denorm.CLHP_ICD_QUAL_IND",
+        "sdm.claims_header_ext_denorm.CLMF_ICD_IND_PROC"
+      ],
+      "rows": 1298782,
+      "null_rate": 0.0,
+      "cardinality": "low",
+      "distinct_ratio": 4.6e-05,
+      "mean": 1.0,
+      "stddev": 0.0,
+      "min_length": 7,
+      "max_length": 7,
+      "values": [
+        {
+          "value": "1",
+          "weight": 0.5
+        },
+        {
+          "value": "E119000",
+          "weight": 0.05046112
+        },
+        {
+          "value": "I10X000",
+          "weight": 0.04594382
+        },
+        {
+          "value": "K029000",
+          "weight": 0.04001749
+        },
+        {
+          "value": "K051000",
+          "weight": 0.03962482
+        },
+        {
+          "value": "J069000",
+          "weight": 0.0367067
+        },
+        {
+          "value": "M545000",
+          "weight": 0.03196148
+        },
+        {
+          "value": "F411000",
+          "weight": 0.02772598
+        },
+        {
+          "value": "E785000",
+          "weight": 0.02539071
+        },
+        {
+          "value": "J450000",
+          "weight": 0.02312243
+        },
+        {
+          "value": "K219000",
+          "weight": 0.02081335
+        },
+        {
+          "value": "M179000",
+          "weight": 0.01814161
+        },
+        {
+          "value": "F329000",
+          "weight": 0.01773585
+        },
+        {
+          "value": "N390000",
+          "weight": 0.01578864
+        },
+        {
+          "value": "R519000",
+          "weight": 0.01379908
+        },
+        {
+          "value": "I251000",
+          "weight": 0.01237852
+        },
+        {
+          "value": "E668000",
+          "weight": 0.01149
+        },
+        {
+          "value": "G470000",
+          "weight": 0.01021496
+        },
+        {
+          "value": "L309000",
+          "weight": 0.00906234
+        },
+        {
+          "value": "H520000",
+          "weight": 0.00807295
+        },
+        {
+          "value": "Z010000",
+          "weight": 0.00659079
+        },
+        {
+          "value": "J029000",
+          "weight": 0.00570766
+        },
+        {
+          "value": "M255000",
+          "weight": 0.00508091
+        },
+        {
+          "value": "R109000",
+          "weight": 0.00476908
+        },
+        {
+          "value": "N189000",
+          "weight": 0.0040307
+        },
+        {
+          "value": "I489000",
+          "weight": 0.00358952
+        },
+        {
+          "value": "E039000",
+          "weight": 0.00340858
+        },
+        {
+          "value": "B349000",
+          "weight": 0.00283265
+        },
+        {
+          "value": "S934000",
+          "weight": 0.00231217
+        },
+        {
+          "value": "H669000",
+          "weight": 0.00177782
+        },
+        {
+          "value": "D649000",
+          "weight": 0.00144828
+        }
+      ],
+      "distribution": {
+        "kind": "constant",
+        "min": 1.0,
+        "max": 1.0,
+        "mean": 1.0,
+        "stddev": 0.0
+      }
+    },
+    {
+      "element": "DIAGNOSIS_DESCRIPTION",
+      "observed_in": [
+        "sdm.claims_denorm.IDCD_DESC_PRIMARY",
+        "sdm.plan_benefit_denorm.SEDS_DESC"
+      ],
+      "rows": 649391,
+      "null_rate": 0.0,
+      "cardinality": "low",
+      "distinct_ratio": 4.6e-05,
+      "minimum": "Abdominal pain",
+      "maximum": "Viral infection, unspecified",
+      "min_length": 7,
+      "max_length": 37
+    },
+    {
+      "element": "DOB",
+      "observed_in": [
+        "sdm.claims_header_ext_denorm.CLHP_BIRTH_WGT",
+        "sdm.member_denorm.MEME_BIRTH_DT"
+      ],
+      "rows": 46077,
+      "null_rate": 0.0,
+      "cardinality": "high",
+      "distinct_ratio": 0.444929,
+      "minimum": "1951-07-24",
+      "maximum": "2026-06-30"
+    },
+    {
+      "element": "EFFECTIVE_DATE",
+      "observed_in": [
+        "sdm.member_denorm.CSPI_EFF_DT",
+        "sdm.member_denorm.SBSG_EFF_DT",
+        "sdm.plan_benefit_denorm.BEN_EFF_DT",
+        "sdm.plan_benefit_denorm.PDVC_EFF_DT",
+        "sdm.plan_benefit_denorm.SEPY_EFF_DT",
+        "sdm.plan_denorm.CSPI_EFF_DT"
+      ],
+      "rows": 92314,
+      "null_rate": 0.0,
+      "cardinality": "low",
+      "distinct_ratio": 0.15625,
+      "minimum": "2006-12-21",
+      "maximum": "2022-07-22T00:00:00"
+    },
+    {
+      "element": "EMPLOYEE_ID",
+      "observed_in": [
+        "sdm.member_denorm.SBSB_EMPLOY_ID"
+      ],
+      "rows": 46077,
+      "null_rate": 0.0,
+      "cardinality": "high",
+      "distinct_ratio": 0.434056,
+      "minimum": "EMP0000001",
+      "maximum": "EMP0020000",
+      "min_length": 10,
+      "max_length": 10,
+      "format_regex": "EMP\\d{7}"
+    },
+    {
+      "element": "FIRST_NAME",
+      "observed_in": [
+        "sdm.member_denorm.MEME_FIRST_NAME",
+        "sdm.member_denorm.SBSB_FIRST_NAME",
+        "sdm.subscriber_denorm.SBSB_FIRST_NAME"
+      ],
+      "rows": 92154,
+      "null_rate": 0.0,
+      "cardinality": "high",
+      "distinct_ratio": 0.001736,
+      "minimum": "Amanda",
+      "maximum": "William",
+      "min_length": 3,
+      "max_length": 11
+    },
+    {
+      "element": "GROUP_ID",
+      "observed_in": [
+        "sdm.member_denorm.GRGR_ID",
+        "sdm.subscriber_denorm.GRGR_ID"
+      ],
+      "rows": 46077,
+      "null_rate": 0.0,
+      "cardinality": "low",
+      "distinct_ratio": 0.000174,
+      "minimum": "GRP00001",
+      "maximum": "GRP00008",
+      "min_length": 8,
+      "max_length": 8
+    },
+    {
+      "element": "GROUP_KEY",
+      "observed_in": [
+        "sdm.claims_denorm.GRGR_CK",
+        "sdm.member_denorm.GRGR_CK",
+        "sdm.plan_denorm.GRGR_CK",
+        "sdm.subscriber_denorm.GRGR_CK"
+      ],
+      "rows": 695628,
+      "null_rate": 0.0,
+      "cardinality": "low",
+      "distinct_ratio": 0.05,
+      "minimum": 1,
+      "maximum": 8,
+      "mean": 3.959468,
+      "stddev": 2.400332
+    },
+    {
+      "element": "GROUP_NAME",
+      "observed_in": [
+        "sdm.claims_denorm.GRGR_NAME",
+        "sdm.member_denorm.GRGR_NAME"
+      ],
+      "rows": 695468,
+      "null_rate": 0.0,
+      "cardinality": "low",
+      "distinct_ratio": 0.000174,
+      "minimum": "Cedar Valley School District",
+      "maximum": "Summit Retail Group",
+      "min_length": 16,
+      "max_length": 28,
+      "values": [
+        {
+          "value": "Northside Health System",
+          "weight": 0.170665
+        },
+        {
+          "value": "Metro Transit Authority",
+          "weight": 0.159687
+        },
+        {
+          "value": "Riverside University",
+          "weight": 0.156565
+        },
+        {
+          "value": "Lakeshore Manufacturing",
+          "weight": 0.142294
+        },
+        {
+          "value": "Cedar Valley School District",
+          "weight": 0.111866
+        },
+        {
+          "value": "Harbor Logistics",
+          "weight": 0.105701
+        },
+        {
+          "value": "Summit Retail Group",
+          "weight": 0.078203
+        },
+        {
+          "value": "Pine Ridge Senior Care",
+          "weight": 0.075019
+        }
+      ]
+    },
+    {
+      "element": "GROUP_TYPE",
+      "observed_in": [
+        "sdm.claims_detail_denorm.CDSD_NDC_MCTR_TYPE",
+        "sdm.member_denorm.GRGR_MCTR_TYPE"
+      ],
+      "rows": 46077,
+      "null_rate": 0.0,
+      "cardinality": "low",
+      "distinct_ratio": 0.00013,
+      "minimum": "EDU",
+      "maximum": "TRAN",
+      "min_length": 3,
+      "max_length": 4
+    },
+    {
+      "element": "LAST_NAME",
+      "observed_in": [
+        "sdm.member_denorm.MEME_LAST_NAME",
+        "sdm.member_denorm.SBSB_LAST_NAME",
+        "sdm.subscriber_denorm.SBSB_LAST_NAME"
+      ],
+      "rows": 92154,
+      "null_rate": 0.0,
+      "cardinality": "high",
+      "distinct_ratio": 0.001736,
+      "minimum": "Adams",
+      "maximum": "Young",
+      "min_length": 3,
+      "max_length": 10
+    },
+    {
+      "element": "LEGAL_ENTITY_NAME",
+      "observed_in": [
+        "sdm.provider_denorm.NM1_ENTITY_TYPE"
+      ],
+      "rows": 300,
+      "null_rate": 0.0,
+      "cardinality": "low",
+      "distinct_ratio": 0.006667,
+      "minimum": "1",
+      "maximum": "2",
+      "min_length": 1,
+      "max_length": 1,
+      "values": [
+        {
+          "value": "1",
+          "weight": 0.846667
+        },
+        {
+          "value": "2",
+          "weight": 0.153333
+        }
+      ],
+      "format_regex": "\\d"
+    },
+    {
+      "element": "LINE_NUMBER",
+      "observed_in": [
+        "sdm.claims_denorm.CDML_SEQ_NO",
+        "sdm.claims_denorm.CDML_TO_DT",
+        "sdm.claims_detail_denorm.CDML_AUTHSV_SEQ_NO",
+        "sdm.claims_detail_denorm.CDML_CLMD_TYPE2",
+        "sdm.claims_detail_denorm.CDML_CLMD_TYPE3",
+        "sdm.claims_detail_denorm.CDML_CLMD_TYPE4",
+        "sdm.claims_detail_denorm.CDML_CLMD_TYPE5",
+        "sdm.claims_detail_denorm.CDML_DISALL_EXCD",
+        "sdm.claims_detail_denorm.CDML_EXT_LINE_NO",
+        "sdm.claims_detail_denorm.CDML_IPCD_MOD2",
+        "sdm.claims_detail_denorm.CDML_IPCD_MOD3",
+        "sdm.claims_detail_denorm.CDML_IPCD_MOD4",
+        "sdm.claims_detail_denorm.CDML_PC_IND",
+        "sdm.claims_detail_denorm.CDML_REFSV_SEQ_NO",
+        "sdm.claims_detail_denorm.CDML_REF_IND",
+        "sdm.claims_detail_denorm.CDML_ROOM_TYPE",
+        "sdm.claims_detail_denorm.CDML_SEQ_NO",
+        "sdm.claims_detail_denorm.CDML_UMAUTH_ID",
+        "sdm.claims_detail_denorm.CDML_UMREF_ID"
+      ],
+      "rows": 1298782,
+      "null_rate": 0.0,
+      "cardinality": "high",
+      "distinct_ratio": 0.004503,
+      "mean": 2.256928,
+      "stddev": 1.149296,
+      "distribution": {
+        "kind": "uniform",
+        "min": 1.0,
+        "max": 5.0,
+        "skew": 0.5996
+      }
+    },
+    {
+      "element": "MARITAL_STATUS",
+      "observed_in": [
+        "sdm.member_denorm.MEME_MARITAL_STATUS",
+        "sdm.member_denorm.MEME_SFX"
+      ],
+      "rows": 92154,
+      "null_rate": 0.0,
+      "cardinality": "low",
+      "distinct_ratio": 0.000109,
+      "mean": 0.93168,
+      "stddev": 1.030178,
+      "min_length": 1,
+      "max_length": 1,
+      "values": [
+        {
+          "value": "S",
+          "weight": 0.25349958
+        },
+        {
+          "value": "0",
+          "weight": 0.21702802
+        },
+        {
+          "value": "M",
+          "weight": 0.19967663
+        },
+        {
+          "value": "1",
+          "weight": 0.15586952
+        },
+        {
+          "value": "2",
+          "weight": 0.0821017
+        },
+        {
+          "value": "3",
+          "weight": 0.03423617
+        },
+        {
+          "value": "D",
+          "weight": 0.03410595
+        },
+        {
+          "value": "W",
+          "weight": 0.01271784
+        },
+        {
+          "value": "4",
+          "weight": 0.01076459
+        }
+      ],
+      "distribution": {
+        "kind": "uniform",
+        "min": 0.0,
+        "max": 4.0,
+        "skew": 0.9851
+      }
+    },
+    {
+      "element": "MEMBER_KEY",
+      "observed_in": [
+        "sdm.claims_denorm.MEME_CK",
+        "sdm.claims_header_ext_denorm.MEME_CK",
+        "sdm.member_denorm.MEME_CK"
+      ],
+      "rows": 695468,
+      "null_rate": 0.0,
+      "cardinality": "unique",
+      "distinct_ratio": 1.0,
+      "minimum": 1,
+      "maximum": 46077,
+      "mean": 23101.596535,
+      "stddev": 13301.428514,
+      "distribution": {
+        "kind": "uniform",
+        "min": 1.0,
+        "max": 46077.0,
+        "skew": 0.0012
+      }
+    },
+    {
+      "element": "MEMBER_STATUS",
+      "observed_in": [
+        "sdm.member_denorm.MEME_MCTR_STS",
+        "sdm.member_denorm.SBSB_MCTR_STS"
+      ],
+      "rows": 92154,
+      "null_rate": 0.0,
+      "cardinality": "low",
+      "distinct_ratio": 4.3e-05,
+      "minimum": "AC",
+      "maximum": "TM",
+      "min_length": 2,
+      "max_length": 2
+    },
+    {
+      "element": "MIDDLE_INITIAL",
+      "observed_in": [
+        "sdm.member_denorm.MEME_MID_INIT",
+        "sdm.subscriber_denorm.SBSB_MID_INIT"
+      ],
+      "rows": 46077,
+      "null_rate": 0.399397,
+      "cardinality": "low",
+      "distinct_ratio": 0.000391,
+      "minimum": "A",
+      "maximum": "W",
+      "min_length": 1,
+      "max_length": 1
+    },
+    {
+      "element": "NETWORK_ID",
+      "observed_in": [
+        "sdm.claims_denorm.NWNW_ID"
+      ],
+      "rows": 649391,
+      "null_rate": 0.134149,
+      "cardinality": "low",
+      "distinct_ratio": 1.1e-05,
+      "minimum": "NW0000000001",
+      "maximum": "NW0000000007",
+      "min_length": 12,
+      "max_length": 12,
+      "values": [
+        {
+          "value": "NW0000000001",
+          "weight": 0.258444
+        },
+        {
+          "value": "NW0000000004",
+          "weight": 0.211956
+        },
+        {
+          "value": "NW0000000005",
+          "weight": 0.154691
+        },
+        {
+          "value": "NW0000000003",
+          "weight": 0.130247
+        },
+        {
+          "value": "NW0000000002",
+          "weight": 0.105948
+        },
+        {
+          "value": "NW0000000006",
+          "weight": 0.082819
+        },
+        {
+          "value": "NW0000000007",
+          "weight": 0.055894
+        }
+      ],
+      "format_regex": "NW\\d{10}"
+    },
+    {
+      "element": "NETWORK_INDICATOR",
+      "observed_in": [
+        "sdm.claims_denorm.CLCL_NTWK_IND",
+        "sdm.claims_detail_denorm.CDML_CL_NTWK_IND"
+      ],
+      "rows": 649391,
+      "null_rate": 0.0,
+      "cardinality": "low",
+      "distinct_ratio": 3e-06,
+      "minimum": "I",
+      "maximum": "O",
+      "min_length": 1,
+      "max_length": 1
+    },
+    {
+      "element": "NPI",
+      "observed_in": [
+        "sdm.claims_denorm.PRPR_NPI",
+        "sdm.claims_detail_denorm.CDSD_PRPR_RE_NPI",
+        "sdm.claims_header_ext_denorm.CLHP_PRPR_AD_NPI",
+        "sdm.claims_header_ext_denorm.CLHP_PRPR_O1_NPI",
+        "sdm.claims_header_ext_denorm.CLHP_PRPR_OP_NPI",
+        "sdm.claims_header_ext_denorm.CLMF_PRPR_FA_NPI",
+        "sdm.claims_header_ext_denorm.CLMF_PRPR_RF_NPI",
+        "sdm.claims_header_ext_denorm.CLSD_PRPR_RE_NPI_NVL",
+        "sdm.provider_denorm.PRPR_NPI"
+      ],
+      "rows": 649691,
+      "null_rate": 0.0,
+      "cardinality": "unique",
+      "distinct_ratio": 1.0,
+      "minimum": "9976243003",
+      "maximum": "9999920819",
+      "min_length": 10,
+      "max_length": 10
+    },
+    {
+      "element": "ORIGINAL_EFFECTIVE_DATE",
+      "observed_in": [
+        "sdm.member_denorm.GRGR_ORIG_EFF_DT",
+        "sdm.member_denorm.MEME_ORIG_EFF_DT",
+        "sdm.member_denorm.SBSB_ORIG_EFF_DT",
+        "sdm.member_denorm.SGSG_ORIG_EFF_DT"
+      ],
+      "rows": 184308,
+      "null_rate": 0.0,
+      "cardinality": "high",
+      "distinct_ratio": 0.167676,
+      "minimum": "1999-07-25",
+      "maximum": "2024-10-24"
+    },
+    {
+      "element": "PAID_DATE",
+      "observed_in": [
+        "sdm.claims_denorm.CLCL_PAID_DT"
+      ],
+      "rows": 649391,
+      "null_rate": 0.201076,
+      "cardinality": "high",
+      "distinct_ratio": 0.004521,
+      "minimum": "2018-03-05T00:00:00",
+      "maximum": "2026-09-26T00:00:00"
+    },
+    {
+      "element": "PLAN_CATEGORY_DESC",
+      "observed_in": [
+        "sdm.member_denorm.CSPD_CAT_DESC"
+      ],
+      "rows": 46077,
+      "null_rate": 0.0,
+      "cardinality": "low",
+      "distinct_ratio": 4.3e-05,
+      "minimum": "Dental",
+      "maximum": "Medical and hospital",
+      "min_length": 6,
+      "max_length": 20,
+      "values": [
+        {
+          "value": "Medical and hospital",
+          "weight": 0.780606
+        },
+        {
+          "value": "Dental",
+          "weight": 0.219394
+        }
+      ]
+    },
+    {
+      "element": "PLAN_CATEGORY_TYPE",
+      "observed_in": [
+        "sdm.member_denorm.CSPD_TYPE"
+      ],
+      "rows": 46077,
+      "null_rate": 0.0,
+      "cardinality": "low",
+      "distinct_ratio": 4.3e-05,
+      "minimum": "DENTAL",
+      "maximum": "MEDICAL",
+      "min_length": 6,
+      "max_length": 7,
+      "values": [
+        {
+          "value": "MEDICAL",
+          "weight": 0.780606
+        },
+        {
+          "value": "DENTAL",
+          "weight": 0.219394
+        }
+      ],
+      "format_regex": "[A-Z]{6,7}"
+    },
+    {
+      "element": "PLAN_DESCRIPTION",
+      "observed_in": [
+        "sdm.claims_denorm.PLDS_DESC",
+        "sdm.member_denorm.PLDS_DESC",
+        "sdm.plan_denorm.PLDS_DESC"
+      ],
+      "rows": 695628,
+      "null_rate": 0.0,
+      "cardinality": "low",
+      "distinct_ratio": 0.0625,
+      "minimum": "Advantage Medical POS",
+      "maximum": "Value Medical HMO",
+      "min_length": 17,
+      "max_length": 21,
+      "values": [
+        {
+          "value": "Choice Medical PPO",
+          "weight": 0.128894
+        },
+        {
+          "value": "Preferred Medical EPO",
+          "weight": 0.128838
+        },
+        {
+          "value": "Advantage Medical POS",
+          "weight": 0.127463
+        },
+        {
+          "value": "Select Medical HMO",
+          "weight": 0.123148
+        },
+        {
+          "value": "Value Medical HMO",
+          "weight": 0.09102
+        },
+        {
+          "value": "Secure Medical EPO",
+          "weight": 0.089165
+        },
+        {
+          "value": "Premier Medical PPO",
+          "weight": 0.088887
+        },
+        {
+          "value": "Classic Medical POS",
+          "weight": 0.086007
+        },
+        {
+          "value": "Essential Dental HDHP",
+          "weight": 0.082468
+        },
+        {
+          "value": "Total Dental HDHP",
+          "weight": 0.054111
+        }
+      ],
+      "format_regex": "[A-Z][a-z]{4,8}\\s[A-Z][a-z]{5,6}\\s[A-Z]{3,4}"
+    },
+    {
+      "element": "PROCEDURE_CODE",
+      "observed_in": [
+        "sdm.claims_denorm.IPCD_ID",
+        "sdm.claims_detail_denorm.CDML_HCPCS_AMT",
+        "sdm.claims_detail_denorm.IPCD_MOD1",
+        "sdm.claims_detail_denorm.PROC_CODE"
+      ],
+      "rows": 649391,
+      "null_rate": 0.0,
+      "cardinality": "low",
+      "distinct_ratio": 0.000608,
+      "minimum": "A0499",
+      "maximum": "V8106",
+      "min_length": 5,
+      "max_length": 5,
+      "values": [
+        {
+          "value": "K6003",
+          "weight": 0.0026548
+        },
+        {
+          "value": "C9780",
+          "weight": 0.00265172
+        },
+        {
+          "value": "H7094",
+          "weight": 0.00265018
+        },
+        {
+          "value": "L4964",
+          "weight": 0.00264864
+        },
+        {
+          "value": "T0582",
+          "weight": 0.00264864
+        },
+        {
+          "value": "K2387",
+          "weight": 0.00264556
+        },
+        {
+          "value": "G6501",
+          "weight": 0.00264094
+        },
+        {
+          "value": "S9003",
+          "weight": 0.00264094
+        },
+        {
+          "value": "E5538",
+          "weight": 0.0026394
+        },
+        {
+          "value": "R7628",
+          "weight": 0.0026394
+        },
+        {
+          "value": "G5234",
+          "weight": 0.00263786
+        },
+        {
+          "value": "R7575",
+          "weight": 0.00263632
+        },
+        {
+          "value": "R6616",
+          "weight": 0.00263324
+        },
+        {
+          "value": "H1506",
+          "weight": 0.00263016
+        },
+        {
+          "value": "G9929",
+          "weight": 0.00262862
+        },
+        {
+          "value": "D4076",
+          "weight": 0.00262554
+        },
+        {
+          "value": "H8373",
+          "weight": 0.00262554
+        },
+        {
+          "value": "P4738",
+          "weight": 0.00262554
+        },
+        {
+          "value": "C4373",
+          "weight": 0.002624
+        },
+        {
+          "value": "C8746",
+          "weight": 0.00262092
+        },
+        {
+          "value": "A3428",
+          "weight": 0.00261938
+        },
+        {
+          "value": "S1362",
+          "weight": 0.00261938
+        },
+        {
+          "value": "D7510",
+          "weight": 0.0026163
+        },
+        {
+          "value": "D1650",
+          "weight": 0.00261476
+        },
+        {
+          "value": "J9493",
+          "weight": 0.00261168
+        },
+        {
+          "value": "D0028",
+          "weight": 0.0026086
+        },
+        {
+          "value": "H8502",
+          "weight": 0.0026086
+        },
+        {
+          "value": "R2363",
+          "weight": 0.0026086
+        },
+        {
+          "value": "S9862",
+          "weight": 0.0026086
+        },
+        {
+          "value": "C1077",
+          "weight": 0.00260706
+        },
+        {
+          "value": "A0499",
+          "weight": 0.00260552
+        },
+        {
+          "value": "G0868",
+          "weight": 0.00260244
+        },
+        {
+          "value": "S1507",
+          "weight": 0.00260244
+        },
+        {
+          "value": "T1309",
+          "weight": 0.00260244
+        },
+        {
+          "value": "E7196",
+          "weight": 0.0026009
+        },
+        {
+          "value": "H7858",
+          "weight": 0.0026009
+        },
+        {
+          "value": "R2015",
+          "weight": 0.0026009
+        },
+        {
+          "value": "S1251",
+          "weight": 0.00259936
+        },
+        {
+          "value": "J4355",
+          "weight": 0.00259782
+        },
+        {
+          "value": "S3111",
+          "weight": 0.00259628
+        },
+        {
+          "value": "V2735",
+          "weight": 0.00259474
+        },
+        {
+          "value": "K1899",
+          "weight": 0.0025932
+        },
+        {
+          "value": "D0446",
+          "weight": 0.00259166
+        },
+        {
+          "value": "E4378",
+          "weight": 0.00259166
+        },
+        {
+          "value": "P8956",
+          "weight": 0.00259166
+        },
+        {
+          "value": "A3953",
+          "weight": 0.00259012
+        },
+        {
+          "value": "C3015",
+          "weight": 0.00259012
+        },
+        {
+          "value": "C3828",
+          "weight": 0.00259012
+        },
+        {
+          "value": "D3066",
+          "weight": 0.00259012
+        },
+        {
+          "value": "J6180",
+          "weight": 0.00258858
+        },
+        {
+          "value": "J9791",
+          "weight": 0.00258858
+        },
+        {
+          "value": "K5634",
+          "weight": 0.00258858
+        },
+        {
+          "value": "A7393",
+          "weight": 0.00258704
+        },
+        {
+          "value": "A3129",
+          "weight": 0.0025855
+        },
+        {
+          "value": "A8178",
+          "weight": 0.00258396
+        },
+        {
+          "value": "H5547",
+          "weight": 0.00258396
+        },
+        {
+          "value": "D5846",
+          "weight": 0.00258242
+        },
+        {
+          "value": "P1684",
+          "weight": 0.00258088
+        },
+        {
+          "value": "A8878",
+          "weight": 0.00257934
+        },
+        {
+          "value": "P4463",
+          "weight": 0.00257934
+        },
+        {
+          "value": "C8706",
+          "weight": 0.0025778
+        },
+        {
+          "value": "E0201",
+          "weight": 0.0025778
+        },
+        {
+          "value": "D3023",
+          "weight": 0.00257626
+        },
+        {
+          "value": "B5970",
+          "weight": 0.00257472
+        },
+        {
+          "value": "D1884",
+          "weight": 0.00257318
+        },
+        {
+          "value": "S2016",
+          "weight": 0.00257318
+        },
+        {
+          "value": "S2842",
+          "weight": 0.00257318
+        },
+        {
+          "value": "V4494",
+          "weight": 0.00257318
+        },
+        {
+          "value": "H0121",
+          "weight": 0.00257164
+        },
+        {
+          "value": "H4924",
+          "weight": 0.00257164
+        },
+        {
+          "value": "J5366",
+          "weight": 0.00257164
+        },
+        {
+          "value": "K3567",
+          "weight": 0.00257164
+        },
+        {
+          "value": "V0302",
+          "weight": 0.00257164
+        },
+        {
+          "value": "V1385",
+          "weight": 0.00257164
+        },
+        {
+          "value": "A8649",
+          "weight": 0.0025701
+        },
+        {
+          "value": "D7449",
+          "weight": 0.0025701
+        },
+        {
+          "value": "J8156",
+          "weight": 0.0025701
+        },
+        {
+          "value": "T8258",
+          "weight": 0.0025701
+        },
+        {
+          "value": "T7237",
+          "weight": 0.00256856
+        },
+        {
+          "value": "S3112",
+          "weight": 0.00256702
+        },
+        {
+          "value": "G0512",
+          "weight": 0.00256394
+        },
+        {
+          "value": "H8557",
+          "weight": 0.00256394
+        },
+        {
+          "value": "A8510",
+          "weight": 0.0025624
+        },
+        {
+          "value": "B4847",
+          "weight": 0.0025624
+        },
+        {
+          "value": "P0913",
+          "weight": 0.0025624
+        },
+        {
+          "value": "T7278",
+          "weight": 0.0025624
+        },
+        {
+          "value": "V5095",
+          "weight": 0.0025624
+        },
+        {
+          "value": "V8106",
+          "weight": 0.0025624
+        },
+        {
+          "value": "G0628",
+          "weight": 0.00256086
+        },
+        {
+          "value": "C3568",
+          "weight": 0.00255932
+        },
+        {
+          "value": "E3379",
+          "weight": 0.00255932
+        },
+        {
+          "value": "P1015",
+          "weight": 0.00255932
+        },
+        {
+          "value": "R2700",
+          "weight": 0.00255932
+        },
+        {
+          "value": "C6634",
+          "weight": 0.00255778
+        },
+        {
+          "value": "E1483",
+          "weight": 0.00255778
+        },
+        {
+          "value": "L6102",
+          "weight": 0.00255778
+        },
+        {
+          "value": "B1080",
+          "weight": 0.00255624
+        },
+        {
+          "value": "H9257",
+          "weight": 0.00255624
+        },
+        {
+          "value": "C9921",
+          "weight": 0.0025547
+        },
+        {
+          "value": "E6629",
+          "weight": 0.0025547
+        },
+        {
+          "value": "L7847",
+          "weight": 0.0025547
+        },
+        {
+          "value": "V1140",
+          "weight": 0.0025547
+        },
+        {
+          "value": "V2603",
+          "weight": 0.0025547
+        },
+        {
+          "value": "B1400",
+          "weight": 0.00255316
+        },
+        {
+          "value": "C1619",
+          "weight": 0.00255316
+        },
+        {
+          "value": "J5134",
+          "weight": 0.00255316
+        },
+        {
+          "value": "R5512",
+          "weight": 0.00255316
+        },
+        {
+          "value": "A6521",
+          "weight": 0.00255008
+        },
+        {
+          "value": "G6112",
+          "weight": 0.00255008
+        },
+        {
+          "value": "R7886",
+          "weight": 0.00255008
+        },
+        {
+          "value": "B8330",
+          "weight": 0.00254854
+        },
+        {
+          "value": "D9335",
+          "weight": 0.00254854
+        },
+        {
+          "value": "H0499",
+          "weight": 0.00254854
+        },
+        {
+          "value": "T5704",
+          "weight": 0.00254854
+        },
+        {
+          "value": "A1489",
+          "weight": 0.002547
+        },
+        {
+          "value": "A4469",
+          "weight": 0.002547
+        },
+        {
+          "value": "A9081",
+          "weight": 0.002547
+        },
+        {
+          "value": "B3766",
+          "weight": 0.002547
+        },
+        {
+          "value": "C9161",
+          "weight": 0.002547
+        },
+        {
+          "value": "E4377",
+          "weight": 0.002547
+        },
+        {
+          "value": "J6255",
+          "weight": 0.002547
+        },
+        {
+          "value": "E9600",
+          "weight": 0.00254546
+        },
+        {
+          "value": "L2348",
+          "weight": 0.00254546
+        },
+        {
+          "value": "S7292",
+          "weight": 0.00254546
+        },
+        {
+          "value": "B8052",
+          "weight": 0.00254392
+        },
+        {
+          "value": "E7509",
+          "weight": 0.00254392
+        },
+        {
+          "value": "G8093",
+          "weight": 0.00254392
+        },
+        {
+          "value": "R8915",
+          "weight": 0.00254392
+        },
+        {
+          "value": "E7717",
+          "weight": 0.00254238
+        },
+        {
+          "value": "L3705",
+          "weight": 0.00254238
+        },
+        {
+          "value": "R7974",
+          "weight": 0.00254238
+        },
+        {
+          "value": "A4574",
+          "weight": 0.00254084
+        },
+        {
+          "value": "E7615",
+          "weight": 0.00254084
+        },
+        {
+          "value": "K2205",
+          "weight": 0.00254084
+        },
+        {
+          "value": "L0328",
+          "weight": 0.00254084
+        },
+        {
+          "value": "A5930",
+          "weight": 0.0025393
+        },
+        {
+          "value": "E7046",
+          "weight": 0.0025393
+        },
+        {
+          "value": "R1424",
+          "weight": 0.0025393
+        },
+        {
+          "value": "V5760",
+          "weight": 0.00253776
+        },
+        {
+          "value": "A7149",
+          "weight": 0.00253622
+        },
+        {
+          "value": "C9213",
+          "weight": 0.00253622
+        },
+        {
+          "value": "G4397",
+          "weight": 0.00253622
+        },
+        {
+          "value": "P4708",
+          "weight": 0.00253622
+        },
+        {
+          "value": "T7625",
+          "weight": 0.00253622
+        },
+        {
+          "value": "D2390",
+          "weight": 0.00253468
+        },
+        {
+          "value": "D3651",
+          "weight": 0.00253468
+        },
+        {
+          "value": "J0233",
+          "weight": 0.00253468
+        },
+        {
+          "value": "V0806",
+          "weight": 0.00253468
+        },
+        {
+          "value": "L0710",
+          "weight": 0.00253314
+        },
+        {
+          "value": "R4667",
+          "weight": 0.00253314
+        },
+        {
+          "value": "C2755",
+          "weight": 0.0025316
+        },
+        {
+          "value": "C4924",
+          "weight": 0.0025316
+        },
+        {
+          "value": "D2326",
+          "weight": 0.0025316
+        },
+        {
+          "value": "D6692",
+          "weight": 0.0025316
+        },
+        {
+          "value": "D9571",
+          "weight": 0.0025316
+        },
+        {
+          "value": "H3241",
+          "weight": 0.0025316
+        },
+        {
+          "value": "K8998",
+          "weight": 0.0025316
+        },
+        {
+          "value": "V6527",
+          "weight": 0.0025316
+        },
+        {
+          "value": "A1470",
+          "weight": 0.00253006
+        },
+        {
+          "value": "D6173",
+          "weight": 0.00253006
+        },
+        {
+          "value": "G4409",
+          "weight": 0.00253006
+        },
+        {
+          "value": "A4598",
+          "weight": 0.00252852
+        },
+        {
+          "value": "B8114",
+          "weight": 0.00252852
+        },
+        {
+          "value": "J7817",
+          "weight": 0.00252852
+        },
+        {
+          "value": "L4951",
+          "weight": 0.00252852
+        },
+        {
+          "value": "H2651",
+          "weight": 0.00252544
+        },
+        {
+          "value": "T7690",
+          "weight": 0.00252544
+        },
+        {
+          "value": "D6750",
+          "weight": 0.0025239
+        },
+        {
+          "value": "K1582",
+          "weight": 0.0025239
+        },
+        {
+          "value": "A4098",
+          "weight": 0.00252236
+        },
+        {
+          "value": "A9824",
+          "weight": 0.00252236
+        },
+        {
+          "value": "C9347",
+          "weight": 0.00252236
+        },
+        {
+          "value": "D4681",
+          "weight": 0.00252236
+        },
+        {
+          "value": "J3470",
+          "weight": 0.00252082
+        },
+        {
+          "value": "L3558",
+          "weight": 0.00252082
+        },
+        {
+          "value": "L3860",
+          "weight": 0.00252082
+        },
+        {
+          "value": "L7314",
+          "weight": 0.00252082
+        },
+        {
+          "value": "S2491",
+          "weight": 0.00252082
+        },
+        {
+          "value": "A9902",
+          "weight": 0.00251928
+        },
+        {
+          "value": "R7550",
+          "weight": 0.00251928
+        },
+        {
+          "value": "B8758",
+          "weight": 0.00251774
+        },
+        {
+          "value": "G9606",
+          "weight": 0.00251774
+        },
+        {
+          "value": "H1273",
+          "weight": 0.00251774
+        },
+        {
+          "value": "T2557",
+          "weight": 0.00251774
+        },
+        {
+          "value": "A1865",
+          "weight": 0.0025162
+        },
+        {
+          "value": "J2115",
+          "weight": 0.0025162
+        },
+        {
+          "value": "L1868",
+          "weight": 0.0025162
+        },
+        {
+          "value": "R1895",
+          "weight": 0.0025162
+        },
+        {
+          "value": "R7641",
+          "weight": 0.0025162
+        },
+        {
+          "value": "R1997",
+          "weight": 0.00251466
+        },
+        {
+          "value": "S2460",
+          "weight": 0.00251466
+        },
+        {
+          "value": "C2184",
+          "weight": 0.00251312
+        },
+        {
+          "value": "L7738",
+          "weight": 0.00251312
+        },
+        {
+          "value": "G5295",
+          "weight": 0.00251158
+        },
+        {
+          "value": "T4919",
+          "weight": 0.00251158
+        },
+        {
+          "value": "A0787",
+          "weight": 0.00251004
+        },
+        {
+          "value": "S6895",
+          "weight": 0.00251004
+        },
+        {
+          "value": "S9293",
+          "weight": 0.00251004
+        },
+        {
+          "value": "T4992",
+          "weight": 0.00251004
+        },
+        {
+          "value": "B9130",
+          "weight": 0.0025085
+        },
+        {
+          "value": "H2128",
+          "weight": 0.0025085
+        },
+        {
+          "value": "H3464",
+          "weight": 0.0025085
+        },
+        {
+          "value": "B9675",
+          "weight": 0.00250696
+        },
+        {
+          "value": "D1133",
+          "weight": 0.00250696
+        },
+        {
+          "value": "E9776",
+          "weight": 0.00250696
+        },
+        {
+          "value": "H5249",
+          "weight": 0.00250696
+        },
+        {
+          "value": "J5792",
+          "weight": 0.00250696
+        },
+        {
+          "value": "S8469",
+          "weight": 0.00250696
+        },
+        {
+          "value": "T0617",
+          "weight": 0.00250696
+        },
+        {
+          "value": "D1732",
+          "weight": 0.00250542
+        },
+        {
+          "value": "J9208",
+          "weight": 0.00250542
+        },
+        {
+          "value": "P9371",
+          "weight": 0.00250542
+        },
+        {
+          "value": "V4476",
+          "weight": 0.00250388
+        },
+        {
+          "value": "V7545",
+          "weight": 0.00250388
+        },
+        {
+          "value": "J9316",
+          "weight": 0.00250234
+        },
+        {
+          "value": "D2690",
+          "weight": 0.0025008
+        },
+        {
+          "value": "K6829",
+          "weight": 0.0025008
+        },
+        {
+          "value": "D5143",
+          "weight": 0.00249926
+        },
+        {
+          "value": "A2646",
+          "weight": 0.00249772
+        },
+        {
+          "value": "B5845",
+          "weight": 0.00249772
+        },
+        {
+          "value": "K8407",
+          "weight": 0.00249772
+        },
+        {
+          "value": "L0834",
+          "weight": 0.00249772
+        },
+        {
+          "value": "S7694",
+          "weight": 0.00249772
+        },
+        {
+          "value": "T7055",
+          "weight": 0.00249772
+        },
+        {
+          "value": "D1471",
+          "weight": 0.00249618
+        },
+        {
+          "value": "G9343",
+          "weight": 0.00249618
+        },
+        {
+          "value": "P6934",
+          "weight": 0.00249618
+        },
+        {
+          "value": "S8096",
+          "weight": 0.00249618
+        },
+        {
+          "value": "A1534",
+          "weight": 0.00249464
+        },
+        {
+          "value": "C1104",
+          "weight": 0.00249464
+        },
+        {
+          "value": "C3374",
+          "weight": 0.00249464
+        },
+        {
+          "value": "E1776",
+          "weight": 0.00249464
+        },
+        {
+          "value": "H7444",
+          "weight": 0.00249464
+        },
+        {
+          "value": "H8401",
+          "weight": 0.00249464
+        },
+        {
+          "value": "R3779",
+          "weight": 0.00249464
+        },
+        {
+          "value": "R6821",
+          "weight": 0.00249464
+        },
+        {
+          "value": "T0776",
+          "weight": 0.00249464
+        },
+        {
+          "value": "T9473",
+          "weight": 0.00249464
+        },
+        {
+          "value": "B1077",
+          "weight": 0.00249311
+        },
+        {
+          "value": "C0608",
+          "weight": 0.00249311
+        },
+        {
+          "value": "D0509",
+          "weight": 0.00249311
+        },
+        {
+          "value": "E5914",
+          "weight": 0.00249311
+        },
+        {
+          "value": "J8750",
+          "weight": 0.00249157
+        },
+        {
+          "value": "T1838",
+          "weight": 0.00249157
+        },
+        {
+          "value": "T4688",
+          "weight": 0.00249157
+        },
+        {
+          "value": "G0754",
+          "weight": 0.00249003
+        },
+        {
+          "value": "G5505",
+          "weight": 0.00249003
+        },
+        {
+          "value": "H4143",
+          "weight": 0.00249003
+        },
+        {
+          "value": "H7899",
+          "weight": 0.00249003
+        },
+        {
+          "value": "J2103",
+          "weight": 0.00249003
+        },
+        {
+          "value": "P1067",
+          "weight": 0.00249003
+        },
+        {
+          "value": "P4845",
+          "weight": 0.00249003
+        },
+        {
+          "value": "R4451",
+          "weight": 0.00249003
+        },
+        {
+          "value": "B1658",
+          "weight": 0.00248849
+        },
+        {
+          "value": "G0242",
+          "weight": 0.00248849
+        },
+        {
+          "value": "P5474",
+          "weight": 0.00248849
+        },
+        {
+          "value": "S2423",
+          "weight": 0.00248695
+        },
+        {
+          "value": "V4581",
+          "weight": 0.00248695
+        },
+        {
+          "value": "B0756",
+          "weight": 0.00248541
+        },
+        {
+          "value": "G1799",
+          "weight": 0.00248541
+        },
+        {
+          "value": "P1702",
+          "weight": 0.00248541
+        },
+        {
+          "value": "T0390",
+          "weight": 0.00248541
+        },
+        {
+          "value": "C3215",
+          "weight": 0.00248387
+        },
+        {
+          "value": "C3405",
+          "weight": 0.00248387
+        },
+        {
+          "value": "D3335",
+          "weight": 0.00248387
+        },
+        {
+          "value": "P2407",
+          "weight": 0.00248387
+        },
+        {
+          "value": "T2604",
+          "weight": 0.00248233
+        },
+        {
+          "value": "T3354",
+          "weight": 0.00248233
+        },
+        {
+          "value": "L5138",
+          "weight": 0.00248079
+        },
+        {
+          "value": "T9969",
+          "weight": 0.00248079
+        },
+        {
+          "value": "H5251",
+          "weight": 0.00247925
+        },
+        {
+          "value": "H8352",
+          "weight": 0.00247925
+        },
+        {
+          "value": "J0242",
+          "weight": 0.00247925
+        },
+        {
+          "value": "J1296",
+          "weight": 0.00247925
+        },
+        {
+          "value": "S9940",
+          "weight": 0.00247925
+        },
+        {
+          "value": "B0001",
+          "weight": 0.00247771
+        },
+        {
+          "value": "C2921",
+          "weight": 0.00247771
+        },
+        {
+          "value": "E9852",
+          "weight": 0.00247771
+        },
+        {
+          "value": "G2950",
+          "weight": 0.00247771
+        },
+        {
+          "value": "R7483",
+          "weight": 0.00247771
+        },
+        {
+          "value": "V1100",
+          "weight": 0.00247771
+        },
+        {
+          "value": "C0247",
+          "weight": 0.00247617
+        },
+        {
+          "value": "G7892",
+          "weight": 0.00247617
+        },
+        {
+          "value": "H4160",
+          "weight": 0.00247617
+        },
+        {
+          "value": "L0946",
+          "weight": 0.00247617
+        },
+        {
+          "value": "C6545",
+          "weight": 0.00247463
+        },
+        {
+          "value": "R9754",
+          "weight": 0.00247463
+        },
+        {
+          "value": "T0056",
+          "weight": 0.00247463
+        },
+        {
+          "value": "T0364",
+          "weight": 0.00247463
+        },
+        {
+          "value": "V2352",
+          "weight": 0.00247463
+        },
+        {
+          "value": "A7067",
+          "weight": 0.00247309
+        },
+        {
+          "value": "C8397",
+          "weight": 0.00247309
+        },
+        {
+          "value": "D9007",
+          "weight": 0.00247309
+        },
+        {
+          "value": "R8472",
+          "weight": 0.00247309
+        },
+        {
+          "value": "S3523",
+          "weight": 0.00247309
+        },
+        {
+          "value": "B3557",
+          "weight": 0.00247155
+        },
+        {
+          "value": "E0413",
+          "weight": 0.00247155
+        },
+        {
+          "value": "E6522",
+          "weight": 0.00247155
+        },
+        {
+          "value": "B9903",
+          "weight": 0.00247001
+        },
+        {
+          "value": "G6768",
+          "weight": 0.00247001
+        },
+        {
+          "value": "H7952",
+          "weight": 0.00247001
+        },
+        {
+          "value": "V6488",
+          "weight": 0.00247001
+        },
+        {
+          "value": "B1010",
+          "weight": 0.00246847
+        },
+        {
+          "value": "E4511",
+          "weight": 0.00246847
+        },
+        {
+          "value": "K9451",
+          "weight": 0.00246847
+        },
+        {
+          "value": "L9558",
+          "weight": 0.00246847
+        },
+        {
+          "value": "G4894",
+          "weight": 0.00246693
+        },
+        {
+          "value": "A4708",
+          "weight": 0.00246539
+        },
+        {
+          "value": "C7305",
+          "weight": 0.00246539
+        },
+        {
+          "value": "E7653",
+          "weight": 0.00246539
+        },
+        {
+          "value": "K9935",
+          "weight": 0.00246539
+        },
+        {
+          "value": "L7438",
+          "weight": 0.00246539
+        },
+        {
+          "value": "V1599",
+          "weight": 0.00246539
+        },
+        {
+          "value": "C3877",
+          "weight": 0.00246385
+        },
+        {
+          "value": "H1288",
+          "weight": 0.00246385
+        },
+        {
+          "value": "H2800",
+          "weight": 0.00246385
+        },
+        {
+          "value": "T3473",
+          "weight": 0.00246231
+        },
+        {
+          "value": "H9501",
+          "weight": 0.00246077
+        },
+        {
+          "value": "K7598",
+          "weight": 0.00246077
+        },
+        {
+          "value": "D1771",
+          "weight": 0.00245923
+        },
+        {
+          "value": "E1862",
+          "weight": 0.00245923
+        },
+        {
+          "value": "S6004",
+          "weight": 0.00245769
+        },
+        {
+          "value": "R0650",
+          "weight": 0.00245615
+        },
+        {
+          "value": "B8806",
+          "weight": 0.00245461
+        },
+        {
+          "value": "G2645",
+          "weight": 0.00245461
+        },
+        {
+          "value": "G6294",
+          "weight": 0.00245461
+        },
+        {
+          "value": "G6846",
+          "weight": 0.00245461
+        },
+        {
+          "value": "K3428",
+          "weight": 0.00245461
+        },
+        {
+          "value": "P7095",
+          "weight": 0.00245461
+        },
+        {
+          "value": "D1340",
+          "weight": 0.00245307
+        },
+        {
+          "value": "H0932",
+          "weight": 0.00245153
+        },
+        {
+          "value": "A6652",
+          "weight": 0.00244999
+        },
+        {
+          "value": "C9623",
+          "weight": 0.00244999
+        },
+        {
+          "value": "H2631",
+          "weight": 0.00244999
+        },
+        {
+          "value": "H8576",
+          "weight": 0.00244999
+        },
+        {
+          "value": "C2431",
+          "weight": 0.00244845
+        },
+        {
+          "value": "H7597",
+          "weight": 0.00244845
+        },
+        {
+          "value": "R9906",
+          "weight": 0.00244845
+        },
+        {
+          "value": "S3449",
+          "weight": 0.00244845
+        },
+        {
+          "value": "S8653",
+          "weight": 0.00244845
+        },
+        {
+          "value": "D7844",
+          "weight": 0.00244691
+        },
+        {
+          "value": "S5415",
+          "weight": 0.00244691
+        },
+        {
+          "value": "E8048",
+          "weight": 0.00244383
+        },
+        {
+          "value": "P0437",
+          "weight": 0.00244383
+        },
+        {
+          "value": "B4072",
+          "weight": 0.00244229
+        },
+        {
+          "value": "P3015",
+          "weight": 0.00244229
+        },
+        {
+          "value": "T2891",
+          "weight": 0.00244229
+        },
+        {
+          "value": "B7203",
+          "weight": 0.00244075
+        },
+        {
+          "value": "G7602",
+          "weight": 0.00244075
+        },
+        {
+          "value": "P2985",
+          "weight": 0.00244075
+        },
+        {
+          "value": "T0150",
+          "weight": 0.00243921
+        },
+        {
+          "value": "B7375",
+          "weight": 0.00243767
+        },
+        {
+          "value": "T8750",
+          "weight": 0.00243767
+        },
+        {
+          "value": "D1423",
+          "weight": 0.00243613
+        },
+        {
+          "value": "L5675",
+          "weight": 0.00243613
+        },
+        {
+          "value": "L7709",
+          "weight": 0.00243305
+        },
+        {
+          "value": "J7517",
+          "weight": 0.00243151
+        },
+        {
+          "value": "J9978",
+          "weight": 0.00242997
+        },
+        {
+          "value": "L3968",
+          "weight": 0.00242997
+        },
+        {
+          "value": "E8649",
+          "weight": 0.00242843
+        },
+        {
+          "value": "P9531",
+          "weight": 0.00242535
+        },
+        {
+          "value": "V5557",
+          "weight": 0.00242227
+        },
+        {
+          "value": "H4058",
+          "weight": 0.00242073
+        },
+        {
+          "value": "G4041",
+          "weight": 0.00241919
+        },
+        {
+          "value": "D9473",
+          "weight": 0.00241765
+        },
+        {
+          "value": "G4177",
+          "weight": 0.00241765
+        },
+        {
+          "value": "S0944",
+          "weight": 0.00241611
+        },
+        {
+          "value": "D6801",
+          "weight": 0.00241149
+        },
+        {
+          "value": "A8434",
+          "weight": 0.00240995
+        },
+        {
+          "value": "D7157",
+          "weight": 0.00240687
+        },
+        {
+          "value": "H2968",
+          "weight": 0.00240687
+        },
+        {
+          "value": "K6451",
+          "weight": 0.00240687
+        },
+        {
+          "value": "V0208",
+          "weight": 0.00240533
+        },
+        {
+          "value": "K2567",
+          "weight": 0.00240225
+        },
+        {
+          "value": "L6371",
+          "weight": 0.00239917
+        },
+        {
+          "value": "P1687",
+          "weight": 0.00239917
+        },
+        {
+          "value": "T7476",
+          "weight": 0.00239455
+        },
+        {
+          "value": "K7399",
+          "weight": 0.00238993
+        },
+        {
+          "value": "E6798",
+          "weight": 0.00238223
+        },
+        {
+          "value": "B8084",
+          "weight": 0.00237453
+        },
+        {
+          "value": "G1184",
+          "weight": 0.00233296
+        },
+        {
+          "value": "S3664",
+          "weight": 0.00232064
+        },
+        {
+          "value": "M8410",
+          "weight": 0.0022883
+        },
+        {
+          "value": "M7886",
+          "weight": 0.00222824
+        },
+        {
+          "value": "M6672",
+          "weight": 0.00221284
+        },
+        {
+          "value": "M3631",
+          "weight": 0.00219744
+        },
+        {
+          "value": "M6264",
+          "weight": 0.00217434
+        },
+        {
+          "value": "M8598",
+          "weight": 0.00217434
+        },
+        {
+          "value": "M5068",
+          "weight": 0.0021728
+        },
+        {
+          "value": "M3691",
+          "weight": 0.00215433
+        },
+        {
+          "value": "M1578",
+          "weight": 0.00213893
+        },
+        {
+          "value": "M1021",
+          "weight": 0.00213585
+        },
+        {
+          "value": "M4384",
+          "weight": 0.00213585
+        },
+        {
+          "value": "M5595",
+          "weight": 0.00212969
+        },
+        {
+          "value": "M3629",
+          "weight": 0.00211891
+        },
+        {
+          "value": "M1995",
+          "weight": 0.00210505
+        },
+        {
+          "value": "M7298",
+          "weight": 0.00209427
+        },
+        {
+          "value": "M9279",
+          "weight": 0.00208811
+        },
+        {
+          "value": "M3451",
+          "weight": 0.00206501
+        },
+        {
+          "value": "M8230",
+          "weight": 0.00206347
+        }
+      ]
+    },
+    {
+      "element": "PROCEDURE_DESCRIPTION",
+      "observed_in": [
+        "sdm.claims_denorm.IPCD_DESC"
+      ],
+      "rows": 649391,
+      "null_rate": 0.0,
+      "cardinality": "low",
+      "distinct_ratio": 8.3e-05,
+      "minimum": "Care management, level 1",
+      "maximum": "Specialist consultation, level 5",
+      "min_length": 21,
+      "max_length": 32,
+      "values": [
+        {
+          "value": "Emergency assessment, level 2",
+          "weight": 0.061722
+        },
+        {
+          "value": "Office visit, level 5",
+          "weight": 0.061642
+        },
+        {
+          "value": "Office visit, level 4",
+          "weight": 0.061212
+        },
+        {
+          "value": "Care management, level 5",
+          "weight": 0.060458
+        },
+        {
+          "value": "Minor procedure, level 5",
+          "weight": 0.059067
+        },
+        {
+          "value": "Laboratory panel, level 1",
+          "weight": 0.057652
+        },
+        {
+          "value": "Care management, level 3",
+          "weight": 0.05752
+        },
+        {
+          "value": "Office visit, level 3",
+          "weight": 0.057389
+        },
+        {
+          "value": "Emergency assessment, level 1",
+          "weight": 0.056951
+        },
+        {
+          "value": "Office visit, level 2",
+          "weight": 0.056492
+        },
+        {
+          "value": "Minor procedure, level 4",
+          "weight": 0.050663
+        },
+        {
+          "value": "Emergency assessment, level 4",
+          "weight": 0.048609
+        },
+        {
+          "value": "Care management, level 4",
+          "weight": 0.043996
+        },
+        {
+          "value": "Care management, level 2",
+          "weight": 0.039786
+        },
+        {
+          "value": "Laboratory panel, level 2",
+          "weight": 0.039754
+        },
+        {
+          "value": "Specialist consultation, level 1",
+          "weight": 0.039496
+        },
+        {
+          "value": "Physical therapy, level 4",
+          "weight": 0.039198
+        },
+        {
+          "value": "Emergency assessment, level 3",
+          "weight": 0.038741
+        },
+        {
+          "value": "Laboratory panel, level 4",
+          "weight": 0.034875
+        },
+        {
+          "value": "Laboratory panel, level 3",
+          "weight": 0.034778
+        }
+      ]
+    },
+    {
+      "element": "PRODUCT_CODE",
+      "observed_in": [
+        "sdm.claims_denorm.PDPD_ID",
+        "sdm.member_denorm.CSCS_ID",
+        "sdm.member_denorm.PDPD_ID",
+        "sdm.member_denorm.SGSG_ID",
+        "sdm.plan_benefit_denorm.PDPD_ID",
+        "sdm.plan_denorm.PDPD_ID"
+      ],
+      "rows": 787782,
+      "null_rate": 0.0,
+      "cardinality": "low",
+      "distinct_ratio": 0.15625,
+      "minimum": "CS000001",
+      "maximum": "SG000019",
+      "min_length": 8,
+      "max_length": 8
+    },
+    {
+      "element": "PRODUCT_DESCRIPTION",
+      "observed_in": [
+        "sdm.member_denorm.PDDS_DESC"
+      ],
+      "rows": 46077,
+      "null_rate": 0.0,
+      "cardinality": "low",
+      "distinct_ratio": 0.000217,
+      "minimum": "Advantage Medical POS product",
+      "maximum": "Value Medical HMO product",
+      "min_length": 25,
+      "max_length": 29,
+      "values": [
+        {
+          "value": "Essential Dental HDHP product",
+          "weight": 0.131758
+        },
+        {
+          "value": "Preferred Medical EPO product",
+          "weight": 0.118454
+        },
+        {
+          "value": "Advantage Medical POS product",
+          "weight": 0.116609
+        },
+        {
+          "value": "Choice Medical PPO product",
+          "weight": 0.116045
+        },
+        {
+          "value": "Select Medical HMO product",
+          "weight": 0.113766
+        },
+        {
+          "value": "Total Dental HDHP product",
+          "weight": 0.087636
+        },
+        {
+          "value": "Premier Medical PPO product",
+          "weight": 0.080279
+        },
+        {
+          "value": "Value Medical HMO product",
+          "weight": 0.079953
+        },
+        {
+          "value": "Secure Medical EPO product",
+          "weight": 0.078239
+        },
+        {
+          "value": "Classic Medical POS product",
+          "weight": 0.077262
+        }
+      ],
+      "format_regex": "[A-Z][a-z]{4,8}\\s[A-Z][a-z]{5,6}\\s[A-Z]{3,4}\\s[a-z]{7}"
+    },
+    {
+      "element": "PRODUCT_TYPE",
+      "observed_in": [
+        "sdm.claims_denorm.CSPD_CAT",
+        "sdm.claims_denorm.PDDS_PROD_TYPE",
+        "sdm.member_denorm.CSPD_CAT",
+        "sdm.member_denorm.CSPI_SEL_IND",
+        "sdm.member_denorm.PDPD_MCTR_CCAT",
+        "sdm.member_denorm.PDPD_RISK_IND",
+        "sdm.plan_denorm.CSPD_CAT",
+        "sdm.plan_denorm.PDDS_PROD_TYPE",
+        "sdm.provider_denorm.PRPR_ENTITY"
+      ],
+      "rows": 1483710,
+      "null_rate": 0.0,
+      "cardinality": "low",
+      "distinct_ratio": 0.0125,
+      "minimum": "D",
+      "maximum": "Y",
+      "min_length": 1,
+      "max_length": 1
+    },
+    {
+      "element": "PROVIDER_ID",
+      "observed_in": [
+        "sdm.claims_denorm.PRPR_ID",
+        "sdm.claims_detail_denorm.CDSD_PRPR_ID_REND",
+        "sdm.claims_header_ext_denorm.CLHP_PRPR_ID_ADM",
+        "sdm.claims_header_ext_denorm.CLHP_PRPR_ID_OPER",
+        "sdm.claims_header_ext_denorm.CLHP_PRPR_ID_OTH1",
+        "sdm.claims_header_ext_denorm.CLMF_PRPR_ID_FAC",
+        "sdm.claims_header_ext_denorm.CLSD_PRPR_ID_REND_NVL",
+        "sdm.claims_header_ext_denorm.PRPR_ID",
+        "sdm.provider_denorm.PRPR_ID"
+      ],
+      "rows": 649691,
+      "null_rate": 0.0,
+      "cardinality": "unique",
+      "distinct_ratio": 1.0,
+      "minimum": "PRV000000001",
+      "maximum": "PRV000000300",
+      "min_length": 12,
+      "max_length": 12
+    },
+    {
+      "element": "PROVIDER_SPECIALTY",
+      "observed_in": [
+        "sdm.claims_denorm.PRPR_MCTR_SPEC",
+        "sdm.provider_denorm.PRCF_MCTR_SPEC"
+      ],
+      "rows": 649691,
+      "null_rate": 0.0,
+      "cardinality": "low",
+      "distinct_ratio": 0.066667,
+      "minimum": "ANE",
+      "maximum": "URO",
+      "min_length": 3,
+      "max_length": 3,
+      "values": [
+        {
+          "value": "DEN",
+          "weight": 0.130664
+        },
+        {
+          "value": "PED",
+          "weight": 0.068557
+        },
+        {
+          "value": "RAD",
+          "weight": 0.06245
+        },
+        {
+          "value": "FAM",
+          "weight": 0.055985
+        },
+        {
+          "value": "ORT",
+          "weight": 0.055673
+        },
+        {
+          "value": "PSY",
+          "weight": 0.052085
+        },
+        {
+          "value": "ANE",
+          "weight": 0.050764
+        },
+        {
+          "value": "URO",
+          "weight": 0.050581
+        },
+        {
+          "value": "CAR",
+          "weight": 0.048226
+        },
+        {
+          "value": "OBG",
+          "weight": 0.048058
+        },
+        {
+          "value": "ONC",
+          "weight": 0.046624
+        },
+        {
+          "value": "DER",
+          "weight": 0.043719
+        },
+        {
+          "value": "END",
+          "weight": 0.043062
+        },
+        {
+          "value": "INT",
+          "weight": 0.041611
+        },
+        {
+          "value": "NEU",
+          "weight": 0.038943
+        },
+        {
+          "value": "EMR",
+          "weight": 0.037316
+        },
+        {
+          "value": "PUL",
+          "weight": 0.037247
+        },
+        {
+          "value": "OPH",
+          "weight": 0.037148
+        },
+        {
+          "value": "GAS",
+          "weight": 0.036363
+        },
+        {
+          "value": "SUR",
+          "weight": 0.014924
+        }
+      ],
+      "format_regex": "[A-Z]{3}"
+    },
+    {
+      "element": "RECEIVED_DATE",
+      "observed_in": [
+        "sdm.claims_denorm.CLCL_RECD_DT"
+      ],
+      "rows": 649391,
+      "null_rate": 0.0,
+      "cardinality": "high",
+      "distinct_ratio": 0.004538,
+      "minimum": "2018-02-17T00:00:00",
+      "maximum": "2026-07-30T00:00:00"
+    },
+    {
+      "element": "RELATIONSHIP_CODE",
+      "observed_in": [
+        "sdm.claims_denorm.MEME_REL",
+        "sdm.claims_header_ext_denorm.CLCL_REL_INFO_IND",
+        "sdm.member_denorm.MEME_REL"
+      ],
+      "rows": 695468,
+      "null_rate": 0.0,
+      "cardinality": "low",
+      "distinct_ratio": 8.7e-05,
+      "minimum": "D",
+      "maximum": "S",
+      "min_length": 1,
+      "max_length": 1,
+      "values": [
+        {
+          "value": "M",
+          "weight": 0.43584608
+        },
+        {
+          "value": "D",
+          "weight": 0.34242409
+        },
+        {
+          "value": "S",
+          "weight": 0.2021387
+        },
+        {
+          "value": "P",
+          "weight": 0.01959112
+        }
+      ]
+    },
+    {
+      "element": "SERVICE_DATE",
+      "observed_in": [
+        "sdm.claims_denorm.CDML_FROM_DT",
+        "sdm.claims_denorm.CLCL_HIGH_SVC_DT",
+        "sdm.claims_denorm.CLCL_LOW_SVC_DT",
+        "sdm.claims_header_ext_denorm.CLCL_RELHP_FROM_DT",
+        "sdm.claims_header_ext_denorm.CLCL_UNABL_FROM_DT"
+      ],
+      "rows": 1948173,
+      "null_rate": 0.0,
+      "cardinality": "high",
+      "distinct_ratio": 0.004503,
+      "minimum": "2018-02-13T00:00:00",
+      "maximum": "2026-06-30T00:00:00"
+    },
+    {
+      "element": "SERVICE_UNITS",
+      "observed_in": [
+        "sdm.claims_denorm.CDML_UNITS",
+        "sdm.claims_denorm.CDML_UNITS_ALLOW",
+        "sdm.claims_detail_denorm.CDSD_NDC_UNITS"
+      ],
+      "rows": 1298782,
+      "null_rate": 0.0,
+      "cardinality": "low",
+      "distinct_ratio": 9e-06,
+      "minimum": 1,
+      "maximum": 10,
+      "mean": 2.078822,
+      "stddev": 1.813992,
+      "distribution": {
+        "kind": "lognormal",
+        "mean": 0.495498,
+        "stddev": 0.628342,
+        "min": 1.0,
+        "max": 10.0,
+        "skew": 2.6753
+      }
+    },
+    {
+      "element": "SEX",
+      "observed_in": [
+        "sdm.claims_denorm.MEME_SEX",
+        "sdm.member_denorm.MEME_SEX",
+        "sdm.plan_benefit_denorm.SESE_VALID_SEX"
+      ],
+      "rows": 695468,
+      "null_rate": 0.0,
+      "cardinality": "low",
+      "distinct_ratio": 4.3e-05,
+      "minimum": "F",
+      "maximum": "M",
+      "min_length": 1,
+      "max_length": 1,
+      "values": [
+        {
+          "value": "F",
+          "weight": 0.50119919
+        },
+        {
+          "value": "M",
+          "weight": 0.49880081
+        }
+      ]
+    },
+    {
+      "element": "SSN",
+      "observed_in": [
+        "sdm.member_denorm.MEME_SSN"
+      ],
+      "rows": 46077,
+      "null_rate": 0.0,
+      "cardinality": "unique",
+      "distinct_ratio": 0.999978,
+      "minimum": 100112989,
+      "maximum": 899985562,
+      "mean": 499703927.180112,
+      "stddev": 230869486.713315,
+      "distribution": {
+        "kind": "uniform",
+        "min": 100112989.0,
+        "max": 899985562.0,
+        "skew": 0.0053
+      }
+    },
+    {
+      "element": "SUBGROUP_KEY",
+      "observed_in": [
+        "sdm.claims_denorm.SGSG_CK",
+        "sdm.member_denorm.SGSG_CK"
+      ],
+      "rows": 695468,
+      "null_rate": 0.0,
+      "cardinality": "low",
+      "distinct_ratio": 0.000412,
+      "minimum": 1,
+      "maximum": 19,
+      "mean": 9.222593,
+      "stddev": 5.573699,
+      "values": [
+        {
+          "value": "2",
+          "weight": 0.078626
+        },
+        {
+          "value": "1",
+          "weight": 0.077939
+        },
+        {
+          "value": "8",
+          "weight": 0.057637
+        },
+        {
+          "value": "7",
+          "weight": 0.057333
+        },
+        {
+          "value": "14",
+          "weight": 0.05721
+        },
+        {
+          "value": "5",
+          "weight": 0.055715
+        },
+        {
+          "value": "6",
+          "weight": 0.055695
+        },
+        {
+          "value": "15",
+          "weight": 0.054655
+        },
+        {
+          "value": "17",
+          "weight": 0.053049
+        },
+        {
+          "value": "3",
+          "weight": 0.052805
+        },
+        {
+          "value": "16",
+          "weight": 0.052652
+        },
+        {
+          "value": "4",
+          "weight": 0.051167
+        },
+        {
+          "value": "10",
+          "weight": 0.04878
+        },
+        {
+          "value": "9",
+          "weight": 0.048736
+        },
+        {
+          "value": "11",
+          "weight": 0.044778
+        },
+        {
+          "value": "13",
+          "weight": 0.040456
+        },
+        {
+          "value": "18",
+          "weight": 0.039135
+        },
+        {
+          "value": "12",
+          "weight": 0.037747
+        },
+        {
+          "value": "19",
+          "weight": 0.035884
+        }
+      ]
+    },
+    {
+      "element": "SUBGROUP_NAME",
+      "observed_in": [
+        "sdm.member_denorm.SGSG_NAME"
+      ],
+      "rows": 46077,
+      "null_rate": 0.0,
+      "cardinality": "low",
+      "distinct_ratio": 0.000412,
+      "minimum": "Cedar Valley School District - Field",
+      "maximum": "Summit Retail Group - Retiree",
+      "min_length": 24,
+      "max_length": 36,
+      "values": [
+        {
+          "value": "Riverside University - Field",
+          "weight": 0.080279
+        },
+        {
+          "value": "Riverside University - Clerical",
+          "weight": 0.079128
+        },
+        {
+          "value": "Summit Retail Group - Main",
+          "weight": 0.063524
+        },
+        {
+          "value": "Summit Retail Group - Retiree",
+          "weight": 0.061506
+        },
+        {
+          "value": "Cedar Valley School District - Main",
+          "weight": 0.058836
+        },
+        {
+          "value": "Northside Health System - Retiree",
+          "weight": 0.058229
+        },
+        {
+          "value": "Northside Health System - Hourly",
+          "weight": 0.057556
+        },
+        {
+          "value": "Northside Health System - Salaried",
+          "weight": 0.053411
+        },
+        {
+          "value": "Cedar Valley School District - Field",
+          "weight": 0.052542
+        },
+        {
+          "value": "Metro Transit Authority - Hourly",
+          "weight": 0.049417
+        },
+        {
+          "value": "Harbor Logistics - Field",
+          "weight": 0.049157
+        },
+        {
+          "value": "Harbor Logistics - Clerical",
+          "weight": 0.047529
+        },
+        {
+          "value": "Metro Transit Authority - Clerical",
+          "weight": 0.046596
+        },
+        {
+          "value": "Metro Transit Authority - Salaried",
+          "weight": 0.045077
+        },
+        {
+          "value": "Lakeshore Manufacturing - Retiree",
+          "weight": 0.04423
+        },
+        {
+          "value": "Lakeshore Manufacturing - Hourly",
+          "weight": 0.043058
+        },
+        {
+          "value": "Lakeshore Manufacturing - Main",
+          "weight": 0.041973
+        },
+        {
+          "value": "Pine Ridge Senior Care - Clerical",
+          "weight": 0.034399
+        },
+        {
+          "value": "Pine Ridge Senior Care - Salaried",
+          "weight": 0.033553
+        }
+      ]
+    },
+    {
+      "element": "SUBSCRIBER_ID",
+      "observed_in": [
+        "sdm.member_denorm.SBSB_ID",
+        "sdm.subscriber_denorm.SBSB_ID"
+      ],
+      "rows": 46077,
+      "null_rate": 0.0,
+      "cardinality": "high",
+      "distinct_ratio": 0.434056,
+      "minimum": "AAB012238",
+      "maximum": "ZZZ015656",
+      "min_length": 9,
+      "max_length": 9
+    },
+    {
+      "element": "SUBSCRIBER_KEY",
+      "observed_in": [
+        "sdm.claims_denorm.SBSB_CK",
+        "sdm.member_denorm.SBSB_CK",
+        "sdm.subscriber_denorm.SBSB_CK"
+      ],
+      "rows": 695468,
+      "null_rate": 0.0,
+      "cardinality": "high",
+      "distinct_ratio": 0.434056,
+      "minimum": 1,
+      "maximum": 20000,
+      "mean": 10039.129687,
+      "stddev": 5782.260335,
+      "distribution": {
+        "kind": "uniform",
+        "min": 1.0,
+        "max": 20000.0,
+        "skew": 0.0044
+      }
+    },
+    {
+      "element": "TERMINATION_DATE",
+      "observed_in": [
+        "sdm.plan_benefit_denorm.BEN_TERM_DT",
+        "sdm.plan_benefit_denorm.PDVC_TERM_DT",
+        "sdm.plan_benefit_denorm.SEPY_TERM_DT"
+      ],
+      "rows": 0,
+      "null_rate": 0.0,
+      "cardinality": "empty",
+      "distinct_ratio": 0.0
+    }
+  ],
+  "relationships": [
+    {
+      "child_element": "PROVIDER_ID",
+      "parent_element": "PROVIDER_ID",
+      "child_table": "sdm.claims_denorm",
+      "parent_table": "sdm.provider_denorm",
+      "observed_in": [
+        "sdm.claims_denorm -> sdm.provider_denorm"
+      ],
+      "parents": 300,
+      "children": 649391,
+      "minimum": 779,
+      "maximum": 11283,
+      "mean": 2164.6367,
+      "stddev": 1378.4998,
+      "median": 1746.5,
+      "p90": 3306.2,
+      "p99": 10732.11,
+      "histogram": [
+        {
+          "children": 779,
+          "weight": 0.003333,
+          "low": null,
+          "high": null
+        },
+        {
+          "children": 1052,
+          "weight": 0.086667,
+          "low": 964,
+          "high": 1107
+        },
+        {
+          "children": 1161,
+          "weight": 0.06,
+          "low": 1114,
+          "high": 1266
+        },
+        {
+          "children": 1384,
+          "weight": 0.06,
+          "low": 1300,
+          "high": 1437
+        },
+        {
+          "children": 1516,
+          "weight": 0.133333,
+          "low": 1443,
+          "high": 1601
+        },
+        {
+          "children": 1677,
+          "weight": 0.163333,
+          "low": 1604,
+          "high": 1757
+        },
+        {
+          "children": 1822,
+          "weight": 0.056667,
+          "low": 1770,
+          "high": 1928
+        },
+        {
+          "children": 2050,
+          "weight": 0.026667,
+          "low": 1986,
+          "high": 2091
+        },
+        {
+          "children": 2190,
+          "weight": 0.076667,
+          "low": 2126,
+          "high": 2254
+        },
+        {
+          "children": 2341,
+          "weight": 0.08,
+          "low": 2264,
+          "high": 2417
+        },
+        {
+          "children": 2517,
+          "weight": 0.026667,
+          "low": 2437,
+          "high": 2591
+        },
+        {
+          "children": 2691,
+          "weight": 0.036667,
+          "low": 2626,
+          "high": 2738
+        },
+        {
+          "children": 2832,
+          "weight": 0.026667,
+          "low": 2761,
+          "high": 2910
+        },
+        {
+          "children": 2975,
+          "weight": 0.04,
+          "low": 2926,
+          "high": 3086
+        },
+        {
+          "children": 3179,
+          "weight": 0.016667,
+          "low": 3106,
+          "high": 3252
+        },
+        {
+          "children": 3350,
+          "weight": 0.03,
+          "low": 3275,
+          "high": 3409
+        },
+        {
+          "children": 3484,
+          "weight": 0.006667,
+          "low": 3429,
+          "high": 3539
+        },
+        {
+          "children": 3649,
+          "weight": 0.033333,
+          "low": 3598,
+          "high": 3745
+        },
+        {
+          "children": 3853,
+          "weight": 0.01,
+          "low": 3844,
+          "high": 3859
+        },
+        {
+          "children": 4022,
+          "weight": 0.006667,
+          "low": 3970,
+          "high": 4074
+        },
+        {
+          "children": 8584,
+          "weight": 0.003333,
+          "low": null,
+          "high": null
+        },
+        {
+          "children": 9175,
+          "weight": 0.003333,
+          "low": null,
+          "high": null
+        },
+        {
+          "children": 10786,
+          "weight": 0.006667,
+          "low": 10731,
+          "high": 10842
+        },
+        {
+          "children": 10915,
+          "weight": 0.003333,
+          "low": null,
+          "high": null
+        },
+        {
+          "children": 11283,
+          "weight": 0.003333,
+          "low": null,
+          "high": null
+        }
+      ]
+    },
+    {
+      "child_element": "MEMBER_KEY",
+      "parent_element": "MEMBER_KEY",
+      "child_table": "sdm.claims_denorm",
+      "parent_table": "sdm.member_denorm",
+      "observed_in": [
+        "sdm.claims_denorm -> sdm.member_denorm on MEME_CK"
+      ],
+      "parents": 32401,
+      "children": 649391,
+      "minimum": 1,
+      "maximum": 140,
+      "mean": 20.0423,
+      "stddev": 18.617,
+      "median": 14.0,
+      "p90": 42.0,
+      "p99": 98.0,
+      "histogram": [
+        {
+          "children": 1,
+          "weight": 0.00876516
+        },
+        {
+          "children": 2,
+          "weight": 0.01715996
+        },
+        {
+          "children": 3,
+          "weight": 0.03629518
+        },
+        {
+          "children": 4,
+          "weight": 0.03632604
+        },
+        {
+          "children": 5,
+          "weight": 0.03793093
+        },
+        {
+          "children": 6,
+          "weight": 0.04194315
+        },
+        {
+          "children": 7,
+          "weight": 0.04688127
+        },
+        {
+          "children": 8,
+          "weight": 0.04774544
+        },
+        {
+          "children": 9,
+          "weight": 0.04172711
+        },
+        {
+          "children": 10,
+          "weight": 0.04095553
+        },
+        {
+          "children": 11,
+          "weight": 0.04006049
+        },
+        {
+          "children": 12,
+          "weight": 0.039721
+        },
+        {
+          "children": 13,
+          "weight": 0.03555446
+        },
+        {
+          "children": 14,
+          "weight": 0.0342582
+        },
+        {
+          "children": 15,
+          "weight": 0.02916577
+        },
+        {
+          "children": 16,
+          "weight": 0.0297213
+        },
+        {
+          "children": 17,
+          "weight": 0.0264498
+        },
+        {
+          "children": 18,
+          "weight": 0.02604858
+        },
+        {
+          "children": 19,
+          "weight": 0.02407333
+        },
+        {
+          "children": 20,
+          "weight": 0.02070924
+        },
+        {
+          "children": 21,
+          "weight": 0.02058578
+        },
+        {
+          "children": 22,
+          "weight": 0.01925866
+        },
+        {
+          "children": 23,
+          "weight": 0.0174686
+        },
+        {
+          "children": 24,
+          "weight": 0.01614148
+        },
+        {
+          "children": 25,
+          "weight": 0.01632666
+        },
+        {
+          "children": 26,
+          "weight": 0.01527731
+        },
+        {
+          "children": 27,
+          "weight": 0.01290084
+        },
+        {
+          "children": 28,
+          "weight": 0.01324033
+        },
+        {
+          "children": 29,
+          "weight": 0.01246875
+        },
+        {
+          "children": 30,
+          "weight": 0.01098732
+        },
+        {
+          "children": 31,
+          "weight": 0.01018487
+        },
+        {
+          "children": 32,
+          "weight": 0.00925897
+        },
+        {
+          "children": 33,
+          "weight": 0.00802444
+        },
+        {
+          "children": 34,
+          "weight": 0.00805531
+        },
+        {
+          "children": 35,
+          "weight": 0.00796272
+        },
+        {
+          "children": 36,
+          "weight": 0.00728373
+        },
+        {
+          "children": 37,
+          "weight": 0.00638869
+        },
+        {
+          "children": 38,
+          "weight": 0.00657387
+        },
+        {
+          "children": 39,
+          "weight": 0.00654301
+        },
+        {
+          "children": 40,
+          "weight": 0.00546279
+        },
+        {
+          "children": 41,
+          "weight": 0.00564797
+        },
+        {
+          "children": 42,
+          "weight": 0.00466035
+        },
+        {
+          "children": 43,
+          "weight": 0.00487639
+        },
+        {
+          "children": 44,
+          "weight": 0.00422826
+        },
+        {
+          "children": 45,
+          "weight": 0.00422826
+        },
+        {
+          "children": 46,
+          "weight": 0.00348755
+        },
+        {
+          "children": 47,
+          "weight": 0.00370359
+        },
+        {
+          "children": 48,
+          "weight": 0.003611
+        },
+        {
+          "children": 49,
+          "weight": 0.003611
+        },
+        {
+          "children": 50,
+          "weight": 0.00308632
+        },
+        {
+          "children": 51,
+          "weight": 0.00317891
+        },
+        {
+          "children": 52,
+          "weight": 0.00293201
+        },
+        {
+          "children": 53,
+          "weight": 0.00287028
+        },
+        {
+          "children": 54,
+          "weight": 0.00290115
+        },
+        {
+          "children": 55,
+          "weight": 0.00231474
+        },
+        {
+          "children": 56,
+          "weight": 0.00240733
+        },
+        {
+          "children": 57,
+          "weight": 0.00253079
+        },
+        {
+          "children": 58,
+          "weight": 0.00206784
+        },
+        {
+          "children": 59,
+          "weight": 0.00188266
+        },
+        {
+          "children": 60,
+          "weight": 0.00194438
+        },
+        {
+          "children": 61,
+          "weight": 0.00216043
+        },
+        {
+          "children": 62,
+          "weight": 0.00188266
+        },
+        {
+          "children": 63,
+          "weight": 0.00182093
+        },
+        {
+          "children": 64,
+          "weight": 0.00185179
+        },
+        {
+          "children": 65,
+          "weight": 0.00114194
+        },
+        {
+          "children": 66,
+          "weight": 0.00132712
+        },
+        {
+          "children": 67,
+          "weight": 0.00101849
+        },
+        {
+          "children": 68,
+          "weight": 0.00179007
+        },
+        {
+          "children": 69,
+          "weight": 0.00095676
+        },
+        {
+          "children": 70,
+          "weight": 0.00095676
+        },
+        {
+          "children": 71,
+          "weight": 0.00126539
+        },
+        {
+          "children": 72,
+          "weight": 0.00095676
+        },
+        {
+          "children": 73,
+          "weight": 0.00101849
+        },
+        {
+          "children": 74,
+          "weight": 0.0009259
+        },
+        {
+          "children": 75,
+          "weight": 0.00098762
+        },
+        {
+          "children": 76,
+          "weight": 0.00108021
+        },
+        {
+          "children": 77,
+          "weight": 0.00077158
+        },
+        {
+          "children": 78,
+          "weight": 0.00074072
+        },
+        {
+          "children": 79,
+          "weight": 0.00083331
+        },
+        {
+          "children": 80,
+          "weight": 0.0005864
+        },
+        {
+          "children": 81,
+          "weight": 0.0005864
+        },
+        {
+          "children": 82,
+          "weight": 0.00067899
+        },
+        {
+          "children": 83,
+          "weight": 0.00074072
+        },
+        {
+          "children": 84,
+          "weight": 0.00043209
+        },
+        {
+          "children": 85,
+          "weight": 0.00061726
+        },
+        {
+          "children": 86,
+          "weight": 0.0003395
+        },
+        {
+          "children": 87,
+          "weight": 0.00055554
+        },
+        {
+          "children": 88,
+          "weight": 0.0005864
+        },
+        {
+          "children": 89,
+          "weight": 0.00046295
+        },
+        {
+          "children": 90,
+          "weight": 0.00040122
+        },
+        {
+          "children": 91,
+          "weight": 0.00027777
+        },
+        {
+          "children": 92,
+          "weight": 0.00027777
+        },
+        {
+          "children": 93,
+          "weight": 0.00043209
+        },
+        {
+          "children": 94,
+          "weight": 0.0003395
+        },
+        {
+          "children": 95,
+          "weight": 0.00040122
+        },
+        {
+          "children": 96,
+          "weight": 0.00037036
+        },
+        {
+          "children": 97,
+          "weight": 0.00015432
+        },
+        {
+          "children": 98,
+          "weight": 0.00037036
+        },
+        {
+          "children": 99,
+          "weight": 0.00037036
+        },
+        {
+          "children": 100,
+          "weight": 0.00027777
+        },
+        {
+          "children": 101,
+          "weight": 0.00018518
+        },
+        {
+          "children": 102,
+          "weight": 0.0003395
+        },
+        {
+          "children": 103,
+          "weight": 0.00027777
+        },
+        {
+          "children": 104,
+          "weight": 0.00027777
+        },
+        {
+          "children": 105,
+          "weight": 9.259e-05
+        },
+        {
+          "children": 106,
+          "weight": 0.00027777
+        },
+        {
+          "children": 107,
+          "weight": 0.00037036
+        },
+        {
+          "children": 108,
+          "weight": 0.0003395
+        },
+        {
+          "children": 109,
+          "weight": 0.00015432
+        },
+        {
+          "children": 110,
+          "weight": 0.00027777
+        },
+        {
+          "children": 111,
+          "weight": 0.00046295
+        },
+        {
+          "children": 112,
+          "weight": 0.00027777
+        },
+        {
+          "children": 113,
+          "weight": 0.00030863
+        },
+        {
+          "children": 114,
+          "weight": 0.00024691
+        },
+        {
+          "children": 115,
+          "weight": 0.0003395
+        },
+        {
+          "children": 116,
+          "weight": 0.00030863
+        },
+        {
+          "children": 117,
+          "weight": 0.00040122
+        },
+        {
+          "children": 118,
+          "weight": 0.00027777
+        },
+        {
+          "children": 119,
+          "weight": 0.0003395
+        },
+        {
+          "children": 120,
+          "weight": 0.00015432
+        },
+        {
+          "children": 121,
+          "weight": 0.00037036
+        },
+        {
+          "children": 122,
+          "weight": 0.00024691
+        },
+        {
+          "children": 123,
+          "weight": 0.00018518
+        },
+        {
+          "children": 124,
+          "weight": 0.00037036
+        },
+        {
+          "children": 125,
+          "weight": 0.00037036
+        },
+        {
+          "children": 126,
+          "weight": 0.00015432
+        },
+        {
+          "children": 127,
+          "weight": 0.00027777
+        },
+        {
+          "children": 128,
+          "weight": 0.00027777
+        },
+        {
+          "children": 129,
+          "weight": 0.00018518
+        },
+        {
+          "children": 130,
+          "weight": 0.00012345
+        },
+        {
+          "children": 131,
+          "weight": 6.173e-05
+        },
+        {
+          "children": 132,
+          "weight": 9.259e-05
+        },
+        {
+          "children": 133,
+          "weight": 0.00012345
+        },
+        {
+          "children": 134,
+          "weight": 0.00015432
+        },
+        {
+          "children": 135,
+          "weight": 0.00018518
+        },
+        {
+          "children": 136,
+          "weight": 6.173e-05
+        },
+        {
+          "children": 137,
+          "weight": 6.173e-05
+        },
+        {
+          "children": 138,
+          "weight": 9.259e-05
+        },
+        {
+          "children": 139,
+          "weight": 6.173e-05
+        },
+        {
+          "children": 140,
+          "weight": 3.086e-05
+        }
+      ]
+    },
+    {
+      "child_element": "NPI",
+      "parent_element": "NPI",
+      "child_table": "sdm.claims_denorm",
+      "parent_table": "sdm.provider_denorm",
+      "observed_in": [
+        "sdm.claims_denorm -> sdm.provider_denorm on PRPR_NPI"
+      ],
+      "parents": 300,
+      "children": 649391,
+      "minimum": 779,
+      "maximum": 11283,
+      "mean": 2164.6367,
+      "stddev": 1378.4998,
+      "median": 1746.5,
+      "p90": 3306.2,
+      "p99": 10732.11,
+      "histogram": [
+        {
+          "children": 779,
+          "weight": 0.00333333
+        },
+        {
+          "children": 964,
+          "weight": 0.00333333
+        },
+        {
+          "children": 984,
+          "weight": 0.00333333
+        },
+        {
+          "children": 996,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1007,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1023,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1027,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1028,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1031,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1034,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1042,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1054,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1055,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1056,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1058,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1061,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1064,
+          "weight": 0.00666667
+        },
+        {
+          "children": 1070,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1073,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1080,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1087,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1088,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1089,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1100,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1106,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1107,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1114,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1121,
+          "weight": 0.00666667
+        },
+        {
+          "children": 1122,
+          "weight": 0.00666667
+        },
+        {
+          "children": 1129,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1139,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1154,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1155,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1162,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1168,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1171,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1178,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1183,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1192,
+          "weight": 0.00666667
+        },
+        {
+          "children": 1206,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1266,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1300,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1309,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1319,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1350,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1355,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1358,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1361,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1385,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1386,
+          "weight": 0.00666667
+        },
+        {
+          "children": 1413,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1415,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1417,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1425,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1427,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1431,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1433,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1437,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1443,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1448,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1453,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1455,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1456,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1463,
+          "weight": 0.00666667
+        },
+        {
+          "children": 1464,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1478,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1480,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1481,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1482,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1483,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1489,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1504,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1505,
+          "weight": 0.00666667
+        },
+        {
+          "children": 1508,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1512,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1515,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1519,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1520,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1522,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1523,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1524,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1525,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1531,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1533,
+          "weight": 0.00666667
+        },
+        {
+          "children": 1542,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1553,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1559,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1566,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1569,
+          "weight": 0.00666667
+        },
+        {
+          "children": 1579,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1585,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1587,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1599,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1601,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1604,
+          "weight": 0.00666667
+        },
+        {
+          "children": 1606,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1616,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1618,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1619,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1620,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1625,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1629,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1636,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1638,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1640,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1641,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1642,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1646,
+          "weight": 0.00666667
+        },
+        {
+          "children": 1647,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1651,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1656,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1659,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1662,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1665,
+          "weight": 0.00666667
+        },
+        {
+          "children": 1666,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1667,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1672,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1680,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1685,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1687,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1690,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1694,
+          "weight": 0.01
+        },
+        {
+          "children": 1699,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1705,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1708,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1718,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1729,
+          "weight": 0.01
+        },
+        {
+          "children": 1734,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1735,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1736,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1737,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1739,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1740,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1745,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1748,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1757,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1770,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1775,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1778,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1783,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1785,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1797,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1801,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1810,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1815,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1816,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1820,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1823,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1849,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1859,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1878,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1880,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1928,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1986,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1991,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2004,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2064,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2086,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2087,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2091,
+          "weight": 0.00666667
+        },
+        {
+          "children": 2126,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2139,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2142,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2146,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2156,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2157,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2158,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2159,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2163,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2164,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2178,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2198,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2207,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2209,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2213,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2215,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2219,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2220,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2223,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2237,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2248,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2250,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2254,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2264,
+          "weight": 0.00666667
+        },
+        {
+          "children": 2274,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2283,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2301,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2303,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2307,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2321,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2324,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2326,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2327,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2329,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2340,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2341,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2357,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2365,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2377,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2379,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2382,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2394,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2404,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2406,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2408,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2417,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2437,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2493,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2495,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2499,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2515,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2533,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2576,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2591,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2626,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2665,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2676,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2688,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2690,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2692,
+          "weight": 0.00666667
+        },
+        {
+          "children": 2697,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2719,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2720,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2738,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2761,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2786,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2799,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2829,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2833,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2860,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2881,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2910,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2926,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2929,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2931,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2934,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2938,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2954,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2957,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2966,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3005,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3015,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3064,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3086,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3106,
+          "weight": 0.00666667
+        },
+        {
+          "children": 3214,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3216,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3252,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3275,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3306,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3308,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3320,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3361,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3384,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3391,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3395,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3409,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3429,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3539,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3598,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3604,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3615,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3620,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3626,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3635,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3651,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3694,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3704,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3745,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3844,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3857,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3859,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3970,
+          "weight": 0.00333333
+        },
+        {
+          "children": 4074,
+          "weight": 0.00333333
+        },
+        {
+          "children": 8584,
+          "weight": 0.00333333
+        },
+        {
+          "children": 9175,
+          "weight": 0.00333333
+        },
+        {
+          "children": 10731,
+          "weight": 0.00333333
+        },
+        {
+          "children": 10842,
+          "weight": 0.00333333
+        },
+        {
+          "children": 10915,
+          "weight": 0.00333333
+        },
+        {
+          "children": 11283,
+          "weight": 0.00333333
+        }
+      ]
+    },
+    {
+      "child_element": "CLAIM_ID",
+      "parent_element": "MEMBER_KEY",
+      "child_table": "sdm.claims_denorm",
+      "parent_table": "sdm.claims_denorm",
+      "observed_in": [
+        "sdm.claims_denorm: CLCL_ID per MEME_CK",
+        "13,676 parents with none, from the extract holding every one"
+      ],
+      "parents": 46077,
+      "children": 210727,
+      "minimum": 0,
+      "maximum": 40,
+      "mean": 4.5734,
+      "stddev": 5.8187,
+      "median": 3.0,
+      "p90": 11.0,
+      "p99": 28.0,
+      "histogram": [
+        {
+          "children": 0,
+          "weight": 0.29680752
+        },
+        {
+          "children": 1,
+          "weight": 0.05972611
+        },
+        {
+          "children": 2,
+          "weight": 0.10104825
+        },
+        {
+          "children": 3,
+          "weight": 0.09751069
+        },
+        {
+          "children": 4,
+          "weight": 0.08140721
+        },
+        {
+          "children": 5,
+          "weight": 0.06610673
+        },
+        {
+          "children": 6,
+          "weight": 0.05460425
+        },
+        {
+          "children": 7,
+          "weight": 0.04290644
+        },
+        {
+          "children": 8,
+          "weight": 0.03392148
+        },
+        {
+          "children": 9,
+          "weight": 0.02851748
+        },
+        {
+          "children": 10,
+          "weight": 0.02222367
+        },
+        {
+          "children": 11,
+          "weight": 0.01747075
+        },
+        {
+          "children": 12,
+          "weight": 0.01499663
+        },
+        {
+          "children": 13,
+          "weight": 0.01224038
+        },
+        {
+          "children": 14,
+          "weight": 0.00963604
+        },
+        {
+          "children": 15,
+          "weight": 0.00816025
+        },
+        {
+          "children": 16,
+          "weight": 0.00766109
+        },
+        {
+          "children": 17,
+          "weight": 0.00570783
+        },
+        {
+          "children": 18,
+          "weight": 0.00492654
+        },
+        {
+          "children": 19,
+          "weight": 0.0046444
+        },
+        {
+          "children": 20,
+          "weight": 0.00434056
+        },
+        {
+          "children": 21,
+          "weight": 0.00319031
+        },
+        {
+          "children": 22,
+          "weight": 0.00260434
+        },
+        {
+          "children": 23,
+          "weight": 0.00258264
+        },
+        {
+          "children": 24,
+          "weight": 0.0023222
+        },
+        {
+          "children": 25,
+          "weight": 0.00182303
+        },
+        {
+          "children": 26,
+          "weight": 0.00132387
+        },
+        {
+          "children": 27,
+          "weight": 0.00104174
+        },
+        {
+          "children": 28,
+          "weight": 0.00112855
+        },
+        {
+          "children": 29,
+          "weight": 0.00084641
+        },
+        {
+          "children": 30,
+          "weight": 0.0007379
+        },
+        {
+          "children": 31,
+          "weight": 0.00062938
+        },
+        {
+          "children": 32,
+          "weight": 0.00084641
+        },
+        {
+          "children": 33,
+          "weight": 0.00058598
+        },
+        {
+          "children": 34,
+          "weight": 0.00049916
+        },
+        {
+          "children": 35,
+          "weight": 0.00045576
+        },
+        {
+          "children": 36,
+          "weight": 0.00060768
+        },
+        {
+          "children": 37,
+          "weight": 0.00036895
+        },
+        {
+          "children": 38,
+          "weight": 0.00041235
+        },
+        {
+          "children": 39,
+          "weight": 0.00034724
+        },
+        {
+          "children": 40,
+          "weight": 0.0030818
+        }
+      ]
+    },
+    {
+      "child_element": "CLAIM_ID",
+      "parent_element": "SUBSCRIBER_KEY",
+      "child_table": "sdm.claims_denorm",
+      "parent_table": "sdm.claims_denorm",
+      "observed_in": [
+        "sdm.claims_denorm: CLCL_ID per SBSB_CK",
+        "2,398 parents with none, from the extract holding every one"
+      ],
+      "parents": 20000,
+      "children": 210727,
+      "minimum": 0,
+      "maximum": 86,
+      "mean": 10.5364,
+      "stddev": 10.4167,
+      "median": 8.0,
+      "p90": 24.0,
+      "p99": 47.0,
+      "histogram": [
+        {
+          "children": 0,
+          "weight": 0.1199
+        },
+        {
+          "children": 1,
+          "weight": 0.0331
+        },
+        {
+          "children": 2,
+          "weight": 0.05885
+        },
+        {
+          "children": 3,
+          "weight": 0.061
+        },
+        {
+          "children": 4,
+          "weight": 0.06335
+        },
+        {
+          "children": 5,
+          "weight": 0.05775
+        },
+        {
+          "children": 6,
+          "weight": 0.0547
+        },
+        {
+          "children": 7,
+          "weight": 0.04835
+        },
+        {
+          "children": 8,
+          "weight": 0.04595
+        },
+        {
+          "children": 9,
+          "weight": 0.0408
+        },
+        {
+          "children": 10,
+          "weight": 0.03945
+        },
+        {
+          "children": 11,
+          "weight": 0.0322
+        },
+        {
+          "children": 12,
+          "weight": 0.0312
+        },
+        {
+          "children": 13,
+          "weight": 0.0266
+        },
+        {
+          "children": 14,
+          "weight": 0.02765
+        },
+        {
+          "children": 15,
+          "weight": 0.0225
+        },
+        {
+          "children": 16,
+          "weight": 0.0216
+        },
+        {
+          "children": 17,
+          "weight": 0.01955
+        },
+        {
+          "children": 18,
+          "weight": 0.0191
+        },
+        {
+          "children": 19,
+          "weight": 0.0162
+        },
+        {
+          "children": 20,
+          "weight": 0.01645
+        },
+        {
+          "children": 21,
+          "weight": 0.01375
+        },
+        {
+          "children": 22,
+          "weight": 0.0122
+        },
+        {
+          "children": 23,
+          "weight": 0.0101
+        },
+        {
+          "children": 24,
+          "weight": 0.01055
+        },
+        {
+          "children": 25,
+          "weight": 0.009
+        },
+        {
+          "children": 26,
+          "weight": 0.00695
+        },
+        {
+          "children": 27,
+          "weight": 0.00775
+        },
+        {
+          "children": 28,
+          "weight": 0.007
+        },
+        {
+          "children": 29,
+          "weight": 0.00655
+        },
+        {
+          "children": 30,
+          "weight": 0.00475
+        },
+        {
+          "children": 31,
+          "weight": 0.0047
+        },
+        {
+          "children": 32,
+          "weight": 0.0044
+        },
+        {
+          "children": 33,
+          "weight": 0.00475
+        },
+        {
+          "children": 34,
+          "weight": 0.00385
+        },
+        {
+          "children": 35,
+          "weight": 0.0035
+        },
+        {
+          "children": 36,
+          "weight": 0.00315
+        },
+        {
+          "children": 37,
+          "weight": 0.00315
+        },
+        {
+          "children": 38,
+          "weight": 0.00205
+        },
+        {
+          "children": 39,
+          "weight": 0.0022
+        },
+        {
+          "children": 40,
+          "weight": 0.0031
+        },
+        {
+          "children": 41,
+          "weight": 0.00195
+        },
+        {
+          "children": 42,
+          "weight": 0.0015
+        },
+        {
+          "children": 43,
+          "weight": 0.00195
+        },
+        {
+          "children": 44,
+          "weight": 0.0015
+        },
+        {
+          "children": 45,
+          "weight": 0.0016
+        },
+        {
+          "children": 46,
+          "weight": 0.00105
+        },
+        {
+          "children": 47,
+          "weight": 0.001
+        },
+        {
+          "children": 48,
+          "weight": 0.00115
+        },
+        {
+          "children": 49,
+          "weight": 0.00085
+        },
+        {
+          "children": 50,
+          "weight": 0.00075
+        },
+        {
+          "children": 51,
+          "weight": 0.00075
+        },
+        {
+          "children": 52,
+          "weight": 0.00065
+        },
+        {
+          "children": 53,
+          "weight": 0.00045
+        },
+        {
+          "children": 54,
+          "weight": 0.0007
+        },
+        {
+          "children": 55,
+          "weight": 0.0005
+        },
+        {
+          "children": 56,
+          "weight": 0.0004
+        },
+        {
+          "children": 57,
+          "weight": 0.00025
+        },
+        {
+          "children": 58,
+          "weight": 0.00015
+        },
+        {
+          "children": 59,
+          "weight": 0.0006
+        },
+        {
+          "children": 60,
+          "weight": 0.00045
+        },
+        {
+          "children": 61,
+          "weight": 0.0003
+        },
+        {
+          "children": 62,
+          "weight": 0.0001
+        },
+        {
+          "children": 63,
+          "weight": 0.0002
+        },
+        {
+          "children": 64,
+          "weight": 0.0003
+        },
+        {
+          "children": 65,
+          "weight": 0.0002
+        },
+        {
+          "children": 67,
+          "weight": 0.0001
+        },
+        {
+          "children": 68,
+          "weight": 0.00015
+        },
+        {
+          "children": 69,
+          "weight": 5e-05
+        },
+        {
+          "children": 70,
+          "weight": 5e-05
+        },
+        {
+          "children": 71,
+          "weight": 5e-05
+        },
+        {
+          "children": 72,
+          "weight": 0.0001
+        },
+        {
+          "children": 73,
+          "weight": 5e-05
+        },
+        {
+          "children": 74,
+          "weight": 0.0001
+        },
+        {
+          "children": 75,
+          "weight": 5e-05
+        },
+        {
+          "children": 77,
+          "weight": 5e-05
+        },
+        {
+          "children": 81,
+          "weight": 0.0001
+        },
+        {
+          "children": 82,
+          "weight": 0.0001
+        },
+        {
+          "children": 86,
+          "weight": 5e-05
+        }
+      ]
+    },
+    {
+      "child_element": "CLAIM_ID",
+      "parent_element": "PROVIDER_ID",
+      "child_table": "sdm.claims_denorm",
+      "parent_table": "sdm.claims_denorm",
+      "observed_in": [
+        "sdm.claims_denorm: CLCL_ID per PRPR_ID"
+      ],
+      "parents": 300,
+      "children": 210727,
+      "minimum": 256,
+      "maximum": 3658,
+      "mean": 702.4233,
+      "stddev": 446.2978,
+      "median": 569.5,
+      "p90": 1074.3,
+      "p99": 3497.04,
+      "histogram": [
+        {
+          "children": 256,
+          "weight": 0.00333333
+        },
+        {
+          "children": 320,
+          "weight": 0.00333333
+        },
+        {
+          "children": 321,
+          "weight": 0.00333333
+        },
+        {
+          "children": 322,
+          "weight": 0.00333333
+        },
+        {
+          "children": 323,
+          "weight": 0.00333333
+        },
+        {
+          "children": 331,
+          "weight": 0.00333333
+        },
+        {
+          "children": 332,
+          "weight": 0.00666667
+        },
+        {
+          "children": 334,
+          "weight": 0.00333333
+        },
+        {
+          "children": 336,
+          "weight": 0.00333333
+        },
+        {
+          "children": 337,
+          "weight": 0.00333333
+        },
+        {
+          "children": 338,
+          "weight": 0.00333333
+        },
+        {
+          "children": 339,
+          "weight": 0.00333333
+        },
+        {
+          "children": 342,
+          "weight": 0.00333333
+        },
+        {
+          "children": 344,
+          "weight": 0.00333333
+        },
+        {
+          "children": 347,
+          "weight": 0.00333333
+        },
+        {
+          "children": 349,
+          "weight": 0.00333333
+        },
+        {
+          "children": 350,
+          "weight": 0.00333333
+        },
+        {
+          "children": 352,
+          "weight": 0.00333333
+        },
+        {
+          "children": 353,
+          "weight": 0.00333333
+        },
+        {
+          "children": 355,
+          "weight": 0.00333333
+        },
+        {
+          "children": 357,
+          "weight": 0.00666667
+        },
+        {
+          "children": 358,
+          "weight": 0.00333333
+        },
+        {
+          "children": 360,
+          "weight": 0.00666667
+        },
+        {
+          "children": 361,
+          "weight": 0.00333333
+        },
+        {
+          "children": 362,
+          "weight": 0.00333333
+        },
+        {
+          "children": 364,
+          "weight": 0.00333333
+        },
+        {
+          "children": 365,
+          "weight": 0.00333333
+        },
+        {
+          "children": 366,
+          "weight": 0.00666667
+        },
+        {
+          "children": 368,
+          "weight": 0.00333333
+        },
+        {
+          "children": 369,
+          "weight": 0.00333333
+        },
+        {
+          "children": 370,
+          "weight": 0.00666667
+        },
+        {
+          "children": 374,
+          "weight": 0.00666667
+        },
+        {
+          "children": 375,
+          "weight": 0.00666667
+        },
+        {
+          "children": 377,
+          "weight": 0.00333333
+        },
+        {
+          "children": 380,
+          "weight": 0.00333333
+        },
+        {
+          "children": 383,
+          "weight": 0.00333333
+        },
+        {
+          "children": 398,
+          "weight": 0.00333333
+        },
+        {
+          "children": 401,
+          "weight": 0.00333333
+        },
+        {
+          "children": 413,
+          "weight": 0.00333333
+        },
+        {
+          "children": 427,
+          "weight": 0.00333333
+        },
+        {
+          "children": 433,
+          "weight": 0.00333333
+        },
+        {
+          "children": 440,
+          "weight": 0.00333333
+        },
+        {
+          "children": 446,
+          "weight": 0.00333333
+        },
+        {
+          "children": 451,
+          "weight": 0.01
+        },
+        {
+          "children": 452,
+          "weight": 0.00333333
+        },
+        {
+          "children": 454,
+          "weight": 0.00333333
+        },
+        {
+          "children": 458,
+          "weight": 0.00333333
+        },
+        {
+          "children": 460,
+          "weight": 0.00333333
+        },
+        {
+          "children": 462,
+          "weight": 0.00666667
+        },
+        {
+          "children": 463,
+          "weight": 0.00333333
+        },
+        {
+          "children": 465,
+          "weight": 0.00666667
+        },
+        {
+          "children": 466,
+          "weight": 0.00333333
+        },
+        {
+          "children": 469,
+          "weight": 0.00666667
+        },
+        {
+          "children": 471,
+          "weight": 0.00666667
+        },
+        {
+          "children": 473,
+          "weight": 0.00333333
+        },
+        {
+          "children": 474,
+          "weight": 0.00333333
+        },
+        {
+          "children": 475,
+          "weight": 0.00333333
+        },
+        {
+          "children": 476,
+          "weight": 0.00333333
+        },
+        {
+          "children": 477,
+          "weight": 0.00333333
+        },
+        {
+          "children": 478,
+          "weight": 0.00333333
+        },
+        {
+          "children": 479,
+          "weight": 0.00666667
+        },
+        {
+          "children": 480,
+          "weight": 0.00333333
+        },
+        {
+          "children": 481,
+          "weight": 0.00333333
+        },
+        {
+          "children": 484,
+          "weight": 0.00666667
+        },
+        {
+          "children": 486,
+          "weight": 0.00333333
+        },
+        {
+          "children": 488,
+          "weight": 0.00666667
+        },
+        {
+          "children": 489,
+          "weight": 0.00333333
+        },
+        {
+          "children": 493,
+          "weight": 0.00333333
+        },
+        {
+          "children": 497,
+          "weight": 0.00666667
+        },
+        {
+          "children": 498,
+          "weight": 0.00666667
+        },
+        {
+          "children": 500,
+          "weight": 0.00333333
+        },
+        {
+          "children": 501,
+          "weight": 0.00333333
+        },
+        {
+          "children": 502,
+          "weight": 0.00666667
+        },
+        {
+          "children": 504,
+          "weight": 0.00333333
+        },
+        {
+          "children": 505,
+          "weight": 0.00333333
+        },
+        {
+          "children": 510,
+          "weight": 0.00666667
+        },
+        {
+          "children": 511,
+          "weight": 0.00333333
+        },
+        {
+          "children": 513,
+          "weight": 0.00333333
+        },
+        {
+          "children": 514,
+          "weight": 0.00333333
+        },
+        {
+          "children": 518,
+          "weight": 0.01
+        },
+        {
+          "children": 519,
+          "weight": 0.00666667
+        },
+        {
+          "children": 520,
+          "weight": 0.00333333
+        },
+        {
+          "children": 522,
+          "weight": 0.00666667
+        },
+        {
+          "children": 523,
+          "weight": 0.00333333
+        },
+        {
+          "children": 524,
+          "weight": 0.00333333
+        },
+        {
+          "children": 526,
+          "weight": 0.00666667
+        },
+        {
+          "children": 528,
+          "weight": 0.00333333
+        },
+        {
+          "children": 530,
+          "weight": 0.00333333
+        },
+        {
+          "children": 531,
+          "weight": 0.00333333
+        },
+        {
+          "children": 532,
+          "weight": 0.00333333
+        },
+        {
+          "children": 533,
+          "weight": 0.01666667
+        },
+        {
+          "children": 534,
+          "weight": 0.00333333
+        },
+        {
+          "children": 535,
+          "weight": 0.01333333
+        },
+        {
+          "children": 538,
+          "weight": 0.00666667
+        },
+        {
+          "children": 539,
+          "weight": 0.00333333
+        },
+        {
+          "children": 541,
+          "weight": 0.00666667
+        },
+        {
+          "children": 544,
+          "weight": 0.00333333
+        },
+        {
+          "children": 545,
+          "weight": 0.00333333
+        },
+        {
+          "children": 548,
+          "weight": 0.00333333
+        },
+        {
+          "children": 550,
+          "weight": 0.01
+        },
+        {
+          "children": 551,
+          "weight": 0.00333333
+        },
+        {
+          "children": 552,
+          "weight": 0.00333333
+        },
+        {
+          "children": 555,
+          "weight": 0.00666667
+        },
+        {
+          "children": 556,
+          "weight": 0.00333333
+        },
+        {
+          "children": 557,
+          "weight": 0.00333333
+        },
+        {
+          "children": 558,
+          "weight": 0.01
+        },
+        {
+          "children": 561,
+          "weight": 0.00333333
+        },
+        {
+          "children": 562,
+          "weight": 0.00333333
+        },
+        {
+          "children": 563,
+          "weight": 0.00333333
+        },
+        {
+          "children": 564,
+          "weight": 0.00333333
+        },
+        {
+          "children": 569,
+          "weight": 0.00333333
+        },
+        {
+          "children": 570,
+          "weight": 0.00333333
+        },
+        {
+          "children": 571,
+          "weight": 0.00666667
+        },
+        {
+          "children": 575,
+          "weight": 0.00333333
+        },
+        {
+          "children": 583,
+          "weight": 0.00333333
+        },
+        {
+          "children": 584,
+          "weight": 0.00666667
+        },
+        {
+          "children": 585,
+          "weight": 0.00666667
+        },
+        {
+          "children": 586,
+          "weight": 0.00666667
+        },
+        {
+          "children": 587,
+          "weight": 0.00666667
+        },
+        {
+          "children": 593,
+          "weight": 0.00333333
+        },
+        {
+          "children": 595,
+          "weight": 0.00333333
+        },
+        {
+          "children": 599,
+          "weight": 0.00333333
+        },
+        {
+          "children": 604,
+          "weight": 0.00333333
+        },
+        {
+          "children": 607,
+          "weight": 0.00333333
+        },
+        {
+          "children": 613,
+          "weight": 0.00333333
+        },
+        {
+          "children": 636,
+          "weight": 0.00333333
+        },
+        {
+          "children": 659,
+          "weight": 0.00333333
+        },
+        {
+          "children": 661,
+          "weight": 0.00333333
+        },
+        {
+          "children": 680,
+          "weight": 0.00333333
+        },
+        {
+          "children": 684,
+          "weight": 0.00333333
+        },
+        {
+          "children": 686,
+          "weight": 0.00666667
+        },
+        {
+          "children": 690,
+          "weight": 0.00333333
+        },
+        {
+          "children": 692,
+          "weight": 0.00333333
+        },
+        {
+          "children": 693,
+          "weight": 0.00666667
+        },
+        {
+          "children": 695,
+          "weight": 0.00333333
+        },
+        {
+          "children": 700,
+          "weight": 0.00333333
+        },
+        {
+          "children": 701,
+          "weight": 0.00333333
+        },
+        {
+          "children": 702,
+          "weight": 0.00333333
+        },
+        {
+          "children": 703,
+          "weight": 0.00333333
+        },
+        {
+          "children": 704,
+          "weight": 0.00333333
+        },
+        {
+          "children": 705,
+          "weight": 0.00333333
+        },
+        {
+          "children": 708,
+          "weight": 0.00666667
+        },
+        {
+          "children": 711,
+          "weight": 0.00333333
+        },
+        {
+          "children": 713,
+          "weight": 0.00333333
+        },
+        {
+          "children": 715,
+          "weight": 0.00333333
+        },
+        {
+          "children": 721,
+          "weight": 0.00333333
+        },
+        {
+          "children": 723,
+          "weight": 0.00333333
+        },
+        {
+          "children": 727,
+          "weight": 0.00333333
+        },
+        {
+          "children": 728,
+          "weight": 0.00333333
+        },
+        {
+          "children": 731,
+          "weight": 0.00333333
+        },
+        {
+          "children": 732,
+          "weight": 0.00333333
+        },
+        {
+          "children": 733,
+          "weight": 0.00333333
+        },
+        {
+          "children": 734,
+          "weight": 0.00333333
+        },
+        {
+          "children": 735,
+          "weight": 0.00333333
+        },
+        {
+          "children": 739,
+          "weight": 0.00333333
+        },
+        {
+          "children": 741,
+          "weight": 0.00333333
+        },
+        {
+          "children": 742,
+          "weight": 0.00333333
+        },
+        {
+          "children": 743,
+          "weight": 0.00333333
+        },
+        {
+          "children": 746,
+          "weight": 0.00333333
+        },
+        {
+          "children": 747,
+          "weight": 0.00333333
+        },
+        {
+          "children": 749,
+          "weight": 0.00333333
+        },
+        {
+          "children": 750,
+          "weight": 0.00333333
+        },
+        {
+          "children": 751,
+          "weight": 0.00333333
+        },
+        {
+          "children": 754,
+          "weight": 0.00333333
+        },
+        {
+          "children": 762,
+          "weight": 0.00666667
+        },
+        {
+          "children": 763,
+          "weight": 0.00333333
+        },
+        {
+          "children": 765,
+          "weight": 0.00666667
+        },
+        {
+          "children": 768,
+          "weight": 0.00666667
+        },
+        {
+          "children": 770,
+          "weight": 0.00333333
+        },
+        {
+          "children": 774,
+          "weight": 0.00666667
+        },
+        {
+          "children": 779,
+          "weight": 0.00333333
+        },
+        {
+          "children": 790,
+          "weight": 0.00333333
+        },
+        {
+          "children": 795,
+          "weight": 0.00333333
+        },
+        {
+          "children": 798,
+          "weight": 0.00333333
+        },
+        {
+          "children": 803,
+          "weight": 0.00666667
+        },
+        {
+          "children": 805,
+          "weight": 0.00333333
+        },
+        {
+          "children": 811,
+          "weight": 0.00333333
+        },
+        {
+          "children": 817,
+          "weight": 0.00333333
+        },
+        {
+          "children": 839,
+          "weight": 0.00333333
+        },
+        {
+          "children": 851,
+          "weight": 0.00333333
+        },
+        {
+          "children": 856,
+          "weight": 0.00333333
+        },
+        {
+          "children": 859,
+          "weight": 0.00333333
+        },
+        {
+          "children": 864,
+          "weight": 0.00333333
+        },
+        {
+          "children": 869,
+          "weight": 0.00666667
+        },
+        {
+          "children": 871,
+          "weight": 0.00333333
+        },
+        {
+          "children": 889,
+          "weight": 0.00666667
+        },
+        {
+          "children": 890,
+          "weight": 0.00333333
+        },
+        {
+          "children": 894,
+          "weight": 0.00333333
+        },
+        {
+          "children": 897,
+          "weight": 0.00333333
+        },
+        {
+          "children": 898,
+          "weight": 0.00333333
+        },
+        {
+          "children": 903,
+          "weight": 0.00333333
+        },
+        {
+          "children": 918,
+          "weight": 0.00333333
+        },
+        {
+          "children": 924,
+          "weight": 0.00333333
+        },
+        {
+          "children": 927,
+          "weight": 0.00333333
+        },
+        {
+          "children": 928,
+          "weight": 0.00333333
+        },
+        {
+          "children": 931,
+          "weight": 0.00333333
+        },
+        {
+          "children": 939,
+          "weight": 0.00333333
+        },
+        {
+          "children": 942,
+          "weight": 0.00333333
+        },
+        {
+          "children": 944,
+          "weight": 0.00333333
+        },
+        {
+          "children": 947,
+          "weight": 0.00333333
+        },
+        {
+          "children": 951,
+          "weight": 0.00666667
+        },
+        {
+          "children": 957,
+          "weight": 0.00333333
+        },
+        {
+          "children": 959,
+          "weight": 0.00666667
+        },
+        {
+          "children": 980,
+          "weight": 0.00333333
+        },
+        {
+          "children": 981,
+          "weight": 0.00333333
+        },
+        {
+          "children": 983,
+          "weight": 0.00333333
+        },
+        {
+          "children": 993,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1000,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1010,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1027,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1051,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1054,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1056,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1074,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1077,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1078,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1091,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1097,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1101,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1103,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1110,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1126,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1145,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1155,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1163,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1173,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1178,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1183,
+          "weight": 0.00666667
+        },
+        {
+          "children": 1185,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1194,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1199,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1224,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1243,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1248,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1261,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1288,
+          "weight": 0.00333333
+        },
+        {
+          "children": 1336,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2748,
+          "weight": 0.00333333
+        },
+        {
+          "children": 2989,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3497,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3501,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3515,
+          "weight": 0.00333333
+        },
+        {
+          "children": 3658,
+          "weight": 0.00333333
+        }
+      ]
+    },
+    {
+      "child_element": "MEMBER_KEY",
+      "parent_element": "SUBSCRIBER_KEY",
+      "child_table": "sdm.member_denorm",
+      "parent_table": "sdm.member_denorm",
+      "observed_in": [
+        "sdm.member_denorm: MEME_CK per SBSB_CK"
+      ],
+      "parents": 20000,
+      "children": 46077,
+      "minimum": 1,
+      "maximum": 5,
+      "mean": 2.3039,
+      "stddev": 1.1354,
+      "median": 2.0,
+      "p90": 4.0,
+      "p99": 5.0,
+      "histogram": [
+        {
+          "children": 1,
+          "weight": 0.2818
+        },
+        {
+          "children": 2,
+          "weight": 0.3399
+        },
+        {
+          "children": 3,
+          "weight": 0.22055
+        },
+        {
+          "children": 4,
+          "weight": 0.10815
+        },
+        {
+          "children": 5,
+          "weight": 0.0496
+        }
+      ]
+    },
+    {
+      "child_element": "LINE_NUMBER",
+      "parent_element": "CLAIM_ID",
+      "child_table": "sdm.claims_denorm",
+      "parent_table": "sdm.claims_denorm",
+      "observed_in": [
+        "sdm.claims_denorm: CDML_SEQ_NO per CLCL_ID"
+      ],
+      "parents": 210727,
+      "children": 649391,
+      "minimum": 1,
+      "maximum": 5,
+      "mean": 3.0817,
+      "stddev": 1.1541,
+      "median": 3.0,
+      "p90": 5.0,
+      "p99": 5.0,
+      "histogram": [
+        {
+          "children": 1,
+          "weight": 0.09951739
+        },
+        {
+          "children": 2,
+          "weight": 0.1993717
+        },
+        {
+          "children": 3,
+          "weight": 0.35154014
+        },
+        {
+          "children": 4,
+          "weight": 0.21906543
+        },
+        {
+          "children": 5,
+          "weight": 0.13050535
+        }
+      ]
+    },
+    {
+      "child_element": "MEMBER_KEY",
+      "parent_element": "SUBSCRIBER_ID",
+      "child_table": "sdm.member_denorm",
+      "parent_table": "sdm.member_denorm",
+      "observed_in": [
+        "sdm.member_denorm: MEME_CK per SBSB_ID"
+      ],
+      "parents": 20000,
+      "children": 46077,
+      "minimum": 1,
+      "maximum": 5,
+      "mean": 2.3039,
+      "stddev": 1.1354,
+      "median": 2.0,
+      "p90": 4.0,
+      "p99": 5.0,
+      "histogram": [
+        {
+          "children": 1,
+          "weight": 0.2818
+        },
+        {
+          "children": 2,
+          "weight": 0.3399
+        },
+        {
+          "children": 3,
+          "weight": 0.22055
+        },
+        {
+          "children": 4,
+          "weight": 0.10815
+        },
+        {
+          "children": 5,
+          "weight": 0.0496
+        }
+      ]
+    },
+    {
+      "child_element": "MEMBER_KEY",
+      "parent_element": "EMPLOYEE_ID",
+      "child_table": "sdm.member_denorm",
+      "parent_table": "sdm.member_denorm",
+      "observed_in": [
+        "sdm.member_denorm: MEME_CK per SBSB_EMPLOY_ID"
+      ],
+      "parents": 20000,
+      "children": 46077,
+      "minimum": 1,
+      "maximum": 5,
+      "mean": 2.3039,
+      "stddev": 1.1354,
+      "median": 2.0,
+      "p90": 4.0,
+      "p99": 5.0,
+      "histogram": [
+        {
+          "children": 1,
+          "weight": 0.2818
+        },
+        {
+          "children": 2,
+          "weight": 0.3399
+        },
+        {
+          "children": 3,
+          "weight": 0.22055
+        },
+        {
+          "children": 4,
+          "weight": 0.10815
+        },
+        {
+          "children": 5,
+          "weight": 0.0496
+        }
+      ]
+    }
+  ],
+  "sums": [
+    {
+      "total_element": "CHARGE_AMOUNT",
+      "part_element": "CHARGE_AMOUNT",
+      "key_element": "CLAIM_ID",
+      "observed_in": [
+        "sdm.claims_denorm: CLCL_TOT_CHG = sum(CDML_CHG_AMT) per CLCL_ID"
+      ],
+      "groups": 210727,
+      "matched": 210727
+    }
+  ],
+  "line_elements": [
+    "CHARGE_AMOUNT",
+    "LINE_NUMBER",
+    "PROCEDURE_CODE",
+    "PROCEDURE_DESCRIPTION",
+    "SERVICE_UNITS"
+  ],
+  "unmatched": [
+    "sdm.claims_detail_denorm.SESE_ID",
+    "sdm.claims_detail_denorm.SESE_RULE",
+    "sdm.claims_detail_denorm.SEPY_PFX",
+    "sdm.claims_detail_denorm.DEDE_PFX",
+    "sdm.claims_detail_denorm.LTLT_PFX",
+    "sdm.claims_detail_denorm.PDVC_LOBD_PTR",
+    "sdm.claims_detail_denorm.CDSD_NDC_CODE",
+    "sdm.claims_detail_denorm.CDCB_COB_TYPE",
+    "sdm.claims_detail_denorm.CDCB_COB_AMT",
+    "sdm.claims_detail_denorm.CDCB_COB_ALLOW",
+    "sdm.claims_detail_denorm.CDCB_COB_DED_AMT",
+    "sdm.claims_detail_denorm.CDCB_COB_COPAY_AMT",
+    "sdm.claims_detail_denorm.CDCB_COB_COINS_AMT",
+    "sdm.claims_detail_denorm.CDCB_COB_REAS_CD",
+    "sdm.claims_header_ext_denorm.CSCS_ID",
+    "sdm.claims_header_ext_denorm.PRAD_TYPE",
+    "sdm.claims_header_ext_denorm.NWPR_PFX",
+    "sdm.claims_header_ext_denorm.AGAG_ID",
+    "sdm.claims_header_ext_denorm.CLHP_FAC_TYPE",
+    "sdm.claims_header_ext_denorm.CLHP_BILL_CLASS",
+    "sdm.claims_header_ext_denorm.CLHP_FREQUENCY",
+    "sdm.claims_header_ext_denorm.CLHP_ADM_TYP",
+    "sdm.claims_header_ext_denorm.CLHP_ADM_SOURCE",
+    "sdm.claims_header_ext_denorm.CLHP_DC_STAT",
+    "sdm.claims_header_ext_denorm.CLHP_ADM_DT",
+    "sdm.claims_header_ext_denorm.CLHP_ADM_HOUR_CD",
+    "sdm.claims_header_ext_denorm.CLHP_DC_DT",
+    "sdm.claims_header_ext_denorm.CLHP_DC_HOUR_CD",
+    "sdm.claims_header_ext_denorm.CLHP_STAMENT_FR_DT",
+    "sdm.claims_header_ext_denorm.CLHP_STAMENT_TO_DT",
+    "sdm.claims_header_ext_denorm.CLHP_MED_REC_NO",
+    "sdm.claims_header_ext_denorm.AGRG_ID",
+    "sdm.claims_header_ext_denorm.CLHP_INPUT_AGRG_ID",
+    "sdm.claims_header_ext_denorm.CLMF_INPUT_TXNM_CD",
+    "sdm.claims_header_ext_denorm.CLMF_EXT_REFRAL_NO",
+    "sdm.claims_header_ext_denorm.CLMF_EXT_PREATH_NO",
+    "sdm.claims_header_ext_denorm.CLED_HIPAA_VERSION",
+    "sdm.claims_header_ext_denorm.CLED_EXT_REF",
+    "sdm.claims_header_ext_denorm.CLED_TRAD_PARTNER",
+    "sdm.claims_header_ext_denorm.CLCB_COB_TYPE",
+    "sdm.claims_header_ext_denorm.CLCB_COB_AMT",
+    "sdm.claims_header_ext_denorm.CLCB_COB_ALLOW",
+    "sdm.claims_header_ext_denorm.CLCB_COB_DED_AMT",
+    "sdm.claims_header_ext_denorm.CLCB_COB_COPAY_AMT",
+    "sdm.claims_header_ext_denorm.CLCB_COB_COINS_AMT",
+    "sdm.claims_header_ext_denorm.CLCB_COB_REAS_CD",
+    "sdm.plan_benefit_denorm.PDVC_TIER",
+    "sdm.plan_benefit_denorm.PDVC_TYPE",
+    "sdm.plan_benefit_denorm.PDVC_SEQ_NO",
+    "sdm.plan_benefit_denorm.PDVC_PR_PCP",
+    "sdm.plan_benefit_denorm.PDVC_PR_IN",
+    "sdm.plan_benefit_denorm.PDVC_PR_PAR",
+    "sdm.plan_benefit_denorm.PDVC_PR_NONPAR",
+    "sdm.plan_benefit_denorm.PDVC_PC_NR",
+    "sdm.plan_benefit_denorm.PDVC_PC_OBT",
+    "sdm.plan_benefit_denorm.PDVC_PC_VIOL",
+    "sdm.plan_benefit_denorm.PDVC_REF_NR",
+    "sdm.plan_benefit_denorm.PDVC_REF_OBT",
+    "sdm.plan_benefit_denorm.PDVC_REF_VIOL",
+    "sdm.plan_benefit_denorm.PDVC_LOBD_PTR",
+    "sdm.plan_benefit_denorm.SEPY_PFX",
+    "sdm.plan_benefit_denorm.DEDE_PFX",
+    "sdm.plan_benefit_denorm.LTLT_PFX",
+    "sdm.plan_benefit_denorm.SESE_ID",
+    "sdm.plan_benefit_denorm.SESE_RULE",
+    "sdm.plan_benefit_denorm.SEDS_TYPE",
+    "sdm.plan_benefit_denorm.SESE_RULE_TYPE",
+    "sdm.plan_benefit_denorm.SESE_CALC_IND",
+    "sdm.plan_benefit_denorm.SESE_COV_TYPE",
+    "sdm.plan_benefit_denorm.SETR_TIER_NO",
+    "sdm.plan_benefit_denorm.SETR_ALLOW_AMT",
+    "sdm.plan_benefit_denorm.SETR_ALLOW_CTR",
+    "sdm.plan_benefit_denorm.SETR_COPAY_AMT",
+    "sdm.plan_benefit_denorm.SETR_COIN_PCT",
+    "sdm.plan_benefit_denorm.ACAC_ACC_NO",
+    "sdm.plan_benefit_denorm.SEDF_UM_REQ_IND",
+    "sdm.plan_benefit_denorm.SEDF_UM_BP_REF_IND",
+    "sdm.plan_benefit_denorm.SEDF_CAP_IND",
+    "sdm.plan_denorm.CSCS_ID",
+    "sdm.plan_denorm.NWST_PFX",
+    "sdm.subscriber_denorm.SBAD_TYPE_HOME",
+    "sdm.subscriber_denorm.SBAD_ADDR1",
+    "sdm.subscriber_denorm.SBAD_ADDR2",
+    "sdm.subscriber_denorm.SBAD_CTRY_CD"
+  ],
+  "empty": [
+    "sdm.claims_denorm.CLCL_CL_SUB_TYPE",
+    "sdm.claims_denorm.CLST_MCTR_REAS",
+    "sdm.claims_denorm.CLCL_TOT_PAYABLE",
+    "sdm.claims_denorm.MEPE_FI",
+    "sdm.claims_denorm.IDCD_ID_ADMIT",
+    "sdm.claims_denorm.IPCD_TYPE",
+    "sdm.claims_denorm.PSCD_ID",
+    "sdm.claims_denorm.RCRC_ID",
+    "sdm.claims_denorm.LOBD_ID",
+    "sdm.claims_denorm.PRPR_NAME",
+    "sdm.claims_denorm.CDML_ALLOW",
+    "sdm.claims_denorm.CDML_PAID_AMT",
+    "sdm.claims_denorm.CDML_DED_AMT",
+    "sdm.claims_denorm.CDML_COPAY_AMT",
+    "sdm.claims_denorm.CDML_COINS_AMT",
+    "sdm.claims_denorm.CDML_DISALL_AMT",
+    "sdm.claims_denorm.CDML_DISC_AMT",
+    "sdm.claims_denorm.CDML_TOT_PA_LIAB",
+    "sdm.claims_denorm.CLCL_EXT_AUTH_NO",
+    "sdm.claims_denorm.CDML_PRE_AUTH_IND",
+    "sdm.claims_denorm.CLCL_PRPR_ID_REF",
+    "sdm.claims_denorm.CLCL_PRPR_ID_PCP",
+    "sdm.claims_denorm.CLCL_PCP_IND",
+    "sdm.member_denorm.MEME_MEDCD_NO",
+    "sdm.member_denorm.MEME_HICN",
+    "sdm.member_denorm.MEME_MCTR_RACE_NVL",
+    "sdm.member_denorm.MEME_MCTR_ETHN_NVL",
+    "sdm.member_denorm.SBSG_TERM_DT",
+    "sdm.member_denorm.SBSG_MCTR_TRSN",
+    "sdm.member_denorm.SGSG_TERM_DT",
+    "sdm.member_denorm.GRGR_TERM_DT",
+    "sdm.member_denorm.PAGR_CK",
+    "sdm.member_denorm.CSPI_TERM_DT",
+    "sdm.member_denorm.CSPI_HIOS_ID_NVL",
+    "sdm.member_denorm.LOBD_ID",
+    "sdm.member_denorm.EMAIL",
+    "sdm.plan_denorm.CSPI_TERM_DT",
+    "sdm.plan_denorm.CSPI_PDPD_BEG_MMDD",
+    "sdm.plan_denorm.TPCT_PFX",
+    "sdm.plan_denorm.LOBD_ID",
+    "sdm.plan_denorm.PDDS_DESC",
+    "sdm.plan_denorm.PDDS_MCTR_BCAT",
+    "sdm.plan_denorm.PDDS_UM_IND",
+    "sdm.plan_denorm.PDDS_OON_IND",
+    "sdm.plan_denorm.PYPY_ID",
+    "sdm.plan_denorm.PYPY_PAYOR_NAME",
+    "sdm.plan_denorm.PYPY_NATL_PLAN_ID",
+    "sdm.plan_denorm.PYPY_NAIC_CODE",
+    "sdm.plan_denorm.PYPY_TAX_ID",
+    "sdm.plan_denorm.PYPY_ADDR1",
+    "sdm.plan_denorm.PYPY_ADDR2",
+    "sdm.plan_denorm.PYPY_CITY",
+    "sdm.plan_denorm.PYPY_STATE",
+    "sdm.plan_denorm.PYPY_ZIP",
+    "sdm.provider_denorm.PRPR_NAME",
+    "sdm.provider_denorm.PRCP_ID",
+    "sdm.provider_denorm.PRCP_LAST_NAME",
+    "sdm.provider_denorm.PRCP_FIRST_NAME",
+    "sdm.provider_denorm.PRCP_MID_INIT",
+    "sdm.provider_denorm.PRCP_TITLE",
+    "sdm.provider_denorm.PRFA_NAME",
+    "sdm.provider_denorm.PRPR_TAXONOMY_CD",
+    "sdm.provider_denorm.PRPR_MCTR_TYPE",
+    "sdm.provider_denorm.PRCF_MCTR_SPEC2",
+    "sdm.provider_denorm.PRPR_MCTR_PRTY",
+    "sdm.provider_denorm.TPCT_MCTR_TCAT",
+    "sdm.provider_denorm.PRAD_ID",
+    "sdm.provider_denorm.PRAD_TYPE_PRIM",
+    "sdm.provider_denorm.PRAD_TYPE_CHECK",
+    "sdm.provider_denorm.MCTN_ID",
+    "sdm.provider_denorm.MCTN_TYPE",
+    "sdm.provider_denorm.MCTN_NAME",
+    "sdm.provider_denorm.PRPR_TERM_DT",
+    "sdm.provider_denorm.PRPR_PREAUTH_IND",
+    "sdm.provider_denorm.PRCR_ID"
+  ]
+}

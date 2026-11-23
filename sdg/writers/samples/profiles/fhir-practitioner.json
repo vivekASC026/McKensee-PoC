@@ -1,0 +1,42 @@
+{
+  "about": "Practitioners modeled on a sample of a Practitioner on its own: one per provider of the claims written, carrying that provider's id, taken in turn from the sample's practitioners. Providers are never generated: the id is an existing provider's, everything else the sample's unless a config names it.",
+  "extends": "fhir",
+  "kind": "practitioner",
+  "subject": "claims",
+  "match": [
+    "Practitioner"
+  ],
+  "fallback": true,
+  "member": {
+    "about": "Whose values a place's suggestion is for: the resource this file repeats.",
+    "types": [
+      "Practitioner"
+    ]
+  },
+  "counts": {
+    "practitioners": "Practitioner"
+  },
+  "summary": "{practitioners} practitioners",
+  "units": [
+    {
+      "name": "provider",
+      "starts": "Practitioner",
+      "group": "PROVIDER_ID",
+      "row": "count",
+      "missing": "The sample has no Practitioner to model providers on."
+    }
+  ],
+  "derive": [
+    {
+      "about": "Every resource written is a new one: a new id, and every reference to it follows.",
+      "op": "rename",
+      "at": "* id",
+      "to": "{id}-{n}"
+    },
+    {
+      "about": "The narrative describes the sample's resource, not the one written.",
+      "op": "drop",
+      "at": "* text"
+    }
+  ]
+}

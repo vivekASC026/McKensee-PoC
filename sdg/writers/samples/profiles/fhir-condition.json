@@ -1,0 +1,42 @@
+{
+  "about": "Conditions modeled on a sample of a Condition on its own: one per claim written (its diagnosis, on its date of service), taken in turn from the sample's conditions.",
+  "extends": "fhir",
+  "kind": "condition",
+  "subject": "claims",
+  "match": [
+    "Condition"
+  ],
+  "fallback": true,
+  "member": {
+    "about": "Whose values a place's suggestion is for: the resource this file repeats.",
+    "types": [
+      "Condition"
+    ]
+  },
+  "counts": {
+    "conditions": "Condition"
+  },
+  "summary": "{conditions} conditions",
+  "units": [
+    {
+      "name": "claim",
+      "starts": "Condition",
+      "group": "CLAIM_ID",
+      "row": "count",
+      "missing": "The sample has no Condition to model diagnoses on."
+    }
+  ],
+  "derive": [
+    {
+      "about": "Every resource written is a new one: a new id, and every reference to it follows.",
+      "op": "rename",
+      "at": "* id",
+      "to": "{id}-{n}"
+    },
+    {
+      "about": "The narrative describes the sample's resource, not the one written.",
+      "op": "drop",
+      "at": "* text"
+    }
+  ]
+}

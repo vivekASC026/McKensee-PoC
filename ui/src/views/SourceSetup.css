@@ -1,0 +1,483 @@
+/* Source setup. Every value sits next to its own label: facts are label over
+   value, in cells sized to their content, never spread across the row. */
+
+.srcsetup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.srcsetup .input {
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+  padding: 5px 8px;
+  font-size: var(--t-small);
+  min-width: 0;
+}
+.srcsetup .input:disabled {
+  background: var(--paper-sunk);
+  color: var(--ink-faint);
+}
+.srcsetup__said {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+.srcsetup__said p {
+  margin: 0;
+}
+.srcsetup__inline {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+.srcsetup__subtitle {
+  font-size: var(--t-base);
+  font-weight: 600;
+  margin: var(--space-2) 0 var(--space-1);
+}
+.srcsetup__minor {
+  font-size: var(--t-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+  font-weight: 500;
+  margin: var(--space-3) 0 var(--space-2);
+}
+.srcsetup__narrow {
+  width: auto;
+  min-width: min(420px, 100%);
+}
+/* A wide table scrolls inside its own box on a narrow screen; the page does not. */
+.srcsetup__scroll {
+  max-width: 100%;
+  overflow-x: auto;
+}
+/* Long table and column names break rather than push the page wider. */
+.srcsetup .mono {
+  overflow-wrap: anywhere;
+}
+.srcsetup__columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: var(--space-5);
+}
+.srcsetup__result {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  border-top: 1px solid var(--rule);
+  padding-top: var(--space-3);
+}
+.srclist {
+  margin: 0;
+  padding-left: var(--space-4);
+  font-size: var(--t-small);
+  display: grid;
+  gap: 2px;
+}
+
+/* Sources: one row a source, its facts beside its name. */
+.srcsources {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+}
+.srcsource {
+  display: grid;
+  grid-template-columns: auto auto auto 1fr;
+  align-items: center;
+  column-gap: var(--space-3);
+  row-gap: 2px;
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--rule);
+  cursor: pointer;
+}
+.srcsource:last-child {
+  border-bottom: none;
+}
+.srcsource--on {
+  background: var(--structural-wash);
+}
+.srcsource__name {
+  font-weight: 600;
+}
+.srcsource__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-4);
+  font-size: var(--t-small);
+  color: var(--ink-soft);
+}
+.srcsource__problem {
+  grid-column: 2 / -1;
+  font-size: var(--t-small);
+  color: var(--caution);
+}
+
+.srcsetup__add {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+.srcsetup__addfield {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* A read under way. */
+.srcprogress {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  font-size: var(--t-small);
+}
+.srcprogress__label {
+  font-weight: 600;
+}
+.srcprogress__bar {
+  width: 180px;
+  height: 8px;
+}
+.srcprogress__facts {
+  color: var(--ink-faint);
+}
+.srcprogress__trouble {
+  color: var(--caution);
+}
+
+/* Counts: label over value, each in its own small cell. */
+.srccounts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-6);
+  margin: 0;
+}
+.srccounts__item dt {
+  font-size: var(--t-micro);
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.srccounts__item dd {
+  margin: 0;
+  font-size: var(--t-large);
+  font-weight: 600;
+}
+
+/* Record kinds. */
+.srckinds {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
+  gap: var(--space-4);
+}
+.srckind {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--paper-raised);
+}
+.srckind__head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.srckind__title {
+  font-size: var(--t-base);
+  font-weight: 600;
+}
+.srckind__table,
+.srckind__namefield,
+.srclevel__swap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: flex-start;
+}
+.srckind__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space-5);
+}
+.srckind__facts .field {
+  grid-template-columns: auto auto;
+}
+.srckind__why {
+  font-size: var(--t-small);
+  color: var(--ink-soft);
+  margin: 0;
+}
+.srckind__name {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.srcsetup__roles {
+  margin-top: var(--space-4);
+}
+
+/* Level cards, broadest first. */
+.srclevels {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.srclevel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--structural);
+  border-radius: 4px;
+  background: var(--paper-raised);
+}
+.srclevel--off {
+  border-left-color: var(--rule-strong);
+  background: var(--paper-sunk);
+}
+.srclevel__head {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+.srclevel__n {
+  font-weight: 600;
+  color: var(--ink-faint);
+  min-width: 1.5em;
+}
+.srclevel__name {
+  font-weight: 600;
+}
+.srclevel__on {
+  font-weight: 400;
+  color: var(--ink-faint);
+}
+.srclevel__pick {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--t-small);
+}
+.srclevel__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-5);
+  margin: 0;
+  font-size: var(--t-small);
+}
+.srclevel__facts div {
+  display: flex;
+  gap: var(--space-2);
+  align-items: baseline;
+}
+.srclevel__facts dt {
+  color: var(--ink-faint);
+}
+.srclevel__facts dd {
+  margin: 0;
+}
+.srclevel__reason {
+  margin: 0;
+  font-size: var(--t-small);
+  color: var(--ink-soft);
+}
+.srclevel__notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.srclevel__actions {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+}
+
+.srcfeatures {
+  margin-top: var(--space-4);
+}
+.srcnotes summary {
+  cursor: pointer;
+  font-size: var(--t-small);
+  color: var(--ink-soft);
+}
+.srctables td {
+  vertical-align: top;
+}
+
+/* Criteria: a value's editor sits under its own card. */
+.srccriterion__edit {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-1);
+}
+.srccriterion__values {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.srccriterion__values textarea {
+  min-width: min(260px, 100%);
+  resize: vertical;
+}
+
+/* Structure: one table per record kind. */
+.srcdenorm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+.srcstructure td {
+  vertical-align: top;
+}
+.srcprivacy {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.srcprivacy__was {
+  display: block;
+  margin-top: 2px;
+}
+
+/* Approval: the status, label beside value. */
+.srcstatus {
+  margin: var(--space-1) 0 var(--space-2);
+}
+.srcproblems li {
+  color: var(--ink-soft);
+}
+
+/* Build: the files, a file shown as text, and the install steps. */
+.srcfiles td {
+  vertical-align: middle;
+}
+.srcfiles__actions {
+  display: inline-flex;
+  gap: var(--space-2);
+}
+.srcviewer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--paper-raised);
+  padding: var(--space-2) var(--space-3);
+}
+.srcviewer__head {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  min-width: 0;
+}
+.srcviewer__head .srcsetup__minor {
+  margin: 0;
+}
+.srcviewer__text {
+  margin: 0;
+  max-height: 420px;
+  overflow: auto;
+  white-space: pre;
+  font-size: var(--t-small);
+}
+.srcsteps {
+  margin: 0;
+  padding-left: 1.5em;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  font-size: var(--t-small);
+}
+.srcsteps code {
+  overflow-wrap: anywhere;
+}
+
+/* A privacy choice waiting for the person's word, and accepted grain changes. */
+.srcprivacy__sure {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+}
+.srcgrain {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  font-size: var(--t-small);
+}
+.srcjoin {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+/* A button whose words are a sentence wraps inside its notice on a phone. */
+.srcsetup__said .btn {
+  white-space: normal;
+  text-align: left;
+  max-width: 100%;
+}
+/* A hint that asks for attention, beside the action it is about. */
+.srchint--caution {
+  font-size: var(--t-small);
+  color: var(--caution);
+}
+/* The file's text scrolls by keyboard too: its focus is drawn. */
+.srcviewer__text:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* A phone's width: each source's facts stack under its name. */
+@media (max-width: 480px) {
+  .srcsource {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+  .srcsource > :not(input) {
+    grid-column: 2;
+  }
+  .srckind {
+    padding: var(--space-3);
+  }
+}
+
+/* Load */
+.srcload td {
+  vertical-align: middle;
+}
+.srcload__result {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.srcchecks li {
+  overflow-wrap: anywhere;
+}
+.srcdrops {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}

@@ -1,0 +1,832 @@
+{
+  "meta": {
+    "name": "facets-slice-sample",
+    "version": "0.1.0",
+    "seed": "demo-seed-001",
+    "created": "2026-09-15T00:00:00+00:00",
+    "description": "Hand-written plan for the Facets slice. Runs against files with no database, which is what Step 3 uses to exercise the engine."
+  },
+  "sources": [
+    {
+      "name": "files",
+      "kind": "file",
+      "path": "out/sample"
+    }
+  ],
+  "generation_order": [
+    "dbo.CMC_PRPR_PROV",
+    "dbo.CMC_PDPD_PRODUCT",
+    "dbo.CMC_SBSB_SUBSC",
+    "dbo.CMC_MEME_MEMBER",
+    "dbo.CMC_CLCL_CLAIM",
+    "dbo.CMC_CDML_CL_LINE"
+  ],
+  "warnings": [],
+  "tables": [
+    {
+      "name": "dbo.CMC_PRPR_PROV",
+      "schema_name": "dbo",
+      "table_name": "CMC_PRPR_PROV",
+      "mode": "generate",
+      "count": 300,
+      "level": 0,
+      "fields": [
+        {
+          "name": "PRPR_ID",
+          "bucket": "business_key",
+          "element": "PROVIDER_ID",
+          "generator": "pattern",
+          "params": { "regex": "[A-Z]{3}[0-9]{9}", "unique": true },
+          "provenance": "catalog",
+          "confidence": "high",
+          "data_type": "char(12)",
+          "nullable": false,
+          "user_override": false
+        },
+        {
+          "name": "PRPR_NPI",
+          "bucket": "business_key",
+          "element": "NPI",
+          "generator": "pattern",
+          "params": { "regex": "[0-9]{10}", "unique": true },
+          "provenance": "catalog",
+          "confidence": "high",
+          "data_type": "char(10)",
+          "nullable": false,
+          "user_override": false
+        },
+        {
+          "name": "PRPR_SPECIALTY",
+          "bucket": "code",
+          "element": "PROVIDER_SPECIALTY",
+          "generator": "lookup",
+          "params": {
+            "values": ["FAM", "INT", "CAR", "ORT", "DER", "NEU", "ONC", "PED",
+                       "PSY", "RAD", "SUR", "URO", "OBG", "END", "GAS", "OPH",
+                       "ANE", "EMR", "PUL", "DEN"]
+          },
+          "provenance": "catalog",
+          "confidence": "high",
+          "data_type": "char(3)",
+          "nullable": false,
+          "user_override": false
+        },
+        {
+          "name": "PRPR_STATE",
+          "bucket": "code",
+          "element": "ADDRESS_STATE",
+          "generator": "lookup",
+          "params": {
+            "values": ["AL", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "IA",
+                       "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN",
+                       "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV",
+                       "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX",
+                       "UT", "VA", "VT", "WA", "WI", "WV", "WY"]
+          },
+          "provenance": "catalog",
+          "confidence": "high",
+          "data_type": "char(2)",
+          "nullable": false,
+          "user_override": false
+        }
+      ]
+    },
+    {
+      "name": "dbo.CMC_PDPD_PRODUCT",
+      "schema_name": "dbo",
+      "table_name": "CMC_PDPD_PRODUCT",
+      "mode": "generate",
+      "count": 25,
+      "level": 0,
+      "fields": [
+        {
+          "name": "PDPD_ID",
+          "bucket": "business_key",
+          "element": "PRODUCT_CODE",
+          "generator": "pattern",
+          "params": { "regex": "PD[0-9]{6}", "unique": true },
+          "provenance": "catalog",
+          "confidence": "high",
+          "data_type": "char(8)",
+          "nullable": false,
+          "user_override": false
+        },
+        {
+          "name": "PDPD_TYPE",
+          "bucket": "code",
+          "generator": "lookup",
+          "params": { "values": ["M", "D"], "weights": [0.8, 0.2] },
+          "provenance": "structural",
+          "confidence": "high",
+          "evidence": [
+            { "kind": "check_constraint", "detail": "CK_CMC_PDPD_PRODUCT_TYPE allows M, D" }
+          ],
+          "data_type": "char(1)",
+          "nullable": false,
+          "user_override": false
+        }
+      ]
+    },
+    {
+      "name": "dbo.CMC_SBSB_SUBSC",
+      "schema_name": "dbo",
+      "table_name": "CMC_SBSB_SUBSC",
+      "mode": "generate",
+      "count": 500,
+      "level": 0,
+      "fields": [
+        {
+          "name": "SBSB_CK",
+          "bucket": "system",
+          "generator": "sequence",
+          "params": { "start": 1, "step": 1, "scope": "table" },
+          "provenance": "structural",
+          "evidence": [
+            { "kind": "identity", "detail": "identity column; generated here so the file run has a key to reference" }
+          ],
+          "data_type": "bigint",
+          "nullable": false,
+          "user_override": false
+        },
+        {
+          "name": "SBSB_ID",
+          "bucket": "business_key",
+          "element": "SUBSCRIBER_ID",
+          "generator": "pattern",
+          "params": { "regex": "[A-Z]{3}[0-9]{6}", "unique": true },
+          "provenance": "catalog",
+          "confidence": "high",
+          "data_type": "char(9)",
+          "nullable": false,
+          "user_override": false
+        },
+        {
+          "name": "SBSB_LAST_NAME",
+          "bucket": "free",
+          "element": "LAST_NAME",
+          "generator": "lookup",
+          "params": {
+            "values": ["Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia",
+                       "Miller", "Davis", "Rodriguez", "Martinez", "Hernandez",
+                       "Lopez", "Gonzalez", "Wilson", "Anderson", "Thomas",
+                       "Taylor", "Moore", "Jackson", "Martin"]
+          },
+          "provenance": "catalog",
+          "confidence": "high",
+          "data_type": "varchar(30)",
+          "nullable": false,
+          "user_override": false
+        },
+        {
+          "name": "SBSB_EFF_DT",
+          "bucket": "free",
+          "generator": "date_relative",
+          "params": { "anchor": "2018-01-01", "min_days": 0, "max_days": 2372 },
+          "provenance": "learned",
+          "confidence": "medium",
+          "coverage": 1.0,
+          "data_type": "date",
+          "nullable": false,
+          "user_override": false
+        }
+      ]
+    },
+    {
+      "name": "dbo.CMC_MEME_MEMBER",
+      "schema_name": "dbo",
+      "table_name": "CMC_MEME_MEMBER",
+      "mode": "generate",
+      "level": 1,
+      "driving_parent": "dbo.CMC_SBSB_SUBSC",
+      "ratio": {
+        "parent": "dbo.CMC_SBSB_SUBSC",
+        "kind": "distribution",
+        "histogram": [
+          { "children": 1, "weight": 0.28 },
+          { "children": 2, "weight": 0.34 },
+          { "children": 3, "weight": 0.22 },
+          { "children": 4, "weight": 0.11 },
+          { "children": 5, "weight": 0.05 }
+        ],
+        "provenance": "learned",
+        "evidence": [
+          { "kind": "ratio_histogram", "detail": "observed members per subscriber, mean 2.31" }
+        ]
+      },
+      "relationships": [
+        {
+          "kind": "declared",
+          "name": "FK_CMC_MEME_MEMBER_SBSB",
+          "columns": ["SBSB_CK"],
+          "parent_table": "dbo.CMC_SBSB_SUBSC",
+          "parent_columns": ["SBSB_CK"]
+        }
+      ],
+      "fields": [
+        {
+          "name": "MEME_CK",
+          "bucket": "system",
+          "generator": "sequence",
+          "params": { "start": 1, "step": 1, "scope": "table" },
+          "provenance": "structural",
+          "data_type": "bigint",
+          "nullable": false,
+          "user_override": false
+        },
+        {
+          "name": "SBSB_CK",
+          "bucket": "reference",
+          "generator": "reference",
+          "params": {
+            "parent_table": "dbo.CMC_SBSB_SUBSC",
+            "parent_column": "SBSB_CK",
+            "pick": "driving"
+          },
+          "provenance": "structural",
+          "confidence": "high",
+          "evidence": [
+            { "kind": "declared_fk", "detail": "FK_CMC_MEME_MEMBER_SBSB" }
+          ],
+          "data_type": "bigint",
+          "nullable": false,
+          "user_override": false
+        },
+        {
+          "name": "MEME_ID",
+          "bucket": "business_key",
+          "element": "MEMBER_ID",
+          "generator": "pattern",
+          "params": { "regex": "[A-Z]{3}[0-9]{8}", "unique": true },
+          "provenance": "catalog",
+          "confidence": "high",
+          "data_type": "char(11)",
+          "nullable": false,
+          "user_override": false
+        },
+        {
+          "name": "MEME_FIRST_NAME",
+          "bucket": "free",
+          "element": "FIRST_NAME",
+          "generator": "lookup",
+          "params": {
+            "values": ["James", "Mary", "Robert", "Patricia", "John", "Jennifer",
+                       "Michael", "Linda", "David", "Elizabeth", "William",
+                       "Barbara", "Richard", "Susan", "Joseph", "Jessica",
+                       "Thomas", "Sarah", "Charles", "Karen"]
+          },
+          "provenance": "catalog",
+          "confidence": "high",
+          "data_type": "varchar(30)",
+          "nullable": false,
+          "user_override": false
+        },
+        {
+          "name": "MEME_LAST_NAME",
+          "bucket": "free",
+          "element": "LAST_NAME",
+          "generator": "lookup",
+          "params": {
+            "values": ["Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia",
+                       "Miller", "Davis", "Rodriguez", "Martinez", "Hernandez",
+                       "Lopez", "Gonzalez", "Wilson", "Anderson", "Thomas",
+                       "Taylor", "Moore", "Jackson", "Martin"]
+          },
+          "provenance": "catalog",
+          "confidence": "high",
+          "data_type": "varchar(30)",
+          "nullable": false,
+          "user_override": false
+        },
+        {
+          "name": "MEME_BIRTH_DT",
+          "bucket": "free",
+          "element": "DOB",
+          "generator": "date_relative",
+          "params": { "anchor": "2026-06-30", "min_days": -31025, "max_days": 0 },
+          "provenance": "catalog",
+          "confidence": "high",
+          "data_type": "date",
+          "nullable": false,
+          "user_override": false
+        },
+        {
+          "name": "MEME_REL",
+          "bucket": "code",
+          "element": "RELATIONSHIP_CODE",
+          "generator": "lookup",
+          "params": {
+            "values": ["18", "19", "01", "53"],
+            "weights": [0.44, 0.34, 0.2, 0.02]
+          },
+          "provenance": "structural",
+          "confidence": "high",
+          "evidence": [
+            { "kind": "check_constraint", "detail": "CK_CMC_MEME_MEMBER_REL allows 18, 19, 01, 53" }
+          ],
+          "data_type": "char(2)",
+          "nullable": false,
+          "user_override": false
+        },
+        {
+          "name": "MEME_EFF_DT",
+          "bucket": "free",
+          "generator": "date_relative",
+          "params": {
+            "anchor": "dbo.CMC_SBSB_SUBSC.SBSB_EFF_DT",
+            "min_days": 0,
+            "max_days": 365
+          },
+          "provenance": "learned",
+          "confidence": "medium",
+          "coverage": 1.0,
+          "evidence": [
+            { "kind": "date_ordering", "detail": "member effective date follows subscriber effective date in 100 percent of rows", "coverage": 1.0 }
+          ],
+          "data_type": "date",
+          "nullable": false,
+          "user_override": false
+        },
+        {
+          "name": "MEME_TERM_DT",
+          "bucket": "free",
+          "generator": "date_relative",
+          "params": { "anchor": "MEME_EFF_DT", "min_days": 180, "max_days": 1800 },
+          "provenance": "learned",
+          "confidence": "medium",
+          "coverage": 1.0,
+          "data_type": "date",
+          "nullable": true,
+          "null_rate": 0.85,
+          "user_override": false
+        },
+        {
+          "name": "MEME_ZIP",
+          "bucket": "free",
+          "element": "ADDRESS_ZIP",
+          "generator": "lookup",
+          "params": {
+            "record_key": "address",
+            "field": "zip",
+            "values": [
+              { "zip": "10001", "city": "New York", "state": "NY" },
+              { "zip": "11201", "city": "Brooklyn", "state": "NY" },
+              { "zip": "90001", "city": "Los Angeles", "state": "CA" },
+              { "zip": "94102", "city": "San Francisco", "state": "CA" },
+              { "zip": "60601", "city": "Chicago", "state": "IL" },
+              { "zip": "77002", "city": "Houston", "state": "TX" },
+              { "zip": "75201", "city": "Dallas", "state": "TX" },
+              { "zip": "85001", "city": "Phoenix", "state": "AZ" },
+              { "zip": "19102", "city": "Philadelphia", "state": "PA" },
+              { "zip": "33101", "city": "Miami", "state": "FL" },
+              { "zip": "43201", "city": "Columbus", "state": "OH" },
+              { "zip": "28202", "city": "Charlotte", "state": "NC" },
+              { "zip": "98101", "city": "Seattle", "state": "WA" },
+              { "zip": "80202", "city": "Denver", "state": "CO" },
+              { "zip": "02108", "city": "Boston", "state": "MA" },
+              { "zip": "48201", "city": "Detroit", "state": "MI" },
+              { "zip": "37201", "city": "Nashville", "state": "TN" },
+              { "zip": "97201", "city": "Portland", "state": "OR" },
+              { "zip": "89101", "city": "Las Vegas", "state": "NV" },
+              { "zip": "55401", "city": "Minneapolis", "state": "MN" }
+            ]
+          },
+          "provenance": "learned",
+          "confidence": "high",
+          "coverage": 1.0,
+          "evidence": [
+            { "kind": "functional_dependency", "detail": "MEME_ZIP determines MEME_CITY and MEME_STATE", "coverage": 1.0 }
+          ],
+          "data_type": "char(5)",
+          "nullable": false,
+          "user_override": false
+        },
+        {
+          "name": "MEME_CITY",
+          "bucket": "derivable",
+          "element": "ADDRESS_CITY",
+          "generator": "lookup",
+          "params": {
+            "record_key": "address",
+            "field": "city",
+            "values": [
+              { "zip": "10001", "city": "New York", "state": "NY" },
+              { "zip": "11201", "city": "Brooklyn", "state": "NY" },
+              { "zip": "90001", "city": "Los Angeles", "state": "CA" },
+              { "zip": "94102", "city": "San Francisco", "state": "CA" },
+              { "zip": "60601", "city": "Chicago", "state": "IL" },
+              { "zip": "77002", "city": "Houston", "state": "TX" },
+              { "zip": "75201", "city": "Dallas", "state": "TX" },
+              { "zip": "85001", "city": "Phoenix", "state": "AZ" },
+              { "zip": "19102", "city": "Philadelphia", "state": "PA" },
+              { "zip": "33101", "city": "Miami", "state": "FL" },
+              { "zip": "43201", "city": "Columbus", "state": "OH" },
+              { "zip": "28202", "city": "Charlotte", "state": "NC" },
+              { "zip": "98101", "city": "Seattle", "state": "WA" },
+              { "zip": "80202", "city": "Denver", "state": "CO" },
+              { "zip": "02108", "city": "Boston", "state": "MA" },
+              { "zip": "48201", "city": "Detroit", "state": "MI" },
+              { "zip": "37201", "city": "Nashville", "state": "TN" },
+              { "zip": "97201", "city": "Portland", "state": "OR" },
+              { "zip": "89101", "city": "Las Vegas", "state": "NV" },
+              { "zip": "55401", "city": "Minneapolis", "state": "MN" }
+            ]
+          },
+          "provenance": "learned",
+          "confidence": "high",
+          "coverage": 1.0,
+          "data_type": "varchar(40)",
+          "nullable": false,
+          "user_override": false
+        },
+        {
+          "name": "MEME_STATE",
+          "bucket": "derivable",
+          "element": "ADDRESS_STATE",
+          "generator": "lookup",
+          "params": {
+            "record_key": "address",
+            "field": "state",
+            "values": [
+              { "zip": "10001", "city": "New York", "state": "NY" },
+              { "zip": "11201", "city": "Brooklyn", "state": "NY" },
+              { "zip": "90001", "city": "Los Angeles", "state": "CA" },
+              { "zip": "94102", "city": "San Francisco", "state": "CA" },
+              { "zip": "60601", "city": "Chicago", "state": "IL" },
+              { "zip": "77002", "city": "Houston", "state": "TX" },
+              { "zip": "75201", "city": "Dallas", "state": "TX" },
+              { "zip": "85001", "city": "Phoenix", "state": "AZ" },
+              { "zip": "19102", "city": "Philadelphia", "state": "PA" },
+              { "zip": "33101", "city": "Miami", "state": "FL" },
+              { "zip": "43201", "city": "Columbus", "state": "OH" },
+              { "zip": "28202", "city": "Charlotte", "state": "NC" },
+              { "zip": "98101", "city": "Seattle", "state": "WA" },
+              { "zip": "80202", "city": "Denver", "state": "CO" },
+              { "zip": "02108", "city": "Boston", "state": "MA" },
+              { "zip": "48201", "city": "Detroit", "state": "MI" },
+              { "zip": "37201", "city": "Nashville", "state": "TN" },
+              { "zip": "97201", "city": "Portland", "state": "OR" },
+              { "zip": "89101", "city": "Las Vegas", "state": "NV" },
+              { "zip": "55401", "city": "Minneapolis", "state": "MN" }
+            ]
+          },
+          "provenance": "learned",
+          "confidence": "high",
+          "coverage": 1.0,
+          "data_type": "char(2)",
+          "nullable": false,
+          "user_override": false
+        }
+      ]
+    },
+    {
+      "name": "dbo.CMC_CLCL_CLAIM",
+      "schema_name": "dbo",
+      "table_name": "CMC_CLCL_CLAIM",
+      "mode": "generate",
+      "level": 2,
+      "driving_parent": "dbo.CMC_MEME_MEMBER",
+      "ratio": {
+        "parent": "dbo.CMC_MEME_MEMBER",
+        "kind": "distribution",
+        "zero_share": 0.3,
+        "histogram": [
+          { "children": 0, "weight": 0.3 },
+          { "children": 1, "weight": 0.05 },
+          { "children": 2, "weight": 0.06 },
+          { "children": 3, "weight": 0.07 },
+          { "children": 4, "weight": 0.07 },
+          { "children": 5, "weight": 0.07 },
+          { "children": 6, "weight": 0.06 },
+          { "children": 8, "weight": 0.09 },
+          { "children": 10, "weight": 0.07 },
+          { "children": 12, "weight": 0.05 },
+          { "children": 14, "weight": 0.04 },
+          { "children": 18, "weight": 0.03 },
+          { "children": 24, "weight": 0.03 },
+          { "children": 32, "weight": 0.01 }
+        ],
+        "provenance": "learned",
+        "evidence": [
+          { "kind": "ratio_histogram", "detail": "30 percent of members have no claims; the rest have median 5, 90th percentile 14", "coverage": 1.0 }
+        ]
+      },
+      "relationships": [
+        {
+          "kind": "inferred",
+          "columns": ["MEME_CK"],
+          "parent_table": "dbo.CMC_MEME_MEMBER",
+          "parent_columns": ["MEME_CK"],
+          "confidence": "high",
+          "coverage": 1.0,
+          "evidence": [
+            { "kind": "value_inclusion", "detail": "100 percent of MEME_CK values exist in CMC_MEME_MEMBER", "coverage": 1.0 }
+          ]
+        },
+        {
+          "kind": "declared",
+          "name": "FK_CMC_CLCL_CLAIM_PRPR",
+          "columns": ["PRPR_ID"],
+          "parent_table": "dbo.CMC_PRPR_PROV",
+          "parent_columns": ["PRPR_ID"]
+        },
+        {
+          "kind": "declared",
+          "name": "FK_CMC_CLCL_CLAIM_PDPD",
+          "columns": ["PDPD_ID"],
+          "parent_table": "dbo.CMC_PDPD_PRODUCT",
+          "parent_columns": ["PDPD_ID"]
+        }
+      ],
+      "fields": [
+        {
+          "name": "CLCL_ID",
+          "bucket": "business_key",
+          "element": "CLAIM_ID",
+          "generator": "pattern",
+          "params": { "regex": "[0-9]{12}", "unique": true },
+          "provenance": "catalog",
+          "confidence": "high",
+          "data_type": "char(12)",
+          "nullable": false,
+          "user_override": false
+        },
+        {
+          "name": "MEME_CK",
+          "bucket": "reference",
+          "generator": "reference",
+          "params": {
+            "parent_table": "dbo.CMC_MEME_MEMBER",
+            "parent_column": "MEME_CK",
+            "pick": "driving"
+          },
+          "provenance": "structural",
+          "confidence": "high",
+          "coverage": 1.0,
+          "evidence": [
+            { "kind": "value_inclusion", "detail": "undeclared foreign key inferred from value inclusion", "coverage": 1.0 }
+          ],
+          "data_type": "bigint",
+          "nullable": false,
+          "user_override": false
+        },
+        {
+          "name": "PRPR_ID",
+          "bucket": "reference",
+          "generator": "reference",
+          "params": {
+            "parent_table": "dbo.CMC_PRPR_PROV",
+            "parent_column": "PRPR_ID",
+            "pick": "hash"
+          },
+          "provenance": "structural",
+          "confidence": "high",
+          "data_type": "char(12)",
+          "nullable": false,
+          "user_override": false
+        },
+        {
+          "name": "PDPD_ID",
+          "bucket": "reference",
+          "generator": "reference",
+          "params": {
+            "parent_table": "dbo.CMC_PDPD_PRODUCT",
+            "parent_column": "PDPD_ID",
+            "pick": "hash"
+          },
+          "provenance": "structural",
+          "confidence": "high",
+          "data_type": "char(8)",
+          "nullable": false,
+          "user_override": false
+        },
+        {
+          "name": "CLCL_CUR_STS",
+          "bucket": "code",
+          "element": "CLAIM_STATUS",
+          "generator": "lookup",
+          "params": {
+            "values": ["02", "01", "04", "11", "22", "99"],
+            "weights": [0.7, 0.1, 0.07, 0.06, 0.04, 0.03]
+          },
+          "provenance": "learned",
+          "confidence": "high",
+          "coverage": 1.0,
+          "evidence": [
+            { "kind": "top_values", "detail": "six distinct values; 02 at 70 percent", "coverage": 1.0 }
+          ],
+          "data_type": "char(2)",
+          "nullable": false,
+          "user_override": false
+        },
+        {
+          "name": "CLCL_SVC_DT",
+          "bucket": "free",
+          "element": "SERVICE_DATE",
+          "generator": "date_relative",
+          "params": {
+            "anchor": "dbo.CMC_MEME_MEMBER.MEME_EFF_DT",
+            "min_days": 0,
+            "max_days": 1800
+          },
+          "provenance": "learned",
+          "confidence": "medium",
+          "coverage": 1.0,
+          "evidence": [
+            { "kind": "date_ordering", "detail": "service date falls inside member coverage in 100 percent of rows", "coverage": 1.0 }
+          ],
+          "data_type": "date",
+          "nullable": false,
+          "user_override": false
+        },
+        {
+          "name": "CLCL_RECD_DT",
+          "bucket": "free",
+          "generator": "date_relative",
+          "params": { "anchor": "CLCL_SVC_DT", "min_days": 0, "max_days": 30 },
+          "provenance": "learned",
+          "confidence": "high",
+          "coverage": 1.0,
+          "evidence": [
+            { "kind": "date_ordering", "detail": "received 0 to 30 days after service in 100 percent of rows", "coverage": 1.0 }
+          ],
+          "data_type": "date",
+          "nullable": false,
+          "user_override": false
+        },
+        {
+          "name": "CLCL_PAID_DT",
+          "bucket": "free",
+          "generator": "date_relative",
+          "params": { "anchor": "CLCL_RECD_DT", "min_days": 5, "max_days": 60 },
+          "provenance": "learned",
+          "confidence": "high",
+          "coverage": 0.8,
+          "evidence": [
+            { "kind": "date_ordering", "detail": "paid 5 to 60 days after received; null for 20 percent of claims", "coverage": 0.8 }
+          ],
+          "data_type": "date",
+          "nullable": true,
+          "null_rate": 0.2,
+          "user_override": false
+        },
+        {
+          "name": "CLCL_TOT_CHG",
+          "bucket": "derivable",
+          "element": "CHARGE_AMOUNT",
+          "generator": "expression",
+          "params": {
+            "expression": "sum(dbo.CMC_CDML_CL_LINE.CDML_CHG_AMT)",
+            "decimals": 2
+          },
+          "provenance": "learned",
+          "confidence": "high",
+          "coverage": 1.0,
+          "evidence": [
+            { "kind": "expression_match", "detail": "equals the sum of its claim lines in 100 percent of rows", "coverage": 1.0 }
+          ],
+          "data_type": "decimal(12,2)",
+          "nullable": false,
+          "user_override": false
+        },
+        {
+          "name": "CLCL_CREATED_TS",
+          "bucket": "system",
+          "generator": "skip",
+          "params": {},
+          "provenance": "structural",
+          "evidence": [
+            { "kind": "default_constraint", "detail": "DF_CMC_CLCL_CLAIM_CREATED fills this with GETDATE()" }
+          ],
+          "data_type": "datetime",
+          "nullable": false,
+          "user_override": false
+        },
+        {
+          "name": "CLCL_ROW_HASH",
+          "bucket": "system",
+          "generator": "skip",
+          "params": {},
+          "provenance": "structural",
+          "evidence": [
+            { "kind": "computed_column", "detail": "computed by the database" }
+          ],
+          "data_type": "char(64)",
+          "nullable": true,
+          "user_override": false
+        }
+      ]
+    },
+    {
+      "name": "dbo.CMC_CDML_CL_LINE",
+      "schema_name": "dbo",
+      "table_name": "CMC_CDML_CL_LINE",
+      "mode": "generate",
+      "level": 3,
+      "driving_parent": "dbo.CMC_CLCL_CLAIM",
+      "ratio": {
+        "parent": "dbo.CMC_CLCL_CLAIM",
+        "kind": "distribution",
+        "histogram": [
+          { "children": 1, "weight": 0.1 },
+          { "children": 2, "weight": 0.2 },
+          { "children": 3, "weight": 0.35 },
+          { "children": 4, "weight": 0.22 },
+          { "children": 5, "weight": 0.13 }
+        ],
+        "provenance": "learned",
+        "evidence": [
+          { "kind": "ratio_histogram", "detail": "observed lines per claim, mean 3.08" }
+        ]
+      },
+      "relationships": [
+        {
+          "kind": "declared",
+          "name": "FK_CMC_CDML_CL_LINE_CLCL",
+          "columns": ["CLCL_ID"],
+          "parent_table": "dbo.CMC_CLCL_CLAIM",
+          "parent_columns": ["CLCL_ID"]
+        }
+      ],
+      "fields": [
+        {
+          "name": "CLCL_ID",
+          "bucket": "reference",
+          "generator": "reference",
+          "params": {
+            "parent_table": "dbo.CMC_CLCL_CLAIM",
+            "parent_column": "CLCL_ID",
+            "pick": "driving"
+          },
+          "provenance": "structural",
+          "confidence": "high",
+          "data_type": "char(12)",
+          "nullable": false,
+          "user_override": false
+        },
+        {
+          "name": "CDML_SEQ_NO",
+          "bucket": "system",
+          "generator": "sequence",
+          "params": { "start": 1, "step": 1, "scope": "parent" },
+          "provenance": "structural",
+          "evidence": [
+            { "kind": "composite_pk", "detail": "second column of PK_CMC_CDML_CL_LINE; restarts inside each claim" }
+          ],
+          "data_type": "smallint",
+          "nullable": false,
+          "user_override": false
+        },
+        {
+          "name": "CDML_SVC_CD",
+          "bucket": "business_key",
+          "element": "PROCEDURE_CODE",
+          "generator": "pattern",
+          "params": { "regex": "[A-Z][0-9]{4}" },
+          "provenance": "learned",
+          "confidence": "medium",
+          "coverage": 1.0,
+          "evidence": [
+            { "kind": "fitted_format", "detail": "[A-Z][0-9]{4} covers 100 percent of the sample", "coverage": 1.0 }
+          ],
+          "data_type": "char(5)",
+          "nullable": false,
+          "user_override": false
+        },
+        {
+          "name": "CDML_CHG_AMT",
+          "bucket": "free",
+          "element": "CHARGE_AMOUNT",
+          "generator": "number",
+          "params": {
+            "distribution": "lognormal",
+            "mean": 4.5,
+            "stddev": 0.9,
+            "min": 5,
+            "max": 25000,
+            "decimals": 2
+          },
+          "provenance": "learned",
+          "confidence": "medium",
+          "coverage": 1.0,
+          "evidence": [
+            { "kind": "distribution_fit", "detail": "log-normal fit, median about 90" }
+          ],
+          "data_type": "decimal(12,2)",
+          "nullable": false,
+          "user_override": false
+        },
+        {
+          "name": "CDML_UNITS",
+          "bucket": "free",
+          "generator": "number",
+          "params": { "distribution": "uniform", "min": 1, "max": 10, "decimals": 0 },
+          "provenance": "physical",
+          "confidence": "low",
+          "data_type": "int",
+          "nullable": false,
+          "user_override": false
+        }
+      ]
+    }
+  ]
+}

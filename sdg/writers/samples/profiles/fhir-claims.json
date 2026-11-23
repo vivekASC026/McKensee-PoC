@@ -1,0 +1,35 @@
+{
+  "about": "Claims modeled on a FHIR sample: per member, the sample's Patient and the resources after it (its Coverage), then per claim a Claim (or ExplanationOfBenefit), its items repeated per claim line. Taken in turn from the sample's patients, claims and items, as an 837 takes subscribers, claims and lines.",
+  "extends": "fhir",
+  "kind": "claims",
+  "subject": "claims",
+  "match": ["Patient", "Claim|ExplanationOfBenefit"],
+
+  "counts": {"members": "Patient", "claims": "Claim|ExplanationOfBenefit"},
+  "summary": "{members} patients · {claims} claims",
+
+  "units": [
+    {"name": "member", "starts": "Patient", "group": "MEMBER_ID", "row": "count",
+     "requires": "claim",
+     "missing": "The sample has no Patient followed by a Claim or ExplanationOfBenefit.",
+     "units": [
+       {"name": "claim", "starts": "Claim|ExplanationOfBenefit", "group": "CLAIM_ID",
+        "row": "nested",
+        "units": [
+          {"name": "line", "in": "item[*]", "row": "count"}
+        ]}
+     ]}
+  ],
+
+  "derive": [
+    {"about": "Every resource written is a new one: a new id, and every reference to it follows (Claim.patient, Claim.insurance.coverage, Coverage.beneficiary).",
+     "op": "rename", "at": "* id", "to": "{id}-{n}"},
+    {"about": "The narrative describes the sample's person, not the one written (a name's or address's text is said again from its parts: fhir.json texts).",
+     "op": "drop", "at": "* text"},
+    {"about": "A claim's items are numbered from 1.",
+     "op": "index", "at": "Claim item[*].sequence"},
+    {"op": "index", "at": "ExplanationOfBenefit item[*].sequence"},
+    {"about": "Claim.total is its items' net added up, when the sample's claim has a total.",
+     "op": "sum", "at": "Claim total.value", "of": ["Claim item[*].net.value"], "decimals": 2}
+  ]
+}

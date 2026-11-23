@@ -1,0 +1,49 @@
+{
+  "about": "Any CDA document modeled on a sample. A member has as many documents as the records give them -- one per day of service on each claim (encounter), as the claim's lines say, or one per member when the records are members -- every one the sample's document filled by the same config: the member's places from the member (the same in all of them, see 'levels'), the rest from that claim. Each document's id and set id are its own; everything else the sample has is copied, its clinical content included.",
+  "extends": "cda",
+  "kind": "CDA",
+  "subject": "claims",
+  "match": [],
+
+  "counts": {"sections": "component/structuredBody/component/section", "entries": "//entry"},
+  "summary": "1 document · {sections} sections · {entries} entries",
+
+  "units": [
+    {"name": "member", "group": "MEMBER_ID", "row": "count",
+     "units": [
+       {"name": "document", "starts": "ClinicalDocument", "group": ["CLAIM_ID", "SERVICE_DATE"],
+        "row": "nested",
+        "about": "A document per day of service on a claim: care is written up the day it is given, so an office visit (one date) gets one, a five-day stay five, as the claim's lines say. A claim whose lines carry no date gets one; member records one per member.",
+        "missing": "The sample has no ClinicalDocument to model documents on.",
+        "units": [
+          {"name": "line", "in": "component/structuredBody/component/section/entry",
+           "where": {"code/@code": "47519-4"}, "row": "nested",
+           "about": "The procedures section (LOINC 47519-4) has an entry per claim line of the day: the line's procedure code and date, taken in turn from the sample's procedure entries; everything else in the entry (template, status, performer) is the sample's.",
+           "narrative": {
+             "about": "The section's table has a row per entry, written from it: the row the sample's entry points at ('reference'), its ids numbered for this entry and the entry pointing at them; 'cells' are said from the entry ({path} relative to the entry; a time as a person reads it), null keeps the sample's cell.",
+             "reference": "*/text/reference/@value",
+             "cells": ["{*/code/@code} ({*/code/@codeSystemName})", "{*/effectiveTime}", null]}}
+        ]}
+     ]}
+  ],
+
+  "derive": [
+    {"about": "Every document written is a new one: its id and its set id are its own.",
+     "op": "rename", "at": "id/@extension", "to": "{id}-{n}"},
+    {"op": "rename", "at": "setId/@extension", "to": "{id}-{n}"},
+    {"about": "Every procedure entry written is a new one: a new UUID for its id.",
+     "op": "rename", "unit": "line", "at": "component/structuredBody/component/section/entry/procedure/id/@root", "to": "{uuid}"},
+    {"op": "rename", "unit": "line", "at": "component/structuredBody/component/section/entry/observation/id/@root", "to": "{uuid}"},
+    {"op": "rename", "unit": "line", "at": "component/structuredBody/component/section/entry/act/id/@root", "to": "{uuid}"},
+    {"about": "How the sample's procedure was done, where, and what it found describe that procedure, not the claim line's: the method and the body site are dropped, and an observation's result (which C-CDA requires) is unknown.",
+     "op": "drop", "unit": "line", "at": "component/structuredBody/component/section/entry//methodCode"},
+    {"op": "drop", "unit": "line", "at": "component/structuredBody/component/section/entry//targetSiteCode"},
+    {"about": "The sample's procedure in other code systems is not the claim line's: a generated code is written without its translations.",
+     "op": "drop", "unit": "line", "at": "component/structuredBody/component/section/entry//code/translation"},
+    {"op": "drop", "unit": "line", "at": "component/structuredBody/component/section/entry/observation/value/@code"},
+    {"op": "drop", "unit": "line", "at": "component/structuredBody/component/section/entry/observation/value/@displayName"},
+    {"op": "drop", "unit": "line", "at": "component/structuredBody/component/section/entry/observation/value/@codeSystem"},
+    {"op": "drop", "unit": "line", "at": "component/structuredBody/component/section/entry/observation/value/@codeSystemName"},
+    {"op": "set", "unit": "line", "on": "component/structuredBody/component/section/entry/observation/value", "at": "component/structuredBody/component/section/entry/observation/value/@nullFlavor", "value": "UNK"}
+  ]
+}

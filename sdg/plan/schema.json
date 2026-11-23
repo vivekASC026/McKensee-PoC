@@ -1,0 +1,1155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ascendion.com/sdg/plan/schema.json",
+  "title": "SDG generation plan",
+  "description": "The contract between the catalog, the resolver, the engine, the writer, and the review page. Every module reads or writes this document.",
+  "type": "object",
+  "required": [
+    "meta",
+    "sources",
+    "tables",
+    "generation_order",
+    "warnings"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "meta": {
+      "$ref": "#/$defs/meta"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    },
+    "tables": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/table"
+      }
+    },
+    "generation_order": {
+      "description": "Qualified table names in the order the engine writes them. Parents precede children.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/warning"
+      }
+    },
+    "cohorts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/cohort"
+      }
+    }
+  },
+  "$defs": {
+    "meta": {
+      "type": "object",
+      "required": [
+        "name",
+        "version",
+        "seed",
+        "created"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "description": "Plan name. Doubles as the scenario name that keys the seed hash.",
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "seed": {
+          "description": "Named seed. Every generated value is a function of this, the field, and the row index.",
+          "type": "string",
+          "minLength": 1
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "description": {
+          "type": "string"
+        },
+        "catalog": {
+          "description": "Catalog file the elements were resolved from.",
+          "type": "string"
+        },
+        "builder": {
+          "description": "The revision of the builder that made the plan. A plan from an earlier revision is rebuilt.",
+          "type": ["integer", "null"]
+        },
+        "reference_sets": {
+          "description": "How each reuse table's keys were loaded, recorded so a run can be reproduced.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/reference_set_record"
+          }
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "name",
+        "kind"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "mssql",
+            "file"
+          ]
+        },
+        "server": {
+          "description": "No ; { or }, which would end or open a connection-string part.",
+          "type": "string",
+          "pattern": "^[^;{}]*$"
+        },
+        "database": {
+          "type": "string",
+          "pattern": "^[^;{}]*$"
+        },
+        "driver": {
+          "type": "string",
+          "pattern": "^[^;{}]*$"
+        },
+        "path": {
+          "description": "A relative path: no drive, no leading slash or share, and no .. segment that climbs out of the folder it names.",
+          "type": "string",
+          "pattern": "^(?![\\\\/])(?![A-Za-z]:)(?!(.*[\\\\/])?\\.\\.([\\\\/]|$))"
+        }
+      }
+    },
+    "reference_set_record": {
+      "type": "object",
+      "required": [
+        "table",
+        "strategy",
+        "size"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "table": {
+          "type": "string"
+        },
+        "strategy": {
+          "enum": [
+            "full",
+            "sample",
+            "snapshot"
+          ]
+        },
+        "size": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sample_seed": {
+          "type": "string"
+        },
+        "filter": {
+          "description": "Conditions on columns joined by AND, such as ACTIVE_FLAG = 'Y': = <> != < <= > >= against text or a number, IS [NOT] NULL, [NOT] IN (...). Values are bound as parameters; anything else is refused (sdg/plan/filters.py).",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source": {
+          "type": "string"
+        }
+      }
+    },
+    "table": {
+      "type": "object",
+      "required": [
+        "name",
+        "mode",
+        "fields"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "description": "Qualified name, schema.table.",
+          "type": "string",
+          "minLength": 1
+        },
+        "schema_name": {
+          "type": "string"
+        },
+        "table_name": {
+          "type": "string"
+        },
+        "mode": {
+          "description": "generate writes rows; reuse reads existing keys; exclude leaves the table alone.",
+          "enum": [
+            "generate",
+            "reuse",
+            "exclude"
+          ]
+        },
+        "source": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/reuse_source"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "count": {
+          "description": "Absolute row count. Root tables only.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "ratio": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ratio"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "effective_count": {
+          "description": "Rows the hierarchy builder computed for this table.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "driving_parent": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "level": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "relationships": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/relationship"
+          }
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/field"
+          }
+        }
+      }
+    },
+    "reuse_source": {
+      "description": "Where a reuse table's keys come from.",
+      "type": "object",
+      "required": [
+        "connection",
+        "table",
+        "key_columns"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "connection": {
+          "type": "string"
+        },
+        "schema_name": {
+          "type": "string"
+        },
+        "table": {
+          "type": "string"
+        },
+        "key_columns": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "attributes": {
+          "description": "Extra columns loaded with the key for conditional selection.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "filter": {
+          "description": "Conditions on columns joined by AND, such as ACTIVE_FLAG = 'Y': = <> != < <= > >= against text or a number, IS [NOT] NULL, [NOT] IN (...). Values are bound as parameters; anything else is refused (sdg/plan/filters.py).",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "load": {
+          "enum": [
+            "full",
+            "sample",
+            "snapshot"
+          ]
+        },
+        "sample_size": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "column_map": {
+          "description": "Source column name to target column name, when they differ.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ratio": {
+      "description": "How many child rows each parent row gets.",
+      "type": "object",
+      "required": [
+        "parent",
+        "kind"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "parent": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "fixed",
+            "range",
+            "distribution"
+          ]
+        },
+        "value": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "min": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "max": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "zero_share": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "histogram": {
+          "description": "Children-per-parent weights. Weights are normalized by the engine.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "children",
+              "weight"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "children": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "weight": {
+                "type": "number",
+                "minimum": 0
+              },
+              "low": {
+                "description": "First count of the range a bin stands for, when it covers several.",
+                "type": ["integer", "null"],
+                "minimum": 0
+              },
+              "high": {
+                "description": "Last count of the range a bin stands for, when it covers several.",
+                "type": ["integer", "null"],
+                "minimum": 0
+              }
+            }
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          }
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "fixed"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "required": [
+              "value"
+            ],
+            "properties": {
+              "value": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "range"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "required": [
+              "min",
+              "max"
+            ],
+            "properties": {
+              "min": {
+                "type": "integer"
+              },
+              "max": {
+                "type": "integer"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "distribution"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "required": [
+              "histogram"
+            ],
+            "properties": {
+              "histogram": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "relationship": {
+      "type": "object",
+      "required": [
+        "kind",
+        "columns",
+        "parent_table",
+        "parent_columns"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "declared",
+            "inferred"
+          ]
+        },
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "columns": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "parent_table": {
+          "type": "string",
+          "minLength": 1
+        },
+        "parent_columns": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "coverage": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          }
+        }
+      }
+    },
+    "field": {
+      "type": "object",
+      "required": [
+        "name",
+        "bucket",
+        "generator",
+        "params",
+        "provenance"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bucket": {
+          "$ref": "#/$defs/bucket"
+        },
+        "element": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "generator": {
+          "$ref": "#/$defs/generator"
+        },
+        "params": {
+          "type": "object"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          }
+        },
+        "coverage": {
+          "description": "Share of profiled rows that supported the rule.",
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "user_override": {
+          "type": "boolean"
+        },
+        "overrode": {
+          "description": "Rules this one beat on precedence, kept for the provenance panel.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "provenance",
+              "generator"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "provenance": {
+                "$ref": "#/$defs/provenance"
+              },
+              "generator": {
+                "$ref": "#/$defs/generator"
+              },
+              "reason": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "data_type": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "nullable": {
+          "type": "boolean"
+        },
+        "null_rate": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "overrides": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/override"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "generator": {
+                "const": "sequence"
+              }
+            },
+            "required": [
+              "generator"
+            ]
+          },
+          "then": {
+            "properties": {
+              "params": {
+                "type": "object",
+                "required": [
+                  "start"
+                ],
+                "properties": {
+                  "start": {
+                    "type": "integer"
+                  },
+                  "step": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "scope": {
+                    "description": "table numbers rows across the table; parent restarts the sequence inside each driving parent.",
+                    "enum": [
+                      "table",
+                      "parent"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "generator": {
+                "const": "pattern"
+              }
+            },
+            "required": [
+              "generator"
+            ]
+          },
+          "then": {
+            "properties": {
+              "params": {
+                "type": "object",
+                "required": [
+                  "regex"
+                ],
+                "properties": {
+                  "regex": {
+                    "description": "At most 1000 characters; a repeat count above 1000 or a value wider than 8000 characters is refused (sdg/engine/pattern.py).",
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "unique": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "generator": {
+                "const": "lookup"
+              }
+            },
+            "required": [
+              "generator"
+            ]
+          },
+          "then": {
+            "properties": {
+              "params": {
+                "type": "object",
+                "required": [
+                  "values"
+                ],
+                "properties": {
+                  "values": {
+                    "type": "array",
+                    "minItems": 1
+                  },
+                  "weights": {
+                    "type": "array",
+                    "items": {
+                      "type": "number",
+                      "minimum": 0
+                    }
+                  },
+                  "dictionary": {
+                    "type": "string"
+                  },
+                  "field": {
+                    "description": "Key to read when values are records. Columns that share a record_key draw the same record, which is how a functional dependency such as ZIP to city is generated.",
+                    "type": "string"
+                  },
+                  "record_key": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "generator": {
+                "const": "number"
+              }
+            },
+            "required": [
+              "generator"
+            ]
+          },
+          "then": {
+            "properties": {
+              "params": {
+                "type": "object",
+                "required": [
+                  "distribution"
+                ],
+                "properties": {
+                  "distribution": {
+                    "enum": [
+                      "uniform",
+                      "normal",
+                      "lognormal"
+                    ]
+                  },
+                  "min": {
+                    "type": "number"
+                  },
+                  "max": {
+                    "type": "number"
+                  },
+                  "mean": {
+                    "type": "number"
+                  },
+                  "stddev": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "decimals": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 10
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "generator": {
+                "const": "date_relative"
+              }
+            },
+            "required": [
+              "generator"
+            ]
+          },
+          "then": {
+            "properties": {
+              "params": {
+                "type": "object",
+                "required": [
+                  "anchor"
+                ],
+                "properties": {
+                  "anchor": {
+                    "description": "Field name in the same row, or parent_table.field, or an ISO date.",
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "min_days": {
+                    "type": "integer"
+                  },
+                  "max_days": {
+                    "type": "integer"
+                  },
+                  "upper_anchor": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "max_date": {
+                    "description": "Absolute ceiling, as an ISO date. The observed maximum for the column, so a row whose anchor sits late in the range does not generate dates beyond anything the source contains.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "distribution": {
+                    "enum": [
+                      "uniform",
+                      "lognormal"
+                    ]
+                  },
+                  "with_time": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "generator": {
+                "const": "reference"
+              }
+            },
+            "required": [
+              "generator"
+            ]
+          },
+          "then": {
+            "properties": {
+              "params": {
+                "type": "object",
+                "required": [
+                  "parent_table",
+                  "parent_column"
+                ],
+                "properties": {
+                  "parent_table": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "parent_column": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "pick": {
+                    "enum": [
+                      "driving",
+                      "hash"
+                    ]
+                  },
+                  "filter_attribute": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "match_field": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "generator": {
+                "const": "expression"
+              }
+            },
+            "required": [
+              "generator"
+            ]
+          },
+          "then": {
+            "properties": {
+              "params": {
+                "type": "object",
+                "required": [
+                  "expression"
+                ],
+                "properties": {
+                  "expression": {
+                    "description": "At most 2000 characters (sdg/engine/expressions.py).",
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2000
+                  },
+                  "decimals": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 10
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "generator": {
+                "const": "constant"
+              }
+            },
+            "required": [
+              "generator"
+            ]
+          },
+          "then": {
+            "properties": {
+              "params": {
+                "type": "object",
+                "required": [
+                  "value"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "evidence": {
+      "type": "object",
+      "required": [
+        "kind",
+        "detail"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "detail": {
+          "type": "string"
+        },
+        "score": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "coverage": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "warning": {
+      "type": "object",
+      "required": [
+        "code",
+        "severity",
+        "message"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "severity": {
+          "description": "block stops generation; warn is advisory.",
+          "enum": [
+            "block",
+            "warn"
+          ]
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1
+        },
+        "table": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "field": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "bucket": {
+      "description": "Structural classification. Decides what the tool may do with the column.",
+      "enum": [
+        "system",
+        "reference",
+        "code",
+        "derivable",
+        "business_key",
+        "free"
+      ]
+    },
+    "generator": {
+      "enum": [
+        "sequence",
+        "pattern",
+        "lookup",
+        "number",
+        "date_relative",
+        "reference",
+        "expression",
+        "constant",
+        "skip",
+        "street_address",
+        "template"
+      ]
+    },
+    "confidence": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "high",
+        "medium",
+        "low",
+        null
+      ]
+    },
+    "provenance": {
+      "description": "Which layer supplied the winning rule. See design document section 6.6.",
+      "enum": [
+        "structural",
+        "catalog",
+        "learned",
+        "user",
+        "physical"
+      ]
+    },
+    "cohort": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "subject",
+        "share"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subject": {
+          "type": "string",
+          "minLength": 1
+        },
+        "share": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        },
+        "label": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        }
+      }
+    },
+    "override": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cohort",
+        "generator"
+      ],
+      "properties": {
+        "cohort": {
+          "type": "string",
+          "minLength": 1
+        },
+        "generator": {
+          "$ref": "#/$defs/generator"
+        },
+        "params": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}

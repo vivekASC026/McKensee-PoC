@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>
+    .ink { stroke: #0b1f2e; }
+    .green { stroke: #1f7a4d; }
+    .spark { fill: #1f7a4d; }
+    @media (prefers-color-scheme: dark) {
+      .ink { stroke: #e8eeeb; }
+      .green { stroke: #4cbf86; }
+      .spark { fill: #4cbf86; }
+    }
+  </style>
+  <g transform="translate(0 4)" fill="none" stroke-width="4.5" stroke-linecap="round">
+    <ellipse class="ink" cx="28" cy="32" rx="22" ry="6.5"/>
+    <path class="ink" d="M6 32v12c0 3.6 9.8 6.5 22 6.5s22-2.9 22-6.5V32"/>
+    <ellipse class="green" cx="28" cy="20" rx="23" ry="7" stroke-dasharray="6 5"/>
+    <path class="spark" stroke="none" d="M54 0 C55 5.6 57 7.6 63 8.6 C57 9.6 55 11.6 54 17.2 C53 11.6 51 9.6 45 8.6 C51 7.6 53 5.6 54 0 Z"/>
+  </g>
+</svg>

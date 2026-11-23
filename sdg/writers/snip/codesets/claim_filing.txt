@@ -1,0 +1,24 @@
+# X12 claim filing indicator codes (SBR09, CLP06).
+11 Other non-federal programs
+12 Preferred provider organization (PPO)
+13 Point of service (POS)
+14 Exclusive provider organization (EPO)
+15 Indemnity insurance
+16 Health maintenance organization (HMO) Medicare risk
+17 Dental maintenance organization
+AM Automobile medical
+BL Blue Cross/Blue Shield
+CH Champus
+CI Commercial insurance co.
+DS Disability
+FI Federal employees program
+HM Health maintenance organization
+LM Liability medical
+MA Medicare Part A
+MB Medicare Part B
+MC Medicaid
+OF Other federal program
+TV Title V
+VA Veterans affairs plan
+WC Workers' compensation health claim
+ZZ Mutually defined

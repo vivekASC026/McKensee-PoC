@@ -1,0 +1,66 @@
+{
+  "about": "ORM^O01 orders modeled on a sample: one message per claim (an order is billed as claim lines), its member's PID from the claim's first line, one order (ORC with its OBR or RXO and what follows) per claim line, taken in turn from the sample's orders; the segments after the last order are the claim's and are written once after its lines.",
+  "extends": "hl7v2",
+  "kind": "ORM",
+  "subject": "claims",
+
+  "counts": {"messages": "MSH", "orders": "ORC"},
+  "summary": "{messages} messages · {orders} orders",
+
+  "message": {"about": "The segments every ORM^O01 has (HL7 2.5.1): an order is an ORC.",
+              "required": ["MSH", "PID", "ORC"]},
+
+  "places": {
+    "about": "What an ORM field holds, besides the message-wide places (hl7v2.json): the order's test is the claim line's procedure, on its date.",
+    "list": [
+      {"at": "PID PID03-1", "is": "MEMBER_ID"},
+      {"at": "PID PID05-1", "is": "LAST_NAME"},
+      {"at": "PID PID05-2", "is": "FIRST_NAME"},
+      {"at": "PID PID05-3", "is": "MIDDLE_INITIAL"},
+      {"at": "PID PID07", "is": "DOB"},
+      {"at": "PID PID08", "is": "SEX"},
+      {"at": "PID PID11-1", "is": "STREET_1"},
+      {"at": "PID PID11-3", "is": "ADDRESS_CITY"},
+      {"at": "PID PID11-4", "is": "ADDRESS_STATE"},
+      {"at": "PID PID11-5", "is": "ADDRESS_ZIP"},
+      {"at": "PID PID13-6", "is": "PHONE"},
+      {"at": "PID PID13-7", "is": "PHONE"},
+      {"at": "PID PID14-6", "is": "PHONE"},
+      {"at": "PID PID14-7", "is": "PHONE"},
+      {"at": "PID PID19", "is": "SSN"},
+      {"at": "PID PID02-1", "is": "MEMBER_ID"},
+      {"at": "PID PID04-1", "is": "MEMBER_ID"},
+      {"at": "PID PID06-3", "is": null},
+      {"at": "PID PID09-3", "is": "MIDDLE_INITIAL"},
+      {"at": "PID PID18-1", "is": null},
+      {"at": "PID PID20-1", "is": null},
+      {"at": "PID PID20-3", "is": null},
+      {"at": "PID PID21-1", "is": null},
+      {"at": "PID PID29", "is": null},
+      {"at": "PV1 PV119-1", "is": "CLAIM_ID"},
+      {"at": "OBR OBR04-1", "is": "PROCEDURE_CODE"},
+      {"at": "OBR OBR07", "is": "SERVICE_DATE"}
+    ]
+  },
+
+  "units": [
+    {"name": "claim", "starts": "MSH", "group": "CLAIM_ID", "row": "count", "requires": "line",
+     "missing": "The sample has no MSH followed by an ORC: no order to model claims on.",
+     "units": [
+       {"name": "line", "starts": "ORC",
+        "while": ["OBR", "RXO", "RXR", "RXC", "NTE", "TQ1", "TQ2", "CTD", "DG1", "OBX", "ODS",
+                  "ODT", "RQD", "RQ1", "BLG", "FT1", "CTI"],
+        "row": "count"}
+     ]}
+  ],
+
+  "derive": [
+    {"about": "MSH-10, the message control id, is each message's own.",
+     "op": "rename", "at": "MSH MSH10", "to": "{id}-{n}"},
+    {"about": "Each order written is a new one: its placer and filler order numbers (ORC-2/3, OBR-2/3) are its own.",
+     "op": "rename", "at": "ORC ORC02-1", "to": "{id}-{n}"},
+    {"op": "rename", "at": "ORC ORC03-1", "to": "{id}-{n}"},
+    {"op": "rename", "at": "OBR OBR02-1", "to": "{id}-{n}"},
+    {"op": "rename", "at": "OBR OBR03-1", "to": "{id}-{n}"}
+  ]
+}

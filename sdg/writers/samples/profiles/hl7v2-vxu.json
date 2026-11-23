@@ -1,0 +1,25 @@
+{
+  "about": "VXU immunization updates modeled on a sample: one message (MSH to the next MSH: the patient, the order and its RXA administrations, the insurance) per member written, taken in turn from the sample's messages.",
+  "extends": "hl7v2",
+  "kind": "VXU",
+  "subject": "members",
+
+  "counts": {"messages": "MSH", "patients": "PID", "doses": "RXA"},
+  "summary": "{messages} messages · {patients} patients · {doses} doses",
+
+  "message": {"about": "The segments every VXU^V04 has (HL7 2.5.1): a dose given is an RXA.",
+              "required": ["MSH", "PID", "RXA"]},
+
+  "units": [
+    {"name": "member", "starts": "MSH", "row": "count",
+     "missing": "The sample has no MSH: no message to model members on."}
+  ],
+
+  "derive": [
+    {"about": "MSH-10, the message control id, is each message's own.",
+     "op": "rename", "at": "MSH MSH10", "to": "{id}-{n}"},
+    {"about": "Each order written is a new one: its placer and filler order numbers (ORC-2/3) are its own.",
+     "op": "rename", "at": "ORC ORC02-1", "to": "{id}-{n}"},
+    {"op": "rename", "at": "ORC ORC03-1", "to": "{id}-{n}"}
+  ]
+}

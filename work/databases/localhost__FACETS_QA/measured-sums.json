@@ -1,0 +1,1 @@
+{"model": 1795414737921373900, "sums": [{"parent_table": "dbo.CMC_CLCL_CLAIM", "parent_column": "CLCL_TOT_CHG", "child_table": "dbo.CMC_CDML_CL_LINE", "child_column": "CDML_CHG_AMT", "rows_compared": 1876, "matched": 1876}]}

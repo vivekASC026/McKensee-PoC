@@ -1,0 +1,52 @@
+{
+  "id": "835",
+  "transaction": "835",
+  "version": "005010X221A1",
+  "functional_code": "HP",
+  "description": "835 Payment and remittance advice, 005010X221A1. The loops and elements SDM writes and the required loops a receiver expects; not the whole implementation guide.",
+  "scopes": [
+    {"name": "claim", "opens": "CLP"},
+    {"name": "line", "opens": "SVC"}
+  ],
+  "rules": [
+    {"id": "bpr-required", "level": 2, "kind": "required_segment", "segment": "BPR", "max": 1},
+    {"id": "trn-required", "level": 2, "kind": "required_segment", "segment": "TRN", "max": 1},
+    {"id": "payer-name", "level": 2, "kind": "required_segment", "segment": "N1", "when": {"position": 1, "equals": "PR"}, "max": 1, "label": "Payer name (1000A N1*PR)"},
+    {"id": "payer-contact", "level": 2, "kind": "required_segment", "segment": "PER", "when": {"position": 1, "equals": "BL"}, "label": "Payer technical contact (1000A PER*BL)"},
+    {"id": "payee-name", "level": 2, "kind": "required_segment", "segment": "N1", "when": {"position": 1, "equals": "PE"}, "max": 1, "label": "Payee name (1000B N1*PE)"},
+    {"id": "payer-address", "level": 2, "kind": "followed_by", "segment": "N1", "when": {"position": 1, "equals": "PR"}, "then": "N3"},
+    {"id": "claim-patient", "level": 2, "kind": "required_segment", "scope": "claim", "segment": "NM1", "when": {"position": 1, "equals": "QC"}, "max": 1, "label": "Patient name (2100 NM1*QC)"},
+
+    {"id": "bpr01", "level": 2, "kind": "element", "segment": "BPR", "position": 1, "required": true, "codes": ["C", "D", "H", "I", "P", "U", "X"]},
+    {"id": "bpr02", "level": 2, "kind": "element", "segment": "BPR", "position": 2, "required": true, "type": "R", "max": 18},
+    {"id": "bpr03", "level": 2, "kind": "element", "segment": "BPR", "position": 3, "required": true, "codes": ["C", "D"]},
+    {"id": "bpr04", "level": 2, "kind": "element", "segment": "BPR", "position": 4, "required": true, "codes": ["ACH", "BOP", "CHK", "FWT", "NON"]},
+    {"id": "bpr16", "level": 2, "kind": "element", "segment": "BPR", "position": 16, "required": true, "type": "DT"},
+    {"id": "trn01", "level": 2, "kind": "element", "segment": "TRN", "position": 1, "required": true, "codes": ["1"]},
+    {"id": "dtm01", "level": 2, "kind": "element", "segment": "DTM", "position": 1, "required": true, "codes": ["036", "050", "150", "151", "232", "233", "405", "472"]},
+    {"id": "dtm02", "level": 2, "kind": "element", "segment": "DTM", "position": 2, "required": true, "type": "DT"},
+    {"id": "clp01", "level": 2, "kind": "element", "segment": "CLP", "position": 1, "required": true, "min": 1, "max": 38},
+    {"id": "clp02", "level": 2, "kind": "element", "segment": "CLP", "position": 2, "required": true, "codes": ["1", "2", "3", "4", "19", "20", "21", "22", "23", "25"]},
+    {"id": "clp03", "level": 2, "kind": "element", "segment": "CLP", "position": 3, "required": true, "type": "R"},
+    {"id": "clp04", "level": 2, "kind": "element", "segment": "CLP", "position": 4, "required": true, "type": "R"},
+    {"id": "clp06", "level": 2, "kind": "element", "segment": "CLP", "position": 6, "required": true, "code_set": "claim_filing"},
+    {"id": "patient-id-qualifier", "level": 2, "kind": "element", "segment": "NM1", "when": {"position": 1, "equals": "QC"}, "position": 8, "codes": ["34", "HN", "II", "MI", "MR"]},
+    {"id": "svc01-1", "level": 2, "kind": "element", "segment": "SVC", "position": 1, "component": 1, "required": true, "codes": ["AD", "ER", "HC", "HP", "IV", "N4", "NU", "WK"]},
+    {"id": "svc02", "level": 2, "kind": "element", "segment": "SVC", "position": 2, "required": true, "type": "R"},
+    {"id": "svc03", "level": 2, "kind": "element", "segment": "SVC", "position": 3, "required": true, "type": "R"},
+
+    {"id": "payment-balances", "level": 3, "kind": "sum", "label": "Total payment BPR02", "parts_label": "the sum of claim payments CLP04 less provider adjustments PLB", "total": {"segment": "BPR", "position": 2}, "parts": {"segment": "CLP", "position": 4}, "less": {"segment": "PLB", "position": 4}},
+    {"id": "claim-charge-balances", "level": 3, "kind": "sum", "scope": "claim", "label": "Claim charge CLP03", "parts_label": "the sum of line charges SVC02", "total": {"segment": "CLP", "position": 3}, "parts": {"segment": "SVC", "position": 2}},
+    {"id": "claim-payment-balances", "level": 3, "kind": "sum", "scope": "claim", "label": "Claim payment CLP04", "parts_label": "the sum of line payments SVC03", "total": {"segment": "CLP", "position": 4}, "parts": {"segment": "SVC", "position": 3}},
+
+    {"id": "nm1-id-pair", "level": 4, "kind": "both_or_neither", "segment": "NM1", "positions": [8, 9]},
+    {"id": "n1-id-pair", "level": 4, "kind": "both_or_neither", "segment": "N1", "positions": [3, 4]},
+    {"id": "address-then-city", "level": 4, "kind": "followed_by", "segment": "N3", "then": "N4"},
+    {"id": "denied-pays-nothing", "level": 4, "kind": "conditional", "if": {"segment": "CLP", "position": 2, "equals": "4"}, "then": {"position": 4, "in": ["0", "0.00"]}, "text": "CLP02 is 4 (denied), so CLP04 must be 0."},
+
+    {"id": "payee-npi", "level": 5, "kind": "element", "segment": "N1", "when": {"position": 3, "equals": "XX"}, "position": 4, "check": "npi"},
+    {"id": "procedure-form", "level": 5, "kind": "element", "segment": "SVC", "position": 1, "component": 2, "pattern": "[0-9]{4}[0-9FTU]|[A-V][0-9]{4}", "pattern_label": "CPT (5 characters) or HCPCS Level II (a letter and 4 digits)"},
+    {"id": "procedure-code-set", "level": 5, "kind": "element", "segment": "SVC", "position": 1, "component": 2, "code_set": "hcpcs"},
+    {"id": "state-codes", "level": 5, "kind": "element", "segment": "N4", "position": 2, "code_set": "states"}
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "id": "834",
+  "transaction": "834",
+  "version": "005010X220A1",
+  "functional_code": "BE",
+  "description": "834 Benefit enrollment, 005010X220A1. The loops and elements SDM writes and the required loops a receiver expects; not the whole implementation guide.",
+  "scopes": [
+    {"name": "member", "opens": "INS"}
+  ],
+  "rules": [
+    {"id": "bgn-required", "level": 2, "kind": "required_segment", "segment": "BGN", "max": 1},
+    {"id": "sponsor-name", "level": 2, "kind": "required_segment", "segment": "N1", "when": {"position": 1, "equals": "P5"}, "label": "Sponsor name (1000A N1*P5)"},
+    {"id": "payer-name", "level": 2, "kind": "required_segment", "segment": "N1", "when": {"position": 1, "equals": "IN"}, "label": "Payer name (1000B N1*IN)"},
+    {"id": "member-subscriber-id", "level": 2, "kind": "required_segment", "scope": "member", "segment": "REF", "when": {"position": 1, "equals": "0F"}, "max": 1, "label": "Subscriber identifier (2000 REF*0F)"},
+    {"id": "member-name", "level": 2, "kind": "required_segment", "scope": "member", "segment": "NM1", "when": {"position": 1, "in": ["IL", "74"]}, "label": "Member name (2100A NM1*IL)"},
+
+    {"id": "bgn01", "level": 2, "kind": "element", "segment": "BGN", "position": 1, "required": true, "codes": ["00", "15", "22"]},
+    {"id": "bgn02", "level": 2, "kind": "element", "segment": "BGN", "position": 2, "required": true, "min": 1, "max": 50},
+    {"id": "bgn03", "level": 2, "kind": "element", "segment": "BGN", "position": 3, "required": true, "type": "DT"},
+    {"id": "bgn04", "level": 2, "kind": "element", "segment": "BGN", "position": 4, "required": true, "type": "TM"},
+    {"id": "bgn08", "level": 2, "kind": "element", "segment": "BGN", "position": 8, "required": true, "codes": ["2", "4", "RX"]},
+    {"id": "ins01", "level": 2, "kind": "element", "segment": "INS", "position": 1, "required": true, "codes": ["Y", "N"]},
+    {"id": "ins02", "level": 2, "kind": "element", "segment": "INS", "position": 2, "required": true, "code_set": "relationship_834"},
+    {"id": "ins03", "level": 2, "kind": "element", "segment": "INS", "position": 3, "required": true, "codes": ["001", "021", "024", "025", "030", "032"]},
+    {"id": "ins05", "level": 2, "kind": "element", "segment": "INS", "position": 5, "required": true, "codes": ["A", "C", "S", "T"]},
+    {"id": "ref02", "level": 2, "kind": "element", "segment": "REF", "position": 2, "required": true, "min": 1, "max": 50},
+    {"id": "nm1-member-qualifier", "level": 2, "kind": "element", "segment": "NM1", "when": {"position": 1, "equals": "IL"}, "position": 8, "codes": ["34", "ZZ"]},
+    {"id": "nm103", "level": 2, "kind": "element", "segment": "NM1", "position": 3, "required": true, "min": 1, "max": 60},
+    {"id": "nm104", "level": 2, "kind": "element", "segment": "NM1", "position": 4, "min": 1, "max": 35},
+    {"id": "dmg01", "level": 2, "kind": "element", "segment": "DMG", "position": 1, "required": true, "codes": ["D8"]},
+    {"id": "dmg02", "level": 2, "kind": "element", "segment": "DMG", "position": 2, "required": true, "type": "DT"},
+    {"id": "dmg03", "level": 2, "kind": "element", "segment": "DMG", "position": 3, "required": true, "codes": ["F", "M", "U"]},
+    {"id": "dmg04", "level": 2, "kind": "element", "segment": "DMG", "position": 4, "codes": ["B", "D", "I", "M", "R", "S", "U", "W", "X"]},
+    {"id": "dtp02", "level": 2, "kind": "element", "segment": "DTP", "position": 2, "required": true, "codes": ["D8", "RD8"]},
+    {"id": "hd01", "level": 2, "kind": "element", "segment": "HD", "position": 1, "required": true, "codes": ["001", "002", "021", "024", "025", "026", "030", "032"]},
+    {"id": "hd03", "level": 2, "kind": "element", "segment": "HD", "position": 3, "required": true, "codes": ["AG", "AH", "AJ", "AK", "DCP", "DEN", "EPO", "FAC", "HE", "HLT", "HMO", "LTC", "LTD", "MM", "MOD", "PDG", "POS", "PPO", "PRA", "STD", "UR", "VIS"]},
+    {"id": "hd04", "level": 2, "kind": "element", "segment": "HD", "position": 4, "max": 50},
+    {"id": "hd05", "level": 2, "kind": "element", "segment": "HD", "position": 5, "codes": ["CHD", "DEP", "E1D", "E2D", "E3D", "E5D", "E6D", "E7D", "E8D", "E9D", "EMP", "ESP", "FAM", "IND", "SPC", "SPO", "TWO"]},
+
+    {"id": "nm1-id-pair", "level": 4, "kind": "both_or_neither", "segment": "NM1", "positions": [8, 9]},
+    {"id": "address-then-city", "level": 4, "kind": "followed_by", "segment": "N3", "then": "N4"},
+    {"id": "dates-match-format", "level": 4, "kind": "date_by_qualifier", "segment": "DTP", "format_position": 2, "value_position": 3},
+    {"id": "subscriber-is-self", "level": 4, "kind": "conditional", "if": {"segment": "INS", "position": 1, "equals": "Y"}, "then": {"position": 2, "equals": "18"}, "text": "INS01 is Y (subscriber), so INS02 must be 18 (self)."},
+    {"id": "ssn-form", "level": 4, "kind": "element", "segment": "NM1", "when": {"position": 8, "equals": "34"}, "position": 9, "pattern": "[0-9]{9}", "pattern_label": "nine digits, no dashes, for an SSN (NM108 = 34)"},
+
+    {"id": "state-codes", "level": 5, "kind": "element", "segment": "N4", "position": 2, "code_set": "states"}
+  ]
+}

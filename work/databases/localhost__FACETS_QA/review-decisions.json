@@ -1,0 +1,630 @@
+{
+  "_comment": "Edit this file to approve or change what the tool proposed, then run `sdg plan`. Set approved to true to accept the element and rule shown. Change element, generator, or params to override. Entries left with approved false stay as blocking warnings on the plan.",
+  "columns": [
+    {
+      "table": "dbo.CMC_CDML_CL_LINE",
+      "column": "CDML_CHG_AMT",
+      "approved": false,
+      "element": "CHARGE_AMOUNT",
+      "generator": "number",
+      "params": {
+        "distribution": "lognormal",
+        "min": 5.0,
+        "max": 2863.89,
+        "decimals": 2,
+        "mean": 4.509643,
+        "stddev": 0.898737
+      },
+      "_why": "the proposed rule is not certain",
+      "_alternatives": []
+    },
+    {
+      "table": "dbo.CMC_CSPD_CAT_DESC",
+      "column": "CSPD_CAT",
+      "approved": false,
+      "element": null,
+      "generator": "pattern",
+      "params": {
+        "regex": "[A-Z]",
+        "unique": true
+      },
+      "_why": "no catalog element matched",
+      "_alternatives": []
+    },
+    {
+      "table": "dbo.CMC_CSPI_CS_PLAN",
+      "column": "CSPD_CAT",
+      "approved": false,
+      "element": null,
+      "generator": "reference",
+      "params": {
+        "parent_table": "dbo.CMC_CSPD_CAT_DESC",
+        "parent_column": "CSPD_CAT",
+        "pick": "hash"
+      },
+      "_why": "no catalog element matched",
+      "_alternatives": []
+    },
+    {
+      "table": "dbo.CMC_CSPI_CS_PLAN",
+      "column": "CSPI_EFF_DT",
+      "approved": false,
+      "element": "EFFECTIVE_DATE",
+      "generator": "date_relative",
+      "params": {
+        "anchor": "2014-10-01",
+        "min_days": 0,
+        "max_days": 3134
+      },
+      "_why": "the proposed rule is not certain",
+      "_alternatives": []
+    },
+    {
+      "table": "dbo.CMC_CSPI_CS_PLAN",
+      "column": "CSPI_SEL_IND",
+      "approved": false,
+      "element": null,
+      "generator": "constant",
+      "params": {
+        "value": "Y"
+      },
+      "_why": "no catalog element matched",
+      "_alternatives": []
+    },
+    {
+      "table": "dbo.CMC_CSPI_CS_PLAN",
+      "column": "NWST_PFX",
+      "approved": false,
+      "element": null,
+      "generator": "lookup",
+      "params": {
+        "values": [
+          "N001",
+          "N002",
+          "N003",
+          "N004",
+          "N005",
+          "N006",
+          "N007",
+          "N008",
+          "N009",
+          "N010",
+          "N011",
+          "N012",
+          "N013",
+          "N014",
+          "N015",
+          "N016",
+          "N017",
+          "N018",
+          "N019",
+          "N020",
+          "N021",
+          "N022",
+          "N023",
+          "N024",
+          "N025"
+        ],
+        "weights": [
+          0.04,
+          0.04,
+          0.04,
+          0.04,
+          0.04,
+          0.04,
+          0.04,
+          0.04,
+          0.04,
+          0.04,
+          0.04,
+          0.04,
+          0.04,
+          0.04,
+          0.04,
+          0.04,
+          0.04,
+          0.04,
+          0.04,
+          0.04,
+          0.04,
+          0.04,
+          0.04,
+          0.04,
+          0.04
+        ]
+      },
+      "_why": "no catalog element matched",
+      "_alternatives": []
+    },
+    {
+      "table": "dbo.CMC_GRGR_GROUP",
+      "column": "GRGR_STS",
+      "approved": false,
+      "element": null,
+      "generator": "lookup",
+      "params": {
+        "values": [
+          "AC",
+          "TM"
+        ]
+      },
+      "_why": "no catalog element matched",
+      "_alternatives": []
+    },
+    {
+      "table": "dbo.CMC_GRGR_GROUP",
+      "column": "GRGR_ORIG_EFF_DT",
+      "approved": false,
+      "element": "ORIGINAL_EFFECTIVE_DATE",
+      "generator": "date_relative",
+      "params": {
+        "anchor": "1997-04-07",
+        "min_days": 0,
+        "max_days": 6921
+      },
+      "_why": "the proposed rule is not certain",
+      "_alternatives": [
+        "EFFECTIVE_DATE"
+      ]
+    },
+    {
+      "table": "dbo.CMC_IDCD_DIAG_CODE",
+      "column": "IDCD_ID",
+      "approved": false,
+      "element": "DIAGNOSIS_CODE",
+      "generator": "pattern",
+      "params": {
+        "regex": "[A-Z]\\d{6}",
+        "unique": true
+      },
+      "_why": "the proposed rule is not certain",
+      "_alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_MID_INIT",
+      "approved": false,
+      "element": "MIDDLE_INITIAL",
+      "generator": "pattern",
+      "params": {
+        "regex": "[A-Za-z]{1,1}"
+      },
+      "_why": "the proposed rule is not certain",
+      "_alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_BIRTH_DT",
+      "approved": false,
+      "element": "DOB",
+      "generator": "constant",
+      "params": {
+        "value": null
+      },
+      "_why": "the proposed rule is not certain",
+      "_alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_SSN",
+      "approved": false,
+      "element": "SSN",
+      "generator": "pattern",
+      "params": {
+        "regex": "[A-Za-z]{9,9}"
+      },
+      "_why": "the proposed rule is not certain",
+      "_alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEME_MEMBER",
+      "column": "MEME_SFX",
+      "approved": false,
+      "element": null,
+      "generator": "lookup",
+      "params": {
+        "values": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "weights": [
+          0.45045,
+          0.31982,
+          0.157658,
+          0.056306,
+          0.015766
+        ]
+      },
+      "_why": "no catalog element matched",
+      "_alternatives": []
+    },
+    {
+      "table": "dbo.CMC_MEPR_PRIM_PROV",
+      "column": "MEPR_PCP_TYPE",
+      "approved": false,
+      "element": null,
+      "generator": "constant",
+      "params": {
+        "value": "MP"
+      },
+      "_why": "no catalog element matched; it is a business key with no format to generate from",
+      "_alternatives": []
+    },
+    {
+      "table": "dbo.CMC_NWNW_NETWORK",
+      "column": "NWNW_NAME",
+      "approved": false,
+      "element": null,
+      "generator": "lookup",
+      "params": {
+        "values": [
+          "Bluegrass Care Network",
+          "Dental Choice Plus",
+          "Great Lakes Select",
+          "Heartland Medical PPO",
+          "National Access PPO",
+          "Ohio Valley HMO",
+          "SmileCare Dental"
+        ],
+        "weights": [
+          0.142857,
+          0.142857,
+          0.142857,
+          0.142857,
+          0.142857,
+          0.142857,
+          0.142857
+        ]
+      },
+      "_why": "no catalog element matched",
+      "_alternatives": []
+    },
+    {
+      "table": "dbo.CMC_NWNW_NETWORK",
+      "column": "NWNW_MCTR_TYPE",
+      "approved": false,
+      "element": null,
+      "generator": "lookup",
+      "params": {
+        "values": [
+          "DENT",
+          "HMO",
+          "PPO",
+          "EPO"
+        ],
+        "weights": [
+          0.285714,
+          0.285714,
+          0.285714,
+          0.142857
+        ]
+      },
+      "_why": "no catalog element matched",
+      "_alternatives": []
+    },
+    {
+      "table": "dbo.CMC_NWPR_RELATION",
+      "column": "NWPR_PFX",
+      "approved": false,
+      "element": null,
+      "generator": "constant",
+      "params": {
+        "value": "STD"
+      },
+      "_why": "no catalog element matched; it is a business key with no format to generate from",
+      "_alternatives": []
+    },
+    {
+      "table": "dbo.CMC_NWPR_RELATION",
+      "column": "NWPR_PCP_IND",
+      "approved": false,
+      "element": null,
+      "generator": "lookup",
+      "params": {
+        "values": [
+          "N",
+          "Y"
+        ],
+        "weights": [
+          0.910448,
+          0.089552
+        ]
+      },
+      "_why": "no catalog element matched; it is a business key with no format to generate from",
+      "_alternatives": []
+    },
+    {
+      "table": "dbo.CMC_NWPR_RELATION",
+      "column": "NWPR_EFF_DT",
+      "approved": false,
+      "element": "EFFECTIVE_DATE",
+      "generator": "date_relative",
+      "params": {
+        "anchor": "2010-01-05",
+        "min_days": 0,
+        "max_days": 871
+      },
+      "_why": "the proposed rule is not certain",
+      "_alternatives": []
+    },
+    {
+      "table": "dbo.CMC_NWPR_RELATION",
+      "column": "AGAG_ID",
+      "approved": false,
+      "element": null,
+      "generator": "lookup",
+      "params": {
+        "values": [
+          "AG0004S",
+          "AG0001S",
+          "AG0003S",
+          "AG0002S",
+          "AG0005S",
+          "AG0006S",
+          "AG0005P",
+          "AG0003P",
+          "AG0007S",
+          "AG0001P"
+        ],
+        "weights": [
+          0.223881,
+          0.164179,
+          0.164179,
+          0.149254,
+          0.119403,
+          0.059701,
+          0.044776,
+          0.029851,
+          0.029851,
+          0.014925
+        ]
+      },
+      "_why": "no catalog element matched",
+      "_alternatives": []
+    },
+    {
+      "table": "dbo.CMC_NWST_NET_SET",
+      "column": "NWST_PFX",
+      "approved": false,
+      "element": null,
+      "generator": "lookup",
+      "params": {
+        "values": [
+          "N001",
+          "N005",
+          "N007",
+          "N008",
+          "N009",
+          "N011",
+          "N016",
+          "N020",
+          "N022",
+          "N024",
+          "N002",
+          "N003",
+          "N004",
+          "N006",
+          "N010",
+          "N012",
+          "N013",
+          "N014",
+          "N015",
+          "N017",
+          "N018",
+          "N019",
+          "N021",
+          "N023",
+          "N025"
+        ],
+        "weights": [
+          0.057143,
+          0.057143,
+          0.057143,
+          0.057143,
+          0.057143,
+          0.057143,
+          0.057143,
+          0.057143,
+          0.057143,
+          0.057143,
+          0.028571,
+          0.028571,
+          0.028571,
+          0.028571,
+          0.028571,
+          0.028571,
+          0.028571,
+          0.028571,
+          0.028571,
+          0.028571,
+          0.028571,
+          0.028571,
+          0.028571,
+          0.028571,
+          0.028571
+        ]
+      },
+      "_why": "no catalog element matched; it is a business key with no format to generate from",
+      "_alternatives": []
+    },
+    {
+      "table": "dbo.CMC_NWST_NET_SET",
+      "column": "NWST_SEQ_NO",
+      "approved": false,
+      "element": null,
+      "generator": "lookup",
+      "params": {
+        "values": [
+          1,
+          2
+        ],
+        "weights": [
+          0.714286,
+          0.285714
+        ]
+      },
+      "_why": "no catalog element matched",
+      "_alternatives": []
+    },
+    {
+      "table": "dbo.CMC_NWST_NET_SET",
+      "column": "NWST_PR_NW_STS",
+      "approved": false,
+      "element": null,
+      "generator": "constant",
+      "params": {
+        "value": "P"
+      },
+      "_why": "no catalog element matched",
+      "_alternatives": []
+    },
+    {
+      "table": "dbo.CMC_NWST_NET_SET",
+      "column": "NWPR_PFX",
+      "approved": false,
+      "element": null,
+      "generator": "constant",
+      "params": {
+        "value": "STD"
+      },
+      "_why": "no catalog element matched",
+      "_alternatives": []
+    },
+    {
+      "table": "dbo.CMC_NWST_NET_SET",
+      "column": "PDVC_TIER",
+      "approved": false,
+      "element": null,
+      "generator": "lookup",
+      "params": {
+        "values": [
+          1,
+          2
+        ],
+        "weights": [
+          0.714286,
+          0.285714
+        ]
+      },
+      "_why": "no catalog element matched",
+      "_alternatives": []
+    },
+    {
+      "table": "dbo.CMC_PRPR_PROV",
+      "column": "PRPR_ENTITY",
+      "approved": false,
+      "element": null,
+      "generator": "lookup",
+      "params": {
+        "values": [
+          "F",
+          "G",
+          "P"
+        ],
+        "weights": [
+          0.2,
+          0.04,
+          0.76
+        ]
+      },
+      "_why": "no catalog element matched",
+      "_alternatives": []
+    },
+    {
+      "table": "dbo.CMC_SBSB_SUBSC",
+      "column": "SBSB_EFF_DT",
+      "approved": false,
+      "element": "EFFECTIVE_DATE",
+      "generator": "date_relative",
+      "params": {
+        "anchor": "dbo.CMC_SGSG_SUBGROUP.SGSG_ORIG_EFF_DT",
+        "min_days": -112,
+        "max_days": 6333,
+        "max_date": "2024-06-11"
+      },
+      "_why": "the proposed rule is not certain",
+      "_alternatives": []
+    },
+    {
+      "table": "dbo.CMC_SBSB_SUBSC",
+      "column": "SBSB_ORIG_EFF_DT",
+      "approved": false,
+      "element": "ORIGINAL_EFFECTIVE_DATE",
+      "generator": "date_relative",
+      "params": {
+        "anchor": "2003-01-11",
+        "min_days": 0,
+        "max_days": 7734
+      },
+      "_why": "the proposed rule is not certain",
+      "_alternatives": [
+        "EFFECTIVE_DATE"
+      ]
+    },
+    {
+      "table": "dbo.CMC_SGSG_SUBGROUP",
+      "column": "SGSG_ID",
+      "approved": false,
+      "element": null,
+      "generator": "pattern",
+      "params": {
+        "regex": "SG\\d{6}",
+        "unique": true
+      },
+      "_why": "no catalog element matched",
+      "_alternatives": []
+    },
+    {
+      "table": "dbo.CMC_SGSG_SUBGROUP",
+      "column": "CSCS_ID",
+      "approved": false,
+      "element": null,
+      "generator": "pattern",
+      "params": {
+        "regex": "CS\\d{6}"
+      },
+      "_why": "no catalog element matched",
+      "_alternatives": []
+    },
+    {
+      "table": "dbo.CMC_SGSG_SUBGROUP",
+      "column": "SGSG_STS",
+      "approved": false,
+      "element": null,
+      "generator": "constant",
+      "params": {
+        "value": "AC"
+      },
+      "_why": "no catalog element matched",
+      "_alternatives": []
+    },
+    {
+      "table": "dbo.CMC_SGSG_SUBGROUP",
+      "column": "SGSG_ORIG_EFF_DT",
+      "approved": false,
+      "element": "ORIGINAL_EFFECTIVE_DATE",
+      "generator": "date_relative",
+      "params": {
+        "anchor": "2007-02-08",
+        "min_days": 0,
+        "max_days": 4483
+      },
+      "_why": "the proposed rule is not certain",
+      "_alternatives": [
+        "EFFECTIVE_DATE"
+      ]
+    },
+    {
+      "table": "dbo.CMC_CDML_CL_LINE",
+      "column": "CDML_SVC_CD",
+      "approved": true,
+      "element": "PROCEDURE_CODE",
+      "generator": null,
+      "params": null
+    }
+  ],
+  "tables": {}
+}

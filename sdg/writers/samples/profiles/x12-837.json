@@ -1,0 +1,30 @@
+{
+  "about": "837 claims modeled on a sample: one subscriber loop (HL level 22) per member, holding that member's claims (CLM), each holding its lines (LX), taken in turn from the sample's subscribers, claims and lines. Only the first billing provider's subscribers are modeled: a second billing provider (HL level 20) ends them.",
+  "extends": "x12",
+  "kind": "837",
+  "subject": "claims",
+
+  "counts": {"members": "HL[3=22]", "claims": "CLM", "lines": "LX"},
+  "summary": "{members} subscribers · {claims} claims · {lines} lines",
+
+  "units": [
+    {"name": "member", "starts": "HL[3=22]", "stops": "HL[3=20]", "group": "MEMBER_ID",
+     "row": "count", "requires": "claim",
+     "missing": "The 837 sample has no subscriber (HL level 22) with a claim in it.",
+     "units": [
+       {"name": "claim", "starts": "CLM", "group": "CLAIM_ID", "row": "nested",
+        "units": [
+          {"name": "line", "starts": "LX", "row": "count"}
+        ]}
+     ]}
+  ],
+
+  "derive": [
+    {"about": "HL01 numbers every HL written, after the highest in the header; HL02 points at the new number of the parent it pointed at.",
+     "op": "sequence", "at": "HL HL01", "parent": "HL HL02"},
+    {"about": "LX01 counts a claim's lines from 1.",
+     "op": "index", "at": "LX LX01"},
+    {"about": "CLM02 is the claim's line charges added up, when the sample's claim has lines.",
+     "op": "sum", "at": "CLM CLM02", "of": ["SV1 SV102", "SV2 SV203", "SV3 SV302"], "decimals": 2}
+  ]
+}

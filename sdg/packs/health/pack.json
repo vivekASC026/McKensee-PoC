@@ -1,0 +1,315 @@
+{
+ "id": "health",
+ "name": "US health insurance (FACETS)",
+ "version": 1,
+ "_about": "The health insurance business: FACETS tables, members and claims. Every value here was a constant in SDM's code; tests/test_pack_health.py holds each equal to what was kept before it moved.",
+ "plan_name": "facets-slice",
+ "entities": {
+  "members": {
+   "role": "primary",
+   "anchor": "MEMBER_ID",
+   "key_column": "MEME_CK"
+  },
+  "claims": {
+   "role": "child",
+   "parent": "members",
+   "anchor": "CLAIM_ID",
+   "line_anchor": "LINE_NUMBER",
+   "key_columns": [
+    "CLCL_ID",
+    "CDML_SEQ_NO"
+   ]
+  },
+  "subscribers": {
+   "role": "parent_of_primary",
+   "anchor": "SUBSCRIBER_ID"
+  }
+ },
+ "tables": {
+  "never_generated": [
+   "dbo.CMC_PRPR_PROV"
+  ],
+  "modes": {
+   "dbo.CMC_PRPR_PROV": "reuse",
+   "dbo.CMC_PDPD_PRODUCT": "reuse",
+   "dbo.CMC_GRGR_GROUP": "reuse",
+   "dbo.CMC_SGSG_SUBGROUP": "reuse",
+   "dbo.CMC_CSPD_CAT_DESC": "reuse",
+   "dbo.CMC_CSPI_CS_PLAN": "reuse",
+   "dbo.CMC_PLDS_PLAN_DESC": "reuse",
+   "dbo.CMC_PDDS_PROD_DESC": "reuse",
+   "dbo.CMC_IDCD_DIAG_CODE": "reuse",
+   "dbo.CMC_IPCD_PROC_CODE": "reuse",
+   "dbo.CMC_NWNW_NETWORK": "reuse",
+   "dbo.CMC_NWPR_RELATION": "reuse",
+   "dbo.CMC_NWST_NET_SET": "reuse",
+   "dbo.CMC_MEPR_PRIM_PROV": "exclude",
+   "dbo.CMC_CLCL_AUDIT": "exclude"
+  }
+ },
+ "plan": {
+  "root_counts": {
+   "dbo.CMC_SBSB_SUBSC": 5000
+  },
+  "store_elements": {
+   "claims_denorm": {
+    "MEME_SEX": "SEX",
+    "CLCL_CL_TYPE": "CLAIM_TYPE",
+    "CLCL_CUR_STS": "CLAIM_STATUS",
+    "CLCL_NTWK_IND": "NETWORK_INDICATOR",
+    "NWNW_ID": "NETWORK_ID",
+    "IDCD_ID_PRIMARY": "DIAGNOSIS_CODE",
+    "IPCD_ID": "PROCEDURE_CODE",
+    "PRPR_ID": "PROVIDER_ID",
+    "CSPI_ID": "COVERAGE_PLAN_ID",
+    "PDPD_ID": "PRODUCT_CODE",
+    "GRGR_CK": "GROUP_KEY"
+   },
+   "member_denorm": {
+    "MEME_SEX": "SEX",
+    "MEME_MARITAL_STATUS": "MARITAL_STATUS",
+    "MEME_REL": "RELATIONSHIP_CODE",
+    "MEME_MCTR_STS": "MEMBER_STATUS",
+    "CSPI_ID": "COVERAGE_PLAN_ID",
+    "PDPD_ID": "PRODUCT_CODE",
+    "GRGR_CK": "GROUP_KEY",
+    "SGSG_CK": "SUBGROUP_KEY"
+   }
+  },
+  "always_together": {
+   "claims_denorm": [
+    [
+     "DIAGNOSIS_CODE",
+     "PROCEDURE_CODE"
+    ],
+    [
+     "PROVIDER_ID",
+     "COVERAGE_PLAN_ID"
+    ],
+    [
+     "PROVIDER_ID",
+     "NETWORK_INDICATOR"
+    ],
+    [
+     "NETWORK_INDICATOR",
+     "NETWORK_ID"
+    ]
+   ]
+  },
+  "kind_anchors": {
+   "subscriber": "SUBSCRIBER_ID",
+   "member": "MEMBER_ID",
+   "claim": "CLAIM_ID",
+   "line": "LINE_NUMBER"
+  },
+  "sex_fields": [
+   "SEX",
+   "GENDER",
+   "MEME_SEX",
+   "SBSB_SEX"
+  ],
+  "empty_is_a_value": [
+   "NWNW_ID"
+  ],
+  "record_tables": {
+   "members": {
+    "carries": [
+     "MEMBER_ID",
+     "DOB"
+    ]
+   },
+   "subscribers": {
+    "carries": [
+     "SUBSCRIBER_ID",
+     "SUBSCRIBER_KEY"
+    ]
+   },
+   "claims": {
+    "carries": [
+     "CLAIM_ID",
+     "SERVICE_DATE"
+    ],
+    "without": [
+     "LINE_NUMBER"
+    ]
+   },
+   "lines": {
+    "carries": [
+     "CLAIM_ID",
+     "LINE_NUMBER"
+    ]
+   }
+  },
+  "joins": {
+   "parent_of_primary": "SUBSCRIBER_KEY",
+   "primary": "MEMBER_KEY",
+   "child": "CLAIM_ID"
+  },
+  "tenure_element": "ORIGINAL_EFFECTIVE_DATE"
+ },
+ "extract": {
+  "default_source": "FACETS",
+  "surrogates": {
+   "FACETS": [
+    "SBSB_ID"
+   ]
+  }
+ },
+ "files": {
+  "default_elements": {
+   "members": [
+    "MEMBER_ID",
+    "SUBSCRIBER_ID",
+    "FIRST_NAME",
+    "LAST_NAME",
+    "SEX",
+    "DOB",
+    "MARITAL_STATUS",
+    "EFFECTIVE_DATE",
+    "TERMINATION_DATE",
+    "COVERAGE_PLAN_ID",
+    "PRODUCT_CODE",
+    "ADDRESS_CITY",
+    "ADDRESS_STATE",
+    "ADDRESS_ZIP"
+   ],
+   "claims": [
+    "CLAIM_ID",
+    "LINE_NUMBER",
+    "MEMBER_ID",
+    "SERVICE_DATE",
+    "DIAGNOSIS_CODE",
+    "PROCEDURE_CODE",
+    "CHARGE_AMOUNT",
+    "SERVICE_UNITS",
+    "CLAIM_STATUS"
+   ]
+  },
+  "scope_elements": {
+   "grgr_ck": "GROUP_KEY",
+   "cspi_id": "COVERAGE_PLAN_ID",
+   "pdpd_id": "PRODUCT_CODE"
+  },
+  "record_keys": [
+   "CLAIM_ID",
+   "LINE_NUMBER",
+   "MEMBER_KEY",
+   "SUBSCRIBER_KEY"
+  ],
+  "subscriber_codes": [
+   "18",
+   "M"
+  ],
+  "person_elements": [
+   "FIRST_NAME",
+   "LAST_NAME",
+   "MIDDLE_INITIAL",
+   "SSN",
+   "MEDICARE_ID",
+   "EMPLOYEE_ID"
+  ],
+  "head_names": {
+   "prefix": "SUBSCRIBER_",
+   "key": "SUBSCRIBER_ID",
+   "elements": [
+    "FIRST_NAME",
+    "LAST_NAME"
+   ]
+  },
+  "household": {
+   "family": [
+    "SUBSCRIBER_ID",
+    "SUBSCRIBER_KEY",
+    "EMPLOYEE_ID",
+    "COVERAGE_PLAN_ID",
+    "GROUP_KEY",
+    "GROUP_ID",
+    "GROUP_NAME",
+    "GROUP_TYPE",
+    "SUBGROUP_KEY",
+    "SUBGROUP_NAME",
+    "PRODUCT_CODE",
+    "PRODUCT_TYPE",
+    "PRODUCT_DESCRIPTION",
+    "PLAN_DESCRIPTION",
+    "PLAN_CATEGORY_TYPE",
+    "PLAN_CATEGORY_DESC",
+    "ADDRESS_ZIP",
+    "ADDRESS_CITY",
+    "ADDRESS_STATE",
+    "ADDRESS_COUNTY",
+    "ADDRESS_STREET",
+    "LAST_NAME",
+    "EFFECTIVE_DATE",
+    "ORIGINAL_EFFECTIVE_DATE",
+    "TERMINATION_DATE"
+   ],
+   "partner_codes": [
+    "01",
+    "53",
+    "P",
+    "S"
+   ],
+   "child_years": 15
+  },
+  "scope_narrows": [
+   {
+    "key": "cspd_cat",
+    "column": "CSPD_CAT",
+    "table": "member_denorm",
+    "gives": "CSPI_ID",
+    "element": "COVERAGE_PLAN_ID"
+   }
+  ],
+  "composed_id": {
+   "element": "MEMBER_ID",
+   "from": "SBSB_ID",
+   "suffix": "MEME_SFX",
+   "subscriber_suffix": "00"
+  },
+  "latest_columns": [
+   "MEME_EFF_DT",
+   "CSPI_EFF_DT",
+   "MEME_ORIG_EFF_DT"
+  ]
+ },
+ "formats": {
+  "members": [
+   "edi:834",
+   "csv",
+   "standard:fhir-members",
+   "standard:hl7-adt",
+   "standard:hl7v3-prpa-add"
+  ],
+  "claims": [
+   "edi:837P",
+   "edi:835",
+   "csv",
+   "standard:fhir-claims",
+   "standard:hl7-dft"
+  ]
+ },
+ "modules": [
+  "x12",
+  "snip",
+  "adjudication",
+  "fhir",
+  "hl7v2",
+  "hl7v3",
+  "cda",
+  "provider_features",
+  "pattern_analysis",
+  "pattern_generation"
+ ],
+ "sql": {
+  "_about": "The pack's own tables in the SDM platform database, created after SDM's own by setup_tables.cmd (add-only), and the indexes for the reads pattern analysis makes. Its extract definitions are in extract/.",
+  "store_tables": [
+   "sql/ddl_denorm.sql",
+   "sql/03_denorm_837_tables.sql",
+   "sql/default_rules.sql"
+  ],
+  "store_indexes": [
+   "sql/denorm_indexes.sql"
+  ]
+ }
+}

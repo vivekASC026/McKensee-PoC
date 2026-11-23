@@ -1,0 +1,24 @@
+{
+  "about": "MDM document notifications modeled on a sample: one message (MSH to the next MSH: the patient, the visit, the document's TXA and its OBX content) per member written, taken in turn from the sample's messages.",
+  "extends": "hl7v2",
+  "kind": "MDM",
+  "subject": "members",
+
+  "counts": {"messages": "MSH", "patients": "PID", "documents": "TXA"},
+  "summary": "{messages} messages · {patients} patients · {documents} documents",
+
+  "message": {"about": "The segments every MDM^T02 has (HL7 2.5.1): the document is a TXA.",
+              "required": ["MSH", "EVN", "PID", "PV1", "TXA"]},
+
+  "units": [
+    {"name": "member", "starts": "MSH", "row": "count",
+     "missing": "The sample has no MSH: no message to model members on."}
+  ],
+
+  "derive": [
+    {"about": "MSH-10, the message control id, is each message's own.",
+     "op": "rename", "at": "MSH MSH10", "to": "{id}-{n}"},
+    {"about": "TXA-12, the document's unique id, is each document's own.",
+     "op": "rename", "at": "TXA TXA12-1", "to": "{id}-{n}"}
+  ]
+}

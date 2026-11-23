@@ -1,0 +1,210 @@
+/* Picking a transaction set and seeing what it writes. */
+.edi {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.edi__pick {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+.edi__pick select {
+  min-width: 30ch;
+}
+.edi__facts {
+  display: flex;
+  gap: var(--space-2);
+  padding-bottom: 4px;
+}
+/* Segments are long and must not stretch the page. */
+.edi__sample {
+  font-family: var(--mono);
+  font-size: var(--t-micro);
+  line-height: 1.6;
+  padding: var(--space-4);
+  background: var(--paper-sunk);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow-x: auto;
+  white-space: pre;
+  max-height: 24rem;
+  overflow-y: auto;
+}
+
+/* SNIP checks */
+.snip {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--rule);
+}
+.snip__head h3 {
+  font-size: var(--t-base);
+  font-weight: 600;
+}
+.snip__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--space-3);
+}
+.snip__summary {
+  font-size: var(--t-small);
+}
+.snip__levels {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--t-small);
+}
+.snip__levels td {
+  padding: var(--space-2);
+  border-top: 1px solid var(--rule);
+  vertical-align: top;
+}
+.snip__levels td:first-child {
+  width: 28px;
+  color: var(--ink-faint);
+}
+.snip__row--open {
+  cursor: pointer;
+}
+.snip__counts {
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+.snip__findings {
+  list-style: none;
+  padding: 0;
+  margin-top: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.snip__rule {
+  color: var(--ink-faint);
+  font-size: var(--t-micro);
+}
+.snip__where {
+  color: var(--ink-faint);
+}
+.snip__raw {
+  display: block;
+  margin-top: 2px;
+  font-size: var(--t-micro);
+  color: var(--ink-soft);
+  overflow-x: auto;
+  white-space: pre;
+}
+.snip__note {
+  color: var(--ink-soft);
+  font-style: italic;
+}
+.snip__rules {
+  font-size: var(--t-small);
+  color: var(--ink-soft);
+}
+.snip__rules ul {
+  list-style: none;
+  padding: 0;
+  margin-top: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.snip__path {
+  font-size: var(--t-micro);
+  color: var(--ink-faint);
+}
+
+.snip__more {
+  margin-left: var(--space-2);
+  border: 0;
+  background: none;
+  padding: 0;
+  font: inherit;
+  font-size: var(--t-micro);
+  color: var(--structural);
+  cursor: pointer;
+}
+.snip__occurrence {
+  display: block;
+  margin-top: 2px;
+}
+.snip__again {
+  display: block;
+  color: var(--ink-soft);
+}
+
+/* A file from a sample: two steps, a table of the sample's places. */
+.edi-sample__step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.edi-sample__step + .edi-sample__step {
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--rule);
+}
+.edi-sample__step h3 {
+  font-size: var(--t-base);
+  font-weight: 600;
+}
+.edi-sample__tools {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+.edi-sample__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--t-small);
+}
+.edi-sample__table th {
+  text-align: left;
+  font-weight: 600;
+  padding: var(--space-2);
+  border-bottom: 1px solid var(--rule);
+}
+.edi-sample__table td {
+  padding: var(--space-2);
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+.edi-sample__row--on td:first-child {
+  box-shadow: inset 3px 0 0 var(--learned);
+}
+.edi-sample__value {
+  max-width: 24ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.edi-sample__table select {
+  min-width: 22ch;
+}
+.edi-sample__why {
+  font-size: var(--t-micro);
+  color: var(--ink-faint);
+  margin-top: 2px;
+}
+.edi-sample__vary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+.edi-sample__vary h4 {
+  margin: 0;
+  font-size: var(--t-base);
+  font-weight: 600;
+}
+.edi-sample__vary input[type="number"] {
+  width: 7ch;
+}
+.edi-sample__vary .edi-sample__vary-pick {
+  min-width: min(64ch, 80vw);
+}

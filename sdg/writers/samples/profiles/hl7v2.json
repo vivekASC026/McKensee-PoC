@@ -1,0 +1,98 @@
+{
+  "about": "What every HL7 v2 message modeled on a sample shares. A message type's profile (hl7v2-adt.json; -ack, -dft, -mdm, -orm, -oru, -siu, -vxu) extends this one and says what repeats. HL7's syntax -- delimiters, repetitions, MSH counting its field separator, the batch envelope -- is the reader's. Places are written 'PID PID05-1' (PID-5.1), fields numbered as HL7 numbers them.",
+  "syntax": "hl7v2",
+
+  "member": {
+    "about": "Segments that are the member's: the patient and the insured. A masking algorithm's name is read as a member element only here (a doctor's name in PV1 is not the member's); places listed below hold wherever they are.",
+    "segments": ["PID", "IN1"]
+  },
+
+  "places": {
+    "about": "What a field holds, when a config's algorithm name does not say.",
+    "list": [
+      {"at": "PID PID03-1", "is": "MEMBER_ID"},
+      {"at": "PID PID05-1", "is": "LAST_NAME"},
+      {"at": "PID PID05-2", "is": "FIRST_NAME"},
+      {"at": "PID PID05-3", "is": "MIDDLE_INITIAL"},
+      {"at": "PID PID07", "is": "DOB"},
+      {"at": "PID PID08", "is": "SEX"},
+      {"at": "PID PID11-1", "is": "STREET_1"},
+      {"at": "PID PID11-3", "is": "ADDRESS_CITY"},
+      {"at": "PID PID11-4", "is": "ADDRESS_STATE"},
+      {"at": "PID PID11-5", "is": "ADDRESS_ZIP"},
+      {"at": "PID PID18-1", "is": null},
+      {"at": "PID PID02-1", "is": "MEMBER_ID"},
+      {"at": "PID PID04-1", "is": "MEMBER_ID"},
+      {"at": "PID PID06-3", "is": null},
+      {"at": "PID PID09-3", "is": "MIDDLE_INITIAL"},
+      {"at": "PID PID20-1", "is": null},
+      {"at": "PID PID20-3", "is": null},
+      {"at": "PID PID21-1", "is": null},
+      {"at": "PID PID29", "is": null},
+      {"at": "PID PID13-6", "is": "PHONE"},
+      {"at": "PID PID13-7", "is": "PHONE"},
+      {"at": "PID PID14-6", "is": "PHONE"},
+      {"at": "PID PID14-7", "is": "PHONE"},
+      {"at": "PID PID19", "is": "SSN"},
+      {"at": "IN1 IN108", "is": "GROUP_KEY"},
+      {"at": "IN1 IN112", "is": "EFFECTIVE_DATE"},
+      {"at": "IN1 IN113", "is": "TERMINATION_DATE"},
+      {"at": "IN1 IN116-1", "is": "LAST_NAME"},
+      {"at": "IN1 IN116-2", "is": "FIRST_NAME"},
+      {"at": "IN1 IN116-3", "is": "MIDDLE_INITIAL"},
+      {"at": "IN1 IN117", "is": "RELATIONSHIP_CODE"},
+      {"at": "IN1 IN118", "is": "DOB"},
+      {"at": "IN1 IN119-1", "is": "STREET_1"},
+      {"at": "IN1 IN119-3", "is": "ADDRESS_CITY"},
+      {"at": "IN1 IN119-4", "is": "ADDRESS_STATE"},
+      {"at": "IN1 IN119-5", "is": "ADDRESS_ZIP"},
+      {"at": "IN1 IN136", "is": "SUBSCRIBER_ID"},
+      {"at": "IN1 IN110-1", "is": null},
+      {"at": "IN1 IN114-1", "is": null},
+      {"at": "IN1 IN114-2", "is": null},
+      {"at": "IN1 IN124", "is": null},
+      {"at": "IN1 IN126", "is": null},
+      {"at": "IN1 IN128", "is": null},
+      {"at": "IN1 IN129", "is": null},
+      {"at": "IN1 IN130-1", "is": null},
+      {"at": "IN1 IN151", "is": null},
+      {"at": "IN1 IN149", "is": "MEMBER_ID"},
+      {"at": "IN1 IN149-1", "is": "MEMBER_ID"},
+      {"at": "PV1 PV119-1", "is": "CLAIM_ID"},
+      {"at": "DG1 DG103-1", "is": "DIAGNOSIS_CODE"},
+      {"at": "FT1 FT104-1", "is": "SERVICE_DATE"},
+      {"at": "FT1 FT104", "is": "SERVICE_DATE"},
+      {"at": "FT1 FT107-1", "is": "PROCEDURE_CODE"},
+      {"at": "FT1 FT110", "is": "SERVICE_UNITS"},
+      {"at": "FT1 FT111-1", "is": "CHARGE_AMOUNT"},
+      {"at": "FT1 FT111", "is": "CHARGE_AMOUNT"},
+      {"at": "FT1 FT125-1", "is": "PROCEDURE_CODE"}
+    ]
+  },
+
+  "checks": {
+    "about": "What a written message is checked for (Run HL7 v2 checks): 'fields' that must hold a value wherever their segment is (MSH-9 message type, MSH-10 control id, MSH-11 processing id, MSH-12 version, PID-3 patient id, PID-5 name); 'dates' written as HL7 dates (DTM: YYYYMMDD, then time and zone optional); 'codes' in their HL7 tables (0001 sex, 0063 relationship, 0103 processing id). The segments a message type requires are its profile's 'message.required'.",
+    "fields": ["MSH MSH09-1", "MSH MSH09-2", "MSH MSH10", "MSH MSH11-1", "MSH MSH12-1",
+               "PID PID03-1", "PID PID05-1"],
+    "dates": ["MSH MSH07", "EVN EVN02", "EVN EVN06", "PID PID07", "PV1 PV144", "PV1 PV145",
+              "DG1 DG105", "IN1 IN112", "IN1 IN113", "IN1 IN118", "FT1 FT104", "FT1 FT104-1", "FT1 FT104-2",
+              "FT1 FT105"],
+    "codes": [
+      {"at": "PID PID08", "table": "0001", "in": ["A", "F", "M", "N", "O", "U"]},
+      {"at": "IN1 IN117", "table": "0063",
+       "in": ["ASC", "BRO", "CGV", "CHD", "DEP", "DOM", "EMC", "EME", "EMR", "EXF", "FCH", "FND",
+              "FTH", "GCH", "GRD", "GRP", "LIN", "MGR", "MTH", "NCH", "NON", "OAD", "OTH", "OWN",
+              "PAR", "SCH", "SEL", "SIB", "SIS", "SPO", "TRA", "UNK", "WRD"]},
+      {"at": "MSH MSH11-1", "table": "0103", "in": ["D", "P", "T"]}
+    ]
+  },
+
+  "codes": {
+    "about": "Where HL7 codes a value the store codes otherwise (HL7 table 0001 sex, 0063 relationship): the store's value -> HL7's, else 'default'.",
+    "list": [
+      {"at": "PID PID08", "element": "SEX", "map": {"M": "M", "F": "F", "U": "U"}, "default": "U"},
+      {"at": "IN1 IN117", "element": "RELATIONSHIP_CODE",
+       "map": {"M": "SEL", "S": "SPO", "D": "CHD", "P": "DOM"}, "default": "OTH"}
+    ]
+  }
+}

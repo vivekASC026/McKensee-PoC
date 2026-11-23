@@ -1,0 +1,18 @@
+{
+ "screens": {
+  "FACETS": 7,
+  "claim": 226,
+  "diagnosis": 9,
+  "member": 115,
+  "provider": 11,
+  "subscriber": 0
+ },
+ "server": {
+  "FACETS": 88,
+  "claim": 653,
+  "diagnosis": 50,
+  "member": 587,
+  "provider": 63,
+  "subscriber": 72
+ }
+}

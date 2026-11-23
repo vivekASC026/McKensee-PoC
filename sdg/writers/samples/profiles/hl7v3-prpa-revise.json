@@ -1,0 +1,7 @@
+{
+  "about": "HL7 v3 Patient Registry Record Revised (PRPA_IN201302UV02; IHE PIX v3 Patient Identity Feed, ITI-44): a member's details changed.",
+  "extends": "hl7v3-registry",
+  "kind": "PRPA_IN201302UV02",
+  "root": "PRPA_IN201302UV02",
+  "match": [{"at": "interactionId/@extension", "in": ["PRPA_IN201302UV02"]}]
+}
